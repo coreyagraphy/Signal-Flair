@@ -53,6 +53,9 @@ export default function HeroSection() {
           playsInline
           preload="auto"
         />
+        {/* Drifting cloud haze — two parallax layers over the video */}
+        <div className="hero-cloud hero-cloud--far" aria-hidden="true" />
+        <div className="hero-cloud hero-cloud--near" aria-hidden="true" />
         {/* Legibility scrim — consistent cinematic dark so copy reads in any OS theme */}
         <div
           className="absolute inset-0"

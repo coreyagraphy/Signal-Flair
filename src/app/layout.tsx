@@ -44,9 +44,9 @@ export default function RootLayout({
             height="140%"
             colorInterpolationFilters="sRGB"
           >
-            <feTurbulence type="fractalNoise" baseFrequency="0.013 0.013" numOctaves={2} seed={7} result="noise" />
-            <feGaussianBlur in="noise" stdDeviation="1.1" result="soft" />
-            <feDisplacementMap in="SourceGraphic" in2="soft" scale={22} xChannelSelector="R" yChannelSelector="G" />
+            <feTurbulence type="fractalNoise" baseFrequency="0.011 0.011" numOctaves={2} seed={7} result="noise" />
+            <feGaussianBlur in="noise" stdDeviation="1.2" result="soft" />
+            <feDisplacementMap in="SourceGraphic" in2="soft" scale={30} xChannelSelector="R" yChannelSelector="G" />
           </filter>
         </svg>
         {children}
