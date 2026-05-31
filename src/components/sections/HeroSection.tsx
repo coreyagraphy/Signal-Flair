@@ -29,8 +29,8 @@ export default function HeroSection() {
   //   slower and linger last. Differing rise speeds = the staggered cascade.
   const titleY = useTransform(scrollYProgress, [0, 1], ['0%', '-44%'])
   const titleOpacity = useTransform(scrollYProgress, [0, 0.55], [1, 0])
-  const chipsY = useTransform(scrollYProgress, [0, 1], ['0%', '-26%'])
-  const chipsOpacity = useTransform(scrollYProgress, [0, 0.72], [1, 0])
+  const chipsY = useTransform(scrollYProgress, [0, 1], ['0%', '-15%'])
+  const chipsOpacity = useTransform(scrollYProgress, [0, 0.6, 0.92], [1, 0.92, 0])
   const barOpacity = useTransform(scrollYProgress, [0, 0.4], [1, 0])
 
   const parallaxOn = mounted && !reduceMotion
