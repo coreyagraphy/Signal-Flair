@@ -1,0 +1,100 @@
+/* src/app/globals.css */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Serif+Display:ital@0;1&family=DM+Mono:wght@300;400&family=Barlow+Condensed:wght@300;400;700;900&display=swap');
+
+/* ===========================================================
+   THEME TOKENS — flip automatically with the OS color scheme.
+   Values are "R G B" triplets so Tailwind alpha (/<alpha>) works.
+   =========================================================== */
+:root {
+  /* LIGHT (default) */
+  --bg:          255 246 232;   /* cream */
+  --surface:     255 255 255;   /* white card */
+  --surface-2:   248 238 219;   /* cream-2 alt band */
+  --ink:          23  19  18;   /* charcoal text */
+  --line:         23  19  18;   /* hairlines (use low alpha) */
+  /* cinematic feature band — dark in BOTH themes */
+  --feature:      10   8   6;   /* near-black */
+  --feature-2:    23  19  18;   /* charcoal card on feature */
+  --on-feature:  255 246 232;   /* cream text on feature */
+
+  --accent-orange: #FF7A45;
+  color-scheme: light;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg:          10   8   6;   /* near-black */
+    --surface:     23  19  18;   /* charcoal card */
+    --surface-2:   30  25  23;   /* elevated alt band */
+    --ink:        255 246 232;   /* cream text */
+    --line:       255 255 255;   /* hairlines (low alpha) */
+    --feature:     16  12  10;   /* slightly lifted dark band */
+    --feature-2:   30  25  23;
+    --on-feature: 255 246 232;
+    color-scheme: dark;
+  }
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body {
+  background: rgb(var(--bg));
+  color: rgb(var(--ink));
+  font-family: 'Barlow Condensed', sans-serif;
+  overflow-x: hidden;
+  cursor: none;
+  transition: background-color .4s ease, color .4s ease;
+}
+
+/* Grain overlay */
+body::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  z-index: 200;
+  pointer-events: none;
+  opacity: 0.03;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 300 300' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  background-size: 300px;
+}
+
+/* Custom cursor */
+.cursor-dot, .cursor-ring {
+  position: fixed;
+  pointer-events: none;
+  z-index: 9999;
+  transform: translate(-50%, -50%);
+  mix-blend-mode: difference;
+}
+.cursor-dot {
+  width: 8px; height: 8px;
+  border-radius: 50%;
+  background: #FF7A45;
+}
+.cursor-ring {
+  width: 28px; height: 28px;
+  border-radius: 50%;
+  border: 1px solid rgba(255, 122, 69, 0.5);
+  z-index: 9998;
+  transition: width .15s ease, height .15s ease;
+}
+
+/* Hide custom cursor on touch devices */
+@media (hover: none) {
+  body { cursor: auto; }
+  .cursor-dot, .cursor-ring { display: none; }
+}
+
+/* Respect reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: .001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: .001ms !important;
+    scroll-behavior: auto !important;
+  }
+}
