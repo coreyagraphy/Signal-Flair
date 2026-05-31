@@ -19,20 +19,24 @@ export default function HeroSection() {
     offset: ['start start', 'end start'],
   })
 
-  // Background zooms in on scroll (camera pushes into the signal) with a gentle
-  // downward drift so the zoom reads as the dominant motion → cinematic depth.
-  const bgY = useTransform(scrollYProgress, [0, 1], ['0%', '14%'])
-  const bgScale = useTransform(scrollYProgress, [0, 1], [1, 1.28])
-  // Foreground rises faster and fades, so the headline clears the fold
-  // cleanly instead of colliding with the section scrolling up beneath it.
-  const contentY = useTransform(scrollYProgress, [0, 1], ['0%', '-52%'])
-  const contentOpacity = useTransform(scrollYProgress, [0, 0.6], [1, 0])
-  // Bottom signal bar fades a touch sooner.
+  // Background: strong downward lag + gentle zoom-in → the hero image reads as
+  // moving slowly (it holds while the page scrolls past it).
+  const bgY = useTransform(scrollYProgress, [0, 1], ['0%', '20%'])
+  const bgScale = useTransform(scrollYProgress, [0, 1], [1, 1.22])
+
+  // Foreground exits in a stagger, not as one block:
+  //   bottom bar fades first → headline group rises + fades mid → chips drift
+  //   slower and linger last. Differing rise speeds = the staggered cascade.
+  const titleY = useTransform(scrollYProgress, [0, 1], ['0%', '-44%'])
+  const titleOpacity = useTransform(scrollYProgress, [0, 0.55], [1, 0])
+  const chipsY = useTransform(scrollYProgress, [0, 1], ['0%', '-26%'])
+  const chipsOpacity = useTransform(scrollYProgress, [0, 0.72], [1, 0])
   const barOpacity = useTransform(scrollYProgress, [0, 0.4], [1, 0])
 
   const parallaxOn = mounted && !reduceMotion
   const bgStyle = parallaxOn ? { y: bgY, scale: bgScale } : undefined
-  const contentStyle = parallaxOn ? { y: contentY, opacity: contentOpacity } : undefined
+  const titleStyle = parallaxOn ? { y: titleY, opacity: titleOpacity } : undefined
+  const chipsStyle = parallaxOn ? { y: chipsY, opacity: chipsOpacity } : undefined
   const barStyle = parallaxOn ? { opacity: barOpacity } : undefined
 
   return (
@@ -70,72 +74,78 @@ export default function HeroSection() {
         />
       </motion.div>
 
-      {/* Foreground content — rises faster than the background and fades out */}
-      <motion.div
-        style={contentStyle}
-        className="relative z-10 h-full max-w-[1300px] mx-auto px-6 md:px-12 flex flex-col justify-center will-change-transform"
-      >
-        <motion.div
-          initial={{ opacity: 0, y: 24 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.9, ease: [0.22, 1, 0.36, 1] }}
-          className="max-w-[860px]"
-        >
-          <div className="flex items-center gap-2.5 font-mono text-[8px] md:text-[9px] text-cream/55 tracking-[0.3em] uppercase mb-5">
-            <span className="w-1.5 h-1.5 rounded-full bg-orange animate-pulse" />
-            Signal Flare System · Indianapolis
-          </div>
+      {/* Foreground content */}
+      <div className="relative z-10 h-full max-w-[1300px] mx-auto px-6 md:px-12 flex flex-col justify-center">
+        {/* Headline group — rises and fades mid-scroll */}
+        <motion.div style={titleStyle} className="will-change-transform">
+          <motion.div
+            initial={{ opacity: 0, y: 24 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.9, ease: [0.22, 1, 0.36, 1] }}
+            className="max-w-[860px]"
+          >
+            <div className="flex items-center gap-2.5 font-mono text-[8px] md:text-[9px] text-cream/55 tracking-[0.3em] uppercase mb-5">
+              <span className="w-1.5 h-1.5 rounded-full bg-orange animate-pulse" />
+              Signal Flare System · Indianapolis
+            </div>
 
-          <h1 className="font-display uppercase text-cream leading-[0.86] tracking-[-0.01em]
-                         text-[clamp(48px,9vw,128px)]">
-            If AI can&apos;t see you,<br />
-            <span className="text-orange">customers won&apos;t</span> either.
-          </h1>
+            <h1 className="font-display uppercase text-cream leading-[0.86] tracking-[-0.01em]
+                           text-[clamp(48px,9vw,128px)]">
+              If AI can&apos;t see you,<br />
+              <span className="text-orange">customers won&apos;t</span> either.
+            </h1>
 
-          <p className="font-serif italic text-cream/75 mt-6 max-w-[560px]
-                        text-[clamp(15px,2.2vw,22px)] leading-snug">
-            We light up the businesses the algorithm can&apos;t see — then build the proof
-            that makes them impossible to miss.
-          </p>
+            <p className="font-serif italic text-cream/75 mt-6 max-w-[560px]
+                          text-[clamp(15px,2.2vw,22px)] leading-snug">
+              We light up the businesses the algorithm can&apos;t see — then build the proof
+              that makes them impossible to miss.
+            </p>
 
-          <div className="flex flex-wrap items-center gap-3 mt-9">
-            <a href="#cta"
-               className="font-display text-base md:text-lg tracking-wide px-8 py-3.5 rounded-[2px]
-                          bg-orange text-white hover:bg-orange-2 transition-colors">
-              RUN MY VISIBILITY SCAN →
-            </a>
-            <LiquidGlass as="a" href="#aeo-audit"
-               className="font-mono text-[10px] tracking-[0.22em] uppercase px-6 py-4 rounded-[2px] text-cream/80 hover:text-cream transition-colors">
-              See What AI Sees
-            </LiquidGlass>
-          </div>
+            <div className="flex flex-wrap items-center gap-3 mt-9">
+              <a href="#cta"
+                 className="font-display text-base md:text-lg tracking-wide px-8 py-3.5 rounded-[2px]
+                            bg-orange text-white hover:bg-orange-2 transition-colors">
+                RUN MY VISIBILITY SCAN →
+              </a>
+              <LiquidGlass as="a" href="#aeo-audit"
+                 className="font-mono text-[10px] tracking-[0.22em] uppercase px-6 py-4 rounded-[2px] text-cream/80 hover:text-cream transition-colors">
+                See What AI Sees
+              </LiquidGlass>
+            </div>
+          </motion.div>
         </motion.div>
 
-        {/* Floating proof chips */}
-        <motion.div
-          initial={{ opacity: 0, y: 18 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 0.5, duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
-          className="hidden md:flex absolute right-12 top-1/2 -translate-y-1/2 flex-col gap-3"
-        >
-          <LiquidGlass className="rounded-lg px-4 py-3 animate-float">
-            <div>
-              <div className="font-display text-3xl text-orange-2 leading-none">23</div>
-              <div className="font-mono text-[7px] text-cream/45 tracking-[0.15em] uppercase mt-1">AI Score</div>
-              <div className="text-[10px] text-cream/60 font-light">Before Mental Vision</div>
-            </div>
-          </LiquidGlass>
-          <LiquidGlass className="rounded-lg px-4 py-3 animate-float [animation-delay:2s]">
-            <div>
-              <div className="font-display text-3xl text-teal leading-none">78</div>
-              <div className="font-mono text-[7px] text-cream/45 tracking-[0.15em] uppercase mt-1">AI Score</div>
-              <div className="text-[10px] text-cream/60 font-light">After 7-Day Rebuild</div>
-            </div>
-          </LiquidGlass>
-        </motion.div>
-      </motion.div>
+        {/* Floating proof chips — drift slower and linger (staggered exit).
+            Outer div handles vertical centering so its transform never collides
+            with the scroll-parallax transform on the inner layer. */}
+        <div className="hidden md:block absolute right-12 top-1/2 -translate-y-1/2">
+          <motion.div style={chipsStyle} className="will-change-transform">
+            <motion.div
+              initial={{ opacity: 0, y: 18 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.5, duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
+              className="flex flex-col gap-3"
+            >
+              <LiquidGlass className="rounded-lg px-4 py-3 animate-float">
+                <div>
+                  <div className="font-display text-3xl text-orange-2 leading-none">23</div>
+                  <div className="font-mono text-[7px] text-cream/45 tracking-[0.15em] uppercase mt-1">AI Score</div>
+                  <div className="text-[10px] text-cream/60 font-light">Before Mental Vision</div>
+                </div>
+              </LiquidGlass>
+              <LiquidGlass className="rounded-lg px-4 py-3 animate-float [animation-delay:2s]">
+                <div>
+                  <div className="font-display text-3xl text-teal leading-none">78</div>
+                  <div className="font-mono text-[7px] text-cream/45 tracking-[0.15em] uppercase mt-1">AI Score</div>
+                  <div className="text-[10px] text-cream/60 font-light">After 7-Day Rebuild</div>
+                </div>
+              </LiquidGlass>
+            </motion.div>
+          </motion.div>
+        </div>
+      </div>
 
-      {/* Bottom signal bar — pinned to the hero floor, fades on scroll */}
+      {/* Bottom signal bar — pinned to the hero floor, fades first on scroll */}
       <motion.div
         style={barStyle}
         className="absolute bottom-0 left-0 right-0 z-10 flex items-center justify-between
