@@ -1,36 +1,76 @@
 'use client'
 
-import { motion } from 'framer-motion'
+import { useEffect, useRef, useState } from 'react'
+import { motion, useScroll, useTransform, useReducedMotion } from 'framer-motion'
 import LiquidGlass from '@/components/shared/LiquidGlass'
 
 export default function HeroSection() {
+  const ref = useRef<HTMLElement>(null)
+  const reduceMotion = useReducedMotion()
+
+  // Gate scroll transforms behind mount: SSR and first client render emit no
+  // transform (identity at scroll 0 anyway), avoiding a hydration mismatch.
+  const [mounted, setMounted] = useState(false)
+  useEffect(() => setMounted(true), [])
+
+  // Progress 0 → 1 as the hero scrolls out of the top of the viewport.
+  const { scrollYProgress } = useScroll({
+    target: ref,
+    offset: ['start start', 'end start'],
+  })
+
+  // Background drifts up slower than the page (and zooms slightly) → depth.
+  const bgY = useTransform(scrollYProgress, [0, 1], ['0%', '22%'])
+  const bgScale = useTransform(scrollYProgress, [0, 1], [1, 1.16])
+  // Foreground rises faster and fades, so the headline clears the fold
+  // cleanly instead of colliding with the section scrolling up beneath it.
+  const contentY = useTransform(scrollYProgress, [0, 1], ['0%', '-52%'])
+  const contentOpacity = useTransform(scrollYProgress, [0, 0.6], [1, 0])
+  // Bottom signal bar fades a touch sooner.
+  const barOpacity = useTransform(scrollYProgress, [0, 0.4], [1, 0])
+
+  const parallaxOn = mounted && !reduceMotion
+  const bgStyle = parallaxOn ? { y: bgY, scale: bgScale } : undefined
+  const contentStyle = parallaxOn ? { y: contentY, opacity: contentOpacity } : undefined
+  const barStyle = parallaxOn ? { opacity: barOpacity } : undefined
+
   return (
-    <section id="hero" className="relative h-[100svh] min-h-[640px] overflow-hidden bg-feature">
-      {/* Full-bleed looping hero video — the standard */}
-      <video
-        className="absolute inset-0 w-full h-full object-cover"
-        src="/video/signal-flare-hero.mp4"
-        poster="/video/hero-poster.jpg"
-        autoPlay
-        muted
-        loop
-        playsInline
-        preload="auto"
-      />
+    <section
+      ref={ref}
+      id="hero"
+      className="relative h-[100svh] min-h-[640px] overflow-hidden bg-feature"
+    >
+      {/* Parallax background layer — full-bleed looping video + legibility scrims */}
+      <motion.div style={bgStyle} className="absolute inset-0 will-change-transform">
+        <video
+          className="absolute inset-0 w-full h-full object-cover"
+          src="/video/signal-flare-hero.mp4"
+          poster="/video/hero-poster.jpg"
+          autoPlay
+          muted
+          loop
+          playsInline
+          preload="auto"
+        />
+        {/* Legibility scrim — consistent cinematic dark so copy reads in any OS theme */}
+        <div
+          className="absolute inset-0"
+          style={{
+            background:
+              'radial-gradient(120% 90% at 50% 12%, rgba(10,8,6,0.15) 0%, rgba(10,8,6,0.55) 60%, rgba(10,8,6,0.82) 100%)',
+          }}
+        />
+        <div
+          className="absolute inset-x-0 bottom-0 h-2/5"
+          style={{ background: 'linear-gradient(0deg, rgba(10,8,6,0.92) 0%, transparent 100%)' }}
+        />
+      </motion.div>
 
-      {/* Legibility scrim — consistent cinematic dark so copy reads in any OS theme */}
-      <div
-        className="absolute inset-0"
-        style={{
-          background:
-            'radial-gradient(120% 90% at 50% 12%, rgba(10,8,6,0.15) 0%, rgba(10,8,6,0.55) 60%, rgba(10,8,6,0.82) 100%)',
-        }}
-      />
-      <div className="absolute inset-x-0 bottom-0 h-2/5"
-           style={{ background: 'linear-gradient(0deg, rgba(10,8,6,0.92) 0%, transparent 100%)' }} />
-
-      {/* Content */}
-      <div className="relative z-10 h-full max-w-[1300px] mx-auto px-6 md:px-12 flex flex-col justify-center">
+      {/* Foreground content — rises faster than the background and fades out */}
+      <motion.div
+        style={contentStyle}
+        className="relative z-10 h-full max-w-[1300px] mx-auto px-6 md:px-12 flex flex-col justify-center will-change-transform"
+      >
         <motion.div
           initial={{ opacity: 0, y: 24 }}
           animate={{ opacity: 1, y: 0 }}
@@ -88,11 +128,14 @@ export default function HeroSection() {
             </div>
           </LiquidGlass>
         </motion.div>
-      </div>
+      </motion.div>
 
-      {/* Bottom signal bar */}
-      <div className="absolute bottom-0 left-0 right-0 z-10 flex items-center justify-between
-                      px-6 md:px-12 py-3.5 bg-feature/55 backdrop-blur-md border-t border-cream/8">
+      {/* Bottom signal bar — pinned to the hero floor, fades on scroll */}
+      <motion.div
+        style={barStyle}
+        className="absolute bottom-0 left-0 right-0 z-10 flex items-center justify-between
+                   px-6 md:px-12 py-3.5 bg-feature/55 backdrop-blur-md border-t border-cream/8"
+      >
         <p className="font-serif text-xs md:text-sm text-cream/45 italic">
           <strong className="text-cream not-italic">Discovery</strong> is the first connection.
         </p>
@@ -106,7 +149,7 @@ export default function HeroSection() {
             FIX MY SIGNAL →
           </LiquidGlass>
         </div>
-      </div>
+      </motion.div>
     </section>
   )
 }
