@@ -27,23 +27,33 @@ export default function BoldHome() {
       el.addEventListener('mouseleave', () => { ring.style.transform = 'translate(-50%,-50%) scale(1)'; ring.style.borderColor = 'rgba(255,122,69,0.4)' })
     })
 
-    /* ─── AI VISIBILITY GAUGE ─── */
-    const GG = { cx: 160, cy: 165, r: 120 }
-    const gang = v => 150 + 2.4 * v
-    const gpt = (a, r) => [GG.cx + r * Math.cos(a * Math.PI / 180), GG.cy + r * Math.sin(a * Math.PI / 180)]
-    function gArc(a0, a1, r) { const [x0, y0] = gpt(a0, r), [x1, y1] = gpt(a1, r); const L = (a1 - a0) > 180 ? 1 : 0; return `M ${x0.toFixed(2)} ${y0.toFixed(2)} A ${r} ${r} 0 ${L} 1 ${x1.toFixed(2)} ${y1.toFixed(2)}` }
-    function gBand(v) { return v < 40 ? 'Invisible' : v < 65 ? 'Weak' : v < 85 ? 'Partially Visible' : 'AI-Ready' }
-    function gColor(v) { return v < 40 ? '#FF1177' : v < 65 ? '#FF7A45' : v < 85 ? '#F7FF5A' : '#00A6A6' }
-    function renderGauge(v) {
-      const n = document.getElementById('gauge-num'); if (!n) return
-      n.textContent = String(Math.round(v))
-      const b = document.getElementById('gauge-band'); if (b) { b.textContent = gBand(v); b.style.color = gColor(v) }
-      const p = document.getElementById('gauge-prog'); if (p) { p.setAttribute('d', gArc(150, gang(v), GG.r)); p.style.stroke = gColor(v) }
-      const nd = document.getElementById('gauge-needle'); if (nd) nd.setAttribute('transform', `rotate(${gang(v)} ${GG.cx} ${GG.cy})`)
+    /* ─── AI VISIBILITY SCAN (textless head ring → number pops) ─── */
+    const RGG = { cx: 120, cy: 120, r: 92 }
+    const rAng = v => 130 + 2.8 * v
+    const rPt = (a, r) => [RGG.cx + r * Math.cos(a * Math.PI / 180), RGG.cy + r * Math.sin(a * Math.PI / 180)]
+    function rArc(a0, a1, r) { const [x0, y0] = rPt(a0, r), [x1, y1] = rPt(a1, r); const L = (a1 - a0) > 180 ? 1 : 0; return `M ${x0.toFixed(2)} ${y0.toFixed(2)} A ${r} ${r} 0 ${L} 1 ${x1.toFixed(2)} ${y1.toFixed(2)}` }
+    function rColor(v) { return v < 40 ? '#FF1177' : v < 65 ? '#FF7A45' : v < 85 ? '#F7FF5A' : '#00A6A6' }
+    function renderRing(v) { const p = document.getElementById('ring-prog'); if (!p) return; const vv = Math.max(0.1, v); p.setAttribute('d', rArc(rAng(0), rAng(vv), RGG.r)); p.style.stroke = rColor(v) }
+    renderRing(0)
+    let scanned = false
+    function runScan() {
+      if (scanned) return; scanned = true
+      // hold static ~1s, then the robot scans
+      setTimeout(() => {
+        const sweep = { v: 0 }
+        animate(sweep, { v: [{ to: 100, duration: 1300, ease: 'inOutSine' }, { to: 78, duration: 600, ease: 'outExpo' }], onUpdate: () => renderRing(sweep.v) })
+        const sl = document.getElementById('scan-line')
+        if (sl) animate(sl, { translateY: [0, 300], opacity: [{ to: 0.95, duration: 180 }, { to: 0.95, duration: 1020 }, { to: 0, duration: 200 }], duration: 1400, ease: 'inOutSine' })
+        const eye = document.getElementById('eye-glow')
+        if (eye) animate(eye, { scale: [{ to: 1.35, duration: 350 }, { to: 1, duration: 650 }] })
+        // number pops up after the scan completes
+        setTimeout(() => {
+          const el = document.getElementById('scan-num'); if (!el) return
+          animate(el, { opacity: [0, 1], scale: [0.4, 1.18, 1], duration: 750, ease: 'outBack(2.2)' })
+          const n = { v: 0 }; animate(n, { v: [0, 78], duration: 1100, delay: 120, ease: 'outExpo', onUpdate: () => { el.textContent = String(Math.round(n.v)) } })
+        }, 1500)
+      }, 1000)
     }
-    let gaugeAnimated = false
-    function animateGauge() { if (gaugeAnimated) return; gaugeAnimated = true; const o = { v: 23 }; animate(o, { v: [23, 78], duration: 2400, delay: 200, ease: 'outExpo', onUpdate: () => renderGauge(o.v) }) }
-    renderGauge(23)
 
     /* ─── DRAW ORB-01 (unused: hero robot retired; calls self-no-op when the
          #orb-canvas / #orb-wrap elements are absent) ─── */
@@ -271,7 +281,7 @@ export default function BoldHome() {
         .add('.lens-lbl', { opacity: [0, 1], duration: 500 }, 700)
         .add('#hfoot', { opacity: [0, 1], translateY: [18, 0], duration: 700 }, 600)
       setTimeout(setupRobotInteraction, 1200)
-      setTimeout(animateGauge, 500)
+      setTimeout(runScan, 300)
     }
 
     /* ─── ORB-01 MOUSE INTERACTION ─── */
@@ -374,18 +384,19 @@ export default function BoldHome() {
 
     /* ─── HERO PARALLAX ─── */
     setTimeout(() => {
-      animate('.gauge', { translateY: [0, -70], autoplay: onScroll({ target: '#hero', enter: 'top top', leave: 'bottom top', sync: true }) })
+      animate('#orb-wrap', { translateY: [0, -70], autoplay: onScroll({ target: '#hero', enter: 'top top', leave: 'bottom top', sync: true }) })
     }, 100)
 
     /* ─── LAUNCH ─── */
     runIntro()
   }, [])
 
-  // Gauge arc geometry (also mirrored in the effect for the animation).
-  const GA = { cx: 160, cy: 165, r: 120 }
-  const ga = (v) => 150 + 2.4 * v
-  const gpt2 = (a, r) => [GA.cx + r * Math.cos(a * Math.PI / 180), GA.cy + r * Math.sin(a * Math.PI / 180)]
-  const garc = (a0, a1, r = GA.r) => { const [x0, y0] = gpt2(a0, r), [x1, y1] = gpt2(a1, r); const L = (a1 - a0) > 180 ? 1 : 0; return `M ${x0.toFixed(2)} ${y0.toFixed(2)} A ${r} ${r} 0 ${L} 1 ${x1.toFixed(2)} ${y1.toFixed(2)}` }
+  // Head-ring arc geometry (280° ring, gap at the bottom toward the body).
+  // Mirrored in the effect for the scan animation.
+  const RG = { cx: 120, cy: 120, r: 92 }
+  const rang = (v) => 130 + 2.8 * v
+  const rpt = (a, r) => [RG.cx + r * Math.cos(a * Math.PI / 180), RG.cy + r * Math.sin(a * Math.PI / 180)]
+  const rarc = (a0, a1, r = RG.r) => { const [x0, y0] = rpt(a0, r), [x1, y1] = rpt(a1, r); const L = (a1 - a0) > 180 ? 1 : 0; return `M ${x0.toFixed(2)} ${y0.toFixed(2)} A ${r} ${r} 0 ${L} 1 ${x1.toFixed(2)} ${y1.toFixed(2)}` }
 
   const snl = { fontFamily: "'DM Mono',monospace", fontSize: '9px', color: 'rgba(23,19,18,0.4)', letterSpacing: '0.18em', textTransform: 'uppercase', textDecoration: 'none' } as const
   const divider = { width: '100%', height: '1px', background: 'linear-gradient(90deg,transparent,rgba(255,255,255,0.08),transparent)' } as const
@@ -436,30 +447,26 @@ export default function BoldHome() {
           </div>
           <div style={divider} />
           <div className="lens-center">
-            <div className="gauge">
-              <svg className="gauge-svg" viewBox="0 0 320 300" aria-hidden="true">
-                <path className="gauge-track" d={garc(ga(0), ga(100))} />
-                <path className="gz gz-pink" d={garc(ga(0), ga(40))} />
-                <path className="gz gz-orange" d={garc(ga(40), ga(65))} />
-                <path className="gz gz-yellow" d={garc(ga(65), ga(85))} />
-                <path className="gz gz-teal" d={garc(ga(85), ga(100))} />
-                <path id="gauge-prog" d={garc(ga(0), ga(23))} />
-                <g id="gauge-needle" transform={`rotate(${ga(23)} 160 165)`}>
-                  <line x1="160" y1="165" x2="252" y2="165" />
-                </g>
-                <circle className="gauge-hub" cx="160" cy="165" r="7" />
-              </svg>
-              <div className="gauge-center">
-                <div id="gauge-num" className="gauge-num">23</div>
-                <div id="gauge-band" className="gauge-band">Invisible</div>
-                <div className="gauge-lbl">AI Visibility Score</div>
+            <div id="orb-wrap">
+              <canvas id="orb-canvas" width={300} height={480} />
+              <div id="eye-glow-outer" />
+              <div id="eye-glow" />
+              {/* Textless scanner ring around the head */}
+              <div className="head-ring" id="head-ring">
+                <svg className="ring-svg" viewBox="0 0 240 240" aria-hidden="true">
+                  <path className="rz rz-pink" d={rarc(rang(0), rang(40))} />
+                  <path className="rz rz-orange" d={rarc(rang(40), rang(65))} />
+                  <path className="rz rz-yellow" d={rarc(rang(65), rang(85))} />
+                  <path className="rz rz-teal" d={rarc(rang(85), rang(100))} />
+                  <path id="ring-prog" d={rarc(rang(0), rang(0.1))} />
+                </svg>
               </div>
-              <div className="gauge-foot">
-                <span className="gf-before">● Before 23</span>
-                <span className="gf-after">After 78 ●</span>
-              </div>
+              {/* Scan line sweeps the robot */}
+              <div id="scan-line" className="scan-line" />
+              {/* Score pops up after the scan */}
+              <div id="scan-num" className="scan-num">0</div>
             </div>
-            <div className="lens-lbl">Signal Flare · Live Visibility Index</div>
+            <div className="lens-lbl">Signal Flare · Live Visibility Scan</div>
           </div>
           <div style={divider} />
           <div className="h-side right">
