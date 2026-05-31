@@ -1,6 +1,7 @@
 'use client'
 
 import RevealWrapper from '@/components/shared/RevealWrapper'
+import LiquidGlass from '@/components/shared/LiquidGlass'
 import { motion, useInView } from 'framer-motion'
 import { useRef } from 'react'
 
@@ -22,7 +23,7 @@ export default function CTASection() {
       <div className="max-w-[900px] mx-auto relative z-10">
         <RevealWrapper>
           <div className="font-mono text-[8px] text-on-feature/30 tracking-[0.35em] uppercase mb-5">
-            The next AI search is happening right now
+            Signal Flare is the moment you become visible
           </div>
         </RevealWrapper>
         <RevealWrapper delay={0.1}>
@@ -33,21 +34,20 @@ export default function CTASection() {
         </RevealWrapper>
         <RevealWrapper delay={0.2}>
           <p className="font-mono text-[10px] text-on-feature/30 leading-[2] italic mb-10">
-            We scan the signals, expose the gaps, and show exactly what needs to be fixed first.<br/>
+            We scan the dark, expose the gaps, and show exactly what needs to be fixed first.<br/>
             No call required. No pitch. Just your AI Visibility Score — and a clear path forward.
           </p>
         </RevealWrapper>
         <RevealWrapper delay={0.3}>
           <div className="flex gap-3 justify-center flex-wrap">
-            <a href="mailto:create@mentalvision.ai"
-               className="font-display text-lg tracking-wide px-10 py-4 rounded-[2px] bg-orange text-white hover:bg-orange-2 transition-colors">
+            <LiquidGlass as="a" href="mailto:create@mentalvision.ai" tint="orange"
+               className="font-display text-lg tracking-wide px-10 py-4 rounded-[2px] text-white">
               RUN MY VISIBILITY SCAN →
-            </a>
-            <a href="#aeo-audit"
-               className="font-mono text-[10px] tracking-[0.2em] uppercase px-7 py-4 rounded-[2px]
-                          border border-on-feature/20 text-on-feature/50 hover:border-on-feature/55 hover:text-on-feature transition-colors">
+            </LiquidGlass>
+            <LiquidGlass as="a" href="#aeo-audit"
+               className="font-mono text-[10px] tracking-[0.2em] uppercase px-7 py-4 rounded-[2px] text-on-feature/60 hover:text-on-feature transition-colors">
               See What AI Sees
-            </a>
+            </LiquidGlass>
           </div>
         </RevealWrapper>
       </div>

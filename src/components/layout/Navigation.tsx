@@ -1,12 +1,11 @@
 'use client'
 
 import { useEffect, useState } from 'react'
-import LiquidGlass from '@/components/shared/LiquidGlass'
 
 const links = [
-  { label: 'AEO Audit', href: '#aeo-audit' },
-  { label: 'Creative',  href: '#creative' },
-  { label: 'Work',      href: '#work' },
+  { label: 'The Scan',  href: '#aeo-audit' },
+  { label: 'The Build', href: '#creative' },
+  { label: 'Proof',     href: '#work' },
   { label: 'Pricing',   href: '#pricing' },
 ]
 
@@ -30,11 +29,11 @@ export default function Navigation() {
     >
       <a href="#hero" className="leading-none">
         <span className={`font-display text-xl tracking-wide ${scrolled ? 'text-ink' : 'text-cream'}`}>
-          MENTAL<span className="text-orange">VISION</span>
+          SIGNAL<span className="text-orange">FLARE</span>
         </span>
         <span className={`block font-mono text-[7px] tracking-[0.25em] uppercase mt-0.5
           ${scrolled ? 'text-ink/40' : 'text-cream/50'}`}>
-          AI Visibility + Cinematic Creative
+          by Mental Vision Corp
         </span>
       </a>
 
@@ -51,14 +50,13 @@ export default function Navigation() {
         ))}
       </div>
 
-      <LiquidGlass
-        as="a"
+      <a
         href="#cta"
-        tint="orange"
-        className="font-display text-sm tracking-wide px-5 py-2 rounded-[2px] text-white"
+        className="font-display text-sm tracking-wide px-5 py-2 rounded-[2px]
+                   bg-orange text-white hover:bg-orange-2 transition-colors"
       >
-        RUN MY SCORE
-      </LiquidGlass>
+        LIGHT THE FLARE
+      </a>
     </nav>
   )
 }

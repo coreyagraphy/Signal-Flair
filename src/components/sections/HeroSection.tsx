@@ -19,9 +19,10 @@ export default function HeroSection() {
     offset: ['start start', 'end start'],
   })
 
-  // Background drifts up slower than the page (and zooms slightly) → depth.
-  const bgY = useTransform(scrollYProgress, [0, 1], ['0%', '22%'])
-  const bgScale = useTransform(scrollYProgress, [0, 1], [1, 1.16])
+  // Background zooms in on scroll (camera pushes into the signal) with a gentle
+  // downward drift so the zoom reads as the dominant motion → cinematic depth.
+  const bgY = useTransform(scrollYProgress, [0, 1], ['0%', '14%'])
+  const bgScale = useTransform(scrollYProgress, [0, 1], [1, 1.28])
   // Foreground rises faster and fades, so the headline clears the fold
   // cleanly instead of colliding with the section scrolling up beneath it.
   const contentY = useTransform(scrollYProgress, [0, 1], ['0%', '-52%'])
@@ -79,7 +80,7 @@ export default function HeroSection() {
         >
           <div className="flex items-center gap-2.5 font-mono text-[8px] md:text-[9px] text-cream/55 tracking-[0.3em] uppercase mb-5">
             <span className="w-1.5 h-1.5 rounded-full bg-orange animate-pulse" />
-            AI Visibility + Cinematic Creative · Indianapolis
+            Signal Flare System · Indianapolis
           </div>
 
           <h1 className="font-display uppercase text-cream leading-[0.86] tracking-[-0.01em]
@@ -90,15 +91,16 @@ export default function HeroSection() {
 
           <p className="font-serif italic text-cream/75 mt-6 max-w-[560px]
                         text-[clamp(15px,2.2vw,22px)] leading-snug">
-            We find the businesses the algorithm can&apos;t — then build the signal
-            that makes them impossible to ignore.
+            We light up the businesses the algorithm can&apos;t see — then build the proof
+            that makes them impossible to miss.
           </p>
 
           <div className="flex flex-wrap items-center gap-3 mt-9">
-            <LiquidGlass as="a" href="#cta" tint="orange"
-               className="font-display text-base md:text-lg tracking-wide px-8 py-3.5 rounded-[2px] text-white">
+            <a href="#cta"
+               className="font-display text-base md:text-lg tracking-wide px-8 py-3.5 rounded-[2px]
+                          bg-orange text-white hover:bg-orange-2 transition-colors">
               RUN MY VISIBILITY SCAN →
-            </LiquidGlass>
+            </a>
             <LiquidGlass as="a" href="#aeo-audit"
                className="font-mono text-[10px] tracking-[0.22em] uppercase px-6 py-4 rounded-[2px] text-cream/80 hover:text-cream transition-colors">
               See What AI Sees
@@ -144,10 +146,11 @@ export default function HeroSection() {
             <div className="font-display text-xl md:text-2xl text-yellow leading-none">&lt;1%</div>
             <div className="font-mono text-[7px] text-cream/35 tracking-[0.18em] uppercase mt-0.5">Have llms.txt</div>
           </div>
-          <LiquidGlass as="a" href="#cta" tint="orange"
-             className="font-display text-sm tracking-wide px-5 md:px-6 py-2.5 rounded-[2px] text-white">
+          <a href="#cta"
+             className="font-display text-sm tracking-wide px-5 md:px-6 py-2.5 rounded-[2px]
+                        bg-orange text-white hover:bg-orange-2 transition-colors">
             FIX MY SIGNAL →
-          </LiquidGlass>
+          </a>
         </div>
       </motion.div>
     </section>

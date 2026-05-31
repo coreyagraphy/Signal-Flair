@@ -28,10 +28,10 @@ export default function ServicesSection() {
         <RevealWrapper>
           <div className="flex items-center gap-2 font-mono text-[8px] text-on-feature/25 tracking-[0.32em] uppercase mb-3">
             <span className="w-5 h-px bg-orange/50" />
-            What Mental Vision Builds
+            The Signal Flare System
           </div>
           <h2 className="font-display uppercase text-on-feature leading-[0.9] text-[clamp(38px,7vw,58px)]">
-            THE SIGNAL<br/>AND THE <span className="text-yellow">SPECTACLE.</span>
+            BE SEEN<br/>BY MACHINES <span className="text-yellow">AND HUMANS.</span>
           </h2>
         </RevealWrapper>
 

@@ -16,6 +16,8 @@ const categories = [
     body: 'Do you have pages that answer the questions AI engines use when forming recommendations? Service clarity, FAQ depth, local relevance.' },
   { n: '06', icon: '📞', badge: 'Conversion', title: 'Conversion Proof',
     body: 'Once AI sends someone your way — does the page close them? We check if your experience turns interest into a booked call.' },
+  { n: '07', icon: '🎬', badge: 'Creative', title: 'Creative Signal',
+    body: 'Does your brand have scroll-stopping proof assets AI can understand and humans can feel? We check video, visuals, social, and campaign readiness.' },
 ]
 
 export default function CheckSection() {
@@ -26,6 +28,7 @@ export default function CheckSection() {
     if (b === 'Critical') return 'bg-pink/10 text-pink'
     if (b === 'High')     return 'bg-orange/10 text-orange'
     if (b === 'Medium')   return 'bg-orange/10 text-orange'
+    if (b === 'Creative') return 'bg-yellow/10 text-yellow'
     return 'bg-teal/10 text-teal'
   }
 
@@ -36,14 +39,14 @@ export default function CheckSection() {
           <div>
             <div className="flex items-center gap-2 font-mono text-[8px] text-ink/30 tracking-[0.32em] uppercase mb-3">
               <span className="w-5 h-px bg-orange/50" />
-              The Scan
+              Visibility Scan
             </div>
             <h2 className="font-display uppercase text-ink leading-[0.9] text-[clamp(38px,7vw,58px)]">
               WHAT<br/>WE <span className="text-orange">CHECK.</span>
             </h2>
           </div>
           <p className="font-mono text-[9px] text-ink/40 leading-[1.9] max-w-[280px] md:text-right italic">
-            Six signals. Every one determines whether AI recommends your business or your competitor&apos;s.
+            Seven signals. Every one determines whether AI recommends your business or your competitor&apos;s.
           </p>
         </div>
 

@@ -25,7 +25,7 @@ export default function ProcessSection() {
         <RevealWrapper>
           <div className="flex items-center gap-2 font-mono text-[8px] text-ink/30 tracking-[0.32em] uppercase mb-3">
             <span className="w-5 h-px bg-orange/50" />
-            How It Works
+            How Signal Flare Works
           </div>
           <h2 className="font-display uppercase text-ink leading-[0.9] text-[clamp(38px,7vw,58px)] mb-12">
             FOUR STEPS.<br/>NO GUESSING.

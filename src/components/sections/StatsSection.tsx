@@ -41,7 +41,7 @@ export default function StatsSection() {
         <RevealWrapper>
           <div className="flex items-center gap-2 font-mono text-[8px] text-on-feature/25 tracking-[0.32em] uppercase mb-3">
             <span className="w-5 h-px bg-orange/50" />
-            By The Numbers
+            Signal Proof
           </div>
           <h2 className="font-display uppercase text-on-feature leading-[0.9] text-[clamp(38px,7vw,58px)] mb-12">
             THE PROOF<br/>IS REAL.
