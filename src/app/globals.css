@@ -89,6 +89,75 @@ body::before {
   .cursor-dot, .cursor-ring { display: none; }
 }
 
+/* ===========================================================
+   LIQUID GLASS — hand-rolled (see components/shared/LiquidGlass.tsx)
+   Three-tier graceful degrade, no JS feature detection needed.
+   =========================================================== */
+.lg {
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+  border: 1px solid rgba(255, 255, 255, 0.16);
+  background: rgba(255, 255, 255, 0.07);      /* solid fallback fill */
+  transition: transform .2s ease, box-shadow .2s ease;
+  will-change: transform;
+}
+.lg__refraction,
+.lg__tint,
+.lg__shine {
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  pointer-events: none;
+}
+.lg__refraction { z-index: 0; }
+.lg__tint       { z-index: 1; background: rgba(255, 255, 255, 0.05); }
+.lg__shine {
+  z-index: 2;
+  box-shadow:
+    inset 0 1px 0 0 rgba(255, 255, 255, 0.45),
+    inset 0 0 0 1px rgba(255, 255, 255, 0.06),
+    inset 0 -8px 14px -10px rgba(0, 0, 0, 0.55);
+}
+.lg__content {
+  position: relative;
+  z-index: 3;
+  display: inline-flex;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+}
+
+/* orange-tinted variant — keeps CTA punch while reading as glass */
+.lg--orange { border-color: rgba(255, 122, 69, 0.55); }
+.lg--orange .lg__tint {
+  background: linear-gradient(165deg, rgba(255, 122, 69, 0.92) 0%, rgba(232, 93, 4, 0.92) 100%);
+}
+
+/* hover lift */
+.lg:hover { transform: translateY(-1px); }
+.lg:hover .lg__tint { filter: brightness(1.07); }
+
+/* TIER 2 + 3: frosted blur where backdrop-filter exists; the second
+   backdrop-filter (with url()) is valid only in Chromium, so Safari/FF
+   silently fall back to the blur-only declaration above it. */
+@supports ((backdrop-filter: blur(2px)) or (-webkit-backdrop-filter: blur(2px))) {
+  .lg            { background: rgba(255, 255, 255, 0.10); }
+  .lg--orange    { background: transparent; }
+  .lg--orange .lg__tint {
+    background: linear-gradient(165deg, rgba(255, 122, 69, 0.74) 0%, rgba(232, 93, 4, 0.78) 100%);
+  }
+  .lg__refraction {
+    -webkit-backdrop-filter: blur(7px) saturate(1.45);
+    backdrop-filter: blur(7px) saturate(1.45);                          /* Safari / FF */
+    backdrop-filter: blur(4px) saturate(1.55) url(#lg-distortion);      /* Chromium only */
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .lg:hover { transform: none; }
+}
+
 /* Respect reduced motion */
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after {

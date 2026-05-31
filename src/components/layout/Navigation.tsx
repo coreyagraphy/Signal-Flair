@@ -1,6 +1,7 @@
 'use client'
 
 import { useEffect, useState } from 'react'
+import LiquidGlass from '@/components/shared/LiquidGlass'
 
 const links = [
   { label: 'AEO Audit', href: '#aeo-audit' },
@@ -50,15 +51,14 @@ export default function Navigation() {
         ))}
       </div>
 
-      <a
+      <LiquidGlass
+        as="a"
         href="#cta"
-        className={`font-display text-sm tracking-wide px-5 py-2 rounded-[2px] transition-colors
-          ${scrolled
-            ? 'bg-ink text-bg hover:bg-orange hover:text-white'
-            : 'bg-orange text-white hover:bg-orange-2'}`}
+        tint="orange"
+        className="font-display text-sm tracking-wide px-5 py-2 rounded-[2px] text-white"
       >
         RUN MY SCORE
-      </a>
+      </LiquidGlass>
     </nav>
   )
 }
