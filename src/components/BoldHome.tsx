@@ -27,7 +27,26 @@ export default function BoldHome() {
       el.addEventListener('mouseleave', () => { ring.style.transform = 'translate(-50%,-50%) scale(1)'; ring.style.borderColor = 'rgba(255,122,69,0.4)' })
     })
 
-    /* ─── DRAW ORB-01 ─── */
+    /* ─── AI VISIBILITY GAUGE ─── */
+    const GG = { cx: 160, cy: 165, r: 120 }
+    const gang = v => 150 + 2.4 * v
+    const gpt = (a, r) => [GG.cx + r * Math.cos(a * Math.PI / 180), GG.cy + r * Math.sin(a * Math.PI / 180)]
+    function gArc(a0, a1, r) { const [x0, y0] = gpt(a0, r), [x1, y1] = gpt(a1, r); const L = (a1 - a0) > 180 ? 1 : 0; return `M ${x0.toFixed(2)} ${y0.toFixed(2)} A ${r} ${r} 0 ${L} 1 ${x1.toFixed(2)} ${y1.toFixed(2)}` }
+    function gBand(v) { return v < 40 ? 'Invisible' : v < 65 ? 'Weak' : v < 85 ? 'Partially Visible' : 'AI-Ready' }
+    function gColor(v) { return v < 40 ? '#FF1177' : v < 65 ? '#FF7A45' : v < 85 ? '#F7FF5A' : '#00A6A6' }
+    function renderGauge(v) {
+      const n = document.getElementById('gauge-num'); if (!n) return
+      n.textContent = String(Math.round(v))
+      const b = document.getElementById('gauge-band'); if (b) { b.textContent = gBand(v); b.style.color = gColor(v) }
+      const p = document.getElementById('gauge-prog'); if (p) { p.setAttribute('d', gArc(150, gang(v), GG.r)); p.style.stroke = gColor(v) }
+      const nd = document.getElementById('gauge-needle'); if (nd) nd.setAttribute('transform', `rotate(${gang(v)} ${GG.cx} ${GG.cy})`)
+    }
+    let gaugeAnimated = false
+    function animateGauge() { if (gaugeAnimated) return; gaugeAnimated = true; const o = { v: 23 }; animate(o, { v: [23, 78], duration: 2400, delay: 200, ease: 'outExpo', onUpdate: () => renderGauge(o.v) }) }
+    renderGauge(23)
+
+    /* ─── DRAW ORB-01 (unused: hero robot retired; calls self-no-op when the
+         #orb-canvas / #orb-wrap elements are absent) ─── */
     function drawORB01(canvas, eyeIntensity = 1) {
       const c = canvas.getContext('2d'); const W = canvas.width, H = canvas.height
       c.clearRect(0, 0, W, H); c.save()
@@ -252,6 +271,7 @@ export default function BoldHome() {
         .add('.lens-lbl', { opacity: [0, 1], duration: 500 }, 700)
         .add('#hfoot', { opacity: [0, 1], translateY: [18, 0], duration: 700 }, 600)
       setTimeout(setupRobotInteraction, 1200)
+      setTimeout(animateGauge, 500)
     }
 
     /* ─── ORB-01 MOUSE INTERACTION ─── */
@@ -354,14 +374,18 @@ export default function BoldHome() {
 
     /* ─── HERO PARALLAX ─── */
     setTimeout(() => {
-      animate('#orb-wrap', { translateY: [0, -80], autoplay: onScroll({ target: '#hero', enter: 'top top', leave: 'bottom top', sync: true }) })
-      animate('.fc-top', { translateY: [0, -55], autoplay: onScroll({ target: '#hero', enter: 'top top', leave: 'bottom top', sync: true }) })
-      animate('.fc-bot', { translateY: [0, -35], autoplay: onScroll({ target: '#hero', enter: 'top top', leave: 'bottom top', sync: true }) })
+      animate('.gauge', { translateY: [0, -70], autoplay: onScroll({ target: '#hero', enter: 'top top', leave: 'bottom top', sync: true }) })
     }, 100)
 
     /* ─── LAUNCH ─── */
     runIntro()
   }, [])
+
+  // Gauge arc geometry (also mirrored in the effect for the animation).
+  const GA = { cx: 160, cy: 165, r: 120 }
+  const ga = (v) => 150 + 2.4 * v
+  const gpt2 = (a, r) => [GA.cx + r * Math.cos(a * Math.PI / 180), GA.cy + r * Math.sin(a * Math.PI / 180)]
+  const garc = (a0, a1, r = GA.r) => { const [x0, y0] = gpt2(a0, r), [x1, y1] = gpt2(a1, r); const L = (a1 - a0) > 180 ? 1 : 0; return `M ${x0.toFixed(2)} ${y0.toFixed(2)} A ${r} ${r} 0 ${L} 1 ${x1.toFixed(2)} ${y1.toFixed(2)}` }
 
   const snl = { fontFamily: "'DM Mono',monospace", fontSize: '9px', color: 'rgba(23,19,18,0.4)', letterSpacing: '0.18em', textTransform: 'uppercase', textDecoration: 'none' } as const
   const divider = { width: '100%', height: '1px', background: 'linear-gradient(90deg,transparent,rgba(255,255,255,0.08),transparent)' } as const
@@ -388,6 +412,7 @@ export default function BoldHome() {
           <video id="hero-video" autoPlay muted loop playsInline preload="auto" poster="/video/hero-poster.jpg">
             <source src="/video/signal-flare-hero.mp4" type="video/mp4" />
           </video>
+          <div id="hero-grade" />
         </div>
         <div id="hero-overlay" />
         <div id="hero-ground" />
@@ -411,22 +436,30 @@ export default function BoldHome() {
           </div>
           <div style={divider} />
           <div className="lens-center">
-            <div id="orb-wrap">
-              <canvas id="orb-canvas" width={300} height={480} />
-              <div id="eye-glow-outer" />
-              <div id="eye-glow" />
-              <div className="fc fc-top">
-                <div className="fc-num or">23</div>
-                <div className="fc-label">AI Score</div>
-                <div className="fc-sub">Before Mental Vision</div>
+            <div className="gauge">
+              <svg className="gauge-svg" viewBox="0 0 320 300" aria-hidden="true">
+                <path className="gauge-track" d={garc(ga(0), ga(100))} />
+                <path className="gz gz-pink" d={garc(ga(0), ga(40))} />
+                <path className="gz gz-orange" d={garc(ga(40), ga(65))} />
+                <path className="gz gz-yellow" d={garc(ga(65), ga(85))} />
+                <path className="gz gz-teal" d={garc(ga(85), ga(100))} />
+                <path id="gauge-prog" d={garc(ga(0), ga(23))} />
+                <g id="gauge-needle" transform={`rotate(${ga(23)} 160 165)`}>
+                  <line x1="160" y1="165" x2="252" y2="165" />
+                </g>
+                <circle className="gauge-hub" cx="160" cy="165" r="7" />
+              </svg>
+              <div className="gauge-center">
+                <div id="gauge-num" className="gauge-num">23</div>
+                <div id="gauge-band" className="gauge-band">Invisible</div>
+                <div className="gauge-lbl">AI Visibility Score</div>
               </div>
-              <div className="fc fc-bot">
-                <div className="fc-num tl">78</div>
-                <div className="fc-label">AI Score</div>
-                <div className="fc-sub">After 7-Day Rebuild</div>
+              <div className="gauge-foot">
+                <span className="gf-before">● Before 23</span>
+                <span className="gf-after">After 78 ●</span>
               </div>
             </div>
-            <div className="lens-lbl">ORB-01 · Observation Mode · Active</div>
+            <div className="lens-lbl">Signal Flare · Live Visibility Index</div>
           </div>
           <div style={divider} />
           <div className="h-side right">

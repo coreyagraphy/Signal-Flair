@@ -340,3 +340,31 @@ footer{background:var(--charcoal2);border-top:1px solid rgba(255,255,255,0.04);p
 .reveal{transition:opacity 0.8s ease,transform 0.8s ease}
 .reveal.vis{opacity:1;transform:none}
 @keyframes dot-p{0%,100%{opacity:1}50%{opacity:0.15}}
+
+/* ── HERO VIDEO GRADE / LUT — softens + blends footage into the palette ── */
+#hero-video{filter:saturate(1.06) contrast(1.04) brightness(1.03)}
+#hero-grade{position:absolute;inset:0;pointer-events:none;mix-blend-mode:soft-light;opacity:0.55;
+  background:linear-gradient(168deg,rgba(0,166,166,0.55) 0%,rgba(20,16,14,0.05) 46%,rgba(255,122,69,0.6) 100%)}
+
+/* ══════════════════════════════════════════════════════════
+   AI VISIBILITY GAUGE — hero centerpiece (replaces ORB-01)
+══════════════════════════════════════════════════════════ */
+.lens-center{width:400px}
+.gauge{position:relative;width:100%;filter:drop-shadow(0 14px 50px rgba(0,0,0,0.55))}
+.gauge-svg{width:100%;height:auto;display:block;overflow:visible}
+.gauge-track{fill:none;stroke:rgba(255,255,255,0.07);stroke-width:15}
+.gz{fill:none;stroke-width:15;stroke-linecap:butt;opacity:0.9}
+.gz-pink{stroke:var(--pink)}
+.gz-orange{stroke:var(--orange)}
+.gz-yellow{stroke:var(--yellow)}
+.gz-teal{stroke:var(--teal)}
+#gauge-prog{fill:none;stroke:#fff;stroke-width:7;stroke-linecap:round}
+#gauge-needle line{stroke:#fff;stroke-width:3}
+.gauge-hub{fill:#fff}
+.gauge-center{position:absolute;top:50%;left:50%;transform:translate(-50%,-58%);text-align:center;pointer-events:none}
+.gauge-num{font-family:'Bebas Neue',sans-serif;font-size:96px;line-height:0.82;color:#fff;text-shadow:0 3px 26px rgba(0,0,0,0.65)}
+.gauge-band{font-family:'DM Mono',monospace;font-size:11px;letter-spacing:0.26em;text-transform:uppercase;color:var(--orange);margin-top:4px;transition:color .3s}
+.gauge-lbl{font-family:'DM Mono',monospace;font-size:7px;letter-spacing:0.34em;text-transform:uppercase;color:rgba(255,255,255,0.42);margin-top:9px}
+.gauge-foot{position:absolute;left:0;right:0;bottom:12%;display:flex;justify-content:center;gap:26px;font-family:'DM Mono',monospace;font-size:8px;letter-spacing:0.14em;text-transform:uppercase}
+.gauge-foot .gf-before{color:rgba(255,122,69,0.75)}
+.gauge-foot .gf-after{color:rgba(0,166,166,0.85)}
