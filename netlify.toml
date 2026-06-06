@@ -1,0 +1,10 @@
+# Netlify build config — auto-applied when this repo is connected (Site → Import from Git).
+# Signal Flair is a Next.js static export: `next build` emits ./out, which Netlify publishes
+# directly. No SSR runtime / @netlify/plugin-nextjs needed (and it should NOT be added — this is
+# a pure static site). The GA4 + GHL webhook env vars are set in the Netlify UI and inline at build.
+[build]
+  command = "next build"
+  publish = "out"
+
+[build.environment]
+  NODE_VERSION = "20"
