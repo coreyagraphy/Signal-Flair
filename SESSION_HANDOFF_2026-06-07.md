@@ -40,11 +40,11 @@ Condensed pickup for the next session. Spans two repos:
 ## OPEN ITEMS (all gated on Corey)
 - [ ] **Tier B positioning docs** — add Field Report as Stage 1 to: `SIGNAL_FLARE_SYSTEM_OVERVIEW.md`, `SIGNAL_FLARE_SYSTEM_ONEPAGER.html`, `README.md`, `MASTER_OPERATING_PROMPT.md`, `skills/mental-vision-offer-hook-engine/SKILL.md`. (Low-risk; can run anytime.)
 - [ ] **GHL booking calendar** — Corey sets up, hands link → drop into Field Report CTA (until then: "reply and we'll find 20 minutes" fallback).
-- [x] **GHL webhook URL** — ✅ prepped 2026-06-07. Form reads `NEXT_PUBLIC_GHL_WEBHOOK_URL` (env, `.env.example` documents it) with a `GHL_WEBHOOK_OVERRIDE` in-code fallback; demo mode intact when unset; 10s fetch timeout added. Go live = set env var in Netlify, no code edit. Still no live push until Corey provides the URL. tsc clean.
-- [x] **GA4** — ✅ scaffolded 2026-06-07 (disabled until ID set). `Analytics.tsx` loader + `lib/analytics.ts` `track()`; events `form_submit` / `cta_click` / `founding_client_click` wired; auto page_view. Go live = set `NEXT_PUBLIC_GA_ID` in Netlify env (`.env.example` documents it). tsc clean.
+- [x] **GHL webhook URL** — ✅ DONE 2026-06-07. Form reads `NEXT_PUBLIC_GHL_WEBHOOK_URL`; **value now SET in Netlify** (verified inlines under real env, grep-only — no push). Demo mode intact when unset; 10s fetch timeout. Committed `dca3bb7`.
+- [x] **GA4** — ✅ DONE 2026-06-07. `Analytics.tsx` loader + `lib/analytics.ts` `track()`; events `form_submit` / `cta_click` / `founding_client_click` + auto page_view. **`NEXT_PUBLIC_GA_ID` now SET in Netlify** (`G-5VZR713RKS`; verified real ID injects under env). Committed `dca3bb7`.
 - [ ] **More `sameAs`** — Crunchbase, IG/YouTube, Google Business Profile as they go live.
 - [ ] **Case Zero** — integrate real 18/100 self-audit into the proof section.
-- [ ] **Production deploy** — gated on DNS confirm.
+- [ ] **Production deploy** — code committed (`dca3bb7`) + env vars live in Netlify; **only DNS confirm remains.** ⚠️ Deploy via **Netlify build (Path B)** so Netlify env vars inline — a LOCAL `npm run build`+drag (Path A) ships GA/webhook INERT unless a local `.env.local` has both values. No remote configured yet (Path B needs a GitHub/GitLab push first). See `DEPLOY.md`.
 
 ---
 

@@ -14,6 +14,19 @@ Decision: Brand Brief V3 (Corey, 2026-06-02) — Netlify hosts the site; IONOS s
 - `next.config.js` → `output: 'export'`, `images.unoptimized: true`, `trailingSlash: true`.
 - `npm run build` produces a static site in **`out/`** (verified: index.html, 404, `_next/`,
   `video/signal-flair-hero.mp4`, brand/pricing correct, zero "Signal Flare" misspellings).
+- GA4 + lead-form GHL wiring committed (`dca3bb7`), reads two env vars.
+
+## Environment variables (set in Netlify — required for GA + form to work)
+| Variable | Purpose | Status |
+|---|---|---|
+| `NEXT_PUBLIC_GA_ID` | GA4 measurement (`G-…`) | ✅ set in Netlify |
+| `NEXT_PUBLIC_GHL_WEBHOOK_URL` | Lead form → GHL inbound webhook | ✅ set in Netlify |
+
+> ⚠️ **These are inlined at BUILD TIME.** They only reach the bundle if the build runs in an
+> environment where they're defined. **Build on Netlify (Path B) so Netlify's env vars apply.**
+> If you build LOCALLY for a drag-and-drop deploy (Path A), your machine does NOT have the
+> Netlify vars — the site ships inert (no analytics, no GHL push). To use Path A, first create a
+> local `.env.local` with both values (see `.env.example`) or the deploy will be dead on those two.
 
 ---
 
@@ -64,8 +77,7 @@ Decision: Brand Brief V3 (Corey, 2026-06-02) — Netlify hosts the site; IONOS s
   DNS change didn't disturb the mail records).
 
 ## Notes
-- The repo folder is still named `signal-flare`; the package is `signal-flair`. Cosmetic —
-  doesn't affect the deploy. Rename the folder later if desired (breaks the preview-MCP path
-  until re-pointed).
+- Repo folder and package are both `signal-flair` (folder rename done). No remote is configured
+  yet — Path B (Git-connect) requires pushing to GitHub/GitLab first.
 - Holds that still apply: this is the WEBSITE going live only. Cold **outreach sends** stay
   gated on the Proof Sprint (3 clean manual sends) + warmup — unrelated to this deploy.
