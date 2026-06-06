@@ -2,13 +2,13 @@ import type { Metadata, Viewport } from 'next'
 import './globals.css'
 
 export const metadata: Metadata = {
-  metadataBase: new URL('https://mentalvision.ai'),
-  title: 'Mental Vision Corp — AI Visibility + Cinematic Creative',
-  description: 'We find every business the algorithm can\'t see, then build the signal that makes it impossible to ignore.',
-  keywords: ['AI visibility', 'AEO', 'llms.txt', 'AI search', 'Indianapolis', 'cinematic creative'],
+  metadataBase: new URL('https://signalflair.ai'),
+  title: 'Signal Flair — Your business, found by AI.',
+  description: 'Signal Flair scores your AI visibility across ChatGPT, Perplexity, Claude, Gemini, and Google AI — then builds the llms.txt, schema, and crawler access generative engines need to find and recommend you.',
+  keywords: ['AI visibility', 'AEO', 'agentic engine optimization', 'llms.txt', 'schema markup', 'AI search', 'Indianapolis'],
   openGraph: {
-    title: 'Mental Vision Corp — Signal Flare',
-    description: 'Discovery is the first connection. We make your business visible to AI and unforgettable to customers.',
+    title: 'Signal Flair — Your business, found by AI.',
+    description: 'Discovery is the first connection. We make your business visible to the AI engines deciding who gets recommended.',
     images: ['/video/hero-poster.jpg'],
   },
 }

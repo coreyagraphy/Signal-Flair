@@ -1,0 +1,1072 @@
+// @ts-nocheck
+'use client'
+/* eslint-disable */
+import { useEffect, useRef } from 'react'
+import { animate, createTimeline, createAnimatable, stagger, onScroll } from 'animejs'
+import Lenis from 'lenis'
+import { gsap } from 'gsap'
+import { ScrollTrigger } from 'gsap/ScrollTrigger'
+
+/**
+ * SignalFlairLanding — the canonical Signal Flair landing page / homepage.
+ * Ported from the approved "mentalvision-bold" design. Markup is JSX; the
+ * original intro/robot/scroll logic runs once in the mount effect via anime.js.
+ * Styles live in globals.css. Hero background uses /video/signal-flair-hero.mp4.
+ */
+export default function SignalFlairLanding() {
+  const started = useRef(false)
+
+  useEffect(() => {
+    if (started.current) return // guard React strict-mode double-invoke
+    started.current = true
+
+    /* ─── LENIS SMOOTH SCROLL + GSAP SCROLLTRIGGER ─── */
+    gsap.registerPlugin(ScrollTrigger)
+    const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches
+    let lenis = null
+    if (!reduceMotion) {
+      lenis = new Lenis({ lerp: 0.1, wheelMultiplier: 1, smoothWheel: true })
+      // drive Lenis off GSAP's ticker and keep ScrollTrigger in sync with smooth scroll
+      lenis.on('scroll', ScrollTrigger.update)
+      gsap.ticker.add((time) => { lenis.raf(time * 1000) })
+      gsap.ticker.lagSmoothing(0)
+      // route in-page anchor clicks through Lenis (avoids native/smooth double-scroll)
+      document.querySelectorAll('a[href^="#"]').forEach(a => {
+        a.addEventListener('click', (e) => {
+          const id = a.getAttribute('href')
+          if (id && id.length > 1) { const t = document.querySelector(id); if (t) { e.preventDefault(); lenis.scrollTo(t, { offset: 0, duration: 1.1 }) } }
+        })
+      })
+    }
+
+    /* ─── CURSOR ─── */
+    const cur = document.getElementById('cursor'), ring = document.getElementById('cursor-ring')
+    const heroEl = document.getElementById('hero')
+    let mx = innerWidth / 2, my = innerHeight / 2, rx = mx, ry = my
+    document.addEventListener('mousemove', e => {
+      mx = e.clientX; my = e.clientY
+      // cursor-flare spotlight — feed pointer position (relative to hero) to the radial gradient
+      if (heroEl) { const r = heroEl.getBoundingClientRect(); heroEl.style.setProperty('--mx', (e.clientX - r.left) + 'px'); heroEl.style.setProperty('--my', (e.clientY - r.top) + 'px') }
+      updateCursorTheme(e.clientX, e.clientY)
+    })
+    // neon-yellow comet trail — a chain of fading dots that lag behind the tip
+    const TRAIL_N = 10
+    const trail = []
+    for (let i = 0; i < TRAIL_N; i++) {
+      const d = document.createElement('div'); d.className = 'cursor-trail'
+      const t = i / (TRAIL_N - 1), sz = 7 - 5.2 * t
+      d.style.width = d.style.height = sz + 'px'; d.style.opacity = String(0.5 * (1 - t) + 0.04)
+      document.body.appendChild(d); trail.push({ el: d, x: mx, y: my })
+    }
+    // adaptive cursor color — orange square on light/cream sections, neon-yellow flair on dark
+    let cursorLight = null
+    function updateCursorTheme(x, y) {
+      const hit = document.elementFromPoint(x, y)
+      const sec = hit && hit.closest ? hit.closest('[data-cursor]') : null
+      const isLight = sec ? sec.getAttribute('data-cursor') === 'light' : false
+      if (isLight === cursorLight) return
+      cursorLight = isLight
+      if (cur) cur.classList.toggle('light', isLight)
+      if (ring) ring.classList.toggle('light', isLight)
+      trail.forEach(p => p.el.classList.toggle('light', isLight))
+    }
+    ;(function lp() {
+      rx += (mx - rx) * .12; ry += (my - ry) * .12
+      if (cur) { cur.style.left = mx + 'px'; cur.style.top = my + 'px' }
+      if (ring) { ring.style.left = rx + 'px'; ring.style.top = ry + 'px' }
+      let px = mx, py = my
+      for (let i = 0; i < TRAIL_N; i++) { const p = trail[i]; p.x += (px - p.x) * .34; p.y += (py - p.y) * .34; p.el.style.left = p.x + 'px'; p.el.style.top = p.y + 'px'; px = p.x; py = p.y }
+      requestAnimationFrame(lp)
+    })()
+    document.querySelectorAll('a,button,.psc,.price-feat,.sig-row,.chk-tbl tbody tr').forEach(el => {
+      el.addEventListener('mouseenter', () => { ring.style.transform = 'translate(-50%,-50%) scale(2.3)'; ring.style.borderColor = 'rgba(255,244,95,0.85)' })
+      el.addEventListener('mouseleave', () => { ring.style.transform = 'translate(-50%,-50%) scale(1)'; ring.style.borderColor = 'rgba(255,244,95,0.5)' })
+    })
+
+    /* ─── AI VISIBILITY SCAN (textless head ring → number pops) ─── */
+    const RGG = { cx: 120, cy: 120, r: 92 }
+    const rAng = v => 130 + 2.8 * v
+    const rPt = (a, r) => [RGG.cx + r * Math.cos(a * Math.PI / 180), RGG.cy + r * Math.sin(a * Math.PI / 180)]
+    function rArc(a0, a1, r) { const [x0, y0] = rPt(a0, r), [x1, y1] = rPt(a1, r); const L = (a1 - a0) > 180 ? 1 : 0; return `M ${x0.toFixed(2)} ${y0.toFixed(2)} A ${r} ${r} 0 ${L} 1 ${x1.toFixed(2)} ${y1.toFixed(2)}` }
+    function rColor(v) { return v < 40 ? '#FF1177' : v < 65 ? '#FF7A45' : v < 85 ? '#F7FF5A' : '#00A6A6' }
+    function renderRing(v) { const p = document.getElementById('ring-prog'); if (!p) return; const vv = Math.max(0.1, v); p.setAttribute('d', rArc(rAng(0), rAng(vv), RGG.r)) }
+    renderRing(0)
+
+    // Gauge counter — GSAP ScrollTrigger. Counts 0→78 (ring + number together) when the
+    // gauge scrolls into view; re-arms (resets to 0) when scrolled back above the hero.
+    let gaugeST = null
+    function setupGaugeScroll() {
+      if (gaugeST) return
+      const el = document.getElementById('score-val')
+      const rp = document.getElementById('ring-prog')
+      // color by value: low = red, climbing through orange/yellow to teal
+      const colorFor = v => v < 40 ? '#FF1765' : v < 65 ? '#FF5A1F' : v < 85 ? '#FFE23A' : '#00B8A9'
+      const counter = { v: 0 }
+      const paint = () => {
+        renderRing(counter.v)
+        const c = colorFor(counter.v)
+        if (el) { el.textContent = String(Math.round(counter.v)); el.style.color = c; el.style.textShadow = '0 0 40px ' + c + '70,0 4px 26px rgba(0,0,0,0.72)' }
+        if (rp) rp.style.stroke = c
+      }
+      const tween = gsap.fromTo(counter, { v: 0 }, {
+        v: 78, duration: reduceMotion ? 0.8 : 2.2, ease: 'expo.out', paused: true, onUpdate: paint,
+        onComplete: paint
+      })
+      // re-arm on scroll: reset when scrolled above the hero, recount on return
+      gaugeST = ScrollTrigger.create({
+        trigger: '#score-gauge', start: 'top 85%',
+        onEnter: () => tween.restart(),
+        onEnterBack: () => tween.restart(),
+        onLeaveBack: () => { tween.pause(0); counter.v = 0; paint() }
+      })
+      // the gauge is on-screen at hero reveal — start the count now (don't wait on a scroll event)
+      tween.restart()
+    }
+
+    /* ─── (ORB-01 canvas robot removed — the only robot is the one in the hero video) ─── */
+
+    /* ─── INTRO ANIMATION ─── */
+    const FC = document.getElementById('flicker-c'), AC = document.getElementById('flare-c')
+    const fctx = FC.getContext('2d'), actx = AC.getContext('2d')
+    const introEL = document.getElementById('intro'), introClouds = document.getElementById('intro-clouds')
+    function resizeC() { FC.width = AC.width = innerWidth; FC.height = AC.height = innerHeight }
+    resizeC(); window.addEventListener('resize', resizeC)
+    const T = { flickerEnd: 1500, flareStart: 1500, flareDur: 1200, apexHold: 400, descentStart: 3100, descentDur: 1800, outlineStart: 4900, outlineDur: 1600, emergeStart: 6200, emergeDur: 1200, heroStart: 7400, splitStart: 7400, splitDur: 700, introEnd: 8200 }
+    let flickerIntv = null, introStart = 0, outlineProgress = 0, robotOpacity = 0, robotScale = 1, introDone = false
+    function startFlicker() {
+      fctx.fillStyle = '#000'; fctx.fillRect(0, 0, FC.width, FC.height)
+      const t0 = Date.now()
+      flickerIntv = setInterval(() => {
+        const ela = Date.now() - t0, itx = Math.min(0.15, (ela / T.flickerEnd) * 0.15)
+        fctx.fillStyle = '#000'; fctx.fillRect(0, 0, FC.width, FC.height)
+        for (let i = 0; i < 3; i++) { if (Math.random() < itx * 5) { const y = Math.random() * FC.height, h = Math.random() * 2.5 + 0.5; fctx.fillStyle = `rgba(255,255,255,${Math.random() * itx * 0.9})`; fctx.fillRect(0, y, FC.width, h) } }
+        if (Math.random() < itx * 2.5) { fctx.fillStyle = `rgba(255,210,50,${Math.random() * itx * 0.4})`; fctx.fillRect(0, 0, FC.width, FC.height) }
+        if (Math.random() < itx * 4) { const nx = Math.random() * FC.width * .7, ny = Math.random() * FC.height; fctx.fillStyle = `rgba(247,255,90,${Math.random() * itx * 0.5})`; fctx.fillRect(nx, ny, Math.random() * 250 + 60, Math.random() * 1.5 + 0.5) }
+      }, 55)
+    }
+    function stopFlicker() { if (flickerIntv) { clearInterval(flickerIntv); flickerIntv = null } fctx.clearRect(0, 0, FC.width, FC.height) }
+    function drawFlareBeam(x, headY, tailY, mode = 'ascent') {
+      const tl = tailY - headY; if (tl <= 0) return
+      const wide = mode === 'descent' ? 1.4 : 1
+      const g1 = actx.createLinearGradient(x, headY, x, tailY)
+      g1.addColorStop(0, `rgba(255,230,80,${0.5 * wide})`); g1.addColorStop(.15, 'rgba(232,93,4,0.18)'); g1.addColorStop(.5, 'rgba(232,93,4,0.05)'); g1.addColorStop(1, 'transparent')
+      actx.fillStyle = g1; actx.fillRect(x - 50 * wide, headY, 100 * wide, tl)
+      const g2 = actx.createLinearGradient(x, headY, x, tailY)
+      g2.addColorStop(0, 'rgba(255,240,110,0.85)'); g2.addColorStop(.12, 'rgba(255,160,30,0.45)'); g2.addColorStop(.4, 'rgba(232,93,4,0.12)'); g2.addColorStop(1, 'transparent')
+      actx.fillStyle = g2; actx.fillRect(x - 18 * wide, headY, 36 * wide, tl)
+      const g3 = actx.createLinearGradient(x, headY, x, tailY)
+      g3.addColorStop(0, 'rgba(255,255,220,1)'); g3.addColorStop(.08, 'rgba(255,240,120,0.9)'); g3.addColorStop(.3, 'rgba(255,160,30,0.3)'); g3.addColorStop(1, 'transparent')
+      actx.fillStyle = g3; actx.fillRect(x - 4, headY, 8, tl)
+      const rg = actx.createRadialGradient(x, headY, 0, x, headY, 65 * wide)
+      rg.addColorStop(0, 'rgba(255,255,255,1)'); rg.addColorStop(.07, 'rgba(255,250,200,.95)'); rg.addColorStop(.25, 'rgba(255,200,60,.5)'); rg.addColorStop(.55, 'rgba(232,93,4,.1)'); rg.addColorStop(1, 'transparent')
+      actx.fillStyle = rg; actx.beginPath(); actx.arc(x, headY, 65 * wide, 0, Math.PI * 2); actx.fill()
+      if (mode === 'ascent') { for (let i = 0; i < 6; i++) { const sx = x + (Math.random() - .5) * 16, sy = headY + Math.random() * 25; actx.beginPath(); actx.arc(sx, sy, Math.random() * 2 + .3, 0, Math.PI * 2); actx.fillStyle = `rgba(255,255,200,${Math.random() * .9 + .1})`; actx.fill() } }
+    }
+    function drawRobotOutline(cx, cy, progress) {
+      if (progress <= 0) return
+      actx.save(); actx.shadowColor = '#F7FF5A'; actx.shadowBlur = 16; actx.strokeStyle = '#F7FF5A'; actx.lineWidth = 2.5; actx.globalAlpha = Math.min(1, progress * 2)
+      const W = AC.width, H = AC.height, rs = Math.min(W, H) * 0.18
+      const headP = Math.min(1, progress / 0.35)
+      if (headP > 0) { actx.beginPath(); actx.arc(cx, cy - rs * 0.5, rs * 0.6, -Math.PI / 2, -Math.PI / 2 + Math.PI * 2 * headP); actx.stroke() }
+      const shoulderP = Math.max(0, Math.min(1, (progress - 0.35) / 0.3))
+      if (shoulderP > 0) {
+        actx.globalAlpha = Math.min(1, shoulderP * 2); const sw = rs * 1.4
+        actx.beginPath(); actx.moveTo(cx - sw * 0.5 * shoulderP, cy + rs * 0.05); actx.lineTo(cx + sw * 0.5 * shoulderP, cy + rs * 0.05); actx.stroke()
+        actx.beginPath(); actx.moveTo(cx - sw * 0.5, cy + rs * 0.05); actx.lineTo(cx - sw * 0.7, cy - rs * 0.3 * shoulderP); actx.stroke()
+        actx.beginPath(); actx.moveTo(cx + sw * 0.5, cy + rs * 0.05); actx.lineTo(cx + sw * 0.7, cy - rs * 0.3 * shoulderP); actx.stroke()
+      }
+      const torsoP = Math.max(0, Math.min(1, (progress - 0.65) / 0.35))
+      if (torsoP > 0) {
+        actx.globalAlpha = Math.min(1, torsoP * 2); const th = rs * 0.9 * torsoP
+        actx.beginPath(); actx.moveTo(cx - rs * 0.7, cy + rs * 0.05); actx.lineTo(cx - rs * 0.5, cy + rs * 0.05 + th); actx.stroke()
+        actx.beginPath(); actx.moveTo(cx + rs * 0.7, cy + rs * 0.05); actx.lineTo(cx + rs * 0.5, cy + rs * 0.05 + th); actx.stroke()
+        actx.beginPath(); actx.moveTo(cx - rs * 0.5, cy + rs * 0.05 + th); actx.lineTo(cx + rs * 0.5, cy + rs * 0.05 + th); actx.stroke()
+      }
+      actx.restore()
+    }
+    function drawIntroBotOnAC(cx, cy, opacity, scale) {
+      if (opacity <= 0) return
+      actx.save(); actx.globalAlpha = Math.min(1, opacity); actx.translate(cx, cy); actx.scale(scale, scale)
+      const sz = Math.min(AC.width, AC.height) * 0.12
+      actx.fillStyle = 'rgba(230,230,228,0.9)'; actx.shadowColor = 'rgba(0,166,166,0.3)'; actx.shadowBlur = 20
+      actx.beginPath(); actx.arc(0, -sz * 2.2, sz, 0, Math.PI * 2); actx.fill()
+      actx.beginPath(); actx.roundRect(-sz * .7, -sz * 1.1, sz * 1.4, sz * 2, 8); actx.fill()
+      actx.beginPath(); actx.roundRect(-sz * 1.6, -sz * 2, sz * .5, sz * 1.5, 4); actx.fill()
+      actx.beginPath(); actx.roundRect(sz * 1.1, -sz * 2, sz * .5, sz * 1.5, 4); actx.fill()
+      actx.beginPath(); actx.roundRect(-sz * .75, sz * .9, sz * .6, sz * 1.8, 4); actx.fill()
+      actx.beginPath(); actx.roundRect(sz * .15, sz * .9, sz * .6, sz * 1.8, 4); actx.fill()
+      actx.fillStyle = `rgba(255,110,30,${opacity})`; actx.shadowColor = 'rgba(255,100,20,0.8)'; actx.shadowBlur = 16
+      actx.beginPath(); actx.arc(0, -sz * 2.2, sz * .36, 0, Math.PI * 2); actx.fill()
+      actx.restore()
+    }
+    function runIntro() {
+      introStart = Date.now()
+      setTimeout(() => { const s = document.getElementById('skip'); if (s) s.style.opacity = '1' }, 700)
+      startFlicker()
+      // safety net — guarantee the hero + gauge reveal even if the intro loop is interrupted
+      setTimeout(() => { if (!revealed) { introDone = true; finishIntro() } }, T.introEnd + 2000)
+      function frame() {
+        if (introDone) return
+        const t = Date.now() - introStart
+        actx.clearRect(0, 0, AC.width, AC.height)
+        const W = AC.width, H = AC.height, fcx = W / 2, fbaseY = H + 20, apexY = H * 0.15, rbx = W * 0.52, rby = H * 0.48
+        if (t >= T.flareStart && t < T.descentStart) {
+          const elapsed = t - T.flareStart
+          const phase = elapsed < T.flareDur ? 1 - (Math.pow(1 - (elapsed / T.flareDur), 3)) : 1
+          drawFlareBeam(fcx, fbaseY + (apexY - fbaseY) * phase, fbaseY, 'ascent')
+        }
+        if (t >= T.descentStart && t < T.outlineStart) {
+          const elapsed = t - T.descentStart, phase = Math.min(1, elapsed / T.descentDur)
+          const easedP = 1 - Math.pow(1 - phase, 2)
+          const headY = apexY + (rby - apexY) * easedP
+          if (introClouds) introClouds.style.opacity = Math.min(0.85, phase * 1.2)
+          drawFlareBeam(fcx, headY, apexY, 'descent')
+          drawIntroBotOnAC(rbx, rby, Math.max(0, (phase - 0.3) / 0.7) * 0.35, 1)
+        }
+        if (t >= T.outlineStart && t < T.emergeStart) {
+          const elapsed = t - T.outlineStart
+          outlineProgress = Math.min(1, elapsed / T.outlineDur)
+          if (introClouds) introClouds.style.opacity = '0.9'
+          actx.save(); actx.globalAlpha = 0.3; drawFlareBeam(rbx, rby - 40, rby + 20, 'descent'); actx.restore()
+          drawIntroBotOnAC(rbx, rby, 0.45, 1)
+          drawRobotOutline(rbx, rby, outlineProgress)
+        }
+        if (t >= T.emergeStart && t < T.heroStart) {
+          const elapsed = t - T.emergeStart, phase = Math.min(1, elapsed / T.emergeDur)
+          if (introClouds) introClouds.style.opacity = '1'
+          robotOpacity = 0.45 + phase * 0.55; robotScale = 1 + phase * 0.06
+          drawIntroBotOnAC(rbx, rby - phase * 20, robotOpacity, robotScale)
+          const outFade = Math.max(0, 1 - phase * 2)
+          if (outFade > 0) drawRobotOutline(rbx, rby, outFade)
+        }
+        if (t >= T.heroStart && !introDone) {
+          introDone = true
+          const sl = document.getElementById('sl'); if (sl) sl.style.transform = 'translateX(-103%)'
+          const sr = document.getElementById('sr'); if (sr) sr.style.transform = 'translateX(103%)'
+          setTimeout(() => {
+            const hb = document.getElementById('hero-bg'); if (hb) { hb.style.opacity = '1'; hb.style.transition = 'opacity 1.2s ease' }
+          }, 200)
+          setTimeout(finishIntro, 900)
+          return
+        }
+        requestAnimationFrame(frame)
+      }
+      requestAnimationFrame(frame)
+    }
+    let revealed = false
+    function finishIntro() {
+      const introEl = document.getElementById('intro')
+      if (introEl) animate(introEl, { opacity: [1, 0], duration: 500, onComplete: () => { introEl.style.display = 'none' } })
+      const s = document.getElementById('skip'); if (s) s.style.display = 'none'
+      revealHero()
+    }
+    function revealHero() {
+      if (revealed) return; revealed = true
+      // make sure the hero video is visible on every reveal path (intro, skip, or safety net)
+      const hb = document.getElementById('hero-bg'); if (hb) { hb.style.transition = 'opacity 1.2s ease'; hb.style.opacity = '1' }
+      const tl = createTimeline({ defaults: { ease: 'outExpo' } })
+      tl
+        .add('#hnav', { opacity: [0, 1], translateY: [-20, 0], duration: 700 })
+        .add('.h-side.top', { opacity: [0, 1], translateY: [-30, 0], duration: 800 }, 150)
+        .add('#score-gauge', { opacity: [0, 1], scale: [0.8, 1], duration: 900, ease: 'outBack(1.4)' }, 300)
+        .add('.h-side.bottom', { opacity: [0, 1], translateY: [30, 0], duration: 800 }, 450)
+        .add('#hfoot', { opacity: [0, 1], translateY: [18, 0], duration: 700 }, 600)
+      setTimeout(setupGaugeScroll, 900)
+    }
+
+    /* ─── SKIP ─── */
+    const skipBtn = document.getElementById('skip')
+    if (skipBtn) skipBtn.addEventListener('click', () => {
+      introDone = true; stopFlicker()
+      const ie = document.getElementById('intro'); if (ie) ie.style.display = 'none'
+      skipBtn.style.display = 'none'
+      const sl = document.getElementById('sl'); if (sl) sl.style.transform = 'translateX(-103%)'
+      const sr = document.getElementById('sr'); if (sr) sr.style.transform = 'translateX(103%)'
+      const hb = document.getElementById('hero-bg'); if (hb) { hb.style.transition = 'opacity 1.2s ease'; hb.style.opacity = '1' }
+      revealHero()
+    })
+
+    /* ─── SCROLL REVEALS ─── */
+    function watch(el, fn, margin) {
+      if (!el) return
+      new IntersectionObserver((entries, obs) => { entries.forEach(e => { if (e.isIntersecting) { fn(); obs.unobserve(e.target) } }) }, { rootMargin: margin || '-8% 0px' }).observe(el)
+    }
+    document.querySelectorAll('.reveal').forEach(el => {
+      watch(el, () => { animate(el, { opacity: [0, 1], translateY: [32, 0], rotateX: [-10, 0], duration: 750, ease: 'outExpo', transformPerspective: 1000 }) }, '-6% 0px')
+    })
+
+    /* ─── NUMBER COUNT-UP ON SCROLL — prices, stats, scores tick up when revealed ─── */
+    function animateNum(el) {
+      const walker = document.createTreeWalker(el, NodeFilter.SHOW_TEXT)
+      const parts = []
+      let node
+      while ((node = walker.nextNode())) {
+        if (!/\d/.test(node.nodeValue)) continue
+        const toks = [...node.nodeValue.matchAll(/[\d,]+(?:\.\d+)?/g)].map(m => ({ raw: m[0], val: parseFloat(m[0].replace(/,/g, '')), index: m.index }))
+        if (toks.length) parts.push({ node, tpl: node.nodeValue, toks })
+      }
+      if (!parts.length) return
+      const fmt = v => Math.round(v).toLocaleString('en-US')
+      const obj = { p: 0 }
+      animate(obj, { p: [0, 1], duration: 1700, ease: 'outExpo', onUpdate: () => {
+        parts.forEach(pt => { let out = '', last = 0; pt.toks.forEach(t => { out += pt.tpl.slice(last, t.index) + fmt(t.val * obj.p); last = t.index + t.raw.length }); out += pt.tpl.slice(last); pt.node.nodeValue = out })
+      } })
+    }
+    document.querySelectorAll('.count').forEach(el => watch(el, () => animateNum(el), '-2% 0px'))
+
+    /* ─── WALLPAPER TEXT PARALLAX ─── */
+    setTimeout(() => {
+      animate('#prob-wall', { translateX: [0, -60], autoplay: onScroll({ target: '#problem', enter: 'top bottom', leave: 'bottom top', sync: true }) })
+    }, 100)
+
+    /* ─── SERVICE ROWS STAGGER ─── */
+    watch(document.querySelector('.sig-rows'), () => { animate('.sig-row', { opacity: [0, 1], translateX: [-40, 0], delay: stagger(120), duration: 700, ease: 'outExpo' }) }, '-6% 0px')
+
+    /* ─── DIAGNOSTIC TABLE ROW STAGGER ─── */
+    watch(document.querySelector('.chk-tbl'), () => { animate('.chk-tbl tbody tr', { opacity: [0, 1], translateX: [-24, 0], delay: stagger(80), duration: 600, ease: 'outExpo' }) }, '-4% 0px')
+
+    /* ─── WORK CARDS ─── */
+    watch(document.querySelector('.work-strip'), () => { animate('.wcard', { opacity: [0, 1], translateY: [48, 0], delay: stagger(140), duration: 850, ease: 'outExpo' }) }, '-6% 0px')
+
+    /* ─── STATS COUNTER ─── */
+    watch(document.querySelector('.stats-float'), () => {
+      const defs = [{ sel: '#sn1', end: 5, pre: '', suf: '+' }, { sel: '#sn2', end: 1, pre: '<', suf: '%' }, { sel: '#sn3', end: 4, pre: '', suf: 'M+' }, { sel: '#sn4', end: 3, pre: '', suf: '' }]
+      defs.forEach(d => { const el = document.querySelector(d.sel); if (!el) return; const obj = { v: 0 }; animate(obj, { v: [0, d.end], duration: 2200, ease: 'outExpo', onUpdate: () => { el.textContent = d.pre + Math.round(obj.v) + d.suf } }) })
+      animate('.stat-item', { opacity: [0, 1], translateY: [60, 0], delay: stagger(150), duration: 900, ease: 'outExpo' })
+    }, '-6% 0px')
+
+    /* ─── PROCESS LIST STAGGER ─── */
+    watch(document.querySelector('.proc-list'), () => { animate('.proc-item', { opacity: [0, 1], translateX: [-32, 0], delay: stagger(100), duration: 700, ease: 'outExpo' }) }, '-4% 0px')
+
+    /* ─── PRICING ENTRANCE ─── */
+    watch(document.querySelector('.price-feat'), () => {
+      // swing the panels in — drop from a tilt and settle with an elastic pendulum
+      animate('.price-feat', { opacity: [0, 1], translateY: [60, 0], rotateX: [-12, 0], duration: 1300, ease: 'outElastic(1, .6)', transformPerspective: 1400 })
+      animate('.psc', { opacity: [0, 1], translateY: [46, 0], rotateZ: [-3.5, 0], delay: stagger(150, { start: 150 }), duration: 1200, ease: 'outElastic(1, .55)' })
+    }, '-6% 0px')
+
+    /* ─── CTA YELLOW ENTRANCE ─── */
+    watch(document.querySelector('#cta'), () => {
+      animate('.cta-y-title', { letterSpacing: ['0.06em', 'normal'], opacity: [0, 1], duration: 1000, ease: 'outExpo' })
+      animate('.cta-deco', { opacity: [0, 0.04], translateX: [40, 0], duration: 1400, ease: 'outExpo' })
+    }, '-8% 0px')
+
+    /* ─── WCARD HOVER TILT ─── */
+    document.querySelectorAll('.wcard').forEach(card => {
+      const t = createAnimatable(card, { rotateX: { duration: 300, ease: 'outQuad' }, rotateY: { duration: 300, ease: 'outQuad' }, scale: { duration: 300, ease: 'outQuad' } })
+      card.addEventListener('mousemove', e => { const r = card.getBoundingClientRect(); const x = (e.clientX - r.left) / r.width - .5, y = (e.clientY - r.top) / r.height - .5; t.rotateY(x * 6); t.rotateX(-y * 4); t.scale(1.015) })
+      card.addEventListener('mouseleave', () => { t.rotateX(0); t.rotateY(0); t.scale(1) })
+    })
+
+    /* ─── STICKY NAV ─── */
+    const siteNav = document.getElementById('site-nav')
+    window.addEventListener('scroll', () => { siteNav.classList.toggle('visible', window.scrollY > window.innerHeight * 0.8) }, { passive: true })
+
+    /* ─── HERO ENGINE-NAME ROTATOR — keeps shuffling AI · ChatGPT · Claude · Perplexity · Gemini · Google ─── */
+    const rotEl = document.getElementById('engine-rot')
+    if (rotEl) {
+      const ROT = ['AI', 'ChatGPT', 'Claude', 'Gemini', 'Perplexity', 'Copilot', 'Grok', 'DeepSeek', 'Llama', 'Mistral', 'Ollama', 'Google AI']
+      let ri = 0
+      // text swaps on a plain timer (always runs); the fade is a CSS animation that degrades
+      // gracefully — so the word can never get stuck invisible the way an anime callback could.
+      setInterval(() => {
+        let n = ri; while (n === ri) n = Math.floor(Math.random() * ROT.length) // shuffle — never repeat the same word twice
+        ri = n
+        rotEl.textContent = ROT[ri]
+        rotEl.classList.remove('rot-swap'); void rotEl.offsetWidth; rotEl.classList.add('rot-swap')
+      }, 2000)
+    }
+
+    /* ─── LAUNCH ─── */
+    if (reduceMotion) {
+      // Accessibility: user prefers reduced motion (e.g. Windows "show animations" off).
+      // anime.js animations don't apply here, so skip the cinematic intro and reveal the
+      // page immediately. The reduced-motion CSS block forces final visible styles; GSAP
+      // (which DOES run) still counts the gauge.
+      const ie = document.getElementById('intro'); if (ie) ie.style.display = 'none'
+      const sb = document.getElementById('skip'); if (sb) sb.style.display = 'none'
+      const hb = document.getElementById('hero-bg'); if (hb) { hb.style.transition = 'opacity 0.6s ease'; hb.style.opacity = '1' }
+      revealed = true // skip the (no-op) anime reveal timeline
+      // show the gauge at its final score directly (no count-up animation under reduced motion)
+      renderRing(78)
+      const sval = document.getElementById('score-val'), rprog = document.getElementById('ring-prog'), c = '#FFE23A'
+      if (sval) { sval.textContent = '78'; sval.style.color = c; sval.style.textShadow = '0 0 40px ' + c + '70,0 4px 26px rgba(0,0,0,0.72)' }
+      if (rprog) rprog.style.stroke = c
+    } else {
+      runIntro()
+    }
+
+    /* ─── LEAD FORM (free AI Visibility Score request) ─── */
+    // Paste the GHL inbound-webhook URL here to go live. Empty = DEMO MODE: the form
+    // validates, shows the success state, and logs the payload to the console with NO
+    // network call — respects the "no GHL pushes" hold until the webhook is wired.
+    const GHL_WEBHOOK_URL = ''
+    const leadForm = document.getElementById('lead-form')
+    if (leadForm) try {
+      const qp = new URLSearchParams(location.search)
+      const setHidden = (n, v) => { const el = leadForm.querySelector(`[name="${n}"]`); if (el && v != null) el.value = v }
+      setHidden('page_url', location.href)
+      setHidden('utm_source', qp.get('utm_source') || '')
+      setHidden('utm_medium', qp.get('utm_medium') || '')
+      setHidden('utm_campaign', qp.get('utm_campaign') || '')
+
+      const REQUIRED = ['full_name', 'business_name', 'website_url', 'email', 'primary_service']
+      const emailRe = /^[^\s@]+@[^\s@]+\.[^\s@]+$/
+      const setErr = (input, msg) => {
+        input.classList.toggle('invalid', !!msg)
+        const err = input.parentElement.querySelector('.lf-err')
+        if (err) err.textContent = msg || ''
+        return !msg
+      }
+      const validate = (input) => {
+        const name = input.name, val = input.value.trim()
+        if (REQUIRED.includes(name) && !val) return setErr(input, 'Required')
+        if (name === 'email' && val && !emailRe.test(val)) return setErr(input, 'Enter a valid email')
+        if (name === 'website_url' && val && !/\.\w{2,}/.test(val)) return setErr(input, 'Enter a valid website')
+        return setErr(input, '')
+      }
+      const fields = leadForm.querySelectorAll('input:not([type=hidden])')
+      fields.forEach(inp => {
+        inp.addEventListener('blur', () => validate(inp))
+        inp.addEventListener('input', () => { if (inp.classList.contains('invalid')) validate(inp) })
+      })
+
+      const formErr = document.getElementById('lead-formerr')
+      leadForm.addEventListener('submit', async (e) => {
+        e.preventDefault()
+        if (formErr) formErr.textContent = ''
+        let firstInvalid = null
+        fields.forEach(inp => { if (!validate(inp) && !firstInvalid) firstInvalid = inp })
+        if (firstInvalid) { firstInvalid.focus(); return }
+
+        const btn = leadForm.querySelector('.lead-submit')
+        setHidden('page_url', location.href)
+        const payload = Object.fromEntries(new FormData(leadForm).entries())
+        payload.submitted_at = new Date().toISOString()
+
+        const label = btn.textContent; btn.disabled = true; btn.textContent = 'Running…'
+        try {
+          if (GHL_WEBHOOK_URL) {
+            const res = await fetch(GHL_WEBHOOK_URL, { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(payload) })
+            if (!res.ok) throw new Error('status ' + res.status)
+          } else {
+            console.log('[Signal Flair lead — DEMO MODE, no webhook configured]', payload)
+            await new Promise(r => setTimeout(r, 650))
+          }
+          const wrap = document.getElementById('lead-form-wrap')
+          const ok = document.getElementById('lead-success')
+          if (wrap) wrap.style.display = 'none'
+          if (ok) { ok.style.display = 'block'; animate(ok, { opacity: [0, 1], translateY: [16, 0], duration: 600, ease: 'outExpo' }) }
+        } catch (err) {
+          console.error('[Signal Flair lead] submit failed', err)
+          btn.disabled = false; btn.textContent = label
+          if (formErr) formErr.textContent = "Something went wrong — email hello@signalflair.ai and we'll run it manually."
+        }
+      })
+    } catch (e) { console.error('[Signal Flair] lead-form init failed', e) }
+  }, [])
+
+  // Head-ring arc geometry (280° ring, gap at the bottom toward the body).
+  // Mirrored in the effect for the scan animation.
+  const RG = { cx: 120, cy: 120, r: 92 }
+  const rang = (v) => 130 + 2.8 * v
+  const rpt = (a, r) => [RG.cx + r * Math.cos(a * Math.PI / 180), RG.cy + r * Math.sin(a * Math.PI / 180)]
+  const rarc = (a0, a1, r = RG.r) => { const [x0, y0] = rpt(a0, r), [x1, y1] = rpt(a1, r); const L = (a1 - a0) > 180 ? 1 : 0; return `M ${x0.toFixed(2)} ${y0.toFixed(2)} A ${r} ${r} 0 ${L} 1 ${x1.toFixed(2)} ${y1.toFixed(2)}` }
+
+  const snl = { fontFamily: "'Geist Mono',monospace", fontSize: '12px', color: 'rgba(23,19,18,0.6)', letterSpacing: '0.14em', textTransform: 'uppercase', textDecoration: 'none' } as const
+  const hfPhrases = ['Your business, found by AI', 'GPTBot · llms.txt · Schema markup', 'ChatGPT · Claude · Perplexity · Gemini · Google AI', 'Discovery is the first connection', 'Scanned · Structured · Found']
+  const divider = { width: '100%', height: '1px', background: 'linear-gradient(90deg,transparent,rgba(255,255,255,0.08),transparent)' } as const
+
+  return (
+    <>
+      <div id="cursor" />
+      <div id="cursor-ring" />
+
+      {/* ═══ INTRO ═══ */}
+      <div id="intro">
+        <div id="intro-clouds" />
+        <canvas id="flicker-c" />
+        <canvas id="flare-c" />
+        <div id="sl" />
+        <div id="sr" />
+        <div id="flash-el" />
+      </div>
+      <button id="skip" style={{ fontFamily: "'Geist Mono',monospace", fontSize: '9px', letterSpacing: '0.3em', textTransform: 'uppercase', color: 'rgba(255,255,255,0.55)', background: 'rgba(255,255,255,0.06)', backdropFilter: 'blur(20px)', WebkitBackdropFilter: 'blur(20px)', border: '0.5px solid rgba(255,255,255,0.2)', padding: '8px 18px', borderRadius: '100px', boxShadow: 'inset 0 1px 0 rgba(255,255,255,0.2)', cursor: 'pointer', opacity: 0, transition: 'opacity 0.5s,all 0.2s', pointerEvents: 'all', position: 'fixed', bottom: '28px', right: '28px', zIndex: 600 }}>SKIP INTRO</button>
+
+      {/* ═══ HERO ═══ */}
+      <section id="hero">
+        <div id="hero-bg">
+          <video id="hero-video" autoPlay muted loop playsInline preload="auto" poster="/video/hero-poster.jpg">
+            <source src="/video/signal-flair-hero.mp4" type="video/mp4" />
+          </video>
+          <div id="hero-grade" />
+        </div>
+        <div id="hero-overlay" />
+        <div id="hero-ground" />
+        {/* Center scrim — keeps the stacked centerpiece legible over the busy video */}
+        <div id="hero-center-scrim" />
+        <nav id="hnav">
+          <div>
+            <div className="nav-logo"><span className="logo-mental">SIGNAL</span><span className="logo-vision">FLAIR</span></div>
+            <div className="nav-logo-tag">AI Visibility + AEO · Indianapolis, IN</div>
+          </div>
+          <div style={{ display: 'flex', alignItems: 'center', gap: '24px' }}>
+            <a className="nl" href="#check">Audit</a>
+            <a className="nl" href="#signal">Services</a>
+            <a className="nl" href="#pricing">Pricing</a>
+            <a className="ncta" href="#cta">▸ Run Scan</a>
+          </div>
+        </nav>
+        {/* Cinematic instrument panel: DIAGNOSIS above → SCORE GAUGE centerpiece → RECOVERY below */}
+        <div id="hero-layout">
+          <div className="hero-word" aria-hidden="true">FOUND.</div>
+          <div className="h-side top">
+            <div className="h-eyebrow"><div className="h-ey-dot" />Field scan · live across 5 AI engines</div>
+            <div className="h-headline">Can <span id="engine-rot" className="eng-rot">AI</span> find your business <span className="glass-text-orange">right now?</span></div>
+          </div>
+
+          {/* AI Visibility Score gauge — large centered centerpiece */}
+          <div id="score-gauge" className="score-gauge">
+            <svg className="ring-svg" viewBox="0 0 240 240" aria-hidden="true">
+              <defs>
+                <linearGradient id="arc-grad" x1="0%" y1="100%" x2="100%" y2="0%">
+                  <stop offset="0%" stopColor="#0D9488" />
+                  <stop offset="100%" stopColor="#E85D04" />
+                </linearGradient>
+              </defs>
+              <path className="ring-track" d={rarc(rang(0), rang(100))} />
+              <path id="ring-prog" d={rarc(rang(0), rang(0.1))} />
+            </svg>
+            <div className="gauge-readout">
+              <div id="score-val" className="gauge-score">0</div>
+              <div className="gauge-score-lbl">Your AI Visibility Score</div>
+            </div>
+          </div>
+
+          <div className="h-side bottom">
+            <div className="h-eyebrow"><div className="h-ey-dot" style={{ animationDelay: '1s' }} />After Signal Flair</div>
+            <div className="h-headline">Scanned. Structured. <span style={{ fontStyle: 'italic', background: 'linear-gradient(125deg,rgba(0,220,220,1) 0%,rgba(180,255,255,0.9) 30%,rgba(0,200,200,0.95) 60%,rgba(150,255,255,0.85) 100%)', backgroundSize: '250% 250%', WebkitBackgroundClip: 'text', backgroundClip: 'text', WebkitTextFillColor: 'transparent', animation: 'glass-shimmer 8s 2s ease-in-out infinite', filter: 'drop-shadow(0 0 14px rgba(0,166,166,0.4))' }}>Found.</span></div>
+            <div className="h-sub">llms.txt live · bots unblocked · every AI engine cites you first</div>
+          </div>
+        </div>
+        <div id="hfoot">
+          <div className="hf-ticker" aria-hidden="true">
+            <div className="hf-track">
+              {[...hfPhrases, ...hfPhrases].map((p, i) => (
+                <span className="hf-tk" key={i}>{i % hfPhrases.length === 0 ? <strong>{p}</strong> : p}<span className="hf-tk-dot" /></span>
+              ))}
+            </div>
+          </div>
+          <div className="hf-r">
+            <div><div className="hf-num count">&lt;1%</div><div className="hf-lbl">Have llms.txt</div></div>
+            <a className="hf-cta" href="#cta">▸ Run My Score</a>
+          </div>
+        </div>
+      </section>
+
+      {/* ═══ STICKY NAV ═══ */}
+      <nav id="site-nav">
+        <div>
+          <a className="nav-logo" href="#hero" style={{ color: 'var(--charcoal)' }}>SIGNAL<em style={{ color: 'var(--orange)', fontStyle: 'normal' }}>FLAIR</em></a>
+          <div className="nav-logo-tag" style={{ color: 'rgba(23,19,18,0.3)' }}>AI Visibility + AEO</div>
+        </div>
+        <div className="snav-actions" style={{ display: 'flex', alignItems: 'center', gap: '24px' }}>
+          <a href="#check" style={snl}>Audit</a>
+          <a href="#signal" style={snl}>Services</a>
+          <a href="#pricing" style={snl}>Pricing</a>
+          <a className="ncta" href="#cta">▸ Run Scan</a>
+        </div>
+      </nav>
+
+      {/* ═══ TICKER ═══ */}
+      <div id="ticker">
+        <div className="t-row t-row-1">
+          {[['AI Visibility Scoring', 1], ['AEO · Agentic Engine Optimization', 0], ['llms.txt Deployment', 1], ['Schema Markup', 0], ['AI Crawler Access', 1], ['Citation Growth', 0], ['AI Visibility Scoring', 1], ['AEO · Agentic Engine Optimization', 0], ['llms.txt Deployment', 1], ['Schema Markup', 0], ['AI Crawler Access', 1], ['Citation Growth', 0]].map((it, i) => (
+            <div key={i} className={`t-item${it[1] ? ' hi' : ''}`}>{it[0]}<div className="t-sep" /></div>
+          ))}
+        </div>
+        <div className="t-row t-row-2">
+          {[['ChatGPT · Claude · Perplexity', 1], ['Gemini · Google AI Overviews', 0], ['90-Day AI Action Plans', 1], ['Monthly Visibility Monitoring', 0], ['Indianapolis, Indiana', 1], ['Discovery Is The First Connection', 0], ['ChatGPT · Claude · Perplexity', 1], ['Gemini · Google AI Overviews', 0], ['90-Day AI Action Plans', 1], ['Monthly Visibility Monitoring', 0], ['Indianapolis, Indiana', 1], ['Discovery Is The First Connection', 0]].map((it, i) => (
+            <div key={i} className={`t-item${it[1] ? ' hi' : ''}`}>{it[0]}<div className="t-sep" /></div>
+          ))}
+        </div>
+      </div>
+
+      {/* ═══ PROBLEM ═══ */}
+      <section id="problem" data-cursor="light">
+        <div className="prob-wall" id="prob-wall">INVISIBLE.</div>
+        <div className="prob-inner">
+          <div className="prob-left reveal">
+            <div className="prob-label">The Diagnosis</div>
+            <div className="prob-headline">Great business.<br /><em>Weak signal.</em></div>
+            <div className="prob-body">Two machines read your business and disagree completely. Humans see a trusted local operator. AI engines — the ones now booking appointments and routing customers — see almost nothing. Not because you&apos;re bad. Because you&apos;re unreadable.</div>
+            <div className="prob-stats">
+              <div className="psr"><span className="psr-n count">&lt;1%</span><span className="psr-l">Have llms.txt</span></div>
+              <div className="psr"><span className="psr-n count">4M+</span><span className="psr-l">AI Searches Daily<br />&amp; Climbing</span></div>
+              <div className="psr"><span className="psr-n count">0</span><span className="psr-l">Avg. Citations<br />Found</span></div>
+            </div>
+          </div>
+          <div className="pv reveal">
+            <div className="pv-col human">
+              <div className="pv-h"><span className="pv-ey">Human View</span><span className="pv-tag">Reads You Fine</span></div>
+              <div className="pv-row"><span className="pv-name">Google rating</span><span className="pv-stamp ok">4.8 ★</span></div>
+              <div className="pv-row"><span className="pv-name">Local reputation</span><span className="pv-stamp ok">Trusted</span></div>
+              <div className="pv-row"><span className="pv-name">Service quality</span><span className="pv-stamp ok">Strong</span></div>
+              <div className="pv-row"><span className="pv-name">Word of mouth</span><span className="pv-stamp ok">Active</span></div>
+            </div>
+            <div className="pv-col ai">
+              <div className="pv-h"><span className="pv-ey">AI View</span><span className="pv-tag">Can&apos;t Read You</span></div>
+              <div className="pv-row"><span className="pv-name">GPTBot crawler</span><span className="pv-stamp bad">Blocked</span></div>
+              <div className="pv-row"><span className="pv-name">llms.txt</span><span className="pv-stamp bad">Missing</span></div>
+              <div className="pv-row"><span className="pv-name">Schema markup</span><span className="pv-stamp bad">Absent</span></div>
+              <div className="pv-row"><span className="pv-name">Citations · 5 engines</span><span className="pv-stamp bad">0 Found</span></div>
+              <div className="pv-foot">
+                <div className="pv-score count">23<small>/100</small></div>
+                <div className="pv-rec">Recoverable in 7 days ▸</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* ═══ SERVICES ═══ */}
+      <section id="signal">
+        <div className="sig-top reveal">
+          <div>
+            <div className="sig-eyebrow">What Signal Flair Does</div>
+            <div className="sig-big">THREE THINGS.<br />DONE <em>RIGHT.</em></div>
+          </div>
+          <div className="sig-tagline">Signal Flair does exactly three things — and nothing else. We make your business findable, readable, and recommendable by the AI engines deciding who gets seen.</div>
+        </div>
+        <div className="sig-rows">
+          <div className="sig-row reveal">
+            <div className="sig-proto"><div className="sig-rn">01</div><div className="sig-plabel">Protocol / Score</div></div><div className="sig-rd" />
+            <div className="sig-rtitle">AI Visibility<br />Audit</div>
+            <div className="sig-rbody"><em>The score that exposes everything.</em> We run your business through ChatGPT, Perplexity, Claude, Gemini, and Google AI Overviews. We find every gap. We show you the number. Most businesses score under 40 — now you&apos;ll know why.</div>
+            <div><span className="sig-rtag">Scoring + Reporting</span></div>
+          </div>
+          <div className="sig-row reveal">
+            <div className="sig-proto"><div className="sig-rn">02</div><div className="sig-plabel">Protocol / Structure</div></div><div className="sig-rd" />
+            <div className="sig-rtitle">Foundation<br />Build</div>
+            <div className="sig-rbody"><em>The infrastructure AI actually reads.</em> llms.txt deployed. Schema markup installed. AI crawlers unblocked. Your business structured the way generative search engines need to find you. Built in 7–14 days — not months.</div>
+            <div><span className="sig-rtag">llms.txt + Schema</span></div>
+          </div>
+          <div className="sig-row reveal">
+            <div className="sig-proto"><div className="sig-rn">03</div><div className="sig-plabel">Protocol / Stay Found</div></div><div className="sig-rd" />
+            <div className="sig-rtitle">Stay Found<br />System</div>
+            <div className="sig-rbody"><em>Visibility isn&apos;t a one-time fix.</em> AI search evolves monthly and your competitors are catching up. Stay Found keeps your signal strong — monthly scans, citation growth, schema updates, and crawler monitoring. Permanently ahead.</div>
+            <div><span className="sig-rtag">Monitoring + Citations</span></div>
+          </div>
+        </div>
+      </section>
+
+      {/* ═══ CHECK ═══ */}
+      <section id="check" data-cursor="light">
+        <div className="chk-top reveal">
+          <div><div className="chk-vw-title">WHAT<br />WE <em>CHECK.</em></div></div>
+          <div className="chk-meta">Six signals. Every one determines whether AI recommends your business or your competitor&apos;s. We score all of them — then fix the ones that matter first.</div>
+        </div>
+        <div className="chk-wrap">
+          <table className="chk-tbl">
+            <thead>
+              <tr>
+                <th style={{ width: '78px' }}>#</th>
+                <th>Category</th><th>Severity</th><th>Status</th><th>What It Means</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr className="reveal"><td className="ckr-n">01</td><td className="ckr-cat">AI Search<br />Presence</td><td className="ckr-bc"><span className="ckr-badge crit">Critical</span></td><td className="ckr-st"><span className="st-stamp bad">Fail</span></td><td className="ckr-body">Can ChatGPT, Claude, Perplexity, Gemini, and Google AI describe your business — or do they draw a blank? We test all five and document exactly what each platform knows about you.</td></tr>
+              <tr className="reveal"><td className="ckr-n">02</td><td className="ckr-cat">Crawl<br />Readiness</td><td className="ckr-bc"><span className="ckr-badge crit">Critical</span></td><td className="ckr-st"><span className="st-stamp bad">Blocked</span></td><td className="ckr-body">Are AI bots allowed to access your site? Most businesses unknowingly block them in robots.txt — locking the door on every AI recommendation before it even starts.</td></tr>
+              <tr className="reveal"><td className="ckr-n">03</td><td className="ckr-cat">Entity<br />Clarity</td><td className="ckr-bc"><span className="ckr-badge high">High</span></td><td className="ckr-st"><span className="st-stamp warn">Weak</span></td><td className="ckr-body">Does the internet clearly understand your business name, location, service area, and category? Ambiguity kills AI recommendations. We verify all data sources that feed these signals.</td></tr>
+              <tr className="reveal"><td className="ckr-n">04</td><td className="ckr-cat">Review<br />Signal</td><td className="ckr-bc"><span className="ckr-badge high">High</span></td><td className="ckr-st"><span className="st-stamp ok">Strong</span></td><td className="ckr-body">What do customers repeatedly say you&apos;re great at? AI uses review themes to form descriptions. We extract and structure those themes for citation value across every platform.</td></tr>
+              <tr className="reveal"><td className="ckr-n">05</td><td className="ckr-cat">Authority<br />Content</td><td className="ckr-bc"><span className="ckr-badge med">Medium</span></td><td className="ckr-st"><span className="st-stamp warn">Thin</span></td><td className="ckr-body">Do you have pages that answer the questions AI engines use when forming recommendations? Service clarity, FAQ depth, local relevance — all scored against what AI actually pulls from.</td></tr>
+              <tr className="reveal"><td className="ckr-n">06</td><td className="ckr-cat">Conversion<br />Proof</td><td className="ckr-bc"><span className="ckr-badge conv">Conversion</span></td><td className="ckr-st"><span className="st-stamp ok">Ready</span></td><td className="ckr-body">Once AI sends someone your way — does the page close them? We check whether your experience turns interest into a booked call, quote request, or direct contact.</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      {/* ═══ STATS ═══ */}
+      <section id="stats">
+        <div className="stats-bg-word">PROOF.</div>
+        <div className="stats-float">
+          <div className="stat-item reveal"><span className="stat-n" id="sn1">5+</span><span className="stat-l">AI Engines Scored &amp; Counting</span><div className="stat-d">ChatGPT, Claude, Perplexity, Gemini, Google AI — and every new engine, the day it ships.</div></div>
+          <div className="stat-item reveal"><span className="stat-n" id="sn2">&lt;1%</span><span className="stat-l">Have llms.txt</span><div className="stat-d">The file we build and deploy on the Foundation Build.</div></div>
+          <div className="stat-item reveal"><span className="stat-n" id="sn3">4M+</span><span className="stat-l">AI Searches Daily</span><div className="stat-d">Most businesses appear in zero of them — and that number climbs every day.</div></div>
+          <div className="stat-item reveal"><span className="stat-n" id="sn4">3</span><span className="stat-l">Core Services</span><div className="stat-d">Audit · Foundation Build · Stay Found.</div></div>
+        </div>
+      </section>
+
+      {/* ═══ PROCESS ═══ */}
+      <section id="process" data-cursor="light">
+        <div className="proc-header reveal">
+          <div className="proc-vw">FOUR STEPS.<br />NO GUESSING.</div>
+          <div className="proc-intro">Most agencies run a slow, expensive audit then disappear. Signal Flair runs the scan, scores the signal, fixes the gaps, and keeps you found — inside one system, without the lag.</div>
+        </div>
+        <ul className="proc-list">
+          <li className="proc-item reveal"><div className="proc-num">01</div><div className="proc-right"><div className="proc-bar" /><div className="proc-title">SCAN</div><div className="proc-body">Live audit across ChatGPT, Claude, Perplexity, and Google AI. robots.txt, llms.txt, schema, social — every gap documented with real data and a score from 0–100.</div></div></li>
+          <li className="proc-item reveal"><div className="proc-num">02</div><div className="proc-right"><div className="proc-bar" /><div className="proc-title">SCORE</div><div className="proc-body">7 categories. Real numbers. The score determines your exact plan — what to fix first, what&apos;s optional, and what&apos;s actively hurting your AI recommendations right now.</div></div></li>
+          <li className="proc-item reveal"><div className="proc-num">03</div><div className="proc-right"><div className="proc-bar" /><div className="proc-title">FIX</div><div className="proc-body">llms.txt deployed, AI bots unblocked, schema installed, citations submitted. Your signal goes live in days, not months. Measurable and structured the way generative engines actually read.</div></div></li>
+          <li className="proc-item reveal"><div className="proc-num">04</div><div className="proc-right"><div className="proc-bar" /><div className="proc-title">STAY FOUND</div><div className="proc-body">AI search shifts monthly and competitors catch up. We keep watching — monthly scans, fresh citations, schema updates, crawler monitoring — so your signal stays strong and permanently ahead.</div></div></li>
+        </ul>
+      </section>
+
+      {/* ═══ MOAT — why look nowhere else ═══ */}
+      <section id="moat" data-cursor="dark">
+        <div className="moat-bgword" aria-hidden="true">UNFAIR.</div>
+        <div className="moat-head reveal">
+          <div className="moat-eyebrow">The unfair advantage</div>
+          <div className="moat-title">Get three more quotes.<br /><em>We&apos;ll wait.</em></div>
+          <div className="moat-sub">Everyone sells &ldquo;AI optimization.&rdquo; We hand you a number — 0 to 100, scored across every engine that now decides who gets found — then build the machine-readable infrastructure underneath it. Copy the pitch all you want. You can&apos;t copy the system.</div>
+        </div>
+        <div className="moat-grid">
+          <div className="moat-card reveal">
+            <div className="moat-n">01</div>
+            <div className="moat-ctitle">A score you can&apos;t argue with</div>
+            <div className="moat-cbody">Agencies sell vibes and &ldquo;best practices.&rdquo; We sell a number. Your AI Visibility Score is measured the same way across ChatGPT, Claude, Perplexity, Gemini and Google AI — repeatable, undeniable, impossible to fake. You&apos;ll never unsee it.</div>
+          </div>
+          <div className="moat-card reveal">
+            <div className="moat-n">02</div>
+            <div className="moat-ctitle">The layer AI actually reads</div>
+            <div className="moat-cbody">llms.txt. Schema. Crawler access. The machine-readable spine fewer than 1% of businesses have even deployed. While the competition tweaks title tags from 2014, you&apos;re speaking the language the engines read first.</div>
+          </div>
+          <div className="moat-card reveal">
+            <div className="moat-n">03</div>
+            <div className="moat-ctitle">Future-proof on purpose</div>
+            <div className="moat-cbody">Five engines today — and every one that ships next. We don&apos;t chain your visibility to one platform&apos;s mood. We track each engine the moment it starts sending buyers, so the system that wins now is still winning when the next model drops.</div>
+          </div>
+          <div className="moat-card reveal">
+            <div className="moat-n">04</div>
+            <div className="moat-ctitle">You keep everything — even if you walk</div>
+            <div className="moat-cbody">Delivery-based, always. The llms.txt, the schema, the fixes, the 90-day plan — built, handed over, yours to keep even if you cancel. No lock-in. No &ldquo;results pending.&rdquo; We earn next month by shipping this one.</div>
+          </div>
+        </div>
+        <div className="moat-close reveal">Run every other audit in the city.<br /><em>Then come back and check your score.</em></div>
+      </section>
+
+      {/* ═══ PROOF — honest before/after score card (illustrative) ═══ */}
+      <section id="proof" data-cursor="light">
+        <div className="proof-bgword" aria-hidden="true">PROOF.</div>
+        <div className="proof-head reveal">
+          <div>
+            <div className="proof-eyebrow">Real proof, built honestly</div>
+            <div className="proof-title">Real businesses.<br />Real visibility <em>gains.</em></div>
+          </div>
+          <div className="proof-meta">No fabricated testimonials. We show the same 0–100 score we run for you — before the Foundation Build, and after.</div>
+        </div>
+        <div className="proof-grid reveal">
+          <div className="proof-card before">
+            <div className="pc-top"><span className="pc-label">Before</span><span className="pc-tag">Invisible</span></div>
+            <span className="pc-score">23<small>/100</small></span>
+            <div className="pc-scorelbl">AI Visibility Score</div>
+            <div className="pc-row"><span className="pc-name">Citations found</span><span className="pc-stamp no">0</span></div>
+            <div className="pc-row"><span className="pc-name">ChatGPT · Claude · Perplexity</span><span className="pc-stamp no">No</span></div>
+            <div className="pc-row"><span className="pc-name">Gemini · Google AI</span><span className="pc-stamp no">No</span></div>
+            <div className="pc-status">Invisible to AI recommendations</div>
+          </div>
+          <div className="proof-arrow" aria-hidden="true">→</div>
+          <div className="proof-card after">
+            <div className="pc-top"><span className="pc-label">After Foundation Build</span><span className="pc-tag">Recommendable</span></div>
+            <span className="pc-score count">91<small>/100</small></span>
+            <div className="pc-scorelbl">AI Visibility Score</div>
+            <div className="pc-row"><span className="pc-name">Citations found</span><span className="pc-stamp yes">14</span></div>
+            <div className="pc-row"><span className="pc-name">ChatGPT · Claude · Perplexity</span><span className="pc-stamp yes">Yes</span></div>
+            <div className="pc-row"><span className="pc-name">Gemini · Google AI</span><span className="pc-stamp yes">Yes</span></div>
+            <div className="pc-status">Now being recommended by AI</div>
+          </div>
+        </div>
+        <div className="proof-note reveal"><strong>Illustrative example</strong> — representative of Foundation Build outcomes, not a specific client. Your results vary with your current signals and implementation. We&apos;re documenting real before-and-after scores with our first cohort and will publish them here as they complete.</div>
+        <div className="founding reveal">
+          <div className="founding-inner">
+            <div className="founding-l">
+              <div className="founding-eyebrow">Founding Client Program</div>
+              <div className="founding-title">Be one of the first <em>10.</em></div>
+              <div className="founding-body">We&apos;re building proof the honest way — real before-and-after AI Visibility Scores from real businesses. The first 10 founding clients get the full Foundation Build at the founding rate, in exchange for letting us document the results. This isn&apos;t a discount for its own sake — it&apos;s a partnership to create measurable proof that this works.</div>
+              <div className="founding-ask">In return: permission to share your before/after scores (anonymized if you prefer) and one short quote once results are in.</div>
+              <a className="founding-cta" href="#cta">▸ Apply to become a founding client</a>
+              <div className="founding-micro">Genuine first-mover offer · 10 spots · results documented transparently</div>
+            </div>
+            <div className="founding-r">
+              <div className="founding-price-tag">Foundation Build · Founding Rate</div>
+              <div className="founding-prices">
+                <span className="founding-anchor">$3,500</span>
+                <span className="founding-now">$1,750</span>
+              </div>
+              <div className="founding-save">50% off · first 10 businesses only</div>
+              <div className="founding-items">
+                <div className="fnd-i">Full AI Visibility Audit — 5 engines</div>
+                <div className="fnd-i">Custom llms.txt + schema deployment</div>
+                <div className="fnd-i">AI crawler access fixes</div>
+                <div className="fnd-i">Entity cleanup + initial citations</div>
+                <div className="fnd-i">90-Day AI Action Plan</div>
+                <div className="fnd-i">Your results documented &amp; shared (with approval)</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* ═══ PRICING ═══ */}
+      <section id="pricing" data-cursor="light">
+        <div className="pricing-header reveal">
+          <div className="pricing-vw-wild" aria-label="Three offers. One right fit.">
+            <span className="pw pw1">Three</span>
+            <span className="pw pw2">OFFERS.</span>
+            <span className="pw pw3">one</span>
+            <span className="pw pw4">right</span>
+            <span className="pw pw5">fit.</span>
+          </div>
+          <div className="pricing-sub">Every tier runs on the same engine. Your AI Visibility Score decides which one fits — and where you start.</div>
+        </div>
+        <div className="price-how reveal">
+          <div className="ph-lead">You don&apos;t pick a package. Your free <em>AI Visibility Score</em> sets your starting line.</div>
+          <div className="ph-map">
+            <div className="ph-step">
+              <div className="ph-band">Score 0–54 · Invisible</div>
+              <div className="ph-offer">Build the Foundation</div>
+              <div className="ph-what">The full machine-readable build — <strong>plus your own AI-optimized landing page.</strong></div>
+            </div>
+            <div className="ph-step">
+              <div className="ph-band">Score 55–74 · Partial</div>
+              <div className="ph-offer">Start the Rebuild</div>
+              <div className="ph-what">Targeted fixes to the exact signals dragging your score down.</div>
+            </div>
+            <div className="ph-step">
+              <div className="ph-band">Score 75–100 · Visible</div>
+              <div className="ph-offer">Stay Found</div>
+              <div className="ph-what">The ongoing monthly system that keeps you ahead as AI shifts.</div>
+            </div>
+          </div>
+          <div className="ph-note">Foundation &amp; Rebuild are <strong>one-time builds</strong> — you keep everything, even if you cancel. <strong>Stay Found</strong> is the ongoing system for businesses already visible. Most start with a free score, then begin at the band it lands in.</div>
+        </div>
+        <div className="price-feat">
+          <div className="pf-left">
+            <div className="pf-badge">Triage Band 01 · Score 0–54</div>
+            <div className="pf-tag">Foundation Build</div>
+            <div className="pf-name">Build the Foundation</div>
+            <div className="pf-ideal">For the invisible — businesses scoring 0–54 with no AI footprint. The full infrastructure generative engines need to find, read, and recommend you. Built in 7–14 days.</div>
+            <div className="pf-amount">$3,500</div>
+            <div className="pf-cadence">one-time build · CRM access optional add-on, $197/mo</div>
+            <a className="pf-btn" href="#cta">▸ Build the Foundation</a>
+          </div>
+          <div className="pf-right">
+            <div className="pf-desc">The infrastructure AI actually reads. Full diagnostic, full technical fix, full structure — everything needed to go from invisible to recommendable across every major AI engine.</div>
+            <div className="pf-items">
+              <div className="pf-item">Full AI Visibility Audit — 5 engines (ChatGPT, Claude, Perplexity, Gemini, Google AI)</div>
+              <div className="pf-item">llms.txt written and deployed</div>
+              <div className="pf-item">Schema markup installed — Org + LocalBusiness + more</div>
+              <div className="pf-item">AI crawlers unblocked — robots.txt fixed</div>
+              <div className="pf-item">1 AI-optimized landing page</div>
+              <div className="pf-item">Entity clarity cleanup across data sources</div>
+              <div className="pf-item">5 priority citation submissions</div>
+              <div className="pf-item">90-Day AI Action Plan</div>
+              <div className="pf-item">Delivered in 7–14 days</div>
+            </div>
+          </div>
+        </div>
+        <div className="price-small">
+          <div className="psc">
+            <div className="psc-tag">Triage Band 02 · Score 55–74</div>
+            <div className="psc-name">Start the Rebuild</div>
+            <div className="psc-ideal">For the partially visible — businesses with a foundation that needs sharpening. The core fixes that move your score fastest.</div>
+            <div className="psc-price">$1,500</div>
+            <div className="psc-cad">one-time rebuild · CRM access included</div>
+            <div className="psc-items">
+              <div className="psci">Full AI Visibility Audit — 5 engines</div>
+              <div className="psci">llms.txt written and deployed</div>
+              <div className="psci">Core schema markup installed</div>
+              <div className="psci">AI crawlers unblocked — robots.txt fixed</div>
+              <div className="psci">Priority citation submissions</div>
+              <div className="psci">90-Day AI Action Plan</div>
+              <div className="psci">CRM access included</div>
+            </div>
+            <a className="psc-btn" href="#cta">▸ Start the Rebuild</a>
+          </div>
+          <div className="psc">
+            <div className="psc-tag">Triage Band 03 · Score 75–100</div>
+            <div className="psc-name">Stay Found System</div>
+            <div className="psc-ideal">For the AI-ready — businesses already visible who refuse to fall behind. Visibility compounds, so we work in seasons, not one-offs.</div>
+            <div className="psc-price">$600–$1,200<span style={{ fontSize: '0.4em' }}>/mo</span></div>
+            <div className="psc-cad">pick your term — the longer you commit, the lower your rate · CRM access included</div>
+            <div className="psc-terms">
+              <div className="psc-term"><span className="pt-len">3 months</span><span className="pt-price">$1,200<em>/mo</em></span><span className="pt-note">Get found fast — the shortest runway to results</span></div>
+              <div className="psc-term"><span className="pt-len">6 months</span><span className="pt-price">$900<em>/mo</em></span><span className="pt-note">Build real momentum across every engine</span></div>
+              <div className="psc-term feat"><span className="pt-len">12 months</span><span className="pt-price">$600<em>/mo</em></span><span className="pt-note">Best rate — compound your lead and stay ahead</span></div>
+            </div>
+            <div className="psc-items">
+              <div className="psci">Monthly AI visibility scan — every major engine</div>
+              <div className="psci">Monthly score report with competitor tracking</div>
+              <div className="psci">Ongoing citation growth + schema &amp; llms.txt updates</div>
+              <div className="psci">AI crawler monitoring · CRM access included</div>
+            </div>
+            <a className="psc-btn" href="#cta">▸ Stay Found</a>
+          </div>
+        </div>
+        <div className="price-guarantee">Guarantee: <em>Delivery-based only</em> — never rankings, leads, or revenue. You keep everything built, even if you cancel.</div>
+      </section>
+
+      {/* ═══ ABOUT — founder / trust layer ═══ */}
+      <section id="about">
+        <div className="about-inner">
+          <div className="about-photo reveal">
+            {/* Drop a 4:5 founder portrait here: replace this block with <img src="/img/founder.jpg" alt="Corey, founder of Signal Flair" /> */}
+            <div className="about-photo-lbl">Founder portrait<br />4:5 — drop image here</div>
+          </div>
+          <div className="about-copy reveal">
+            <div className="about-eyebrow">Why Signal Flair exists</div>
+            <div className="about-title">Built for the AI era.<br /><em>Rooted in Indianapolis.</em></div>
+            <div className="about-body">
+              <p>Signal Flair exists because the way customers find local businesses is changing faster than most companies can adapt.</p>
+              <p>AI engines — ChatGPT, Claude, Perplexity, Gemini, Google AI — already make recommendations, book appointments, and route real customers. Yet most local businesses stay invisible to them. <strong>Not</strong> because they deliver poor service — because their technical signals are broken or missing.</p>
+              <p>We built Signal Flair to do one thing exceptionally well: make local businesses <strong>findable, readable, and recommendable</strong> by these new AI systems. No traditional SEO. No paid ads. We install the infrastructure AI engines need to understand and trust your business — and keep it sharp as they evolve.</p>
+            </div>
+            <div className="about-sign">
+              <div>
+                <div className="about-sign-name">Corey</div>
+                <div className="about-sign-role">Founder · Signal Flair · Indianapolis, IN</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* ═══ FAQ — objection-handling accordion ═══ */}
+      <section id="faq" data-cursor="light">
+        <div className="faq-head reveal">
+          <div className="faq-eyebrow">Straight answers</div>
+          <div className="faq-title">Questions, <em>answered.</em></div>
+        </div>
+        <div className="faq-list reveal">
+          <details className="faq-item" open>
+            <summary className="faq-q">What is an AI Visibility Score?<span className="faq-ic" aria-hidden="true" /></summary>
+            <div className="faq-a">A 0–100 measure of how findable, readable, and recommendable your business is to AI engines. We run you through ChatGPT, Claude, Perplexity, Gemini, and Google AI across 7 categories — crawl access, llms.txt, schema, entity clarity, review signal, authority content, and conversion readiness — then show you the number and exactly what&apos;s pulling it down.</div>
+          </details>
+          <details className="faq-item">
+            <summary className="faq-q">How is this different from SEO?<span className="faq-ic" aria-hidden="true" /></summary>
+            <div className="faq-a">SEO optimizes for blue links on a results page. We optimize for the layer AI engines actually read — llms.txt, schema, crawler access — so when someone asks an AI for a recommendation, your business is the answer. <em>Different machine, different rules.</em> We don&apos;t do traditional SEO or paid ads.</div>
+          </details>
+          <details className="faq-item">
+            <summary className="faq-q">Do you guarantee rankings, leads, or revenue?<span className="faq-ic" aria-hidden="true" /></summary>
+            <div className="faq-a">No — and anyone who does is guessing. Our guarantee is <strong>delivery-based only</strong>: we build and hand over the infrastructure — llms.txt, schema, crawler fixes, your 90-day plan. You keep all of it, even if you cancel. We never promise rankings, leads, or citations we can&apos;t control.</div>
+          </details>
+          <details className="faq-item">
+            <summary className="faq-q">How long does the Foundation Build take?<span className="faq-ic" aria-hidden="true" /></summary>
+            <div className="faq-a">7–14 days, not months. We scan, score, and install the full machine-readable layer — then hand you a 90-day AI action plan.</div>
+          </details>
+          <details className="faq-item">
+            <summary className="faq-q">What happens when AI search changes?<span className="faq-ic" aria-hidden="true" /></summary>
+            <div className="faq-a">It will — and often. That&apos;s what the Stay Found System is for: monthly re-scans, fresh citations, schema and llms.txt updates, and crawler monitoring so your signal stays strong as new engines ship and competitors catch up.</div>
+          </details>
+          <details className="faq-item">
+            <summary className="faq-q">Do I have to get on a sales call?<span className="faq-ic" aria-hidden="true" /></summary>
+            <div className="faq-a">No. Request your free AI Visibility Score above — we run the scan and send your number plus a prioritized action plan within 24 hours. No pitch, no pressure. <em>The ball stays in your court.</em></div>
+          </details>
+        </div>
+      </section>
+
+      {/* ═══ CTA — lead-capture audit form ═══ */}
+      <section id="cta" data-cursor="light">
+        <div className="cta-deco">FOUND.</div>
+        <div className="cta-inner">
+          <div className="cta-left">
+            <div className="cta-y-pre reveal">Discovery is the first connection</div>
+            <div className="cta-y-title reveal">Trusted locally.<br /><em>Now visible to AI.</em></div>
+            <div className="cta-y-sub reveal">We scan the signals, expose the gaps, and show exactly what needs to be fixed first. No call required. No pitch. Just your AI Visibility Score — and a clear path forward.</div>
+            <div className="cta-y-btns reveal" style={{ marginTop: '26px' }}>
+              <a className="cta-y-ghost" href="#check">See what AI sees →</a>
+            </div>
+          </div>
+          <div className="cta-right reveal">
+            <div className="lead-card">
+              <div id="lead-form-wrap">
+                <div className="lead-h">Get your free <em>AI Visibility Score</em></div>
+                <div className="lead-subline">See exactly how ChatGPT, Claude, Perplexity, Gemini &amp; Google AI read your business. Takes ~60 seconds.</div>
+                <form id="lead-form" noValidate>
+                  <div className="lf-field">
+                    <label className="lf-label" htmlFor="lf-name">Full Name<span className="req">*</span></label>
+                    <input className="lf-input" id="lf-name" name="full_name" type="text" autoComplete="name" placeholder="Jane Smith" />
+                    <span className="lf-err" aria-live="polite" />
+                  </div>
+                  <div className="lf-field">
+                    <label className="lf-label" htmlFor="lf-biz">Business Name<span className="req">*</span></label>
+                    <input className="lf-input" id="lf-biz" name="business_name" type="text" autoComplete="organization" placeholder="Smith &amp; Co." />
+                    <span className="lf-err" aria-live="polite" />
+                  </div>
+                  <div className="lf-field full">
+                    <label className="lf-label" htmlFor="lf-url">Website URL<span className="req">*</span></label>
+                    <input className="lf-input" id="lf-url" name="website_url" type="url" inputMode="url" autoComplete="url" placeholder="yourbusiness.com" />
+                    <span className="lf-err" aria-live="polite" />
+                  </div>
+                  <div className="lf-field">
+                    <label className="lf-label" htmlFor="lf-email">Email<span className="req">*</span></label>
+                    <input className="lf-input" id="lf-email" name="email" type="email" inputMode="email" autoComplete="email" placeholder="jane@yourbusiness.com" />
+                    <span className="lf-err" aria-live="polite" />
+                  </div>
+                  <div className="lf-field">
+                    <label className="lf-label" htmlFor="lf-phone">Phone</label>
+                    <input className="lf-input" id="lf-phone" name="phone" type="tel" inputMode="tel" autoComplete="tel" placeholder="(optional)" />
+                    <span className="lf-err" aria-live="polite" />
+                  </div>
+                  <div className="lf-field">
+                    <label className="lf-label" htmlFor="lf-service">Primary Service<span className="req">*</span></label>
+                    <input className="lf-input" id="lf-service" name="primary_service" type="text" placeholder="e.g. HVAC, dental, law" />
+                    <span className="lf-err" aria-live="polite" />
+                  </div>
+                  <div className="lf-field">
+                    <label className="lf-label" htmlFor="lf-city">City / Service Area</label>
+                    <input className="lf-input" id="lf-city" name="city" type="text" autoComplete="address-level2" placeholder="(optional)" />
+                    <span className="lf-err" aria-live="polite" />
+                  </div>
+                  {/* hidden tracking — populated on mount */}
+                  <input type="hidden" name="source" defaultValue="signalflair.ai" />
+                  <input type="hidden" name="page_url" />
+                  <input type="hidden" name="utm_source" />
+                  <input type="hidden" name="utm_medium" />
+                  <input type="hidden" name="utm_campaign" />
+                  <input type="hidden" name="lead_tag" defaultValue="AI Visibility Score Request" />
+                  <div className="lead-formerr" id="lead-formerr" aria-live="assertive" />
+                  <button type="submit" className="lead-submit">▸ Run My Free Score</button>
+                  <div className="lead-micro">No credit card. No spam, ever. Your score lands in your inbox within 24 hours — we never sell or share your data.</div>
+                </form>
+              </div>
+              <div className="lead-success" id="lead-success" role="status" aria-live="polite">
+                <div className="ls-mark" aria-hidden="true">✓</div>
+                <div className="ls-h">Scan requested.</div>
+                <div className="ls-b">We&apos;re running your visibility check across <strong>ChatGPT, Claude, Perplexity, Gemini &amp; Google AI</strong>. Your full Score and prioritized action plan land in your inbox within 24 hours.</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* ═══ MENTAL VISION CONTENT BRIDGE — subtle insider tip, routes out to MV ═══ */}
+      <section id="mv-bridge">
+        <div className="mvb-rule" />
+        <div className="mvb-inner">
+          <div className="mvb-head">AI found you. Now make them stay.</div>
+          <div className="mvb-body">Signal Flair gets you found. What happens when they land is a different conversation — and a different brand. Cinematic campaigns, UGC creative, and AI-generated content live at Mental Vision Corp.</div>
+          <a className="mvb-cta" href="https://mentalvision.ai" target="_blank" rel="noopener noreferrer">→ See what Mental Vision builds</a>
+        </div>
+        <div className="mvb-rule" />
+      </section>
+
+      {/* ═══ FOOTER ═══ */}
+      <footer>
+        <div className="fi">
+          <div>
+            <a className="f-logo" href="#hero">SIGNAL<em>FLAIR</em></a>
+            <div className="f-tag">AI Visibility + AEO<br />Indianapolis, Indiana · Est. 2024<br />Your business, found by AI.</div>
+            <a className="f-email" href="mailto:hello@signalflair.ai">hello@signalflair.ai</a>
+          </div>
+          <div><div className="f-head">Services</div><a className="f-link" href="#signal">AI Visibility Audit</a><a className="f-link" href="#signal">Foundation Build</a><a className="f-link" href="#signal">Stay Found System</a><a className="f-link" href="#check">What We Check</a><a className="f-link" href="#pricing">Pricing</a></div>
+          <div><div className="f-head">Company</div><a className="f-link" href="#process">How It Works</a><a className="f-link" href="#pricing">Pricing</a><a className="f-link" href="https://mentalvision.ai" target="_blank" rel="noopener noreferrer">Mental Vision Corp</a><a className="f-link" href="mailto:connect@signalflair.ai">Contact</a></div>
+          <div><div className="f-head">Connect</div><a className="f-link" href="#">LinkedIn</a><a className="f-link" href="#">Instagram</a><a className="f-link" href="#">YouTube</a><a className="f-link" href="mailto:hello@signalflair.ai">hello@signalflair.ai</a></div>
+        </div>
+        <div className="fb">
+          <div className="fb-l">Signal Flair is a Mental Vision Corp product | Indianapolis, IN | signalflair.ai</div>
+          <div className="fb-r">AI Visibility + AEO · Signal Flair v1.0</div>
+        </div>
+      </footer>
+    </>
+  )
+}

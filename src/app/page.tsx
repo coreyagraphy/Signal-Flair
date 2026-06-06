@@ -1,5 +1,5 @@
-import BoldHome from '@/components/BoldHome'
+import SignalFlairLanding from '@/components/SignalFlairLanding'
 
 export default function Home() {
-  return <BoldHome />
+  return <SignalFlairLanding />
 }
