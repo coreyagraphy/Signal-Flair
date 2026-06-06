@@ -365,14 +365,32 @@ export default function SignalFlairLanding() {
     /* ─── HERO ENGINE-NAME ROTATOR — keeps shuffling AI · ChatGPT · Claude · Perplexity · Gemini · Google ─── */
     const rotEl = document.getElementById('engine-rot')
     if (rotEl) {
-      const ROT = ['AI', 'ChatGPT', 'Claude', 'Gemini', 'Perplexity', 'Copilot', 'Grok', 'DeepSeek', 'Llama', 'Mistral', 'Ollama', 'Google AI']
-      let ri = 0
+      // final list, fixed ALPHABETICAL order so the cycle is predictable and none get skipped
+      const ROT = ['Claude', 'Cohere', 'Gemini', 'GPT', 'Grok', 'Kimi', 'Llama', 'Mistral', 'Perplexity']
+      // each swap advances through the flare palette (yellow → orange → teal → pink)...
+      const ROT_COLORS = ['#fff45f', '#ff5a1f', '#00d2bf', '#ff3d82']
+      // ...and through the three brand fonts, so each word gets a different typeface too
+      const ROT_FONTS = [
+        { f: "'Fraunces',Georgia,serif", s: 'normal', w: '560', z: '0.96em' },
+        { f: "'Instrument Serif',Georgia,serif", s: 'italic', w: '400', z: '1.04em' },
+        { f: "'Geist Mono',ui-monospace,monospace", s: 'normal', w: '600', z: '0.74em' },
+      ]
+      let ri = 0, ci = 0, fi = 0
+      const paintRot = () => {
+        const c = ROT_COLORS[ci], ft = ROT_FONTS[fi]
+        rotEl.textContent = ROT[ri]
+        rotEl.style.color = c
+        rotEl.style.fontFamily = ft.f; rotEl.style.fontStyle = ft.s; rotEl.style.fontWeight = ft.w; rotEl.style.fontSize = ft.z
+        rotEl.style.textShadow = '0 0 26px ' + c + '7a,0 2px 18px rgba(0,0,0,0.55)'
+      }
+      paintRot() // show ROT[0] immediately in its own font + color
       // text swaps on a plain timer (always runs); the fade is a CSS animation that degrades
       // gracefully — so the word can never get stuck invisible the way an anime callback could.
       setInterval(() => {
-        let n = ri; while (n === ri) n = Math.floor(Math.random() * ROT.length) // shuffle — never repeat the same word twice
-        ri = n
-        rotEl.textContent = ROT[ri]
+        ri = (ri + 1) % ROT.length      // sequential alphabetical cycle — every engine, in order
+        ci = (ci + 1) % ROT_COLORS.length
+        fi = (fi + 1) % ROT_FONTS.length
+        paintRot()
         rotEl.classList.remove('rot-swap'); void rotEl.offsetWidth; rotEl.classList.add('rot-swap')
       }, 2000)
     }
@@ -522,7 +540,7 @@ export default function SignalFlairLanding() {
           <div className="hero-word" aria-hidden="true">FOUND.</div>
           <div className="h-side top">
             <div className="h-eyebrow"><div className="h-ey-dot" />Field scan · live across 5 AI engines</div>
-            <div className="h-headline">Can <span id="engine-rot" className="eng-rot">AI</span> find your business <span className="glass-text-orange">right now?</span></div>
+            <div className="h-headline">Can <span id="engine-rot" className="eng-rot">Claude</span> find your business <span className="glass-text-orange">right now?</span></div>
           </div>
 
           {/* AI Visibility Score gauge — large centered centerpiece */}
@@ -1059,7 +1077,7 @@ export default function SignalFlairLanding() {
             <a className="f-email" href="mailto:hello@signalflair.ai">hello@signalflair.ai</a>
           </div>
           <div><div className="f-head">Services</div><a className="f-link" href="#signal">AI Visibility Audit</a><a className="f-link" href="#signal">Foundation Build</a><a className="f-link" href="#signal">Stay Found System</a><a className="f-link" href="#check">What We Check</a><a className="f-link" href="#pricing">Pricing</a></div>
-          <div><div className="f-head">Company</div><a className="f-link" href="#process">How It Works</a><a className="f-link" href="#pricing">Pricing</a><a className="f-link" href="https://mentalvision.ai" target="_blank" rel="noopener noreferrer">Mental Vision Corp</a><a className="f-link" href="mailto:connect@signalflair.ai">Contact</a></div>
+          <div><div className="f-head">Company</div><a className="f-link" href="#process">How It Works</a><a className="f-link" href="#pricing">Pricing</a><a className="f-link" href="/resources/llms-txt/">llms.txt Guide</a><a className="f-link" href="https://mentalvision.ai" target="_blank" rel="noopener noreferrer">Mental Vision Corp</a><a className="f-link" href="mailto:connect@signalflair.ai">Contact</a></div>
           <div><div className="f-head">Connect</div><a className="f-link" href="#">LinkedIn</a><a className="f-link" href="#">Instagram</a><a className="f-link" href="#">YouTube</a><a className="f-link" href="mailto:hello@signalflair.ai">hello@signalflair.ai</a></div>
         </div>
         <div className="fb">
