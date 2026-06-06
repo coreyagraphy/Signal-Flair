@@ -3,3 +3,14 @@ node_modules/
 out/
 *.log
 media-src/
+
+# local env files — real GA4 ID / GHL webhook live in Netlify env, NEVER in git
+.env
+.env.local
+.env*.local
+
+# build artifacts
+tsconfig.tsbuildinfo
+
+# scratch archives
+*.zip

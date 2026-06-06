@@ -1,0 +1,66 @@
+<svg viewBox="0 0 360 148" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Signal Flair">
+  <defs>
+    <linearGradient id="flareGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%"   stop-color="#ff5a1f" stop-opacity="0.15"/>
+      <stop offset="25%"  stop-color="#ff5a1f" stop-opacity="0.85"/>
+      <stop offset="60%"  stop-color="#fff45f" stop-opacity="1"/>
+      <stop offset="85%"  stop-color="#ff5a1f" stop-opacity="0.6"/>
+      <stop offset="100%" stop-color="#ff5a1f" stop-opacity="0"/>
+    </linearGradient>
+    <linearGradient id="flareGrad2" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%"   stop-color="#fff45f" stop-opacity="0"/>
+      <stop offset="30%"  stop-color="#fff45f" stop-opacity="0.4"/>
+      <stop offset="65%"  stop-color="#fff45f" stop-opacity="0.9"/>
+      <stop offset="100%" stop-color="#fff45f" stop-opacity="0"/>
+    </linearGradient>
+  </defs>
+
+  <!-- Circuit dots + leader line before SIGNAL -->
+  <circle cx="6"  cy="23" r="3"   fill="#00b8a9"/>
+  <line   x1="11" y1="23" x2="17" y2="23" stroke="#00b8a9" stroke-width="1.4"/>
+  <circle cx="20" cy="23" r="2"   fill="#00b8a9" opacity="0.7"/>
+  <line   x1="24" y1="23" x2="30" y2="23" stroke="#00b8a9" stroke-width="1.4"/>
+  <circle cx="33" cy="23" r="1.5" fill="#00b8a9" opacity="0.45"/>
+
+  <!-- SIGNAL — tech / mono feel, teal, spaced -->
+  <text
+    x="40" y="32"
+    font-family="'Geist Mono', 'Courier New', monospace"
+    font-weight="600"
+    font-size="20"
+    fill="#00b8a9"
+    letter-spacing="7"
+  >SIGNAL</text>
+
+  <!-- FLAIR — dominant editorial serif, near-black -->
+  <text
+    x="36" y="128"
+    font-family="Fraunces, 'Palatino Linotype', Georgia, serif"
+    font-weight="900"
+    font-size="104"
+    fill="#1a1209"
+    letter-spacing="-1"
+  >FLAIR</text>
+
+  <!-- Swoosh layer 1 — main arc, orange-to-yellow -->
+  <path
+    d="M 28 118 C 80 100, 170 88, 310 116"
+    stroke="url(#flareGrad)"
+    stroke-width="5"
+    fill="none"
+    stroke-linecap="round"
+  />
+
+  <!-- Swoosh layer 2 — inner highlight, yellow -->
+  <path
+    d="M 55 114 C 120 98, 200 90, 300 112"
+    stroke="url(#flareGrad2)"
+    stroke-width="2.5"
+    fill="none"
+    stroke-linecap="round"
+  />
+
+  <!-- Glow node at swoosh origin -->
+  <circle cx="38" cy="116" r="3.5" fill="#ff5a1f" opacity="0.7"/>
+  <circle cx="38" cy="116" r="6"   fill="#ff5a1f" opacity="0.2"/>
+</svg>

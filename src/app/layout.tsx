@@ -1,5 +1,6 @@
 import type { Metadata, Viewport } from 'next'
 import './globals.css'
+import Analytics from '@/components/Analytics'
 
 export const metadata: Metadata = {
   metadataBase: new URL('https://signalflair.ai'),
@@ -39,7 +40,7 @@ const jsonLd = {
       address: { '@type': 'PostalAddress', addressLocality: 'Indianapolis', addressRegion: 'IN', addressCountry: 'US' },
       founder: { '@type': 'Person', name: 'Corey Ellis' },
       parentOrganization: { '@type': 'Organization', name: 'Mental Vision Corp', url: 'https://mentalvision.ai' },
-      sameAs: ['https://mentalvision.ai'],
+      sameAs: ['https://www.linkedin.com/company/signal-flair-ai', 'https://mentalvision.ai'],
       contactPoint: { '@type': 'ContactPoint', email: 'hello@signalflair.ai', contactType: 'sales', areaServed: 'US' },
     },
     {
@@ -79,6 +80,7 @@ export default function RootLayout({
       <body>
         {children}
         <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
+        <Analytics />
       </body>
     </html>
   )

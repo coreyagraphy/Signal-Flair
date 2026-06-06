@@ -28,4 +28,5 @@ A business is scored across six signals: AI Search Presence, Crawl Readiness, En
 ## Contact
 - Email: hello@signalflair.ai
 - Website: https://signalflair.ai
+- LinkedIn: https://www.linkedin.com/company/signal-flair-ai
 - Parent company: Mental Vision Corp — https://mentalvision.ai

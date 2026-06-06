@@ -6,6 +6,8 @@ import { animate, createTimeline, createAnimatable, stagger, onScroll } from 'an
 import Lenis from 'lenis'
 import { gsap } from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
+import SignalFlairLogo from './SignalFlairLogo'
+import { track } from '@/lib/analytics'
 
 /**
  * SignalFlairLanding — the canonical Signal Flair landing page / homepage.
@@ -415,10 +417,13 @@ export default function SignalFlairLanding() {
     }
 
     /* ─── LEAD FORM (free AI Visibility Score request) ─── */
-    // Paste the GHL inbound-webhook URL here to go live. Empty = DEMO MODE: the form
-    // validates, shows the success state, and logs the payload to the console with NO
-    // network call — respects the "no GHL pushes" hold until the webhook is wired.
-    const GHL_WEBHOOK_URL = ''
+    // GHL inbound-webhook URL. Two ways to go live — NO other code change needed:
+    //   1. (preferred) set NEXT_PUBLIC_GHL_WEBHOOK_URL in Netlify env / .env.local — see .env.example
+    //   2. or paste it straight into GHL_WEBHOOK_OVERRIDE below for a quick local test
+    // Both unset = DEMO MODE: the form validates, shows the success state, and console.logs the
+    // payload with NO network call — respects the "no GHL pushes" hold until the webhook is wired.
+    const GHL_WEBHOOK_OVERRIDE = '' // ← paste GHL inbound-webhook URL here for a one-off local test
+    const GHL_WEBHOOK_URL = (process.env.NEXT_PUBLIC_GHL_WEBHOOK_URL ?? '').trim() || GHL_WEBHOOK_OVERRIDE
     const leadForm = document.getElementById('lead-form')
     if (leadForm) try {
       const qp = new URLSearchParams(location.search)
@@ -465,12 +470,20 @@ export default function SignalFlairLanding() {
         const label = btn.textContent; btn.disabled = true; btn.textContent = 'Running…'
         try {
           if (GHL_WEBHOOK_URL) {
-            const res = await fetch(GHL_WEBHOOK_URL, { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(payload) })
-            if (!res.ok) throw new Error('status ' + res.status)
+            // 10s timeout so a hung/slow webhook can't leave the button stuck on "Running…".
+            const ctrl = new AbortController()
+            const timer = setTimeout(() => ctrl.abort(), 10000)
+            try {
+              const res = await fetch(GHL_WEBHOOK_URL, { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(payload), signal: ctrl.signal })
+              if (!res.ok) throw new Error('status ' + res.status)
+            } finally {
+              clearTimeout(timer)
+            }
           } else {
             console.log('[Signal Flair lead — DEMO MODE, no webhook configured]', payload)
             await new Promise(r => setTimeout(r, 650))
           }
+          track('form_submit', { form_id: 'lead-form', primary_service: payload.primary_service, demo_mode: !GHL_WEBHOOK_URL })
           const wrap = document.getElementById('lead-form-wrap')
           const ok = document.getElementById('lead-success')
           if (wrap) wrap.style.display = 'none'
@@ -482,6 +495,22 @@ export default function SignalFlairLanding() {
         }
       })
     } catch (e) { console.error('[Signal Flair] lead-form init failed', e) }
+
+    /* ─── CTA ANALYTICS ─── */
+    // Every conversion CTA is an <a href="#cta"> that scrolls to the lead form. Delegate one
+    // listener on document: the founding-client apply button fires `founding_client_click`,
+    // all other score/build CTAs fire `cta_click` with the button label + section for funnel
+    // analysis. No-ops until GA_ID is set (track() guards internally).
+    const onCtaClick = (e) => {
+      const a = e.target instanceof Element ? e.target.closest('a[href="#cta"]') : null
+      if (!a) return
+      const label = (a.textContent || '').replace(/[▸\s]+/g, ' ').trim()
+      const section = a.closest('section')?.id || a.closest('[id]')?.id || ''
+      if (a.classList.contains('founding-cta')) track('founding_client_click', { label, section })
+      else track('cta_click', { label, section })
+    }
+    document.addEventListener('click', onCtaClick)
+    return () => document.removeEventListener('click', onCtaClick)
   }, [])
 
   // Head-ring arc geometry (280° ring, gap at the bottom toward the body).
@@ -525,7 +554,7 @@ export default function SignalFlairLanding() {
         <div id="hero-center-scrim" />
         <nav id="hnav">
           <div>
-            <div className="nav-logo"><span className="logo-mental">SIGNAL</span><span className="logo-vision">FLAIR</span></div>
+            <div className="nav-logo"><SignalFlairLogo onDark style={{ height: 46, width: 'auto', display: 'block' }} /></div>
             <div className="nav-logo-tag">AI Visibility + AEO · Indianapolis, IN</div>
           </div>
           <div style={{ display: 'flex', alignItems: 'center', gap: '24px' }}>
@@ -585,7 +614,7 @@ export default function SignalFlairLanding() {
       {/* ═══ STICKY NAV ═══ */}
       <nav id="site-nav">
         <div>
-          <a className="nav-logo" href="#hero" style={{ color: 'var(--charcoal)' }}>SIGNAL<em style={{ color: 'var(--orange)', fontStyle: 'normal' }}>FLAIR</em></a>
+          <a className="nav-logo" href="#hero" style={{ display: 'flex', alignItems: 'center' }}><SignalFlairLogo style={{ height: 38, width: 'auto', display: 'block' }} /></a>
           <div className="nav-logo-tag" style={{ color: 'rgba(23,19,18,0.3)' }}>AI Visibility + AEO</div>
         </div>
         <div className="snav-actions" style={{ display: 'flex', alignItems: 'center', gap: '24px' }}>
@@ -1072,7 +1101,7 @@ export default function SignalFlairLanding() {
       <footer>
         <div className="fi">
           <div>
-            <a className="f-logo" href="#hero">SIGNAL<em>FLAIR</em></a>
+            <a className="f-logo" href="#hero"><SignalFlairLogo onDark style={{ height: 40, width: 'auto', display: 'block' }} /></a>
             <div className="f-tag">AI Visibility + AEO<br />Indianapolis, Indiana · Est. 2024<br />Your business, found by AI.</div>
             <a className="f-email" href="mailto:hello@signalflair.ai">hello@signalflair.ai</a>
           </div>

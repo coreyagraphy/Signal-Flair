@@ -1,23 +1,27 @@
 # CLAUDE.md — Signal Flair
 # Claude Code reads this at the start of every session.
-# Last updated: 2026-06-07
+# Last updated: 2026-06-07 — Cinematic-Brutalism confirmed canonical (per SIGNAL_FLAIR_BRIEFING_COMPLETE.md)
 
 ---
 
 ## ⚠️ DESIGN DIRECTION — READ FIRST
 
-**Confirmed direction: Cinematic-Brutalism (cream base + dark sections).**
+**Confirmed direction: Cinematic-Brutalism. FINAL — do not change, do not migrate.**
 
-This is the build currently in the repo and it is correct. Do not migrate it.
-Do not switch to a fully dark palette. Do not swap the fonts.
+Source of truth: `C:\Users\corey\Downloads\SIGNAL_FLAIR_BRIEFING_COMPLETE.md` (§2),
+confirmed from live build screenshots. The cream + dark section mix is intentional — keep
+both; do NOT flatten to all-dark or all-light.
 
-- Fonts: Fraunces (display) + Instrument Serif italic + Geist Mono (code/mono)
-- Palette: #fff45f yellow · #ff5a1f orange · #00b8a9 teal · cream base · dark section accents
-- The mix of cream and dark sections within the same page is intentional — keep it.
+- **Palette (live build):** yellow `#fff45f` · orange `#ff5a1f` · teal `#00b8a9` · cream
+  `#f0ebe0` (approx) · near-black `#0a0a0a` · pink/magenta for AI-view warning badges. Full table below.
+- **Fonts:** Fraunces (display) + Instrument Serif italic (accents) + Geist Mono (mono/diagnostic).
+  Do NOT use Inter, Saira Condensed, Hanken Grotesk, or any condensed grotesque.
+- **A new logo is coming** — hold all brand-level visual decisions until it lands.
 
-Note: conversion sections (form, proof, founder, FAQ, Case Zero) were built externally
-in a dark flare-V3 palette. When integrating them, restyle to match Cinematic-Brutalism —
-cream/dark mix, Fraunces/Instrument Serif, correct palette tokens. Do not import them as-is.
+⛔ **DEAD for the website — never use:** Flare-V3 dark tokens `#E5FF00` / `#E85D04` /
+`#0D9488` / `#0E1413`. (An earlier in-chat "switch to Flare-V3 dark" call was REVERSED by Corey
+in favor of this briefing — Cinematic-Brutalism stands.) Never import dark flare-V3 HTML sections
+as-is; reskin to Cinematic-Brutalism first.
 
 ---
 
@@ -57,25 +61,28 @@ Founder: Corey Ellis, Indianapolis, Indiana.
 
 ## Brand — non-negotiable
 
-### Palette
+### Palette — Cinematic-Brutalism (live build; SoT = SIGNAL_FLAIR_BRIEFING_COMPLETE.md §2)
 | Token | Hex | Usage |
 |---|---|---|
-| Yellow | `#fff45f` | Primary accent, highlight, key CTAs |
-| Orange | `#ff5a1f` | Secondary accent, urgency, action |
-| Teal | `#00b8a9` | Structural UI, links, system color |
-| Cream | — | Base background (light sections) |
-| Dark | — | Dark section backgrounds (mixed in with cream — intentional) |
+| Yellow | `#fff45f` | Primary accent — score gauge, AI engine name highlights, "RIGHT." |
+| Orange | `#ff5a1f` | CTAs, italic accents ("right now?", "Weak signal."), logo box, service tags |
+| Teal | `#00b8a9` | "Found.", human-view badges, monitoring tags |
+| Cream | `#f0ebe0` (approx) | Light section backgrounds (problem/diagnostic) |
+| Near-black | `#0a0a0a` | Dark section backgrounds (hero, services, "THREE THINGS") |
+| Pink/magenta | — | AI-view warning badges (BLOCKED, MISSING, ABSENT, 0 FOUND) |
 
 The cream + dark mix within the same page is the Cinematic-Brutalism signature. Keep it.
+
+**DEAD for the website — never use:** Flare-V3 dark tokens `#E5FF00` / `#E85D04` / `#0D9488` / `#0E1413`.
 
 **Never use violet, purple, or any variation of #7B2CBF / #8A3FFC.**
 That was a bad Grok recommendation. Reject it if it appears anywhere.
 
 ### Typography
 - Display: Fraunces — distinctive, editorial, heavy weights
-- Accent/italic: Instrument Serif italic — used for emphasis and pull quotes
-- Mono: Geist Mono — code blocks, technical tokens (llms.txt examples, scores)
-- Do not use Saira Condensed or Hanken Grotesk — those are the wrong direction
+- Accent/italic: Instrument Serif italic — emphasis words ("right now?", "Weak signal.", "Found.", "RIGHT.")
+- Mono/diagnostic: Geist Mono — diagnostic panels, technical copy, body in dark sections
+- Do NOT use: Inter, Saira Condensed, Hanken Grotesk, or any condensed grotesque
 
 ### Voice
 - Direct. No fluff. No corporate speak. No fake urgency.
@@ -144,8 +151,8 @@ Clients keep everything built, even on cancel.
 ## Pending tasks (priority order)
 
 1. **Commit all pending changes** — `git add -A && git commit -m "feat: Foundation Build — [describe what's staged]"`
-2. **Wire GHL webhook** — get inbound webhook URL from GHL, replace GHL_WEBHOOK_URL in form component
-3. **GA4 analytics** — add GA4 snippet, track: form_submit, cta_click, resource_page_view, founding_client_click
+2. **Wire GHL webhook** — ✅ PREPPED (2026-06-07). Form reads the URL from `NEXT_PUBLIC_GHL_WEBHOOK_URL`. **GO LIVE: set that env var in Netlify (or `.env.local`) — no code edit.** Empty = demo mode preserved. 10s fetch timeout added so a hung webhook can't freeze the submit button.
+3. **GA4 analytics** — ✅ SCAFFOLDED (2026-06-07, disabled until ID set). gtag loader = `src/components/Analytics.tsx` (rendered in layout, returns null with no ID); helper = `src/lib/analytics.ts` (`track()`, safe no-op until live). Events wired: `form_submit` (lead form success), `cta_click` (every `#cta` CTA, with label+section), `founding_client_click` (founding apply button). Auto `page_view` covers the resource page. **GO LIVE: set `NEXT_PUBLIC_GA_ID=G-XXXXXXXXXX` in Netlify env (or `.env.local` for dev) — see `.env.example`.** No code change needed.
 4. **Integrate Case Zero section** — replace illustrative proof card with the real self-audit
 5. **LinkedIn sameAs** — Corey creates page at linkedin.com/company/setup/new, then add URL to sameAs array in Organization schema
 6. **Production deploy** — after DNS confirmed, run build, deploy out/ to Netlify
@@ -154,11 +161,14 @@ Clients keep everything built, even on cancel.
 
 ## GHL form wiring (when Corey provides the webhook URL)
 
-Find the form component. Replace:
-```js
-const GHL_WEBHOOK_URL = "PASTE_YOUR_GHL_INBOUND_WEBHOOK_URL";
-```
-With the real URL from GHL → Automation → Workflows → Inbound Webhook trigger.
+**Preferred (no code edit):** set `NEXT_PUBLIC_GHL_WEBHOOK_URL` in Netlify → Environment variables
+(or `.env.local` for dev) to the URL from GHL → Automation → Workflows → Inbound Webhook trigger,
+then redeploy. The form picks it up automatically. See `.env.example`.
+
+**Quick local test alternative:** paste the URL into `GHL_WEBHOOK_OVERRIDE` in the lead-form block
+of `SignalFlairLanding.tsx` (env var takes precedence if both are set).
+
+Empty (both unset) = DEMO MODE preserved (validates, shows success, console.logs payload, no push).
 
 GHL workflow should:
 - Create/Update Contact from payload fields

@@ -1,3 +1,6 @@
+> ⛔ **STALE (2026-05-31). Superseded by `SESSION_HANDOFF_2026-06-07.md` — read that first.**
+> Kept for history only; where it conflicts with the 2026-06-07 handoff, the newer file wins.
+
 # Signal Flair / Mental Vision — Session Handoff
 
 You're picking up an in-progress build. Read this, then continue. Date: 2026-05-31.
