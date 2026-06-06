@@ -28,6 +28,8 @@ Condensed pickup for the next session. Spans two repos:
 - LinkedIn wired for entity disambiguation → `https://www.linkedin.com/company/signal-flair-ai` added to Organization `sameAs` in `src/app/layout.tsx` AND `public/llms.txt`. Verified in served HTML.
 - CLAUDE.md design + palette sections re-aligned to Cinematic-Brutalism (after a chat directive to go Flare-V3 dark was reversed in favor of the briefing).
 
+- **Intro speed fix** (`SignalFlairLanding.tsx`) — opening was a hardcoded 8.2s cinematic (`heroStart` 7400ms) every load. Now: (1) whole timeline scales off one knob `INTRO_SPEED` (=3 → ~2.7s choreography, ~3.0s to hero); (2) plays **once per browser session** via `sessionStorage 'sf_intro_seen'` — refreshes/returns reveal in ~180ms; (3) **skipped on low-end/mobile** (`hardwareConcurrency≤2` / `deviceMemory≤2` / width<560); (4) throttled cursor hit-test + `preload="metadata"` video. Measured via `C:\Users\corey\sf-shot\measure-intro.mjs` (first 2972ms / reload 177ms / 0 errors). Tune speed by changing `INTRO_SPEED`.
+
 **Outreach (`mental-vision-pipeline`):**
 - Cold email template APPROVED + wired → `docs/signal-flair-cold-email-template.md` (cold sign-off "Corey / Signal Flair" only; reply "REPORT"; real finding leads; no price/no link/no "book a call").
 - Field Report deliverable copy APPROVED + wired → `docs/signal-flair-field-report-spec.md` ("The Field Report deliverable" section: 3 badges only/no composite score, GHL booking CTA, "See all 6 signals").

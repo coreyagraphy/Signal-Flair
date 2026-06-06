@@ -44,13 +44,15 @@ export default function SignalFlairLanding() {
     /* ─── CURSOR ─── */
     const cur = document.getElementById('cursor'), ring = document.getElementById('cursor-ring')
     const heroEl = document.getElementById('hero')
-    let mx = innerWidth / 2, my = innerHeight / 2, rx = mx, ry = my
+    let mx = innerWidth / 2, my = innerHeight / 2, rx = mx, ry = my, lastTheme = 0
     document.addEventListener('mousemove', e => {
       mx = e.clientX; my = e.clientY
       // cursor-flare spotlight — feed pointer position (relative to hero) to the radial gradient
       if (heroEl) { const r = heroEl.getBoundingClientRect(); heroEl.style.setProperty('--mx', (e.clientX - r.left) + 'px'); heroEl.style.setProperty('--my', (e.clientY - r.top) + 'px') }
-      updateCursorTheme(e.clientX, e.clientY)
-    })
+      // throttle the section hit-test — elementFromPoint+closest on every mousemove is costly and
+      // janks the intro/scroll; ~90ms is imperceptible for the orange↔yellow cursor swap.
+      const now = Date.now(); if (now - lastTheme > 90) { lastTheme = now; updateCursorTheme(e.clientX, e.clientY) }
+    }, { passive: true })
     // neon-yellow comet trail — a chain of fading dots that lag behind the tip
     const TRAIL_N = 10
     const trail = []
@@ -133,7 +135,12 @@ export default function SignalFlairLanding() {
     const introEL = document.getElementById('intro'), introClouds = document.getElementById('intro-clouds')
     function resizeC() { FC.width = AC.width = innerWidth; FC.height = AC.height = innerHeight }
     resizeC(); window.addEventListener('resize', resizeC)
-    const T = { flickerEnd: 1500, flareStart: 1500, flareDur: 1200, apexHold: 400, descentStart: 3100, descentDur: 1800, outlineStart: 4900, outlineDur: 1600, emergeStart: 6200, emergeDur: 1200, heroStart: 7400, splitStart: 7400, splitDur: 700, introEnd: 8200 }
+    // Intro pacing — ONE knob. The original timeline ran 8.2s to hero (way too slow); dividing
+    // every beat by INTRO_SPEED keeps the choreography but compresses it. 2.5 ≈ 3.3s to hero.
+    // Raise it to open faster, lower it toward 1 for the original cinematic length.
+    const INTRO_SPEED = 3
+    const _Tbase = { flickerEnd: 1500, flareStart: 1500, flareDur: 1200, apexHold: 400, descentStart: 3100, descentDur: 1800, outlineStart: 4900, outlineDur: 1600, emergeStart: 6200, emergeDur: 1200, heroStart: 7400, splitStart: 7400, splitDur: 700, introEnd: 8200 }
+    const T = Object.fromEntries(Object.entries(_Tbase).map(([k, v]) => [k, Math.round(v / INTRO_SPEED)]))
     let flickerIntv = null, introStart = 0, outlineProgress = 0, robotOpacity = 0, robotScale = 1, introDone = false
     function startFlicker() {
       fctx.fillStyle = '#000'; fctx.fillRect(0, 0, FC.width, FC.height)
@@ -413,7 +420,23 @@ export default function SignalFlairLanding() {
       if (sval) { sval.textContent = '78'; sval.style.color = c; sval.style.textShadow = '0 0 40px ' + c + '70,0 4px 26px rgba(0,0,0,0.72)' }
       if (rprog) rprog.style.stroke = c
     } else {
-      runIntro()
+      // Only play the cinematic once per browser session, and never on weak/mobile devices —
+      // refreshes, in-tab navigation, and low-end hardware go straight to the hero (same fast
+      // path as the Skip button). First impression keeps the cinematic; everything after is instant.
+      const introSeen = (() => { try { return sessionStorage.getItem('sf_intro_seen') === '1' } catch { return false } })()
+      const nav = navigator
+      const lowEnd = (nav.hardwareConcurrency || 8) <= 2 || (nav.deviceMemory || 8) <= 2 || innerWidth < 560
+      if (introSeen || lowEnd) {
+        const ie = document.getElementById('intro'); if (ie) ie.style.display = 'none'
+        const sb = document.getElementById('skip'); if (sb) sb.style.display = 'none'
+        const sl = document.getElementById('sl'); if (sl) sl.style.transform = 'translateX(-103%)'
+        const sr = document.getElementById('sr'); if (sr) sr.style.transform = 'translateX(103%)'
+        const hb = document.getElementById('hero-bg'); if (hb) { hb.style.transition = 'opacity 0.6s ease'; hb.style.opacity = '1' }
+        revealHero()
+      } else {
+        try { sessionStorage.setItem('sf_intro_seen', '1') } catch {}
+        runIntro()
+      }
     }
 
     /* ─── LEAD FORM (free AI Visibility Score request) ─── */
@@ -543,7 +566,7 @@ export default function SignalFlairLanding() {
       {/* ═══ HERO ═══ */}
       <section id="hero">
         <div id="hero-bg">
-          <video id="hero-video" autoPlay muted loop playsInline preload="auto" poster="/video/hero-poster.jpg">
+          <video id="hero-video" autoPlay muted loop playsInline preload="metadata" poster="/video/hero-poster.jpg">
             <source src="/video/signal-flair-hero.mp4" type="video/mp4" />
           </video>
           <div id="hero-grade" />
