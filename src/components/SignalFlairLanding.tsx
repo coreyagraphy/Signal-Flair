@@ -368,6 +368,14 @@ export default function SignalFlairLanding() {
       card.addEventListener('mouseleave', () => { t.rotateX(0); t.rotateY(0); t.scale(1) })
     })
 
+    /* ─── SIGNAL PROTOCOL ACCORDION — drop open on hover (pointer devices); tap still toggles on touch ─── */
+    if (window.matchMedia('(hover:hover)').matches) {
+      document.querySelectorAll('details.proto-layer').forEach((d) => {
+        d.addEventListener('mouseenter', () => { (d as HTMLDetailsElement).open = true })
+        d.addEventListener('mouseleave', () => { (d as HTMLDetailsElement).open = false })
+      })
+    }
+
     /* ─── STICKY NAV ─── */
     const siteNav = document.getElementById('site-nav')
     window.addEventListener('scroll', () => { siteNav.classList.toggle('visible', window.scrollY > window.innerHeight * 0.8) }, { passive: true })
@@ -794,12 +802,13 @@ export default function SignalFlairLanding() {
         </div>
         <div className="proto-grid">
           {SIGNAL_PROTOCOL.map((layer, li) => (
-            <div className="proto-layer reveal" key={li}>
-              <div className="proto-layer-head">
+            <details className="proto-layer reveal" key={li}>
+              <summary className="proto-layer-head">
                 <span className="proto-layer-n">{String(li + 1).padStart(2, '0')}</span>
                 <span className="proto-layer-name">{layer.name}</span>
                 <span className="proto-layer-pts">{layer.pts} pts</span>
-              </div>
+                <span className="proto-layer-caret" aria-hidden="true" />
+              </summary>
               <div className="proto-layer-q">{layer.q}</div>
               <div className="proto-checks">
                 {layer.checks.map((c) => (
@@ -809,7 +818,7 @@ export default function SignalFlairLanding() {
                   </div>
                 ))}
               </div>
-            </div>
+            </details>
           ))}
         </div>
         <div className="proto-teaser reveal">
