@@ -653,10 +653,6 @@ export default function SignalFlairLanding() {
               <div id="score-val" className="gauge-score">0</div>
               <div className="gauge-score-lbl">Your Signal Score™</div>
             </div>
-            <div className="gauge-sub">
-              <div className="gauge-sub-lead">Signal Score™ — the number that measures AI visibility. Most local businesses score under 40.</div>
-              <div className="gauge-sub-warn">If you&apos;re under 40, AI may not have enough clear signal to recommend you.</div>
-            </div>
           </div>
 
           <div className="h-side bottom">
