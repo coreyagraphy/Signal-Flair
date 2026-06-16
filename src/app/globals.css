@@ -307,7 +307,11 @@ nav#hnav{position:relative;z-index:10;display:flex;align-items:center;justify-co
 .stat-item:nth-child(2) .stat-n{color:var(--bone)}
 .stat-item:nth-child(3) .stat-n{color:var(--teal)}
 .stat-item:nth-child(4) .stat-n{color:var(--orange)}
-.stat-l{font-family:var(--signal);font-size:10.5px;color:rgba(248,241,231,0.58);letter-spacing:0.18em;text-transform:uppercase;display:block}
+.stat-l{font-family:var(--signal);font-size:12.5px;color:rgba(248,241,231,0.88);letter-spacing:0.18em;text-transform:uppercase;display:block;text-shadow:0 0 18px rgba(248,241,231,0.22)}
+.stat-item:nth-child(1) .stat-l{text-shadow:0 0 20px rgba(255,244,95,0.42)}
+.stat-item:nth-child(2) .stat-l{text-shadow:0 0 20px rgba(248,241,231,0.34)}
+.stat-item:nth-child(3) .stat-l{text-shadow:0 0 20px rgba(0,184,169,0.48)}
+.stat-item:nth-child(4) .stat-l{text-shadow:0 0 20px rgba(255,90,31,0.48)}
 .stat-d{font-family:var(--signal);font-size:11.5px;color:rgba(248,241,231,0.4);margin-top:10px;line-height:1.65}
 
 /* ════════════════════════════════════════════════════════════
@@ -320,7 +324,12 @@ nav#hnav{position:relative;z-index:10;display:flex;align-items:center;justify-co
 .proc-list{max-width:1320px;margin:56px auto 0;padding:0 56px 96px;list-style:none}
 .proc-item{display:grid;grid-template-columns:120px 1fr;gap:0 48px;padding:48px 0;border-top:1px solid var(--ink);align-items:start}
 .proc-item:last-child{border-bottom:1px solid var(--ink)}
-.proc-num{font-family:var(--flair);font-variation-settings:'opsz' 144,'wght' 380,'WONK' 1;font-size:72px;color:rgba(11,10,9,0.16);line-height:1}
+.proc-num{font-family:'Geist Mono',ui-monospace,monospace;font-weight:700;font-size:clamp(66px,8vw,92px);letter-spacing:-0.04em;color:rgba(11,10,9,0.16);line-height:1;transition:transform .25s ease,text-shadow .25s ease}
+.proc-item:nth-child(1) .proc-num{color:var(--orange);text-shadow:1px 1px 0 rgba(0,0,0,.12),2px 2px 0 rgba(0,0,0,.10),3px 3px 0 rgba(0,0,0,.08),4px 5px 9px rgba(0,0,0,.18),0 0 30px rgba(255,90,31,.32)}
+.proc-item:nth-child(2) .proc-num{color:#c98a14;text-shadow:1px 1px 0 rgba(0,0,0,.12),2px 2px 0 rgba(0,0,0,.10),3px 3px 0 rgba(0,0,0,.08),4px 5px 9px rgba(0,0,0,.18),0 0 30px rgba(201,138,20,.32)}
+.proc-item:nth-child(3) .proc-num{color:var(--teal);text-shadow:1px 1px 0 rgba(0,0,0,.12),2px 2px 0 rgba(0,0,0,.10),3px 3px 0 rgba(0,0,0,.08),4px 5px 9px rgba(0,0,0,.18),0 0 30px rgba(0,184,169,.34)}
+.proc-item:nth-child(4) .proc-num{color:var(--red);text-shadow:1px 1px 0 rgba(0,0,0,.12),2px 2px 0 rgba(0,0,0,.10),3px 3px 0 rgba(0,0,0,.08),4px 5px 9px rgba(0,0,0,.18),0 0 30px rgba(255,23,101,.30)}
+.proc-item:hover .proc-num{transform:translateY(-3px) scale(1.03)}
 .proc-bar{width:30px;height:3px;margin-bottom:14px}
 .proc-item:nth-child(1) .proc-bar{background:var(--orange)}
 .proc-item:nth-child(2) .proc-bar{background:var(--hot)}
