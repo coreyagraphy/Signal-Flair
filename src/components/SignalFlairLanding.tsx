@@ -579,7 +579,7 @@ export default function SignalFlairLanding() {
         <nav id="hnav">
           <div>
             <div className="nav-logo"><SignalFlairLogo onDark style={{ height: 46, width: 'auto', display: 'block' }} /></div>
-            <div className="nav-logo-tag">AI Visibility + AEO · Indianapolis, IN</div>
+            <div className="nav-logo-tag">AI Visibility + AEO · Based in Indiana, serving nationwide</div>
           </div>
           <div style={{ display: 'flex', alignItems: 'center', gap: '24px' }}>
             <a className="nl" href="#check">Audit</a>
@@ -610,7 +610,11 @@ export default function SignalFlairLanding() {
             </svg>
             <div className="gauge-readout">
               <div id="score-val" className="gauge-score">0</div>
-              <div className="gauge-score-lbl">Your AI Visibility Score</div>
+              <div className="gauge-score-lbl">Your Signal Score™</div>
+            </div>
+            <div className="gauge-sub">
+              <div className="gauge-sub-lead">Signal Score™ — the number that measures AI visibility. Most local businesses score under 40.</div>
+              <div className="gauge-sub-warn">If you&apos;re under 40, AI may not have enough clear signal to recommend you.</div>
             </div>
           </div>
 
@@ -657,7 +661,7 @@ export default function SignalFlairLanding() {
           ))}
         </div>
         <div className="t-row t-row-2">
-          {[['ChatGPT · Claude · Perplexity', 1], ['Gemini · Google AI Overviews', 0], ['90-Day AI Action Plans', 1], ['Monthly Visibility Monitoring', 0], ['Indianapolis, Indiana', 1], ['Discovery Is The First Connection', 0], ['ChatGPT · Claude · Perplexity', 1], ['Gemini · Google AI Overviews', 0], ['90-Day AI Action Plans', 1], ['Monthly Visibility Monitoring', 0], ['Indianapolis, Indiana', 1], ['Discovery Is The First Connection', 0]].map((it, i) => (
+          {[['ChatGPT · Claude · Perplexity', 1], ['Gemini · Google AI Overviews', 0], ['90-Day AI Action Plans', 1], ['Monthly Visibility Monitoring', 0], ['Indiana-Based · Serving Nationwide', 1], ['Discovery Is The First Connection', 0], ['ChatGPT · Claude · Perplexity', 1], ['Gemini · Google AI Overviews', 0], ['90-Day AI Action Plans', 1], ['Monthly Visibility Monitoring', 0], ['Indiana-Based · Serving Nationwide', 1], ['Discovery Is The First Connection', 0]].map((it, i) => (
             <div key={i} className={`t-item${it[1] ? ' hi' : ''}`}>{it[0]}<div className="t-sep" /></div>
           ))}
         </div>
@@ -844,7 +848,7 @@ export default function SignalFlairLanding() {
             <div className="pc-kicker">Case Zero · 06.06.2026</div>
             <div className="pc-top"><span className="pc-label">Before</span><span className="pc-tag">Self-Audit</span></div>
             <span className="pc-score">18<small>/100</small></span>
-            <div className="pc-scorelbl">AI Visibility Score</div>
+            <div className="pc-scorelbl">Signal Score™</div>
             <div className="pc-row"><span className="pc-name">AI Search Presence</span><span className="pc-stamp no">4/100</span></div>
             <div className="pc-row"><span className="pc-name">Entity Clarity</span><span className="pc-stamp no">5/100</span></div>
             <div className="pc-row"><span className="pc-name">Crawl Readiness</span><span className="pc-stamp no">35/100</span></div>
@@ -855,7 +859,7 @@ export default function SignalFlairLanding() {
           <div className="proof-card after">
             <div className="pc-top"><span className="pc-label">Target State</span><span className="pc-tag">Projected</span></div>
             <span className="pc-score count">91<small>/100</small></span>
-            <div className="pc-scorelbl">AI Visibility Score</div>
+            <div className="pc-scorelbl">Signal Score™</div>
             <div className="pc-row"><span className="pc-name">Citations found</span><span className="pc-stamp yes">14</span></div>
             <div className="pc-row"><span className="pc-name">ChatGPT · Claude · Perplexity</span><span className="pc-stamp yes">Yes</span></div>
             <div className="pc-row"><span className="pc-name">Gemini · Google AI</span><span className="pc-stamp yes">Yes</span></div>
@@ -869,7 +873,7 @@ export default function SignalFlairLanding() {
             <div className="founding-l">
               <div className="founding-eyebrow">Founding Client Program</div>
               <div className="founding-title">Be one of the first <em>10.</em></div>
-              <div className="founding-body">We&apos;re building proof the honest way — real before-and-after AI Visibility Scores from real businesses. The first 10 founding clients get the full Foundation Build at the founding rate, in exchange for letting us document the results. This isn&apos;t a discount for its own sake — it&apos;s a partnership to create measurable proof that this works.</div>
+              <div className="founding-body">We&apos;re building proof the honest way — real before-and-after Signal Scores™ from real businesses. The first 10 founding clients get the full Foundation Build at the founding rate, in exchange for letting us document the results. This isn&apos;t a discount for its own sake — it&apos;s a partnership to create measurable proof that this works.</div>
               <div className="founding-ask">In return: permission to share your before/after scores (anonymized if you prefer) and one short quote once results are in.</div>
               <a className="founding-cta" href="#cta">▸ Apply to become a founding client</a>
               <div className="founding-micro">Genuine first-mover offer · 10 spots · results documented transparently</div>
@@ -904,7 +908,7 @@ export default function SignalFlairLanding() {
             <span className="pw pw4">right</span>
             <span className="pw pw5">fit.</span>
           </div>
-          <div className="pricing-sub">Every tier runs on the same engine. Your AI Visibility Score decides which one fits — and where you start.</div>
+          <div className="pricing-sub">Every tier runs on the same engine. Your Signal Score™ decides which one fits — and where you start.</div>
         </div>
         <div className="price-how reveal">
           <div className="ph-lead">You don&apos;t pick a package. Your free <em>Field Report</em> sets your starting line.</div>
@@ -1039,8 +1043,8 @@ export default function SignalFlairLanding() {
         </div>
         <div className="faq-list reveal">
           <details className="faq-item" open>
-            <summary className="faq-q">What is an AI Visibility Score?<span className="faq-ic" aria-hidden="true" /></summary>
-            <div className="faq-a">A 0–100 measure of how findable, readable, and recommendable your business is to AI engines. We run you through ChatGPT, Claude, Perplexity, Gemini, and Google AI across 7 categories — crawl access, llms.txt, schema, entity clarity, review signal, authority content, and conversion readiness — then show you the number and exactly what&apos;s pulling it down.</div>
+            <summary className="faq-q">What is a Signal Score™?<span className="faq-ic" aria-hidden="true" /></summary>
+            <div className="faq-a">Your Signal Score™ is a 0–100 measure of how findable, readable, and recommendable your business is to AI engines — scored across the six layers of the Signal Protocol™: Access, Structure, Entity, Architecture, Trust, and Live Visibility. We run you through ChatGPT, Claude, Perplexity, Gemini, and Google AI, then show you the number and exactly what&apos;s pulling it down.</div>
           </details>
           <details className="faq-item">
             <summary className="faq-q">How is this different from SEO?<span className="faq-ic" aria-hidden="true" /></summary>
@@ -1156,7 +1160,7 @@ export default function SignalFlairLanding() {
         <div className="fi">
           <div>
             <a className="f-logo" href="#hero"><SignalFlairLogo onDark style={{ height: 40, width: 'auto', display: 'block' }} /></a>
-            <div className="f-tag">AI Visibility + AEO<br />Indianapolis, Indiana · Est. 2024<br />Your business, found by AI.</div>
+            <div className="f-tag">AI Visibility + AEO<br />Based in Indiana · Serving businesses nationwide · Est. 2026<br />Your business, found by AI.</div>
             <a className="f-email" href="mailto:outreach@trysignalflair.com">outreach@trysignalflair.com</a>
           </div>
           <div><div className="f-head">Services</div><a className="f-link" href="#signal">AI Visibility Audit</a><a className="f-link" href="#signal">Foundation Build</a><a className="f-link" href="#signal">Stay Found System</a><a className="f-link" href="#check">What We Check</a><a className="f-link" href="#pricing">Pricing</a></div>
