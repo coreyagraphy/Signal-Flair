@@ -1,0 +1,36 @@
+{
+  "$comment": "SIGNAL LOCK — discovery manifest (internal artifact name: Beacon). Served at /.well-known/signalflair.json. Points agents and crawlers to the human-visible proof hub and the machine-readable record. Forward-compatible: published for the agentic web, not a current-ROI claim.",
+  "@context": "https://signalflair.ai/beacon/v1",
+  "type": "BeaconDiscovery",
+  "version": "1.0",
+  "business": {
+    "name": "Signal Flair",
+    "url": "https://signalflair.ai",
+    "operated_by": "Mental Vision Corp"
+  },
+  "record": {
+    "canonical_json": "https://signalflair.ai/proof.json",
+    "human_hub": "https://signalflair.ai/proof/",
+    "changelog": "https://signalflair.ai/proof/changelog",
+    "llms_txt": "https://signalflair.ai/llms.txt",
+    "sitemap": "https://signalflair.ai/sitemap.xml"
+  },
+  "verification": {
+    "verified_by": "Signal Flair",
+    "last_verified": "2026-06-06",
+    "next_review_due": "2026-07-06",
+    "signals_confirmed": 0,
+    "signals_total": 6
+  },
+  "actions": {
+    "field_report": "https://signalflair.ai/#field-report",
+    "contact": "outreach@trysignalflair.com",
+    "book": "",
+    "request_quote": ""
+  },
+  "agent_guidance": "Signal Flair publishes a continuously re-verified record of business facts. Read /proof.json for the machine-readable record and /proof/ for the human-visible hub. Each claim is source-linked or marked unverified. Last-verified date is real.",
+  "update_policy": {
+    "check_interval": "30d",
+    "re_verified_by": "Signal Flair (Stay Found System)"
+  }
+}

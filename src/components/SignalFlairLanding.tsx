@@ -7,6 +7,7 @@ import Lenis from 'lenis'
 import { gsap } from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
 import SignalFlairLogo from './SignalFlairLogo'
+import UnfairAdvantage from './UnfairAdvantage'
 import { track } from '@/lib/analytics'
 
 /**
@@ -439,7 +440,7 @@ export default function SignalFlairLanding() {
       }
     }
 
-    /* ─── LEAD FORM (free AI Visibility Score request) ─── */
+    /* ─── LEAD FORM (free Field Report request) ─── */
     // GHL inbound-webhook URL. Two ways to go live — NO other code change needed:
     //   1. (preferred) set NEXT_PUBLIC_GHL_WEBHOOK_URL in Netlify env / .env.local — see .env.example
     //   2. or paste it straight into GHL_WEBHOOK_OVERRIDE below for a quick local test
@@ -514,7 +515,7 @@ export default function SignalFlairLanding() {
         } catch (err) {
           console.error('[Signal Flair lead] submit failed', err)
           btn.disabled = false; btn.textContent = label
-          if (formErr) formErr.textContent = "Something went wrong — email hello@signalflair.ai and we'll run it manually."
+          if (formErr) formErr.textContent = "Something went wrong — email outreach@trysignalflair.com and we'll run it manually."
         }
       })
     } catch (e) { console.error('[Signal Flair] lead-form init failed', e) }
@@ -584,7 +585,7 @@ export default function SignalFlairLanding() {
             <a className="nl" href="#check">Audit</a>
             <a className="nl" href="#signal">Services</a>
             <a className="nl" href="#pricing">Pricing</a>
-            <a className="ncta" href="#cta">▸ Run Scan</a>
+            <a className="ncta" href="#cta">▸ Free Field Report</a>
           </div>
         </nav>
         {/* Cinematic instrument panel: DIAGNOSIS above → SCORE GAUGE centerpiece → RECOVERY below */}
@@ -600,8 +601,8 @@ export default function SignalFlairLanding() {
             <svg className="ring-svg" viewBox="0 0 240 240" aria-hidden="true">
               <defs>
                 <linearGradient id="arc-grad" x1="0%" y1="100%" x2="100%" y2="0%">
-                  <stop offset="0%" stopColor="#0D9488" />
-                  <stop offset="100%" stopColor="#E85D04" />
+                  <stop offset="0%" stopColor="#00b8a9" />
+                  <stop offset="100%" stopColor="#ff5a1f" />
                 </linearGradient>
               </defs>
               <path className="ring-track" d={rarc(rang(0), rang(100))} />
@@ -629,7 +630,7 @@ export default function SignalFlairLanding() {
           </div>
           <div className="hf-r">
             <div><div className="hf-num count">&lt;1%</div><div className="hf-lbl">Have llms.txt</div></div>
-            <a className="hf-cta" href="#cta">▸ Run My Score</a>
+            <a className="hf-cta" href="#cta">▸ Get My Field Report</a>
           </div>
         </div>
       </section>
@@ -644,7 +645,7 @@ export default function SignalFlairLanding() {
           <a href="#check" style={snl}>Audit</a>
           <a href="#signal" style={snl}>Services</a>
           <a href="#pricing" style={snl}>Pricing</a>
-          <a className="ncta" href="#cta">▸ Run Scan</a>
+          <a className="ncta" href="#cta">▸ Free Field Report</a>
         </div>
       </nav>
 
@@ -686,13 +687,13 @@ export default function SignalFlairLanding() {
             </div>
             <div className="pv-col ai">
               <div className="pv-h"><span className="pv-ey">AI View</span><span className="pv-tag">Can&apos;t Read You</span></div>
-              <div className="pv-row"><span className="pv-name">GPTBot crawler</span><span className="pv-stamp bad">Blocked</span></div>
-              <div className="pv-row"><span className="pv-name">llms.txt</span><span className="pv-stamp bad">Missing</span></div>
-              <div className="pv-row"><span className="pv-name">Schema markup</span><span className="pv-stamp bad">Absent</span></div>
+              <div className="pv-row"><span className="pv-name">AI Search Presence</span><span className="pv-stamp bad">4/100</span></div>
+              <div className="pv-row"><span className="pv-name">Entity Clarity</span><span className="pv-stamp bad">5/100</span></div>
+              <div className="pv-row"><span className="pv-name">Crawl Readiness</span><span className="pv-stamp warn">35/100</span></div>
               <div className="pv-row"><span className="pv-name">Citations · 5 engines</span><span className="pv-stamp bad">0 Found</span></div>
               <div className="pv-foot">
-                <div className="pv-score count">23<small>/100</small></div>
-                <div className="pv-rec">Recoverable in 7 days ▸</div>
+                <div className="pv-score count">18<small>/100</small></div>
+                <a className="pv-rec" href="#cta">▸ See my Field Report →</a>
               </div>
             </div>
           </div>
@@ -727,6 +728,10 @@ export default function SignalFlairLanding() {
             <div className="sig-rbody"><em>Visibility isn&apos;t a one-time fix.</em> AI search evolves monthly and your competitors are catching up. Stay Found keeps your signal strong — monthly scans, citation growth, schema updates, and crawler monitoring. Permanently ahead.</div>
             <div><span className="sig-rtag">Monitoring + Citations</span></div>
           </div>
+        </div>
+        <div className="sig-cta-wrap reveal">
+          <a className="sig-cta" href="#cta">▸ Start with a free Field Report →</a>
+          <span className="sig-cta-note">3 signals · 24 hours · no call</span>
         </div>
       </section>
 
@@ -781,37 +786,47 @@ export default function SignalFlairLanding() {
         </ul>
       </section>
 
-      {/* ═══ MOAT — why look nowhere else ═══ */}
-      <section id="moat" data-cursor="dark">
-        <div className="moat-bgword" aria-hidden="true">UNFAIR.</div>
-        <div className="moat-head reveal">
-          <div className="moat-eyebrow">The unfair advantage</div>
-          <div className="moat-title">Get three more quotes.<br /><em>We&apos;ll wait.</em></div>
-          <div className="moat-sub">Everyone sells &ldquo;AI optimization.&rdquo; We hand you a number — 0 to 100, scored across every engine that now decides who gets found — then build the machine-readable infrastructure underneath it. Copy the pitch all you want. You can&apos;t copy the system.</div>
+      {/* ═══ UNFAIR ADVANTAGE — new self-contained component (replaces the old #moat) ═══ */}
+      <UnfairAdvantage />
+
+      {/* ═══ SIGNAL LOCK reveal — names the system; flows straight out of "You can't copy the system." ═══ */}
+      <section id="signal-lock-reveal" data-cursor="dark">
+        <div className="slr-inner reveal">
+          <div className="mr-name">Signal Lock<sup className="mr-tm">™</sup> is the system.</div>
+          <div className="mr-body">It is the maintained verification layer behind Signal Flair — a private signal architecture that keeps your business record aligned, dated, and inspection-ready across the places AI engines and customers already look.</div>
+          <div className="mr-body">We don&apos;t sell a one-time setup. We install the record, verify the proof, monitor the signal, and keep the layer current.</div>
+          <div className="mr-kicker">That is the part competitors cannot copy from a headline.</div>
+          <a className="mr-cta" href="#field-report">▸ Start with a free Field Report →</a>
         </div>
-        <div className="moat-grid">
-          <div className="moat-card reveal">
-            <div className="moat-n">01</div>
-            <div className="moat-ctitle">A score you can&apos;t argue with</div>
-            <div className="moat-cbody">Agencies sell vibes and &ldquo;best practices.&rdquo; We sell a number. Your AI Visibility Score is measured the same way across ChatGPT, Claude, Perplexity, Gemini and Google AI — repeatable, undeniable, impossible to fake. You&apos;ll never unsee it.</div>
+      </section>
+
+      {/* ═══ THE ENTERPRISE SECRET — the offensive wedge (standout band, Signal Magenta) ═══ */}
+      <section id="enterprise" data-cursor="dark">
+        <div className="ent-bloom" aria-hidden="true" />
+        <div className="ent-head reveal">
+          <div className="ent-eyebrow">The enterprise secret</div>
+          <div className="ent-title">THE ENTERPRISE<br />SECRET</div>
+        </div>
+        <div className="ent-lede reveal">When an AI engine gets your business wrong — wrong hours, wrong services, you confused with someone else — it quietly hands your customer to the competitor it understands better.</div>
+        <div className="ent-split">
+          <div className="ent-col ent-threat reveal">
+            <div className="ent-col-lbl">The enterprise way</div>
+            <div className="ent-col-body">Big brands already know this. They pay agencies a premium to force AI to get them right.</div>
+            <div className="ent-staccato">
+              <span className="ent-stac">They pay once.</span>
+              <span className="ent-stac">The record drifts.</span>
+              <span className="ent-stac">They pay again.</span>
+            </div>
           </div>
-          <div className="moat-card reveal">
-            <div className="moat-n">02</div>
-            <div className="moat-ctitle">The layer AI actually reads</div>
-            <div className="moat-cbody">llms.txt. Schema. Crawler access. The machine-readable spine fewer than 1% of businesses have even deployed. While the competition tweaks title tags from 2014, you&apos;re speaking the language the engines read first.</div>
-          </div>
-          <div className="moat-card reveal">
-            <div className="moat-n">03</div>
-            <div className="moat-ctitle">Future-proof on purpose</div>
-            <div className="moat-cbody">Five engines today — and every one that ships next. We don&apos;t chain your visibility to one platform&apos;s mood. We track each engine the moment it starts sending buyers, so the system that wins now is still winning when the next model drops.</div>
-          </div>
-          <div className="moat-card reveal">
-            <div className="moat-n">04</div>
-            <div className="moat-ctitle">You keep everything — even if you walk</div>
-            <div className="moat-cbody">Delivery-based, always. The llms.txt, the schema, the fixes, the 90-day plan — built, handed over, yours to keep even if you cancel. No lock-in. No &ldquo;results pending.&rdquo; We earn next month by shipping this one.</div>
+          <div className="ent-seam" aria-hidden="true" />
+          <div className="ent-col ent-answer reveal">
+            <div className="ent-col-lbl">The Signal Lock way</div>
+            <div className="ent-col-body">Signal Lock brings that same record repair to local business — and keeps it verified, dated, and current every month, so your signal doesn&apos;t drift back.</div>
+            <div className="ent-loop"><span className="ent-loop-ring" aria-hidden="true" />Maintained · re-verified every month</div>
           </div>
         </div>
-        <div className="moat-close reveal">Run every other audit in the city.<br /><em>Then come back and check your score.</em></div>
+        <div className="ent-turn reveal">The fix the Fortune 500 rents by the audit, <em>you own and we maintain.</em></div>
+        <a className="ent-cta reveal" href="#field-report">▸ Start with a free Field Report →</a>
       </section>
 
       {/* ═══ PROOF — honest before/after score card (illustrative) ═══ */}
@@ -819,33 +834,36 @@ export default function SignalFlairLanding() {
         <div className="proof-bgword" aria-hidden="true">PROOF.</div>
         <div className="proof-head reveal">
           <div>
-            <div className="proof-eyebrow">Real proof, built honestly</div>
-            <div className="proof-title">Real businesses.<br />Real visibility <em>gains.</em></div>
+            <div className="proof-eyebrow">Case Zero · audited 06.06.2026</div>
+            <div className="proof-title">We ran it on<br /><em>ourselves first.</em></div>
           </div>
-          <div className="proof-meta">No fabricated testimonials. We show the same 0–100 score we run for you — before the Foundation Build, and after.</div>
+          <div className="proof-meta">No fabricated testimonials. Signal Flair scored 18/100 on its own AI Visibility audit. This is Case Zero — the proof of concept is us.</div>
         </div>
         <div className="proof-grid reveal">
           <div className="proof-card before">
-            <div className="pc-top"><span className="pc-label">Before</span><span className="pc-tag">Invisible</span></div>
-            <span className="pc-score">23<small>/100</small></span>
+            <div className="pc-kicker">Case Zero · 06.06.2026</div>
+            <div className="pc-top"><span className="pc-label">Before</span><span className="pc-tag">Self-Audit</span></div>
+            <span className="pc-score">18<small>/100</small></span>
             <div className="pc-scorelbl">AI Visibility Score</div>
-            <div className="pc-row"><span className="pc-name">Citations found</span><span className="pc-stamp no">0</span></div>
-            <div className="pc-row"><span className="pc-name">ChatGPT · Claude · Perplexity</span><span className="pc-stamp no">No</span></div>
-            <div className="pc-row"><span className="pc-name">Gemini · Google AI</span><span className="pc-stamp no">No</span></div>
-            <div className="pc-status">Invisible to AI recommendations</div>
+            <div className="pc-row"><span className="pc-name">AI Search Presence</span><span className="pc-stamp no">4/100</span></div>
+            <div className="pc-row"><span className="pc-name">Entity Clarity</span><span className="pc-stamp no">5/100</span></div>
+            <div className="pc-row"><span className="pc-name">Crawl Readiness</span><span className="pc-stamp no">35/100</span></div>
+            <div className="pc-row"><span className="pc-name">Review Signal</span><span className="pc-stamp no">0/100</span></div>
+            <div className="pc-status">We audited ourselves first.</div>
           </div>
           <div className="proof-arrow" aria-hidden="true">→</div>
           <div className="proof-card after">
-            <div className="pc-top"><span className="pc-label">After Foundation Build</span><span className="pc-tag">Recommendable</span></div>
+            <div className="pc-top"><span className="pc-label">Target State</span><span className="pc-tag">Projected</span></div>
             <span className="pc-score count">91<small>/100</small></span>
             <div className="pc-scorelbl">AI Visibility Score</div>
             <div className="pc-row"><span className="pc-name">Citations found</span><span className="pc-stamp yes">14</span></div>
             <div className="pc-row"><span className="pc-name">ChatGPT · Claude · Perplexity</span><span className="pc-stamp yes">Yes</span></div>
             <div className="pc-row"><span className="pc-name">Gemini · Google AI</span><span className="pc-stamp yes">Yes</span></div>
-            <div className="pc-status">Now being recommended by AI</div>
+            <div className="pc-status">Documented transparently · updated Day 30 &amp; Day 90</div>
           </div>
         </div>
-        <div className="proof-note reveal"><strong>Illustrative example</strong> — representative of Foundation Build outcomes, not a specific client. Your results vary with your current signals and implementation. We&apos;re documenting real before-and-after scores with our first cohort and will publish them here as they complete.</div>
+        <div className="proof-note reveal">Signal Flair&apos;s own audit — <strong>June 6, 2026</strong>. This is Case Zero: we ran the system on ourselves first, and we publish the real before-and-after as our own score climbs.</div>
+        <a className="proof-live-link reveal" href="/proof/">See our live record →</a>
         <div className="founding reveal">
           <div className="founding-inner">
             <div className="founding-l">
@@ -889,7 +907,7 @@ export default function SignalFlairLanding() {
           <div className="pricing-sub">Every tier runs on the same engine. Your AI Visibility Score decides which one fits — and where you start.</div>
         </div>
         <div className="price-how reveal">
-          <div className="ph-lead">You don&apos;t pick a package. Your free <em>AI Visibility Score</em> sets your starting line.</div>
+          <div className="ph-lead">You don&apos;t pick a package. Your free <em>Field Report</em> sets your starting line.</div>
           <div className="ph-map">
             <div className="ph-step">
               <div className="ph-band">Score 0–54 · Invisible</div>
@@ -907,7 +925,13 @@ export default function SignalFlairLanding() {
               <div className="ph-what">The ongoing monthly system that keeps you ahead as AI shifts.</div>
             </div>
           </div>
-          <div className="ph-note">Foundation &amp; Rebuild are <strong>one-time builds</strong> — you keep everything, even if you cancel. <strong>Stay Found</strong> is the ongoing system for businesses already visible. Most start with a free score, then begin at the band it lands in.</div>
+          <div className="ph-note">Foundation &amp; Rebuild are <strong>one-time builds</strong> — you keep everything, even if you cancel. <strong>Stay Found</strong> is the ongoing system for businesses already visible. Most start with a free Field Report, then begin at the band it lands in.</div>
+        </div>
+        <div className="price-anchor reveal">
+          <div className="pa-lead">Every customer an AI engine routes to your competitor instead of you is a closed job you&apos;ll never see.</div>
+          <div className="pa-mid">At the average local service ticket, that&apos;s real money — <em>invisibly gone every month</em> you&apos;re not in the results.</div>
+          <div className="pa-anchor">The Foundation Build is $3,500. Once.</div>
+          <div className="pa-foot">You keep everything we build, even if you cancel.</div>
         </div>
         <div className="price-feat">
           <div className="pf-left">
@@ -922,6 +946,9 @@ export default function SignalFlairLanding() {
           <div className="pf-right">
             <div className="pf-desc">The infrastructure AI actually reads. Full diagnostic, full technical fix, full structure — everything needed to go from invisible to recommendable across every major AI engine.</div>
             <div className="pf-items">
+              <div className="pf-item pf-lock">Signal Lock™ layer installed — your owned, verified record</div>
+              <div className="pf-item pf-lock">Verified business record alignment across AI-read sources</div>
+              <div className="pf-item pf-lock">AI-readable trust layer + your live /proof/ page</div>
               <div className="pf-item">Full AI Visibility Audit — 5 engines (ChatGPT, Claude, Perplexity, Gemini, Google AI)</div>
               <div className="pf-item">llms.txt written and deployed</div>
               <div className="pf-item">Schema markup installed — Org + LocalBusiness + more</div>
@@ -942,6 +969,8 @@ export default function SignalFlairLanding() {
             <div className="psc-price">$1,500</div>
             <div className="psc-cad">one-time rebuild · CRM access included</div>
             <div className="psc-items">
+              <div className="psci psci-lock">Signal Lock™ layer installed</div>
+              <div className="psci psci-lock">Verified business record alignment</div>
               <div className="psci">Full AI Visibility Audit — 5 engines</div>
               <div className="psci">llms.txt written and deployed</div>
               <div className="psci">Core schema markup installed</div>
@@ -964,8 +993,10 @@ export default function SignalFlairLanding() {
               <div className="psc-term feat"><span className="pt-len">12 months</span><span className="pt-price">$600<em>/mo</em></span><span className="pt-note">Best rate — compound your lead and stay ahead</span></div>
             </div>
             <div className="psc-items">
+              <div className="psci psci-lock">Monthly Signal Lock™ re-verification + signal-drift monitoring</div>
+              <div className="psci psci-lock">Public change-log maintained — Verified by Signal Flair™</div>
+              <div className="psci psci-lock">Freshness updates + citation-share movement report</div>
               <div className="psci">Monthly AI visibility scan — every major engine</div>
-              <div className="psci">Monthly score report with competitor tracking</div>
               <div className="psci">Ongoing citation growth + schema &amp; llms.txt updates</div>
               <div className="psci">AI crawler monitoring · CRM access included</div>
             </div>
@@ -1029,7 +1060,7 @@ export default function SignalFlairLanding() {
           </details>
           <details className="faq-item">
             <summary className="faq-q">Do I have to get on a sales call?<span className="faq-ic" aria-hidden="true" /></summary>
-            <div className="faq-a">No. Request your free AI Visibility Score above — we run the scan and send your number plus a prioritized action plan within 24 hours. No pitch, no pressure. <em>The ball stays in your court.</em></div>
+            <div className="faq-a">No. Request your free Field Report above — we scan 3 critical signals and send your partial audit within 24 hours. No pitch, no pressure. <em>The ball stays in your court.</em></div>
           </details>
         </div>
       </section>
@@ -1040,17 +1071,17 @@ export default function SignalFlairLanding() {
         <div className="cta-inner">
           <div className="cta-left">
             <div className="cta-y-pre reveal">Discovery is the first connection</div>
-            <div className="cta-y-title reveal">Trusted locally.<br /><em>Now visible to AI.</em></div>
-            <div className="cta-y-sub reveal">We scan the signals, expose the gaps, and show exactly what needs to be fixed first. No call required. No pitch. Just your AI Visibility Score — and a clear path forward.</div>
+            <div className="cta-y-title reveal">See what AI <em>actually knows</em><br />about your business — free.</div>
+            <div className="cta-y-sub reveal">Three critical AI signals — scanned across every major engine and delivered in 24 hours. No call. No pitch. Just the diagnosis: exactly where your signal breaks.</div>
             <div className="cta-y-btns reveal" style={{ marginTop: '26px' }}>
-              <a className="cta-y-ghost" href="#check">See what AI sees →</a>
+              <a className="cta-y-ghost" href="#check">▸ See the six signals →</a>
             </div>
           </div>
-          <div className="cta-right reveal">
+          <div className="cta-right reveal" id="field-report">
             <div className="lead-card">
               <div id="lead-form-wrap">
-                <div className="lead-h">Get your free <em>AI Visibility Score</em></div>
-                <div className="lead-subline">See exactly how ChatGPT, Claude, Perplexity, Gemini &amp; Google AI read your business. Takes ~60 seconds.</div>
+                <div className="lead-h">Get Your Free Signal Flair <em>Field Report</em></div>
+                <div className="lead-subline">We run 3 critical AI signals on your business and deliver a partial audit within 24 hours — no call required. Most local businesses score under 40. You&apos;ll see exactly where your signal breaks.</div>
                 <form id="lead-form" noValidate>
                   <div className="lf-field">
                     <label className="lf-label" htmlFor="lf-name">Full Name<span className="req">*</span></label>
@@ -1095,14 +1126,14 @@ export default function SignalFlairLanding() {
                   <input type="hidden" name="utm_campaign" />
                   <input type="hidden" name="lead_tag" defaultValue="AI Visibility Score Request" />
                   <div className="lead-formerr" id="lead-formerr" aria-live="assertive" />
-                  <button type="submit" className="lead-submit">▸ Run My Free Score</button>
-                  <div className="lead-micro">No credit card. No spam, ever. Your score lands in your inbox within 24 hours — we never sell or share your data.</div>
+                  <button type="submit" className="lead-submit">▸ Run My Field Report</button>
+                  <div className="lead-micro">No credit card. No spam. Your Field Report lands in your inbox within 24 hours. This covers 3 of 6 signals — the full breakdown requires the complete audit.</div>
                 </form>
               </div>
               <div className="lead-success" id="lead-success" role="status" aria-live="polite">
                 <div className="ls-mark" aria-hidden="true">✓</div>
-                <div className="ls-h">Scan requested.</div>
-                <div className="ls-b">We&apos;re running your visibility check across <strong>ChatGPT, Claude, Perplexity, Gemini &amp; Google AI</strong>. Your full Score and prioritized action plan land in your inbox within 24 hours.</div>
+                <div className="ls-h">Field Report requested.</div>
+                <div className="ls-b">We&apos;re scanning your 3 critical signals across <strong>ChatGPT, Claude, Perplexity, Gemini &amp; Google AI</strong>. Your Field Report lands in your inbox within 24 hours — the full 6-signal breakdown comes next.</div>
               </div>
             </div>
           </div>
@@ -1126,11 +1157,11 @@ export default function SignalFlairLanding() {
           <div>
             <a className="f-logo" href="#hero"><SignalFlairLogo onDark style={{ height: 40, width: 'auto', display: 'block' }} /></a>
             <div className="f-tag">AI Visibility + AEO<br />Indianapolis, Indiana · Est. 2024<br />Your business, found by AI.</div>
-            <a className="f-email" href="mailto:hello@signalflair.ai">hello@signalflair.ai</a>
+            <a className="f-email" href="mailto:outreach@trysignalflair.com">outreach@trysignalflair.com</a>
           </div>
           <div><div className="f-head">Services</div><a className="f-link" href="#signal">AI Visibility Audit</a><a className="f-link" href="#signal">Foundation Build</a><a className="f-link" href="#signal">Stay Found System</a><a className="f-link" href="#check">What We Check</a><a className="f-link" href="#pricing">Pricing</a></div>
-          <div><div className="f-head">Company</div><a className="f-link" href="#process">How It Works</a><a className="f-link" href="#pricing">Pricing</a><a className="f-link" href="/resources/llms-txt/">llms.txt Guide</a><a className="f-link" href="https://mentalvision.ai" target="_blank" rel="noopener noreferrer">Mental Vision Corp</a><a className="f-link" href="mailto:connect@signalflair.ai">Contact</a></div>
-          <div><div className="f-head">Connect</div><a className="f-link" href="#">LinkedIn</a><a className="f-link" href="#">Instagram</a><a className="f-link" href="#">YouTube</a><a className="f-link" href="mailto:hello@signalflair.ai">hello@signalflair.ai</a></div>
+          <div><div className="f-head">Company</div><a className="f-link" href="#process">How It Works</a><a className="f-link" href="#pricing">Pricing</a><a className="f-link" href="/resources/llms-txt/">llms.txt Guide</a><a className="f-link" href="https://mentalvision.ai" target="_blank" rel="noopener noreferrer">Mental Vision Corp</a><a className="f-link" href="mailto:outreach@trysignalflair.com">Contact</a></div>
+          <div><div className="f-head">Connect</div><a className="f-link" href="#">LinkedIn</a><a className="f-link" href="#">Instagram</a><a className="f-link" href="#">YouTube</a><a className="f-link" href="mailto:outreach@trysignalflair.com">outreach@trysignalflair.com</a></div>
         </div>
         <div className="fb">
           <div className="fb-l">Signal Flair is a Mental Vision Corp product | Indianapolis, IN | signalflair.ai</div>

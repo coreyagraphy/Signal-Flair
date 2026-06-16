@@ -1,0 +1,109 @@
+{
+  "$comment": "SIGNAL LOCK — canonical client-owned record (internal artifact name: Beacon). Served at /proof.json. Mirrors the visible /proof/ pages exactly. Every claim carries a source OR verified:false. Filled with Signal Flair Case Zero (June 6, 2026).",
+  "@context": "https://signalflair.ai/beacon/v1",
+  "type": "BeaconRecord",
+  "version": "1.0",
+  "business": {
+    "name": "Signal Flair",
+    "operated_by": "Mental Vision Corp",
+    "url": "https://signalflair.ai",
+    "category": "AI Visibility & Reputation Conversion",
+    "disambiguation": "Signal Flair is an Indianapolis-based AI visibility / Answer Engine Optimization (AEO) agency. It is NOT the medical MRI sequence FLAIR (Fluid-Attenuated Inversion Recovery) used in radiology/neuroimaging, and it is a separate company from SignalFlare.ai (restaurant analytics).",
+    "service_area": ["Indianapolis, IN", "United States (remote)"],
+    "phone": "",
+    "email": "outreach@trysignalflair.com",
+    "google_business_profile_url": "",
+    "same_as": [
+      "https://www.linkedin.com/company/signal-flair-ai",
+      "https://mentalvision.ai"
+    ]
+  },
+  "verification": {
+    "verified_by": "Signal Flair",
+    "last_verified": "2026-06-06",
+    "next_review_due": "2026-07-06",
+    "signals_confirmed": 0,
+    "signals_total": 6,
+    "method": "Each claim checked against a cited public source. Unverified claims are marked verified:false and never stamped.",
+    "changelog_url": "https://signalflair.ai/proof/changelog"
+  },
+  "case_zero": {
+    "is_case_zero": true,
+    "statement": "Signal Flair audited itself first. Scored 18/100 on June 6, 2026. Documented transparently. Re-measured at Day 30 and Day 90.",
+    "overall_score": 18,
+    "scored_on": "2026-06-06",
+    "signals": [
+      { "signal": "AI Search Presence", "score": 4, "status": "Critical" },
+      { "signal": "Entity Clarity", "score": 5, "status": "Critical" },
+      { "signal": "Crawl Readiness", "score": 35, "status": "Needs work" },
+      { "signal": "Authority Content", "score": 12, "status": "Weak" },
+      { "signal": "Review Signal", "score": 0, "status": "Missing" },
+      { "signal": "Conversion Proof", "score": 20, "status": "Partial" }
+    ],
+    "target_state": 91
+  },
+  "services": [
+    {
+      "name": "Foundation Build",
+      "description": "One-time install of the full Signal Lock layer for businesses scoring 0-54.",
+      "service_area": ["Indianapolis, IN", "United States (remote)"],
+      "availability": "Active",
+      "price_basis": "fixed",
+      "verified": true,
+      "source": "https://signalflair.ai/#pricing"
+    },
+    {
+      "name": "Stay Found System",
+      "description": "Monthly Signal Lock re-verification, change-log updates, and citation-share re-measurement for businesses scoring 75-100.",
+      "service_area": ["United States (remote)"],
+      "availability": "Active",
+      "price_basis": "range",
+      "verified": true,
+      "source": "https://signalflair.ai/#pricing"
+    }
+  ],
+  "trust_evidence": {
+    "years_in_business": { "value": "", "verified": false },
+    "licenses": [],
+    "insurance": [],
+    "review_summary": {
+      "rating": null,
+      "count": 0,
+      "themes": [],
+      "source_urls": [],
+      "verified": false,
+      "note": "No review record yet. This is the Review Signal gap (0/100) documented in Case Zero. Do NOT fabricate."
+    },
+    "case_examples": [
+      {
+        "title": "Case Zero — Signal Flair self-audit",
+        "before_score": 18,
+        "after_target": 91,
+        "date": "2026-06-06",
+        "verified": true,
+        "source": "https://signalflair.ai/proof/changelog"
+      }
+    ]
+  },
+  "actions": {
+    "field_report_url": "https://signalflair.ai/#field-report",
+    "call": "",
+    "request_quote_url": "",
+    "book_url": "",
+    "emergency_service": false
+  },
+  "forward_compat": {
+    "$comment": "Honest B2A infrastructure. Published for when adoption flips. NOT marketed as current ROI.",
+    "llms_txt": "https://signalflair.ai/llms.txt",
+    "discovery_manifest": "https://signalflair.ai/.well-known/signalflair.json",
+    "signed": false,
+    "signing_method": "Ed25519 (planned v2)",
+    "did_web": "https://signalflair.ai/.well-known/did.json"
+  },
+  "freshness": {
+    "content_hash": "",
+    "last_updated": "2026-06-06",
+    "update_policy": "Re-verified monthly under the Stay Found System. Change log is public.",
+    "indexnow_pinged": false
+  }
+}
