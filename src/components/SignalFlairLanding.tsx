@@ -835,8 +835,12 @@ export default function SignalFlairLanding() {
           ))}
         </div>
         <div className="proto-teaser reveal">
-          <div className="proto-teaser-k">THE FIELD REPORT IS FREE.</div>
-          <div className="proto-teaser-b">The free Field Report checks whether AI understands, trusts, and mentions your business. It covers three signal layers: <strong>Entity Clarity · Trust &amp; Proof Density · Live AI Visibility.</strong></div>
+          <div className="proto-teaser-eyebrow">Three signal layers, scanned first</div>
+          <div className="proto-teaser-layers">
+            <span className="ptl ptl-1">Entity Clarity</span>
+            <span className="ptl ptl-2">Trust &amp; Proof Density</span>
+            <span className="ptl ptl-3">Live AI Visibility</span>
+          </div>
           <div className="proto-teaser-line">The diagnosis is free. The rebuild is the work.</div>
           <div className="proto-teaser-chant">What&apos;s your Signal Score?</div>
           <a className="proto-teaser-cta" href="#cta">▸ Get My Free Field Report →</a>
