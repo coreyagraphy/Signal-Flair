@@ -597,6 +597,17 @@ export default function SignalFlairLanding() {
     ] },
   ]
 
+  // Per-layer accent colors, all drawn from the brand palette (teal/orange/magenta/
+  // gold/cyan/coral — no violet). hex drives text, rgb drives glow/tint via rgba().
+  const PROTO_COLORS = [
+    { hex: '#00b8a9', rgb: '0,184,169' },   // teal
+    { hex: '#ff5a1f', rgb: '255,90,31' },   // orange
+    { hex: '#ff3d82', rgb: '255,61,130' },  // magenta
+    { hex: '#ffb02e', rgb: '255,176,46' },  // gold
+    { hex: '#00d2bf', rgb: '0,210,191' },   // cyan
+    { hex: '#ff7a45', rgb: '255,122,69' },  // coral
+  ]
+
   return (
     <>
       <div id="cursor" />
@@ -802,21 +813,23 @@ export default function SignalFlairLanding() {
         </div>
         <div className="proto-grid">
           {SIGNAL_PROTOCOL.map((layer, li) => (
-            <details className="proto-layer reveal" key={li}>
+            <details className="proto-layer reveal" key={li} style={{ '--ac': PROTO_COLORS[li].hex, '--acg': PROTO_COLORS[li].rgb }}>
               <summary className="proto-layer-head">
                 <span className="proto-layer-n">{String(li + 1).padStart(2, '0')}</span>
                 <span className="proto-layer-name">{layer.name}</span>
                 <span className="proto-layer-pts">{layer.pts} pts</span>
                 <span className="proto-layer-caret" aria-hidden="true" />
               </summary>
-              <div className="proto-layer-q">{layer.q}</div>
-              <div className="proto-checks">
-                {layer.checks.map((c) => (
-                  <div className="proto-check" key={c[0]}>
-                    <span className="proto-check-n">{c[0]}</span>
-                    <span className="proto-check-body"><span className="proto-check-t">{c[1]}</span>{c[2] ? <span className="proto-check-d">{c[2]}</span> : null}</span>
-                  </div>
-                ))}
+              <div className="proto-drop">
+                <div className="proto-layer-q">{layer.q}</div>
+                <div className="proto-checks">
+                  {layer.checks.map((c) => (
+                    <div className="proto-check" key={c[0]}>
+                      <span className="proto-check-n">{c[0]}</span>
+                      <span className="proto-check-body"><span className="proto-check-t">{c[1]}</span>{c[2] ? <span className="proto-check-d">{c[2]}</span> : null}</span>
+                    </div>
+                  ))}
+                </div>
               </div>
             </details>
           ))}
