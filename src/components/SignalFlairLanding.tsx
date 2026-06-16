@@ -548,6 +548,47 @@ export default function SignalFlairLanding() {
   const hfPhrases = ['Your business, found by AI', 'GPTBot · llms.txt · Schema markup', 'ChatGPT · Claude · Perplexity · Gemini · Google AI', 'Discovery is the first connection', 'Scanned · Structured · Found']
   const divider = { width: '100%', height: '1px', background: 'linear-gradient(90deg,transparent,rgba(255,255,255,0.08),transparent)' } as const
 
+  // The Signal Protocol™ — 24 checkpoints across six signal layers (sums to 100).
+  // Drives the #check section; numbers run 01–24 globally.
+  const SIGNAL_PROTOCOL = [
+    { name: 'Access & Crawlability', pts: 20, q: 'Can AI engines physically reach and read your site?', checks: [
+      ['01', 'Robots.txt allows major AI/search crawlers', 'Googlebot · OAI-SearchBot · PerplexityBot · GPTBot'],
+      ['02', 'Sitemap exists, is clean, and discoverable', ''],
+      ['03', 'Important pages are indexable', 'No accidental noindex, broken canonicals, or blocked priority URLs'],
+      ['04', 'Static pages are actually served to bots', 'Not just a JavaScript shell or hidden source-file schema'],
+    ] },
+    { name: 'Structured Intelligence', pts: 20, q: 'Can machines understand what your business is?', checks: [
+      ['05', 'Organization schema is present and accurate', ''],
+      ['06', 'LocalBusiness or ProfessionalService schema supports the business type', ''],
+      ['07', 'FAQPage schema matches visible on-page content', ''],
+      ['08', 'SameAs, proof links, and entity connections reinforce identity', ''],
+    ] },
+    { name: 'Entity Clarity', pts: 15, q: 'Do AI engines know exactly who you are?', checks: [
+      ['09', 'Business name is clear and consistent', ''],
+      ['10', 'Location or service area is obvious', ''],
+      ['11', 'Category and industry classification are unambiguous', ''],
+      ['12', 'Founder, team, about, and ownership signals are visible', ''],
+    ] },
+    { name: 'Answer Architecture', pts: 20, q: 'Is your content formatted so AI can pull it into a direct answer?', checks: [
+      ['13', 'FAQ page is crawlable and answer-first', ''],
+      ['14', 'About page tells a clear entity story', ''],
+      ['15', 'How-it-works page explains the service step by step', ''],
+      ['16', 'Service pages answer buyer questions directly', ''],
+    ] },
+    { name: 'Trust & Proof Density', pts: 15, q: 'Does the machine have enough evidence to recommend you?', checks: [
+      ['17', 'Reviews and testimonials are legible to AI', ''],
+      ['18', 'Case studies and results are documented and crawlable', ''],
+      ['19', 'Third-party citations, mentions, or directory signals exist', ''],
+      ['20', 'Contact information and business legitimacy signals are consistent', ''],
+    ] },
+    { name: 'Live AI Visibility', pts: 10, q: 'Are you actually appearing when someone asks AI for what you do?', checks: [
+      ['21', 'ChatGPT visibility test', ''],
+      ['22', 'Claude visibility test', ''],
+      ['23', 'Perplexity visibility test', ''],
+      ['24', 'Gemini / Google AI visibility test', ''],
+    ] },
+  ]
+
   return (
     <>
       <div id="cursor" />
@@ -739,29 +780,49 @@ export default function SignalFlairLanding() {
         </div>
       </section>
 
-      {/* ═══ CHECK ═══ */}
+      {/* ═══ CHECK — THE SIGNAL PROTOCOL™ (24-point diagnostic) ═══ */}
       <section id="check" data-cursor="light">
-        <div className="chk-top reveal">
-          <div><div className="chk-vw-title">WHAT<br />WE <em>CHECK.</em></div></div>
-          <div className="chk-meta">Six signals. Every one determines whether AI recommends your business or your competitor&apos;s. We score all of them — then fix the ones that matter first.</div>
+        <div className="proto-top reveal">
+          <div className="proto-eyebrow">THE SIGNAL PROTOCOL™</div>
+          <div className="proto-title">24-Point AI Visibility<br /><em>Diagnostic.</em></div>
+          <div className="proto-meta">A complete 24-point diagnostic system for measuring whether a local business is findable, readable, trustworthy, and recommendable by AI engines. <strong>Six signal layers. Four checkpoints each.</strong> Every layer scored. Every gap documented.</div>
+          <div className="proto-bar" aria-label="Scoring allocation, 100 points total">
+            <span className="proto-bar-seg"><em>Access</em>20</span>
+            <span className="proto-bar-seg"><em>Structure</em>20</span>
+            <span className="proto-bar-seg"><em>Entity</em>15</span>
+            <span className="proto-bar-seg"><em>Architecture</em>20</span>
+            <span className="proto-bar-seg"><em>Trust</em>15</span>
+            <span className="proto-bar-seg"><em>Visibility</em>10</span>
+            <span className="proto-bar-tot">= 100</span>
+          </div>
         </div>
-        <div className="chk-wrap">
-          <table className="chk-tbl">
-            <thead>
-              <tr>
-                <th style={{ width: '78px' }}>#</th>
-                <th>Category</th><th>Severity</th><th>Status</th><th>What It Means</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr className="reveal"><td className="ckr-n">01</td><td className="ckr-cat">AI Search<br />Presence</td><td className="ckr-bc"><span className="ckr-badge crit">Critical</span></td><td className="ckr-st"><span className="st-stamp bad">Fail</span></td><td className="ckr-body">Can ChatGPT, Claude, Perplexity, Gemini, and Google AI describe your business — or do they draw a blank? We test all five and document exactly what each platform knows about you.</td></tr>
-              <tr className="reveal"><td className="ckr-n">02</td><td className="ckr-cat">Crawl<br />Readiness</td><td className="ckr-bc"><span className="ckr-badge crit">Critical</span></td><td className="ckr-st"><span className="st-stamp bad">Blocked</span></td><td className="ckr-body">Are AI bots allowed to access your site? Most businesses unknowingly block them in robots.txt — locking the door on every AI recommendation before it even starts.</td></tr>
-              <tr className="reveal"><td className="ckr-n">03</td><td className="ckr-cat">Entity<br />Clarity</td><td className="ckr-bc"><span className="ckr-badge high">High</span></td><td className="ckr-st"><span className="st-stamp warn">Weak</span></td><td className="ckr-body">Does the internet clearly understand your business name, location, service area, and category? Ambiguity kills AI recommendations. We verify all data sources that feed these signals.</td></tr>
-              <tr className="reveal"><td className="ckr-n">04</td><td className="ckr-cat">Review<br />Signal</td><td className="ckr-bc"><span className="ckr-badge high">High</span></td><td className="ckr-st"><span className="st-stamp ok">Strong</span></td><td className="ckr-body">What do customers repeatedly say you&apos;re great at? AI uses review themes to form descriptions. We extract and structure those themes for citation value across every platform.</td></tr>
-              <tr className="reveal"><td className="ckr-n">05</td><td className="ckr-cat">Authority<br />Content</td><td className="ckr-bc"><span className="ckr-badge med">Medium</span></td><td className="ckr-st"><span className="st-stamp warn">Thin</span></td><td className="ckr-body">Do you have pages that answer the questions AI engines use when forming recommendations? Service clarity, FAQ depth, local relevance — all scored against what AI actually pulls from.</td></tr>
-              <tr className="reveal"><td className="ckr-n">06</td><td className="ckr-cat">Conversion<br />Proof</td><td className="ckr-bc"><span className="ckr-badge conv">Conversion</span></td><td className="ckr-st"><span className="st-stamp ok">Ready</span></td><td className="ckr-body">Once AI sends someone your way — does the page close them? We check whether your experience turns interest into a booked call, quote request, or direct contact.</td></tr>
-            </tbody>
-          </table>
+        <div className="proto-grid">
+          {SIGNAL_PROTOCOL.map((layer, li) => (
+            <div className="proto-layer reveal" key={li}>
+              <div className="proto-layer-head">
+                <span className="proto-layer-n">{String(li + 1).padStart(2, '0')}</span>
+                <span className="proto-layer-name">{layer.name}</span>
+                <span className="proto-layer-pts">{layer.pts} pts</span>
+              </div>
+              <div className="proto-layer-q">{layer.q}</div>
+              <div className="proto-checks">
+                {layer.checks.map((c) => (
+                  <div className="proto-check" key={c[0]}>
+                    <span className="proto-check-n">{c[0]}</span>
+                    <span className="proto-check-body"><span className="proto-check-t">{c[1]}</span>{c[2] ? <span className="proto-check-d">{c[2]}</span> : null}</span>
+                  </div>
+                ))}
+              </div>
+            </div>
+          ))}
+        </div>
+        <div className="proto-teaser reveal">
+          <div className="proto-teaser-k">THE FIELD REPORT IS FREE.</div>
+          <div className="proto-teaser-b">The free Field Report checks whether AI understands, trusts, and mentions your business. It covers three signal layers: <strong>Entity Clarity · Trust &amp; Proof Density · Live AI Visibility.</strong></div>
+          <div className="proto-teaser-line">The diagnosis is free. The rebuild is the work.</div>
+          <div className="proto-teaser-chant">What&apos;s your Signal Score?</div>
+          <a className="proto-teaser-cta" href="#cta">▸ Get My Free Field Report →</a>
+          <div className="proto-teaser-micro">No credit card required.</div>
         </div>
       </section>
 
