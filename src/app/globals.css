@@ -1069,3 +1069,16 @@ footer{background:var(--ink2);border-top:1px solid var(--ink);padding:52px;posit
 .fdr-chant{font-family:var(--italic);font-style:italic;font-size:34px;color:#00d2bf;margin:6px 0 26px;line-height:1.05}
 .about-sign-loc{font-family:var(--signal);font-size:9.5px;letter-spacing:.16em;text-transform:uppercase;color:rgba(248,241,231,.4);margin-top:4px}
 @media(max-width:560px){.cz-score{font-size:52px}.fdr-chant{font-size:26px}.cz-state{font-size:22px}}
+
+/* ─── Signal Lock maintenance layers (#signal-lock-reveal, dark) ─── */
+.lock-layers{display:flex;flex-direction:column;gap:10px;margin:8px 0 22px;max-width:560px}
+.lock-layer{display:flex;align-items:center;gap:14px;font-family:var(--signal);font-size:13.5px;color:rgba(248,241,231,.82);border-bottom:1px solid rgba(248,241,231,.1);padding-bottom:10px}
+.lock-layer-n{font-family:var(--signal);font-size:12px;font-weight:600;color:#00d2bf;min-width:24px}
+
+/* ─── Enterprise positioning (#enterprise, dark) ─── */
+.ent-photo{font-family:var(--italic);font-style:italic;font-size:clamp(20px,2.6vw,30px);line-height:1.3;color:rgba(248,241,231,.9);max-width:760px;margin:0 auto 28px;text-align:center}
+.ent-build{max-width:720px;margin:0 auto 26px;text-align:center}
+.ent-build-lead{font-family:var(--flair);font-size:clamp(20px,2.4vw,28px);color:var(--bone);margin-bottom:20px;line-height:1.2}
+.ent-terms{display:flex;flex-direction:column;gap:10px;max-width:520px;margin:0 auto;text-align:left}
+.ent-term{font-family:var(--signal);font-size:13.5px;line-height:1.5;color:rgba(248,241,231,.72);border-left:2px solid rgba(0,210,191,.5);padding-left:14px}
+.ent-term-t{color:#00d2bf;font-weight:600}

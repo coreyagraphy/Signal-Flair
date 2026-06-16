@@ -857,10 +857,17 @@ export default function SignalFlairLanding() {
       {/* ═══ SIGNAL LOCK reveal — names the system; flows straight out of "You can't copy the system." ═══ */}
       <section id="signal-lock-reveal" data-cursor="dark">
         <div className="slr-inner reveal">
-          <div className="mr-name">Signal Lock<sup className="mr-tm">™</sup> is the system.</div>
-          <div className="mr-body">It is the maintained verification layer behind Signal Flair — a private signal architecture that keeps your business record aligned, dated, and inspection-ready across the places AI engines and customers already look.</div>
-          <div className="mr-body">We don&apos;t sell a one-time setup. We install the record, verify the proof, monitor the signal, and keep the layer current.</div>
-          <div className="mr-kicker">That is the part competitors cannot copy from a headline.</div>
+          <div className="mr-name">Signal Lock<sup className="mr-tm">™</sup> is not a one-time audit.</div>
+          <div className="mr-body">An audit is a photograph. It shows you what was true the day the shutter clicked. But your competitors did not stop moving when the photographer left. AI systems did not stop changing. Your reviews, citations, pages, schema, and crawler access did not freeze in place.</div>
+          <div className="mr-body"><strong>Signal Lock is the system that keeps your score from drifting.</strong> Four maintenance layers:</div>
+          <div className="lock-layers">
+            <div className="lock-layer"><span className="lock-layer-n">01</span>Monthly Signal Score™ verification</div>
+            <div className="lock-layer"><span className="lock-layer-n">02</span>Crawlability and schema monitoring</div>
+            <div className="lock-layer"><span className="lock-layer-n">03</span>Entity and trust-signal drift checks</div>
+            <div className="lock-layer"><span className="lock-layer-n">04</span>Live AI visibility spot tests</div>
+          </div>
+          <div className="mr-body">The <strong>Verified by Signal Flair™</strong> mark is what you carry because the score is being maintained — not because it was checked once.</div>
+          <div className="mr-kicker">Anyone can tell you your score today. Signal Lock is built to keep it true.</div>
           <a className="mr-cta" href="#field-report">▸ Start with a free Field Report →</a>
         </div>
       </section>
@@ -872,25 +879,17 @@ export default function SignalFlairLanding() {
           <div className="ent-eyebrow">The enterprise secret</div>
           <div className="ent-title">THE ENTERPRISE<br />SECRET</div>
         </div>
-        <div className="ent-lede reveal">When an AI engine gets your business wrong — wrong hours, wrong services, you confused with someone else — it quietly hands your customer to the competitor it understands better.</div>
-        <div className="ent-split">
-          <div className="ent-col ent-threat reveal">
-            <div className="ent-col-lbl">The enterprise way</div>
-            <div className="ent-col-body">Big brands already know this. They pay agencies a premium to force AI to get them right.</div>
-            <div className="ent-staccato">
-              <span className="ent-stac">They pay once.</span>
-              <span className="ent-stac">The record drifts.</span>
-              <span className="ent-stac">They pay again.</span>
-            </div>
-          </div>
-          <div className="ent-seam" aria-hidden="true" />
-          <div className="ent-col ent-answer reveal">
-            <div className="ent-col-lbl">The Signal Lock way</div>
-            <div className="ent-col-body">Signal Lock brings that same record repair to local business — and keeps it verified, dated, and current every month, so your signal doesn&apos;t drift back.</div>
-            <div className="ent-loop"><span className="ent-loop-ring" aria-hidden="true" />Maintained · re-verified every month</div>
+        <div className="ent-lede reveal">Enterprise-grade visibility audits can run <strong>$15,000–$50,000</strong> when bundled into agency retainers, strategy decks, and implementation plans. For a local business, that model is usually too expensive, too slow, and too disconnected from ownership.</div>
+        <div className="ent-photo reveal">It is also a photograph. And a photograph starts getting old the moment the market moves.</div>
+        <div className="ent-build reveal">
+          <div className="ent-build-lead">Signal Flair built the maintained version that a local business can actually own.</div>
+          <div className="ent-terms">
+            <div className="ent-term"><span className="ent-term-t">The Signal Protocol™</span> gives the diagnostic structure.</div>
+            <div className="ent-term"><span className="ent-term-t">The Signal Score™</span> gives the number.</div>
+            <div className="ent-term"><span className="ent-term-t">Signal Lock™</span> keeps the number from drifting.</div>
           </div>
         </div>
-        <div className="ent-turn reveal">The fix the Fortune 500 rents by the audit, <em>you own and we maintain.</em></div>
+        <div className="ent-turn reveal">Same seriousness. Cleaner ownership.<br /><em>Built to be found now — not after a six-month strategy engagement.</em></div>
         <a className="ent-cta reveal" href="#field-report">▸ Start with a free Field Report →</a>
       </section>
 
