@@ -61,7 +61,7 @@ export default function LlmsTxtResourcePage() {
     <main className="rsc">
       <nav className="rsc-nav">
         <a className="rsc-logo" href="/">SIGNAL<em>FLAIR</em></a>
-        <a className="rsc-navcta" href="/#cta">▸ Run My Free Score</a>
+        <a className="rsc-navcta" href="/#cta">▸ Free Field Report</a>
       </nav>
 
       <div className="rsc-wrap">
@@ -135,13 +135,13 @@ export default function LlmsTxtResourcePage() {
 
       <section className="rsc-cta">
         <h2 className="rsc-cta-h">Want to know how visible <em>(or invisible)</em> your business is to AI?</h2>
-        <p className="rsc-cta-b">Run your free AI Visibility Score. We&apos;ll show you your current score across ChatGPT, Claude, Perplexity, Gemini, and Google AI — plus whether you have an llms.txt file working for you.</p>
-        <a className="rsc-cta-btn" href="/#cta">▸ Run My Free AI Visibility Score</a>
+        <p className="rsc-cta-b">Run your free Field Report. We&apos;ll scan 3 critical signals across ChatGPT, Claude, Perplexity, Gemini, and Google AI — and show you exactly where your business breaks, including whether you have an llms.txt file working for you.</p>
+        <a className="rsc-cta-btn" href="/#cta">▸ Get My Free Field Report</a>
       </section>
 
       <footer className="rsc-foot">
-        Signal Flair · a Mental Vision Corp product · Indianapolis, IN<br />
-        <a href="/">signalflair.ai</a> · <a href="/llms.txt">our llms.txt</a> · <a href="/#cta">Run your free score</a>
+        Signal Flair · a Mental Vision Corp product · Indiana-based · serving nationwide<br />
+        <a href="/">signalflair.ai</a> · <a href="/llms.txt">our llms.txt</a> · <a href="/#cta">Get your free Field Report</a>
       </footer>
 
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />

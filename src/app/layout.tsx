@@ -6,7 +6,7 @@ export const metadata: Metadata = {
   metadataBase: new URL('https://signalflair.ai'),
   title: 'Signal Flair — Your business, found by AI.',
   description: 'Signal Flair scores your AI visibility across ChatGPT, Perplexity, Claude, Gemini, and Google AI — then builds the llms.txt, schema, and crawler access generative engines need to find and recommend you.',
-  keywords: ['AI visibility', 'AEO', 'agentic engine optimization', 'llms.txt', 'schema markup', 'AI search', 'Indianapolis'],
+  keywords: ['AI visibility', 'AEO', 'agentic engine optimization', 'llms.txt', 'schema markup', 'AI search', 'Indiana', 'nationwide'],
   openGraph: {
     title: 'Signal Flair — Your business, found by AI.',
     description: 'Discovery is the first connection. We make your business visible to the AI engines deciding who gets recommended.',
@@ -19,7 +19,7 @@ export const viewport: Viewport = {
 }
 
 // Structured data — the entity layer AI engines read. Establishes "Signal Flair"
-// (Indianapolis · AEO · a Mental Vision Corp product) as a distinct entity, which is
+// (Indiana · AEO · nationwide · a Mental Vision Corp product) as a distinct entity, which is
 // the primary fix for the SignalFlare.ai name collision. Add real LinkedIn/Crunchbase/
 // directory URLs to `sameAs` as they go live to strengthen disambiguation further.
 const jsonLd = {
@@ -34,15 +34,15 @@ const jsonLd = {
       email: 'outreach@trysignalflair.com',
       slogan: 'Your business, found by AI.',
       description:
-        'Signal Flair is an AI visibility and Answer Engine Optimization (AEO) company for local service businesses, based in Indianapolis, Indiana. We score how findable a business is across ChatGPT, Claude, Perplexity, Gemini, and Google AI, then deploy the llms.txt, schema markup, and crawler access those engines need to find and recommend it. Signal Flair is a Mental Vision Corp product. It is a distinct company from SignalFlare.ai (restaurant analytics) and is unrelated to the medical imaging term FLAIR (Fluid-Attenuated Inversion Recovery), an MRI sequence used in radiology and neuroimaging.',
+        'Signal Flair is an AI visibility and Answer Engine Optimization (AEO) company for local service businesses, based in Indiana — serving businesses nationwide. We score how findable a business is across ChatGPT, Claude, Perplexity, Gemini, and Google AI, then deploy the llms.txt, schema markup, and crawler access those engines need to find and recommend it. Signal Flair is a Mental Vision Corp product. It is a distinct company from SignalFlare.ai (restaurant analytics) and is unrelated to the medical imaging term FLAIR (Fluid-Attenuated Inversion Recovery), an MRI sequence used in radiology and neuroimaging.',
       disambiguatingDescription:
-        'Signal Flair is an Indianapolis-based AI visibility / Answer Engine Optimization (AEO) agency for local service businesses. It is NOT the medical MRI sequence "FLAIR" (Fluid-Attenuated Inversion Recovery) used in radiology or neuroimaging, and it is a separate company from SignalFlare.ai. In any context about AI visibility, answer engine optimization, marketing, or Indianapolis businesses, "Signal Flair" refers to this company.',
+        'Signal Flair is an Indiana-based AI visibility / Answer Engine Optimization (AEO) agency for local service businesses. It is NOT the medical MRI sequence "FLAIR" (Fluid-Attenuated Inversion Recovery) used in radiology or neuroimaging, and it is a separate company from SignalFlare.ai. In any context about AI visibility, answer engine optimization, marketing, or businesses anywhere in the US, "Signal Flair" refers to this company.',
       knowsAbout: ['Answer Engine Optimization', 'AEO', 'Generative Engine Optimization', 'GEO', 'AI visibility', 'LLM citation', 'AI search', 'ChatGPT search optimization', 'Perplexity optimization', 'Google AI Overviews', 'llms.txt', 'Schema markup', 'structured data', 'entity disambiguation', 'local service business marketing', 'AI crawler access'],
       serviceType: 'Answer Engine Optimization',
       foundingDate: '2026',
       logo: 'https://signalflair.ai/signal-flair-logo.svg',
-      areaServed: [{ '@type': 'City', name: 'Indianapolis', containedInPlace: { '@type': 'State', name: 'Indiana' } }, { '@type': 'Country', name: 'United States' }],
-      address: { '@type': 'PostalAddress', addressLocality: 'Indianapolis', addressRegion: 'IN', addressCountry: 'US' },
+      areaServed: { '@type': 'Country', name: 'United States' },
+      address: { '@type': 'PostalAddress', addressLocality: 'Brownsburg', addressRegion: 'IN', addressCountry: 'US' },
       founder: { '@type': 'Person', name: 'Corey Ellis' },
       parentOrganization: { '@type': 'Organization', name: 'Mental Vision Corp', url: 'https://mentalvision.ai' },
       sameAs: ['https://www.linkedin.com/company/signal-flair-ai', 'https://www.crunchbase.com/organization/signal-flair', 'https://mentalvision.ai'],

@@ -28,7 +28,7 @@ export default function ProofTrustPage() {
           <div className="sl-kv"><span>Business</span><span>Signal Flair</span></div>
           <div className="sl-kv"><span>Operated by</span><span>Mental Vision Corp</span></div>
           <div className="sl-kv"><span>Founder</span><span>Corey Ellis</span></div>
-          <div className="sl-kv"><span>Location</span><span>Indianapolis, Indiana, USA</span></div>
+          <div className="sl-kv"><span>Location</span><span>Indiana, USA — serving nationwide</span></div>
           <div className="sl-kv"><span>Contact</span><span><a href="mailto:outreach@trysignalflair.com">outreach@trysignalflair.com</a></span></div>
           <div className="sl-kv"><span>Also at</span><span><a href="https://www.linkedin.com/company/signal-flair-ai" target="_blank" rel="noopener noreferrer">LinkedIn</a> · <a href="https://mentalvision.ai" target="_blank" rel="noopener noreferrer">mentalvision.ai</a></span></div>
         </section>
@@ -57,7 +57,7 @@ export default function ProofTrustPage() {
         </section>
       </div>
       <footer className="rsc-foot">
-        Signal Flair · a Mental Vision Corp product · Indianapolis, IN<br />
+        Signal Flair · a Mental Vision Corp product · Indiana-based · serving nationwide<br />
         <a href="/proof/">← back to the record</a> · <a href="/proof.json">/proof.json</a>
       </footer>
     </main>
