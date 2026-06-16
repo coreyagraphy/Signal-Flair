@@ -1071,25 +1071,44 @@ export default function SignalFlairLanding() {
         <div className="price-guarantee">Guarantee: <em>Delivery-based only</em> — never rankings, leads, or revenue. You keep everything built, even if you cancel.</div>
       </section>
 
-      {/* ═══ ABOUT — founder / trust layer ═══ */}
+      {/* ═══ ABOUT — founder / Case Zero proof story ═══ */}
       <section id="about">
         <div className="about-inner">
           <div className="about-photo reveal">
-            {/* Drop a 4:5 founder portrait here: replace this block with <img src="/img/founder.jpg" alt="Corey, founder of Signal Flair" /> */}
-            <div className="about-photo-lbl">Founder portrait<br />4:5 — drop image here</div>
+            <img className="about-portrait" src="/founder.jpg" alt="Corey Ellis, founder of Signal Flair" />
+            <div className="about-photo-cap">Corey Ellis · Founder</div>
           </div>
           <div className="about-copy reveal">
-            <div className="about-eyebrow">Why Signal Flair exists</div>
-            <div className="about-title">Built for the AI era.<br /><em>Rooted in Indianapolis.</em></div>
-            <div className="about-body">
-              <p>Signal Flair exists because the way customers find local businesses is changing faster than most companies can adapt.</p>
-              <p>AI engines — ChatGPT, Claude, Perplexity, Gemini, Google AI — already make recommendations, book appointments, and route real customers. Yet most local businesses stay invisible to them. <strong>Not</strong> because they deliver poor service — because their technical signals are broken or missing.</p>
-              <p>We built Signal Flair to do one thing exceptionally well: make local businesses <strong>findable, readable, and recommendable</strong> by these new AI systems. No traditional SEO. No paid ads. We install the infrastructure AI engines need to understand and trust your business — and keep it sharp as they evolve.</p>
+            <div className="about-eyebrow">The founder · the proof story</div>
+            <div className="about-title">I built Signal Flair because<br /><em>I failed my own audit.</em></div>
+
+            <div className="cz-card">
+              <div className="cz-k">CASE ZERO · 06.06.2026</div>
+              <div className="cz-score">18<small>/100</small></div>
+              <div className="cz-state">Signal Invisible</div>
+              <div className="cz-note">A company selling AI visibility — invisible to AI. I published the score. I documented the rebuild. I did not hide it.</div>
             </div>
+
+            <div className="about-body fdr-body">
+              <p>On June 6, 2026, I ran the Signal Protocol™ on Signal Flair. We scored <strong>18 out of 100</strong>. That number is <strong>Case Zero</strong> — the only proof number I will claim until I earn the next one.</p>
+              <p>What I found was bigger than my own site. Most businesses with real customers, strong reputations, and years of work are still unreadable to the machines now making referral decisions. Not because the business is weak — because the infrastructure that lets AI understand and recommend them does not exist.</p>
+              <p>Signal Flair builds that infrastructure. Not with random blog posts. Not with vague content strategies. With a number, a protocol, and a maintenance system that keeps the number true.</p>
+            </div>
+
+            <div className="fdr-defs">
+              <div className="fdr-def"><span className="fdr-def-t">The Signal Score™</span><span className="fdr-def-d">is not a ranking. It is a measurement.</span></div>
+              <div className="fdr-def"><span className="fdr-def-t">The Signal Protocol™</span><span className="fdr-def-d">is not a generic audit. It is a diagnostic instrument.</span></div>
+              <div className="fdr-def"><span className="fdr-def-t">Signal Lock™</span><span className="fdr-def-d">is not a retainer. It is a maintenance system.</span></div>
+            </div>
+
+            <p className="fdr-close">I am not selling you visibility. I am handing you the number and showing you exactly what it means.</p>
+            <div className="fdr-chant">What&apos;s your Signal Score?</div>
+
             <div className="about-sign">
               <div>
-                <div className="about-sign-name">Corey</div>
-                <div className="about-sign-role">Founder · Signal Flair · Indianapolis, IN</div>
+                <div className="about-sign-name">— Corey Ellis</div>
+                <div className="about-sign-role">Founder · Signal Flair · Mental Vision Corp · Indiana-based</div>
+                <div className="about-sign-loc">Brownsburg, Indiana · serving businesses nationwide</div>
               </div>
             </div>
           </div>
