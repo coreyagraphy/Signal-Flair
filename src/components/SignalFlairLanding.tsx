@@ -1246,8 +1246,13 @@ export default function SignalFlairLanding() {
           <div><div className="f-head">Company</div><a className="f-link" href="#process">How It Works</a><a className="f-link" href="#pricing">Pricing</a><a className="f-link" href="/resources/llms-txt/">llms.txt Guide</a><a className="f-link" href="https://mentalvision.ai" target="_blank" rel="noopener noreferrer">Mental Vision Corp</a><a className="f-link" href="mailto:outreach@trysignalflair.com">Contact</a></div>
           <div><div className="f-head">Connect</div><a className="f-link" href="#">LinkedIn</a><a className="f-link" href="#">Instagram</a><a className="f-link" href="#">YouTube</a><a className="f-link" href="mailto:outreach@trysignalflair.com">outreach@trysignalflair.com</a></div>
         </div>
+        <div className="f-chant-band">
+          <div className="f-chant">What&apos;s your Signal Score?</div>
+          <div className="f-tm">Signal Protocol™ · Signal Score™ · Signal Lock™ · Verified by Signal Flair™</div>
+          <div className="f-privacy">We never share your data. No spam.</div>
+        </div>
         <div className="fb">
-          <div className="fb-l">Signal Flair is a Mental Vision Corp product | Indianapolis, IN | signalflair.ai</div>
+          <div className="fb-l">Signal Flair is a Mental Vision Corp product | Based in Indiana · Serving nationwide | signalflair.ai</div>
           <div className="fb-r">AI Visibility + AEO · Signal Flair v1.0</div>
         </div>
       </footer>
