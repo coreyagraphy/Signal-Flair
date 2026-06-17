@@ -677,7 +677,7 @@ export default function SignalFlairLanding() {
           <div className="h-side bottom">
             <div className="h-eyebrow"><div className="h-ey-dot" style={{ animationDelay: '1s' }} />After Signal Flair</div>
             <div className="h-headline">Scanned. Structured. <span style={{ fontStyle: 'italic', background: 'linear-gradient(125deg,rgba(0,220,220,1) 0%,rgba(180,255,255,0.9) 30%,rgba(0,200,200,0.95) 60%,rgba(150,255,255,0.85) 100%)', backgroundSize: '250% 250%', WebkitBackgroundClip: 'text', backgroundClip: 'text', WebkitTextFillColor: 'transparent', animation: 'glass-shimmer 8s 2s ease-in-out infinite', filter: 'drop-shadow(0 0 14px rgba(0,166,166,0.4))' }}>Found.</span></div>
-            <div className="h-sub">llms.txt live · bots unblocked · every AI engine cites you first</div>
+            <div className="h-sub">llms.txt live · bots unblocked · built to help AI engines find, understand, and cite you</div>
           </div>
         </div>
         <div id="hfoot">
@@ -784,7 +784,7 @@ export default function SignalFlairLanding() {
           <div className="sig-row reveal">
             <div className="sig-proto"><div className="sig-rn">03</div><div className="sig-plabel">Protocol / Stay Found</div></div><div className="sig-rd" />
             <div className="sig-rtitle">Stay Found<br />System</div>
-            <div className="sig-rbody"><em>Visibility isn&apos;t a one-time fix.</em> AI search evolves monthly and your competitors are catching up. Stay Found keeps your signal strong — monthly scans, citation growth, schema updates, and crawler monitoring. Permanently ahead.</div>
+            <div className="sig-rbody"><em>Visibility isn&apos;t a one-time fix.</em> AI search evolves monthly and your competitors are catching up. Stay Found keeps your signal strong — monthly scans, citation growth, schema updates, and crawler monitoring. Built to stay ahead as AI search changes.</div>
             <div><span className="sig-rtag">Monitoring + Citations</span></div>
           </div>
         </div>
@@ -801,12 +801,12 @@ export default function SignalFlairLanding() {
           <div className="proto-title">24-Point AI Visibility<br /><em>Diagnostic.</em></div>
           <div className="proto-meta">A complete 24-point diagnostic system for measuring whether a local business is findable, readable, trustworthy, and recommendable by AI engines. <strong>Six signal layers. Four checkpoints each.</strong> Every layer scored. Every gap documented.</div>
           <div className="proto-bar" aria-label="Scoring allocation, 100 points total">
-            <span className="proto-bar-seg"><em>Access</em>20</span>
-            <span className="proto-bar-seg"><em>Structure</em>20</span>
-            <span className="proto-bar-seg"><em>Entity</em>15</span>
-            <span className="proto-bar-seg"><em>Architecture</em>20</span>
-            <span className="proto-bar-seg"><em>Trust</em>15</span>
-            <span className="proto-bar-seg"><em>Visibility</em>10</span>
+            <span className="proto-bar-seg"><em>Access</em>{' '}20</span>{' '}
+            <span className="proto-bar-seg"><em>Structure</em>{' '}20</span>{' '}
+            <span className="proto-bar-seg"><em>Entity</em>{' '}15</span>{' '}
+            <span className="proto-bar-seg"><em>Architecture</em>{' '}20</span>{' '}
+            <span className="proto-bar-seg"><em>Trust</em>{' '}15</span>{' '}
+            <span className="proto-bar-seg"><em>Visibility</em>{' '}10</span>{' '}
             <span className="proto-bar-tot">= 100</span>
           </div>
         </div>
@@ -851,7 +851,7 @@ export default function SignalFlairLanding() {
       <section id="stats">
         <div className="stats-bg-word">PROOF.</div>
         <div className="stats-float">
-          <div className="stat-item reveal"><span className="stat-n" id="sn1">5+</span><span className="stat-l">AI Engines Scored &amp; Counting</span><div className="stat-d">ChatGPT, Claude, Perplexity, Gemini, Google AI — and every new engine, the day it ships.</div></div>
+          <div className="stat-item reveal"><span className="stat-n" id="sn1">5+</span><span className="stat-l">AI Engines Scored &amp; Counting</span><div className="stat-d">ChatGPT, Claude, Perplexity, Gemini, Google AI — major AI engines monitored as the landscape changes.</div></div>
           <div className="stat-item reveal"><span className="stat-n" id="sn2">&lt;1%</span><span className="stat-l">Have llms.txt</span><div className="stat-d">The file we build and deploy on the Foundation Build.</div></div>
           <div className="stat-item reveal"><span className="stat-n" id="sn3">4M+</span><span className="stat-l">AI Searches Daily</span><div className="stat-d">Most businesses appear in zero of them — and that number climbs every day.</div></div>
           <div className="stat-item reveal"><span className="stat-n" id="sn4">3</span><span className="stat-l">Core Services</span><div className="stat-d">Audit · Foundation Build · Stay Found.</div></div>
@@ -962,7 +962,7 @@ export default function SignalFlairLanding() {
             <div className="founding-r">
               <div className="founding-price-tag">Foundation Build · Founding Rate</div>
               <div className="founding-prices">
-                <span className="founding-anchor">$3,500</span>
+                <span className="founding-anchor">$3,500</span>{' '}
                 <span className="founding-now">$1,750</span>
               </div>
               <div className="founding-save">50% off · first 10 businesses only</div>
@@ -983,10 +983,10 @@ export default function SignalFlairLanding() {
       <section id="pricing" data-cursor="light">
         <div className="pricing-header reveal">
           <div className="pricing-vw-wild" aria-label="Three offers. One right fit.">
-            <span className="pw pw1">Three</span>
-            <span className="pw pw2">OFFERS.</span>
-            <span className="pw pw3">one</span>
-            <span className="pw pw4">right</span>
+            <span className="pw pw1">Three</span>{' '}
+            <span className="pw pw2">OFFERS.</span>{' '}
+            <span className="pw pw3">one</span>{' '}
+            <span className="pw pw4">right</span>{' '}
             <span className="pw pw5">fit.</span>
           </div>
           <div className="pricing-sub">Every tier runs on the same engine. Your Signal Score™ decides which one fits — and where you start.</div>
@@ -1116,9 +1116,9 @@ export default function SignalFlairLanding() {
             </div>
 
             <div className="fdr-defs">
-              <div className="fdr-def"><span className="fdr-def-t">The Signal Score™</span><span className="fdr-def-d">is not a ranking. It is a measurement.</span></div>
-              <div className="fdr-def"><span className="fdr-def-t">The Signal Protocol™</span><span className="fdr-def-d">is not a generic audit. It is a diagnostic instrument.</span></div>
-              <div className="fdr-def"><span className="fdr-def-t">Signal Lock™</span><span className="fdr-def-d">is not a retainer. It is a maintenance system.</span></div>
+              <div className="fdr-def"><span className="fdr-def-t">The Signal Score™</span>{' '}<span className="fdr-def-d">is not a ranking. It is a measurement.</span></div>
+              <div className="fdr-def"><span className="fdr-def-t">The Signal Protocol™</span>{' '}<span className="fdr-def-d">is not a generic audit. It is a diagnostic instrument.</span></div>
+              <div className="fdr-def"><span className="fdr-def-t">Signal Lock™</span>{' '}<span className="fdr-def-d">is not a retainer. It is a maintenance system.</span></div>
             </div>
 
             <p className="fdr-close">I am not selling you visibility. I am handing you the number and showing you exactly what it means.</p>

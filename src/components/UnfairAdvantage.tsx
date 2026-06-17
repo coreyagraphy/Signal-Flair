@@ -211,7 +211,7 @@ export default function UnfairAdvantage() {
           <span className="ua-eyebrow">THE UNFAIR ADVANTAGE</span>
 
           <h2 className="ua-headline">
-            <span className="ua-headline-l1 ua-anim-target">{HEADLINE_LINE1}</span>
+            <span className="ua-headline-l1 ua-anim-target">{HEADLINE_LINE1}</span>{' '}
             <span className="ua-headline-l2 ua-accent ua-anim-target">{HEADLINE_LINE2}</span>
           </h2>
 
@@ -235,9 +235,9 @@ export default function UnfairAdvantage() {
               <h3 className="ua-box-title">{box.title}</h3>
 
               <p className="ua-box-body">
-                {box.body.split('\n').map((line, j) => (
+                {box.body.split('\n').map((line, j, arr) => (
                   <span key={j} className="ua-box-line">
-                    {line}
+                    {j < arr.length - 1 ? line + ' ' : line}
                   </span>
                 ))}
               </p>
