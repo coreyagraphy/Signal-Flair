@@ -1,0 +1,4 @@
+# Netlify redirects/rewrites — served from the publish root.
+# Drag-and-drop deploys strip dot-folders (.well-known), so serve the discovery
+# manifest from a non-dotted file at its canonical /.well-known/ path via a 200 rewrite.
+/.well-known/signalflair.json   /signalflair-discovery.json   200
