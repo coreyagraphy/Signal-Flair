@@ -9,6 +9,10 @@ const HOMEPAGE_FAQ: { q: string; a: string }[] = [
     a: 'Your Signal Score™ is a 0–100 measure of how findable, readable, and recommendable your business is to AI engines — scored across the six layers of the Signal Protocol™: Access & Crawlability, Structured Intelligence, Entity Clarity, Answer Architecture, Trust & Proof Density, and Live AI Visibility. We run you through ChatGPT, Claude, Perplexity, Gemini, and Google AI, then show you the number and exactly what’s pulling it down.',
   },
   {
+    q: 'What is AI Proof Infrastructure™?',
+    a: 'AI Proof Infrastructure is the structured layer of business information, technical signals, trust proof, and public verification assets that helps AI answer engines understand and verify an organization. Signal Flair builds it — so ChatGPT, Claude, Gemini, Perplexity, and Google AI can access, understand, verify, and confidently recommend you.',
+  },
+  {
     q: 'How is this different from SEO?',
     a: 'SEO optimizes for blue links on a results page. We optimize for the layer AI engines actually read — llms.txt, schema, crawler access — so when someone asks an AI for a recommendation, your business is the answer. Different machine, different rules. We don’t do traditional SEO or paid ads.',
   },
@@ -23,6 +27,14 @@ const HOMEPAGE_FAQ: { q: string; a: string }[] = [
   {
     q: 'What happens when AI search changes?',
     a: 'It will — and often. That’s what the Stay Found System is for: monthly re-scans, fresh citations, schema and llms.txt updates, and crawler monitoring so your signal stays strong as new engines ship and competitors catch up.',
+  },
+  {
+    q: 'What is the Founding Partner Pilot?',
+    a: 'An early-stage program for businesses, nonprofits, civic organizations, and community partners that want to measure how AI systems currently understand them — and document building a stronger proof layer. It starts with a Signal Score™ baseline, identifies the missing proof, and tracks the before-and-after. The goal is documented proof, not hype.',
+  },
+  {
+    q: 'Is Signal Flair only for businesses?',
+    a: 'No. Signal Flair supports businesses, nonprofits, civic organizations, and community-facing programs — anyone that needs to become easier for AI systems to access, understand, verify, and recommend.',
   },
   {
     q: 'Do I have to get on a sales call?',

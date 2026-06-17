@@ -3,7 +3,7 @@ import type { Metadata } from 'next'
 export const metadata: Metadata = {
   title: 'FAQ — Signal Score, Case Zero, Field Report & Signal Lock | Signal Flair',
   description:
-    'Answers to the core Signal Flair questions: what a Signal Score is, what Case Zero (18/100, June 6 2026) is, what a free Field Report includes, and what Signal Lock maintains. AI visibility + AEO for local businesses nationwide.',
+    'Answers to the core Signal Flair questions: what a Signal Score™ is, what Case Zero (18/100, June 6 2026) is, what a free Field Report includes, and the Founding Partner Pilot. AI Proof Infrastructure for businesses and organizations nationwide.',
   alternates: { canonical: 'https://signalflair.ai/faq' },
   openGraph: {
     title: 'Signal Flair — Frequently Asked Questions',
@@ -20,12 +20,20 @@ const FAQS: { q: string; a: string }[] = [
     a: 'A Signal Score™ is a number from 0 to 100, produced by the Signal Protocol™, that measures how visible and trustworthy your business appears to AI search engines like ChatGPT, Perplexity, Google AI, and Gemini. Most local businesses score under 40 and don’t know it.',
   },
   {
+    q: 'What is AI Proof Infrastructure™?',
+    a: 'AI Proof Infrastructure is the structured layer of business information, technical signals, trust proof, and public verification assets that helps AI answer engines understand and verify an organization. Signal Flair builds it — not just an audit, but the proof layer that makes you easier for ChatGPT, Claude, Gemini, Perplexity, and Google AI to access, understand, verify, and recommend.',
+  },
+  {
     q: 'What is Case Zero?',
     a: 'Case Zero is Signal Flair’s own AI visibility audit, completed June 6, 2026. Signal Flair scored 18 out of 100 — Signal Invisible. We published it and rebuilt in public. It is the only real proof number we own, and we never fabricate scores, wins, or testimonials.',
   },
   {
     q: 'What is a Field Report?',
     a: 'A Field Report is a free 3-signal AI visibility diagnostic. It shows your Signal Score™ across the three most critical Signal Protocol™ layers — Entity Clarity, Trust & Proof Density, and Live AI Visibility. It is a diagnosis, never a prescription. The prescription is the work. No sales call required; we send your partial audit within 24 hours.',
+  },
+  {
+    q: 'What is the Founding Partner Pilot?',
+    a: 'The Founding Partner Pilot is an early-stage program for businesses, nonprofits, civic organizations, and community partners that want to measure how AI systems currently understand them and document building a stronger proof layer. It starts with a Signal Score™ baseline, identifies the missing proof, and tracks the before-and-after — documented proof, not hype.',
   },
   {
     q: 'What is Signal Lock?',
@@ -41,7 +49,7 @@ const FAQS: { q: string; a: string }[] = [
   },
   {
     q: 'How much does Signal Flair cost?',
-    a: 'Pricing is set by your Signal Score so the work matches the actual gap. Build the Foundation (score 0–54) is a one-time $3,500. Start the Rebuild (score 55–74) is a one-time $1,500. The Stay Found System (score 75–100) is $600–$1,200 per month. A Founding Client rate of $1,750 is available to the first 10 businesses scoring 0–54.',
+    a: 'Pricing is set by your Signal Score so the work matches the actual gap. Build the Foundation (score 0–54) is a one-time $3,500. Start the Rebuild (score 55–74) is a one-time $1,500. The Stay Found System (score 75–100) is $600–$1,200 per month. Early founding partners — businesses, nonprofits, and civic organizations — can join the Founding Partner Pilot on flexible terms.',
   },
   {
     q: 'Is Signal Flair related to FLAIR MRI imaging or SignalFlare.ai?',

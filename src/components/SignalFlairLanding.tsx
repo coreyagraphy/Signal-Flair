@@ -652,7 +652,7 @@ export default function SignalFlairLanding() {
         <div id="hero-layout">
           <div className="hero-word" aria-hidden="true">FOUND.</div>
           <div className="h-side top">
-            <div className="h-eyebrow"><div className="h-ey-dot" />Field scan · live across 5 AI engines</div>
+            <div className="h-eyebrow"><div className="h-ey-dot" />AI Proof Infrastructure™</div>
             <div className="h-headline">Can <span id="engine-rot" className="eng-rot">Claude</span> find your business <span className="glass-text-orange">right now?</span></div>
           </div>
 
@@ -763,34 +763,34 @@ export default function SignalFlairLanding() {
       <section id="signal">
         <div className="sig-top reveal">
           <div>
-            <div className="sig-eyebrow">What Signal Flair Does</div>
+            <div className="sig-eyebrow">The Signal Flair System</div>
             <div className="sig-big">THREE THINGS.<br />DONE <em>RIGHT.</em></div>
           </div>
-          <div className="sig-tagline">Signal Flair does exactly three things — and nothing else. We make your business findable, readable, and recommendable by the AI engines deciding who gets seen.</div>
+          <div className="sig-tagline">Answer engines don&apos;t just need content — they need proof. Signal Flair builds that proof layer in three moves: diagnose the baseline, build the proof, and keep it fresh — so the AI engines deciding who gets recommended can find, read, and trust you.</div>
         </div>
         <div className="sig-rows">
           <div className="sig-row reveal">
-            <div className="sig-proto"><div className="sig-rn">01</div><div className="sig-plabel">Protocol / Score</div></div><div className="sig-rd" />
-            <div className="sig-rtitle">AI Visibility<br />Audit</div>
-            <div className="sig-rbody"><em>The score that exposes everything.</em> We run your business through ChatGPT, Perplexity, Claude, Gemini, and Google AI Overviews. We find every gap. We show you the number. Most businesses score under 40 — now you&apos;ll know why.</div>
+            <div className="sig-proto"><div className="sig-rn">01</div><div className="sig-plabel">Diagnostic · Signal Score™</div></div><div className="sig-rd" />
+            <div className="sig-rtitle">Signal<br />Baseline™</div>
+            <div className="sig-rbody"><em>The before-photo of how AI sees you.</em> Your first Signal Score™ — a 0–100 baseline across ChatGPT, Perplexity, Claude, Gemini, and Google AI. We find every gap and show you the number. Most businesses score under 40 — now you&apos;ll know why.</div>
             <div><span className="sig-rtag">Scoring + Reporting</span></div>
           </div>
           <div className="sig-row reveal">
-            <div className="sig-proto"><div className="sig-rn">02</div><div className="sig-plabel">Protocol / Structure</div></div><div className="sig-rd" />
-            <div className="sig-rtitle">Foundation<br />Build</div>
-            <div className="sig-rbody"><em>The infrastructure AI actually reads.</em> llms.txt deployed. Schema markup installed. AI crawlers unblocked. Your business structured the way generative search engines need to find you. Built in 7–14 days — not months.</div>
+            <div className="sig-proto"><div className="sig-rn">02</div><div className="sig-plabel">Implementation · Proof Layer</div></div><div className="sig-rd" />
+            <div className="sig-rtitle">Signal Proof<br />Layer™</div>
+            <div className="sig-rbody"><em>The proof layer competitors can&apos;t copy.</em> llms.txt deployed, schema installed, crawlers unblocked, entity and answer architecture rebuilt — the structured proof AI needs to understand, verify, and recommend you. Built in 7–14 days, not months.</div>
             <div><span className="sig-rtag">llms.txt + Schema</span></div>
           </div>
           <div className="sig-row reveal">
-            <div className="sig-proto"><div className="sig-rn">03</div><div className="sig-plabel">Protocol / Stay Found</div></div><div className="sig-rd" />
-            <div className="sig-rtitle">Stay Found<br />System</div>
+            <div className="sig-proto"><div className="sig-rn">03</div><div className="sig-plabel">Maintenance · Stay Found</div></div><div className="sig-rd" />
+            <div className="sig-rtitle">Stay<br />Found™</div>
             <div className="sig-rbody"><em>Visibility isn&apos;t a one-time fix.</em> AI search evolves monthly and your competitors are catching up. Stay Found keeps your signal strong — monthly scans, citation growth, schema updates, and crawler monitoring. Built to stay ahead as AI search changes.</div>
             <div><span className="sig-rtag">Monitoring + Citations</span></div>
           </div>
         </div>
         <div className="sig-cta-wrap reveal">
-          <a className="sig-cta" href="#cta">▸ Start with a free Field Report →</a>
-          <span className="sig-cta-note">3 signals · 24 hours · no call</span>
+          <a className="sig-cta" href="#cta">▸ Get Your Signal Score™ →</a>
+          <span className="sig-cta-note">free baseline · 24 hours · no call</span>
         </div>
       </section>
 
@@ -919,10 +919,10 @@ export default function SignalFlairLanding() {
         <div className="proof-bgword" aria-hidden="true">PROOF.</div>
         <div className="proof-head reveal">
           <div>
-            <div className="proof-eyebrow">Case Zero · audited 06.06.2026</div>
+            <div className="proof-eyebrow">Case Zero · the before state</div>
             <div className="proof-title">We ran it on<br /><em>ourselves first.</em></div>
           </div>
-          <div className="proof-meta">No fabricated testimonials. Signal Flair scored 18/100 on its own AI visibility audit. This is Case Zero — the proof of concept is us.</div>
+          <div className="proof-meta">Case Zero is the starting line — not a finished case study. Signal Flair audited itself first, published the baseline Signal Score™ (18/100), and is documenting the rebuild in public. No fabricated testimonials, no finished-case theater.</div>
         </div>
         <div className="proof-grid reveal">
           <div className="proof-card before">
@@ -949,31 +949,29 @@ export default function SignalFlairLanding() {
         </div>
         <div className="proof-note reveal">Signal Flair&apos;s own audit — <strong>June 6, 2026</strong>. This is Case Zero: we ran the system on ourselves first, and we publish the real before-and-after as our own score climbs.</div>
         <a className="proof-live-link reveal" href="/proof/">See our live record →</a>
-        <div className="founding reveal">
+        <div className="founding reveal" id="founding">
           <div className="founding-inner">
             <div className="founding-l">
-              <div className="founding-eyebrow">Founding Client Program</div>
-              <div className="founding-title">Be one of the first <em>10.</em></div>
-              <div className="founding-body">We&apos;re building proof the honest way — real before-and-after Signal Scores™ from real businesses. The first 10 founding clients get the full Foundation Build at the founding rate, in exchange for letting us document the results. This isn&apos;t a discount for its own sake — it&apos;s a partnership to create measurable proof that this works.</div>
-              <div className="founding-ask">In return: permission to share your before/after scores (anonymized if you prefer) and one short quote once results are in.</div>
-              <a className="founding-cta" href="#cta">▸ Apply to become a founding client</a>
-              <div className="founding-micro">Genuine first-mover offer · 10 spots · results documented transparently</div>
+              <div className="founding-eyebrow">Founding Partner Pilot</div>
+              <div className="founding-title">Help build the AI trust layer <em>before the market catches up.</em></div>
+              <div className="founding-body">Signal Flair is a new AI Proof Infrastructure venture in Brownsburg, Indiana, serving organizations nationwide. We&apos;re opening a limited founding pilot for businesses, nonprofits, and civic partners that want to see how AI systems understand them — and build the proof layer to fix it. The goal isn&apos;t hype. It&apos;s documented proof: measure the before, build the missing infrastructure, track the after.</div>
+              <div className="founding-ask">For: nonprofits, local service businesses, civic &amp; community partners, and trust-based providers — med spas, clinics, law firms, HVAC, electrical, and more. In return: permission to document your before/after (anonymized if you prefer).</div>
+              <a className="founding-cta" href="#cta">▸ Explore a Founding Pilot</a>
+              <div className="founding-micro">Early-stage &amp; honest · documented proof, not testimonials · Get Your Signal Score™ to start</div>
             </div>
             <div className="founding-r">
-              <div className="founding-price-tag">Foundation Build · Founding Rate</div>
-              <div className="founding-prices">
-                <span className="founding-anchor">$3,500</span>{' '}
-                <span className="founding-now">$1,750</span>
-              </div>
-              <div className="founding-save">50% off · first 10 businesses only</div>
+              <div className="founding-price-tag">What founding partners receive</div>
               <div className="founding-items">
-                <div className="fnd-i">Full AI Visibility Audit — 5 engines</div>
-                <div className="fnd-i">Custom llms.txt + schema deployment</div>
-                <div className="fnd-i">AI crawler access fixes</div>
-                <div className="fnd-i">Entity cleanup + initial citations</div>
-                <div className="fnd-i">90-Day AI Action Plan</div>
-                <div className="fnd-i">Your results documented &amp; shared (with approval)</div>
+                <div className="fnd-i">Signal Score™ baseline — your 0–100 starting line</div>
+                <div className="fnd-i">AI visibility scan across every major answer engine</div>
+                <div className="fnd-i">Entity clarity + trust-signal review</div>
+                <div className="fnd-i">Crawlability + structured-data review</div>
+                <div className="fnd-i">Signal Proof Layer™ recommendations</div>
+                <div className="fnd-i">Optional Signal Proof Page™ — your public proof asset</div>
+                <div className="fnd-i">Before-and-after documentation as your score climbs</div>
+                <div className="fnd-i">Clear next steps to become easier for AI to verify</div>
               </div>
+              <div className="founding-save">Limited founding cohort · flexible terms for pilots &amp; nonprofits</div>
             </div>
           </div>
         </div>
@@ -989,7 +987,7 @@ export default function SignalFlairLanding() {
             <span className="pw pw4">right</span>{' '}
             <span className="pw pw5">fit.</span>
           </div>
-          <div className="pricing-sub">Every tier runs on the same engine. Your Signal Score™ decides which one fits — and where you start.</div>
+          <div className="pricing-sub">Commercial implementation pricing — one path alongside the Founding Pilot. Your Signal Score™ sets the starting point; most begin with a free baseline, then build the Signal Proof Layer™ at the band it lands in.</div>
         </div>
         <div className="price-how reveal">
           <div className="ph-lead">You don&apos;t pick a package. Your free <em>Field Report</em> sets your starting line.</div>
@@ -1021,7 +1019,7 @@ export default function SignalFlairLanding() {
         <div className="price-feat">
           <div className="pf-left">
             <div className="pf-badge">Triage Band 01 · Score 0–54</div>
-            <div className="pf-tag">Foundation Build</div>
+            <div className="pf-tag">Signal Proof Layer™ · Foundation Build</div>
             <div className="pf-name">Build the Foundation</div>
             <div className="pf-ideal">For the invisible — businesses scoring 0–54 with no AI footprint. The full infrastructure generative engines need to find, read, and recommend you. Built in 7–14 days.</div>
             <div className="pf-amount">$3,500</div>
@@ -1068,7 +1066,7 @@ export default function SignalFlairLanding() {
           </div>
           <div className="psc">
             <div className="psc-tag">Triage Band 03 · Score 75–100</div>
-            <div className="psc-name">Stay Found System</div>
+            <div className="psc-name">Stay Found™ System</div>
             <div className="psc-ideal">For the AI-ready — businesses already visible who refuse to fall behind. Visibility compounds, so we work in seasons, not one-offs.</div>
             <div className="psc-price">$600–$1,200<span style={{ fontSize: '0.4em' }}>/mo</span></div>
             <div className="psc-cad">pick your term — the longer you commit, the lower your rate · CRM access included</div>
@@ -1147,6 +1145,10 @@ export default function SignalFlairLanding() {
             <div className="faq-a">Your Signal Score™ is a 0–100 measure of how findable, readable, and recommendable your business is to AI engines — scored across the six layers of the Signal Protocol™: Access &amp; Crawlability, Structured Intelligence, Entity Clarity, Answer Architecture, Trust &amp; Proof Density, and Live AI Visibility. We run you through ChatGPT, Claude, Perplexity, Gemini, and Google AI, then show you the number and exactly what&apos;s pulling it down.</div>
           </details>
           <details className="faq-item">
+            <summary className="faq-q">What is AI Proof Infrastructure™?<span className="faq-ic" aria-hidden="true" /></summary>
+            <div className="faq-a">AI Proof Infrastructure is the structured layer of business information, technical signals, trust proof, and public verification assets that helps AI answer engines understand and verify an organization. Signal Flair builds it — so ChatGPT, Claude, Gemini, Perplexity, and Google AI can access, understand, verify, and confidently recommend you.</div>
+          </details>
+          <details className="faq-item">
             <summary className="faq-q">How is this different from SEO?<span className="faq-ic" aria-hidden="true" /></summary>
             <div className="faq-a">SEO optimizes for blue links on a results page. We optimize for the layer AI engines actually read — llms.txt, schema, crawler access — so when someone asks an AI for a recommendation, your business is the answer. <em>Different machine, different rules.</em> We don&apos;t do traditional SEO or paid ads.</div>
           </details>
@@ -1163,6 +1165,14 @@ export default function SignalFlairLanding() {
             <div className="faq-a">It will — and often. That&apos;s what the Stay Found System is for: monthly re-scans, fresh citations, schema and llms.txt updates, and crawler monitoring so your signal stays strong as new engines ship and competitors catch up.</div>
           </details>
           <details className="faq-item">
+            <summary className="faq-q">What is the Founding Partner Pilot?<span className="faq-ic" aria-hidden="true" /></summary>
+            <div className="faq-a">An early-stage program for businesses, nonprofits, civic organizations, and community partners that want to measure how AI systems currently understand them — and document building a stronger proof layer. It starts with a Signal Score™ baseline, identifies the missing proof, and tracks the before-and-after. The goal is documented proof, not hype.</div>
+          </details>
+          <details className="faq-item">
+            <summary className="faq-q">Is Signal Flair only for businesses?<span className="faq-ic" aria-hidden="true" /></summary>
+            <div className="faq-a">No. Signal Flair supports businesses, nonprofits, civic organizations, and community-facing programs — anyone that needs to become easier for AI systems to access, understand, verify, and recommend.</div>
+          </details>
+          <details className="faq-item">
             <summary className="faq-q">Do I have to get on a sales call?<span className="faq-ic" aria-hidden="true" /></summary>
             <div className="faq-a">No. Request your free Field Report above — we scan 3 critical signals and send your partial audit within 24 hours. No pitch, no pressure. <em>The ball stays in your court.</em></div>
           </details>
@@ -1174,10 +1184,11 @@ export default function SignalFlairLanding() {
         <div className="cta-deco">FOUND.</div>
         <div className="cta-inner">
           <div className="cta-left">
-            <div className="cta-y-pre reveal">Discovery is the first connection</div>
+            <div className="cta-y-pre reveal">AI Proof Infrastructure™</div>
             <div className="cta-y-title reveal">See what AI <em>actually knows</em><br />about your business — free.</div>
             <div className="cta-y-sub reveal">Three critical AI signals — scanned across every major engine and delivered in 24 hours. No call. No pitch. Just the diagnosis: exactly where your signal breaks.</div>
             <div className="cta-y-btns reveal" style={{ marginTop: '26px' }}>
+              <a className="cta-y-ghost" href="#founding">▸ Explore a Founding Pilot →</a>
               <a className="cta-y-ghost" href="#check">▸ See all six layers →</a>
             </div>
           </div>

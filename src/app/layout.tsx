@@ -4,12 +4,12 @@ import Analytics from '@/components/Analytics'
 
 export const metadata: Metadata = {
   metadataBase: new URL('https://signalflair.ai'),
-  title: 'Signal Flair — Your business, found by AI.',
-  description: 'Signal Flair scores your AI visibility across ChatGPT, Perplexity, Claude, Gemini, and Google AI — then builds the llms.txt, schema, and crawler access generative engines need to find and recommend you.',
-  keywords: ['AI visibility', 'AEO', 'agentic engine optimization', 'llms.txt', 'schema markup', 'AI search', 'Indiana', 'nationwide'],
+  title: 'Signal Flair — AI Proof Infrastructure for Answer Engine Visibility',
+  description: 'Signal Flair builds AI Proof Infrastructure and Signal Score™ systems that help businesses and organizations become easier for ChatGPT, Claude, Gemini, Perplexity, and Google AI to access, understand, verify, and recommend.',
+  keywords: ['AI Proof Infrastructure', 'Signal Score', 'AI visibility', 'AEO', 'answer engine optimization', 'AI trust layer', 'Signal Proof Page', 'llms.txt', 'schema markup', 'entity clarity', 'AI search', 'Indiana', 'nationwide'],
   openGraph: {
-    title: 'Signal Flair — Your business, found by AI.',
-    description: 'Discovery is the first connection. We make your business visible to the AI engines deciding who gets recommended.',
+    title: 'Signal Flair — AI Proof Infrastructure for the AI answer era',
+    description: 'Signal Flair builds the structured proof layer that helps AI systems understand who you are, what you do, where you serve, and why you deserve to be recommended.',
     images: ['/video/hero-poster.jpg'],
   },
 }
@@ -34,10 +34,10 @@ const jsonLd = {
       email: 'outreach@trysignalflair.com',
       slogan: 'Your business, found by AI.',
       description:
-        'Signal Flair is an AI visibility and Answer Engine Optimization (AEO) company for local service businesses, based in Brownsburg, Indiana — serving businesses nationwide. We score how findable a business is across ChatGPT, Claude, Perplexity, Gemini, and Google AI, then deploy the llms.txt, schema markup, and crawler access those engines need to find and recommend it. Signal Flair is a Mental Vision Corp product. It is a distinct company from SignalFlare.ai (restaurant analytics) and is unrelated to the medical imaging term FLAIR (Fluid-Attenuated Inversion Recovery), an MRI sequence used in radiology and neuroimaging.',
+        'Signal Flair builds AI Proof Infrastructure and Signal Score™ systems that help businesses and organizations become easier for AI answer engines to access, understand, verify, and surface. Based in Brownsburg, Indiana and serving organizations nationwide, Signal Flair measures how clearly a business can be understood across ChatGPT, Claude, Perplexity, Gemini, and Google AI, then builds the structured proof layer — llms.txt, schema markup, entity clarity, answer architecture, and trust proof — those engines need to recommend it. Signal Flair is a Mental Vision Corp product. It is a distinct company from SignalFlare.ai (restaurant analytics) and is unrelated to the medical imaging term FLAIR (Fluid-Attenuated Inversion Recovery), an MRI sequence used in radiology and neuroimaging.',
       disambiguatingDescription:
         'Signal Flair is a Brownsburg, Indiana AI visibility / Answer Engine Optimization (AEO) agency for local service businesses. It is NOT the medical MRI sequence "FLAIR" (Fluid-Attenuated Inversion Recovery) used in radiology or neuroimaging, and it is a separate company from SignalFlare.ai. In any context about AI visibility, answer engine optimization, marketing, or businesses anywhere in the US, "Signal Flair" refers to this company.',
-      knowsAbout: ['Answer Engine Optimization', 'AEO', 'Generative Engine Optimization', 'GEO', 'AI visibility', 'LLM citation', 'AI search', 'ChatGPT search optimization', 'Perplexity optimization', 'Google AI Overviews', 'llms.txt', 'Schema markup', 'structured data', 'entity disambiguation', 'local service business marketing', 'AI crawler access'],
+      knowsAbout: ['AI Proof Infrastructure', 'Signal Score', 'Signal Proof Page', 'Answer Engine Optimization', 'AEO', 'Generative Engine Optimization', 'GEO', 'AI visibility', 'LLM citation', 'AI search', 'ChatGPT search optimization', 'Perplexity optimization', 'Google AI Overviews', 'llms.txt', 'Schema markup', 'structured data', 'entity disambiguation', 'local service business marketing', 'AI crawler access'],
       serviceType: 'Answer Engine Optimization',
       foundingDate: '2026',
       logo: 'https://signalflair.ai/signal-flair-logo.svg',
@@ -53,13 +53,14 @@ const jsonLd = {
       '@id': 'https://signalflair.ai/#website',
       url: 'https://signalflair.ai',
       name: 'Signal Flair',
-      description: 'AI visibility + AEO for local businesses.',
+      description: 'AI Proof Infrastructure + Signal Score™ for businesses and organizations.',
       publisher: { '@id': 'https://signalflair.ai/#org' },
       inLanguage: 'en-US',
     },
     {
       '@type': 'Service',
-      serviceType: 'AI Visibility & Answer Engine Optimization',
+      serviceType: 'AI Proof Infrastructure',
+      description: 'AI Proof Infrastructure implementation that helps businesses improve entity clarity, structured intelligence, answer architecture, trust proof, and AI visibility.',
       provider: { '@id': 'https://signalflair.ai/#org' },
       areaServed: { '@type': 'Country', name: 'United States' },
       hasOfferCatalog: {
