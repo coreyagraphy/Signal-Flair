@@ -639,7 +639,7 @@ export default function SignalFlairLanding() {
         <nav id="hnav">
           <div>
             <div className="nav-logo"><SignalFlairLogo onDark pulse style={{ height: 66, width: 'auto', display: 'block' }} /></div>
-            <div className="nav-logo-tag">AI Proof Infrastructure™ · Brownsburg, Indiana, serving nationwide</div>
+            <div className="nav-logo-tag"><span className="ntag-cat">AI Proof Infrastructure™</span> · Brownsburg, Indiana, serving nationwide</div>
           </div>
           <div style={{ display: 'flex', alignItems: 'center', gap: '24px' }}>
             <a className="nl" href="#check">Signal Score</a>
@@ -698,7 +698,7 @@ export default function SignalFlairLanding() {
       <nav id="site-nav">
         <div>
           <a className="nav-logo" href="#hero" style={{ display: 'flex', alignItems: 'center' }}><SignalFlairLogo style={{ height: 38, width: 'auto', display: 'block' }} /></a>
-          <div className="nav-logo-tag" style={{ color: 'rgba(23,19,18,0.3)' }}>AI Proof Infrastructure™</div>
+          <div className="nav-logo-tag" style={{ color: 'rgba(23,19,18,0.55)' }}><span className="ntag-cat">AI Proof Infrastructure™</span></div>
         </div>
         <div className="snav-actions" style={{ display: 'flex', alignItems: 'center', gap: '24px' }}>
           <a href="#check" style={snl}>Signal Score</a>

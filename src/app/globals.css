@@ -95,8 +95,9 @@ nav#hnav{position:relative;z-index:10;display:flex;align-items:center;justify-co
 .nav-logo{font-family:var(--flair);font-variation-settings:'opsz' 144,'wght' 520,'WONK' 1;font-size:34px;letter-spacing:0.005em;color:var(--bone);text-decoration:none;line-height:1}
 .nav-logo .logo-mental{color:var(--bone)}
 .nav-logo .logo-vision{color:var(--orange);margin-left:8px;font-family:var(--italic);font-style:italic;display:inline-block;border:1.5px solid currentColor;border-radius:3px;padding:0 9px 2px;line-height:1;box-shadow:0 0 16px rgba(255,90,31,0.22)}
-.nav-logo-tag{font-family:var(--signal);font-size:9.5px;color:rgba(248,241,231,0.42);letter-spacing:0.2em;text-transform:uppercase;margin-top:5px}
-#hnav .nav-logo-tag{color:#ff7a3d;font-weight:500;font-size:10.5px;text-shadow:0 0 14px rgba(255,90,31,0.55)}
+.nav-logo-tag{font-family:var(--signal);font-size:11px;color:rgba(248,241,231,0.6);letter-spacing:0.1em;text-transform:uppercase;margin-top:6px}
+.nav-logo-tag .ntag-cat{font-size:16px;font-weight:700;letter-spacing:0.06em}
+#hnav .nav-logo-tag{color:#ff7a3d;font-weight:500;font-size:11px;text-shadow:0 0 14px rgba(255,90,31,0.55)}
 /* FLAIR logotype — pulses through the brand palette with a matching glow */
 @keyframes flairPulse{
   0%,100%{fill:#f8f1e7;filter:drop-shadow(0 0 2px rgba(248,241,231,0.25))}
@@ -167,7 +168,8 @@ nav#hnav{position:relative;z-index:10;display:flex;align-items:center;justify-co
 #site-nav{position:fixed;top:0;left:0;right:0;z-index:100;background:rgba(244,234,219,0.94);backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);border-bottom:1px solid var(--ink);padding:13px 38px;display:flex;align-items:center;justify-content:space-between;transform:translateY(-100%);transition:transform .35s cubic-bezier(.22,1,.36,1)}
 #site-nav.visible{transform:translateY(0)}
 #site-nav .nav-logo{font-family:var(--flair);font-variation-settings:'opsz' 144,'wght' 540,'WONK' 1;color:var(--ink);font-size:27px}
-#site-nav .nav-logo-tag{font-size:9px}
+#site-nav .nav-logo-tag{font-size:10px}
+#site-nav .nav-logo-tag .ntag-cat{font-size:13px}
 #site-nav .nav-logo em{color:var(--orange);font-family:var(--italic);font-style:italic;display:inline-block;border:1.5px solid currentColor;border-radius:3px;padding:0 7px 1px;margin-left:6px;line-height:1}
 #site-nav .ncta{color:var(--ink);background:var(--ink);border-color:var(--ink);color:var(--paper)}
 #site-nav .ncta:hover{background:var(--orange);border-color:var(--orange);color:var(--ink)}
