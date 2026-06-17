@@ -144,7 +144,7 @@ export default function HowItWorksPage() {
       </div>
 
       <footer className="rsc-foot">
-        Signal Flair · a Mental Vision Corp product · Indiana-based · serving nationwide<br />
+        Signal Flair · a Mental Vision Corp product · Brownsburg, Indiana · serving nationwide<br />
         <a href="/">signalflair.ai</a> · <a href="/faq/">faq</a> · <a href="/about/">about</a> · <a href="/proof/">the record</a>
       </footer>
 

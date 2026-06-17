@@ -1,14 +1,14 @@
 import type { Metadata } from 'next'
 
 export const metadata: Metadata = {
-  title: 'About — AI Visibility & AEO · Indiana-based | Signal Flair',
+  title: 'About — AI Visibility & AEO · Brownsburg, Indiana | Signal Flair',
   description:
-    'Signal Flair is an AI visibility and Answer Engine Optimization (AEO) agency based in Indiana, serving nationwide — a product of Mental Vision Corp, founded by Corey Ellis. We score how findable your business is to ChatGPT, Claude, Perplexity, Gemini, and Google AI, then build the layer they read.',
+    'Signal Flair is an AI visibility and Answer Engine Optimization (AEO) agency based in Brownsburg, Indiana, serving nationwide — a product of Mental Vision Corp, founded by Corey Ellis. We score how findable your business is to ChatGPT, Claude, Perplexity, Gemini, and Google AI, then build the layer they read.',
   alternates: { canonical: 'https://signalflair.ai/about' },
   openGraph: {
     title: 'About Signal Flair — found by AI, by design',
     description:
-      'An Indiana-based AI-visibility agency that audited itself first: Case Zero, 18/100, rebuilt in public. A Mental Vision Corp product.',
+      'A Brownsburg, Indiana AI-visibility agency that audited itself first: Case Zero, 18/100, rebuilt in public. A Mental Vision Corp product.',
   },
 }
 
@@ -32,7 +32,7 @@ const jsonLd = {
       logo: 'https://signalflair.ai/signal-flair-logo.svg',
       email: 'outreach@trysignalflair.com',
       description:
-        'Signal Flair is an AI visibility and Answer Engine Optimization (AEO) agency for local service businesses, based in Indiana — serving businesses nationwide. It is a product of Mental Vision Corp and is unrelated to SignalFlare.ai or to the medical MRI term FLAIR.',
+        'Signal Flair is an AI visibility and Answer Engine Optimization (AEO) agency for local service businesses, based in Brownsburg, Indiana — serving businesses nationwide. It is a product of Mental Vision Corp and is unrelated to SignalFlare.ai or to the medical MRI term FLAIR.',
       foundingDate: '2026',
       areaServed: { '@type': 'Country', name: 'United States' },
       address: { '@type': 'PostalAddress', addressLocality: 'Brownsburg', addressRegion: 'IN', addressCountry: 'US' },
@@ -60,10 +60,10 @@ export default function AboutPage() {
 
       <div className="rsc-wrap">
         <header className="rsc-hero">
-          <div className="rsc-eyebrow">About · Indiana-based, nationwide</div>
+          <div className="rsc-eyebrow">About · Brownsburg, Indiana, nationwide</div>
           <h1 className="rsc-h1">Found by AI, <em>by design.</em></h1>
           <p className="rsc-lead">
-            Signal Flair is an AI visibility and Answer Engine Optimization agency based in Indiana,
+            Signal Flair is an AI visibility and Answer Engine Optimization agency based in Brownsburg, Indiana,
             serving businesses nationwide. We make local service businesses across the United States
             findable, readable, and recommendable by the AI engines now deciding who gets seen —
             ChatGPT, Claude, Perplexity, Gemini, and Google AI.
@@ -124,7 +124,7 @@ export default function AboutPage() {
       </div>
 
       <footer className="rsc-foot">
-        Signal Flair · a Mental Vision Corp product · Indiana-based · serving nationwide<br />
+        Signal Flair · a Mental Vision Corp product · Brownsburg, Indiana · serving nationwide<br />
         <a href="/">signalflair.ai</a> · <a href="/faq/">faq</a> · <a href="/how-it-works/">how it works</a> · <a href="/proof/">the record</a>
       </footer>
 

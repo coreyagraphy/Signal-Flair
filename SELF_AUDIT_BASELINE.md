@@ -24,7 +24,7 @@ intelligence; Snowflake 2024 Startup Challenge winner; established press/Crunchb
 
 ## Fixes shipped 2026-06-06 (the dogfood Foundation Build — website side)
 - **Entity Clarity:** Organization + ProfessionalService + WebSite + Service JSON-LD in `src/app/layout.tsx`
-  (exact "Signal Flair" · Indianapolis · AEO · founder Corey Ellis · parent Mental Vision Corp ·
+  (exact "Signal Flair" · Brownsburg, Indiana · AEO · founder Corey Ellis · parent Mental Vision Corp ·
   explicit "distinct from SignalFlare.ai"). Add real LinkedIn/Crunchbase/directory URLs to `sameAs` next.
 - **Crawl Readiness:** `public/robots.txt` (AI crawlers explicitly allowed) + `public/llms.txt`
   (with SignalFlare.ai disambiguation note) + `public/sitemap.xml`.
@@ -32,7 +32,7 @@ intelligence; Snowflake 2024 Startup Challenge winner; established press/Crunchb
 
 ## Still off-site (not website code)
 - Real social/Crunchbase/directory profiles → feed `sameAs`.
-- Directory listings + differentiated mentions ("Signal Flair · Indianapolis · AEO for local businesses").
+- Directory listings + differentiated mentions ("Signal Flair · Brownsburg, Indiana · AEO for local businesses").
 - These + indexing time drive AI Search Presence up.
 
 ## Next

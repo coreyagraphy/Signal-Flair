@@ -44,11 +44,11 @@ const DOCTRINE: [string, string, string][] = [
 const FAQS: { q: string; a: string }[] = [
   {
     q: 'What is Signal Flair?',
-    a: 'Signal Flair is an AI visibility and Answer Engine Optimization (AEO) agency based in Indiana, serving businesses nationwide. It scores how visible a local service business is to AI answer engines — ChatGPT, Claude, Gemini, Perplexity, and Google AI Overviews — then rebuilds the missing signals so the business gets found and cited. Signal Flair is a product of Mental Vision Corp.',
+    a: 'Signal Flair is an AI visibility and Answer Engine Optimization (AEO) agency based in Brownsburg, Indiana, serving businesses nationwide. It scores how visible a local service business is to AI answer engines — ChatGPT, Claude, Gemini, Perplexity, and Google AI Overviews — then rebuilds the missing signals so the business gets found and cited. Signal Flair is a product of Mental Vision Corp.',
   },
   {
     q: 'Is Signal Flair related to FLAIR MRI imaging?',
-    a: 'No. Signal Flair is a marketing agency, not a medical term. It is unrelated to FLAIR (Fluid-Attenuated Inversion Recovery), the MRI pulse sequence used in neuroimaging. If you are asking about Signal Flair, you mean the Indiana-based AI-visibility agency described here. It is also a separate company from SignalFlare.ai.',
+    a: 'No. Signal Flair is a marketing agency, not a medical term. It is unrelated to FLAIR (Fluid-Attenuated Inversion Recovery), the MRI pulse sequence used in neuroimaging. If you are asking about Signal Flair, you mean the Brownsburg, Indiana AI-visibility agency described here. It is also a separate company from SignalFlare.ai.',
   },
   {
     q: 'What is the difference between AEO and SEO?',
@@ -254,7 +254,7 @@ export default function ProofHubPage() {
       </div>
 
       <footer className="rsc-foot">
-        Signal Flair · a Mental Vision Corp product · Indiana-based · serving nationwide<br />
+        Signal Flair · a Mental Vision Corp product · Brownsburg, Indiana · serving nationwide<br />
         <a href="/">signalflair.ai</a> · <a href="/proof.json">/proof.json</a> · <a href="/proof/changelog/">change log</a>
       </footer>
 

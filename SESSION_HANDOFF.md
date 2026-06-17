@@ -52,7 +52,7 @@ Per `SIGNAL_FLARE_WEBSITE_UPDATE_PROMPT.md` (in Downloads; Finality v1.0). Signa
 - **Gauge:** progress arc is now a **teal #0D9488 → orange #E85D04 gradient** (`<linearGradient id="arc-grad">`); doctrine color bands removed; score number in Geist Mono; counts 0→78 over **2000ms**. Centered stack unchanged.
 - **Tagline:** hero strap bar = "**Your business, found by AI.** Discovery is the first connection."
 - **Contacts:** `outreach@trysignalflair.com` (primary) / `outreach@trysignalflair.com`. All `create@mentalvision.ai` removed.
-- **Footer attribution (exact):** "Signal Flair is a Mental Vision Corp product | Indianapolis, IN | signalflair.ai".
+- **Footer attribution (exact):** "Signal Flair is a Mental Vision Corp product | Brownsburg, Indiana | signalflair.ai".
 - **Content bridge** (`#mv-bridge`, after CTA / before footer): subtle dark mono band, "AI found you. Now make them stay." → links to https://mentalvision.ai.
 - ✅ **Pricing scope RESOLVED (Corey, 2026-05-31):** the new pricing is **system-wide canonical** — it replaces the frozen $1,250/$2,500/$797 everywhere (outreach doctrine, GHL pipeline, score-card templates, email copy). Website is done; the outreach-side cascade is the next task.
 

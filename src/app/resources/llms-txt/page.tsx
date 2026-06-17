@@ -93,11 +93,11 @@ export default function LlmsTxtResourcePage() {
           <div className="rsc-ba">
             <div className="rsc-bacard before">
               <div className="rsc-balabel">Before · no llms.txt</div>
-              <div className="rsc-baquote">&ldquo;A local company in Indianapolis that does something with… [vague description].&rdquo;</div>
+              <div className="rsc-baquote">&ldquo;A local company in Brownsburg, Indiana that does something with… [vague description].&rdquo;</div>
             </div>
             <div className="rsc-bacard after">
               <div className="rsc-balabel">After · proper llms.txt</div>
-              <div className="rsc-baquote">&ldquo;A family-owned HVAC company serving Indianapolis and surrounding areas since 2012, specializing in repair and installation — consistently rated 4.9 stars.&rdquo;</div>
+              <div className="rsc-baquote">&ldquo;A family-owned HVAC company serving Brownsburg, Indiana and surrounding areas since 2012, specializing in repair and installation — consistently rated 4.9 stars.&rdquo;</div>
             </div>
           </div>
         </section>
@@ -140,7 +140,7 @@ export default function LlmsTxtResourcePage() {
       </section>
 
       <footer className="rsc-foot">
-        Signal Flair · a Mental Vision Corp product · Indiana-based · serving nationwide<br />
+        Signal Flair · a Mental Vision Corp product · Brownsburg, Indiana · serving nationwide<br />
         <a href="/">signalflair.ai</a> · <a href="/llms.txt">our llms.txt</a> · <a href="/#cta">Get your free Field Report</a>
       </footer>
 

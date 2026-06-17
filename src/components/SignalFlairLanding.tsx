@@ -639,7 +639,7 @@ export default function SignalFlairLanding() {
         <nav id="hnav">
           <div>
             <div className="nav-logo"><SignalFlairLogo onDark pulse style={{ height: 66, width: 'auto', display: 'block' }} /></div>
-            <div className="nav-logo-tag">AI Visibility + AEO · Based in Indiana, serving nationwide</div>
+            <div className="nav-logo-tag">AI Visibility + AEO · Brownsburg, Indiana, serving nationwide</div>
           </div>
           <div style={{ display: 'flex', alignItems: 'center', gap: '24px' }}>
             <a className="nl" href="#check">Audit</a>
@@ -1127,7 +1127,7 @@ export default function SignalFlairLanding() {
             <div className="about-sign">
               <div>
                 <div className="about-sign-name">— Corey Ellis</div>
-                <div className="about-sign-role">Founder · Signal Flair · Mental Vision Corp · Indiana-based</div>
+                <div className="about-sign-role">Founder · Signal Flair · Mental Vision Corp · Brownsburg, Indiana</div>
                 <div className="about-sign-loc">Brownsburg, Indiana · serving businesses nationwide</div>
               </div>
             </div>
@@ -1260,7 +1260,7 @@ export default function SignalFlairLanding() {
         <div className="fi">
           <div>
             <a className="f-logo" href="#hero"><SignalFlairLogo onDark style={{ height: 40, width: 'auto', display: 'block' }} /></a>
-            <div className="f-tag">AI Visibility + AEO<br />Based in Indiana · Serving businesses nationwide · Est. 2026<br />Your business, found by AI.</div>
+            <div className="f-tag">AI Visibility + AEO<br />Brownsburg, Indiana · Serving businesses nationwide · Est. 2026<br />Your business, found by AI.</div>
             <a className="f-email" href="mailto:outreach@trysignalflair.com">outreach@trysignalflair.com</a>
           </div>
           <div><div className="f-head">Services</div><a className="f-link" href="#signal">AI Visibility Audit</a><a className="f-link" href="#signal">Foundation Build</a><a className="f-link" href="#signal">Stay Found System</a><a className="f-link" href="#check">What We Check</a><a className="f-link" href="#pricing">Pricing</a></div>
@@ -1273,7 +1273,7 @@ export default function SignalFlairLanding() {
           <div className="f-privacy">We never share your data. No spam.</div>
         </div>
         <div className="fb">
-          <div className="fb-l">Signal Flair is a Mental Vision Corp product | Based in Indiana · Serving nationwide | signalflair.ai</div>
+          <div className="fb-l">Signal Flair is a Mental Vision Corp product | Brownsburg, Indiana · Serving nationwide | signalflair.ai</div>
           <div className="fb-r">AI Visibility + AEO · Signal Flair v1.0</div>
         </div>
       </footer>
