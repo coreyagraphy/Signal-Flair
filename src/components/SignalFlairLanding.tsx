@@ -690,7 +690,6 @@ export default function SignalFlairLanding() {
           </div>
           <div className="hf-r">
             <div><div className="hf-num count">&lt;1%</div><div className="hf-lbl">Have llms.txt</div></div>
-            <a className="hf-cta" href="#cta">▸ Get My Field Report</a>
           </div>
         </div>
       </section>

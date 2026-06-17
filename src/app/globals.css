@@ -96,7 +96,8 @@ nav#hnav{position:relative;z-index:10;display:flex;align-items:center;justify-co
 .nav-logo .logo-mental{color:var(--bone)}
 .nav-logo .logo-vision{color:var(--orange);margin-left:8px;font-family:var(--italic);font-style:italic;display:inline-block;border:1.5px solid currentColor;border-radius:3px;padding:0 9px 2px;line-height:1;box-shadow:0 0 16px rgba(255,90,31,0.22)}
 .nav-logo-tag{font-family:var(--signal);font-size:9.5px;color:rgba(248,241,231,0.42);letter-spacing:0.2em;text-transform:uppercase;margin-top:5px}
-.nl{font-family:var(--signal);font-size:12.5px;color:rgba(248,241,231,0.62);letter-spacing:0.14em;text-transform:uppercase;text-decoration:none;transition:color .2s}
+.nl{font-family:var(--signal);font-weight:600;font-size:13px;color:rgba(248,241,231,0.96);letter-spacing:0.14em;text-transform:uppercase;text-decoration:none;transition:color .2s;text-shadow:0 0 16px rgba(248,241,231,0.18)}
+.nl:hover{color:var(--hot)}
 .nl:hover{color:var(--hot)}
 /* command CTA — rectangular, hard border, mono */
 .ncta{font-family:var(--signal);font-weight:600;font-size:12.5px;letter-spacing:0.14em;text-transform:uppercase;
@@ -254,7 +255,7 @@ nav#hnav{position:relative;z-index:10;display:flex;align-items:center;justify-co
 .sig-cta-wrap{display:flex;align-items:center;gap:24px;flex-wrap:wrap;padding:44px 56px 62px}
 .sig-cta{font-family:var(--signal);font-weight:600;font-size:13px;letter-spacing:0.14em;text-transform:uppercase;padding:17px 30px;text-decoration:none;color:var(--ink);background:var(--hot);border:1px solid var(--hot);transition:.18s;box-shadow:0 8px 28px rgba(255,244,95,0.4)}
 .sig-cta:hover{background:transparent;color:var(--hot);box-shadow:0 12px 38px rgba(255,244,95,0.55),inset 0 0 16px rgba(255,244,95,0.2)}
-.sig-cta-note{font-family:var(--signal);font-size:9.5px;letter-spacing:0.2em;text-transform:uppercase;color:rgba(248,241,231,0.45)}
+.sig-cta-note{font-family:var(--signal);font-weight:500;font-size:11px;letter-spacing:0.2em;text-transform:uppercase;color:rgba(248,241,231,0.82);text-shadow:0 0 16px rgba(248,241,231,0.2)}
 
 /* ════════════════════════════════════════════════════════════
    CHECK — DIAGNOSTIC SCORECARD TABLE
