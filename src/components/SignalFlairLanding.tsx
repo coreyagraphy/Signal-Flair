@@ -639,13 +639,13 @@ export default function SignalFlairLanding() {
         <nav id="hnav">
           <div>
             <div className="nav-logo"><SignalFlairLogo onDark pulse style={{ height: 66, width: 'auto', display: 'block' }} /></div>
-            <div className="nav-logo-tag">AI Visibility + AEO · Brownsburg, Indiana, serving nationwide</div>
+            <div className="nav-logo-tag">AI Proof Infrastructure™ · Brownsburg, Indiana, serving nationwide</div>
           </div>
           <div style={{ display: 'flex', alignItems: 'center', gap: '24px' }}>
-            <a className="nl" href="#check">Audit</a>
-            <a className="nl" href="#signal">Services</a>
-            <a className="nl" href="#pricing">Pricing</a>
-            <a className="ncta" href="#cta">▸ Free Field Report</a>
+            <a className="nl" href="#check">Signal Score</a>
+            <a className="nl" href="#signal">Proof Layer</a>
+            <a className="nl" href="#founding">Pilot</a>
+            <a className="ncta" href="#cta">▸ Get Your Signal Score™</a>
           </div>
         </nav>
         {/* Cinematic instrument panel: DIAGNOSIS above → SCORE GAUGE centerpiece → RECOVERY below */}
@@ -698,13 +698,13 @@ export default function SignalFlairLanding() {
       <nav id="site-nav">
         <div>
           <a className="nav-logo" href="#hero" style={{ display: 'flex', alignItems: 'center' }}><SignalFlairLogo style={{ height: 38, width: 'auto', display: 'block' }} /></a>
-          <div className="nav-logo-tag" style={{ color: 'rgba(23,19,18,0.3)' }}>AI Visibility + AEO</div>
+          <div className="nav-logo-tag" style={{ color: 'rgba(23,19,18,0.3)' }}>AI Proof Infrastructure™</div>
         </div>
         <div className="snav-actions" style={{ display: 'flex', alignItems: 'center', gap: '24px' }}>
-          <a href="#check" style={snl}>Audit</a>
-          <a href="#signal" style={snl}>Services</a>
-          <a href="#pricing" style={snl}>Pricing</a>
-          <a className="ncta" href="#cta">▸ Free Field Report</a>
+          <a href="#check" style={snl}>Signal Score</a>
+          <a href="#signal" style={snl}>Proof Layer</a>
+          <a href="#founding" style={snl}>Pilot</a>
+          <a className="ncta" href="#cta">▸ Get Your Signal Score™</a>
         </div>
       </nav>
 
@@ -1271,7 +1271,7 @@ export default function SignalFlairLanding() {
         <div className="fi">
           <div>
             <a className="f-logo" href="#hero"><SignalFlairLogo onDark style={{ height: 40, width: 'auto', display: 'block' }} /></a>
-            <div className="f-tag">AI Visibility + AEO<br />Brownsburg, Indiana · Serving businesses nationwide · Est. 2026<br />Your business, found by AI.</div>
+            <div className="f-tag">AI Proof Infrastructure™<br />Brownsburg, Indiana · Serving businesses nationwide · Est. 2026<br />Your business, found by AI.</div>
             <a className="f-email" href="mailto:outreach@trysignalflair.com">outreach@trysignalflair.com</a>
           </div>
           <div><div className="f-head">Services</div><a className="f-link" href="#signal">AI Visibility Audit</a><a className="f-link" href="#signal">Foundation Build</a><a className="f-link" href="#signal">Stay Found System</a><a className="f-link" href="#check">What We Check</a><a className="f-link" href="#pricing">Pricing</a></div>
@@ -1285,7 +1285,7 @@ export default function SignalFlairLanding() {
         </div>
         <div className="fb">
           <div className="fb-l">Signal Flair is a Mental Vision Corp product | Brownsburg, Indiana · Serving nationwide | signalflair.ai</div>
-          <div className="fb-r">AI Visibility + AEO · Signal Flair v1.0</div>
+          <div className="fb-r">AI Proof Infrastructure™ · Signal Flair v1.0</div>
         </div>
       </footer>
     </>
