@@ -6,7 +6,7 @@ import SignalFlairLanding from '@/components/SignalFlairLanding'
 const HOMEPAGE_FAQ: { q: string; a: string }[] = [
   {
     q: 'What is a Signal Score™?',
-    a: 'Your Signal Score™ is a 0–100 measure of how findable, readable, and recommendable your business is to AI engines — scored across the six layers of the Signal Protocol™: Access, Structure, Entity, Architecture, Trust, and Live Visibility. We run you through ChatGPT, Claude, Perplexity, Gemini, and Google AI, then show you the number and exactly what’s pulling it down.',
+    a: 'Your Signal Score™ is a 0–100 measure of how findable, readable, and recommendable your business is to AI engines — scored across the six layers of the Signal Protocol™: Access & Crawlability, Structured Intelligence, Entity Clarity, Answer Architecture, Trust & Proof Density, and Live AI Visibility. We run you through ChatGPT, Claude, Perplexity, Gemini, and Google AI, then show you the number and exactly what’s pulling it down.',
   },
   {
     q: 'How is this different from SEO?',

@@ -127,8 +127,8 @@ export default function HowItWorksPage() {
         <section className="rsc-section">
           <h2 className="rsc-h2">Start with the <em>diagnosis</em></h2>
           <p className="rsc-p">
-            A Field Report is a free 3-signal diagnostic — AI Search Presence, Entity Clarity, and
-            Review Signal. It is a diagnosis, never a prescription. The prescription is the work. No
+            A Field Report is a free 3-signal diagnostic — Entity Clarity, Trust &amp; Proof Density,
+            and Live AI Visibility. It is a diagnosis, never a prescription. The prescription is the work. No
             sales call; we send your partial audit within 24 hours.
           </p>
           <p className="rsc-p sl-machine">

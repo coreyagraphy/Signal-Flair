@@ -16,8 +16,8 @@ export const metadata: Metadata = {
 // Google requires structured data to mirror the visible text exactly. Edit here only.
 const FAQS: { q: string; a: string }[] = [
   {
-    q: 'What is a Signal Score?',
-    a: 'A Signal Score is a number from 0 to 100 that measures how visible and trustworthy your business appears to AI search engines like ChatGPT, Perplexity, Google AI, and Gemini. Most local businesses score under 40 and don’t know it. The score is also called your AI Visibility Score — same number, two names.',
+    q: 'What is a Signal Score™?',
+    a: 'A Signal Score™ is a number from 0 to 100, produced by the Signal Protocol™, that measures how visible and trustworthy your business appears to AI search engines like ChatGPT, Perplexity, Google AI, and Gemini. Most local businesses score under 40 and don’t know it.',
   },
   {
     q: 'What is Case Zero?',
@@ -25,7 +25,7 @@ const FAQS: { q: string; a: string }[] = [
   },
   {
     q: 'What is a Field Report?',
-    a: 'A Field Report is a free 3-signal AI visibility diagnostic. It shows your Signal Score on AI Search Presence, Entity Clarity, and Review Signal — the three most critical signals. It is a diagnosis, never a prescription. The prescription is the work. No sales call required; we send your partial audit within 24 hours.',
+    a: 'A Field Report is a free 3-signal AI visibility diagnostic. It shows your Signal Score™ across the three most critical Signal Protocol™ layers — Entity Clarity, Trust & Proof Density, and Live AI Visibility. It is a diagnosis, never a prescription. The prescription is the work. No sales call required; we send your partial audit within 24 hours.',
   },
   {
     q: 'What is Signal Lock?',

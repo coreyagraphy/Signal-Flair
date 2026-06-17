@@ -60,7 +60,7 @@ const FAQS: { q: string; a: string }[] = [
   },
   {
     q: 'How does the Signal Flair score work?',
-    a: 'Signal Flair rates a business 0–100 across six signals: AI Search Presence, Entity Clarity, Crawl Readiness, Authority Content, Review Signal, and Conversion Proof. The score sets the entry point — a foundation build, a targeted rebuild, or ongoing maintenance — so the work matches the actual gap.',
+    a: 'Signal Flair rates a business 0–100 with the Signal Protocol™ across six layers: Access & Crawlability, Structured Intelligence, Entity Clarity, Answer Architecture, Trust & Proof Density, and Live AI Visibility. The resulting Signal Score™ sets the entry point — a foundation build, a targeted rebuild, or ongoing maintenance — so the work matches the actual gap.',
   },
   {
     q: 'Does Signal Flair guarantee placement in ChatGPT or Google AI Overviews?',

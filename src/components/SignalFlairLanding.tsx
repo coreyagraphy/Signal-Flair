@@ -656,7 +656,7 @@ export default function SignalFlairLanding() {
             <div className="h-headline">Can <span id="engine-rot" className="eng-rot">Claude</span> find your business <span className="glass-text-orange">right now?</span></div>
           </div>
 
-          {/* AI Visibility Score gauge — large centered centerpiece */}
+          {/* Signal Score gauge — large centered centerpiece */}
           <div id="score-gauge" className="score-gauge">
             <svg className="ring-svg" viewBox="0 0 240 240" aria-hidden="true">
               <defs>
@@ -746,9 +746,9 @@ export default function SignalFlairLanding() {
             </div>
             <div className="pv-col ai">
               <div className="pv-h"><span className="pv-ey">AI View</span><span className="pv-tag">Can&apos;t Read You</span></div>
-              <div className="pv-row"><span className="pv-name">AI Search Presence</span><span className="pv-stamp bad">4/100</span></div>
+              <div className="pv-row"><span className="pv-name">Live AI Visibility</span><span className="pv-stamp bad">4/100</span></div>
               <div className="pv-row"><span className="pv-name">Entity Clarity</span><span className="pv-stamp bad">5/100</span></div>
-              <div className="pv-row"><span className="pv-name">Crawl Readiness</span><span className="pv-stamp warn">35/100</span></div>
+              <div className="pv-row"><span className="pv-name">Access &amp; Crawlability</span><span className="pv-stamp warn">35/100</span></div>
               <div className="pv-row"><span className="pv-name">Citations · 5 engines</span><span className="pv-stamp bad">0 Found</span></div>
               <div className="pv-foot">
                 <div className="pv-score count">18<small>/100</small></div>
@@ -922,7 +922,7 @@ export default function SignalFlairLanding() {
             <div className="proof-eyebrow">Case Zero · audited 06.06.2026</div>
             <div className="proof-title">We ran it on<br /><em>ourselves first.</em></div>
           </div>
-          <div className="proof-meta">No fabricated testimonials. Signal Flair scored 18/100 on its own AI Visibility audit. This is Case Zero — the proof of concept is us.</div>
+          <div className="proof-meta">No fabricated testimonials. Signal Flair scored 18/100 on its own AI visibility audit. This is Case Zero — the proof of concept is us.</div>
         </div>
         <div className="proof-grid reveal">
           <div className="proof-card before">
@@ -1144,7 +1144,7 @@ export default function SignalFlairLanding() {
         <div className="faq-list reveal">
           <details className="faq-item" open>
             <summary className="faq-q">What is a Signal Score™?<span className="faq-ic" aria-hidden="true" /></summary>
-            <div className="faq-a">Your Signal Score™ is a 0–100 measure of how findable, readable, and recommendable your business is to AI engines — scored across the six layers of the Signal Protocol™: Access, Structure, Entity, Architecture, Trust, and Live Visibility. We run you through ChatGPT, Claude, Perplexity, Gemini, and Google AI, then show you the number and exactly what&apos;s pulling it down.</div>
+            <div className="faq-a">Your Signal Score™ is a 0–100 measure of how findable, readable, and recommendable your business is to AI engines — scored across the six layers of the Signal Protocol™: Access &amp; Crawlability, Structured Intelligence, Entity Clarity, Answer Architecture, Trust &amp; Proof Density, and Live AI Visibility. We run you through ChatGPT, Claude, Perplexity, Gemini, and Google AI, then show you the number and exactly what&apos;s pulling it down.</div>
           </details>
           <details className="faq-item">
             <summary className="faq-q">How is this different from SEO?<span className="faq-ic" aria-hidden="true" /></summary>
@@ -1178,7 +1178,7 @@ export default function SignalFlairLanding() {
             <div className="cta-y-title reveal">See what AI <em>actually knows</em><br />about your business — free.</div>
             <div className="cta-y-sub reveal">Three critical AI signals — scanned across every major engine and delivered in 24 hours. No call. No pitch. Just the diagnosis: exactly where your signal breaks.</div>
             <div className="cta-y-btns reveal" style={{ marginTop: '26px' }}>
-              <a className="cta-y-ghost" href="#check">▸ See the six signals →</a>
+              <a className="cta-y-ghost" href="#check">▸ See all six layers →</a>
             </div>
           </div>
           <div className="cta-right reveal" id="field-report">
@@ -1231,7 +1231,7 @@ export default function SignalFlairLanding() {
                   <input type="hidden" name="lead_tag" defaultValue="AI Visibility Score Request" />
                   <div className="lead-formerr" id="lead-formerr" aria-live="assertive" />
                   <button type="submit" className="lead-submit">▸ Run My Field Report</button>
-                  <div className="lead-micro">No credit card. No spam. Your Field Report lands in your inbox within 24 hours. This covers 3 of 6 signals — the full breakdown requires the complete audit.</div>
+                  <div className="lead-micro">No credit card. No spam. Your Field Report lands in your inbox within 24 hours. This covers 3 of the 6 Signal Protocol™ layers — the full breakdown requires the complete audit.</div>
                 </form>
               </div>
               <div className="lead-success" id="lead-success" role="status" aria-live="polite">
