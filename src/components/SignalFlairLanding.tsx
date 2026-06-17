@@ -638,7 +638,7 @@ export default function SignalFlairLanding() {
         <div id="hero-center-scrim" />
         <nav id="hnav">
           <div>
-            <div className="nav-logo"><SignalFlairLogo onDark style={{ height: 66, width: 'auto', display: 'block' }} /></div>
+            <div className="nav-logo"><SignalFlairLogo onDark pulse style={{ height: 66, width: 'auto', display: 'block' }} /></div>
             <div className="nav-logo-tag">AI Visibility + AEO · Based in Indiana, serving nationwide</div>
           </div>
           <div style={{ display: 'flex', alignItems: 'center', gap: '24px' }}>

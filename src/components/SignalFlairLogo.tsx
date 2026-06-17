@@ -12,10 +12,12 @@ export default function SignalFlairLogo({
   className,
   style,
   onDark = false,
+  pulse = false,
 }: {
   className?: string
   style?: CSSProperties
   onDark?: boolean
+  pulse?: boolean
 }) {
   const flair = onDark ? '#f8f1e7' : '#1a1209'
   return (
@@ -64,6 +66,7 @@ export default function SignalFlairLogo({
       <text
         x="36"
         y="128"
+        className={pulse ? 'logo-flair-pulse' : undefined}
         fontFamily="Fraunces, 'Palatino Linotype', Georgia, serif"
         fontWeight="900"
         fontSize="104"

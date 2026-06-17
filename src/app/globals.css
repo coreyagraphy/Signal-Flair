@@ -96,6 +96,18 @@ nav#hnav{position:relative;z-index:10;display:flex;align-items:center;justify-co
 .nav-logo .logo-mental{color:var(--bone)}
 .nav-logo .logo-vision{color:var(--orange);margin-left:8px;font-family:var(--italic);font-style:italic;display:inline-block;border:1.5px solid currentColor;border-radius:3px;padding:0 9px 2px;line-height:1;box-shadow:0 0 16px rgba(255,90,31,0.22)}
 .nav-logo-tag{font-family:var(--signal);font-size:9.5px;color:rgba(248,241,231,0.42);letter-spacing:0.2em;text-transform:uppercase;margin-top:5px}
+#hnav .nav-logo-tag{color:#ff7a3d;font-weight:500;font-size:10.5px;text-shadow:0 0 14px rgba(255,90,31,0.55)}
+/* FLAIR logotype — pulses through the brand palette with a matching glow */
+@keyframes flairPulse{
+  0%,100%{fill:#f8f1e7;filter:drop-shadow(0 0 2px rgba(248,241,231,0.25))}
+  18%{fill:#ff7a1f;filter:drop-shadow(0 0 12px rgba(255,90,31,0.6))}
+  40%{fill:#ffe23a;filter:drop-shadow(0 0 13px rgba(255,244,95,0.55))}
+  62%{fill:#00d2bf;filter:drop-shadow(0 0 13px rgba(0,210,191,0.55))}
+  82%{fill:#ff3d82;filter:drop-shadow(0 0 13px rgba(255,61,130,0.5))}
+}
+@media (prefers-reduced-motion: no-preference){
+  .logo-flair-pulse{animation:flairPulse 7s ease-in-out infinite;will-change:fill,filter}
+}
 .nl{font-family:var(--signal);font-weight:600;font-size:13px;color:rgba(248,241,231,0.96);letter-spacing:0.14em;text-transform:uppercase;text-decoration:none;transition:color .2s;text-shadow:0 0 16px rgba(248,241,231,0.18)}
 .nl:hover{color:var(--hot)}
 .nl:hover{color:var(--hot)}
