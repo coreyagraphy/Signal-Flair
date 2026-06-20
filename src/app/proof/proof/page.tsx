@@ -4,7 +4,7 @@ import VerifiedMark from '@/components/VerifiedMark'
 export const metadata: Metadata = {
   title: 'Proof & Cases — Verified Record | Signal Flair',
   description:
-    'Real before/after only. Case Zero is the first documented case — Signal Flair’s own audit, 18/100, tracked to target. Part of the live Signal Lock record.',
+    'Real before/after only. Case Zero is the first documented case — Signal Flair’s own audit, 18/100, tracked to target. Part of the live Signal Proof Page™ record.',
   alternates: { canonical: 'https://signalflair.ai/proof/proof' },
 }
 
@@ -31,7 +31,7 @@ export default function ProofCasesPage() {
             <div className="sl-scoretarget">91<small>/100</small><span className="sl-scoretarget-lbl">Target</span></div>
           </div>
           <p className="rsc-p">
-            On <strong>June 6, 2026</strong> we ran the Signal Lock audit on our own brand-new site. A
+            On <strong>June 6, 2026</strong> we ran our Signal Score™ baseline on our own brand-new site. A
             premium build with near-zero AI visibility — 18/100. That is the exact gap our clients
             have, which is why we made ourselves the first case. We&apos;re documenting the climb to a
             target of 91/100, re-measured at Day 30 and Day 90.

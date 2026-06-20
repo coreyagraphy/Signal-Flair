@@ -4,7 +4,7 @@ import VerifiedMark from '@/components/VerifiedMark'
 export const metadata: Metadata = {
   title: 'Our Live Verified Record — Case Zero | Signal Flair',
   description:
-    'Signal Flair runs Signal Lock on itself first. This is our live, continuously re-verified record — Case Zero, 18/100, audited June 6, 2026 — with a public change log tracked to target. We don’t claim. We show.',
+    'Signal Flair published its Signal Proof Page™ on itself first. This is our live, continuously re-verified record — Case Zero, 18/100, audited June 6, 2026 — with a public change log tracked to target. We don’t claim. We show.',
   alternates: { canonical: 'https://signalflair.ai/proof' },
   openGraph: {
     title: 'Case Zero — Signal Flair’s own live verified record',
@@ -55,8 +55,12 @@ const FAQS: { q: string; a: string }[] = [
     a: 'SEO ranks you in a list of links; AEO makes you the answer an AI gives. Traditional SEO optimizes for blue-link rankings on a search results page. AEO optimizes an entity and its content so AI systems can extract, trust, and cite it directly inside generated answers — often before any link is clicked.',
   },
   {
-    q: 'What is Signal Lock?',
-    a: 'Signal Lock is the maintained verification layer behind Signal Flair: a client-owned, continuously re-verified record of your business — published as crawlable pages and machine-readable data — so AI engines and customers can inspect what you do, where you serve, and the proof behind it. It is installed once and re-verified monthly.',
+    q: 'What is a Signal Proof Page™?',
+    a: 'The Signal Proof Page™ is the maintained verification layer behind Signal Flair: a client-owned, continuously re-verified record of your business — published as crawlable pages and machine-readable data — so AI engines and customers can inspect what you do, where you serve, and the proof behind it. It is deployed once on Foundation Build or Start the Rebuild.',
+  },
+  {
+    q: 'What is Stay Found™?',
+    a: 'Stay Found™ is monthly proof maintenance — re-verification, change-log updates, schema and llms.txt freshness, and crawler monitoring so your record does not drift. Signal Flair does not guarantee rankings, citations, recommendations, inclusion, or AI visibility.',
   },
   {
     q: 'How does the Signal Flair score work?',
@@ -122,9 +126,9 @@ export default function ProofHubPage() {
           <div className="rsc-eyebrow">The live record · Case Zero</div>
           <h1 className="rsc-h1">Our own <em>verified record.</em></h1>
           <p className="rsc-lead">
-            Signal Lock is the maintained verification layer behind Signal Flair. We ran it on
-            ourselves first. This page is the real thing — the same deliverable every client gets,
-            kept current and source-linked. We don&apos;t claim. We show.
+            The Signal Proof Page™ is the maintained verification layer behind Signal Flair. We built
+            ours first as Case Zero. This page is the real thing — the same deliverable every client
+            gets, kept current and source-linked. We don&apos;t claim. We show.
           </p>
           <div className="sl-markwrap">
             <VerifiedMark
@@ -173,7 +177,7 @@ export default function ProofHubPage() {
             A client-owned, continuously re-verified record of your business — published as crawlable
             pages and machine-readable data — so AI engines and customers can inspect what you do,
             where you serve, and the proof behind it. Installed once on the Foundation Build, then
-            re-verified, dated, and updated every month under the Stay Found System.
+            re-verified, dated, and updated every month under Stay Found™.
           </p>
           <ul className="rsc-ul">
             <li><strong>Verified, not claimed</strong> — every fact carries a cited source or is marked unverified. Never stamped without proof.</li>
@@ -181,8 +185,9 @@ export default function ProofHubPage() {
             <li><strong>Inspection-ready</strong> — crawlable HTML first, with forward-compatible machine surfaces for the agentic web.</li>
           </ul>
           <p className="rsc-p">
-            We never promise rankings or guaranteed placement in any AI engine. We improve verified
-            facts, crawlable evidence, and agent access — and measure visibility movement.
+            Signal Flair does not guarantee rankings, citations, recommendations, inclusion, or AI
+            visibility. The work is designed to improve clarity, structure, crawlability, and proof
+            readiness — and we measure visibility movement without promising outcomes.
           </p>
         </section>
 

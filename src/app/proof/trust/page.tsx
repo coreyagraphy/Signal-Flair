@@ -4,7 +4,7 @@ import VerifiedMark from '@/components/VerifiedMark'
 export const metadata: Metadata = {
   title: 'Trust Evidence — Verified Record | Signal Flair',
   description:
-    'Signal Flair’s operator, parent company, and trust signals — shown honestly, including the gaps. Part of the live Signal Lock verified record.',
+    'Signal Flair’s operator, parent company, and trust signals — shown honestly, including the gaps. Part of the live Signal Proof Page™ verified record.',
   alternates: { canonical: 'https://signalflair.ai/proof/trust' },
 }
 
@@ -26,7 +26,7 @@ export default function ProofTrustPage() {
         <section className="rsc-section">
           <h2 className="rsc-h2">Identity</h2>
           <div className="sl-kv"><span>Business</span><span>Signal Flair</span></div>
-          <div className="sl-kv"><span>Operated by</span><span>Mental Vision Corp</span></div>
+          <div className="sl-kv"><span>Operated by</span><span>Mental Vision — parent organization</span></div>
           <div className="sl-kv"><span>Founder</span><span>Corey Ellis</span></div>
           <div className="sl-kv"><span>Location</span><span>Brownsburg, Indiana, USA — serving nationwide</span></div>
           <div className="sl-kv"><span>Contact</span><span><a href="mailto:outreach@trysignalflair.com">outreach@trysignalflair.com</a></span></div>

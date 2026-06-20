@@ -4,14 +4,14 @@ import VerifiedMark from '@/components/VerifiedMark'
 export const metadata: Metadata = {
   title: 'Services & Areas — Verified Record | Signal Flair',
   description:
-    'Signal Flair’s services, service areas, and availability — each source-linked. Part of the live Signal Lock verified record.',
+    'Signal Flair’s services, service areas, and availability — each source-linked. Part of the live Signal Proof Page™ verified record.',
   alternates: { canonical: 'https://signalflair.ai/proof/services' },
 }
 
 const SERVICES = [
   {
     name: 'Foundation Build',
-    desc: 'One-time install of the full Signal Lock layer for businesses scoring 0–54.',
+    desc: 'One-time deployment of Signal Proof Page™ and AI Proof Infrastructure for businesses scoring 0–54.',
     areas: 'United States — nationwide (remote)',
     availability: 'Active',
     basis: 'Fixed price',
@@ -19,7 +19,7 @@ const SERVICES = [
   },
   {
     name: 'Start the Rebuild',
-    desc: 'Targeted fixes plus the Signal Lock layer for businesses scoring 55–74.',
+    desc: 'Targeted fixes plus Signal Proof Page™ deployment for businesses scoring 55–74.',
     areas: 'United States — nationwide (remote)',
     availability: 'Active',
     basis: 'Fixed price',
@@ -27,7 +27,7 @@ const SERVICES = [
   },
   {
     name: 'Stay Found System',
-    desc: 'Monthly Signal Lock re-verification, change-log updates, and citation-share re-measurement for businesses scoring 75–100.',
+    desc: 'Stay Found™ monthly proof maintenance — re-verification, change-log updates, and visibility monitoring for businesses scoring 75–100.',
     areas: 'United States (remote)',
     availability: 'Active',
     basis: 'Monthly range',
@@ -46,7 +46,7 @@ export default function ProofServicesPage() {
         <header className="rsc-hero">
           <div className="rsc-eyebrow"><a href="/proof/" className="sl-back">← The record</a> · Services &amp; areas</div>
           <h1 className="rsc-h1">Services &amp; <em>areas.</em></h1>
-          <p className="rsc-lead">What we do, where we serve, and on what basis — each line source-linked. Part of the live Signal Lock record.</p>
+          <p className="rsc-lead">What we do, where we serve, and on what basis — each line source-linked. Part of the live Signal Proof Page™ record.</p>
           <div className="sl-markwrap"><VerifiedMark confirmed={0} total={6} /></div>
         </header>
 

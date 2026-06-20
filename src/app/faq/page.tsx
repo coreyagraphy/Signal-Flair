@@ -1,14 +1,14 @@
 import type { Metadata } from 'next'
 
 export const metadata: Metadata = {
-  title: 'FAQ — Signal Score, Case Zero, Field Report & Signal Lock | Signal Flair',
+  title: 'FAQ — Signal Score, Case Zero, Field Report & Signal Proof Page | Signal Flair',
   description:
     'Answers to the core Signal Flair questions: what a Signal Score™ is, what Case Zero (18/100, June 6 2026) is, what a free Field Report includes, and the Founding Partner Pilot. AI Proof Infrastructure for businesses and organizations nationwide.',
   alternates: { canonical: 'https://signalflair.ai/faq' },
   openGraph: {
     title: 'Signal Flair — Frequently Asked Questions',
     description:
-      'What is a Signal Score? What is Case Zero? What is a Field Report? What is Signal Lock? Straight answers, written to be extracted.',
+      'What is a Signal Score? What is Case Zero? What is a Field Report? What is a Signal Proof Page™? Straight answers, written to be extracted.',
   },
 }
 
@@ -36,8 +36,12 @@ const FAQS: { q: string; a: string }[] = [
     a: 'The Founding Partner Pilot is an early-stage program for businesses, nonprofits, civic organizations, and community partners that want to measure how AI systems currently understand them and document building a stronger proof layer. It starts with a Signal Score™ baseline, identifies the missing proof, and tracks the before-and-after — documented proof, not hype.',
   },
   {
-    q: 'What is Signal Lock?',
-    a: 'Signal Lock is the maintained AI visibility system that keeps your Signal Score from drifting. Anyone can audit you once. Signal Lock keeps your score true over time — monthly re-scans, fresh citations, schema and llms.txt updates, and crawler monitoring as new AI engines ship and competitors catch up.',
+    q: 'What is a Signal Proof Page™?',
+    a: 'The Signal Proof Page™ is your canonical, crawlable proof hub — a client-owned record published as human-readable pages and linked machine-readable assets (proof.json, llms.txt) so AI engines and customers can inspect what you do, where you serve, and the proof behind it. Deployed on Foundation Build and Start the Rebuild.',
+  },
+  {
+    q: 'What is Stay Found™?',
+    a: 'Stay Found™ is ongoing proof maintenance that keeps your Signal Score™ from drifting — monthly re-scans, fresh citations, schema and llms.txt updates, and crawler monitoring as new AI engines ship and competitors catch up. Signal Flair does not guarantee rankings, citations, recommendations, inclusion, or AI visibility. The work is designed to improve clarity, structure, crawlability, and proof readiness.',
   },
   {
     q: 'What is the difference between AEO and SEO?',

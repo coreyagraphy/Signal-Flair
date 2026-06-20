@@ -4,7 +4,7 @@ import VerifiedMark from '@/components/VerifiedMark'
 export const metadata: Metadata = {
   title: 'Change Log — Verified Record | Signal Flair',
   description:
-    'The dated public record of what Signal Flair verified or updated, and when. Part of the live Signal Lock verified record. Next review due 2026-07-06.',
+    'The dated public record of what Signal Flair verified or updated, and when. Part of the live Signal Proof Page™ verified record. Next review due 2026-07-06.',
   alternates: { canonical: 'https://signalflair.ai/proof/changelog' },
 }
 
@@ -12,7 +12,7 @@ export const metadata: Metadata = {
 const LOG = [
   {
     date: '2026-06-06',
-    title: 'Signal Lock layer published',
+    title: 'Signal Proof Page™ layer published',
     body: 'Live verified-record hub shipped: /proof/ pages, machine-readable /proof.json, discovery manifest at /.well-known/signalflair.json, schema.org JSON-LD, and an enhanced llms.txt. The record is now crawlable and inspection-ready.',
   },
   {
