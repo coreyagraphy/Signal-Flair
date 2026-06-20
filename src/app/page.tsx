@@ -1,4 +1,9 @@
+import type { Metadata } from 'next'
 import SignalFlairLanding from '@/components/SignalFlairLanding'
+
+export const metadata: Metadata = {
+  alternates: { canonical: 'https://www.signalflair.ai/' },
+}
 
 // FAQPage schema for the homepage. MUST mirror the visible #faq section in
 // SignalFlairLanding.tsx exactly (Google requires structured data to match visible text).

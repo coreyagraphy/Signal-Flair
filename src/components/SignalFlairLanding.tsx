@@ -650,10 +650,26 @@ export default function SignalFlairLanding() {
         </nav>
         {/* Cinematic instrument panel: DIAGNOSIS above → SCORE GAUGE centerpiece → RECOVERY below */}
         <div id="hero-layout">
+          <h1
+            className="h-sr-only"
+            style={{
+              position: 'absolute',
+              width: '1px',
+              height: '1px',
+              padding: 0,
+              margin: '-1px',
+              overflow: 'hidden',
+              clip: 'rect(0,0,0,0)',
+              whiteSpace: 'nowrap',
+              border: 0,
+            }}
+          >
+            Most local businesses are invisible to AI. What&apos;s your Signal Score?
+          </h1>
           <div className="hero-word" aria-hidden="true">FOUND.</div>
           <div className="h-side top">
             <div className="h-eyebrow"><div className="h-ey-dot" />AI Proof Infrastructure™</div>
-            <div className="h-headline">Can <span id="engine-rot" className="eng-rot">Claude</span> find your business <span className="glass-text-orange">right now?</span></div>
+            <div className="h-headline" aria-hidden="true">Can <span id="engine-rot" className="eng-rot">Claude</span> find your business <span className="glass-text-orange">right now?</span></div>
           </div>
 
           {/* Signal Score gauge — large centered centerpiece */}
@@ -676,7 +692,7 @@ export default function SignalFlairLanding() {
 
           <div className="h-side bottom">
             <div className="h-eyebrow"><div className="h-ey-dot" style={{ animationDelay: '1s' }} />After Signal Flair</div>
-            <div className="h-headline">Scanned. Structured. <span style={{ fontStyle: 'italic', background: 'linear-gradient(125deg,rgba(0,220,220,1) 0%,rgba(180,255,255,0.9) 30%,rgba(0,200,200,0.95) 60%,rgba(150,255,255,0.85) 100%)', backgroundSize: '250% 250%', WebkitBackgroundClip: 'text', backgroundClip: 'text', WebkitTextFillColor: 'transparent', animation: 'glass-shimmer 8s 2s ease-in-out infinite', filter: 'drop-shadow(0 0 14px rgba(0,166,166,0.4))' }}>Found.</span></div>
+            <div className="h-headline" aria-hidden="true">Scanned. Structured. <span style={{ fontStyle: 'italic', background: 'linear-gradient(125deg,rgba(0,220,220,1) 0%,rgba(180,255,255,0.9) 30%,rgba(0,200,200,0.95) 60%,rgba(150,255,255,0.85) 100%)', backgroundSize: '250% 250%', WebkitBackgroundClip: 'text', backgroundClip: 'text', WebkitTextFillColor: 'transparent', animation: 'glass-shimmer 8s 2s ease-in-out infinite', filter: 'drop-shadow(0 0 14px rgba(0,166,166,0.4))' }}>Found.</span></div>
             <div className="h-sub">llms.txt live · bots unblocked · built to help AI engines find, understand, and cite you</div>
           </div>
         </div>
