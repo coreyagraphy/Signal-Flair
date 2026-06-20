@@ -799,9 +799,9 @@ export default function SignalFlairLanding() {
             </div>
             <div className="pv-col ai">
               <div className="pv-h"><span className="pv-ey">AI View</span><span className="pv-tag">Can&apos;t Read You</span></div>
-              <div className="pv-row"><span className="pv-name">Live AI Visibility</span><span className="pv-stamp bad">4/100</span></div>
-              <div className="pv-row"><span className="pv-name">Entity Clarity</span><span className="pv-stamp bad">5/100</span></div>
-              <div className="pv-row"><span className="pv-name">Access &amp; Crawlability</span><span className="pv-stamp warn">35/100</span></div>
+              <div className="pv-row"><span className="pv-name">Live AI Visibility</span><span className="pv-stamp bad">Invisible</span></div>
+              <div className="pv-row"><span className="pv-name">Entity Clarity</span><span className="pv-stamp bad">Unclear</span></div>
+              <div className="pv-row"><span className="pv-name">Access &amp; Crawlability</span><span className="pv-stamp warn">Partial</span></div>
               <div className="pv-row"><span className="pv-name">Citations · 5 engines</span><span className="pv-stamp bad">0 Found</span></div>
               <div className="pv-foot">
                 <div className="pv-score count">18<small>/100</small></div>
@@ -852,16 +852,7 @@ export default function SignalFlairLanding() {
         <div className="proto-top reveal">
           <div className="proto-eyebrow">THE SIGNAL PROTOCOL™</div>
           <div className="proto-title">24-Point AI Visibility<br /><em>Diagnostic.</em></div>
-          <div className="proto-meta">A complete 24-point diagnostic system for measuring whether a local business is findable, readable, trustworthy, and recommendable by AI engines. <strong>Six signal layers. Four checkpoints each.</strong> Every layer scored. Every gap documented.</div>
-          <div className="proto-bar" aria-label="Scoring allocation, 100 points total">
-            <span className="proto-bar-seg"><em>Access</em>{' '}20</span>{' '}
-            <span className="proto-bar-seg"><em>Structure</em>{' '}20</span>{' '}
-            <span className="proto-bar-seg"><em>Entity</em>{' '}15</span>{' '}
-            <span className="proto-bar-seg"><em>Architecture</em>{' '}20</span>{' '}
-            <span className="proto-bar-seg"><em>Trust</em>{' '}15</span>{' '}
-            <span className="proto-bar-seg"><em>Visibility</em>{' '}10</span>{' '}
-            <span className="proto-bar-tot">= 100</span>
-          </div>
+          <div className="proto-meta">Six signal layers, four checkpoints each — scoring whether AI can find, read, trust, and recommend you.</div>
         </div>
         <div className="proto-grid">
           {SIGNAL_PROTOCOL.map((layer, li) => (
@@ -869,7 +860,6 @@ export default function SignalFlairLanding() {
               <summary className="proto-layer-head">
                 <span className="proto-layer-n">{String(li + 1).padStart(2, '0')}</span>
                 <span className="proto-layer-name">{layer.name}</span>
-                <span className="proto-layer-pts">{layer.pts} pts</span>
                 <span className="proto-layer-caret" aria-hidden="true" />
               </summary>
               <div className="proto-drop">
@@ -887,16 +877,8 @@ export default function SignalFlairLanding() {
           ))}
         </div>
         <div className="proto-teaser reveal">
-          <div className="proto-teaser-eyebrow">Three signal layers, scanned first</div>
-          <div className="proto-teaser-layers">
-            <span className="ptl ptl-1">Entity Clarity</span>
-            <span className="ptl ptl-2">Trust &amp; Proof Density</span>
-            <span className="ptl ptl-3">Live AI Visibility</span>
-          </div>
-          <div className="proto-teaser-line">The diagnosis is free. The rebuild is the work.</div>
           <div className="proto-teaser-chant">What&apos;s your Signal Score?</div>
           <a className="proto-teaser-cta" href="#cta">▸ Get My Free Field Report →</a>
-          <div className="proto-teaser-micro">No credit card required.</div>
         </div>
       </section>
 
@@ -904,10 +886,8 @@ export default function SignalFlairLanding() {
       <section id="stats">
         <div className="stats-bg-word">PROOF.</div>
         <div className="stats-float">
-          <div className="stat-item reveal"><span className="stat-n" id="sn1">5+</span><span className="stat-l">AI Engines Scored &amp; Counting</span><div className="stat-d">ChatGPT, Claude, Perplexity, Gemini, Google AI — major AI engines monitored as the landscape changes.</div></div>
           <div className="stat-item reveal"><span className="stat-n" id="sn2">&lt;1%</span><span className="stat-l">Have llms.txt</span><div className="stat-d">The file we build and deploy on the Foundation Build.</div></div>
           <div className="stat-item reveal"><span className="stat-n" id="sn3">4M+</span><span className="stat-l">AI Searches Daily</span><div className="stat-d">Most businesses appear in zero of them — and that number climbs every day.</div></div>
-          <div className="stat-item reveal"><span className="stat-n" id="sn4">3</span><span className="stat-l">Core Services</span><div className="stat-d">Audit · Foundation Build · Stay Found.</div></div>
         </div>
       </section>
 
@@ -1075,12 +1055,11 @@ export default function SignalFlairLanding() {
         </div>
         <div className="price-feat">
           <div className="pf-left">
-            <div className="pf-badge">Triage Band 01 · Score 0–54</div>
             <div className="pf-tag">Signal Proof Layer™ · Foundation Build</div>
             <div className="pf-name">Build the Foundation</div>
             <div className="pf-ideal">For the invisible — businesses scoring 0–54 with no AI footprint. The full infrastructure generative engines need to find, read, and recommend you. Built in 7–14 days.</div>
             <div className="pf-amount">$3,500</div>
-            <div className="pf-cadence">one-time build · CRM access optional add-on, $197/mo</div>
+            <div className="pf-cadence">one-time build · CRM access optional</div>
             <a className="pf-btn" href="#cta">▸ Build the Foundation</a>
           </div>
           <div className="pf-right">
@@ -1103,7 +1082,6 @@ export default function SignalFlairLanding() {
         </div>
         <div className="price-small">
           <div className="psc">
-            <div className="psc-tag">Triage Band 02 · Score 55–74</div>
             <div className="psc-name">Start the Rebuild</div>
             <div className="psc-ideal">For the partially visible — businesses with a foundation that needs sharpening. The core fixes that move your score fastest.</div>
             <div className="psc-price">$1,500</div>
@@ -1122,16 +1100,10 @@ export default function SignalFlairLanding() {
             <a className="psc-btn" href="#cta">▸ Start the Rebuild</a>
           </div>
           <div className="psc">
-            <div className="psc-tag">Triage Band 03 · Score 75–100</div>
             <div className="psc-name">Stay Found™</div>
             <div className="psc-ideal">For the AI-ready — businesses already visible who refuse to fall behind. Visibility compounds, so we work in seasons, not one-offs.</div>
             <div className="psc-price">$600–$1,200<span style={{ fontSize: '0.4em' }}>/mo</span></div>
-            <div className="psc-cad">pick your term — the longer you commit, the lower your rate · CRM access included</div>
-            <div className="psc-terms">
-              <div className="psc-term"><span className="pt-len">3 months</span><span className="pt-price">$1,200<em>/mo</em></span><span className="pt-note">Get found fast — the shortest runway to results</span></div>
-              <div className="psc-term"><span className="pt-len">6 months</span><span className="pt-price">$900<em>/mo</em></span><span className="pt-note">Build real momentum across every engine</span></div>
-              <div className="psc-term feat"><span className="pt-len">12 months</span><span className="pt-price">$600<em>/mo</em></span><span className="pt-note">Best rate — compound your lead and stay ahead</span></div>
-            </div>
+            <div className="psc-cad">monthly · longer commitment, lower rate · CRM access included</div>
             <div className="psc-items">
               <div className="psci psci-lock">Monthly Stay Found™ re-verification + signal-drift monitoring</div>
               <div className="psci psci-lock">Public change-log maintained — Verified by Signal Flair™</div>

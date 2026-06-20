@@ -359,12 +359,25 @@ const styles = `
     text-shadow: 0 0 40px rgba(255, 244, 95, 0.34);
   }
 
-  /* "AI" — bigger, bolder, illuminated so it stands out */
+  /* "AI" — robotic/digital: mono font, oversized, with a circuit-tracer sweep */
   .ua-ai {
-    font-size: 1.3em;
-    font-weight: 900;
-    letter-spacing: -0.045em;
-    text-shadow: 0 0 40px rgba(240, 235, 224, 0.6), 0 0 78px rgba(240, 235, 224, 0.32);
+    font-family: 'Geist Mono', ui-monospace, 'Courier New', monospace;
+    font-size: 1.5em;
+    font-weight: 800;
+    letter-spacing: 0.04em;
+    background: linear-gradient(100deg, #0a7d72 0%, #00b8a9 28%, #8ffff2 46%, #ffffff 50%, #8ffff2 54%, #00b8a9 72%, #0a7d72 100%);
+    background-size: 240% 100%;
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    -webkit-text-fill-color: transparent;
+    filter: drop-shadow(0 0 16px rgba(0, 184, 169, 0.6)) drop-shadow(0 0 42px rgba(0, 184, 169, 0.3));
+    animation: ua-ai-tracer 2.8s linear infinite;
+  }
+
+  @keyframes ua-ai-tracer {
+    0% { background-position: 220% 0; }
+    100% { background-position: -120% 0; }
   }
 
   /* Anime.js splits text — preserve layout */
@@ -394,31 +407,45 @@ const styles = `
     z-index: 1;
     display: grid;
     grid-template-columns: repeat(2, 1fr);
-    max-width: 900px;
-    margin: 0 auto 80px;
+    max-width: 1080px;
+    margin: 0 auto 90px;
     padding: 0 32px;
-    gap: 18px;
+    gap: 26px;
+    perspective: 1600px;
   }
 
   /* ── Box ─────────────────────────────────────────────────── */
   .ua-box {
     position: relative;
-    background: var(--ua-box-bg);
-    padding: 48px 44px 52px;
+    background: #141210;
+    padding: 56px 52px 62px;
     overflow: hidden;
     opacity: 0; /* animates in */
     clip-path: inset(100% 0% 0% 0%);
-    border: 1px solid rgba(240, 235, 224, 0.1);
-    border-radius: 14px;
-    box-shadow: 0 20px 44px -26px rgba(0, 0, 0, 0.75);
-    transition: background 0.4s ease, border-color 0.4s ease, box-shadow 0.4s ease, transform 0.4s ease;
+    border: 1px solid rgba(240, 235, 224, 0.12);
+    border-radius: 20px;
+    transform-style: preserve-3d;
+    box-shadow: 0 34px 70px -30px rgba(0, 0, 0, 0.9), 0 10px 24px -12px rgba(0, 0, 0, 0.65);
+    animation: ua-float 7s ease-in-out infinite;
+    transition: border-color 0.4s ease, box-shadow 0.4s ease, filter 0.4s ease;
   }
 
   .ua-box:hover {
-    background: #181818;
-    border-color: rgba(240, 235, 224, 0.22);
-    box-shadow: 0 28px 56px -24px rgba(0, 0, 0, 0.85);
-    transform: translateY(-4px);
+    border-color: rgba(240, 235, 224, 0.3);
+    box-shadow: 0 52px 96px -28px rgba(0, 0, 0, 0.95), 0 16px 36px -10px rgba(0, 0, 0, 0.7);
+    filter: brightness(1.1);
+    animation-play-state: paused;
+  }
+
+  /* Ombré tint per card — fades from the accent color into deep dark */
+  .ua-box:nth-child(1) { background: linear-gradient(155deg, rgba(255, 90, 31, 0.18) 0%, #161310 46%, #0e0c0b 100%); }
+  .ua-box:nth-child(2) { background: linear-gradient(155deg, rgba(0, 184, 169, 0.18) 0%, #101615 46%, #0b0d0d 100%); animation-delay: -1.75s; }
+  .ua-box:nth-child(3) { background: linear-gradient(155deg, rgba(255, 244, 95, 0.14) 0%, #16150f 46%, #0e0d0a 100%); animation-delay: -3.5s; }
+  .ua-box:nth-child(4) { background: linear-gradient(155deg, rgba(255, 90, 31, 0.18) 0%, #161310 46%, #0e0c0b 100%); animation-delay: -5.25s; }
+
+  @keyframes ua-float {
+    0%, 100% { transform: translateY(0) rotateX(0deg); }
+    50% { transform: translateY(-12px) rotateX(1.5deg); }
   }
 
   /* Shimmer sweep on hover — CSS only, no JS */
@@ -444,11 +471,11 @@ const styles = `
   .ua-box-num {
     display: block;
     font-family: 'Fraunces', Georgia, serif;
-    font-size: 64px;
+    font-size: clamp(76px, 7vw, 108px);
     font-weight: 900;
     line-height: 1;
     letter-spacing: -0.04em;
-    margin-bottom: 20px;
+    margin-bottom: 22px;
     /* color set inline per box; glow uses that color via currentColor */
     text-shadow: 1px 1px 0 rgba(0, 0, 0, 0.35), 0 0 20px currentColor, 0 0 42px currentColor;
   }
@@ -456,7 +483,7 @@ const styles = `
   /* Title */
   .ua-box-title {
     font-family: 'Fraunces', Georgia, serif;
-    font-size: clamp(20px, 2.2vw, 26px);
+    font-size: clamp(24px, 2.6vw, 33px);
     font-weight: 800;
     line-height: 1.2;
     letter-spacing: -0.02em;
@@ -467,9 +494,9 @@ const styles = `
   /* Body */
   .ua-box-body {
     font-family: 'Geist Mono', 'Courier New', monospace;
-    font-size: clamp(12px, 1.3vw, 14px);
-    line-height: 1.75;
-    color: rgba(240, 235, 224, 0.78);
+    font-size: clamp(14px, 1.55vw, 17px);
+    line-height: 1.72;
+    color: rgba(240, 235, 224, 0.8);
     margin: 0;
   }
 
@@ -558,5 +585,6 @@ const styles = `
       clip-path: none !important;
       transform: none !important;
     }
+    .ua-box, .ua-ai { animation: none !important; }
   }
 `;
