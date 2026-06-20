@@ -91,11 +91,11 @@ const jsonLd = {
     },
     {
       '@type': 'Service',
-      serviceType: 'Foundation Build — Signal Lock install',
+      serviceType: 'Foundation Build — Signal Proof Page™',
       provider: { '@type': 'ProfessionalService', name: 'Signal Flair', url: 'https://signalflair.ai' },
       areaServed: { '@type': 'Country', name: 'United States' },
       description:
-        'One-time install of the Signal Lock layer: crawlable proof pages, matching schema, a verified record, and forward-compatible machine surfaces.',
+        'One-time deployment of Signal Proof Page™ and machine-readable proof assets: crawlable proof pages, matching schema, verified record, and forward-compatible surfaces.',
     },
     {
       '@type': 'FAQPage',

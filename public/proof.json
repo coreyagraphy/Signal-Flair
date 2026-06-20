@@ -1,11 +1,11 @@
 {
-  "$comment": "SIGNAL LOCK — canonical client-owned record (internal artifact name: Beacon). Served at /proof.json. Mirrors the visible /proof/ pages exactly. Every claim carries a source OR verified:false. Filled with Signal Flair Case Zero (June 6, 2026).",
+  "$comment": "Beacon — canonical client-owned proof record (internal artifact name). Served at /proof.json. Mirrors the visible Signal Proof Page™ at /proof/. Every claim carries a source OR verified:false. Filled with Signal Flair Case Zero (June 6, 2026).",
   "@context": "https://signalflair.ai/beacon/v1",
   "type": "BeaconRecord",
   "version": "1.0",
   "business": {
     "name": "Signal Flair",
-    "operated_by": "Mental Vision Corp",
+    "operated_by": "Mental Vision — parent organization",
     "url": "https://signalflair.ai",
     "category": "AI Visibility & Reputation Conversion",
     "disambiguation": "Signal Flair is a Brownsburg, Indiana AI visibility / Answer Engine Optimization (AEO) agency. It is NOT the medical MRI sequence FLAIR (Fluid-Attenuated Inversion Recovery) used in radiology/neuroimaging, and it is a separate company from SignalFlare.ai (restaurant analytics).",
@@ -45,7 +45,7 @@
   "services": [
     {
       "name": "Foundation Build",
-      "description": "One-time install of the full Signal Lock layer for businesses scoring 0-54.",
+      "description": "One-time deployment of Signal Proof Page™ and AI Proof Infrastructure for businesses scoring 0-54.",
       "service_area": ["United States — nationwide (remote)"],
       "availability": "Active",
       "price_basis": "fixed",
@@ -54,7 +54,7 @@
     },
     {
       "name": "Stay Found System",
-      "description": "Monthly Signal Lock re-verification, change-log updates, and citation-share re-measurement for businesses scoring 75-100.",
+      "description": "Stay Found™ monthly proof maintenance — re-verification, change-log updates, and visibility monitoring for businesses scoring 75-100.",
       "service_area": ["United States (remote)"],
       "availability": "Active",
       "price_basis": "range",
@@ -103,7 +103,7 @@
   "freshness": {
     "content_hash": "",
     "last_updated": "2026-06-06",
-    "update_policy": "Re-verified monthly under the Stay Found System. Change log is public.",
+    "update_policy": "Re-verified monthly under Stay Found™. Change log is public.",
     "indexnow_pinged": false
   }
 }
