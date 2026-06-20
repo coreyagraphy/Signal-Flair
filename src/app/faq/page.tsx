@@ -53,7 +53,7 @@ const FAQS: { q: string; a: string }[] = [
   },
   {
     q: 'How much does Signal Flair cost?',
-    a: 'Pricing is set by your Signal Score so the work matches the actual gap. Build the Foundation (score 0–54) is a one-time $3,500. Start the Rebuild (score 55–74) is a one-time $1,500. The Stay Found System (score 75–100) is $600–$1,200 per month. Early founding partners — businesses, nonprofits, and civic organizations — can join the Founding Partner Pilot on flexible terms.',
+    a: 'Pricing is set by your Signal Score so the work matches the actual gap. Build the Foundation (score 0–54) is a one-time $3,500. Start the Rebuild (score 55–74) is a one-time $1,500. Stay Found™ (score 75–100) is $600–$1,200 per month. Early founding partners — businesses, nonprofits, and civic organizations — can join the Founding Partner Pilot on flexible terms.',
   },
   {
     q: 'Is Signal Flair related to FLAIR MRI imaging or SignalFlare.ai?',

@@ -31,7 +31,7 @@ const HOMEPAGE_FAQ: { q: string; a: string }[] = [
   },
   {
     q: 'What happens when AI search changes?',
-    a: 'It will — and often. That’s what the Stay Found System is for: monthly re-scans, fresh citations, schema and llms.txt updates, and crawler monitoring so your signal stays strong as new engines ship and competitors catch up.',
+    a: 'It will — and often. That’s what Stay Found™ is for: recurring proof maintenance — monthly re-scans, fresh citations, schema and llms.txt updates, and crawler monitoring — to help keep your signal current as new engines ship and competitors catch up.',
   },
   {
     q: 'What is the Founding Partner Pilot?',

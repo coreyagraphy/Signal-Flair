@@ -26,7 +26,7 @@ const SERVICES = [
     source: '/#pricing',
   },
   {
-    name: 'Stay Found System',
+    name: 'Stay Found™',
     desc: 'Stay Found™ monthly proof maintenance — re-verification, change-log updates, and visibility monitoring for businesses scoring 75–100.',
     areas: 'United States (remote)',
     availability: 'Active',

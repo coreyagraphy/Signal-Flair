@@ -80,7 +80,7 @@ const jsonLd = {
         itemListElement: [
           { '@type': 'Offer', name: 'Build the Foundation', description: 'Full AI-visibility build for businesses scoring 0–54: audit, llms.txt, schema, crawler access, entity cleanup, citations, 90-day plan, and an AI-optimized landing page.', price: '3500', priceCurrency: 'USD' },
           { '@type': 'Offer', name: 'Start the Rebuild', description: 'Core AI-visibility fixes for businesses scoring 55–74.', price: '1500', priceCurrency: 'USD' },
-          { '@type': 'Offer', name: 'Stay Found System', description: 'Ongoing monthly AI-visibility monitoring and citation growth for businesses scoring 75–100.', priceSpecification: { '@type': 'PriceSpecification', minPrice: '600', maxPrice: '1200', priceCurrency: 'USD' } },
+          { '@type': 'Offer', name: 'Stay Found™', description: 'Stay Found™ ongoing proof maintenance — recurring checks, monitoring, and drift prevention for businesses scoring 75–100.', priceSpecification: { '@type': 'PriceSpecification', minPrice: '600', maxPrice: '1200', priceCurrency: 'USD' } },
         ],
       },
     },

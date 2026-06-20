@@ -877,8 +877,17 @@ export default function SignalFlairLanding() {
       {/* ═══ PROCESS ═══ */}
       <section id="process" data-cursor="light">
         <div className="proc-header reveal">
-          <div className="proc-vw">HOW THE SIGNAL<br /><em>PROTOCOL™</em> WORKS.</div>
-          <div className="proc-intro">We scan 24 checkpoints across six signal layers, score your Signal Score™, build the missing infrastructure, and keep the number from drifting — inside one system, without the lag.</div>
+          <div className="proc-header-main">
+            <div className="proc-eyebrow">Proof pipeline</div>
+            <h2 className="proc-headline">
+              How the <span className="proc-protocol-mark">Signal Protocol™</span> works
+            </h2>
+            <div className="proc-divider" aria-hidden="true" />
+          </div>
+          <p className="proc-intro">
+            We scan 24 checkpoints across six signal layers, score your Signal Score™, build the missing
+            infrastructure, and maintain proof readiness with Stay Found™ — one system, without the lag.
+          </p>
         </div>
         <ul className="proc-list">
           <li className="proc-item reveal"><div className="proc-num">01</div><div className="proc-right"><div className="proc-bar" /><div className="proc-title">SCAN</div><div className="proc-body">We run 24 checkpoints across six signal layers — Access · Structure · Entity · Architecture · Trust · Visibility. Every layer scored. Every gap documented. Every finding points to a real visibility issue.</div></div></li>

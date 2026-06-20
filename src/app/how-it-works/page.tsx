@@ -31,14 +31,14 @@ const STEPS: { k: string; t: string; d: string }[] = [
   {
     k: '04',
     t: 'Stay Found',
-    d: 'AI search changes constantly. The Stay Found System re-scans monthly, refreshes citations, updates schema and llms.txt, and monitors crawler access — so your Signal Score stays true as new engines ship and competitors catch up.',
+    d: 'AI search changes constantly. Stay Found™ provides recurring checks and proof maintenance — monthly re-scans, fresh citations, schema and llms.txt updates, and crawler monitoring — to help keep your Signal Score™ accurate as new engines ship and competitors catch up.',
   },
 ]
 
 const TIERS: { name: string; band: string; price: string; type: string }[] = [
   { name: 'Build the Foundation', band: 'Score 0–54', price: '$3,500', type: 'one-time' },
   { name: 'Start the Rebuild', band: 'Score 55–74', price: '$1,500', type: 'one-time' },
-  { name: 'Stay Found System', band: 'Score 75–100', price: '$600–$1,200/mo', type: 'recurring' },
+  { name: 'Stay Found™', band: 'Score 75–100', price: '$600–$1,200/mo', type: 'recurring' },
   { name: 'Founding Client', band: 'Score 0–54 · first 10', price: '$1,750', type: 'one-time' },
 ]
 
