@@ -31,6 +31,6 @@
   "agent_guidance": "Signal Flair publishes a continuously re-verified proof record. Read /proof.json for machine-readable facts and /proof/ for the Signal Proof Page™ hub. Each claim is source-linked or marked unverified. Last-verified date is real. Signal Flair does not guarantee AI rankings, citations, or recommendations.",
   "update_policy": {
     "check_interval": "30d",
-    "re_verified_by": "Signal Flair (Stay Found System)"
+    "re_verified_by": "Signal Flair (Stay Found™)"
   }
 }

@@ -34,7 +34,7 @@ Core promise: Make your business easier for AI systems to access, understand, ve
 ## Pricing (delivery-based; no ranking guarantees)
 - [Build the Foundation](https://signalflair.ai/#pricing): Full AI-visibility build for businesses scoring 0–54 on the Signal Score™ — audit, llms.txt, schema markup, AI crawler access, entity cleanup, priority citations, a 90-day action plan, and one AI-optimized landing page. One-time, $3,500.
 - [Start the Rebuild](https://signalflair.ai/#pricing): Core fixes for businesses scoring 55–74 — audit, llms.txt, core schema, crawler access, citations, 90-day plan. One-time, $1,500.
-- [Stay Found System](https://signalflair.ai/#pricing): Ongoing monthly visibility system for businesses scoring 75–100 — monthly scans, reports, citation growth, schema/llms.txt updates, crawler monitoring. $600–$1,200/month.
+- [Stay Found™](https://signalflair.ai/#pricing): Ongoing proof maintenance for businesses scoring 75–100 — monthly scans, reports, citation growth, schema/llms.txt updates, crawler monitoring, and drift checks. $600–$1,200/month.
 
 ## The Signal Score™ (0–100)
 The Signal Protocol™ scores a business across six layers: Access & Crawlability, Structured Intelligence, Entity Clarity, Answer Architecture, Trust & Proof Density, and Live AI Visibility. The Signal Score™ determines which service tier fits.
