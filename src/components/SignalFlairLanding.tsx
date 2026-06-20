@@ -800,7 +800,7 @@ export default function SignalFlairLanding() {
           <div className="sig-row reveal">
             <div className="sig-proto"><div className="sig-rn">03</div><div className="sig-plabel">Maintenance · Stay Found</div></div><div className="sig-rd" />
             <div className="sig-rtitle">Stay<br />Found™</div>
-            <div className="sig-rbody"><em>Visibility isn&apos;t a one-time fix.</em> AI search evolves monthly and your competitors are catching up. Stay Found keeps your signal strong — monthly scans, citation growth, schema updates, and crawler monitoring. Built to stay ahead as AI search changes.</div>
+            <div className="sig-rbody"><em>Visibility isn&apos;t a one-time fix.</em> AI search evolves monthly and your competitors are catching up. Stay Found provides recurring checks and maintenance to help keep proof assets current — monthly scans, citation growth, schema updates, and crawler monitoring. Built to reduce proof drift as AI search changes.</div>
             <div><span className="sig-rtag">Monitoring + Citations</span></div>
           </div>
         </div>
@@ -884,19 +884,19 @@ export default function SignalFlairLanding() {
           <li className="proc-item reveal"><div className="proc-num">01</div><div className="proc-right"><div className="proc-bar" /><div className="proc-title">SCAN</div><div className="proc-body">We run 24 checkpoints across six signal layers — Access · Structure · Entity · Architecture · Trust · Visibility. Every layer scored. Every gap documented. Every finding points to a real visibility issue.</div></div></li>
           <li className="proc-item reveal"><div className="proc-num">02</div><div className="proc-right"><div className="proc-bar" /><div className="proc-title">SCORE</div><div className="proc-body">You receive your Signal Score™ — a number from 0 to 100. Not a guess. Not a vibe. Not a generic SEO grade. A layer-by-layer readout of whether AI can find, understand, trust, and recommend your business.</div></div></li>
           <li className="proc-item reveal"><div className="proc-num">03</div><div className="proc-right"><div className="proc-bar" /><div className="proc-title">BUILD</div><div className="proc-body">For scores under 74, we build the missing infrastructure: schema, crawlability, entity signals, answer architecture, trust proof, and static AI-readable pages. Everything the machine needs to understand you — everything you own, even if you cancel.</div></div></li>
-          <li className="proc-item reveal"><div className="proc-num">04</div><div className="proc-right"><div className="proc-bar" /><div className="proc-title">STAY FOUND</div><div className="proc-body">Stay Found™ keeps your score from drifting: monthly verification, continuous monitoring, crawler-access checks, schema and entity drift detection, and live AI visibility spot tests. Visibility is not a destination — it is a maintenance system.</div></div></li>
+          <li className="proc-item reveal"><div className="proc-num">04</div><div className="proc-right"><div className="proc-bar" /><div className="proc-title">STAY FOUND</div><div className="proc-body">Stay Found™ provides recurring checks and proof maintenance: monthly Signal Score™ verification, continuous monitoring, crawler-access checks, schema and entity drift detection, and live AI visibility spot tests. Visibility is not a destination — it is ongoing maintenance.</div></div></li>
         </ul>
       </section>
 
       {/* ═══ UNFAIR ADVANTAGE — new self-contained component (replaces the old #moat) ═══ */}
       <UnfairAdvantage />
 
-      {/* ═══ SIGNAL LOCK reveal — names the system; flows straight out of "You can't copy the system." ═══ */}
+      {/* ═══ Stay Found™ maintenance reveal — flows straight out of "You can't copy the system." ═══ */}
       <section id="signal-lock-reveal" data-cursor="dark">
         <div className="slr-inner reveal">
           <div className="mr-name">Stay Found<sup className="mr-tm">™</sup> is not a one-time audit.</div>
           <div className="mr-body">An audit is a photograph. It shows you what was true the day the shutter clicked. But your competitors did not stop moving when the photographer left. AI systems did not stop changing. Your reviews, citations, pages, schema, and crawler access did not freeze in place.</div>
-          <div className="mr-body"><strong>Stay Found™ is the system that keeps your score from drifting.</strong> Four maintenance layers:</div>
+          <div className="mr-body"><strong>Stay Found™ is the maintenance layer that helps reduce proof drift over time.</strong> Four maintenance layers:</div>
           <div className="lock-layers">
             <div className="lock-layer"><span className="lock-layer-n">01</span>Monthly Signal Score™ verification</div>
             <div className="lock-layer"><span className="lock-layer-n">02</span>Crawlability and schema monitoring</div>
@@ -904,7 +904,7 @@ export default function SignalFlairLanding() {
             <div className="lock-layer"><span className="lock-layer-n">04</span>Live AI visibility spot tests</div>
           </div>
           <div className="mr-body">The <strong>Verified by Signal Flair™</strong> mark is what you carry because the score is being maintained — not because it was checked once.</div>
-          <div className="mr-kicker">Anyone can tell you your score today. Stay Found™ is built to keep it true.</div>
+          <div className="mr-kicker">Anyone can tell you your score today. Stay Found™ is built to help keep your proof current.</div>
           <a className="mr-cta" href="#field-report">▸ Start with a free Field Report →</a>
         </div>
       </section>
@@ -923,7 +923,7 @@ export default function SignalFlairLanding() {
           <div className="ent-terms">
             <div className="ent-term"><span className="ent-term-t">The Signal Protocol™</span> gives the diagnostic structure.</div>
             <div className="ent-term"><span className="ent-term-t">The Signal Score™</span> gives the number.</div>
-            <div className="ent-term"><span className="ent-term-t">Stay Found™</span> keeps the number from drifting.</div>
+            <div className="ent-term"><span className="ent-term-t">Stay Found™</span> helps monitor proof assets and reduce drift over time.</div>
           </div>
         </div>
         <div className="ent-turn reveal">Same seriousness. Cleaner ownership.<br /><em>Built to be found now — not after a six-month strategy engagement.</em></div>
@@ -1021,11 +1021,11 @@ export default function SignalFlairLanding() {
             </div>
             <div className="ph-step">
               <div className="ph-band">Score 75–100 · Visible</div>
-              <div className="ph-offer">Stay Found</div>
-              <div className="ph-what">The ongoing monthly system that keeps you ahead as AI shifts.</div>
+              <div className="ph-offer">Stay Found™</div>
+              <div className="ph-what">Ongoing proof maintenance and monitoring as AI shifts.</div>
             </div>
           </div>
-          <div className="ph-note">Foundation &amp; Rebuild are <strong>one-time builds</strong> — you keep everything, even if you cancel. <strong>Stay Found</strong> is the ongoing system for businesses already visible. Most start with a free Field Report, then begin at the band it lands in.</div>
+          <div className="ph-note">Foundation &amp; Rebuild are <strong>one-time builds</strong> — you keep everything, even if you cancel. <strong>Stay Found™</strong> is the ongoing maintenance layer for businesses already visible. Most start with a free Field Report, then begin at the band it lands in.</div>
         </div>
         <div className="price-anchor reveal">
           <div className="pa-lead">Every customer an AI engine routes to your competitor instead of you is a closed job you&apos;ll never see.</div>
@@ -1083,7 +1083,7 @@ export default function SignalFlairLanding() {
           </div>
           <div className="psc">
             <div className="psc-tag">Triage Band 03 · Score 75–100</div>
-            <div className="psc-name">Stay Found™ System</div>
+            <div className="psc-name">Stay Found™</div>
             <div className="psc-ideal">For the AI-ready — businesses already visible who refuse to fall behind. Visibility compounds, so we work in seasons, not one-offs.</div>
             <div className="psc-price">$600–$1,200<span style={{ fontSize: '0.4em' }}>/mo</span></div>
             <div className="psc-cad">pick your term — the longer you commit, the lower your rate · CRM access included</div>
@@ -1179,7 +1179,7 @@ export default function SignalFlairLanding() {
           </details>
           <details className="faq-item">
             <summary className="faq-q">What happens when AI search changes?<span className="faq-ic" aria-hidden="true" /></summary>
-            <div className="faq-a">It will — and often. That&apos;s what the Stay Found System is for: monthly re-scans, fresh citations, schema and llms.txt updates, and crawler monitoring so your signal stays strong as new engines ship and competitors catch up.</div>
+            <div className="faq-a">It will — and often. That&apos;s what Stay Found™ is for: recurring proof maintenance — monthly re-scans, fresh citations, schema and llms.txt updates, and crawler monitoring — to help keep your signal current as new engines ship and competitors catch up.</div>
           </details>
           <details className="faq-item">
             <summary className="faq-q">What is the Founding Partner Pilot?<span className="faq-ic" aria-hidden="true" /></summary>
@@ -1291,7 +1291,7 @@ export default function SignalFlairLanding() {
             <div className="f-tag">AI Proof Infrastructure™<br />Brownsburg, Indiana · Serving businesses nationwide · Est. 2026<br />Your business, found by AI.</div>
             <a className="f-email" href="mailto:outreach@trysignalflair.com">outreach@trysignalflair.com</a>
           </div>
-          <div><div className="f-head">Services</div><a className="f-link" href="#signal">AI Visibility Audit</a><a className="f-link" href="#signal">Foundation Build</a><a className="f-link" href="#signal">Stay Found System</a><a className="f-link" href="#check">What We Check</a><a className="f-link" href="#pricing">Pricing</a></div>
+          <div><div className="f-head">Services</div><a className="f-link" href="#signal">AI Visibility Audit</a><a className="f-link" href="#signal">Foundation Build</a><a className="f-link" href="#signal">Stay Found™</a><a className="f-link" href="#check">What We Check</a><a className="f-link" href="#pricing">Pricing</a></div>
           <div><div className="f-head">Company</div><a className="f-link" href="#process">How It Works</a><a className="f-link" href="#pricing">Pricing</a><a className="f-link" href="/resources/llms-txt/">llms.txt Guide</a><a className="f-link" href="https://mentalvision.ai" target="_blank" rel="noopener noreferrer">Mental Vision Corp</a><a className="f-link" href="mailto:outreach@trysignalflair.com">Contact</a></div>
           <div><div className="f-head">Connect</div><a className="f-link" href="#">LinkedIn</a><a className="f-link" href="#">Instagram</a><a className="f-link" href="#">YouTube</a><a className="f-link" href="mailto:outreach@trysignalflair.com">outreach@trysignalflair.com</a></div>
         </div>
