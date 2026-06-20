@@ -884,7 +884,7 @@ export default function SignalFlairLanding() {
           <li className="proc-item reveal"><div className="proc-num">01</div><div className="proc-right"><div className="proc-bar" /><div className="proc-title">SCAN</div><div className="proc-body">We run 24 checkpoints across six signal layers — Access · Structure · Entity · Architecture · Trust · Visibility. Every layer scored. Every gap documented. Every finding points to a real visibility issue.</div></div></li>
           <li className="proc-item reveal"><div className="proc-num">02</div><div className="proc-right"><div className="proc-bar" /><div className="proc-title">SCORE</div><div className="proc-body">You receive your Signal Score™ — a number from 0 to 100. Not a guess. Not a vibe. Not a generic SEO grade. A layer-by-layer readout of whether AI can find, understand, trust, and recommend your business.</div></div></li>
           <li className="proc-item reveal"><div className="proc-num">03</div><div className="proc-right"><div className="proc-bar" /><div className="proc-title">BUILD</div><div className="proc-body">For scores under 74, we build the missing infrastructure: schema, crawlability, entity signals, answer architecture, trust proof, and static AI-readable pages. Everything the machine needs to understand you — everything you own, even if you cancel.</div></div></li>
-          <li className="proc-item reveal"><div className="proc-num">04</div><div className="proc-right"><div className="proc-bar" /><div className="proc-title">STAY FOUND</div><div className="proc-body">Signal Lock™ keeps your score from drifting: monthly verification, continuous monitoring, crawler-access checks, schema and entity drift detection, and live AI visibility spot tests. Visibility is not a destination — it is a maintenance system.</div></div></li>
+          <li className="proc-item reveal"><div className="proc-num">04</div><div className="proc-right"><div className="proc-bar" /><div className="proc-title">STAY FOUND</div><div className="proc-body">Stay Found™ keeps your score from drifting: monthly verification, continuous monitoring, crawler-access checks, schema and entity drift detection, and live AI visibility spot tests. Visibility is not a destination — it is a maintenance system.</div></div></li>
         </ul>
       </section>
 
@@ -894,9 +894,9 @@ export default function SignalFlairLanding() {
       {/* ═══ SIGNAL LOCK reveal — names the system; flows straight out of "You can't copy the system." ═══ */}
       <section id="signal-lock-reveal" data-cursor="dark">
         <div className="slr-inner reveal">
-          <div className="mr-name">Signal Lock<sup className="mr-tm">™</sup> is not a one-time audit.</div>
+          <div className="mr-name">Stay Found<sup className="mr-tm">™</sup> is not a one-time audit.</div>
           <div className="mr-body">An audit is a photograph. It shows you what was true the day the shutter clicked. But your competitors did not stop moving when the photographer left. AI systems did not stop changing. Your reviews, citations, pages, schema, and crawler access did not freeze in place.</div>
-          <div className="mr-body"><strong>Signal Lock is the system that keeps your score from drifting.</strong> Four maintenance layers:</div>
+          <div className="mr-body"><strong>Stay Found™ is the system that keeps your score from drifting.</strong> Four maintenance layers:</div>
           <div className="lock-layers">
             <div className="lock-layer"><span className="lock-layer-n">01</span>Monthly Signal Score™ verification</div>
             <div className="lock-layer"><span className="lock-layer-n">02</span>Crawlability and schema monitoring</div>
@@ -904,7 +904,7 @@ export default function SignalFlairLanding() {
             <div className="lock-layer"><span className="lock-layer-n">04</span>Live AI visibility spot tests</div>
           </div>
           <div className="mr-body">The <strong>Verified by Signal Flair™</strong> mark is what you carry because the score is being maintained — not because it was checked once.</div>
-          <div className="mr-kicker">Anyone can tell you your score today. Signal Lock is built to keep it true.</div>
+          <div className="mr-kicker">Anyone can tell you your score today. Stay Found™ is built to keep it true.</div>
           <a className="mr-cta" href="#field-report">▸ Start with a free Field Report →</a>
         </div>
       </section>
@@ -923,7 +923,7 @@ export default function SignalFlairLanding() {
           <div className="ent-terms">
             <div className="ent-term"><span className="ent-term-t">The Signal Protocol™</span> gives the diagnostic structure.</div>
             <div className="ent-term"><span className="ent-term-t">The Signal Score™</span> gives the number.</div>
-            <div className="ent-term"><span className="ent-term-t">Signal Lock™</span> keeps the number from drifting.</div>
+            <div className="ent-term"><span className="ent-term-t">Stay Found™</span> keeps the number from drifting.</div>
           </div>
         </div>
         <div className="ent-turn reveal">Same seriousness. Cleaner ownership.<br /><em>Built to be found now — not after a six-month strategy engagement.</em></div>
@@ -954,15 +954,16 @@ export default function SignalFlairLanding() {
           </div>
           <div className="proof-arrow" aria-hidden="true">→</div>
           <div className="proof-card after">
-            <div className="pc-top"><span className="pc-label">Target State</span><span className="pc-tag">Projected</span></div>
+            <div className="pc-top"><span className="pc-label">Post-implementation target</span><span className="pc-tag">Next target</span></div>
             <span className="pc-score count">91<small>/100</small></span>
             <div className="pc-scorelbl">Signal Score™</div>
-            <div className="pc-row"><span className="pc-name">Citations found</span><span className="pc-stamp yes">14</span></div>
-            <div className="pc-row"><span className="pc-name">ChatGPT · Claude · Perplexity</span><span className="pc-stamp yes">Yes</span></div>
-            <div className="pc-row"><span className="pc-name">Gemini · Google AI</span><span className="pc-stamp yes">Yes</span></div>
-            <div className="pc-status">Documented transparently · updated Day 30 &amp; Day 90</div>
+            <div className="pc-row"><span className="pc-name">Proof assets</span><span className="pc-stamp no">Target: published &amp; crawlable</span></div>
+            <div className="pc-row"><span className="pc-name">Schema &amp; llms.txt</span><span className="pc-stamp no">Target: aligned</span></div>
+            <div className="pc-row"><span className="pc-name">Visibility journal</span><span className="pc-stamp no">Ongoing checks</span></div>
+            <div className="pc-status">Readiness target · measured Day 30 &amp; Day 90</div>
           </div>
         </div>
+        <div className="proof-note reveal">Next target: improve AI-readiness after owned proof assets are published, crawlable, and aligned across the site. <strong>This is a readiness target, not a guarantee of AI ranking, citation, recommendation, or inclusion.</strong></div>
         <div className="proof-note reveal">Signal Flair&apos;s own audit — <strong>June 6, 2026</strong>. This is Case Zero: we ran the system on ourselves first, and we publish the real before-and-after as our own score climbs.</div>
         <a className="proof-live-link reveal" href="/proof/">See our live record →</a>
         <div className="founding reveal" id="founding">
@@ -1045,7 +1046,7 @@ export default function SignalFlairLanding() {
           <div className="pf-right">
             <div className="pf-desc">The infrastructure AI actually reads. Full diagnostic, full technical fix, full structure — everything needed to go from invisible to recommendable across every major AI engine.</div>
             <div className="pf-items">
-              <div className="pf-item pf-lock">Signal Lock™ layer installed — your owned, verified record</div>
+              <div className="pf-item pf-lock">Signal Proof Page™ deployed — your owned, verified record</div>
               <div className="pf-item pf-lock">Verified business record alignment across AI-read sources</div>
               <div className="pf-item pf-lock">AI-readable trust layer + your live /proof/ page</div>
               <div className="pf-item">Full AI Visibility Audit — 5 engines (ChatGPT, Claude, Perplexity, Gemini, Google AI)</div>
@@ -1068,7 +1069,7 @@ export default function SignalFlairLanding() {
             <div className="psc-price">$1,500</div>
             <div className="psc-cad">one-time rebuild · CRM access included</div>
             <div className="psc-items">
-              <div className="psci psci-lock">Signal Lock™ layer installed</div>
+              <div className="psci psci-lock">Signal Proof Page™ deployed</div>
               <div className="psci psci-lock">Verified business record alignment</div>
               <div className="psci">Full AI Visibility Audit — 5 engines</div>
               <div className="psci">llms.txt written and deployed</div>
@@ -1092,7 +1093,7 @@ export default function SignalFlairLanding() {
               <div className="psc-term feat"><span className="pt-len">12 months</span><span className="pt-price">$600<em>/mo</em></span><span className="pt-note">Best rate — compound your lead and stay ahead</span></div>
             </div>
             <div className="psc-items">
-              <div className="psci psci-lock">Monthly Signal Lock™ re-verification + signal-drift monitoring</div>
+              <div className="psci psci-lock">Monthly Stay Found™ re-verification + signal-drift monitoring</div>
               <div className="psci psci-lock">Public change-log maintained — Verified by Signal Flair™</div>
               <div className="psci psci-lock">Freshness updates + citation-share movement report</div>
               <div className="psci">Monthly AI visibility scan — every major engine</div>
@@ -1132,7 +1133,7 @@ export default function SignalFlairLanding() {
             <div className="fdr-defs">
               <div className="fdr-def"><span className="fdr-def-t">The Signal Score™</span>{' '}<span className="fdr-def-d">is not a ranking. It is a measurement.</span></div>
               <div className="fdr-def"><span className="fdr-def-t">The Signal Protocol™</span>{' '}<span className="fdr-def-d">is not a generic audit. It is a diagnostic instrument.</span></div>
-              <div className="fdr-def"><span className="fdr-def-t">Signal Lock™</span>{' '}<span className="fdr-def-d">is not a retainer. It is a maintenance system.</span></div>
+              <div className="fdr-def"><span className="fdr-def-t">Stay Found™</span>{' '}<span className="fdr-def-d">is not a retainer. It is a maintenance system.</span></div>
             </div>
 
             <p className="fdr-close">I am not selling you visibility. I am handing you the number and showing you exactly what it means.</p>
@@ -1296,7 +1297,7 @@ export default function SignalFlairLanding() {
         </div>
         <div className="f-chant-band">
           <div className="f-chant">What&apos;s your Signal Score?</div>
-          <div className="f-tm">Signal Protocol™ · Signal Score™ · Signal Lock™ · Verified by Signal Flair™</div>
+          <div className="f-tm">Signal Protocol™ · Signal Score™ · Stay Found™ · Verified by Signal Flair™</div>
           <div className="f-privacy">We never share your data. No spam.</div>
         </div>
         <div className="fb">
