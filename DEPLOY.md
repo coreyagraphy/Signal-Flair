@@ -20,7 +20,8 @@ Decision: Brand Brief V3 (Corey, 2026-06-02) — Netlify hosts the site; IONOS s
 | Variable | Purpose | Status |
 |---|---|---|
 | `NEXT_PUBLIC_GA_ID` | GA4 measurement (`G-…`) | ✅ set in Netlify |
-| `NEXT_PUBLIC_GHL_WEBHOOK_URL` | Lead form → GHL inbound webhook | ✅ set in Netlify |
+| `NEXT_PUBLIC_FIELD_REPORT_WEBHOOK_URL` | Field Report intake (GHL/Jarvis intake router) — platform-neutral; form checks this **first** | optional |
+| `NEXT_PUBLIC_GHL_WEBHOOK_URL` | Lead form → GHL inbound webhook — used as **fallback** when the neutral var is unset | ✅ set in Netlify |
 
 > ⚠️ **These are inlined at BUILD TIME.** They only reach the bundle if the build runs in an
 > environment where they're defined. **Build on Netlify (Path B) so Netlify's env vars apply.**

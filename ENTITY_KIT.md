@@ -32,11 +32,11 @@ Founded:        2026
 Location:       Brownsburg, Indiana, United States
 Service area:   United States — nationwide (remote)
 Website:        https://signalflair.ai
-Email:          outreach@trysignalflair.com
+Email:          hello@signalflair.ai
 Phone:          ⚠️ NEEDS COREY — see "What you must provide" below
 ```
 
-**Use `outreach@trysignalflair.com`** as the public contact on every profile (not corey@ — that stays the
+**Use `hello@signalflair.ai`** as the public contact on every profile (not corey@ — that stays the
 cold-send identity).
 
 ---

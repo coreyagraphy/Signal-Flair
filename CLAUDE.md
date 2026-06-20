@@ -42,8 +42,8 @@ Founder: Corey Ellis, Brownsburg, Indiana.
 
 - Framework: Next.js (static export, `output: 'export'`, `trailingSlash: true`)
 - Hosting: Netlify (production) — dev server runs at localhost:3210
-- Backend / CRM: GoHighLevel (GHL)
-- Form submissions: POST to GHL inbound webhook (see form component for GHL_WEBHOOK_URL)
+- Backend / CRM: GoHighLevel (GHL) — also reachable via a Jarvis/neutral intake router
+- Form submissions: POST to the intake webhook — `NEXT_PUBLIC_FIELD_REPORT_WEBHOOK_URL` (router) → `NEXT_PUBLIC_GHL_WEBHOOK_URL` (fallback); see `SignalFlairLanding.tsx` + "Intake form wiring" below
 - Analytics: Google Analytics 4 (GA4)
 - No database. No server-side rendering. Static only.
 
@@ -121,7 +121,7 @@ Clients keep everything built, even on cancel.
 - Lead-capture audit form (replaces all mailto: CTAs)
   - Fields: full name, business name, website URL, email, service (optional), phone (optional)
   - Hidden: source, page_url, utm params, timestamp, lead_tag
-  - GHL_WEBHOOK_URL placeholder — MUST be wired before going live
+  - Intake webhook (`NEXT_PUBLIC_FIELD_REPORT_WEBHOOK_URL` → `NEXT_PUBLIC_GHL_WEBHOOK_URL`) — set before going live
   - Success state: animated confirmation with engine list
 - Honest Proof section:
   - Before/after score card (illustrative, labeled as such)
@@ -151,7 +151,7 @@ Clients keep everything built, even on cancel.
 ## Pending tasks (priority order)
 
 1. **Commit all pending changes** — `git add -A && git commit -m "feat: Foundation Build — [describe what's staged]"`
-2. **Wire GHL webhook** — ✅ PREPPED (2026-06-07). Form reads the URL from `NEXT_PUBLIC_GHL_WEBHOOK_URL`. **GO LIVE: set that env var in Netlify (or `.env.local`) — no code edit.** Empty = demo mode preserved. 10s fetch timeout added so a hung webhook can't freeze the submit button.
+2. **Wire intake webhook** — ✅ PREPPED (2026-06-07). Form reads `NEXT_PUBLIC_FIELD_REPORT_WEBHOOK_URL` **first**, then falls back to `NEXT_PUBLIC_GHL_WEBHOOK_URL`. **GO LIVE: set either env var in Netlify (or `.env.local`) — no code edit.** Both unset = demo mode preserved. 10s fetch timeout added so a hung webhook can't freeze the submit button.
 3. **GA4 analytics** — ✅ SCAFFOLDED (2026-06-07, disabled until ID set). gtag loader = `src/components/Analytics.tsx` (rendered in layout, returns null with no ID); helper = `src/lib/analytics.ts` (`track()`, safe no-op until live). Events wired: `form_submit` (lead form success), `cta_click` (every `#cta` CTA, with label+section), `founding_client_click` (founding apply button). Auto `page_view` covers the resource page. **GO LIVE: set `NEXT_PUBLIC_GA_ID=G-XXXXXXXXXX` in Netlify env (or `.env.local` for dev) — see `.env.example`.** No code change needed.
 4. **Integrate Case Zero section** — replace illustrative proof card with the real self-audit
 5. **LinkedIn sameAs** — Corey creates page at linkedin.com/company/setup/new, then add URL to sameAs array in Organization schema
@@ -159,16 +159,23 @@ Clients keep everything built, even on cancel.
 
 ---
 
-## GHL form wiring (when Corey provides the webhook URL)
+## Intake form wiring (GHL/Jarvis intake router)
 
-**Preferred (no code edit):** set `NEXT_PUBLIC_GHL_WEBHOOK_URL` in Netlify → Environment variables
-(or `.env.local` for dev) to the URL from GHL → Automation → Workflows → Inbound Webhook trigger,
-then redeploy. The form picks it up automatically. See `.env.example`.
+The form resolves its destination in this order (`SignalFlairLanding.tsx`):
+`NEXT_PUBLIC_FIELD_REPORT_WEBHOOK_URL` → `NEXT_PUBLIC_GHL_WEBHOOK_URL` → `FIELD_REPORT_WEBHOOK_OVERRIDE`.
 
-**Quick local test alternative:** paste the URL into `GHL_WEBHOOK_OVERRIDE` in the lead-form block
-of `SignalFlairLanding.tsx` (env var takes precedence if both are set).
+**Two routing options (no code edit — just env vars in Netlify → Environment variables, or `.env.local` for dev):**
+- **Straight to GHL:** set `NEXT_PUBLIC_GHL_WEBHOOK_URL` to the URL from GHL → Automation → Workflows →
+  Inbound Webhook trigger. This is the safe default — and stays the automatic fallback.
+- **Through a router (Jarvis / neutral intake):** set `NEXT_PUBLIC_FIELD_REPORT_WEBHOOK_URL` to the router
+  endpoint. It is tried **first**; if unset or it errors, GHL catches the lead — so you never drop one.
 
-Empty (both unset) = DEMO MODE preserved (validates, shows success, console.logs payload, no push).
+The form picks the value up automatically (build-time inlined for static export — redeploy after changing). See `.env.example`.
+
+**Quick local test alternative:** paste a URL into `FIELD_REPORT_WEBHOOK_OVERRIDE` in the lead-form block
+of `SignalFlairLanding.tsx` (env vars take precedence if set).
+
+Both env vars unset (and no override) = DEMO MODE preserved (validates, shows success, console.logs payload, no push).
 
 GHL workflow should:
 - Create/Update Contact from payload fields

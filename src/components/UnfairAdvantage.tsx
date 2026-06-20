@@ -36,25 +36,25 @@ const SUBHEADLINE =
 
 const BOXES = [
   {
-    num: '01',
+    num: '1',
     numColor: '#ff5a1f',
     title: 'We Start With Proof',
     body: 'Agencies give you decks. We give you a score — 0 to 100, measured the same way across every AI engine making recommendations right now.',
   },
   {
-    num: '02',
+    num: '2',
     numColor: '#00b8a9',
     title: 'Speak AI Fluently',
     body: 'Most businesses don\'t.\nMost agencies can\'t.',
   },
   {
-    num: '03',
+    num: '3',
     numColor: '#fff45f',
     title: 'Future-Proof by Design',
     body: 'New engines come.\nInfrastructure stays.',
   },
   {
-    num: '04',
+    num: '4',
     numColor: '#ff5a1f',
     title: 'No Lock-In. Ever.',
     body: 'The llms.txt, the schema, the infrastructure — it\'s yours the day we build it. Cancel anytime. You keep everything.',
@@ -97,16 +97,15 @@ export default function UnfairAdvantage() {
         const line2El = document.querySelector('.ua-headline-l2') as HTMLElement;
 
         if (line1El && line2El) {
-          const split1 = splitText(line1El, { chars: true });
-          const split2 = splitText(line2El, { chars: true });
-
-          animate(split1.chars, {
+          // Line 1 animates as a block so the bigger "AI" span isn't split apart.
+          animate(line1El, {
             opacity: [0, 1],
             translateY: ['40px', '0px'],
             duration: 900,
-            delay: stagger(22),
             ease: 'outExpo',
           });
+
+          const split2 = splitText(line2El, { chars: true });
 
           animate(split2.chars, {
             opacity: [0, 1],
@@ -151,7 +150,7 @@ export default function UnfairAdvantage() {
             delay: 600 + i * 120,
             ease: 'outExpo',
             onUpdate: () => {
-              el.textContent = `0${Math.round(obj.val)}`;
+              el.textContent = `${Math.round(obj.val)}`;
             },
           });
         });
@@ -211,7 +210,7 @@ export default function UnfairAdvantage() {
           <span className="ua-eyebrow">THE UNFAIR ADVANTAGE</span>
 
           <h2 className="ua-headline">
-            <span className="ua-headline-l1 ua-anim-target">{HEADLINE_LINE1}</span>{' '}
+            <span className="ua-headline-l1 ua-anim-target"><span className="ua-ai">AI</span> already has an opinion.</span>{' '}
             <span className="ua-headline-l2 ua-accent ua-anim-target">{HEADLINE_LINE2}</span>
           </h2>
 
@@ -322,13 +321,13 @@ const styles = `
   .ua-eyebrow {
     display: block;
     font-family: 'Geist Mono', 'Courier New', monospace;
-    font-size: 11px;
-    font-weight: 500;
+    font-size: 13px;
+    font-weight: 600;
     letter-spacing: 0.22em;
     text-transform: uppercase;
     color: var(--ua-teal);
     margin-bottom: 28px;
-    opacity: 0.9;
+    opacity: 1;
   }
 
   .ua-headline {
@@ -348,6 +347,7 @@ const styles = `
     line-height: 1.0;
     letter-spacing: -0.03em;
     color: var(--ua-cream);
+    text-shadow: 0 0 36px rgba(240, 235, 224, 0.18);
   }
 
   /* Instrument Serif italic for the question line */
@@ -356,6 +356,15 @@ const styles = `
     font-style: italic;
     font-weight: 400;
     color: var(--ua-yellow);
+    text-shadow: 0 0 40px rgba(255, 244, 95, 0.34);
+  }
+
+  /* "AI" — bigger, bolder, illuminated so it stands out */
+  .ua-ai {
+    font-size: 1.3em;
+    font-weight: 900;
+    letter-spacing: -0.045em;
+    text-shadow: 0 0 40px rgba(240, 235, 224, 0.6), 0 0 78px rgba(240, 235, 224, 0.32);
   }
 
   /* Anime.js splits text — preserve layout */
@@ -388,9 +397,7 @@ const styles = `
     max-width: 900px;
     margin: 0 auto 80px;
     padding: 0 32px;
-    gap: 1px;
-    background: var(--ua-border);
-    border: 1px solid var(--ua-border);
+    gap: 18px;
   }
 
   /* ── Box ─────────────────────────────────────────────────── */
@@ -401,11 +408,17 @@ const styles = `
     overflow: hidden;
     opacity: 0; /* animates in */
     clip-path: inset(100% 0% 0% 0%);
-    transition: background 0.4s ease;
+    border: 1px solid rgba(240, 235, 224, 0.1);
+    border-radius: 14px;
+    box-shadow: 0 20px 44px -26px rgba(0, 0, 0, 0.75);
+    transition: background 0.4s ease, border-color 0.4s ease, box-shadow 0.4s ease, transform 0.4s ease;
   }
 
   .ua-box:hover {
     background: #181818;
+    border-color: rgba(240, 235, 224, 0.22);
+    box-shadow: 0 28px 56px -24px rgba(0, 0, 0, 0.85);
+    transform: translateY(-4px);
   }
 
   /* Shimmer sweep on hover — CSS only, no JS */
@@ -436,7 +449,8 @@ const styles = `
     line-height: 1;
     letter-spacing: -0.04em;
     margin-bottom: 20px;
-    /* color set inline per box */
+    /* color set inline per box; glow uses that color via currentColor */
+    text-shadow: 1px 1px 0 rgba(0, 0, 0, 0.35), 0 0 20px currentColor, 0 0 42px currentColor;
   }
 
   /* Title */
@@ -455,7 +469,7 @@ const styles = `
     font-family: 'Geist Mono', 'Courier New', monospace;
     font-size: clamp(12px, 1.3vw, 14px);
     line-height: 1.75;
-    color: rgba(240, 235, 224, 0.5);
+    color: rgba(240, 235, 224, 0.78);
     margin: 0;
   }
 

@@ -29,7 +29,7 @@ export default function ProofTrustPage() {
           <div className="sl-kv"><span>Operated by</span><span>Mental Vision — parent organization</span></div>
           <div className="sl-kv"><span>Founder</span><span>Corey Ellis</span></div>
           <div className="sl-kv"><span>Location</span><span>Brownsburg, Indiana, USA — serving nationwide</span></div>
-          <div className="sl-kv"><span>Contact</span><span><a href="mailto:outreach@trysignalflair.com">outreach@trysignalflair.com</a></span></div>
+          <div className="sl-kv"><span>Contact</span><span><a href="mailto:hello@signalflair.ai">hello@signalflair.ai</a></span></div>
           <div className="sl-kv"><span>Also at</span><span><a href="https://www.linkedin.com/company/signal-flair-ai" target="_blank" rel="noopener noreferrer">LinkedIn</a> · <a href="https://mentalvision.ai" target="_blank" rel="noopener noreferrer">mentalvision.ai</a></span></div>
         </section>
 

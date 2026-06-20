@@ -1,7 +1,7 @@
 // @ts-nocheck
 'use client'
 /* eslint-disable */
-import { useEffect, useRef } from 'react'
+import { useCallback, useEffect, useRef, useState } from 'react'
 import { animate, createTimeline, createAnimatable, stagger, onScroll } from 'animejs'
 import Lenis from 'lenis'
 import { gsap } from 'gsap'
@@ -9,6 +9,17 @@ import { ScrollTrigger } from 'gsap/ScrollTrigger'
 import SignalFlairLogo from './SignalFlairLogo'
 import UnfairAdvantage from './UnfairAdvantage'
 import { track } from '@/lib/analytics'
+
+/** Build-time inlined (static export). Platform-neutral: Jarvis or other routers can use FIELD_REPORT_WEBHOOK_URL. */
+const FIELD_REPORT_WEBHOOK_OVERRIDE = ''
+const FIELD_REPORT_WEBHOOK_URL =
+  (process.env.NEXT_PUBLIC_FIELD_REPORT_WEBHOOK_URL ?? '').trim() ||
+  (process.env.NEXT_PUBLIC_GHL_WEBHOOK_URL ?? '').trim() ||
+  FIELD_REPORT_WEBHOOK_OVERRIDE
+const FIELD_REPORT_FALLBACK_EMAIL = 'hello@signalflair.ai'
+
+const LEAD_REQUIRED = ['full_name', 'business_name', 'website_url', 'email', 'primary_service']
+const LEAD_EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]+$/
 
 /**
  * SignalFlairLanding — the canonical Signal Flair landing page / homepage.
@@ -18,6 +29,112 @@ import { track } from '@/lib/analytics'
  */
 export default function SignalFlairLanding() {
   const started = useRef(false)
+  const leadFormRef = useRef(null)
+  const [leadSubmitting, setLeadSubmitting] = useState(false)
+  const [leadSuccess, setLeadSuccess] = useState(false)
+  const [leadFormError, setLeadFormError] = useState('')
+  const [leadFieldErrors, setLeadFieldErrors] = useState({})
+
+  const validateLeadField = useCallback((name, val) => {
+    const v = (val ?? '').trim()
+    if (LEAD_REQUIRED.includes(name) && !v) return 'Required'
+    if (name === 'email' && v && !LEAD_EMAIL_RE.test(v)) return 'Enter a valid email'
+    if (name === 'website_url' && v && !/\.\w{2,}/.test(v)) return 'Enter a valid website'
+    return ''
+  }, [])
+
+  const handleLeadSubmit = useCallback(async (e) => {
+    e.preventDefault()
+    console.info('[Field Report] submit handler fired')
+    setLeadFormError('')
+    setLeadSuccess(false)
+
+    const form = leadFormRef.current
+    if (!form) {
+      console.error('[Field Report] form ref missing')
+      setLeadFormError(`Field Report intake error. Email ${FIELD_REPORT_FALLBACK_EMAIL} and we'll follow up manually.`)
+      return
+    }
+
+    console.info('[Field Report] validation started')
+    const nextFieldErrors = {}
+    let firstInvalid = null
+    const inputs = form.querySelectorAll('input:not([type=hidden])')
+    inputs.forEach((inp) => {
+      const msg = validateLeadField(inp.name, inp.value)
+      if (msg) {
+        nextFieldErrors[inp.name] = msg
+        if (!firstInvalid) firstInvalid = inp
+      }
+    })
+    setLeadFieldErrors(nextFieldErrors)
+
+    if (firstInvalid) {
+      console.info('[Field Report] validation failed')
+      setLeadFormError('Please complete all required fields (marked with *).')
+      firstInvalid.focus()
+      return
+    }
+
+    console.info('[Field Report] validation passed')
+    console.info('[Field Report] webhook configured:', Boolean(FIELD_REPORT_WEBHOOK_URL))
+
+    const qp = new URLSearchParams(window.location.search)
+    const setHidden = (n, v) => {
+      const el = form.querySelector(`[name="${n}"]`)
+      if (el) el.value = v ?? ''
+    }
+    setHidden('page_url', window.location.href)
+    setHidden('utm_source', qp.get('utm_source') || '')
+    setHidden('utm_medium', qp.get('utm_medium') || '')
+    setHidden('utm_campaign', qp.get('utm_campaign') || '')
+
+    const payload = Object.fromEntries(new FormData(form).entries())
+    payload.submitted_at = new Date().toISOString()
+    payload.form_type = 'field_report'
+    payload.request_type = 'field_report'
+
+    setLeadSubmitting(true)
+    try {
+      if (!FIELD_REPORT_WEBHOOK_URL) {
+        throw new Error('webhook_not_configured')
+      }
+      console.info('[Field Report] fetch starting')
+      const ctrl = new AbortController()
+      const timer = setTimeout(() => ctrl.abort(), 10000)
+      try {
+        const res = await fetch(FIELD_REPORT_WEBHOOK_URL, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(payload),
+          signal: ctrl.signal,
+        })
+        if (!res.ok) throw new Error('status ' + res.status)
+      } finally {
+        clearTimeout(timer)
+      }
+      console.info('[Field Report] fetch complete')
+      track('form_submit', { form_id: 'lead-form', primary_service: payload.primary_service, demo_mode: false })
+      setLeadSuccess(true)
+      setLeadFormError('')
+      setLeadFieldErrors({})
+    } catch (err) {
+      console.error('[Field Report] submit failed', err)
+      if (err?.name === 'AbortError') {
+        setLeadFormError(`Request timed out. Email ${FIELD_REPORT_FALLBACK_EMAIL} and we'll follow up manually.`)
+      } else if (err?.message === 'webhook_not_configured') {
+        setLeadFormError(
+          process.env.NODE_ENV === 'development'
+            ? 'Field Report webhook not configured. Set NEXT_PUBLIC_FIELD_REPORT_WEBHOOK_URL or NEXT_PUBLIC_GHL_WEBHOOK_URL in .env.local and restart dev.'
+            : `Field Report intake is temporarily unavailable. Email ${FIELD_REPORT_FALLBACK_EMAIL} and we'll follow up manually.`,
+        )
+      } else {
+        setLeadFormError(`We couldn't submit your Field Report request. Email ${FIELD_REPORT_FALLBACK_EMAIL} and we'll follow up manually.`)
+      }
+    } finally {
+      setLeadSubmitting(false)
+    }
+  }, [validateLeadField])
 
   useEffect(() => {
     if (started.current) return // guard React strict-mode double-invoke
@@ -448,86 +565,6 @@ export default function SignalFlairLanding() {
       }
     }
 
-    /* ─── LEAD FORM (free Field Report request) ─── */
-    // GHL inbound-webhook URL. Two ways to go live — NO other code change needed:
-    //   1. (preferred) set NEXT_PUBLIC_GHL_WEBHOOK_URL in Netlify env / .env.local — see .env.example
-    //   2. or paste it straight into GHL_WEBHOOK_OVERRIDE below for a quick local test
-    // Both unset = DEMO MODE: the form validates, shows the success state, and console.logs the
-    // payload with NO network call — respects the "no GHL pushes" hold until the webhook is wired.
-    const GHL_WEBHOOK_OVERRIDE = '' // ← paste GHL inbound-webhook URL here for a one-off local test
-    const GHL_WEBHOOK_URL = (process.env.NEXT_PUBLIC_GHL_WEBHOOK_URL ?? '').trim() || GHL_WEBHOOK_OVERRIDE
-    const leadForm = document.getElementById('lead-form')
-    if (leadForm) try {
-      const qp = new URLSearchParams(location.search)
-      const setHidden = (n, v) => { const el = leadForm.querySelector(`[name="${n}"]`); if (el && v != null) el.value = v }
-      setHidden('page_url', location.href)
-      setHidden('utm_source', qp.get('utm_source') || '')
-      setHidden('utm_medium', qp.get('utm_medium') || '')
-      setHidden('utm_campaign', qp.get('utm_campaign') || '')
-
-      const REQUIRED = ['full_name', 'business_name', 'website_url', 'email', 'primary_service']
-      const emailRe = /^[^\s@]+@[^\s@]+\.[^\s@]+$/
-      const setErr = (input, msg) => {
-        input.classList.toggle('invalid', !!msg)
-        const err = input.parentElement.querySelector('.lf-err')
-        if (err) err.textContent = msg || ''
-        return !msg
-      }
-      const validate = (input) => {
-        const name = input.name, val = input.value.trim()
-        if (REQUIRED.includes(name) && !val) return setErr(input, 'Required')
-        if (name === 'email' && val && !emailRe.test(val)) return setErr(input, 'Enter a valid email')
-        if (name === 'website_url' && val && !/\.\w{2,}/.test(val)) return setErr(input, 'Enter a valid website')
-        return setErr(input, '')
-      }
-      const fields = leadForm.querySelectorAll('input:not([type=hidden])')
-      fields.forEach(inp => {
-        inp.addEventListener('blur', () => validate(inp))
-        inp.addEventListener('input', () => { if (inp.classList.contains('invalid')) validate(inp) })
-      })
-
-      const formErr = document.getElementById('lead-formerr')
-      leadForm.addEventListener('submit', async (e) => {
-        e.preventDefault()
-        if (formErr) formErr.textContent = ''
-        let firstInvalid = null
-        fields.forEach(inp => { if (!validate(inp) && !firstInvalid) firstInvalid = inp })
-        if (firstInvalid) { firstInvalid.focus(); return }
-
-        const btn = leadForm.querySelector('.lead-submit')
-        setHidden('page_url', location.href)
-        const payload = Object.fromEntries(new FormData(leadForm).entries())
-        payload.submitted_at = new Date().toISOString()
-
-        const label = btn.textContent; btn.disabled = true; btn.textContent = 'Running…'
-        try {
-          if (GHL_WEBHOOK_URL) {
-            // 10s timeout so a hung/slow webhook can't leave the button stuck on "Running…".
-            const ctrl = new AbortController()
-            const timer = setTimeout(() => ctrl.abort(), 10000)
-            try {
-              const res = await fetch(GHL_WEBHOOK_URL, { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(payload), signal: ctrl.signal })
-              if (!res.ok) throw new Error('status ' + res.status)
-            } finally {
-              clearTimeout(timer)
-            }
-          } else {
-            console.log('[Signal Flair lead — DEMO MODE, no webhook configured]', payload)
-            await new Promise(r => setTimeout(r, 650))
-          }
-          track('form_submit', { form_id: 'lead-form', primary_service: payload.primary_service, demo_mode: !GHL_WEBHOOK_URL })
-          const wrap = document.getElementById('lead-form-wrap')
-          const ok = document.getElementById('lead-success')
-          if (wrap) wrap.style.display = 'none'
-          if (ok) { ok.style.display = 'block'; animate(ok, { opacity: [0, 1], translateY: [16, 0], duration: 600, ease: 'outExpo' }) }
-        } catch (err) {
-          console.error('[Signal Flair lead] submit failed', err)
-          btn.disabled = false; btn.textContent = label
-          if (formErr) formErr.textContent = "Something went wrong — email outreach@trysignalflair.com and we'll run it manually."
-        }
-      })
-    } catch (e) { console.error('[Signal Flair] lead-form init failed', e) }
-
     /* ─── CTA ANALYTICS ─── */
     // Every conversion CTA is an <a href="#cta"> that scrolls to the lead form. Delegate one
     // listener on document: the founding-client apply button fires `founding_client_click`,
@@ -877,13 +914,7 @@ export default function SignalFlairLanding() {
       {/* ═══ PROCESS ═══ */}
       <section id="process" data-cursor="light">
         <div className="proc-header reveal">
-          <div className="proc-header-main">
-            <div className="proc-eyebrow">Proof pipeline</div>
-            <h2 className="proc-headline">
-              How the <span className="proc-protocol-mark">Signal Protocol™</span> works
-            </h2>
-            <div className="proc-divider" aria-hidden="true" />
-          </div>
+          <h2 className="proc-vw">How the<br /><em>Signal Protocol™</em> works</h2>
           <p className="proc-intro">
             We scan 24 checkpoints across six signal layers, score your Signal Score™, build the missing
             infrastructure, and maintain proof readiness with Stay Found™ — one system, without the lag.
@@ -1220,29 +1251,30 @@ export default function SignalFlairLanding() {
           </div>
           <div className="cta-right reveal" id="field-report">
             <div className="lead-card">
+              {!leadSuccess && (
               <div id="lead-form-wrap">
                 <div className="lead-h">Get Your Free Signal Flair <em>Field Report</em></div>
                 <div className="lead-subline">We run 3 critical AI signals on your business and deliver a partial audit within 24 hours — no call required. Most local businesses score under 40. You&apos;ll see exactly where your signal breaks.</div>
-                <form id="lead-form" noValidate>
+                <form id="lead-form" ref={leadFormRef} noValidate onSubmit={handleLeadSubmit}>
                   <div className="lf-field">
                     <label className="lf-label" htmlFor="lf-name">Full Name<span className="req">*</span></label>
-                    <input className="lf-input" id="lf-name" name="full_name" type="text" autoComplete="name" placeholder="Jane Smith" />
-                    <span className="lf-err" aria-live="polite" />
+                    <input className={`lf-input${leadFieldErrors.full_name ? ' invalid' : ''}`} id="lf-name" name="full_name" type="text" autoComplete="name" placeholder="Jane Smith" />
+                    <span className="lf-err" aria-live="polite">{leadFieldErrors.full_name || ''}</span>
                   </div>
                   <div className="lf-field">
                     <label className="lf-label" htmlFor="lf-biz">Business Name<span className="req">*</span></label>
-                    <input className="lf-input" id="lf-biz" name="business_name" type="text" autoComplete="organization" placeholder="Smith &amp; Co." />
-                    <span className="lf-err" aria-live="polite" />
+                    <input className={`lf-input${leadFieldErrors.business_name ? ' invalid' : ''}`} id="lf-biz" name="business_name" type="text" autoComplete="organization" placeholder="Smith &amp; Co." />
+                    <span className="lf-err" aria-live="polite">{leadFieldErrors.business_name || ''}</span>
                   </div>
                   <div className="lf-field full">
                     <label className="lf-label" htmlFor="lf-url">Website URL<span className="req">*</span></label>
-                    <input className="lf-input" id="lf-url" name="website_url" type="url" inputMode="url" autoComplete="url" placeholder="yourbusiness.com" />
-                    <span className="lf-err" aria-live="polite" />
+                    <input className={`lf-input${leadFieldErrors.website_url ? ' invalid' : ''}`} id="lf-url" name="website_url" type="url" inputMode="url" autoComplete="url" placeholder="yourbusiness.com" />
+                    <span className="lf-err" aria-live="polite">{leadFieldErrors.website_url || ''}</span>
                   </div>
                   <div className="lf-field">
                     <label className="lf-label" htmlFor="lf-email">Email<span className="req">*</span></label>
-                    <input className="lf-input" id="lf-email" name="email" type="email" inputMode="email" autoComplete="email" placeholder="jane@yourbusiness.com" />
-                    <span className="lf-err" aria-live="polite" />
+                    <input className={`lf-input${leadFieldErrors.email ? ' invalid' : ''}`} id="lf-email" name="email" type="email" inputMode="email" autoComplete="email" placeholder="jane@yourbusiness.com" />
+                    <span className="lf-err" aria-live="polite">{leadFieldErrors.email || ''}</span>
                   </div>
                   <div className="lf-field">
                     <label className="lf-label" htmlFor="lf-phone">Phone</label>
@@ -1251,31 +1283,35 @@ export default function SignalFlairLanding() {
                   </div>
                   <div className="lf-field">
                     <label className="lf-label" htmlFor="lf-service">Primary Service<span className="req">*</span></label>
-                    <input className="lf-input" id="lf-service" name="primary_service" type="text" placeholder="e.g. HVAC, dental, law" />
-                    <span className="lf-err" aria-live="polite" />
+                    <input className={`lf-input${leadFieldErrors.primary_service ? ' invalid' : ''}`} id="lf-service" name="primary_service" type="text" placeholder="e.g. HVAC, dental, law" />
+                    <span className="lf-err" aria-live="polite">{leadFieldErrors.primary_service || ''}</span>
                   </div>
                   <div className="lf-field">
                     <label className="lf-label" htmlFor="lf-city">City / Service Area</label>
                     <input className="lf-input" id="lf-city" name="city" type="text" autoComplete="address-level2" placeholder="(optional)" />
                     <span className="lf-err" aria-live="polite" />
                   </div>
-                  {/* hidden tracking — populated on mount */}
                   <input type="hidden" name="source" defaultValue="signalflair.ai" />
-                  <input type="hidden" name="page_url" />
-                  <input type="hidden" name="utm_source" />
-                  <input type="hidden" name="utm_medium" />
-                  <input type="hidden" name="utm_campaign" />
-                  <input type="hidden" name="lead_tag" defaultValue="AI Visibility Score Request" />
-                  <div className="lead-formerr" id="lead-formerr" aria-live="assertive" />
-                  <button type="submit" className="lead-submit">▸ Run My Field Report</button>
+                  <input type="hidden" name="page_url" defaultValue="" />
+                  <input type="hidden" name="utm_source" defaultValue="" />
+                  <input type="hidden" name="utm_medium" defaultValue="" />
+                  <input type="hidden" name="utm_campaign" defaultValue="" />
+                  <input type="hidden" name="lead_tag" defaultValue="Field Report Request" />
+                  <div className="lead-formerr" id="lead-formerr" aria-live="assertive">{leadFormError}</div>
+                  <button type="submit" className="lead-submit" disabled={leadSubmitting}>
+                    {leadSubmitting ? 'Running…' : '▸ Run My Field Report'}
+                  </button>
                   <div className="lead-micro">No credit card. No spam. Your Field Report lands in your inbox within 24 hours. This covers 3 of the 6 Signal Protocol™ layers — the full breakdown requires the complete audit.</div>
                 </form>
               </div>
-              <div className="lead-success" id="lead-success" role="status" aria-live="polite">
+              )}
+              {leadSuccess && (
+              <div className="lead-success" id="lead-success" role="status" aria-live="polite" style={{ display: 'block' }}>
                 <div className="ls-mark" aria-hidden="true">✓</div>
                 <div className="ls-h">Field Report requested.</div>
                 <div className="ls-b">We&apos;re scanning your 3 critical signals across <strong>ChatGPT, Claude, Perplexity, Gemini &amp; Google AI</strong>. Your Field Report lands in your inbox within 24 hours — the full 6-signal breakdown comes next.</div>
               </div>
+              )}
             </div>
           </div>
         </div>
@@ -1298,11 +1334,11 @@ export default function SignalFlairLanding() {
           <div>
             <a className="f-logo" href="#hero"><SignalFlairLogo onDark style={{ height: 40, width: 'auto', display: 'block' }} /></a>
             <div className="f-tag">AI Proof Infrastructure™<br />Brownsburg, Indiana · Serving businesses nationwide · Est. 2026<br />Your business, found by AI.</div>
-            <a className="f-email" href="mailto:outreach@trysignalflair.com">outreach@trysignalflair.com</a>
+            <a className="f-email" href="mailto:hello@signalflair.ai">hello@signalflair.ai</a>
           </div>
           <div><div className="f-head">Services</div><a className="f-link" href="#signal">AI Visibility Audit</a><a className="f-link" href="#signal">Foundation Build</a><a className="f-link" href="#signal">Stay Found™</a><a className="f-link" href="#check">What We Check</a><a className="f-link" href="#pricing">Pricing</a></div>
-          <div><div className="f-head">Company</div><a className="f-link" href="#process">How It Works</a><a className="f-link" href="#pricing">Pricing</a><a className="f-link" href="/resources/llms-txt/">llms.txt Guide</a><a className="f-link" href="https://mentalvision.ai" target="_blank" rel="noopener noreferrer">Mental Vision Corp</a><a className="f-link" href="mailto:outreach@trysignalflair.com">Contact</a></div>
-          <div><div className="f-head">Connect</div><a className="f-link" href="#">LinkedIn</a><a className="f-link" href="#">Instagram</a><a className="f-link" href="#">YouTube</a><a className="f-link" href="mailto:outreach@trysignalflair.com">outreach@trysignalflair.com</a></div>
+          <div><div className="f-head">Company</div><a className="f-link" href="#process">How It Works</a><a className="f-link" href="#pricing">Pricing</a><a className="f-link" href="/resources/llms-txt/">llms.txt Guide</a><a className="f-link" href="https://mentalvision.ai" target="_blank" rel="noopener noreferrer">Mental Vision Corp</a><a className="f-link" href="mailto:hello@signalflair.ai">Contact</a></div>
+          <div><div className="f-head">Connect</div><a className="f-link" href="#">LinkedIn</a><a className="f-link" href="#">Instagram</a><a className="f-link" href="#">YouTube</a><a className="f-link" href="mailto:hello@signalflair.ai">hello@signalflair.ai</a></div>
         </div>
         <div className="f-chant-band">
           <div className="f-chant">What&apos;s your Signal Score?</div>

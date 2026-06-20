@@ -30,7 +30,7 @@ const jsonLd = {
       name: 'Signal Flair',
       url: 'https://signalflair.ai',
       logo: 'https://signalflair.ai/signal-flair-logo.svg',
-      email: 'outreach@trysignalflair.com',
+      email: 'hello@signalflair.ai',
       description:
         'Signal Flair is an AI visibility and Answer Engine Optimization (AEO) agency for local service businesses, based in Brownsburg, Indiana — serving businesses nationwide. It is a product of Mental Vision Corp and is unrelated to SignalFlare.ai or to the medical MRI term FLAIR.',
       foundingDate: '2026',

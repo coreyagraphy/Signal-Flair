@@ -21,7 +21,7 @@
 | Founded | `2026` |
 | HQ location | `Brownsburg, Indiana, United States` |
 | Founder | `Corey Ellis` |
-| Contact email | `outreach@trysignalflair.com` |
+| Contact email | `hello@signalflair.ai` |
 | Industries / Categories | Marketing · Artificial Intelligence · SEO · Digital Marketing · Advertising |
 | Company size | 1–10 |
 
