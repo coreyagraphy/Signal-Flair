@@ -32,7 +32,7 @@ const HEADLINE_LINE1 = 'The AI already has an opinion.';
 const HEADLINE_LINE2 = 'Do you know what it is?';
 
 const SUBHEADLINE =
-  'Every agency talks about rankings. We measure whether ChatGPT, Claude, Perplexity, and Google AI can actually find you — and whether they trust what they find enough to recommend you.';
+  'Most AEO tools hand you a dashboard and a score, then leave the fixing to you. Signal Flair is different: we measure whether ChatGPT, Claude, Perplexity, and Google AI can actually find you — then build the proof layer that closes the gaps.';
 
 const BOXES = [
   {

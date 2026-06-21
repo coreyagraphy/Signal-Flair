@@ -816,10 +816,10 @@ export default function SignalFlairLanding() {
       <section id="signal">
         <div className="sig-top reveal">
           <div>
-            <div className="sig-eyebrow">The Signal Flair System</div>
+            <div className="sig-eyebrow">What does Signal Flair build?</div>
             <div className="sig-big">THREE THINGS.<br />DONE <em>RIGHT.</em></div>
           </div>
-          <div className="sig-tagline">Answer engines don&apos;t just need content — they need proof. Signal Flair builds that proof layer in three moves: diagnose the baseline, build the proof, and keep it fresh — so the AI engines deciding who gets recommended can find, read, and trust you.</div>
+          <div className="sig-tagline">Signal Flair builds AI Proof Infrastructure™ — the structured proof layer that helps AI systems access, understand, verify, and surface your business. We do it in three moves: diagnose the baseline, build the proof, and keep it fresh.</div>
         </div>
         <div className="sig-rows">
           <div className="sig-row reveal">
@@ -878,7 +878,7 @@ export default function SignalFlairLanding() {
         </div>
         <div className="proto-teaser reveal">
           <div className="proto-teaser-chant">What&apos;s your Signal Score?</div>
-          <a className="proto-teaser-cta" href="#cta">▸ Get My Free Field Report →</a>
+          <a className="proto-teaser-cta" href="#cta">▸ Get Your Signal Score™ →</a>
         </div>
       </section>
 
@@ -894,10 +894,10 @@ export default function SignalFlairLanding() {
       {/* ═══ PROCESS ═══ */}
       <section id="process" data-cursor="light">
         <div className="proc-header reveal">
-          <h2 className="proc-vw">How the<br /><em>Signal Protocol™</em> works</h2>
+          <h2 className="proc-vw">How is your<br /><em>Signal Score™</em> calculated?</h2>
           <p className="proc-intro">
-            We scan 24 checkpoints across six signal layers, score your Signal Score™, build the missing
-            infrastructure, and maintain proof readiness with Stay Found™ — one system, without the lag.
+            Signal Flair scores your Signal Score™ across six signal layers and 24 checkpoints — then builds the
+            missing infrastructure and keeps it current with Stay Found™. One system, without the lag.
           </p>
         </div>
         <ul className="proc-list">
@@ -1006,6 +1006,7 @@ export default function SignalFlairLanding() {
                 <div className="fnd-i">Signal Proof Layer™ recommendations</div>
                 <div className="fnd-i">Optional Signal Proof Page™ — your public proof asset</div>
                 <div className="fnd-i">Before-and-after documentation as your score climbs</div>
+                <div className="fnd-i">Competitor Signal Snapshot™ — a point-in-time side-by-side against one selected peer or competitor</div>
                 <div className="fnd-i">Clear next steps to become easier for AI to verify</div>
               </div>
               <div className="founding-save">Limited founding cohort · flexible terms for pilots &amp; nonprofits</div>
@@ -1176,6 +1177,14 @@ export default function SignalFlairLanding() {
           <details className="faq-item">
             <summary className="faq-q">What is AI Proof Infrastructure™?<span className="faq-ic" aria-hidden="true" /></summary>
             <div className="faq-a">AI Proof Infrastructure is the structured layer of business information, technical signals, trust proof, and public verification assets that helps AI answer engines understand and verify an organization. Signal Flair builds it — so ChatGPT, Claude, Gemini, Perplexity, and Google AI can access, understand, verify, and confidently recommend you.</div>
+          </details>
+          <details className="faq-item">
+            <summary className="faq-q">What is a Signal Proof Page™?<span className="faq-ic" aria-hidden="true" /></summary>
+            <div className="faq-a">A public, crawlable proof asset that shows your current Signal Score™, your proof-layer assets, trust signals, AI-visibility evidence, and a last-updated date — so both people and AI engines can verify you from one place. It stays fresh through Stay Found™ as your score climbs.</div>
+          </details>
+          <details className="faq-item">
+            <summary className="faq-q">What is a Competitor Signal Snapshot™?<span className="faq-ic" aria-hidden="true" /></summary>
+            <div className="faq-a">A point-in-time comparison of how your Signal Score™ and six signal layers stack up against one selected competitor, peer, or niche benchmark — so you can see where a rival is currently easier for AI to access, understand, verify, or surface, and which proof gaps to fix first. It&apos;s a snapshot, not a tracking dashboard: based on publicly available signals and observed AI responses at the time of review — never a claim about a competitor&apos;s private traffic, revenue, or strategy.</div>
           </details>
           <details className="faq-item">
             <summary className="faq-q">How is this different from SEO?<span className="faq-ic" aria-hidden="true" /></summary>

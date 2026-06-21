@@ -40,6 +40,14 @@ const FAQS: { q: string; a: string }[] = [
     a: 'The Signal Proof Page™ is your canonical, crawlable proof hub — a client-owned record published as human-readable pages and linked machine-readable assets (proof.json, llms.txt) so AI engines and customers can inspect what you do, where you serve, and the proof behind it. Deployed on Foundation Build and Start the Rebuild.',
   },
   {
+    q: 'What is a Competitor Signal Snapshot™?',
+    a: 'A Competitor Signal Snapshot™ is a point-in-time comparison showing how your Signal Score™ and six signal layers compare against a selected competitor, peer, or niche benchmark. It helps you see where a competitor may currently be easier for AI systems to access, understand, verify, or surface — and which proof gaps your organization should fix first.',
+  },
+  {
+    q: 'Is a Competitor Signal Snapshot™ ongoing competitor tracking?',
+    a: 'No. It is a point-in-time review based on publicly available signals and observed AI responses at the time of analysis — not a dashboard, not surveillance. It makes no claim about a competitor’s private traffic, revenue, rankings, or internal strategy.',
+  },
+  {
     q: 'What is Stay Found™?',
     a: 'Stay Found™ is ongoing proof maintenance that keeps your Signal Score™ from drifting — monthly re-scans, fresh citations, schema and llms.txt updates, and crawler monitoring as new AI engines ship and competitors catch up. Signal Flair does not guarantee rankings, citations, recommendations, inclusion, or AI visibility. The work is designed to improve clarity, structure, crawlability, and proof readiness.',
   },
