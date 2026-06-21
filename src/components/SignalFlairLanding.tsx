@@ -1029,13 +1029,10 @@ export default function SignalFlairLanding() {
       {/* ═══ PRICING ═══ */}
       <section id="pricing" data-cursor="light">
         <div className="pricing-header reveal">
-          <div className="pricing-vw-wild" aria-label="Three offers. One right fit.">
-            <span className="pw pw1">Three</span>{' '}
-            <span className="pw pw2">OFFERS.</span>{' '}
-            <span className="pw pw3">one</span>{' '}
-            <span className="pw pw4">right</span>{' '}
-            <span className="pw pw5">fit.</span>
-          </div>
+          <h2 className="pricing-vw" aria-label="Three offers. One right fit.">
+            Three offers.<br />
+            One <em className="pv-fit">right fit.</em>
+          </h2>
           <div className="pricing-sub">Commercial implementation pricing — one path alongside the Founding Pilot. Your Signal Score™ sets the starting point; most begin with a free baseline, then build the Signal Proof Layer™ at the band it lands in.</div>
         </div>
         <div className="price-how reveal">

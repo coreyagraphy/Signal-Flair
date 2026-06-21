@@ -453,15 +453,14 @@ nav#hnav{position:relative;z-index:10;display:flex;align-items:center;justify-co
    ════════════════════════════════════════════════════════════ */
 #pricing{background:var(--paper)}
 .pricing-header{padding:84px 56px 0;max-width:1320px;margin:0 auto;display:flex;flex-direction:column;align-items:flex-start;gap:30px;overflow:hidden}
-/* "THREE OFFERS / ONE RIGHT FIT" — deliberately off-grid: mixed type, staggered indents, tilted */
-.pricing-vw-wild{display:flex;flex-direction:column;align-items:flex-start;width:100%;color:var(--ink)}
-.pricing-vw-wild .pw{display:block;line-height:0.78;white-space:nowrap;transform-origin:left center}
-.pw1{font-family:var(--signal);font-weight:500;font-size:clamp(18px,2vw,30px);letter-spacing:0.24em;text-transform:uppercase;color:rgba(11,10,9,0.42);transform:rotate(-2.5deg);margin:0 0 8px 2px}
-.pw2{font-family:var(--flair);font-variation-settings:'opsz' 144,'wght' 580,'WONK' 1;font-size:clamp(66px,12.5vw,182px);margin-left:-0.5vw}
-.pw3{font-family:var(--italic);font-style:italic;font-size:clamp(46px,6.8vw,108px);color:var(--orange);margin-left:9vw;transform:rotate(2.5deg);margin-top:-0.04em}
-.pw4{font-family:var(--flair);font-variation-settings:'opsz' 72,'wght' 380,'WONK' 1;font-size:clamp(34px,4.6vw,76px);color:rgba(11,10,9,0.82);margin-left:1.5vw;letter-spacing:-0.01em}
-.pw5{font-family:var(--italic);font-style:italic;font-size:clamp(58px,9.8vw,160px);margin-left:13vw;transform:rotate(-2deg);margin-top:-0.1em}
-.pricing-sub{font-family:var(--signal);font-size:11.5px;color:rgba(11,10,9,0.58);max-width:440px;text-align:left;margin:0 0 0 6vw;line-height:1.8}
+/* "Three offers. One right fit." — editorial display headline (mirrors the hero); one gradient-glow italic accent + animated flare swoosh */
+.pricing-vw{font-family:var(--flair);font-variation-settings:'opsz' 144,'wght' 560,'WONK' 1;font-size:clamp(46px,8.4vw,132px);line-height:0.92;letter-spacing:-0.018em;color:var(--ink);width:100%;margin:0}
+.pv-fit{display:inline-block;position:relative;font-family:var(--italic);font-style:italic;font-weight:400;letter-spacing:0;background:linear-gradient(100deg,#ff5a1f 0%,#ff8a3d 26%,#fff45f 52%,#ff8a3d 74%,#ff5a1f 100%);background-size:230% auto;-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;color:transparent;filter:drop-shadow(0 3px 22px rgba(255,90,31,0.34));animation:pv-shimmer 5s linear infinite}
+.pv-fit::after{content:'';position:absolute;left:0.05em;right:0.05em;bottom:0.02em;height:0.05em;background:linear-gradient(90deg,transparent 0%,#ff5a1f 22%,#fff45f 50%,#ff5a1f 78%,transparent 100%);border-radius:999px;filter:blur(0.4px);opacity:0.7;animation:pv-flare 5s ease-in-out infinite}
+@keyframes pv-shimmer{to{background-position:230% center}}
+@keyframes pv-flare{0%,100%{opacity:0.32;transform:scaleX(0.92)}50%{opacity:0.82;transform:scaleX(1)}}
+@media(prefers-reduced-motion:reduce){.pv-fit{animation:none}.pv-fit::after{animation:none;opacity:0.6}}
+.pricing-sub{font-family:var(--signal);font-size:14.5px;color:rgba(11,10,9,0.82);max-width:560px;text-align:left;margin:6px 0 0;line-height:1.75}
 .price-feat{margin:52px 56px 0;max-width:1320px;margin-left:auto;margin-right:auto;background:var(--ink);display:grid;grid-template-columns:360px 1fr;gap:0;align-items:start;border:1px solid var(--ink);border-top:4px solid var(--hot);transform-origin:top center}
 .pf-left{padding:48px 48px 48px 52px;border-right:1px solid rgba(248,241,231,0.16)}
 .pf-badge{display:inline-block;font-family:var(--signal);font-size:9px;font-weight:600;letter-spacing:0.16em;text-transform:uppercase;color:var(--ink);background:var(--hot);padding:6px 12px;margin-bottom:22px}
