@@ -986,6 +986,17 @@ export default function SignalFlairLanding() {
         <div className="proof-note reveal">Next target: improve AI-readiness after owned proof assets are published, crawlable, and aligned across the site. <strong>This is a readiness target, not a guarantee of AI ranking, citation, recommendation, or inclusion.</strong></div>
         <div className="proof-note reveal">Signal Flair&apos;s own audit — <strong>June 6, 2026</strong>. This is Case Zero: we ran the system on ourselves first, and we publish the real before-and-after as our own score climbs.</div>
         <a className="proof-live-link reveal" href="/proof/">See our live record →</a>
+        <div className="sl-markwrap reveal" style={{ margin: '26px auto 0', maxWidth: 560 }}>
+          <a className="sl-mark" href="/case-studies/restor-team/">
+            <span className="sl-mark-pulse" aria-hidden="true" />
+            <span className="sl-mark-body">
+              <span className="sl-mark-main">RESTOR Team — Founding Partner Snapshot</span>
+              <span className="sl-mark-meta">Signal Baseline™ · Competitor Signal Snapshot™</span>
+              <span className="sl-mark-note">How AI systems read RESTOR Team compared with a selected market peer. View the snapshot →</span>
+            </span>
+            <span className="sl-mark-arrow" aria-hidden="true">→</span>
+          </a>
+        </div>
         <div className="founding reveal" id="founding">
           <div className="founding-inner">
             <div className="founding-l">
