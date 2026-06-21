@@ -1,4 +1,5 @@
 import type { Metadata } from 'next'
+import SignalFlairLogo from '@/components/SignalFlairLogo'
 
 export const metadata: Metadata = {
   title: 'Founding Partner Pilot Preview — Operator Route Map | Signal Flair',
@@ -96,7 +97,7 @@ export default function FoundingPartnerPilotPreviewPage() {
   return (
     <main className="rsc sl">
       <nav className="rsc-nav">
-        <a className="rsc-logo" href="/">SIGNAL<em>FLAIR</em></a>
+        <a className="rsc-logo" href="/" aria-label="Signal Flair home"><SignalFlairLogo style={{ height: 56, width: 'auto', display: 'block' }} /></a>
         <a className="rsc-navcta" href="/proof/">← Proof hub</a>
       </nav>
 

@@ -675,7 +675,7 @@ export default function SignalFlairLanding() {
         <div id="hero-center-scrim" />
         <nav id="hnav">
           <div>
-            <div className="nav-logo"><SignalFlairLogo onDark pulse style={{ height: 66, width: 'auto', display: 'block' }} /></div>
+            <div className="nav-logo"><SignalFlairLogo onDark pulse style={{ height: 56, width: 'auto', display: 'block' }} /></div>
             <div className="nav-logo-tag"><span className="ntag-cat">AI Proof Infrastructure™</span> · Brownsburg, Indiana, serving nationwide</div>
           </div>
           <div style={{ display: 'flex', alignItems: 'center', gap: '24px' }}>
@@ -750,7 +750,7 @@ export default function SignalFlairLanding() {
       {/* ═══ STICKY NAV ═══ */}
       <nav id="site-nav">
         <div>
-          <a className="nav-logo" href="#hero" style={{ display: 'flex', alignItems: 'center' }}><SignalFlairLogo style={{ height: 38, width: 'auto', display: 'block' }} /></a>
+          <a className="nav-logo" href="#hero" style={{ display: 'flex', alignItems: 'center' }}><SignalFlairLogo style={{ height: 56, width: 'auto', display: 'block' }} /></a>
           <div className="nav-logo-tag" style={{ color: 'rgba(23,19,18,0.55)' }}><span className="ntag-cat">AI Proof Infrastructure™</span></div>
         </div>
         <div className="snav-actions" style={{ display: 'flex', alignItems: 'center', gap: '24px' }}>
@@ -1324,7 +1324,7 @@ export default function SignalFlairLanding() {
       <footer>
         <div className="fi">
           <div>
-            <a className="f-logo" href="#hero"><SignalFlairLogo onDark style={{ height: 40, width: 'auto', display: 'block' }} /></a>
+            <a className="f-logo" href="#hero"><SignalFlairLogo onDark style={{ height: 56, width: 'auto', display: 'block' }} /></a>
             <div className="f-tag">AI Proof Infrastructure™<br />Brownsburg, Indiana · Serving businesses nationwide · Est. 2026<br />Your business, found by AI.</div>
             <a className="f-email" href="mailto:hello@signalflair.ai">hello@signalflair.ai</a>
           </div>

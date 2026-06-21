@@ -1,4 +1,5 @@
 import type { Metadata } from 'next'
+import SignalFlairLogo from '@/components/SignalFlairLogo'
 
 export const metadata: Metadata = {
   title: 'About — AI Visibility & AEO · Brownsburg, Indiana | Signal Flair',
@@ -54,7 +55,7 @@ export default function AboutPage() {
   return (
     <main className="rsc sl">
       <nav className="rsc-nav">
-        <a className="rsc-logo" href="/">SIGNAL<em>FLAIR</em></a>
+        <a className="rsc-logo" href="/" aria-label="Signal Flair home"><SignalFlairLogo style={{ height: 56, width: 'auto', display: 'block' }} /></a>
         <a className="rsc-navcta" href="/#field-report">▸ Free Field Report</a>
       </nav>
 

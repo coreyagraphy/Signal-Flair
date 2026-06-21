@@ -165,7 +165,7 @@ nav#hnav{position:relative;z-index:10;display:flex;align-items:center;justify-co
 .hf-cta:hover{background:transparent;color:var(--hot);box-shadow:0 6px 26px rgba(255,244,95,0.6),inset 0 0 12px rgba(255,244,95,0.18)}
 
 /* ── STICKY NAV ─────────────────────────────────────────── */
-#site-nav{position:fixed;top:0;left:0;right:0;z-index:100;background:rgba(244,234,219,0.94);backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);border-bottom:1px solid var(--ink);padding:13px 38px;display:flex;align-items:center;justify-content:space-between;transform:translateY(-100%);transition:transform .35s cubic-bezier(.22,1,.36,1)}
+#site-nav{position:fixed;top:0;left:0;right:0;z-index:100;background:rgba(244,234,219,0.94);backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);border-bottom:1px solid var(--ink);padding:9px 38px;display:flex;align-items:center;justify-content:space-between;transform:translateY(-100%);transition:transform .35s cubic-bezier(.22,1,.36,1)}
 #site-nav.visible{transform:translateY(0)}
 #site-nav .nav-logo{font-family:var(--flair);font-variation-settings:'opsz' 144,'wght' 540,'WONK' 1;color:var(--ink);font-size:27px}
 #site-nav .nav-logo-tag{font-size:10px}
@@ -549,8 +549,9 @@ nav#hnav{position:relative;z-index:10;display:flex;align-items:center;justify-co
 .rsc{background:var(--paper);color:var(--ink);min-height:100vh;cursor:auto}
 .rsc *{cursor:auto}
 .rsc a,.rsc button,.rsc summary{cursor:pointer}
-.rsc-nav{display:flex;align-items:center;justify-content:space-between;padding:18px 40px;border-bottom:1px solid var(--ink);position:sticky;top:0;background:rgba(244,234,219,0.94);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);z-index:50}
-.rsc-logo{font-family:var(--flair);font-variation-settings:'opsz' 144,'wght' 540,'WONK' 1;font-size:24px;color:var(--ink);text-decoration:none;line-height:1}
+.rsc-nav{display:flex;align-items:center;justify-content:space-between;padding:12px 40px;border-bottom:1px solid var(--ink);position:sticky;top:0;background:rgba(244,234,219,0.94);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);z-index:50}
+.rsc-logo{display:inline-flex;align-items:center;line-height:0;color:var(--ink);text-decoration:none}
+.rsc-logo svg{height:56px;width:auto;display:block}
 .rsc-logo em{color:var(--orange);font-family:var(--italic);font-style:italic;display:inline-block;border:1.5px solid currentColor;border-radius:3px;padding:0 7px 1px;margin-left:6px;line-height:1}
 .rsc-navcta{font-family:var(--signal);font-weight:600;font-size:11px;letter-spacing:0.14em;text-transform:uppercase;padding:11px 18px;text-decoration:none;color:var(--paper);background:var(--ink);border:1px solid var(--ink);transition:.18s}
 .rsc-navcta:hover{background:var(--orange);border-color:var(--orange);color:var(--ink)}

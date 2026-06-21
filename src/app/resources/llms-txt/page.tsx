@@ -1,4 +1,5 @@
 import type { Metadata } from 'next'
+import SignalFlairLogo from '@/components/SignalFlairLogo'
 
 export const metadata: Metadata = {
   title: 'What is llms.txt? Why Your Business Is Invisible to AI Without It | Signal Flair',
@@ -60,7 +61,7 @@ export default function LlmsTxtResourcePage() {
   return (
     <main className="rsc">
       <nav className="rsc-nav">
-        <a className="rsc-logo" href="/">SIGNAL<em>FLAIR</em></a>
+        <a className="rsc-logo" href="/" aria-label="Signal Flair home"><SignalFlairLogo style={{ height: 56, width: 'auto', display: 'block' }} /></a>
         <a className="rsc-navcta" href="/#cta">▸ Free Field Report</a>
       </nav>
 
