@@ -336,7 +336,7 @@ nav#hnav{position:relative;z-index:10;display:flex;align-items:center;justify-co
 #process::before{content:'';position:absolute;inset:0;pointer-events:none;opacity:0.35;
   background:linear-gradient(180deg,rgba(0,184,169,0.04) 0%,transparent 28%,transparent 100%)}
 .proc-header{padding:84px clamp(32px,6vw,80px) 0;max-width:1400px;margin:0 auto 0 0;display:flex;align-items:flex-end;gap:clamp(32px,5vw,72px);flex-wrap:wrap;position:relative;z-index:1}
-.proc-vw{font-family:var(--flair);font-variation-settings:'opsz' 144,'wght' 460,'SOFT' 0,'WONK' 1;font-size:clamp(48px,8vw,118px);line-height:0.86;letter-spacing:-0.01em;color:var(--ink);flex-shrink:0;margin:0}
+.proc-vw{font-family:var(--flair);font-variation-settings:'opsz' 144,'wght' 460,'SOFT' 0,'WONK' 1;font-size:clamp(48px,8vw,118px);line-height:1.05;letter-spacing:-0.01em;color:var(--ink);flex-shrink:0;margin:0}
 .proc-vw em{font-family:var(--italic);font-style:italic;font-weight:400;color:var(--teal);text-shadow:0 0 26px rgba(0,184,169,0.36)}
 .proc-intro{font-family:var(--signal);font-size:13px;color:rgba(11,10,9,0.62);line-height:1.85;max-width:420px;margin:0 0 16px}
 .proc-list{max-width:1400px;margin:54px auto 0 0;padding:0 clamp(28px,4vw,56px) 100px clamp(32px,6vw,80px);list-style:none;position:relative;z-index:1;width:100%}
