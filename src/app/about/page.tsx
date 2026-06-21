@@ -4,12 +4,12 @@ import SignalFlairLogo from '@/components/SignalFlairLogo'
 export const metadata: Metadata = {
   title: 'About — AI Visibility & AEO · Brownsburg, Indiana | Signal Flair',
   description:
-    'Signal Flair is an AI visibility and Answer Engine Optimization (AEO) agency based in Brownsburg, Indiana, serving nationwide — a product of Mental Vision Corp, founded by Corey Ellis. We score how findable your business is to ChatGPT, Claude, Perplexity, Gemini, and Google AI, then build the layer they read.',
+    'Signal Flair is an AI visibility and Answer Engine Optimization (AEO) agency based in Brownsburg, Indiana, serving nationwide — a product of Mental Vision, founded by Corey Ellis. We score how findable your business is to ChatGPT, Claude, Perplexity, Gemini, and Google AI, then build the layer they read.',
   alternates: { canonical: 'https://signalflair.ai/about' },
   openGraph: {
     title: 'About Signal Flair — found by AI, by design',
     description:
-      'A Brownsburg, Indiana AI-visibility agency that audited itself first: Case Zero, 18/100, rebuilt in public. A Mental Vision Corp product.',
+      'A Brownsburg, Indiana AI-visibility agency that audited itself first: Case Zero, 18/100, rebuilt in public. A Mental Vision product.',
   },
 }
 
@@ -33,12 +33,12 @@ const jsonLd = {
       logo: 'https://signalflair.ai/signal-flair-logo.svg',
       email: 'hello@signalflair.ai',
       description:
-        'Signal Flair is an AI visibility and Answer Engine Optimization (AEO) agency for local service businesses, based in Brownsburg, Indiana — serving businesses nationwide. It is a product of Mental Vision Corp and is unrelated to SignalFlare.ai or to the medical MRI term FLAIR.',
+        'Signal Flair is an AI visibility and Answer Engine Optimization (AEO) agency for local service businesses, based in Brownsburg, Indiana — serving businesses nationwide. It is a product of Mental Vision and is unrelated to SignalFlare.ai or to the medical MRI term FLAIR.',
       foundingDate: '2026',
       areaServed: { '@type': 'Country', name: 'United States' },
       address: { '@type': 'PostalAddress', addressLocality: 'Brownsburg', addressRegion: 'IN', addressCountry: 'US' },
       founder: { '@id': 'https://signalflair.ai/#founder' },
-      parentOrganization: { '@type': 'Organization', name: 'Mental Vision Corp', url: 'https://mentalvision.ai' },
+      parentOrganization: { '@type': 'Organization', name: 'Mental Vision', url: 'https://mentalvision.ai' },
     },
     {
       '@type': 'Person',
@@ -101,7 +101,7 @@ export default function AboutPage() {
           <h2 className="rsc-h2">The <em>founder</em></h2>
           <p className="rsc-p">
             Signal Flair was founded by <strong>Corey Ellis</strong> in Brownsburg, Indiana. It is a
-            product of <strong>Mental Vision Corp</strong> (mentalvision.ai). Signal Flair and Mental
+            product of <strong>Mental Vision</strong> (mentalvision.ai). Signal Flair and Mental
             Vision are kept as distinct brands.
           </p>
         </section>
@@ -125,7 +125,7 @@ export default function AboutPage() {
       </div>
 
       <footer className="rsc-foot">
-        Signal Flair · a Mental Vision Corp product · Brownsburg, Indiana · serving nationwide<br />
+        Signal Flair · a Mental Vision product · Brownsburg, Indiana · serving nationwide<br />
         <a href="/">signalflair.ai</a> · <a href="/faq/">faq</a> · <a href="/how-it-works/">how it works</a> · <a href="/proof/">the record</a>
       </footer>
 

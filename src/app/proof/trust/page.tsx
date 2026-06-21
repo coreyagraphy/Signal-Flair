@@ -58,7 +58,7 @@ export default function ProofTrustPage() {
         </section>
       </div>
       <footer className="rsc-foot">
-        Signal Flair · a Mental Vision Corp product · Brownsburg, Indiana · serving nationwide<br />
+        Signal Flair · a Mental Vision product · Brownsburg, Indiana · serving nationwide<br />
         <a href="/proof/">← back to the record</a> · <a href="/proof.json">/proof.json</a>
       </footer>
     </main>

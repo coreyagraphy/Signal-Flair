@@ -1166,7 +1166,7 @@ export default function SignalFlairLanding() {
             <div className="about-sign">
               <div>
                 <div className="about-sign-name">— Corey Ellis</div>
-                <div className="about-sign-role">Founder · Signal Flair · Mental Vision Corp · Brownsburg, Indiana</div>
+                <div className="about-sign-role">Founder · Signal Flair · Mental Vision · Brownsburg, Indiana</div>
                 <div className="about-sign-loc">Brownsburg, Indiana · serving businesses nationwide</div>
               </div>
             </div>
@@ -1314,7 +1314,7 @@ export default function SignalFlairLanding() {
         <div className="mvb-rule" />
         <div className="mvb-inner">
           <div className="mvb-head">AI found you. Now make them stay.</div>
-          <div className="mvb-body">Signal Flair gets you found. What happens when they land is a different conversation — and a different brand. Cinematic campaigns, UGC creative, and AI-generated content live at Mental Vision Corp.</div>
+          <div className="mvb-body">Signal Flair gets you found. What happens when they land is a different conversation — and a different brand. Cinematic campaigns, UGC creative, and AI-generated content live at Mental Vision.</div>
           <a className="mvb-cta" href="https://mentalvision.ai" target="_blank" rel="noopener noreferrer">→ See what Mental Vision builds</a>
         </div>
         <div className="mvb-rule" />
@@ -1329,7 +1329,7 @@ export default function SignalFlairLanding() {
             <a className="f-email" href="mailto:hello@signalflair.ai">hello@signalflair.ai</a>
           </div>
           <div><div className="f-head">Services</div><a className="f-link" href="#signal">AI Visibility Audit</a><a className="f-link" href="#signal">Foundation Build</a><a className="f-link" href="#signal">Stay Found™</a><a className="f-link" href="#check">What We Check</a><a className="f-link" href="#pricing">Pricing</a></div>
-          <div><div className="f-head">Company</div><a className="f-link" href="#process">How It Works</a><a className="f-link" href="#pricing">Pricing</a><a className="f-link" href="/resources/llms-txt/">llms.txt Guide</a><a className="f-link" href="https://mentalvision.ai" target="_blank" rel="noopener noreferrer">Mental Vision Corp</a><a className="f-link" href="mailto:hello@signalflair.ai">Contact</a></div>
+          <div><div className="f-head">Company</div><a className="f-link" href="#process">How It Works</a><a className="f-link" href="#pricing">Pricing</a><a className="f-link" href="/resources/llms-txt/">llms.txt Guide</a><a className="f-link" href="https://mentalvision.ai" target="_blank" rel="noopener noreferrer">Mental Vision</a><a className="f-link" href="mailto:hello@signalflair.ai">Contact</a></div>
           <div><div className="f-head">Connect</div><a className="f-link" href="#">LinkedIn</a><a className="f-link" href="#">Instagram</a><a className="f-link" href="#">YouTube</a><a className="f-link" href="mailto:hello@signalflair.ai">hello@signalflair.ai</a></div>
         </div>
         <div className="f-chant-band">
@@ -1338,7 +1338,7 @@ export default function SignalFlairLanding() {
           <div className="f-privacy">We never share your data. No spam.</div>
         </div>
         <div className="fb">
-          <div className="fb-l">Signal Flair is a Mental Vision Corp product | Brownsburg, Indiana · Serving nationwide | signalflair.ai</div>
+          <div className="fb-l">Signal Flair is a Mental Vision product | Brownsburg, Indiana · Serving nationwide | signalflair.ai</div>
           <div className="fb-r">AI Proof Infrastructure™ · Signal Flair v1.0</div>
         </div>
       </footer>

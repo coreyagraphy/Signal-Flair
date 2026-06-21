@@ -31,7 +31,7 @@ Signal Flair (signalflair.ai) is an AI Visibility + AEO (Agentic Engine Optimiza
 that makes local service businesses findable, readable, and recommendable by AI engines —
 ChatGPT, Claude, Perplexity, Gemini, Google AI Overviews.
 
-It is a product of Mental Vision Corp (mentalvision.ai). Keep the two brands separate.
+It is a product of Mental Vision (mentalvision.ai). Keep the two brands separate.
 Signal Flair is NOT Mental Vision. Do not bleed aesthetics or copy between them.
 
 Founder: Corey Ellis, Brownsburg, Indiana.
@@ -151,7 +151,7 @@ Clients keep everything built, even on cancel.
 ## Pending tasks (priority order)
 
 1. **Commit all pending changes** — `git add -A && git commit -m "feat: Foundation Build — [describe what's staged]"`
-2. **Wire intake webhook** — ✅ PREPPED (2026-06-07). Form reads `NEXT_PUBLIC_FIELD_REPORT_WEBHOOK_URL` **first**, then falls back to `NEXT_PUBLIC_GHL_WEBHOOK_URL`. **GO LIVE: set either env var in Netlify (or `.env.local`) — no code edit.** Both unset = demo mode preserved. 10s fetch timeout added so a hung webhook can't freeze the submit button.
+2. **Wire intake webhook** — ✅ PREPPED (2026-06-07). Form reads `NEXT_PUBLIC_FIELD_REPORT_WEBHOOK_URL` **first**, then falls back to `NEXT_PUBLIC_GHL_WEBHOOK_URL`. **GO LIVE: set either env var in Netlify (or `.env.local`) before `npm run build` — no code edit.** Both unset = real error (no fake success). 10s fetch timeout added so a hung webhook can't freeze the submit button.
 3. **GA4 analytics** — ✅ SCAFFOLDED (2026-06-07, disabled until ID set). gtag loader = `src/components/Analytics.tsx` (rendered in layout, returns null with no ID); helper = `src/lib/analytics.ts` (`track()`, safe no-op until live). Events wired: `form_submit` (lead form success), `cta_click` (every `#cta` CTA, with label+section), `founding_client_click` (founding apply button). Auto `page_view` covers the resource page. **GO LIVE: set `NEXT_PUBLIC_GA_ID=G-XXXXXXXXXX` in Netlify env (or `.env.local` for dev) — see `.env.example`.** No code change needed.
 4. **Integrate Case Zero section** — replace illustrative proof card with the real self-audit
 5. **LinkedIn sameAs** — Corey creates page at linkedin.com/company/setup/new, then add URL to sameAs array in Organization schema
@@ -175,7 +175,9 @@ The form picks the value up automatically (build-time inlined for static export 
 **Quick local test alternative:** paste a URL into `FIELD_REPORT_WEBHOOK_OVERRIDE` in the lead-form block
 of `SignalFlairLanding.tsx` (env vars take precedence if set).
 
-Both env vars unset (and no override) = DEMO MODE preserved (validates, shows success, console.logs payload, no push).
+Both env vars unset (and no override) = submission fails with a real error and `hello@signalflair.ai` fallback — no fake success.
+
+**Email roles (Phase 10H):** `hello@signalflair.ai` = inside GHL (Field Report, intake, automations, client follow-up, GHL-based outreach, GHL replies, form fallback). `outreach@trysignalflair.com` = outside/non-GHL outreach only (manual prospecting, experiments outside GHL) — not used on the public website. Avoid `connect@signalflair.ai` and `create@mentalvision.ai` unless documented.
 
 GHL workflow should:
 - Create/Update Contact from payload fields
@@ -234,6 +236,6 @@ SignalFlare.ai = restaurant decision intelligence, Texas. Completely different.
 - Do not move nameservers
 - Do not fabricate testimonials, case study results, or before/after numbers
 - Do not change pricing without Corey confirming
-- Do not bleed Signal Flair and Mental Vision Corp aesthetics together
+- Do not bleed Signal Flair and Mental Vision aesthetics together
 - Do not send the site to production without DNS confirmation
 - Do not replace the Case Zero score (18/100) with different numbers — it is real and documented

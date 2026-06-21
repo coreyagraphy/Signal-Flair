@@ -108,7 +108,7 @@ an img src in the site. The SVG is the production asset.
 - CTA = reply `"REPORT"` (never a link — cold links kill deliverability)
 - Never include price, offer stack, or "book a call"
 - Opening line = real finding from the prospect's pre-send scan. Never generic.
-- Sign-off: `Corey` / `Signal Flair` only — never "a Mental Vision Corp product" in cold email
+- Sign-off: `Corey` / `Signal Flair` only — never "a Mental Vision product" in cold email
 
 ### Opening finding — use the first TRUE one from the scan
 
@@ -293,5 +293,5 @@ Dead: `$2,500 / $1,250 / $797 / $997-flat / $400 / $750 / $297 / $497`
 
 ---
 
-*Signal Flair · Mental Vision Corp · Brownsburg, Indiana*
+*Signal Flair · Mental Vision · Brownsburg, Indiana*
 *Package compiled: 2026-06-07*

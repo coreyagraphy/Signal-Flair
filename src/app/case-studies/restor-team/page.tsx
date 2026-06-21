@@ -199,7 +199,7 @@ export default function RestorTeamCaseStudy() {
       </div>
 
       <footer className="rsc-foot">
-        Signal Flair · a Mental Vision Corp product · Brownsburg, Indiana · serving nationwide<br />
+        Signal Flair · a Mental Vision product · Brownsburg, Indiana · serving nationwide<br />
         <a href="/">signalflair.ai</a> · <a href="/about/">about</a> · <a href="/how-it-works/">how it works</a> · <a href="/proof/">the record</a> · <a href="/faq/">faq</a>
       </footer>
 

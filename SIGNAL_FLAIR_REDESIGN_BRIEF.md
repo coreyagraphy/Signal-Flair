@@ -1,7 +1,7 @@
 # Signal Flair Redesign Brief for Claude Code
 
 ## Project
-Redesign `signalflair.ai`, the public website for **Signal Flair**, an AI visibility scoring system from Mental Vision Corp.
+Redesign `signalflair.ai`, the public website for **Signal Flair**, an AI visibility scoring system from Mental Vision.
 
 Signal Flair helps businesses understand whether AI engines can find, read, cite, and recommend them across ChatGPT, Claude, Perplexity, Gemini, and Google AI Overviews. The site currently has a strong offer and some cinematic elements, but the visual execution feels too close to generic AI/SaaS templates.
 

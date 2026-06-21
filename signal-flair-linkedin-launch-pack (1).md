@@ -245,5 +245,5 @@ Go to your page: Edit Page → Details → Specialties (or Services section if s
 
 ---
 
-*Signal Flair — A Mental Vision Corp Product*
+*Signal Flair — A Mental Vision Product*
 *signalflair.ai*

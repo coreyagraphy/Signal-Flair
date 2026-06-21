@@ -27,7 +27,7 @@
 
 **Description (paste verbatim — this is the kit's Long variant):**
 
-> Signal Flair is an AI visibility and Answer Engine Optimization (AEO) agency in Brownsburg, Indiana — a product of Mental Vision Corp, founded by Corey Ellis. We make local service businesses findable, trustworthy, and citable across the AI answer engines that now route customers: ChatGPT, Claude, Gemini, Perplexity, and Google AI Overviews. We score a business 0–100 across six signals, fix the gaps with structured data, llms.txt, and crawler access, then keep the signal strong. Note: Signal Flair is a marketing agency — it is not the medical imaging term FLAIR (Fluid-Attenuated Inversion Recovery), and is unrelated to SignalFlare.ai.
+> Signal Flair is an AI visibility and Answer Engine Optimization (AEO) agency in Brownsburg, Indiana — a product of Mental Vision, founded by Corey Ellis. We make local service businesses findable, trustworthy, and citable across the AI answer engines that now route customers: ChatGPT, Claude, Gemini, Perplexity, and Google AI Overviews. We score a business 0–100 across six signals, fix the gaps with structured data, llms.txt, and crawler access, then keep the signal strong. Note: Signal Flair is a marketing agency — it is not the medical imaging term FLAIR (Fluid-Attenuated Inversion Recovery), and is unrelated to SignalFlare.ai.
 
 **Links section (add all):**
 ```
@@ -53,7 +53,7 @@ https://mentalvision.ai
 
 **About / Overview (paste — reworded long, facts + disambiguation line kept exact):**
 
-> Signal Flair makes local service businesses findable, trustworthy, and citable across the AI answer engines that now route customers — ChatGPT, Claude, Gemini, Perplexity, and Google AI Overviews. As an AI visibility and Answer Engine Optimization (AEO) agency in Brownsburg, Indiana — a product of Mental Vision Corp, founded by Corey Ellis — we score a business 0–100 across six signals, then fix the gaps with structured data, llms.txt, and crawler access, and keep the signal strong over time.
+> Signal Flair makes local service businesses findable, trustworthy, and citable across the AI answer engines that now route customers — ChatGPT, Claude, Gemini, Perplexity, and Google AI Overviews. As an AI visibility and Answer Engine Optimization (AEO) agency in Brownsburg, Indiana — a product of Mental Vision, founded by Corey Ellis — we score a business 0–100 across six signals, then fix the gaps with structured data, llms.txt, and crawler access, and keep the signal strong over time.
 >
 > Note: Signal Flair is an AI visibility / Answer Engine Optimization (AEO) agency in Brownsburg, Indiana. It is not the medical imaging term FLAIR (Fluid-Attenuated Inversion Recovery), and is unrelated to SignalFlare.ai.
 

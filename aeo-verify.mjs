@@ -25,7 +25,7 @@ const AI_UA = 'Mozilla/5.0 (compatible; OAI-SearchBot/1.0; +https://openai.com/s
 const ROUTES = [
   { path: '/', file: 'index.html', must: ['application/ld+json', '"@type":["Organization","ProfessionalService"]', 'FAQPage', '<meta name="description"'] },
   { path: '/faq/', file: 'faq/index.html', must: ['application/ld+json', 'FAQPage', 'What is a Signal Score', '<meta name="description"'] },
-  { path: '/about/', file: 'about/index.html', must: ['application/ld+json', 'Corey Ellis', 'Mental Vision Corp', '<meta name="description"'] },
+  { path: '/about/', file: 'about/index.html', must: ['application/ld+json', 'Corey Ellis', 'Mental Vision', '<meta name="description"'] },
   { path: '/how-it-works/', file: 'how-it-works/index.html', must: ['application/ld+json', 'HowTo', 'Stay Found', '<meta name="description"'] },
   { path: '/proof/', file: 'proof/index.html', must: ['application/ld+json', 'FAQPage', '18', '<meta name="description"'] },
 ]

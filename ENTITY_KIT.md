@@ -26,7 +26,7 @@ Profile, LinkedIn, Crunchbase, Bing, and agency directories.
 ```
 Name:           Signal Flair
 Category:       AI Visibility & Answer Engine Optimization (AEO) agency
-Parent company: Mental Vision Corp
+Parent company: Mental Vision
 Founder:        Corey Ellis
 Founded:        2026
 Location:       Brownsburg, Indiana, United States
@@ -36,8 +36,9 @@ Email:          hello@signalflair.ai
 Phone:          ⚠️ NEEDS COREY — see "What you must provide" below
 ```
 
-**Use `hello@signalflair.ai`** as the public contact on every profile (not corey@ — that stays the
-cold-send identity).
+**Use `hello@signalflair.ai`** as the public contact on every profile (inside GHL — Field Report,
+intake, form fallback). Outside/non-GHL outreach uses `outreach@trysignalflair.com` — not on public
+profiles unless Corey explicitly chooses it for a non-GHL experiment.
 
 ---
 
@@ -63,13 +64,13 @@ the full sentence, use the short form: **"AI visibility agency — not the FLAIR
 
 **Medium (~300 chars — directory listings):**
 > Signal Flair is an AI visibility and Answer Engine Optimization (AEO) agency in Brownsburg,
-> Indiana, and a product of Mental Vision Corp. We score how findable a local service business is to
+> Indiana, and a product of Mental Vision. We score how findable a local service business is to
 > AI answer engines — ChatGPT, Claude, Gemini, Perplexity, and Google AI Overviews — then build the
 > structured record those engines need to find, trust, and recommend it. Not the FLAIR MRI term.
 
 **Long (~640 chars — Crunchbase / Google Business Profile, 750 max):**
 > Signal Flair is an AI visibility and Answer Engine Optimization (AEO) agency in Brownsburg,
-> Indiana — a product of Mental Vision Corp, founded by Corey Ellis. We make local service businesses
+> Indiana — a product of Mental Vision, founded by Corey Ellis. We make local service businesses
 > findable, trustworthy, and citable across the AI answer engines that now route customers: ChatGPT,
 > Claude, Gemini, Perplexity, and Google AI Overviews. We score a business 0–100 across six signals,
 > fix the gaps with structured data, llms.txt, and crawler access, then keep the signal strong.

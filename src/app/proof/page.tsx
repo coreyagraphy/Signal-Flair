@@ -45,7 +45,7 @@ const DOCTRINE: [string, string, string][] = [
 const FAQS: { q: string; a: string }[] = [
   {
     q: 'What is Signal Flair?',
-    a: 'Signal Flair is an AI visibility and Answer Engine Optimization (AEO) agency based in Brownsburg, Indiana, serving businesses nationwide. It scores how visible a local service business is to AI answer engines — ChatGPT, Claude, Gemini, Perplexity, and Google AI Overviews — then rebuilds the missing signals so the business gets found and cited. Signal Flair is a product of Mental Vision Corp.',
+    a: 'Signal Flair is an AI visibility and Answer Engine Optimization (AEO) agency based in Brownsburg, Indiana, serving businesses nationwide. It scores how visible a local service business is to AI answer engines — ChatGPT, Claude, Gemini, Perplexity, and Google AI Overviews — then rebuilds the missing signals so the business gets found and cited. Signal Flair is a product of Mental Vision.',
   },
   {
     q: 'Is Signal Flair related to FLAIR MRI imaging?',
@@ -82,7 +82,7 @@ const jsonLd = {
       '@type': 'ProfessionalService',
       name: 'Signal Flair',
       url: 'https://signalflair.ai',
-      parentOrganization: { '@type': 'Organization', name: 'Mental Vision Corp' },
+      parentOrganization: { '@type': 'Organization', name: 'Mental Vision' },
       description:
         'AI Visibility & Reputation Conversion for local-service businesses. We publish and continuously re-verify a living record of your business that AI engines and customers can inspect.',
       areaServed: { '@type': 'Country', name: 'United States' },
@@ -260,7 +260,7 @@ export default function ProofHubPage() {
       </div>
 
       <footer className="rsc-foot">
-        Signal Flair · a Mental Vision Corp product · Brownsburg, Indiana · serving nationwide<br />
+        Signal Flair · a Mental Vision product · Brownsburg, Indiana · serving nationwide<br />
         <a href="/">signalflair.ai</a> · <a href="/proof.json">/proof.json</a> · <a href="/proof/changelog/">change log</a>
       </footer>
 
