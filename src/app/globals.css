@@ -748,6 +748,15 @@ footer{background:var(--ink2);border-top:1px solid var(--ink);padding:52px;posit
 .ring-track{fill:none;stroke:rgba(248,241,231,0.1);stroke-width:12;stroke-linecap:round}
 #ring-prog{fill:none;stroke:url(#arc-grad);stroke-width:12;stroke-linecap:round;filter:drop-shadow(0 0 9px rgba(255,90,31,0.35))}
 .gauge-readout{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);text-align:center;pointer-events:none}
+/* Score gauge ring — a bad→good colour scale: RED (top, bad) → orange → yellow → GREEN (good), small gap top-left */
+.gauge-ring{position:absolute;inset:0;border-radius:50%;
+  background:conic-gradient(from 0deg,
+    #ff2e2e 0deg, #ff5a1f 70deg, #ffae1f 120deg, #ffd23a 165deg,
+    #9ad24a 215deg, #2fc56b 270deg, #2fc56b 314deg,
+    rgba(248,241,231,0.08) 318deg, rgba(248,241,231,0.08) 356deg, #ff2e2e 360deg);
+  -webkit-mask:radial-gradient(circle closest-side, transparent 0 70%, #000 72%, #000 82%, transparent 84%);
+  mask:radial-gradient(circle closest-side, transparent 0 70%, #000 72%, #000 82%, transparent 84%);
+  filter:drop-shadow(0 0 9px rgba(255,46,46,0.22))}
 .gauge-score{font-family:var(--italic);font-style:normal;font-weight:400;font-size:clamp(50px,7.5vw,82px);line-height:0.82;color:var(--bone);
   text-shadow:0 0 40px rgba(255,90,31,0.45),0 4px 26px rgba(0,0,0,0.75)}
 .gauge-score-lbl{font-family:var(--signal);font-size:9px;letter-spacing:0.16em;text-transform:uppercase;color:rgba(248,241,231,0.82);margin-top:12px;white-space:nowrap}

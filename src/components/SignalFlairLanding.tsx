@@ -708,17 +708,7 @@ export default function SignalFlairLanding() {
 
           {/* Signal Score gauge — large centered centerpiece */}
           <div id="score-gauge" className="score-gauge">
-            <svg className="ring-svg" viewBox="0 0 240 240" aria-hidden="true">
-              <defs>
-                <linearGradient id="arc-grad" gradientUnits="userSpaceOnUse" x1="40" y1="200" x2="200" y2="40">
-                  <stop offset="0%" stopColor="#00b8a9" />
-                  <stop offset="50%" stopColor="#FFB020" />
-                  <stop offset="100%" stopColor="#ff5a1f" />
-                </linearGradient>
-              </defs>
-              <circle className="ring-track" cx="120" cy="120" r="92" />
-              <path id="ring-prog" d={rarc(rang(0), rang(100))} />
-            </svg>
+            <div className="gauge-ring" aria-hidden="true" />
             <div className="gauge-readout">
               <div id="score-val" className="gauge-score">0</div>
               <div className="gauge-score-lbl">/ 100 · Signal Score™</div>
