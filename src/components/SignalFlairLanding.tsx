@@ -214,24 +214,24 @@ export default function SignalFlairLanding() {
     function renderRing(v) { const p = document.getElementById('ring-prog'); if (!p) return; const vv = Math.max(0.1, v); p.setAttribute('d', rArc(rAng(0), rAng(vv), RGG.r)) }
     renderRing(0)
 
-    // Gauge counter — GSAP ScrollTrigger. Counts 0→78 (ring + number together) when the
+    // Gauge counter — GSAP ScrollTrigger. Counts 0→34 (ring + number together) when the
     // gauge scrolls into view; re-arms (resets to 0) when scrolled back above the hero.
     let gaugeST = null
     function setupGaugeScroll() {
       if (gaugeST) return
       const el = document.getElementById('score-val')
       const rp = document.getElementById('ring-prog')
-      // color by value: low = red, climbing through orange/yellow to teal
-      const colorFor = v => v < 40 ? '#FF1765' : v < 65 ? '#FF5A1F' : v < 85 ? '#FFE23A' : '#00B8A9'
+      // color by value, matching the scorecard bands: red (bad) → orange → amber → teal (good)
+      const colorFor = v => v < 40 ? '#FF1765' : v < 70 ? '#FF5A1F' : v < 85 ? '#FFE23A' : '#00B8A9'
       const counter = { v: 0 }
       const paint = () => {
         renderRing(counter.v)
         const c = colorFor(counter.v)
         if (el) { el.textContent = String(Math.round(counter.v)); el.style.color = c; el.style.textShadow = '0 0 40px ' + c + '70,0 4px 26px rgba(0,0,0,0.72)' }
-        if (rp) rp.style.stroke = c
+        if (rp) { rp.style.stroke = c; rp.style.filter = 'drop-shadow(0 0 12px ' + c + '88)' }
       }
       const tween = gsap.fromTo(counter, { v: 0 }, {
-        v: 78, duration: reduceMotion ? 0.8 : 2.2, ease: 'expo.out', paused: true, onUpdate: paint,
+        v: 34, duration: reduceMotion ? 0.8 : 2.2, ease: 'expo.out', paused: true, onUpdate: paint,
         onComplete: paint
       })
       // re-arm on scroll: reset when scrolled above the hero, recount on return
@@ -541,10 +541,10 @@ export default function SignalFlairLanding() {
       const hb = document.getElementById('hero-bg'); if (hb) { hb.style.transition = 'opacity 0.6s ease'; hb.style.opacity = '1' }
       revealed = true // skip the (no-op) anime reveal timeline
       // show the gauge at its final score directly (no count-up animation under reduced motion)
-      renderRing(78)
-      const sval = document.getElementById('score-val'), rprog = document.getElementById('ring-prog'), c = '#FFE23A'
-      if (sval) { sval.textContent = '78'; sval.style.color = c; sval.style.textShadow = '0 0 40px ' + c + '70,0 4px 26px rgba(0,0,0,0.72)' }
-      if (rprog) rprog.style.stroke = c
+      renderRing(34)
+      const sval = document.getElementById('score-val'), rprog = document.getElementById('ring-prog'), c = '#FF1765'
+      if (sval) { sval.textContent = '34'; sval.style.color = c; sval.style.textShadow = '0 0 40px ' + c + '70,0 4px 26px rgba(0,0,0,0.72)' }
+      if (rprog) { rprog.style.stroke = c; rprog.style.filter = 'drop-shadow(0 0 12px ' + c + '88)' }
     } else {
       // Only play the cinematic once per browser session, and never on weak/mobile devices —
       // refreshes, in-tab navigation, and low-end hardware go straight to the hero (same fast
