@@ -137,10 +137,11 @@ nav#hnav{position:relative;z-index:10;display:flex;align-items:center;justify-co
 /* rotating AI-engine name — text swaps on a timer; this fade is enhancement only
    (base stays opacity:1 so the word is never stuck invisible) */
 .eng-rot{display:inline-block;font-family:var(--signal);font-weight:600;font-size:0.92em;letter-spacing:-0.01em;color:var(--hot);vertical-align:baseline;will-change:transform,opacity,color}
-@keyframes eng-rot-in{0%{opacity:0;transform:translateY(0.42em)}60%{opacity:1}100%{opacity:1;transform:translateY(0)}}
-.eng-rot.rot-swap{animation:eng-rot-in 0.5s cubic-bezier(.22,1,.36,1)}
-.verb-rot{display:inline-block;will-change:color,transform,opacity}
-.verb-rot.rot-swap{animation:eng-rot-in 0.5s cubic-bezier(.22,1,.36,1)}
+@keyframes eng-rot-in{0%{opacity:0;transform:translateY(0.3em);filter:blur(3px)}55%{opacity:1}100%{opacity:1;transform:translateY(0);filter:blur(0)}}
+.eng-rot.rot-swap{animation:eng-rot-in 0.62s cubic-bezier(.2,.7,.25,1)}
+.verb-rot{display:inline-block;will-change:color,transform,opacity,filter}
+.verb-rot.rot-swap{animation:eng-rot-in 0.62s cubic-bezier(.2,.7,.25,1)}
+@media(prefers-reduced-motion:reduce){.eng-rot.rot-swap,.verb-rot.rot-swap{animation:none}}
 .h-sub{font-family:var(--signal);font-size:12px;color:rgba(248,241,231,0.6);letter-spacing:0.08em;text-transform:uppercase}
 .hsub-trust{color:var(--teal);font-weight:700;text-shadow:0 0 12px rgba(0,184,169,0.55)}
 /* ─── TRUST band — find → read → trust → recommend pivot ─── */
