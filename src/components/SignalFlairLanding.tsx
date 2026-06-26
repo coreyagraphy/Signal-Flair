@@ -1196,6 +1196,10 @@ export default function SignalFlairLanding() {
             <div className="faq-a">SEO optimizes for blue links on a results page. We optimize for the layer AI engines actually read — llms.txt, schema, crawler access — so when someone asks an AI for a recommendation, your business is the answer. <em>Different machine, different rules.</em> We don&apos;t do traditional SEO or paid ads.</div>
           </details>
           <details className="faq-item">
+            <summary className="faq-q">How does AI decide whether to trust your business?<span className="faq-ic" aria-hidden="true" /></summary>
+            <div className="faq-a">Before any AI engine recommends you, it checks whether it can <em>verify</em> you. ChatGPT, Claude, Perplexity, Gemini, and Google AI Overviews cross-reference your site&apos;s claims against what they can confirm elsewhere — schema, reviews, directory listings, citations, and credentials. When that proof is dense and consistent, you read as trustworthy; when it&apos;s thin or contradictory, the engine quietly leaves you out. That&apos;s the <strong>Trust &amp; Proof Density</strong> layer of the Signal Protocol™ — and it&apos;s the layer Signal Flair builds: schema, a Signal Proof Page™, llms.txt, and aligned entity signals, so AI can trust what it finds, not just find you.</div>
+          </details>
+          <details className="faq-item">
             <summary className="faq-q">Do you guarantee rankings, leads, or revenue?<span className="faq-ic" aria-hidden="true" /></summary>
             <div className="faq-a">No — and anyone who does is guessing. Our guarantee is <strong>delivery-based only</strong>: we build and hand over the infrastructure — llms.txt, schema, crawler fixes, your 90-day plan. You keep all of it, even if you cancel. We never promise rankings, leads, or citations we can&apos;t control.</div>
           </details>

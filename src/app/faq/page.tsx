@@ -57,6 +57,14 @@ const FAQS: { q: string; a: string }[] = [
     a: 'SEO ranks you in a list of blue links on a search results page. AEO — Answer Engine Optimization — makes you the answer an AI gives. We optimize the layer AI engines actually read: llms.txt, schema markup, entity clarity, and crawler access, so when someone asks an AI for a recommendation, your business is the answer. We do not do traditional SEO or paid ads.',
   },
   {
+    q: 'How does AI decide whether to trust your business?',
+    a: 'Before any AI engine recommends you, it checks whether it can verify you. ChatGPT, Claude, Perplexity, Gemini, and Google AI Overviews cross-reference your site’s claims against what they can confirm elsewhere — schema, reviews, directory listings, citations, and credentials. When that proof is dense and consistent, you read as trustworthy; when it’s thin or contradictory, the engine quietly leaves you out. Being found is not enough — AI has to trust what it finds before it puts your name in an answer.',
+  },
+  {
+    q: 'What is the Trust & Proof Density layer, and how do you build it?',
+    a: 'Trust & Proof Density is the Signal Protocol™ layer that measures how much verifiable, consistent proof AI can find about your business — and it is often the difference between being found and being recommended. Signal Flair builds it four ways: structured data (schema / JSON-LD) that states your facts in machine-readable form; a Signal Proof Page™ and proof.json that publish your claims and credentials with their sources; an llms.txt that hands AI the verified version directly; and consistent entity details across the directories, reviews, and profiles AI cross-references. The denser and more aligned that proof, the easier you are for AI to trust. It does not guarantee a recommendation — it removes the reasons an engine would skip you.',
+  },
+  {
     q: 'Do you guarantee rankings, leads, or revenue?',
     a: 'No — and anyone who does is guessing. Our guarantee is delivery-based only: we build and hand over the infrastructure — llms.txt, schema, crawler fixes, your 90-day AI action plan. You keep all of it, even if you cancel. We never promise rankings, leads, or citations we cannot control.',
   },

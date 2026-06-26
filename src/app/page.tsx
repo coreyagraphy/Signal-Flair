@@ -30,6 +30,10 @@ const HOMEPAGE_FAQ: { q: string; a: string }[] = [
     a: 'SEO optimizes for blue links on a results page. We optimize for the layer AI engines actually read — llms.txt, schema, crawler access — so when someone asks an AI for a recommendation, your business is the answer. Different machine, different rules. We don’t do traditional SEO or paid ads.',
   },
   {
+    q: 'How does AI decide whether to trust your business?',
+    a: 'Before any AI engine recommends you, it checks whether it can verify you. ChatGPT, Claude, Perplexity, Gemini, and Google AI Overviews cross-reference your site’s claims against what they can confirm elsewhere — schema, reviews, directory listings, citations, and credentials. When that proof is dense and consistent, you read as trustworthy; when it’s thin or contradictory, the engine quietly leaves you out. That’s the Trust & Proof Density layer of the Signal Protocol™ — and it’s the layer Signal Flair builds: schema, a Signal Proof Page™, llms.txt, and aligned entity signals, so AI can trust what it finds, not just find you.',
+  },
+  {
     q: 'Do you guarantee rankings, leads, or revenue?',
     a: 'No — and anyone who does is guessing. Our guarantee is delivery-based only: we build and hand over the infrastructure — llms.txt, schema, crawler fixes, your 90-day plan. You keep all of it, even if you cancel. We never promise rankings, leads, or citations we can’t control.',
   },
