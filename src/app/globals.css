@@ -125,7 +125,7 @@ nav#hnav{position:relative;z-index:10;display:flex;align-items:center;justify-co
   font-family:var(--flair);font-variation-settings:'opsz' 144,'wght' 360,'SOFT' 0,'WONK' 1;
   font-size:34vw;line-height:0.7;color:transparent;-webkit-text-stroke:1px rgba(248,241,231,0.07);white-space:nowrap}
 .h-side{opacity:0;display:flex;flex-direction:column;align-items:center;gap:13px;max-width:860px;position:relative;z-index:6}
-.h-eyebrow{font-family:var(--signal);font-size:11px;color:rgba(248,241,231,0.62);letter-spacing:0.22em;text-transform:uppercase;display:flex;align-items:center;justify-content:center;gap:9px}
+.h-eyebrow{font-family:var(--signal);font-size:16px;font-weight:600;color:rgba(248,241,231,0.85);letter-spacing:0.2em;text-transform:uppercase;display:flex;align-items:center;justify-content:center;gap:11px}
 .h-ey-dot{width:6px;height:6px;background:var(--orange);box-shadow:0 0 8px var(--orange);animation:dot-p 1.6s infinite}
 .h-side.bottom .h-ey-dot{background:var(--teal);box-shadow:0 0 8px var(--teal)}
 @keyframes dot-p{0%,100%{opacity:1}50%{opacity:0.15}}
@@ -140,6 +140,17 @@ nav#hnav{position:relative;z-index:10;display:flex;align-items:center;justify-co
 @keyframes eng-rot-in{0%{opacity:0;transform:translateY(0.42em)}60%{opacity:1}100%{opacity:1;transform:translateY(0)}}
 .eng-rot.rot-swap{animation:eng-rot-in 0.5s cubic-bezier(.22,1,.36,1)}
 .h-sub{font-family:var(--signal);font-size:12px;color:rgba(248,241,231,0.6);letter-spacing:0.08em;text-transform:uppercase}
+.hsub-trust{color:var(--teal);font-weight:700;text-shadow:0 0 12px rgba(0,184,169,0.55)}
+/* ─── TRUST band — find → read → trust → recommend pivot ─── */
+#trust{background:var(--ink);color:var(--bone);padding:clamp(80px,11vw,150px) clamp(28px,6vw,90px);position:relative;overflow:hidden}
+.trust-inner{max-width:1120px;margin:0 auto}
+.trust-eyebrow{font-family:var(--signal);font-size:13px;font-weight:600;letter-spacing:0.24em;text-transform:uppercase;color:var(--orange);display:flex;align-items:center;gap:11px;margin-bottom:26px}
+.trust-eyebrow::before{content:'';width:26px;height:1px;background:var(--orange)}
+.trust-vw{font-family:var(--flair);font-variation-settings:'opsz' 144,'wght' 500,'WONK' 1;font-size:clamp(44px,8vw,118px);line-height:1.0;letter-spacing:-0.015em;color:var(--bone);margin:0}
+.trust-vw em{font-family:var(--italic);font-style:italic;font-weight:400;color:var(--teal);text-shadow:0 0 44px rgba(0,184,169,0.5)}
+.trust-sub{font-family:var(--signal);font-size:15px;line-height:1.75;color:rgba(248,241,231,0.74);max-width:640px;margin:30px 0 0}
+.trust-sub strong{color:var(--teal);font-weight:600}
+@media(max-width:760px){#trust{padding:64px 22px}.trust-vw{font-size:clamp(34px,9vw,62px)}.trust-sub{font-size:13.5px}.trust-eyebrow{font-size:11px}}
 
 /* engine-status instrument strip flanking the gauge */
 .eng-strip{position:relative;z-index:6;display:flex;flex-wrap:wrap;justify-content:center;gap:0;border:1px solid rgba(248,241,231,0.16);
@@ -850,7 +861,7 @@ footer{background:var(--ink2);border-top:1px solid var(--ink);padding:52px;posit
   .score-gauge{width:min(178px,28vw)}
   .gauge-score{font-size:clamp(48px,6vw,72px)}
   .h-sub{font-size:9px}
-  .h-eyebrow{font-size:8px}
+  .h-eyebrow{font-size:11px}
   .eng-cell{padding:7px 15px}
 }
 

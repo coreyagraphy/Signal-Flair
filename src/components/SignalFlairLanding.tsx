@@ -501,7 +501,7 @@ export default function SignalFlairLanding() {
     const rotEl = document.getElementById('engine-rot')
     if (rotEl) {
       // final list, fixed ALPHABETICAL order so the cycle is predictable and none get skipped
-      const ROT = ['Claude', 'Cohere', 'Gemini', 'GPT', 'Grok', 'Kimi', 'Llama', 'Mistral', 'Perplexity']
+      const ROT = ['AI Overviews', 'Claude', 'Cohere', 'Gemini', 'GPT', 'Grok', 'Kimi', 'Llama', 'Mistral', 'Perplexity']
       // each swap advances through the flare palette (yellow → orange → teal → pink)...
       const ROT_COLORS = ['#fff45f', '#ff5a1f', '#00d2bf', '#ff3d82']
       // ...and through the three brand fonts, so each word gets a different typeface too
@@ -730,7 +730,7 @@ export default function SignalFlairLanding() {
           <div className="h-side bottom">
             <div className="h-eyebrow"><div className="h-ey-dot" style={{ animationDelay: '1s' }} />After Signal Flair</div>
             <div className="h-headline" aria-hidden="true">Scanned. Structured. <span style={{ fontStyle: 'italic', background: 'linear-gradient(125deg,rgba(0,220,220,1) 0%,rgba(180,255,255,0.9) 30%,rgba(0,200,200,0.95) 60%,rgba(150,255,255,0.85) 100%)', backgroundSize: '250% 250%', WebkitBackgroundClip: 'text', backgroundClip: 'text', WebkitTextFillColor: 'transparent', animation: 'glass-shimmer 8s 2s ease-in-out infinite', filter: 'drop-shadow(0 0 14px rgba(0,166,166,0.4))' }}>Found.</span></div>
-            <div className="h-sub">llms.txt live · bots unblocked · built to help AI engines find, understand, and cite you</div>
+            <div className="h-sub">llms.txt live · bots unblocked · built so AI can find, read &amp; <span className="hsub-trust">trust</span> you</div>
           </div>
         </div>
         <div id="hfoot">
@@ -879,6 +879,15 @@ export default function SignalFlairLanding() {
         <div className="proto-teaser reveal">
           <div className="proto-teaser-chant">What&apos;s your Signal Score?</div>
           <a className="proto-teaser-cta" href="#cta">▸ Get Your Signal Score™ →</a>
+        </div>
+      </section>
+
+      {/* ═══ TRUST — the pivot between "found" and "recommended" ═══ */}
+      <section id="trust" data-cursor="dark">
+        <div className="trust-inner reveal">
+          <div className="trust-eyebrow">Found isn&apos;t the finish line</div>
+          <h2 className="trust-vw">Before AI recommends you,<br />it has to <em>trust</em> you.</h2>
+          <p className="trust-sub">Every engine decides who to surface by what it can verify. The Signal Protocol™ builds the <strong>trust</strong> signals — schema, entities, citations, and proof density — that make your business safe for AI to recommend.</p>
         </div>
       </section>
 
