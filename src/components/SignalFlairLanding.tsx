@@ -509,7 +509,11 @@ export default function SignalFlairLanding() {
         { f: "'Instrument Serif',Georgia,serif", s: 'italic', w: '400', z: '1.1em', ws: '-0.05em' },
         { f: "'Geist Mono',ui-monospace,monospace", s: 'normal', w: '600', z: '0.9em', ws: '-0.24em' },
       ]
-      let ri = 0, ci = 0, fi = 0
+      // the verb walks the funnel — find → read → trust — each in its own flare colour
+      const verbEl = document.getElementById('verb-rot')
+      const VERBS = ['find', 'read', 'trust']
+      const VERB_COLORS = ['#fff45f', '#ff8a3d', '#00d2bf']
+      let ri = 0, ci = 0, fi = 0, vi = 0
       const paintRot = () => {
         const c = ROT_COLORS[ci], ft = ROT_FONTS[fi]
         rotEl.textContent = ROT[ri]
@@ -517,15 +521,24 @@ export default function SignalFlairLanding() {
         rotEl.style.fontFamily = ft.f; rotEl.style.fontStyle = ft.s; rotEl.style.fontWeight = ft.w; rotEl.style.fontSize = ft.z; rotEl.style.wordSpacing = ft.ws
         rotEl.style.textShadow = '0 0 26px ' + c + '7a,0 2px 18px rgba(0,0,0,0.55)'
       }
-      paintRot() // show ROT[0] immediately in its own font + color
+      const paintVerb = () => {
+        if (!verbEl) return
+        const vc = VERB_COLORS[vi]
+        verbEl.textContent = VERBS[vi]
+        verbEl.style.color = vc
+        verbEl.style.textShadow = '0 0 24px ' + vc + '70,0 2px 16px rgba(0,0,0,0.5)'
+      }
+      paintRot(); paintVerb() // show first engine + verb immediately
       // text swaps on a plain timer (always runs); the fade is a CSS animation that degrades
-      // gracefully — so the word can never get stuck invisible the way an anime callback could.
+      // gracefully — so the words can never get stuck invisible the way an anime callback could.
       setInterval(() => {
         ri = (ri + 1) % ROT.length      // sequential alphabetical cycle — every engine, in order
         ci = (ci + 1) % ROT_COLORS.length
         fi = (fi + 1) % ROT_FONTS.length
-        paintRot()
+        vi = (vi + 1) % VERBS.length     // verb funnel + colour cycle
+        paintRot(); paintVerb()
         rotEl.classList.remove('rot-swap'); void rotEl.offsetWidth; rotEl.classList.add('rot-swap')
+        if (verbEl) { verbEl.classList.remove('rot-swap'); void verbEl.offsetWidth; verbEl.classList.add('rot-swap') }
       }, 2000)
     }
 
@@ -703,7 +716,7 @@ export default function SignalFlairLanding() {
           <div className="hero-word" aria-hidden="true">FOUND.</div>
           <div className="h-side top">
             <div className="h-eyebrow"><div className="h-ey-dot" />AI Proof Infrastructure™</div>
-            <div className="h-headline" aria-hidden="true">Can <span id="engine-rot" className="eng-rot">Claude</span> find your business <span className="glass-text-orange">right now?</span></div>
+            <div className="h-headline" aria-hidden="true">Can <span id="engine-rot" className="eng-rot">Claude</span> <span id="verb-rot" className="verb-rot">find</span> your business <span className="glass-text-orange">right now?</span></div>
           </div>
 
           {/* Signal Score gauge — large centered centerpiece */}
