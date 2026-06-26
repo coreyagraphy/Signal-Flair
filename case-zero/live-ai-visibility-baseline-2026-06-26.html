@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Case Zero — Live AI Visibility Baseline · Signal Flair</title>
+<meta name="robots" content="noindex, nofollow" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,900&family=Geist+Mono:wght@400;500;600;700&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet" />
+<style>
+  :root{--paper:#f4efe6;--paper2:#ece5d8;--ink:#0e0c0a;--ink2:#1a1714;--orange:#ff5a1f;--orange2:#d9480a;--teal:#00b8a9;--teal2:#0a7d72;--amber:#b8860b;--red:#c4123f;--bone:#f8f1e7;--line:rgba(14,12,10,.13);--mut:rgba(14,12,10,.6);--mut2:rgba(14,12,10,.78);--flair:'Fraunces',Georgia,serif;--italic:'Instrument Serif',Georgia,serif;--mono:'Geist Mono','SF Mono',ui-monospace,Consolas,monospace}
+  *{box-sizing:border-box;-webkit-print-color-adjust:exact;print-color-adjust:exact}
+  html,body{margin:0;padding:0;background:#ded7c9}
+  body{font-family:var(--mono);font-size:12.5px;line-height:1.65;color:var(--ink)}
+  .sheet{max-width:840px;margin:26px auto;background:var(--paper);border:1px solid var(--ink);box-shadow:0 18px 60px rgba(14,12,10,.22)}
+  .pad{padding:40px 50px 30px}
+  .head{display:flex;align-items:flex-start;justify-content:space-between;gap:20px;padding:26px 50px;background:var(--ink);color:var(--bone)}
+  .head svg{height:50px;width:auto;display:block}
+  .head-sub{font-size:9px;letter-spacing:.22em;text-transform:uppercase;color:rgba(248,241,231,.55);margin-top:11px}
+  .confid{font-size:8.5px;letter-spacing:.16em;text-transform:uppercase;color:var(--orange);text-align:right;line-height:1.7}
+  .eyebrow{font-size:10px;letter-spacing:.26em;text-transform:uppercase;color:var(--orange2);display:flex;align-items:center;gap:10px;margin:0 0 16px;font-weight:600}
+  .eyebrow::before{content:'';width:24px;height:1px;background:var(--orange)}
+  h1{font-family:var(--flair);font-weight:500;font-size:clamp(30px,5vw,46px);line-height:1.02;margin:0 0 10px;letter-spacing:-.01em}
+  h1 em{font-family:var(--italic);font-style:italic;color:var(--orange2)}
+  .lede{font-size:12.5px;line-height:1.75;color:var(--mut2);max-width:620px;margin:12px 0 0}
+  .meta{display:grid;grid-template-columns:1fr 1fr;border:1px solid var(--line);margin:28px 0 4px}
+  .meta div{padding:11px 15px;border-right:1px solid var(--line);border-bottom:1px solid var(--line)}
+  .meta div:nth-child(2n){border-right:none}
+  .meta .k{font-size:8.5px;letter-spacing:.15em;text-transform:uppercase;color:var(--mut);margin-bottom:4px}
+  .meta .v{font-size:12px;color:var(--ink);font-weight:600}
+  .hero{display:flex;align-items:center;gap:30px;flex-wrap:wrap;margin:28px 0 6px;padding:22px 26px;background:var(--paper2);border:1px solid var(--ink);break-inside:avoid}
+  .gauge{width:132px;height:132px;flex-shrink:0}
+  .gauge-num{font-family:var(--flair);font-weight:600;font-size:44px}
+  .gauge-max{font-family:var(--mono);font-size:13px;fill:var(--mut)}
+  .hero-info{flex:1;min-width:240px}
+  .pill{display:inline-block;font-size:9px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;padding:4px 10px;border-radius:2px;margin-bottom:9px;background:rgba(184,134,11,.16);color:#8a6608}
+  .hero-note{font-size:11.5px;line-height:1.65;color:var(--mut2)}
+  .hero-note b{color:var(--ink)}
+  section{padding:30px 0;border-bottom:1px solid var(--line);break-inside:avoid}
+  section:last-of-type{border-bottom:none}
+  h2{font-family:var(--flair);font-weight:560;font-size:21px;line-height:1.12;margin:0 0 12px}
+  h2 em{font-family:var(--italic);font-style:italic;color:var(--orange2)}
+  p{margin:0 0 11px;color:var(--mut2)}p:last-child{margin-bottom:0}
+  table{width:100%;border-collapse:collapse;font-size:11.5px;margin-top:6px}
+  th{text-align:left;padding:10px 13px;background:var(--ink);color:var(--bone);font-size:8.5px;letter-spacing:.1em;text-transform:uppercase;border-right:1px solid rgba(248,241,231,.16)}
+  th:last-child{border-right:none}
+  td{padding:10px 13px;border-top:1px solid var(--line);border-right:1px solid var(--line);vertical-align:top}
+  td:last-child{border-right:none}td.l{font-weight:600;color:var(--ink)}
+  td.r{text-align:right;font-weight:700}
+  .no{color:var(--red);font-weight:700}.warn{color:var(--orange2);font-weight:700}
+  .bars{margin:6px 0 0;display:flex;flex-direction:column;gap:11px}
+  .barrow{display:grid;grid-template-columns:178px 1fr 54px;gap:14px;align-items:center}
+  .barname{font-size:11.5px;font-weight:600;color:var(--ink)}
+  .bartrack{height:9px;background:rgba(14,12,10,.08);border-radius:99px;overflow:hidden}
+  .barfill{height:100%;border-radius:99px}
+  .bartag{font-size:11px;font-weight:700;text-align:right}
+  ul.clean{list-style:none;margin:6px 0 0;padding:0}
+  ul.clean li{font-size:11.5px;line-height:1.6;color:var(--mut2);padding-left:18px;position:relative;margin-bottom:9px}
+  ul.clean li:last-child{margin-bottom:0}
+  ul.clean li::before{content:'›';position:absolute;left:0;color:var(--orange);font-weight:700}
+  ul.clean li b{color:var(--ink)}
+  ol.steps{margin:6px 0 0;padding-left:20px}
+  ol.steps li{font-size:11.5px;line-height:1.6;color:var(--mut2);margin-bottom:9px}
+  ol.steps li b{color:var(--ink)}
+  .disclaimer{background:var(--ink);color:rgba(248,241,231,.74);padding:20px 22px;font-size:10.5px;line-height:1.75}
+  .disclaimer b{color:var(--bone)}
+  footer{padding:22px 50px;background:var(--ink2);color:rgba(248,241,231,.5);font-size:9.5px;letter-spacing:.04em;line-height:1.8;text-align:center}
+  footer b{color:var(--orange)}
+  @media print{html,body{background:#fff}.sheet{box-shadow:none;border:none;margin:0;max-width:none}@page{size:Letter;margin:13mm}}
+</style>
+</head>
+<body>
+<div class="sheet">
+  <div class="head">
+    <div>
+      <div class="brandmark">
+        <svg viewBox="0 0 360 148" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Signal Flair">
+          <defs>
+            <linearGradient id="fg" x1="0%" y1="0%" x2="100%" y2="0%"><stop offset="0%" stop-color="#ff5a1f" stop-opacity="0.15"/><stop offset="25%" stop-color="#ff5a1f" stop-opacity="0.85"/><stop offset="60%" stop-color="#fff45f" stop-opacity="1"/><stop offset="85%" stop-color="#ff5a1f" stop-opacity="0.6"/><stop offset="100%" stop-color="#ff5a1f" stop-opacity="0"/></linearGradient>
+            <linearGradient id="fg2" x1="0%" y1="0%" x2="100%" y2="0%"><stop offset="0%" stop-color="#fff45f" stop-opacity="0"/><stop offset="30%" stop-color="#fff45f" stop-opacity="0.4"/><stop offset="65%" stop-color="#fff45f" stop-opacity="0.9"/><stop offset="100%" stop-color="#fff45f" stop-opacity="0"/></linearGradient>
+          </defs>
+          <circle cx="6" cy="23" r="3" fill="#00b8a9"/><line x1="11" y1="23" x2="17" y2="23" stroke="#00b8a9" stroke-width="1.4"/><circle cx="20" cy="23" r="2" fill="#00b8a9" opacity="0.7"/><line x1="24" y1="23" x2="30" y2="23" stroke="#00b8a9" stroke-width="1.4"/><circle cx="33" cy="23" r="1.5" fill="#00b8a9" opacity="0.45"/>
+          <text x="40" y="32" font-family="'Geist Mono','Courier New',monospace" font-weight="600" font-size="20" fill="#00b8a9" letter-spacing="7">SIGNAL</text>
+          <text x="36" y="128" font-family="Fraunces,'Palatino Linotype',Georgia,serif" font-weight="900" font-size="104" fill="#f8f1e7" letter-spacing="-1">FLAIR</text>
+          <path d="M 28 118 C 80 100, 170 88, 310 116" stroke="url(#fg)" stroke-width="5" fill="none" stroke-linecap="round"/><path d="M 55 114 C 120 98, 200 90, 300 112" stroke="url(#fg2)" stroke-width="2.5" fill="none" stroke-linecap="round"/><circle cx="38" cy="116" r="3.5" fill="#ff5a1f" opacity="0.7"/><circle cx="38" cy="116" r="6" fill="#ff5a1f" opacity="0.2"/>
+        </svg>
+      </div>
+      <div class="head-sub">AI Proof Infrastructure™ · Brownsburg, Indiana</div>
+    </div>
+    <div class="confid">Case Zero · Internal baseline<br/>Proof-before-pitch · we audit ourselves</div>
+  </div>
+
+  <div class="pad">
+    <div class="eyebrow">Case Zero · Live AI Visibility Baseline</div>
+    <h1>How AI reads <em>Signal Flair</em> today.</h1>
+    <p class="lede">A measured baseline of our own AI visibility — run against the live retrieval layer the
+      answer engines ground on. We publish the real number, then track the climb. This extends the original
+      Case Zero (2026-06-06) with a measured Live AI Visibility layer.</p>
+
+    <div class="meta">
+      <div><div class="k">Brand</div><div class="v">Signal Flair — signalflair.ai</div></div>
+      <div><div class="k">Run date</div><div class="v">June 26, 2026 (run 2)</div></div>
+      <div><div class="k">Method</div><div class="v">Live retrieval audit (ChatGPT/Claude/Perplexity/Google AI grounding layer)</div></div>
+      <div><div class="k">Citations of signalflair.ai observed</div><div class="v">0</div></div>
+    </div>
+
+    <div class="hero">
+      <svg class="gauge" viewBox="0 0 140 140">
+        <circle cx="70" cy="70" r="54" fill="none" stroke="rgba(14,12,10,.10)" stroke-width="13"/>
+        <circle cx="70" cy="70" r="54" fill="none" stroke="#b8860b" stroke-width="13" stroke-linecap="round" stroke-dasharray="237.5 339.3" transform="rotate(-90 70 70)"/>
+        <text class="gauge-num" x="70" y="72" text-anchor="middle" fill="#8a6608">70</text>
+        <text class="gauge-max" x="70" y="92" text-anchor="middle">/ 100</text>
+      </svg>
+      <div class="hero-info">
+        <span class="pill">Start the Rebuild™ band · 55–74</span>
+        <div class="hero-note"><b>Estimated Signal Score™ ≈ 70 / 100.</b> A lopsided 70 — an elite technical
+          core (crawlability, schema, answers all 90s) dragged down by near-zero <b>live recognition</b> and an
+          active entity collision. Engines can read us perfectly; they just can't yet <b>find</b> us.</div>
+      </div>
+    </div>
+
+    <section>
+      <h2>Six-layer <em>breakdown</em></h2>
+      <div class="bars">
+        <div class="barrow"><span class="barname">Access &amp; Crawlability</span><span class="bartrack"><span class="barfill" style="width:97%;background:#0a7d72"></span></span><span class="bartag" style="color:#0a7d72">97</span></div>
+        <div class="barrow"><span class="barname">Structured Intelligence</span><span class="bartrack"><span class="barfill" style="width:92%;background:#0a7d72"></span></span><span class="bartag" style="color:#0a7d72">92</span></div>
+        <div class="barrow"><span class="barname">Answer Architecture</span><span class="bartrack"><span class="barfill" style="width:88%;background:#0a7d72"></span></span><span class="bartag" style="color:#0a7d72">88</span></div>
+        <div class="barrow"><span class="barname">Trust &amp; Proof Density</span><span class="bartrack"><span class="barfill" style="width:74%;background:#b8860b"></span></span><span class="bartag" style="color:#8a6608">74</span></div>
+        <div class="barrow"><span class="barname">Entity Clarity</span><span class="bartrack"><span class="barfill" style="width:62%;background:#ff5a1f"></span></span><span class="bartag" style="color:#d9480a">62</span></div>
+        <div class="barrow"><span class="barname">Live AI Visibility</span><span class="bartrack"><span class="barfill" style="width:20%;background:#c4123f"></span></span><span class="bartag" style="color:#c4123f">20</span></div>
+      </div>
+      <p style="margin-top:14px;font-size:11px;color:var(--mut)">Composite ≈ (97+92+88+74+62+20)/6 ≈ 70. Sub-scores are a baseline read — not final until the full six-layer operator audit + per-engine prompt log.</p>
+    </section>
+
+    <section>
+      <h2>Live AI Visibility — <em>evidence</em></h2>
+      <p>Each query was run against live web search (the grounding layer the answer engines pull from). Presence here closely mirrors whether an engine surfaces or cites us.</p>
+      <table>
+        <thead><tr><th>Query</th><th>What surfaced</th><th>Us?</th></tr></thead>
+        <tbody>
+          <tr><td class="l">"Signal Flair"</td><td>FLAIR MRI (Fluid-Attenuated Inversion Recovery) — Wikipedia, Radiopaedia, PubMed</td><td class="no">No</td></tr>
+          <tr><td class="l">"Signal Flair AI visibility AEO agency"</td><td>Competitor SIGNALS (signalscite.com), yesoptimist, aeoengine</td><td class="no">No</td></tr>
+          <tr><td class="l">"best AI visibility / AEO agency Indiana"</td><td>National: GreenBanana, iPullRank, Profound, Kalicube — "none in Indiana highlighted"</td><td class="no">No</td></tr>
+          <tr><td class="l">"what is Signal Flair Brownsburg Indiana"</td><td>Brownsburg High School football (Bulldogs); engine asked for clarification</td><td class="no">No</td></tr>
+        </tbody>
+      </table>
+      <p style="margin-top:14px"><b style="color:var(--ink)">Collision vectors:</b></p>
+      <ul class="clean">
+        <li><b>"FLAIR signal" / FLAIR MRI</b> — decades of authoritative medical corpus; dominates the bare brand query. <b>(Primary.)</b></li>
+        <li><b>SignalFlare.ai</b> — restaurant analytics, a separate company. (Secondary.)</li>
+        <li>Generic "signal / score" → local sports stats.</li>
+      </ul>
+    </section>
+
+    <section>
+      <h2>Re-run <em>protocol</em> — track the climb</h2>
+      <p>Re-run the four queries above (and log direct prompts in ChatGPT / Claude / Perplexity / Gemini / Google AI Overviews) at Day 30 (~Jul 26) and Day 90 (~Sep 24). Record presence, correct description, collision status, and citations.</p>
+      <table>
+        <thead><tr><th>Metric</th><th>Baseline · Jun 26</th><th>Day 30</th><th>Day 90</th></tr></thead>
+        <tbody>
+          <tr><td class="l">Brand query resolves to Signal Flair</td><td class="warn">No (→ FLAIR MRI)</td><td></td><td></td></tr>
+          <tr><td class="l">Appears for "AEO agency Indiana"</td><td class="no">No</td><td></td><td></td></tr>
+          <tr><td class="l">Engine describes brand correctly</td><td class="no">No</td><td></td><td></td></tr>
+          <tr><td class="l">FLAIR-MRI / SignalFlare collision</td><td class="warn">Active</td><td></td><td></td></tr>
+          <tr><td class="l">Citations in AI answers (count)</td><td class="r">0</td><td></td><td></td></tr>
+          <tr><td class="l">Live AI Visibility score</td><td class="r" style="color:#c4123f">20</td><td></td><td></td></tr>
+          <tr><td class="l">Composite Signal Score™</td><td class="r" style="color:#8a6608">≈ 70</td><td></td><td></td></tr>
+        </tbody>
+      </table>
+    </section>
+
+    <section>
+      <h2>What moves the number <em>(off-page — schema alone won't)</em></h2>
+      <ol class="steps">
+        <li><b>Win the entity.</b> Get the LinkedIn + Crunchbase company pages live and populated; <b>sameAs</b> everywhere; push the "not the FLAIR MRI sequence, not SignalFlare.ai" disambiguation into more pages, llms.txt, and proof.json.</li>
+        <li><b>Earn corroboration.</b> Directory listings, a few authoritative third-party mentions, and the RESTOR Founding Partner case study published with the brand named in context.</li>
+        <li><b>Time + Stay Found™.</b> The corpus has to accumulate before engines trust "Signal Flair" as an entity.</li>
+      </ol>
+      <p style="margin-top:12px"><b style="color:var(--ink)">Target trajectory:</b> Live Visibility 20 → ~60 by Day 90; composite ~70 → mid-80s.</p>
+    </section>
+
+    <section>
+      <div class="disclaimer"><b>On method.</b> This is a live retrieval-layer audit — the grounding source AI answer engines use — not per-engine prompt logging or a final operator audit. The Signal Score™ shown is a baseline estimate of AI readiness and proof density. Signal Flair improves how AI systems access, understand, and verify an organization; it does not guarantee rankings, citations, recommendations, or inclusion in AI-generated answers.</div>
+    </section>
+  </div>
+
+  <footer><b>Signal Flair</b> · a Mental Vision product · Brownsburg, Indiana · serving nationwide<br/>AI Proof Infrastructure™ · Signal Score™ · Signal Proof Layer™ · Stay Found™ — hello@signalflair.ai</footer>
+</div>
+</body>
+</html>
