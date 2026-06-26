@@ -364,8 +364,8 @@ const styles = `
     font-family: 'Geist Mono', ui-monospace, 'Courier New', monospace;
     font-size: 1.5em;
     font-weight: 800;
-    letter-spacing: 0.04em;
-    background: linear-gradient(100deg, #0a7d72 0%, #00b8a9 28%, #8ffff2 46%, #ffffff 50%, #8ffff2 54%, #00b8a9 72%, #0a7d72 100%);
+    letter-spacing: -0.07em;
+    background: linear-gradient(150deg, #bafff6 0%, #00d2bf 30%, #ffffff 50%, #00b8a9 70%, #0a7d72 100%);
     background-size: 240% 100%;
     -webkit-background-clip: text;
     background-clip: text;
@@ -422,10 +422,12 @@ const styles = `
     overflow: hidden;
     opacity: 0; /* animates in */
     clip-path: inset(100% 0% 0% 0%);
-    border: 1px solid rgba(240, 235, 224, 0.12);
+    border: 1px solid rgba(240, 235, 224, 0.14);
     border-radius: 20px;
     transform-style: preserve-3d;
-    box-shadow: 0 34px 70px -30px rgba(0, 0, 0, 0.9), 0 10px 24px -12px rgba(0, 0, 0, 0.65);
+    -webkit-backdrop-filter: blur(6px);
+    backdrop-filter: blur(6px);
+    box-shadow: 0 34px 70px -30px rgba(0, 0, 0, 0.9), 0 10px 24px -12px rgba(0, 0, 0, 0.65), inset 0 1px 0 rgba(255, 255, 255, 0.14), inset 0 0 30px rgba(255, 255, 255, 0.02);
     animation: ua-float 7s ease-in-out infinite;
     transition: border-color 0.4s ease, box-shadow 0.4s ease, filter 0.4s ease;
   }
