@@ -529,17 +529,21 @@ export default function SignalFlairLanding() {
         verbEl.style.textShadow = '0 0 24px ' + vc + '70,0 2px 16px rgba(0,0,0,0.5)'
       }
       paintRot(); paintVerb() // show first engine + verb immediately
-      // text swaps on a plain timer (always runs); the fade is a CSS animation that degrades
-      // gracefully — so the words can never get stuck invisible the way an anime callback could.
+      // Each word swaps on its OWN timer at a different cadence, so the engine and verb never stay
+      // in lockstep — the combo keeps changing and never settles into a fixed pattern. Fades are
+      // CSS, so a word can never get stuck invisible the way an anime callback could.
       setInterval(() => {
         ri = (ri + 1) % ROT.length      // sequential alphabetical cycle — every engine, in order
         ci = (ci + 1) % ROT_COLORS.length
         fi = (fi + 1) % ROT_FONTS.length
-        vi = (vi + 1) % VERBS.length     // verb funnel + colour cycle
-        paintRot(); paintVerb()
+        paintRot()
         rotEl.classList.remove('rot-swap'); void rotEl.offsetWidth; rotEl.classList.add('rot-swap')
-        if (verbEl) { verbEl.classList.remove('rot-swap'); void verbEl.offsetWidth; verbEl.classList.add('rot-swap') }
       }, 2000)
+      if (verbEl) setInterval(() => {
+        vi = (vi + 1) % VERBS.length     // verb funnel + colour cycle, on its own slower cadence
+        paintVerb()
+        verbEl.classList.remove('rot-swap'); void verbEl.offsetWidth; verbEl.classList.add('rot-swap')
+      }, 2700)
     }
 
     /* ─── LAUNCH ─── */
