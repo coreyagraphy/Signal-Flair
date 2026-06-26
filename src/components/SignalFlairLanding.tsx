@@ -228,7 +228,7 @@ export default function SignalFlairLanding() {
         renderRing(counter.v)
         const c = colorFor(counter.v)
         if (el) { el.textContent = String(Math.round(counter.v)); el.style.color = c; el.style.textShadow = '0 0 40px ' + c + '70,0 4px 26px rgba(0,0,0,0.72)' }
-        if (rp) { rp.style.stroke = c; rp.style.filter = 'drop-shadow(0 0 12px ' + c + '88)' }
+        // ring keeps its fixed red→amber→teal gradient (CSS); only the number is band-colored
       }
       const tween = gsap.fromTo(counter, { v: 0 }, {
         v: 34, duration: reduceMotion ? 0.8 : 2.2, ease: 'expo.out', paused: true, onUpdate: paint,
@@ -542,9 +542,8 @@ export default function SignalFlairLanding() {
       revealed = true // skip the (no-op) anime reveal timeline
       // show the gauge at its final score directly (no count-up animation under reduced motion)
       renderRing(34)
-      const sval = document.getElementById('score-val'), rprog = document.getElementById('ring-prog'), c = '#FF1765'
+      const sval = document.getElementById('score-val'), c = '#FF1765'
       if (sval) { sval.textContent = '34'; sval.style.color = c; sval.style.textShadow = '0 0 40px ' + c + '70,0 4px 26px rgba(0,0,0,0.72)' }
-      if (rprog) { rprog.style.stroke = c; rprog.style.filter = 'drop-shadow(0 0 12px ' + c + '88)' }
     } else {
       // Only play the cinematic once per browser session, and never on weak/mobile devices —
       // refreshes, in-tab navigation, and low-end hardware go straight to the hero (same fast
@@ -713,9 +712,11 @@ export default function SignalFlairLanding() {
           <div id="score-gauge" className="score-gauge">
             <svg className="ring-svg" viewBox="0 0 240 240" aria-hidden="true">
               <defs>
-                <linearGradient id="arc-grad" x1="0%" y1="100%" x2="100%" y2="0%">
-                  <stop offset="0%" stopColor="#00b8a9" />
-                  <stop offset="100%" stopColor="#ff5a1f" />
+                <linearGradient id="arc-grad" gradientUnits="userSpaceOnUse" x1="30" y1="120" x2="210" y2="120">
+                  <stop offset="0%" stopColor="#FF1765" />
+                  <stop offset="40%" stopColor="#ff5a1f" />
+                  <stop offset="70%" stopColor="#FFB020" />
+                  <stop offset="100%" stopColor="#00b8a9" />
                 </linearGradient>
               </defs>
               <path className="ring-track" d={rarc(rang(0), rang(100))} />
@@ -723,7 +724,8 @@ export default function SignalFlairLanding() {
             </svg>
             <div className="gauge-readout">
               <div id="score-val" className="gauge-score">0</div>
-              <div className="gauge-score-lbl">Your Signal Score™</div>
+              <div className="gauge-score-lbl">/ 100 · Signal Score™</div>
+              <div className="gauge-sample">Sample readout</div>
             </div>
           </div>
 

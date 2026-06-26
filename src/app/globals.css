@@ -745,12 +745,13 @@ footer{background:var(--ink2);border-top:1px solid var(--ink);padding:52px;posit
 .score-gauge{position:relative;width:min(296px,56vw);aspect-ratio:1;flex-shrink:0;opacity:0;z-index:6;
   transform-origin:50% 50%;filter:drop-shadow(0 18px 60px rgba(0,0,0,0.6))}
 .ring-svg{width:100%;height:100%;overflow:visible;display:block}
-.ring-track{fill:none;stroke:rgba(248,241,231,0.12);stroke-width:5;stroke-linecap:butt}
-#ring-prog{fill:none;stroke:#FF1765;stroke-width:11;stroke-linecap:butt;filter:drop-shadow(0 0 12px rgba(255,23,101,0.55))}
+.ring-track{fill:none;stroke:rgba(248,241,231,0.1);stroke-width:12;stroke-linecap:round}
+#ring-prog{fill:none;stroke:url(#arc-grad);stroke-width:12;stroke-linecap:round;filter:drop-shadow(0 0 9px rgba(255,90,31,0.35))}
 .gauge-readout{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);text-align:center;pointer-events:none}
 .gauge-score{font-family:var(--flair);font-variation-settings:'opsz' 144,'wght' 480,'WONK' 1;font-size:clamp(76px,13vw,132px);line-height:0.76;color:var(--bone);
   text-shadow:0 0 40px rgba(255,90,31,0.45),0 4px 26px rgba(0,0,0,0.75)}
 .gauge-score-lbl{font-family:var(--signal);font-size:9px;letter-spacing:0.3em;text-transform:uppercase;color:rgba(248,241,231,0.66);margin-top:12px}
+.gauge-sample{font-family:var(--signal);font-size:8.5px;letter-spacing:0.28em;text-transform:uppercase;color:var(--teal);margin-top:7px;text-shadow:0 0 10px rgba(0,184,169,0.4)}
 
 /* ── MENTAL VISION CONTENT BRIDGE — subtle insider band ── */
 #mv-bridge{background:#050403;padding:0 40px}
