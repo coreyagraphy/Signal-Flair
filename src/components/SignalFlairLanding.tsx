@@ -211,8 +211,8 @@ export default function SignalFlairLanding() {
     const rPt = (a, r) => [RGG.cx + r * Math.cos(a * Math.PI / 180), RGG.cy + r * Math.sin(a * Math.PI / 180)]
     function rArc(a0, a1, r) { const [x0, y0] = rPt(a0, r), [x1, y1] = rPt(a1, r); const L = (a1 - a0) > 180 ? 1 : 0; return `M ${x0.toFixed(2)} ${y0.toFixed(2)} A ${r} ${r} 0 ${L} 1 ${x1.toFixed(2)} ${y1.toFixed(2)}` }
     function rColor(v) { return v < 40 ? '#FF1177' : v < 65 ? '#FF7A45' : v < 85 ? '#F7FF5A' : '#00A6A6' }
-    function renderRing(v) { const p = document.getElementById('ring-prog'); if (!p) return; const vv = Math.max(0.1, v); p.setAttribute('d', rArc(rAng(0), rAng(vv), RGG.r)) }
-    renderRing(0)
+    // Ring is a fixed, near-full decorative gradient (set in the SVG markup). The score is
+    // conveyed by the number, not the arc length — so the low score never looks like a broken arc.
 
     // Gauge counter — GSAP ScrollTrigger. Counts 0→34 (ring + number together) when the
     // gauge scrolls into view; re-arms (resets to 0) when scrolled back above the hero.
@@ -222,10 +222,9 @@ export default function SignalFlairLanding() {
       const el = document.getElementById('score-val')
       const rp = document.getElementById('ring-prog')
       // color by value, matching the scorecard bands: red (bad) → orange → amber → teal (good)
-      const colorFor = v => v < 40 ? '#FF1765' : v < 70 ? '#FF5A1F' : v < 85 ? '#FFE23A' : '#00B8A9'
+      const colorFor = v => v < 40 ? '#ff4326' : v < 70 ? '#FF5A1F' : v < 85 ? '#FFE23A' : '#00B8A9'
       const counter = { v: 0 }
       const paint = () => {
-        renderRing(counter.v)
         const c = colorFor(counter.v)
         if (el) { el.textContent = String(Math.round(counter.v)); el.style.color = c; el.style.textShadow = '0 0 40px ' + c + '70,0 4px 26px rgba(0,0,0,0.72)' }
         // ring keeps its fixed red→amber→teal gradient (CSS); only the number is band-colored
@@ -541,8 +540,7 @@ export default function SignalFlairLanding() {
       const hb = document.getElementById('hero-bg'); if (hb) { hb.style.transition = 'opacity 0.6s ease'; hb.style.opacity = '1' }
       revealed = true // skip the (no-op) anime reveal timeline
       // show the gauge at its final score directly (no count-up animation under reduced motion)
-      renderRing(34)
-      const sval = document.getElementById('score-val'), c = '#FF1765'
+      const sval = document.getElementById('score-val'), c = '#ff4326'
       if (sval) { sval.textContent = '34'; sval.style.color = c; sval.style.textShadow = '0 0 40px ' + c + '70,0 4px 26px rgba(0,0,0,0.72)' }
     } else {
       // Only play the cinematic once per browser session, and never on weak/mobile devices —
@@ -584,7 +582,7 @@ export default function SignalFlairLanding() {
   // Head-ring arc geometry (280° ring, gap at the bottom toward the body).
   // Mirrored in the effect for the scan animation.
   const RG = { cx: 120, cy: 120, r: 92 }
-  const rang = (v) => 130 + 2.8 * v
+  const rang = (v) => 245 + 3.15 * v
   const rpt = (a, r) => [RG.cx + r * Math.cos(a * Math.PI / 180), RG.cy + r * Math.sin(a * Math.PI / 180)]
   const rarc = (a0, a1, r = RG.r) => { const [x0, y0] = rpt(a0, r), [x1, y1] = rpt(a1, r); const L = (a1 - a0) > 180 ? 1 : 0; return `M ${x0.toFixed(2)} ${y0.toFixed(2)} A ${r} ${r} 0 ${L} 1 ${x1.toFixed(2)} ${y1.toFixed(2)}` }
 
@@ -712,15 +710,14 @@ export default function SignalFlairLanding() {
           <div id="score-gauge" className="score-gauge">
             <svg className="ring-svg" viewBox="0 0 240 240" aria-hidden="true">
               <defs>
-                <linearGradient id="arc-grad" gradientUnits="userSpaceOnUse" x1="30" y1="120" x2="210" y2="120">
-                  <stop offset="0%" stopColor="#FF1765" />
-                  <stop offset="40%" stopColor="#ff5a1f" />
-                  <stop offset="70%" stopColor="#FFB020" />
-                  <stop offset="100%" stopColor="#00b8a9" />
+                <linearGradient id="arc-grad" gradientUnits="userSpaceOnUse" x1="40" y1="200" x2="200" y2="40">
+                  <stop offset="0%" stopColor="#00b8a9" />
+                  <stop offset="50%" stopColor="#FFB020" />
+                  <stop offset="100%" stopColor="#ff5a1f" />
                 </linearGradient>
               </defs>
-              <path className="ring-track" d={rarc(rang(0), rang(100))} />
-              <path id="ring-prog" d={rarc(rang(0), rang(0.1))} />
+              <circle className="ring-track" cx="120" cy="120" r="92" />
+              <path id="ring-prog" d={rarc(rang(0), rang(100))} />
             </svg>
             <div className="gauge-readout">
               <div id="score-val" className="gauge-score">0</div>
