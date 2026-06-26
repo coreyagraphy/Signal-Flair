@@ -506,9 +506,9 @@ export default function SignalFlairLanding() {
       const ROT_COLORS = ['#fff45f', '#ff5a1f', '#00d2bf', '#ff3d82']
       // ...and through the three brand fonts, so each word gets a different typeface too
       const ROT_FONTS = [
-        { f: "'Fraunces',Georgia,serif", s: 'normal', w: '560', z: '0.96em' },
-        { f: "'Instrument Serif',Georgia,serif", s: 'italic', w: '400', z: '1.04em' },
-        { f: "'Geist Mono',ui-monospace,monospace", s: 'normal', w: '600', z: '0.74em' },
+        { f: "'Fraunces',Georgia,serif", s: 'normal', w: '560', z: '1.02em' },
+        { f: "'Instrument Serif',Georgia,serif", s: 'italic', w: '400', z: '1.1em' },
+        { f: "'Geist Mono',ui-monospace,monospace", s: 'normal', w: '600', z: '0.9em' },
       ]
       let ri = 0, ci = 0, fi = 0
       const paintRot = () => {
@@ -728,7 +728,6 @@ export default function SignalFlairLanding() {
           </div>
 
           <div className="h-side bottom">
-            <div className="h-eyebrow"><div className="h-ey-dot" style={{ animationDelay: '1s' }} />After Signal Flair</div>
             <div className="h-headline" aria-hidden="true">Scanned. Structured. Trusted. <span style={{ fontStyle: 'italic', background: 'linear-gradient(125deg,rgba(0,220,220,1) 0%,rgba(180,255,255,0.9) 30%,rgba(0,200,200,0.95) 60%,rgba(150,255,255,0.85) 100%)', backgroundSize: '250% 250%', WebkitBackgroundClip: 'text', backgroundClip: 'text', WebkitTextFillColor: 'transparent', animation: 'glass-shimmer 8s 2s ease-in-out infinite', filter: 'drop-shadow(0 0 14px rgba(0,166,166,0.4))' }}>Found.</span></div>
             <div className="h-sub">llms.txt live · bots unblocked · built so AI can find, read &amp; <span className="hsub-trust">trust</span> you</div>
           </div>

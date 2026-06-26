@@ -131,12 +131,12 @@ nav#hnav{position:relative;z-index:10;display:flex;align-items:center;justify-co
 @keyframes dot-p{0%,100%{opacity:1}50%{opacity:0.15}}
 .h-headline{font-family:var(--flair);font-variation-settings:'opsz' 144,'wght' 450,'SOFT' 0,'WONK' 1;
   font-size:clamp(42px,6.4vw,98px);line-height:0.92;letter-spacing:-0.015em;color:var(--bone);text-transform:none}
-.h-side.bottom .h-headline{font-size:clamp(38px,5.4vw,80px)}
+.h-side.bottom .h-headline{font-size:clamp(22px,3vw,42px)}
 .h-headline em,.h-headline .flair-i{font-family:var(--italic);font-style:italic;font-variation-settings:normal}
 .h-headline .glass-text-orange{color:var(--orange);font-family:var(--italic);font-style:italic}
 /* rotating AI-engine name — text swaps on a timer; this fade is enhancement only
    (base stays opacity:1 so the word is never stuck invisible) */
-.eng-rot{display:inline-block;font-family:var(--signal);font-weight:600;font-size:0.76em;letter-spacing:-0.01em;color:var(--hot);vertical-align:baseline;will-change:transform,opacity,color}
+.eng-rot{display:inline-block;font-family:var(--signal);font-weight:600;font-size:0.92em;letter-spacing:-0.01em;color:var(--hot);vertical-align:baseline;will-change:transform,opacity,color}
 @keyframes eng-rot-in{0%{opacity:0;transform:translateY(0.42em)}60%{opacity:1}100%{opacity:1;transform:translateY(0)}}
 .eng-rot.rot-swap{animation:eng-rot-in 0.5s cubic-bezier(.22,1,.36,1)}
 .h-sub{font-family:var(--signal);font-size:12px;color:rgba(248,241,231,0.6);letter-spacing:0.08em;text-transform:uppercase}
