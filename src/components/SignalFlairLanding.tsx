@@ -874,7 +874,7 @@ export default function SignalFlairLanding() {
       <section id="trust" data-cursor="dark">
         <div className="trust-inner reveal">
           <div className="trust-eyebrow">Found isn&apos;t the finish line</div>
-          <h2 className="trust-vw">Before AI recommends you,<br />it has to <em>trust</em> you.</h2>
+          <h2 className="trust-vw">Before <span className="trust-ai">AI</span> recommends you,<br />it has to <em>TRUST</em> you.</h2>
           <p className="trust-sub">Every engine decides who to surface by what it can verify. The Signal Protocol™ builds the <strong>trust</strong> signals — schema, entities, citations, and proof density — that make your business safe for AI to recommend.</p>
         </div>
       </section>
