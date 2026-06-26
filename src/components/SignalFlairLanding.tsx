@@ -506,16 +506,16 @@ export default function SignalFlairLanding() {
       const ROT_COLORS = ['#fff45f', '#ff5a1f', '#00d2bf', '#ff3d82']
       // ...and through the three brand fonts, so each word gets a different typeface too
       const ROT_FONTS = [
-        { f: "'Fraunces',Georgia,serif", s: 'normal', w: '560', z: '1.02em' },
-        { f: "'Instrument Serif',Georgia,serif", s: 'italic', w: '400', z: '1.1em' },
-        { f: "'Geist Mono',ui-monospace,monospace", s: 'normal', w: '600', z: '0.9em' },
+        { f: "'Fraunces',Georgia,serif", s: 'normal', w: '560', z: '1.02em', ws: '-0.05em' },
+        { f: "'Instrument Serif',Georgia,serif", s: 'italic', w: '400', z: '1.1em', ws: '-0.05em' },
+        { f: "'Geist Mono',ui-monospace,monospace", s: 'normal', w: '600', z: '0.9em', ws: '-0.24em' },
       ]
       let ri = 0, ci = 0, fi = 0
       const paintRot = () => {
         const c = ROT_COLORS[ci], ft = ROT_FONTS[fi]
         rotEl.textContent = ROT[ri]
         rotEl.style.color = c
-        rotEl.style.fontFamily = ft.f; rotEl.style.fontStyle = ft.s; rotEl.style.fontWeight = ft.w; rotEl.style.fontSize = ft.z
+        rotEl.style.fontFamily = ft.f; rotEl.style.fontStyle = ft.s; rotEl.style.fontWeight = ft.w; rotEl.style.fontSize = ft.z; rotEl.style.wordSpacing = ft.ws
         rotEl.style.textShadow = '0 0 26px ' + c + '7a,0 2px 18px rgba(0,0,0,0.55)'
       }
       paintRot() // show ROT[0] immediately in its own font + color
