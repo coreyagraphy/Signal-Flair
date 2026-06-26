@@ -590,7 +590,7 @@ export default function SignalFlairLanding() {
   const rarc = (a0, a1, r = RG.r) => { const [x0, y0] = rpt(a0, r), [x1, y1] = rpt(a1, r); const L = (a1 - a0) > 180 ? 1 : 0; return `M ${x0.toFixed(2)} ${y0.toFixed(2)} A ${r} ${r} 0 ${L} 1 ${x1.toFixed(2)} ${y1.toFixed(2)}` }
 
   const snl = { fontFamily: "'Geist Mono',monospace", fontSize: '12px', color: 'rgba(23,19,18,0.6)', letterSpacing: '0.14em', textTransform: 'uppercase', textDecoration: 'none' } as const
-  const hfPhrases = ['Your business, found by AI', 'GPTBot · llms.txt · Schema markup', 'ChatGPT · Claude · Perplexity · Gemini · Google AI', 'Discovery is the first connection', 'Scanned · Structured · Found']
+  const hfPhrases = ['Your business, found by AI', 'GPTBot · llms.txt · Schema markup', 'ChatGPT · Claude · Perplexity · Gemini · Google AI', 'Discovery is the first connection', 'Scanned · Structured · Trusted · Found']
   const divider = { width: '100%', height: '1px', background: 'linear-gradient(90deg,transparent,rgba(255,255,255,0.08),transparent)' } as const
 
   // The Signal Protocol™ — 24 checkpoints across six signal layers (sums to 100).
@@ -729,7 +729,7 @@ export default function SignalFlairLanding() {
 
           <div className="h-side bottom">
             <div className="h-eyebrow"><div className="h-ey-dot" style={{ animationDelay: '1s' }} />After Signal Flair</div>
-            <div className="h-headline" aria-hidden="true">Scanned. Structured. <span style={{ fontStyle: 'italic', background: 'linear-gradient(125deg,rgba(0,220,220,1) 0%,rgba(180,255,255,0.9) 30%,rgba(0,200,200,0.95) 60%,rgba(150,255,255,0.85) 100%)', backgroundSize: '250% 250%', WebkitBackgroundClip: 'text', backgroundClip: 'text', WebkitTextFillColor: 'transparent', animation: 'glass-shimmer 8s 2s ease-in-out infinite', filter: 'drop-shadow(0 0 14px rgba(0,166,166,0.4))' }}>Found.</span></div>
+            <div className="h-headline" aria-hidden="true">Scanned. Structured. Trusted. <span style={{ fontStyle: 'italic', background: 'linear-gradient(125deg,rgba(0,220,220,1) 0%,rgba(180,255,255,0.9) 30%,rgba(0,200,200,0.95) 60%,rgba(150,255,255,0.85) 100%)', backgroundSize: '250% 250%', WebkitBackgroundClip: 'text', backgroundClip: 'text', WebkitTextFillColor: 'transparent', animation: 'glass-shimmer 8s 2s ease-in-out infinite', filter: 'drop-shadow(0 0 14px rgba(0,166,166,0.4))' }}>Found.</span></div>
             <div className="h-sub">llms.txt live · bots unblocked · built so AI can find, read &amp; <span className="hsub-trust">trust</span> you</div>
           </div>
         </div>
