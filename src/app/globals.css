@@ -144,6 +144,15 @@ nav#hnav{position:relative;z-index:10;display:flex;align-items:center;justify-co
 @media(prefers-reduced-motion:reduce){.eng-rot.rot-swap,.verb-rot.rot-swap{animation:none}}
 .h-sub{font-family:var(--signal);font-size:12px;color:rgba(248,241,231,0.6);letter-spacing:0.08em;text-transform:uppercase}
 .hsub-trust{color:var(--teal);font-weight:700;text-shadow:0 0 12px rgba(0,184,169,0.55)}
+/* ─── Signal Flair logo — colour-strobe / flare flicker (transparent SVG, any bg) ─── */
+.sf-logo{animation:sf-flare 5s ease-in-out infinite}
+@keyframes sf-flare{
+  0%,100%{filter:hue-rotate(0deg) brightness(1) drop-shadow(0 0 7px rgba(34,211,238,.42)) drop-shadow(0 1px 2px rgba(0,0,0,.22))}
+  30%{filter:hue-rotate(-16deg) brightness(1.12) drop-shadow(0 0 15px rgba(255,138,30,.5)) drop-shadow(0 1px 2px rgba(0,0,0,.22))}
+  55%{filter:hue-rotate(22deg) brightness(1.05) drop-shadow(0 0 11px rgba(255,45,155,.5)) drop-shadow(0 1px 2px rgba(0,0,0,.22))}
+  80%{filter:hue-rotate(8deg) brightness(1.15) drop-shadow(0 0 18px rgba(34,211,238,.45)) drop-shadow(0 1px 2px rgba(0,0,0,.22))}
+}
+@media(prefers-reduced-motion:reduce){.sf-logo{animation:none;filter:drop-shadow(0 0 7px rgba(34,211,238,.38)) drop-shadow(0 1px 2px rgba(0,0,0,.22))}}
 /* ─── TRUST band — find → read → trust → recommend pivot ─── */
 #trust{background:var(--ink);color:var(--bone);padding:clamp(80px,11vw,150px) clamp(28px,6vw,90px);position:relative;overflow:hidden}
 .trust-inner{max-width:1120px;margin:0 auto}
