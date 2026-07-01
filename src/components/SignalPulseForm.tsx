@@ -30,7 +30,7 @@ const pulseColor = (v: number) => (v < 40 ? '#ff4326' : v < 70 ? '#ff8a3d' : v <
 
 type Phase = 'idle' | 'scanning' | 'result' | 'sent'
 type Bucket = { key: string; label: string; score: number }
-type PulseData = { ok: boolean; pulse: number; buckets: Bucket[]; lowConfidence?: boolean; spaLike?: boolean; url?: string }
+type PulseData = { ok: boolean; pulse: number; buckets: Bucket[]; lowConfidence?: boolean; spaLike?: boolean; url?: string; signals?: Record<string, unknown> }
 
 export default function SignalPulseForm() {
   const formRef = useRef<HTMLFormElement>(null)
@@ -187,7 +187,10 @@ function PulseResult({ data, email, website }: { data: PulseData; email: string;
           body: JSON.stringify({
             website_url: website, email,
             source: 'signal-pulse-optin', full_score_optin: 'yes', preview_type: 'signal-pulse',
-            lead_tag: 'Signal Score Optin', signal_pulse_score: data.pulse, submitted_at: new Date().toISOString(),
+            lead_tag: 'Signal Score Optin', signal_pulse_score: data.pulse,
+            signal_pulse_buckets: (data.buckets || []).map((b) => `${b.label}:${b.score}`).join(', '),
+            signal_pulse_signals: data.signals ? JSON.stringify(data.signals) : '',
+            submitted_at: new Date().toISOString(),
           }),
         }).finally(() => clearTimeout(t))
       }
@@ -246,23 +249,29 @@ function PulseResult({ data, email, website }: { data: PulseData; email: string;
         </div>
       )}
       {optState !== 'done' ? (
-        <>
-          <div className="ssc-result-cta">
-            That’s your instant <strong>Signal Pulse™</strong> — an automated read of your first four signals. The
-            full <strong>Signal Score™</strong> goes deeper: human-verified across all six Signal Protocol™ layers,
-            plus live AI-visibility tests across ChatGPT, Claude, Perplexity &amp; Gemini.
+        <div className="ssc-optin">
+          <div className="ssc-optin-tag">This was just a preview</div>
+          <div className="ssc-optin-h">Want your <em>real</em> Signal Score™?</div>
+          <div className="ssc-optin-b">
+            The Signal Pulse™ above is a quick automated read. Your full <strong>Signal Score™</strong> is the
+            complete card — every signal scored across all six Signal Protocol™ layers, live AI-visibility tests,
+            what’s dragging you down, and exactly how to fix it. Human-verified and sent to your inbox.
           </div>
-          <button className="ssc-result-optin" onClick={optIn} disabled={optState === 'sending'}>
-            {optState === 'sending' ? 'Sending…' : '▸ Yes — send me my full Signal Score™'}
+          <button className="ssc-optin-btn" onClick={optIn} disabled={optState === 'sending'}>
+            {optState === 'sending' ? 'Sending…' : '▸ Send me my full Signal Score™ breakdown'}
           </button>
-          <div className="ssc-result-fine">A real review, on request. No obligation.</div>
-        </>
+          <div className="ssc-optin-fine">Free · delivered to {email} · no obligation</div>
+        </div>
       ) : (
-        <>
-          <div className="ssc-result-done-h">You’re on the list.</div>
-          <div className="ssc-result-cta">Signal Flair will reach out to <strong>{email}</strong> to set up your full Signal Score™ review.</div>
+        <div className="ssc-optin ssc-optin--done">
+          <div className="ssc-optin-mark" aria-hidden="true">✓</div>
+          <div className="ssc-optin-h">Locked in.</div>
+          <div className="ssc-optin-b">
+            Your full <strong>Signal Score™</strong> breakdown is being prepared for <strong>{email}</strong> — the
+            complete card, human-verified. Keep an eye on your inbox.
+          </div>
           <a className="ssc-success-link" href="/proof/">See Case Zero — our own 18/100 baseline →</a>
-        </>
+        </div>
       )}
     </div>
   )
