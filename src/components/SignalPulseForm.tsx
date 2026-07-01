@@ -1,153 +1,129 @@
 'use client'
 /**
- * SignalPulseForm — the Signal Pulse™ request console (website + email only).
+ * SignalPulseForm — the instant Signal Pulse™ experience (website + email).
  *
- * Lead routing is SEPARATE from the main website's Field Report intake: it posts to a
- * dedicated Signal Pulse webhook first (NEXT_PUBLIC_SIGNAL_PULSE_WEBHOOK_URL), so these
- * landing-page leads can land in their own GHL workflow / notification email. It falls back
- * to the shared webhooks only so a lead is never dropped — and every payload is tagged
- * `source=signal-pulse` / `lead_tag=Signal Pulse Request`, so GHL can still route + notify
- * these separately even on a shared endpoint.
+ * On submit it calls the Netlify function (/.netlify/functions/signal-pulse), which fetches
+ * the prospect's site server-side and returns a deterministic 0–100 Signal Pulse™ + four
+ * bucket scores in a few seconds. The page animates a live gauge. The function also forwards
+ * the lead + score to GHL, so the fuller Signal Score™ follow-up is emailed.
  *
- * There is NO instant score — the site is a static export with no backend, and a browser
- * can't crawl a third-party site (CORS). We capture the request honestly; a real reviewer
- * emails the Signal Pulse™ back (delivery is a GHL follow-up, not automation).
+ * Robust fallbacks:
+ *  - function unavailable (e.g. local dev, or pre-deploy) → post straight to the GHL webhook
+ *    and show the "request received, we'll email it" state (no fake score).
+ *  - unreachable/invalid URL → clear message; the lead is still captured server-side when possible.
+ * Lead routing stays SEPARATE from the website's Field Report intake (source=signal-pulse).
  */
-import { useCallback, useRef, useState } from 'react'
+import { useCallback, useEffect, useRef, useState } from 'react'
 import { track } from '@/lib/analytics'
 
-const WEBHOOK_URL =
+const FUNCTION_URL = '/.netlify/functions/signal-pulse'
+// Client-side fallback webhook (only used if the function itself can't be reached).
+const FALLBACK_WEBHOOK =
   (process.env.NEXT_PUBLIC_SIGNAL_PULSE_WEBHOOK_URL ?? '').trim() ||
   (process.env.NEXT_PUBLIC_FIELD_REPORT_WEBHOOK_URL ?? '').trim() ||
   (process.env.NEXT_PUBLIC_GHL_WEBHOOK_URL ?? '').trim() ||
   ''
 const FALLBACK_EMAIL = 'hello@signalflair.ai'
 const EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]+$/
+const sleep = (ms: number) => new Promise((r) => setTimeout(r, ms))
+const pulseColor = (v: number) => (v < 40 ? '#ff4326' : v < 70 ? '#ff8a3d' : v < 85 ? '#ffe23a' : '#00d2bf')
 
-type FieldErrors = { website_url?: string; email?: string }
+type Phase = 'idle' | 'scanning' | 'result' | 'sent'
+type Bucket = { key: string; label: string; score: number }
+type PulseData = { ok: boolean; pulse: number; buckets: Bucket[]; lowConfidence?: boolean; spaLike?: boolean; url?: string }
 
 export default function SignalPulseForm() {
   const formRef = useRef<HTMLFormElement>(null)
-  const [submitting, setSubmitting] = useState(false)
-  const [success, setSuccess] = useState(false)
+  const [phase, setPhase] = useState<Phase>('idle')
   const [formError, setFormError] = useState('')
-  const [fieldErrors, setFieldErrors] = useState<FieldErrors>({})
+  const [fieldErrors, setFieldErrors] = useState<{ website_url?: string; email?: string }>({})
+  const [result, setResult] = useState<PulseData | null>(null)
+  const [email, setEmail] = useState('')
+  const [scanDomain, setScanDomain] = useState('')
 
   const handleSubmit = useCallback(async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault()
     setFormError('')
     const form = formRef.current
-    if (!form) {
-      setFormError(`Request error. Email ${FALLBACK_EMAIL} and we'll follow up manually.`)
-      return
-    }
+    if (!form) return
 
     const website = String(new FormData(form).get('website_url') || '').trim()
-    const email = String(new FormData(form).get('email') || '').trim()
-    const nextErr: FieldErrors = {}
-    if (!website) nextErr.website_url = 'Required'
-    else if (!/\.\w{2,}/.test(website)) nextErr.website_url = 'Enter a valid website'
-    if (!email) nextErr.email = 'Required'
-    else if (!EMAIL_RE.test(email)) nextErr.email = 'Enter a valid email'
-    setFieldErrors(nextErr)
-    if (Object.keys(nextErr).length) {
-      setFormError('Enter your website and a valid email to get your Signal Pulse™.')
-      const first = form.querySelector('.ssc-input.invalid') as HTMLInputElement | null
-      first?.focus()
+    const emailVal = String(new FormData(form).get('email') || '').trim()
+    const errs: { website_url?: string; email?: string } = {}
+    if (!website) errs.website_url = 'Required'
+    else if (!/\.\w{2,}/.test(website)) errs.website_url = 'Enter a valid website'
+    if (!emailVal) errs.email = 'Required'
+    else if (!EMAIL_RE.test(emailVal)) errs.email = 'Enter a valid email'
+    setFieldErrors(errs)
+    if (Object.keys(errs).length) {
+      setFormError('Enter your website and a valid email to run your Signal Pulse™.')
+      ;(form.querySelector('.ssc-input.invalid') as HTMLInputElement | null)?.focus()
       return
     }
 
+    // hidden context
     const qp = new URLSearchParams(window.location.search)
-    const setHidden = (n: string, v: string) => {
-      const el = form.querySelector(`[name="${n}"]`) as HTMLInputElement | null
-      if (el) el.value = v
-    }
+    const setHidden = (n: string, v: string) => { const el = form.querySelector(`[name="${n}"]`) as HTMLInputElement | null; if (el) el.value = v }
     setHidden('page_url', window.location.href)
     setHidden('utm_source', qp.get('utm_source') || '')
     setHidden('utm_medium', qp.get('utm_medium') || '')
     setHidden('utm_campaign', qp.get('utm_campaign') || '')
 
-    const payload: Record<string, string> = Object.fromEntries(
-      Array.from(new FormData(form).entries()).map(([k, v]) => [k, String(v)]),
-    )
+    const payload: Record<string, string> = Object.fromEntries(Array.from(new FormData(form).entries()).map(([k, v]) => [k, String(v)]))
     payload.submitted_at = new Date().toISOString()
 
-    setSubmitting(true)
-    try {
-      if (!WEBHOOK_URL) throw new Error('webhook_not_configured')
-      const ctrl = new AbortController()
-      const timer = setTimeout(() => ctrl.abort(), 10000)
-      try {
-        const res = await fetch(WEBHOOK_URL, {
-          method: 'POST',
-          headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify(payload),
-          signal: ctrl.signal,
-        })
-        if (!res.ok) throw new Error('status ' + res.status)
-      } finally {
-        clearTimeout(timer)
-      }
-      track('form_submit', { form_id: 'signal-pulse', preview_type: 'signal-pulse' })
-      setSuccess(true)
-      setFieldErrors({})
-      setFormError('')
-    } catch (err: any) {
-      if (err?.name === 'AbortError') {
-        setFormError(`Request timed out. Email ${FALLBACK_EMAIL} and we'll follow up manually.`)
-      } else if (err?.message === 'webhook_not_configured') {
-        setFormError(
-          process.env.NODE_ENV === 'development'
-            ? 'Signal Pulse intake not configured. Set NEXT_PUBLIC_SIGNAL_PULSE_WEBHOOK_URL (or a fallback) in .env.local and restart dev.'
-            : `Signal Pulse intake is temporarily unavailable. Email ${FALLBACK_EMAIL} and we'll follow up manually.`,
-        )
-      } else {
-        setFormError(`We couldn't submit your request. Email ${FALLBACK_EMAIL} and we'll follow up manually.`)
-      }
-    } finally {
-      setSubmitting(false)
+    setEmail(emailVal)
+    try { setScanDomain(new URL(/^https?:\/\//i.test(website) ? website : 'https://' + website).hostname) } catch { setScanDomain(website) }
+    setPhase('scanning')
+
+    // Call the function; keep a minimum on-screen scan time so it feels like a real scan.
+    const scan: Promise<PulseData | null> = fetch(FUNCTION_URL, {
+      method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(payload),
+    }).then((r) => (r.ok ? r.json() : null)).catch(() => null)
+    const [res] = await Promise.all([scan, sleep(2000)])
+
+    if (res && res.ok) {
+      setResult(res)
+      setPhase('result')
+      track('signal_pulse_result', { form_id: 'signal-pulse', pulse: res.pulse })
+      return
     }
+    if (res && !res.ok && ((res as any).reason === 'invalid_url' || (res as any).reason === 'blocked')) {
+      setPhase('idle')
+      setFormError('We couldn’t read that URL — double-check it and try again.')
+      return
+    }
+
+    // Function unavailable or site unreachable → make sure the lead is captured, then confirm by email.
+    if (res == null && FALLBACK_WEBHOOK) {
+      try {
+        const ctrl = new AbortController(); const t = setTimeout(() => ctrl.abort(), 10000)
+        await fetch(FALLBACK_WEBHOOK, { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(payload), signal: ctrl.signal }).finally(() => clearTimeout(t))
+      } catch { /* best effort */ }
+    }
+    track('form_submit', { form_id: 'signal-pulse', preview_type: 'signal-pulse' })
+    setPhase('sent')
   }, [])
 
   return (
     <div className="ssc-form" id="pulse">
-      {!success ? (
+      {phase === 'idle' && (
         <form ref={formRef} noValidate onSubmit={handleSubmit}>
           <div className="ssc-form-head">
             <span className="ssc-form-badge"><span className="ssc-dot" aria-hidden="true" />Signal Pulse™</span>
             <span className="ssc-form-title">Get your free Signal Pulse™</span>
-            <span className="ssc-form-sub">Enter your website and email. A real reviewer checks your first AI-readiness signals and emails your Signal Pulse™ preview — no automated black-box score.</span>
+            <span className="ssc-form-sub">Enter your website and email — we scan your live AI-readiness signals and show your Signal Pulse™ in seconds. Your full Signal Score™ follows by email.</span>
           </div>
-
           <div className="ssc-field">
             <label className="ssc-label" htmlFor="sp-url">Website URL<span className="ssc-req">*</span></label>
-            <input
-              className={`ssc-input${fieldErrors.website_url ? ' invalid' : ''}`}
-              id="sp-url"
-              name="website_url"
-              type="url"
-              inputMode="url"
-              autoComplete="url"
-              placeholder="yourbusiness.com"
-            />
+            <input className={`ssc-input${fieldErrors.website_url ? ' invalid' : ''}`} id="sp-url" name="website_url" type="url" inputMode="url" autoComplete="url" placeholder="yourbusiness.com" />
             <span className="ssc-err" aria-live="polite">{fieldErrors.website_url || ''}</span>
           </div>
-
           <div className="ssc-field">
             <label className="ssc-label" htmlFor="sp-email">Email<span className="ssc-req">*</span></label>
-            <input
-              className={`ssc-input${fieldErrors.email ? ' invalid' : ''}`}
-              id="sp-email"
-              name="email"
-              type="email"
-              inputMode="email"
-              autoComplete="email"
-              placeholder="you@yourbusiness.com"
-            />
+            <input className={`ssc-input${fieldErrors.email ? ' invalid' : ''}`} id="sp-email" name="email" type="email" inputMode="email" autoComplete="email" placeholder="you@yourbusiness.com" />
             <span className="ssc-err" aria-live="polite">{fieldErrors.email || ''}</span>
           </div>
-
-          {/* Hidden context — source tag keeps these leads separable in GHL even on a shared webhook. */}
           <input type="hidden" name="source" defaultValue="signal-pulse" />
           <input type="hidden" name="preview_type" defaultValue="signal-pulse" />
           <input type="hidden" name="lead_tag" defaultValue="Signal Pulse Request" />
@@ -157,27 +133,99 @@ export default function SignalPulseForm() {
           <input type="hidden" name="utm_source" defaultValue="" />
           <input type="hidden" name="utm_medium" defaultValue="" />
           <input type="hidden" name="utm_campaign" defaultValue="" />
-
           <div className="ssc-formerr" aria-live="assertive">{formError}</div>
-          <button type="submit" className="ssc-submit" disabled={submitting}>
-            {submitting ? 'Sending…' : '▸ Get My Signal Pulse™'}
-          </button>
-          <div className="ssc-micro">
-            No credit card. No spam. Signal Pulse™ is a quick preview — your full Signal Score™ is
-            verified across all six Signal Protocol™ layers.
-          </div>
+          <button type="submit" className="ssc-submit">▸ Get My Signal Pulse™</button>
+          <div className="ssc-micro">No credit card. No spam. Signal Pulse™ is a quick preview — your full Signal Score™ is verified across all six Signal Protocol™ layers.</div>
         </form>
-      ) : (
+      )}
+
+      {phase === 'scanning' && (
+        <div className="ssc-scan" role="status" aria-live="polite">
+          <div className="ssc-scan-radar" aria-hidden="true"><i /><i /><i /></div>
+          <div className="ssc-scan-title">Reading your AI signals…</div>
+          <div className="ssc-scan-sub">{scanDomain}</div>
+          <ul className="ssc-scan-steps">
+            <li>Access &amp; crawlability</li>
+            <li>Structure &amp; schema</li>
+            <li>Trust &amp; proof</li>
+            <li>Answer-readiness</li>
+          </ul>
+        </div>
+      )}
+
+      {phase === 'result' && result && <PulseResult data={result} email={email} />}
+
+      {phase === 'sent' && (
         <div className="ssc-success" role="status" aria-live="polite">
           <div className="ssc-success-mark" aria-hidden="true">✓</div>
-          <div className="ssc-success-h">Your Signal Pulse™ request has been received.</div>
-          <div className="ssc-success-b">
-            A real reviewer will check your first AI-readiness signals — access, structure, trust, and
-            answers — and email your Signal Pulse™ preview, typically within 24 hours. Watch your inbox.
-          </div>
+          <div className="ssc-success-h">Your Signal Pulse™ request is in.</div>
+          <div className="ssc-success-b">We’ve got your site and email. A reviewer will check your first AI-readiness signals and email your Signal Pulse™ — typically within 24 hours. Watch your inbox.</div>
           <a className="ssc-success-link" href="/proof/">See Case Zero — our own 18/100 baseline →</a>
         </div>
       )}
+    </div>
+  )
+}
+
+function PulseResult({ data, email }: { data: PulseData; email: string }) {
+  const [n, setN] = useState(0)
+  const [armed, setArmed] = useState(false)
+  const pulse = data.pulse
+
+  useEffect(() => {
+    setArmed(true)
+    let raf = 0
+    let start = 0
+    const dur = 1400
+    const tick = (t: number) => {
+      if (!start) start = t
+      const p = Math.min(1, (t - start) / dur)
+      const eased = 1 - Math.pow(1 - p, 3)
+      setN(Math.round(eased * pulse))
+      if (p < 1) raf = requestAnimationFrame(tick)
+    }
+    raf = requestAnimationFrame(tick)
+    return () => cancelAnimationFrame(raf)
+  }, [pulse])
+
+  const C = 2 * Math.PI * 52
+  const color = pulseColor(pulse)
+  const offset = armed ? C * (1 - pulse / 100) : C
+
+  return (
+    <div className="ssc-result" role="status" aria-live="polite">
+      <div className="ssc-result-badge"><span className="ssc-dot" aria-hidden="true" />Signal Pulse™ · live preview</div>
+      <div className="ssc-gauge">
+        <svg viewBox="0 0 120 120" className="ssc-gauge-svg" aria-hidden="true">
+          <circle className="ssc-gauge-track" cx="60" cy="60" r="52" />
+          <circle className="ssc-gauge-arc" cx="60" cy="60" r="52" style={{ stroke: color, strokeDasharray: C, strokeDashoffset: offset }} />
+        </svg>
+        <div className="ssc-gauge-readout">
+          <div className="ssc-gauge-num" style={{ color }}>{n}</div>
+          <div className="ssc-gauge-lbl">/ 100</div>
+        </div>
+      </div>
+      <div className="ssc-bars">
+        {data.buckets.map((b) => (
+          <div className="ssc-bar-row" key={b.key}>
+            <span className="ssc-bar-lbl">{b.label}</span>
+            <span className="ssc-bar"><span className="ssc-bar-fill" style={{ width: armed ? `${b.score}%` : 0, background: pulseColor(b.score) }} /></span>
+            <span className="ssc-bar-num">{b.score}</span>
+          </div>
+        ))}
+      </div>
+      {data.lowConfidence && (
+        <div className="ssc-result-note">
+          {data.spaLike
+            ? 'Your site renders with JavaScript, so a couple of signals read low here — your full review reads the rendered page.'
+            : 'We couldn’t fully reach your site, so this is a partial read — we’ll verify it by hand.'}
+        </div>
+      )}
+      <div className="ssc-result-cta">
+        This is your quick <strong>Signal Pulse™</strong>. Your full <strong>Signal Score™</strong> — including live
+        AI-visibility tests across ChatGPT, Claude, Perplexity &amp; Gemini — is on its way to <strong>{email}</strong>.
+      </div>
+      <a className="ssc-success-link" href="/proof/">See how the full Signal Score™ works →</a>
     </div>
   )
 }

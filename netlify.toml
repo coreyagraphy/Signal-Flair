@@ -8,3 +8,16 @@
 
 [build.environment]
   NODE_VERSION = "20"
+
+# Signal Pulse instant-preview serverless function (deterministic AI-readiness checks).
+# Ships from ./netlify/functions. NOTE: a drag-and-drop deploy of out/ alone does NOT include
+# functions — deploy with the CLI instead:  npm run build && npm run deploy
+[functions]
+  directory = "netlify/functions"
+  node_bundler = "esbuild"
+
+# Pretty alias for the function (the client also accepts the direct /.netlify/functions path).
+[[redirects]]
+  from = "/api/signal-pulse"
+  to = "/.netlify/functions/signal-pulse"
+  status = 200
