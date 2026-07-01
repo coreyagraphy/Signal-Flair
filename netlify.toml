@@ -21,3 +21,14 @@
   from = "/api/signal-pulse"
   to = "/.netlify/functions/signal-pulse"
   status = 200
+
+# Old page route -> new short route (the page moved from /signal-pulse to /pulse)
+[[redirects]]
+  from = "/signal-pulse"
+  to = "/pulse/"
+  status = 301
+
+[[redirects]]
+  from = "/signal-pulse/*"
+  to = "/pulse/"
+  status = 301

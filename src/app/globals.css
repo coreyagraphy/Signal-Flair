@@ -1186,7 +1186,7 @@ footer{background:var(--ink2);border-top:1px solid var(--ink);padding:52px;posit
 @media(max-width:560px){.f-chant-band{padding:24px 22px 4px}.f-tm{font-size:10px}}
 
 /* ════════════════════════════════════════════════════════════════════════
-   SIGNAL PULSE (/signal-pulse) — immersive dark lead-gen landing page.
+   SIGNAL PULSE (/pulse) — immersive dark lead-gen landing page.
    Naming: Signal Pulse™ (free quick preview) → Signal Score™ (full verified measurement).
    Self-contained .ssc-* namespace on a dark base. Radar/pulse/scanline motifs are
    CSS-only and reduced-motion-guarded, so the page stays fast + accessible. No JS

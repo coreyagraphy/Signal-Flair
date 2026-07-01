@@ -65,7 +65,7 @@ Signal Flair audited itself first as Case Zero — a transparent founder-run bas
 ## The Field Report (free entry point)
 The free front door is the Signal Flair Field Report: a partial read across three of the six Signal Protocol™ layers (Entity Clarity, Trust & Proof Density, Live AI Visibility), delivered within 24 hours, no call required. The full 6-layer Signal Score™ audit follows the Field Report.
 
-The lowest-friction way in is the free Signal Pulse™ at https://signalflair.ai/signal-pulse/ — enter a website and email to request a Signal Pulse™ preview. Signal Pulse™ is a quick, human-reviewed preview of a site's first AI-readiness signals (access, structure, trust, answers); it is NOT the full verified Signal Score™, which requires manual verification across all six Signal Protocol™ layers. The Signal Pulse™ is emailed back after review and feeds the Signal Score™ funnel.
+The lowest-friction way in is the free Signal Pulse™ at https://signalflair.ai/pulse/ — enter a website and email to request a Signal Pulse™ preview. Signal Pulse™ is a quick, human-reviewed preview of a site's first AI-readiness signals (access, structure, trust, answers); it is NOT the full verified Signal Score™, which requires manual verification across all six Signal Protocol™ layers. The Signal Pulse™ is emailed back after review and feeds the Signal Score™ funnel.
 
 ## Frequently Asked Questions
 

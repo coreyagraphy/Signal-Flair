@@ -8,7 +8,7 @@ export const metadata: Metadata = {
   title: 'Free Signal Pulse™ | Signal Flair',
   description:
     'Get a free Signal Pulse™ — see your website’s AI-readiness score in seconds. The full Signal Score™ is a human-verified review across all six Signal Protocol™ layers.',
-  alternates: { canonical: 'https://www.signalflair.ai/signal-pulse/' },
+  alternates: { canonical: 'https://www.signalflair.ai/pulse/' },
   openGraph: {
     title: 'Get a Free Signal Pulse™ | Signal Flair',
     description:
@@ -41,9 +41,9 @@ const jsonLd = {
   '@graph': [
     {
       '@type': 'WebPage',
-      '@id': 'https://www.signalflair.ai/signal-pulse/#webpage',
+      '@id': 'https://www.signalflair.ai/pulse/#webpage',
       name: 'Free Signal Pulse™ — quick AI-readiness preview',
-      url: 'https://www.signalflair.ai/signal-pulse/',
+      url: 'https://www.signalflair.ai/pulse/',
       description:
         'Get a free Signal Pulse™ preview of your website’s AI readiness. The full Signal Score™ requires manual verification across the six Signal Protocol™ layers.',
       isPartOf: { '@id': 'https://signalflair.ai/#website' },
@@ -54,7 +54,7 @@ const jsonLd = {
       '@type': 'BreadcrumbList',
       itemListElement: [
         { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://signalflair.ai/' },
-        { '@type': 'ListItem', position: 2, name: 'Signal Pulse', item: 'https://www.signalflair.ai/signal-pulse/' },
+        { '@type': 'ListItem', position: 2, name: 'Signal Pulse', item: 'https://www.signalflair.ai/pulse/' },
       ],
     },
     {
