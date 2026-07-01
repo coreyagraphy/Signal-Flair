@@ -111,8 +111,7 @@ export default function SignalPulseForm() {
         <form ref={formRef} noValidate onSubmit={handleSubmit}>
           <div className="ssc-form-head">
             <span className="ssc-form-badge"><span className="ssc-dot" aria-hidden="true" />Signal Pulse™</span>
-            <span className="ssc-form-title">Get your free Signal Pulse™</span>
-            <span className="ssc-form-sub">Enter your website and email — we scan your live AI-readiness signals and show your Signal Pulse™ in seconds. Your full Signal Score™ follows by email.</span>
+            <span className="ssc-form-sub">Enter your website and email — we scan your live AI-readiness signals and show your results in seconds. Your full Signal Score™ follows by email.</span>
           </div>
           <div className="ssc-field">
             <label className="ssc-label" htmlFor="sp-url">Website URL<span className="ssc-req">*</span></label>
