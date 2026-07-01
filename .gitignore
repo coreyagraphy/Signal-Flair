@@ -14,3 +14,6 @@ tsconfig.tsbuildinfo
 
 # scratch archives
 *.zip
+
+# Local Netlify folder
+.netlify

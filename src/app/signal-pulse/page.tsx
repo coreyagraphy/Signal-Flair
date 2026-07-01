@@ -2,6 +2,7 @@ import type { Metadata } from 'next'
 import SignalFlairLogo from '@/components/SignalFlairLogo'
 import SignalPulseForm from '@/components/SignalPulseForm'
 import SignalPulseHeroVideo from '@/components/SignalPulseHeroVideo'
+import BrandBgVideo from '@/components/BrandBgVideo'
 
 export const metadata: Metadata = {
   title: 'Free Signal Pulse™ | Signal Flair',
@@ -18,11 +19,11 @@ export const metadata: Metadata = {
 
 // Four public-facing checkpoints. Plain-English, non-technical — no scoring weights
 // exposed (those live in the internal Signal Protocol™ / Proof OS).
-const CHECKS: { k: string; t: string; d: string }[] = [
-  { k: '01', t: 'Access', d: 'Can AI systems crawl your site? Crawl access, robots.txt, sitemap visibility, and basic indexability.' },
-  { k: '02', t: 'Structure', d: 'Can AI understand your business? Page structure, headings, schema, services, and entity clarity.' },
-  { k: '03', t: 'Trust', d: 'Can AI verify your claims? Trust signals, proof density, contact clarity, and credibility markers.' },
-  { k: '04', t: 'Answers', d: 'Can AI answer with your business? FAQ content, service explanations, and answer-ready page structure.' },
+const CHECKS: { k: string; t: string; d: string; hex: string; rgb: string }[] = [
+  { k: '1', t: 'Access', d: 'Can AI systems crawl your site? Crawl access, robots.txt, sitemap visibility, and basic indexability.', hex: '#37c4ff', rgb: '55,196,255' },
+  { k: '2', t: 'Structure', d: 'Can AI understand your business? Page structure, headings, schema, services, and entity clarity.', hex: '#ffe23a', rgb: '255,226,58' },
+  { k: '3', t: 'Trust', d: 'Can AI verify your claims? Trust signals, proof density, contact clarity, and credibility markers.', hex: '#ff3d82', rgb: '255,61,130' },
+  { k: '4', t: 'Answers', d: 'Can AI answer with your business? FAQ content, service explanations, and answer-ready page structure.', hex: '#ff6a2b', rgb: '255,106,43' },
 ]
 
 // The six verified Signal Protocol™ layers — the full Signal Score™, not the preview.
@@ -77,7 +78,7 @@ export default function SignalPulsePage() {
 
       <nav className="ssc-nav">
         <a className="ssc-nav-logo" href="/" aria-label="Signal Flair home">
-          <SignalFlairLogo onDark style={{ height: 52, width: 'auto', display: 'block' }} />
+          <SignalFlairLogo onDark style={{ height: 68, width: 'auto', display: 'block' }} />
         </a>
         <a className="ssc-nav-cta" href="#pulse">▸ Get My Signal Pulse™</a>
       </nav>
@@ -88,7 +89,7 @@ export default function SignalPulsePage() {
         <div className="ssc-hero-scrim" aria-hidden="true" />
         <div className="ssc-hero-inner">
           <div className="ssc-eyebrow"><span className="ssc-dot" aria-hidden="true" />Free Signal Pulse™</div>
-          <h1 className="ssc-h1">Most businesses are <em>invisible</em> to AI.</h1>
+          <h1 className="ssc-h1">Most businesses are <em>INVISIBLE</em> to AI.</h1>
           <p className="ssc-lead">
             Signal Flair helps AI systems access, understand, verify, and recommend your business. Get your free
             Signal Pulse™ — a fast read on whether ChatGPT, Claude, Gemini, Perplexity, and Google AI can find and
@@ -100,25 +101,29 @@ export default function SignalPulsePage() {
           <p className="ssc-boundary">
             Signal Pulse™ is a quick preview. Your full <strong>Signal Score™</strong> requires manual verification.
           </p>
-          <div className="ssc-hero-links"><a href="/proof/">See Case Zero →</a></div>
+          <div className="ssc-hero-links"><a href="/proof/">▸ See Case Zero!</a></div>
         </div>
       </header>
 
-      {/* ── WHAT YOUR SIGNAL PULSE CHECKS ── */}
-      <section className="ssc-section">
-        <div className="ssc-sec-head">
-          <span className="ssc-kicker">The four signals</span>
-          <h2 className="ssc-h2">What your Signal Pulse™ <em>checks</em></h2>
-          <p className="ssc-p">Four questions — the same ones an AI engine works through before it recommends anyone.</p>
-        </div>
-        <div className="ssc-checks">
-          {CHECKS.map((c) => (
-            <div className="ssc-check" key={c.k}>
-              <div className="ssc-check-node">{c.k}</div>
-              <span className="ssc-check-t">{c.t}</span>
-              <span className="ssc-check-d">{c.d}</span>
-            </div>
-          ))}
+      {/* ── FOUR SIGNALS — second video band + floating glass cards ── */}
+      <section className="ssc-band">
+        <BrandBgVideo src="/video/signal-pulse-band.mp4" poster="/video/signal-pulse-band-poster.jpg" />
+        <div className="ssc-band-scrim" aria-hidden="true" />
+        <div className="ssc-band-inner">
+          <div className="ssc-sec-head">
+            <span className="ssc-kicker">The four signals</span>
+            <h2 className="ssc-h2">What your Signal Pulse™ <em>checks</em></h2>
+            <p className="ssc-p">Four questions — the same ones an AI engine works through before it recommends anyone.</p>
+          </div>
+          <div className="ssc-checks">
+            {CHECKS.map((c) => (
+              <div className="ssc-check" key={c.k} style={{ '--ac': c.hex, '--acg': c.rgb } as any}>
+                <span className="ssc-check-num" style={{ color: c.hex }}>{c.k}</span>
+                <span className="ssc-check-t">{c.t}</span>
+                <span className="ssc-check-d">{c.d}</span>
+              </div>
+            ))}
+          </div>
         </div>
       </section>
 
@@ -159,7 +164,7 @@ export default function SignalPulsePage() {
               Signal Flair started at 18/100. No inflated case study. No fake proof. We’re documenting the rebuild
               publicly — so you can see the system work on us before you trust it with your business.
             </div>
-            <a className="ssc-cz-cta" href="/proof/">See Case Zero →</a>
+            <a className="ssc-cz-cta" href="/proof/">▸ See Case Zero! →</a>
           </div>
         </div>
       </section>
