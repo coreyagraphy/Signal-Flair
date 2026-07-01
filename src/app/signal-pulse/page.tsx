@@ -131,14 +131,14 @@ export default function SignalPulsePage() {
       <section className="ssc-section">
         <div className="ssc-sec-head">
           <span className="ssc-kicker">Preview vs. full score</span>
-          <h2 className="ssc-h2">One is a <em>preview.</em> One is <em>verified.</em></h2>
+          <h2 className="ssc-h2">One is a <em className="ssc-em-orange">preview.</em> One is <em className="ssc-em-pink">verified.</em></h2>
           <p className="ssc-p">Signal Pulse™ is the quick preview. Signal Score™ is the full verified measurement.</p>
         </div>
         <div className="ssc-vs">
-          <div className="ssc-vs-card">
+          <div className="ssc-vs-card preview">
             <div className="ssc-vs-tag">Quick preview</div>
-            <div className="ssc-vs-name">Signal Pulse™</div>
             <div className="ssc-vs-desc">A fast, human-reviewed read on your first AI-readiness signals — enough to show where you stand and what to fix first.</div>
+            <a className="ssc-vs-cta" href="#pulse">▸ Get My Free Signal Pulse™</a>
           </div>
           <div className="ssc-vs-card full">
             <div className="ssc-vs-tag">Full verified score</div>

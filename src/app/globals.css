@@ -1280,6 +1280,8 @@ footer{background:var(--ink2);border-top:1px solid var(--ink);padding:52px;posit
 .ssc-kicker{display:inline-block;font-size:10px;font-weight:600;letter-spacing:.26em;text-transform:uppercase;color:var(--sig-teal);margin-bottom:13px}
 .ssc-h2{font-family:var(--flair);font-variation-settings:'opsz' 100,'wght' 520,'WONK' 1;font-size:clamp(26px,3.6vw,40px);line-height:1.04;color:var(--bone);margin-bottom:13px}
 .ssc-h2 em{font-family:var(--italic);font-style:italic;color:var(--sig-teal)}
+.ssc-h2 em.ssc-em-orange{color:#ff8a3d;text-shadow:0 0 26px rgba(255,106,43,.4)}
+.ssc-h2 em.ssc-em-pink{color:#ff3d82;text-shadow:0 0 26px rgba(255,61,130,.4)}
 .ssc-p{font-size:13.5px;line-height:1.85;color:rgba(248,241,231,.62);max-width:600px;margin:0 auto 14px;text-align:center}
 .ssc-p:last-child{margin-bottom:0}
 .ssc-p strong{color:var(--bone);font-weight:700}
@@ -1310,16 +1312,21 @@ footer{background:var(--ink2);border-top:1px solid var(--ink);padding:52px;posit
 .ssc-check-d{font-size:14px;line-height:1.68;color:rgba(248,241,231,.82)}
 
 /* — preview vs full score — */
-.ssc-vs{display:grid;grid-template-columns:1fr 1fr;gap:16px;max-width:820px;margin:0 auto}
-.ssc-vs-card{padding:26px 24px;border-radius:15px;border:1px solid rgba(255,255,255,.1);background:linear-gradient(180deg,rgba(255,255,255,.035),rgba(255,255,255,.008))}
-.ssc-vs-card.full{border-color:rgba(0,210,191,.36);box-shadow:0 0 44px rgba(0,210,191,.08)}
-.ssc-vs-tag{font-size:9.5px;font-weight:600;letter-spacing:.18em;text-transform:uppercase;color:rgba(248,241,231,.5);margin-bottom:9px}
-.ssc-vs-card.full .ssc-vs-tag{color:var(--sig-teal)}
-.ssc-vs-name{font-family:var(--flair);font-variation-settings:'opsz' 80,'wght' 540,'WONK' 1;font-size:22px;color:var(--bone);margin-bottom:9px}
-.ssc-vs-desc{font-size:12px;line-height:1.65;color:rgba(248,241,231,.6);margin-bottom:15px}
-.ssc-layers{list-style:none;display:flex;flex-direction:column;gap:9px}
-.ssc-layers li{position:relative;padding-left:22px;font-size:12px;line-height:1.4;color:rgba(248,241,231,.74)}
-.ssc-layers li::before{content:'';position:absolute;left:0;top:5px;width:8px;height:8px;border-radius:50%;background:var(--sig-teal);box-shadow:0 0 10px rgba(0,210,191,.5)}
+.ssc-vs{display:grid;grid-template-columns:1fr 1fr;gap:18px;max-width:860px;margin:0 auto}
+.ssc-vs-card{position:relative;display:flex;flex-direction:column;padding:30px 28px;border-radius:16px;border:1px solid rgba(255,255,255,.1);background:linear-gradient(180deg,rgba(255,255,255,.035),rgba(255,255,255,.008))}
+.ssc-vs-card.preview{border-color:rgba(255,106,43,.5);box-shadow:0 0 46px rgba(255,106,43,.1)}
+.ssc-vs-card.full{border-color:rgba(255,61,130,.5);box-shadow:0 0 46px rgba(255,61,130,.1)}
+.ssc-vs-tag{font-size:10.5px;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:rgba(248,241,231,.5);margin-bottom:11px}
+.ssc-vs-card.preview .ssc-vs-tag{color:#ff8a3d;text-shadow:0 0 18px rgba(255,106,43,.4)}
+.ssc-vs-card.full .ssc-vs-tag{color:#ff3d82;text-shadow:0 0 18px rgba(255,61,130,.4)}
+.ssc-vs-name{font-family:var(--flair);font-variation-settings:'opsz' 80,'wght' 540,'WONK' 1;font-size:24px;color:var(--bone);margin-bottom:11px}
+.ssc-vs-desc{font-size:14px;line-height:1.7;color:rgba(248,241,231,.82);margin-bottom:16px}
+.ssc-layers{list-style:none;display:flex;flex-direction:column;gap:10px;margin-top:2px}
+.ssc-layers li{position:relative;padding-left:24px;font-size:13.5px;line-height:1.45;color:rgba(248,241,231,.86)}
+.ssc-layers li::before{content:'';position:absolute;left:0;top:5px;width:9px;height:9px;border-radius:50%;background:#ff3d82;box-shadow:0 0 10px rgba(255,61,130,.6)}
+/* left (preview) card CTA — sits where the "Signal Pulse" name was, fills the card */
+.ssc-vs-cta{margin-top:auto;align-self:flex-start;display:inline-block;font-family:var(--signal);font-weight:700;font-size:13px;letter-spacing:.09em;text-transform:uppercase;color:#04060a;background:linear-gradient(180deg,#ff8a3d,#ff5a1f);border-radius:9px;padding:15px 26px;text-decoration:none;transition:.18s;box-shadow:0 10px 30px rgba(255,106,43,.34),0 0 40px rgba(255,106,43,.3)}
+.ssc-vs-cta:hover{filter:brightness(1.08);box-shadow:0 14px 40px rgba(255,106,43,.5),0 0 56px rgba(255,106,43,.45)}
 
 /* — Case Zero — */
 .ssc-cz{display:flex;gap:26px;align-items:center;max-width:720px;margin:0 auto;padding:28px;border-radius:18px;border:1px solid rgba(255,255,255,.1);background:linear-gradient(120deg,rgba(255,90,31,.07),rgba(255,255,255,.015))}
