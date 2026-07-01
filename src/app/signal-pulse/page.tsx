@@ -1,18 +1,18 @@
 import type { Metadata } from 'next'
 import SignalFlairLogo from '@/components/SignalFlairLogo'
-import SignalScanForm from '@/components/SignalScanForm'
-import SignalScanVideo from '@/components/SignalScanVideo'
+import SignalPulseForm from '@/components/SignalPulseForm'
+import SignalPulseHeroVideo from '@/components/SignalPulseHeroVideo'
 
 export const metadata: Metadata = {
-  title: 'Free Signal Scan™ | Signal Flair',
+  title: 'Free Signal Pulse™ | Signal Flair',
   description:
-    'Run a free Signal Scan™ and get your Signal Pulse™ preview of your website’s AI readiness. Full Signal Score™ requires manual verification.',
-  alternates: { canonical: 'https://www.signalflair.ai/signal-scan/' },
+    'Get a free Signal Pulse™ — a quick preview of your website’s AI readiness. Enter your website and email; a reviewer emails your results. Full Signal Score™ requires manual verification.',
+  alternates: { canonical: 'https://www.signalflair.ai/signal-pulse/' },
   openGraph: {
-    title: 'Run a Free Signal Scan™ | Signal Flair',
+    title: 'Get a Free Signal Pulse™ | Signal Flair',
     description:
-      'See whether AI systems can access, understand, and verify your business. Get your Signal Pulse™ preview from Signal Flair.',
-    images: ['/video/hero-poster.jpg'],
+      'See whether AI systems can access, understand, and verify your business. Get your free Signal Pulse™ from Signal Flair.',
+    images: ['/video/signal-pulse-poster.jpg'],
   },
 }
 
@@ -40,36 +40,36 @@ const jsonLd = {
   '@graph': [
     {
       '@type': 'WebPage',
-      '@id': 'https://www.signalflair.ai/signal-scan/#webpage',
-      name: 'Free Signal Scan™ — Signal Pulse™ preview',
-      url: 'https://www.signalflair.ai/signal-scan/',
+      '@id': 'https://www.signalflair.ai/signal-pulse/#webpage',
+      name: 'Free Signal Pulse™ — quick AI-readiness preview',
+      url: 'https://www.signalflair.ai/signal-pulse/',
       description:
-        'Run a free Signal Scan™ and get a Signal Pulse™ preview of your website’s AI readiness. The full Signal Score™ requires manual verification across the six Signal Protocol™ layers.',
+        'Get a free Signal Pulse™ preview of your website’s AI readiness. The full Signal Score™ requires manual verification across the six Signal Protocol™ layers.',
       isPartOf: { '@id': 'https://signalflair.ai/#website' },
       about: { '@id': 'https://signalflair.ai/#org' },
-      primaryImageOfPage: 'https://signalflair.ai/video/hero-poster.jpg',
+      primaryImageOfPage: 'https://signalflair.ai/video/signal-pulse-poster.jpg',
     },
     {
       '@type': 'BreadcrumbList',
       itemListElement: [
         { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://signalflair.ai/' },
-        { '@type': 'ListItem', position: 2, name: 'Signal Scan', item: 'https://www.signalflair.ai/signal-scan/' },
+        { '@type': 'ListItem', position: 2, name: 'Signal Pulse', item: 'https://www.signalflair.ai/signal-pulse/' },
       ],
     },
     {
       '@type': 'Service',
-      serviceType: 'AI readiness scan',
-      name: 'Signal Scan™ — Signal Pulse™ preview',
+      serviceType: 'AI readiness preview',
+      name: 'Signal Pulse™ — quick AI-readiness preview',
       description:
-        'A free Signal Scan™ that returns a quick Signal Pulse™ preview of a website’s AI-readiness signals — access, structure, trust, and answers — as the entry point to the full verified Signal Score™.',
+        'A free Signal Pulse™: a quick, human-reviewed preview of a website’s AI-readiness signals — access, structure, trust, and answers — as the entry point to the full verified Signal Score™.',
       provider: { '@id': 'https://signalflair.ai/#org' },
       areaServed: { '@type': 'Country', name: 'United States' },
-      offers: { '@type': 'Offer', price: '0', priceCurrency: 'USD', name: 'Free Signal Scan™' },
+      offers: { '@type': 'Offer', price: '0', priceCurrency: 'USD', name: 'Free Signal Pulse™' },
     },
   ],
 }
 
-export default function SignalScanPage() {
+export default function SignalPulsePage() {
   return (
     <main className="ssc">
       <div className="ssc-bg" aria-hidden="true" />
@@ -79,22 +79,23 @@ export default function SignalScanPage() {
         <a className="ssc-nav-logo" href="/" aria-label="Signal Flair home">
           <SignalFlairLogo onDark style={{ height: 52, width: 'auto', display: 'block' }} />
         </a>
-        <a className="ssc-nav-cta" href="#scan">▸ Get My Signal Pulse™</a>
+        <a className="ssc-nav-cta" href="#pulse">▸ Get My Signal Pulse™</a>
       </nav>
 
-      {/* ── IMMERSIVE HERO ── */}
-      <header className="ssc-hero" id="top">
-        <div className="ssc-radar" aria-hidden="true"><i /><i /><i /><i /></div>
-        <div className="ssc-hero-glow" aria-hidden="true" />
+      {/* ── IMMERSIVE HERO — brand video background + focal form ── */}
+      <header className="ssc-hero ssc-hero--video" id="top">
+        <SignalPulseHeroVideo />
+        <div className="ssc-hero-scrim" aria-hidden="true" />
         <div className="ssc-hero-inner">
-          <div className="ssc-eyebrow"><span className="ssc-dot" aria-hidden="true" />Free Signal Scan™</div>
+          <div className="ssc-eyebrow"><span className="ssc-dot" aria-hidden="true" />Free Signal Pulse™</div>
           <h1 className="ssc-h1">Most businesses are <em>invisible</em> to AI.</h1>
           <p className="ssc-lead">
-            Signal Flair helps AI systems access, understand, verify, and recommend your business. Run a free
-            Signal Scan™ and get your Signal Pulse™ preview.
+            Signal Flair helps AI systems access, understand, verify, and recommend your business. Get your free
+            Signal Pulse™ — a fast read on whether ChatGPT, Claude, Gemini, Perplexity, and Google AI can find and
+            trust you.
           </p>
 
-          <SignalScanForm />
+          <SignalPulseForm />
 
           <p className="ssc-boundary">
             Signal Pulse™ is a quick preview. Your full <strong>Signal Score™</strong> requires manual verification.
@@ -103,24 +104,11 @@ export default function SignalScanPage() {
         </div>
       </header>
 
-      {/* ── AMBIENT BRAND VIDEO — looping, muted, scroll parallax ── */}
+      {/* ── WHAT YOUR SIGNAL PULSE CHECKS ── */}
       <section className="ssc-section">
         <div className="ssc-sec-head">
-          <span className="ssc-kicker">Signal Flair in motion</span>
-          <h2 className="ssc-h2">See what your site looks like <em>to AI.</em></h2>
-          <p className="ssc-p">
-            AI systems don’t browse your website the way people do — they read its signals. Signal Flair builds
-            the layer that lets them see, understand, and trust your business.
-          </p>
-        </div>
-        <SignalScanVideo />
-      </section>
-
-      {/* ── WHAT SIGNAL SCAN CHECKS ── */}
-      <section className="ssc-section">
-        <div className="ssc-sec-head">
-          <span className="ssc-kicker">The scan path</span>
-          <h2 className="ssc-h2">What Signal Scan™ <em>checks</em></h2>
+          <span className="ssc-kicker">The four signals</span>
+          <h2 className="ssc-h2">What your Signal Pulse™ <em>checks</em></h2>
           <p className="ssc-p">Four questions — the same ones an AI engine works through before it recommends anyone.</p>
         </div>
         <div className="ssc-checks">
@@ -131,22 +119,6 @@ export default function SignalScanPage() {
               <span className="ssc-check-d">{c.d}</span>
             </div>
           ))}
-        </div>
-      </section>
-
-      {/* ── WHAT IS SIGNAL PULSE ── */}
-      <section className="ssc-section">
-        <div className="ssc-sec-head">
-          <span className="ssc-kicker">Signal Pulse™</span>
-          <h2 className="ssc-h2">Your quick <em>AI-readiness preview.</em></h2>
-          <p className="ssc-p">
-            Signal Pulse™ is a fast preview of your site’s first AI-readiness signals. It checks whether your
-            business appears accessible, understandable, and verifiable to AI systems.
-          </p>
-          <p className="ssc-p">
-            <strong>It is not the full Signal Score™.</strong> The full Signal Score™ requires manual verification
-            through the complete Signal Protocol™.
-          </p>
         </div>
       </section>
 
@@ -192,27 +164,27 @@ export default function SignalScanPage() {
         </div>
       </section>
 
-      {/* ── WHAT HAPPENS NEXT ── */}
+      {/* ── WHAT HAPPENS NEXT (delivery is explicit here) ── */}
       <section className="ssc-section">
         <div className="ssc-sec-head">
-          <span className="ssc-kicker">After the scan</span>
-          <h2 className="ssc-h2">What happens <em>next</em></h2>
+          <span className="ssc-kicker">How it works</span>
+          <h2 className="ssc-h2">How you get your <em>Signal Pulse™</em></h2>
         </div>
         <div className="ssc-steps">
           <div className="ssc-step">
             <div className="ssc-step-n">01</div>
             <span className="ssc-step-t">Enter your website</span>
-            <div className="ssc-step-d">Start with your URL and email — that’s the whole ask.</div>
+            <div className="ssc-step-d">Your URL and email — that’s the whole ask.</div>
           </div>
           <div className="ssc-step">
             <div className="ssc-step-n">02</div>
-            <span className="ssc-step-t">Get your Signal Pulse™</span>
-            <div className="ssc-step-d">We review your first AI-readiness signals and send the preview.</div>
+            <span className="ssc-step-t">We review + email it back</span>
+            <div className="ssc-step-d">A real reviewer checks your first AI-readiness signals and emails your Signal Pulse™ — typically within 24 hours. No automated black-box score.</div>
           </div>
           <div className="ssc-step">
             <div className="ssc-step-n">03</div>
             <span className="ssc-step-t">Move into full verification</span>
-            <div className="ssc-step-d">If it fits, we recommend a full Signal Score™, Foundation Build, or Stay Found™ maintenance.</div>
+            <div className="ssc-step-d">If it fits, we recommend a full Signal Score™ review, a Foundation Build, or Stay Found™ maintenance.</div>
           </div>
         </div>
       </section>
@@ -220,7 +192,7 @@ export default function SignalScanPage() {
       {/* ── FINE PRINT + DISCLAIMER ── */}
       <section className="ssc-section ssc-fine">
         <p className="ssc-p">
-          Start with a free Signal Scan™. Full Signal Score™ reviews and implementation options are recommended
+          Start with a free Signal Pulse™. Full Signal Score™ reviews and implementation options are recommended
           after your preview. The Foundation Build starts at $3,500 for businesses ready to turn findings into
           working AI Proof Infrastructure™.
         </p>
@@ -235,7 +207,7 @@ export default function SignalScanPage() {
       <section className="ssc-cta">
         <div className="ssc-radar" aria-hidden="true"><i /><i /><i /><i /></div>
         <h2 className="ssc-cta-h">Find out if AI can <em>trust</em> your business.</h2>
-        <a className="ssc-cta-btn" href="#scan">▸ Run Free Signal Scan™</a>
+        <a className="ssc-cta-btn" href="#pulse">▸ Get My Free Signal Pulse™</a>
         <div className="ssc-cta-fine">Preview only. Full Signal Score™ requires manual verification.</div>
       </section>
 

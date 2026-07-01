@@ -1252,7 +1252,7 @@ export default function SignalFlairLanding() {
             <div className="cta-y-title reveal">See what AI <em>actually knows</em><br />about your business — free.</div>
             <div className="cta-y-sub reveal">Three critical AI signals — scanned across every major engine and delivered in 24 hours. No call. No pitch. Just the diagnosis: exactly where your signal breaks.</div>
             <div className="cta-y-btns reveal" style={{ marginTop: '26px' }}>
-              <a className="cta-y-ghost" href="/signal-scan/">▸ Run a free Signal Scan™ →</a>
+              <a className="cta-y-ghost" href="/signal-pulse/">▸ Get your free Signal Pulse™ →</a>
               <a className="cta-y-ghost" href="#founding">▸ Explore a Founding Pilot →</a>
               <a className="cta-y-ghost" href="#check">▸ See all six layers →</a>
             </div>
@@ -1345,7 +1345,7 @@ export default function SignalFlairLanding() {
             <a className="f-email" href="mailto:hello@signalflair.ai">hello@signalflair.ai</a>
           </div>
           <div><div className="f-head">Services</div><a className="f-link" href="#signal">AI Visibility Audit</a><a className="f-link" href="#signal">Foundation Build</a><a className="f-link" href="#signal">Stay Found™</a><a className="f-link" href="#check">What We Check</a><a className="f-link" href="#pricing">Pricing</a></div>
-          <div><div className="f-head">Company</div><a className="f-link" href="/signal-scan/">Free Signal Scan™</a><a className="f-link" href="#process">How It Works</a><a className="f-link" href="#pricing">Pricing</a><a className="f-link" href="/resources/llms-txt/">llms.txt Guide</a><a className="f-link" href="https://mentalvision.ai" target="_blank" rel="noopener noreferrer">Mental Vision</a><a className="f-link" href="mailto:hello@signalflair.ai">Contact</a></div>
+          <div><div className="f-head">Company</div><a className="f-link" href="/signal-pulse/">Free Signal Pulse™</a><a className="f-link" href="#process">How It Works</a><a className="f-link" href="#pricing">Pricing</a><a className="f-link" href="/resources/llms-txt/">llms.txt Guide</a><a className="f-link" href="https://mentalvision.ai" target="_blank" rel="noopener noreferrer">Mental Vision</a><a className="f-link" href="mailto:hello@signalflair.ai">Contact</a></div>
           <div><div className="f-head">Connect</div><a className="f-link" href="#">LinkedIn</a><a className="f-link" href="#">Instagram</a><a className="f-link" href="#">YouTube</a><a className="f-link" href="mailto:hello@signalflair.ai">hello@signalflair.ai</a></div>
         </div>
         <div className="f-chant-band">

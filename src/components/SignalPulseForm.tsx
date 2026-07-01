@@ -1,24 +1,23 @@
 'use client'
 /**
- * SignalScanForm — the scan console on /signal-scan.
+ * SignalPulseForm — the Signal Pulse™ request console (website + email only).
  *
- * Asks for ONLY website + email (low friction for cold traffic; the homepage
- * Field Report form asks for seven fields). Posts to the SAME intake webhook as
- * the homepage form, so a Signal Scan™ request lands in the same Field Report →
- * Signal Score™ funnel, tagged `signal-scan` / `signal-pulse`.
+ * Lead routing is SEPARATE from the main website's Field Report intake: it posts to a
+ * dedicated Signal Pulse webhook first (NEXT_PUBLIC_SIGNAL_PULSE_WEBHOOK_URL), so these
+ * landing-page leads can land in their own GHL workflow / notification email. It falls back
+ * to the shared webhooks only so a lead is never dropped — and every payload is tagged
+ * `source=signal-pulse` / `lead_tag=Signal Pulse Request`, so GHL can still route + notify
+ * these separately even on a shared endpoint.
  *
- * There is NO instant score. The site is a static export with no backend, and a
- * browser can't crawl a third-party site (CORS). So this captures the request
- * honestly and promises a reviewed Signal Pulse™ follow-up — it never fabricates
- * a number. If real crawler logic is added later, swap the success copy for the
- * "preview is ready" variant.
+ * There is NO instant score — the site is a static export with no backend, and a browser
+ * can't crawl a third-party site (CORS). We capture the request honestly; a real reviewer
+ * emails the Signal Pulse™ back (delivery is a GHL follow-up, not automation).
  */
 import { useCallback, useRef, useState } from 'react'
 import { track } from '@/lib/analytics'
 
-// Same resolution order as the homepage Field Report form (build-time inlined for
-// static export): router endpoint first, GHL inbound webhook as the always-on fallback.
 const WEBHOOK_URL =
+  (process.env.NEXT_PUBLIC_SIGNAL_PULSE_WEBHOOK_URL ?? '').trim() ||
   (process.env.NEXT_PUBLIC_FIELD_REPORT_WEBHOOK_URL ?? '').trim() ||
   (process.env.NEXT_PUBLIC_GHL_WEBHOOK_URL ?? '').trim() ||
   ''
@@ -27,7 +26,7 @@ const EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]+$/
 
 type FieldErrors = { website_url?: string; email?: string }
 
-export default function SignalScanForm() {
+export default function SignalPulseForm() {
   const formRef = useRef<HTMLFormElement>(null)
   const [submitting, setSubmitting] = useState(false)
   const [success, setSuccess] = useState(false)
@@ -39,7 +38,7 @@ export default function SignalScanForm() {
     setFormError('')
     const form = formRef.current
     if (!form) {
-      setFormError(`Scan intake error. Email ${FALLBACK_EMAIL} and we'll follow up manually.`)
+      setFormError(`Request error. Email ${FALLBACK_EMAIL} and we'll follow up manually.`)
       return
     }
 
@@ -52,13 +51,12 @@ export default function SignalScanForm() {
     else if (!EMAIL_RE.test(email)) nextErr.email = 'Enter a valid email'
     setFieldErrors(nextErr)
     if (Object.keys(nextErr).length) {
-      setFormError('Enter your website and a valid email to start your Signal Scan™.')
+      setFormError('Enter your website and a valid email to get your Signal Pulse™.')
       const first = form.querySelector('.ssc-input.invalid') as HTMLInputElement | null
       first?.focus()
       return
     }
 
-    // Enrich hidden context (page + utm), exactly like the homepage form.
     const qp = new URLSearchParams(window.location.search)
     const setHidden = (n: string, v: string) => {
       const el = form.querySelector(`[name="${n}"]`) as HTMLInputElement | null
@@ -90,7 +88,7 @@ export default function SignalScanForm() {
       } finally {
         clearTimeout(timer)
       }
-      track('form_submit', { form_id: 'signal-scan', preview_type: 'signal-pulse' })
+      track('form_submit', { form_id: 'signal-pulse', preview_type: 'signal-pulse' })
       setSuccess(true)
       setFieldErrors({})
       setFormError('')
@@ -100,8 +98,8 @@ export default function SignalScanForm() {
       } else if (err?.message === 'webhook_not_configured') {
         setFormError(
           process.env.NODE_ENV === 'development'
-            ? 'Scan intake not configured. Set NEXT_PUBLIC_FIELD_REPORT_WEBHOOK_URL or NEXT_PUBLIC_GHL_WEBHOOK_URL in .env.local and restart dev.'
-            : `Scan intake is temporarily unavailable. Email ${FALLBACK_EMAIL} and we'll follow up manually.`,
+            ? 'Signal Pulse intake not configured. Set NEXT_PUBLIC_SIGNAL_PULSE_WEBHOOK_URL (or a fallback) in .env.local and restart dev.'
+            : `Signal Pulse intake is temporarily unavailable. Email ${FALLBACK_EMAIL} and we'll follow up manually.`,
         )
       } else {
         setFormError(`We couldn't submit your request. Email ${FALLBACK_EMAIL} and we'll follow up manually.`)
@@ -112,20 +110,20 @@ export default function SignalScanForm() {
   }, [])
 
   return (
-    <div className="ssc-form" id="scan">
+    <div className="ssc-form" id="pulse">
       {!success ? (
         <form ref={formRef} noValidate onSubmit={handleSubmit}>
           <div className="ssc-form-head">
-            <span className="ssc-form-badge"><span className="ssc-dot" aria-hidden="true" />Signal Scan™</span>
-            <span className="ssc-form-title">Start your free Signal Scan™</span>
-            <span className="ssc-form-sub">Enter your website and email. We review your first AI-readiness signals and send your Signal Pulse™ preview with clear next steps.</span>
+            <span className="ssc-form-badge"><span className="ssc-dot" aria-hidden="true" />Signal Pulse™</span>
+            <span className="ssc-form-title">Get your free Signal Pulse™</span>
+            <span className="ssc-form-sub">Enter your website and email. A real reviewer checks your first AI-readiness signals and emails your Signal Pulse™ preview — no automated black-box score.</span>
           </div>
 
           <div className="ssc-field">
-            <label className="ssc-label" htmlFor="ssc-url">Website URL<span className="ssc-req">*</span></label>
+            <label className="ssc-label" htmlFor="sp-url">Website URL<span className="ssc-req">*</span></label>
             <input
               className={`ssc-input${fieldErrors.website_url ? ' invalid' : ''}`}
-              id="ssc-url"
+              id="sp-url"
               name="website_url"
               type="url"
               inputMode="url"
@@ -136,10 +134,10 @@ export default function SignalScanForm() {
           </div>
 
           <div className="ssc-field">
-            <label className="ssc-label" htmlFor="ssc-email">Email<span className="ssc-req">*</span></label>
+            <label className="ssc-label" htmlFor="sp-email">Email<span className="ssc-req">*</span></label>
             <input
               className={`ssc-input${fieldErrors.email ? ' invalid' : ''}`}
-              id="ssc-email"
+              id="sp-email"
               name="email"
               type="email"
               inputMode="email"
@@ -149,11 +147,11 @@ export default function SignalScanForm() {
             <span className="ssc-err" aria-live="polite">{fieldErrors.email || ''}</span>
           </div>
 
-          {/* Hidden context — mirrors the homepage form so leads route + tag identically. */}
-          <input type="hidden" name="source" defaultValue="signal-scan" />
+          {/* Hidden context — source tag keeps these leads separable in GHL even on a shared webhook. */}
+          <input type="hidden" name="source" defaultValue="signal-pulse" />
           <input type="hidden" name="preview_type" defaultValue="signal-pulse" />
-          <input type="hidden" name="lead_tag" defaultValue="Signal Scan Request" />
-          <input type="hidden" name="form_type" defaultValue="signal_scan" />
+          <input type="hidden" name="lead_tag" defaultValue="Signal Pulse Request" />
+          <input type="hidden" name="form_type" defaultValue="signal_pulse" />
           <input type="hidden" name="request_type" defaultValue="signal_pulse_preview" />
           <input type="hidden" name="page_url" defaultValue="" />
           <input type="hidden" name="utm_source" defaultValue="" />
@@ -172,10 +170,10 @@ export default function SignalScanForm() {
       ) : (
         <div className="ssc-success" role="status" aria-live="polite">
           <div className="ssc-success-mark" aria-hidden="true">✓</div>
-          <div className="ssc-success-h">Your Signal Scan™ request has been received.</div>
+          <div className="ssc-success-h">Your Signal Pulse™ request has been received.</div>
           <div className="ssc-success-b">
-            We&apos;ll review the first AI-readiness signals for your site — access, structure, trust, and
-            answers — and follow up with your Signal Pulse™ preview and next steps. Watch your inbox.
+            A real reviewer will check your first AI-readiness signals — access, structure, trust, and
+            answers — and email your Signal Pulse™ preview, typically within 24 hours. Watch your inbox.
           </div>
           <a className="ssc-success-link" href="/proof/">See Case Zero — our own 18/100 baseline →</a>
         </div>
