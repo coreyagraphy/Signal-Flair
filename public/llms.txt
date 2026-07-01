@@ -16,7 +16,7 @@
 - Contact: hello@signalflair.ai
 - Signal Score™ (Case Zero baseline): 18/100 (scored June 6, 2026)
 - Post-implementation target: 91/100 (readiness target, not achieved score)
-- Last Updated: 2026-06-21
+- Last Updated: 2026-06-30
 
 ## What We Do
 Signal Flair builds AI Proof Infrastructure™ — the structured proof layer that helps AI answer engines access, understand, verify, and recommend a business or organization. We measure how clearly a business can be understood across AI engines (ChatGPT, Claude, Perplexity, Gemini, Google AI) with a 0–100 Signal Score™, then build the llms.txt, schema markup, entity clarity, answer architecture, and trust proof those engines need.
@@ -63,7 +63,9 @@ Signal Flair audited itself first as Case Zero — a transparent founder-run bas
 - Public change log: https://signalflair.ai/proof/changelog
 
 ## The Field Report (free entry point)
-The only free front door is the Signal Flair Field Report: a partial read across three of the six Signal Protocol™ layers (Entity Clarity, Trust & Proof Density, Live AI Visibility), delivered within 24 hours, no call required. The full 6-layer audit follows the Field Report.
+The free front door is the Signal Flair Field Report: a partial read across three of the six Signal Protocol™ layers (Entity Clarity, Trust & Proof Density, Live AI Visibility), delivered within 24 hours, no call required. The full 6-layer Signal Score™ audit follows the Field Report.
+
+The lowest-friction way in is the Signal Scan™ at https://signalflair.ai/signal-scan/ — enter a website and email to request a Signal Pulse™ preview. Signal Pulse™ is a quick, human-reviewed preview of a site's first AI-readiness signals (crawl access, structured data, entity clarity, trust signals); it is NOT the full verified Signal Score™, which requires manual verification across all six Signal Protocol™ layers. The Signal Scan™ feeds the same Field Report → Signal Score™ funnel.
 
 ## Frequently Asked Questions
 
