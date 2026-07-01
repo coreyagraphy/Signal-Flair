@@ -1,6 +1,7 @@
 import type { Metadata } from 'next'
 import SignalFlairLogo from '@/components/SignalFlairLogo'
 import SignalScanForm from '@/components/SignalScanForm'
+import SignalScanVideo from '@/components/SignalScanVideo'
 
 export const metadata: Metadata = {
   title: 'Free Signal Scan™ | Signal Flair',
@@ -102,29 +103,17 @@ export default function SignalScanPage() {
         </div>
       </header>
 
-      {/* ── VIDEO PLACEHOLDER ── */}
+      {/* ── AMBIENT BRAND VIDEO — looping, muted, scroll parallax ── */}
       <section className="ssc-section">
         <div className="ssc-sec-head">
-          <span className="ssc-kicker">Watch how Signal Scan™ works</span>
+          <span className="ssc-kicker">Signal Flair in motion</span>
           <h2 className="ssc-h2">See what your site looks like <em>to AI.</em></h2>
           <p className="ssc-p">
-            A quick walkthrough will show how Signal Flair checks whether your business is accessible,
-            understandable, and verifiable by AI systems.
+            AI systems don’t browse your website the way people do — they read its signals. Signal Flair builds
+            the layer that lets them see, understand, and trust your business.
           </p>
         </div>
-        <figure className="ssc-video" role="img" aria-label="Video placeholder — a 60-second Signal Flair walkthrough is coming soon">
-          <div className="ssc-video-poster" style={{ backgroundImage: "url('/video/hero-poster.jpg')" }} />
-          <div className="ssc-video-scrim" />
-          <div className="ssc-video-inner">
-            <span className="ssc-play" aria-hidden="true">
-              <svg width="26" height="30" viewBox="0 0 26 30" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <path d="M25 15 0.5 29.53V0.47L25 15Z" fill="#00d2bf" />
-              </svg>
-            </span>
-            <figcaption className="ssc-video-cap">Video coming soon: 60-second Signal Flair walkthrough</figcaption>
-            <span className="ssc-video-sub">A short founder walkthrough on why AI systems need structured proof before they can confidently recommend a business.</span>
-          </div>
-        </figure>
+        <SignalScanVideo />
       </section>
 
       {/* ── WHAT SIGNAL SCAN CHECKS ── */}
