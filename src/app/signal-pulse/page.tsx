@@ -213,7 +213,15 @@ export default function SignalPulsePage() {
         <div className="ssc-radar" aria-hidden="true"><i /><i /><i /><i /></div>
         <h2 className="ssc-cta-h">Find out if AI can <em>trust</em> your business.</h2>
         <a className="ssc-cta-btn" href="#pulse">▸ Get My Free Signal Pulse™</a>
-        <div className="ssc-cta-fine">Preview only. Full Signal Score™ requires manual verification.</div>
+        <div className="ssc-cta-fine">Instant preview. Your full Signal Score™ is human-verified — on request.</div>
+      </section>
+
+      {/* ── FULL EXPERIENCE — bridge to the main Signal Flair site ── */}
+      <section className="ssc-full">
+        <span className="ssc-kicker">The full experience</span>
+        <h2 className="ssc-full-h">A pulse is just the <em>first signal.</em></h2>
+        <p className="ssc-full-p">You’ve felt the Pulse. Now see the whole system — the six-layer Signal Protocol™, Case Zero, pricing, and exactly how Signal Flair makes your business findable, readable, and recommendable by AI.</p>
+        <a className="ssc-full-btn" href="/">▸ Explore the full Signal Flair →</a>
       </section>
 
       <footer className="ssc-foot">

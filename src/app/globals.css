@@ -1199,7 +1199,7 @@ footer{background:var(--ink2);border-top:1px solid var(--ink);padding:52px;posit
 .ssc-bg{position:fixed;inset:0;z-index:0;pointer-events:none;background-image:radial-gradient(rgba(255,255,255,.05) 1px,transparent 1px);background-size:26px 26px;-webkit-mask-image:radial-gradient(130% 90% at 50% 0%,#000 26%,transparent 78%);mask-image:radial-gradient(130% 90% at 50% 0%,#000 26%,transparent 78%)}
 .ssc-scanline{position:fixed;left:0;right:0;top:0;height:190px;z-index:0;pointer-events:none;opacity:.85;background:linear-gradient(180deg,transparent,rgba(0,210,191,.05) 46%,rgba(0,210,191,.13) 50%,rgba(0,210,191,.05) 54%,transparent);animation:ssc-scan 8.5s linear infinite}
 @keyframes ssc-scan{0%{transform:translateY(-200px)}100%{transform:translateY(100vh)}}
-.ssc-nav,.ssc-hero,.ssc-section,.ssc-band,.ssc-cta,.ssc-foot{position:relative;z-index:1}
+.ssc-nav,.ssc-hero,.ssc-section,.ssc-band,.ssc-cta,.ssc-full,.ssc-foot{position:relative;z-index:1}
 
 /* — nav (sticky) — */
 .ssc-nav{display:flex;align-items:center;justify-content:space-between;gap:16px;padding:14px 40px;border-bottom:1px solid rgba(255,255,255,.08);position:sticky;top:0;background:rgba(6,9,15,.72);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);z-index:50}
@@ -1361,6 +1361,14 @@ footer{background:var(--ink2);border-top:1px solid var(--ink);padding:52px;posit
 .ssc-cta-btn{position:relative;z-index:1;display:inline-block;font-family:var(--signal);font-weight:700;font-size:14px;letter-spacing:.1em;text-transform:uppercase;color:#04060a;background:linear-gradient(180deg,#2ff0dd,#00b8a9);border-radius:9px;padding:18px 40px;text-decoration:none;box-shadow:0 14px 40px rgba(0,210,191,.34)}
 .ssc-cta-btn:hover{filter:brightness(1.08)}
 .ssc-cta-fine{position:relative;z-index:1;margin-top:16px;font-size:11px;color:rgba(248,241,231,.46)}
+
+/* — full-experience bridge to the main site — */
+.ssc-full{text-align:center;padding:72px 24px 80px;border-top:1px solid rgba(255,255,255,.06)}
+.ssc-full-h{font-family:var(--flair);font-variation-settings:'opsz' 120,'wght' 500,'WONK' 1;font-size:clamp(28px,4vw,46px);line-height:1.04;color:var(--bone);margin:12px auto 14px;max-width:640px}
+.ssc-full-h em{font-family:var(--italic);font-style:italic;background:linear-gradient(100deg,#4df3e6,#ffe23a 40%,#ff8a3d 70%,#ff3d82);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;color:transparent}
+.ssc-full-p{font-family:var(--signal);font-size:13px;line-height:1.75;color:rgba(248,241,231,.64);max-width:560px;margin:0 auto 26px}
+.ssc-full-btn{display:inline-block;font-family:var(--signal);font-weight:700;font-size:13px;letter-spacing:.1em;text-transform:uppercase;color:var(--bone);text-decoration:none;border:1px solid rgba(255,255,255,.22);border-radius:100px;padding:15px 32px;background:rgba(255,255,255,.04);transition:.18s;box-shadow:inset 0 1px 0 rgba(255,255,255,.08)}
+.ssc-full-btn:hover{border-color:rgba(0,210,191,.5);background:rgba(0,210,191,.08);color:var(--sig-cyan);box-shadow:0 0 34px rgba(0,210,191,.22)}
 
 /* — footer — */
 .ssc-foot{text-align:center;padding:34px 24px;border-top:1px solid rgba(255,255,255,.08);font-size:10.5px;letter-spacing:.06em;line-height:1.9;color:rgba(248,241,231,.42)}
