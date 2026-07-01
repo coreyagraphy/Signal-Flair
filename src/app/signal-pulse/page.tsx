@@ -7,7 +7,7 @@ import BrandBgVideo from '@/components/BrandBgVideo'
 export const metadata: Metadata = {
   title: 'Free Signal Pulse™ | Signal Flair',
   description:
-    'Get a free Signal Pulse™ — a quick preview of your website’s AI readiness. Enter your website and email; a reviewer emails your results. Full Signal Score™ requires manual verification.',
+    'Get a free Signal Pulse™ — see your website’s AI-readiness score in seconds. The full Signal Score™ is a human-verified review across all six Signal Protocol™ layers.',
   alternates: { canonical: 'https://www.signalflair.ai/signal-pulse/' },
   openGraph: {
     title: 'Get a Free Signal Pulse™ | Signal Flair',
@@ -62,7 +62,7 @@ const jsonLd = {
       serviceType: 'AI readiness preview',
       name: 'Signal Pulse™ — quick AI-readiness preview',
       description:
-        'A free Signal Pulse™: a quick, human-reviewed preview of a website’s AI-readiness signals — access, structure, trust, and answers — as the entry point to the full verified Signal Score™.',
+        'A free Signal Pulse™: an instant, automated preview of a website’s AI-readiness signals — access, structure, trust, and answers — the entry point to the full human-verified Signal Score™.',
       provider: { '@id': 'https://signalflair.ai/#org' },
       areaServed: { '@type': 'Country', name: 'United States' },
       offers: { '@type': 'Offer', price: '0', priceCurrency: 'USD', name: 'Free Signal Pulse™' },
@@ -99,7 +99,7 @@ export default function SignalPulsePage() {
           <SignalPulseForm />
 
           <p className="ssc-boundary">
-            Signal Pulse™ is a quick preview. Your full <strong>Signal Score™</strong> requires manual verification.
+            Signal Pulse™ is an instant preview. Your full <strong>Signal Score™</strong> is human-verified — on request.
           </p>
           <div className="ssc-hero-links"><a href="/proof/">▸ See Case Zero!</a></div>
         </div>
@@ -169,27 +169,27 @@ export default function SignalPulsePage() {
         </div>
       </section>
 
-      {/* ── WHAT HAPPENS NEXT (delivery is explicit here) ── */}
+      {/* ── HOW IT WORKS — instant Pulse, then opt-in Score ── */}
       <section className="ssc-section">
         <div className="ssc-sec-head">
           <span className="ssc-kicker">How it works</span>
-          <h2 className="ssc-h2">How you get your <em>Signal Pulse™</em></h2>
+          <h2 className="ssc-h2">Instant <em>Pulse.</em> Verified <em className="ssc-em-pink">Score.</em></h2>
         </div>
         <div className="ssc-steps">
           <div className="ssc-step">
-            <div className="ssc-step-n">01</div>
+            <div className="ssc-step-n" style={{ color: '#00d2bf' }}>01</div>
             <span className="ssc-step-t">Enter your website</span>
-            <div className="ssc-step-d">Your URL and email — that’s the whole ask.</div>
+            <div className="ssc-step-d">Your URL and email. That’s the whole ask.</div>
           </div>
           <div className="ssc-step">
-            <div className="ssc-step-n">02</div>
-            <span className="ssc-step-t">We review + email it back</span>
-            <div className="ssc-step-d">A real reviewer checks your first AI-readiness signals and emails your Signal Pulse™ — typically within 24 hours. No automated black-box score.</div>
+            <div className="ssc-step-n" style={{ color: '#ffe23a' }}>02</div>
+            <span className="ssc-step-t">See your Signal Pulse™ — instantly</span>
+            <div className="ssc-step-d">Your automated AI-readiness score appears on the gauge in seconds — access, structure, trust, and answers.</div>
           </div>
           <div className="ssc-step">
-            <div className="ssc-step-n">03</div>
-            <span className="ssc-step-t">Move into full verification</span>
-            <div className="ssc-step-d">If it fits, we recommend a full Signal Score™ review, a Foundation Build, or Stay Found™ maintenance.</div>
+            <div className="ssc-step-n" style={{ color: '#ff3d82' }}>03</div>
+            <span className="ssc-step-t">Opt in for your full Signal Score™</span>
+            <div className="ssc-step-d">Want the complete picture? The Signal Score™ is a human-verified measurement across all six layers, plus live AI-visibility tests. A real review — on request.</div>
           </div>
         </div>
       </section>
@@ -197,9 +197,9 @@ export default function SignalPulsePage() {
       {/* ── FINE PRINT + DISCLAIMER ── */}
       <section className="ssc-section ssc-fine">
         <p className="ssc-p">
-          Start with a free Signal Pulse™. Full Signal Score™ reviews and implementation options are recommended
-          after your preview. The Foundation Build starts at $3,500 for businesses ready to turn findings into
-          working AI Proof Infrastructure™.
+          Start with a free, instant Signal Pulse™. A full Signal Score™ review and implementation options come
+          next — when you’re ready. The Foundation Build starts at $3,500 for businesses ready to turn findings
+          into working AI Proof Infrastructure™.
         </p>
         <p className="ssc-disclaimer">
           Signal Flair does not guarantee rankings, leads, revenue, citations, recommendations, inclusion, or AI

@@ -39,6 +39,7 @@ export default function SignalPulseForm() {
   const [fieldErrors, setFieldErrors] = useState<{ website_url?: string; email?: string }>({})
   const [result, setResult] = useState<PulseData | null>(null)
   const [email, setEmail] = useState('')
+  const [websiteVal, setWebsiteVal] = useState('')
   const [scanDomain, setScanDomain] = useState('')
 
   const handleSubmit = useCallback(async (e: React.FormEvent<HTMLFormElement>) => {
@@ -73,6 +74,7 @@ export default function SignalPulseForm() {
     payload.submitted_at = new Date().toISOString()
 
     setEmail(emailVal)
+    setWebsiteVal(website)
     try { setScanDomain(new URL(/^https?:\/\//i.test(website) ? website : 'https://' + website).hostname) } catch { setScanDomain(website) }
     setPhase('scanning')
 
@@ -111,7 +113,7 @@ export default function SignalPulseForm() {
         <form ref={formRef} noValidate onSubmit={handleSubmit}>
           <div className="ssc-form-head">
             <span className="ssc-form-badge"><span className="ssc-dot" aria-hidden="true" />Signal Pulse™</span>
-            <span className="ssc-form-sub">Enter your website and email — we scan your live AI-readiness signals and show your results in seconds. Your full Signal Score™ follows by email.</span>
+            <span className="ssc-form-sub">Enter your website and email — your Signal Pulse™ score appears in seconds. The full, human-verified Signal Score™ is an optional next step.</span>
           </div>
           <div className="ssc-field">
             <label className="ssc-label" htmlFor="sp-url">Website URL<span className="ssc-req">*</span></label>
@@ -134,7 +136,7 @@ export default function SignalPulseForm() {
           <input type="hidden" name="utm_campaign" defaultValue="" />
           <div className="ssc-formerr" aria-live="assertive">{formError}</div>
           <button type="submit" className="ssc-submit">▸ Get My Signal Pulse™</button>
-          <div className="ssc-micro">No credit card. No spam. Signal Pulse™ is a quick preview — your full Signal Score™ is verified across all six Signal Protocol™ layers.</div>
+          <div className="ssc-micro">No credit card. No spam. Signal Pulse™ is an instant preview — your full Signal Score™ is human-verified across all six Signal Protocol™ layers.</div>
         </form>
       )}
 
@@ -152,7 +154,7 @@ export default function SignalPulseForm() {
         </div>
       )}
 
-      {phase === 'result' && result && <PulseResult data={result} email={email} />}
+      {phase === 'result' && result && <PulseResult data={result} email={email} website={websiteVal} />}
 
       {phase === 'sent' && (
         <div className="ssc-success" role="status" aria-live="polite">
@@ -166,10 +168,33 @@ export default function SignalPulseForm() {
   )
 }
 
-function PulseResult({ data, email }: { data: PulseData; email: string }) {
+function PulseResult({ data, email, website }: { data: PulseData; email: string; website: string }) {
   const [n, setN] = useState(0)
   const [armed, setArmed] = useState(false)
+  const [optState, setOptState] = useState<'idle' | 'sending' | 'done'>('idle')
   const pulse = data.pulse
+
+  // Opt-in for the full (human-verified) Signal Score™ conversation — a separate, tagged
+  // signal to GHL, distinct from the instant automated Pulse they already have.
+  const optIn = async () => {
+    setOptState('sending')
+    try {
+      if (FALLBACK_WEBHOOK) {
+        const ctrl = new AbortController()
+        const t = setTimeout(() => ctrl.abort(), 10000)
+        await fetch(FALLBACK_WEBHOOK, {
+          method: 'POST', headers: { 'Content-Type': 'application/json' }, signal: ctrl.signal,
+          body: JSON.stringify({
+            website_url: website, email,
+            source: 'signal-pulse-optin', full_score_optin: 'yes', preview_type: 'signal-pulse',
+            lead_tag: 'Signal Score Optin', signal_pulse_score: data.pulse, submitted_at: new Date().toISOString(),
+          }),
+        }).finally(() => clearTimeout(t))
+      }
+      track('signal_score_optin', { form_id: 'signal-pulse', pulse: data.pulse })
+    } catch { /* best effort */ }
+    setOptState('done')
+  }
 
   useEffect(() => {
     setArmed(true)
@@ -220,11 +245,25 @@ function PulseResult({ data, email }: { data: PulseData; email: string }) {
             : 'We couldn’t fully reach your site, so this is a partial read — we’ll verify it by hand.'}
         </div>
       )}
-      <div className="ssc-result-cta">
-        This is your quick <strong>Signal Pulse™</strong>. Your full <strong>Signal Score™</strong> — including live
-        AI-visibility tests across ChatGPT, Claude, Perplexity &amp; Gemini — is on its way to <strong>{email}</strong>.
-      </div>
-      <a className="ssc-success-link" href="/proof/">See how the full Signal Score™ works →</a>
+      {optState !== 'done' ? (
+        <>
+          <div className="ssc-result-cta">
+            That’s your instant <strong>Signal Pulse™</strong> — an automated read of your first four signals. The
+            full <strong>Signal Score™</strong> goes deeper: human-verified across all six Signal Protocol™ layers,
+            plus live AI-visibility tests across ChatGPT, Claude, Perplexity &amp; Gemini.
+          </div>
+          <button className="ssc-result-optin" onClick={optIn} disabled={optState === 'sending'}>
+            {optState === 'sending' ? 'Sending…' : '▸ Yes — send me my full Signal Score™'}
+          </button>
+          <div className="ssc-result-fine">A real review, on request. No obligation.</div>
+        </>
+      ) : (
+        <>
+          <div className="ssc-result-done-h">You’re on the list.</div>
+          <div className="ssc-result-cta">Signal Flair will reach out to <strong>{email}</strong> to set up your full Signal Score™ review.</div>
+          <a className="ssc-success-link" href="/proof/">See Case Zero — our own 18/100 baseline →</a>
+        </>
+      )}
     </div>
   )
 }
