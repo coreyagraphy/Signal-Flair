@@ -1236,10 +1236,12 @@ footer{background:var(--ink2);border-top:1px solid var(--ink);padding:52px;posit
 
 /* — scan console (SignalScanForm) — */
 @property --ssc-angle{syntax:'<angle>';initial-value:0deg;inherits:false}
-.ssc-form{position:relative;isolation:isolate;width:100%;max-width:448px;margin:30px auto 0;text-align:left;background:linear-gradient(180deg,rgba(255,255,255,.055),rgba(255,255,255,.018));border:1px solid rgba(0,210,191,.2);border-radius:16px;padding:24px 24px 26px;backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);box-shadow:0 30px 80px rgba(0,0,0,.5),0 0 44px rgba(0,210,191,.08),inset 0 1px 0 rgba(255,255,255,.08)}
-/* light trace running around the card border */
-.ssc-form::before{content:'';position:absolute;inset:0;border-radius:inherit;padding:1.5px;background:conic-gradient(from var(--ssc-angle),transparent 0deg,transparent 232deg,rgba(0,210,191,.12) 288deg,var(--sig-teal) 336deg,#eafffb 352deg,var(--sig-cyan) 360deg);-webkit-mask:linear-gradient(#000 0 0) content-box,linear-gradient(#000 0 0);-webkit-mask-composite:xor;mask-composite:exclude;pointer-events:none;z-index:1;filter:drop-shadow(0 0 6px rgba(0,210,191,.55));animation:ssc-trace 4.5s linear infinite}
+.ssc-form{position:relative;isolation:isolate;width:100%;max-width:448px;margin:30px auto 0;text-align:left;background:linear-gradient(180deg,rgba(255,255,255,.055),rgba(255,255,255,.018));border:1px solid rgba(255,255,255,.06);border-radius:16px;padding:24px 24px 26px;backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);box-shadow:0 30px 80px rgba(0,0,0,.5),0 0 44px rgba(0,210,191,.08),inset 0 1px 0 rgba(255,255,255,.08)}
+/* multi-color ombre border that rotates + gently pulses (falls back to a static ombre ring
+   under prefers-reduced-motion or where @property is unsupported) */
+.ssc-form::before{content:'';position:absolute;inset:0;border-radius:inherit;padding:2px;background:conic-gradient(from var(--ssc-angle),#ff8a3d,#ffe23a 25%,#00d2bf 50%,#37c4ff 75%,#ff8a3d);-webkit-mask:linear-gradient(#000 0 0) content-box,linear-gradient(#000 0 0);-webkit-mask-composite:xor;mask-composite:exclude;pointer-events:none;z-index:1;filter:drop-shadow(0 0 6px rgba(0,210,191,.3));animation:ssc-trace 6s linear infinite,ssc-glowpulse 3.2s ease-in-out infinite}
 @keyframes ssc-trace{to{--ssc-angle:360deg}}
+@keyframes ssc-glowpulse{0%,100%{opacity:.82}50%{opacity:1}}
 .ssc-form-head{display:flex;flex-direction:column;gap:14px;margin-bottom:18px}
 .ssc-form-badge{align-self:flex-start;display:inline-flex;align-items:center;gap:11px;font-family:var(--signal);font-size:15px;font-weight:700;letter-spacing:.13em;text-transform:uppercase;color:var(--sig-cyan);border:1px solid rgba(0,210,191,.45);background:rgba(0,210,191,.1);padding:12px 22px;border-radius:100px;text-shadow:0 0 18px rgba(0,210,191,.5);animation:ssc-badge 3.6s ease-in-out infinite}
 .ssc-form-badge .ssc-dot{width:10px;height:10px}
