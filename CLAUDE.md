@@ -93,11 +93,19 @@ That was a bad Grok recommendation. Reject it if it appears anywhere.
 
 ## Pricing — do not change without Corey confirming
 
+**Updated 2026-07-03 (Corey-approved):** the recurring Stay Found™ tier was split into three
+sub-tiers to monetize the verified-proof differentiator. Foundation / Rebuild / Founding unchanged.
+The market anchors that justify this (managed AEO clears $2K–$8K/mo mid-market; the verified
+before/after proof artifact is an open lane no competitor ships) are documented in the Proof OS
+scale/moat research. Local-SMB ICP keeps the accessible $600 floor.
+
 | Tier | Score band | Price | Type |
 |---|---|---|---|
 | Build the Foundation | 0–54 | $3,500 | One-time |
 | Start the Rebuild | 55–74 | $1,500 | One-time |
-| Stay Found System | 75–100 | $600–$1,200/mo | Recurring |
+| Stay Found™ — Monitor | 75–100 | $600–$800/mo | Recurring — re-verification + drift monitoring + public change-log |
+| Stay Found™ — Proof | 75–100 | $1,200–$1,800/mo | Recurring — adds verified before/after proof record + quarterly guarantee-of-work report |
+| Stay Found™ — Multi | multi-location | $2,000–$3,000/mo | Recurring — full managed proof across multiple locations |
 | Founding Client | 0–54 | $1,750 (first 10 only) | One-time |
 
 Guarantee: delivery-based only. Never rankings, leads, or revenue.

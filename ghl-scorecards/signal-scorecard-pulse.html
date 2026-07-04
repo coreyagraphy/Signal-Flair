@@ -1,0 +1,151 @@
+<!--
+  SIGNAL PULSE™ SCORECARD — instant 4-signal preview (EMAIL-SAFE, GHL-ready)
+  --------------------------------------------------------------------------
+  Auto-populates from the LIVE signalflair.ai/pulse funnel. Same email-safe build
+  as the full scorecard (table-based, inline CSS, no head-styles/grid/SVG/webfonts).
+
+  Uses fields the /pulse function already pushes to the contact:
+        signal_pulse_score       (overall 0-100)          — already live
+        signal_pulse_access      Access     0-100         — added to payload 2026-07-01
+        signal_pulse_structure   Structure  0-100         — added to payload 2026-07-01
+        signal_pulse_trust       Trust      0-100         — added to payload 2026-07-01
+        signal_pulse_answers     Answers    0-100         — added to payload 2026-07-01
+     (company_name + website are standard GHL contact fields.)
+
+  Create those four custom fields in the CRM and map them in the Signal Pulse
+  workflow's Create Contact step (same place signal_pulse_score is mapped), then
+  paste this file into an Email Template's HTML view.
+
+  This is the PREVIEW (Signal Pulse™), not the full human-verified Signal Score™ —
+  the copy says so and points to the opt-in. Never overstate it.
+-->
+<table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0" bgcolor="#f4f6f5" style="border-collapse:collapse;background:#f4f6f5;margin:0;padding:0;">
+  <tr>
+    <td align="center" style="padding:24px 12px;">
+
+      <!-- CARD -->
+      <table role="presentation" width="600" cellpadding="0" cellspacing="0" border="0" style="border-collapse:collapse;width:600px;max-width:600px;background:#ffffff;border:1px solid #e3e8e6;border-radius:14px;overflow:hidden;">
+
+        <!-- HEADER -->
+        <tr>
+          <td bgcolor="#0e1413" style="background:#0e1413;padding:26px 28px 22px;">
+            <div style="font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Helvetica,Arial,sans-serif;font-size:11px;letter-spacing:2px;text-transform:uppercase;color:#9fb4b0;font-weight:700;">Signal Pulse&#8482; &middot; Instant Preview</div>
+            <div style="font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Helvetica,Arial,sans-serif;font-size:24px;line-height:1.2;color:#ffffff;font-weight:800;margin-top:10px;">{{contact.company_name}}</div>
+            <div style="font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Helvetica,Arial,sans-serif;font-size:13px;color:#bcd3cf;margin-top:4px;">{{contact.website}}</div>
+          </td>
+        </tr>
+
+        <!-- SCORE HERO -->
+        <tr>
+          <td align="center" style="padding:26px 28px 6px;">
+            <div style="font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Helvetica,Arial,sans-serif;font-size:48px;line-height:1;color:#0d9488;font-weight:800;">{{contact.signal_pulse_score}}<span style="font-size:20px;color:#5b6b68;font-weight:600;">/100</span></div>
+            <div style="font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Helvetica,Arial,sans-serif;font-size:12px;letter-spacing:1.5px;text-transform:uppercase;color:#0e1413;font-weight:700;margin-top:10px;">Signal Pulse&#8482;</div>
+            <div style="font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Helvetica,Arial,sans-serif;font-size:12px;color:#5b6b68;margin-top:4px;">An instant, automated read of your first AI-readiness signals</div>
+          </td>
+        </tr>
+
+        <!-- SIGNALS -->
+        <tr>
+          <td style="padding:20px 28px 8px;">
+
+            <!-- Access -->
+            <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0" style="border-collapse:collapse;">
+              <tr>
+                <td style="font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Helvetica,Arial,sans-serif;font-size:14px;color:#0e1413;font-weight:600;">Access</td>
+                <td align="right" style="font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Helvetica,Arial,sans-serif;font-size:14px;color:#0d9488;font-weight:700;">{{contact.signal_pulse_access}}<span style="color:#5b6b68;font-weight:400;">/100</span></td>
+              </tr>
+            </table>
+            <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0" bgcolor="#e3e8e6" style="border-collapse:collapse;background:#e3e8e6;border-radius:6px;margin:6px 0 16px;">
+              <tr>
+                <td width="{{contact.signal_pulse_access}}%" height="8" bgcolor="#0d9488" style="height:8px;line-height:8px;font-size:0;background:#0d9488;border-radius:6px;">&nbsp;</td>
+                <td height="8" style="height:8px;line-height:8px;font-size:0;">&nbsp;</td>
+              </tr>
+            </table>
+
+            <!-- Structure -->
+            <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0" style="border-collapse:collapse;">
+              <tr>
+                <td style="font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Helvetica,Arial,sans-serif;font-size:14px;color:#0e1413;font-weight:600;">Structure</td>
+                <td align="right" style="font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Helvetica,Arial,sans-serif;font-size:14px;color:#0d9488;font-weight:700;">{{contact.signal_pulse_structure}}<span style="color:#5b6b68;font-weight:400;">/100</span></td>
+              </tr>
+            </table>
+            <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0" bgcolor="#e3e8e6" style="border-collapse:collapse;background:#e3e8e6;border-radius:6px;margin:6px 0 16px;">
+              <tr>
+                <td width="{{contact.signal_pulse_structure}}%" height="8" bgcolor="#0d9488" style="height:8px;line-height:8px;font-size:0;background:#0d9488;border-radius:6px;">&nbsp;</td>
+                <td height="8" style="height:8px;line-height:8px;font-size:0;">&nbsp;</td>
+              </tr>
+            </table>
+
+            <!-- Trust -->
+            <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0" style="border-collapse:collapse;">
+              <tr>
+                <td style="font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Helvetica,Arial,sans-serif;font-size:14px;color:#0e1413;font-weight:600;">Trust</td>
+                <td align="right" style="font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Helvetica,Arial,sans-serif;font-size:14px;color:#0d9488;font-weight:700;">{{contact.signal_pulse_trust}}<span style="color:#5b6b68;font-weight:400;">/100</span></td>
+              </tr>
+            </table>
+            <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0" bgcolor="#e3e8e6" style="border-collapse:collapse;background:#e3e8e6;border-radius:6px;margin:6px 0 16px;">
+              <tr>
+                <td width="{{contact.signal_pulse_trust}}%" height="8" bgcolor="#0d9488" style="height:8px;line-height:8px;font-size:0;background:#0d9488;border-radius:6px;">&nbsp;</td>
+                <td height="8" style="height:8px;line-height:8px;font-size:0;">&nbsp;</td>
+              </tr>
+            </table>
+
+            <!-- Answers -->
+            <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0" style="border-collapse:collapse;">
+              <tr>
+                <td style="font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Helvetica,Arial,sans-serif;font-size:14px;color:#0e1413;font-weight:600;">Answers</td>
+                <td align="right" style="font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Helvetica,Arial,sans-serif;font-size:14px;color:#0d9488;font-weight:700;">{{contact.signal_pulse_answers}}<span style="color:#5b6b68;font-weight:400;">/100</span></td>
+              </tr>
+            </table>
+            <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0" bgcolor="#e3e8e6" style="border-collapse:collapse;background:#e3e8e6;border-radius:6px;margin:6px 0 4px;">
+              <tr>
+                <td width="{{contact.signal_pulse_answers}}%" height="8" bgcolor="#0d9488" style="height:8px;line-height:8px;font-size:0;background:#0d9488;border-radius:6px;">&nbsp;</td>
+                <td height="8" style="height:8px;line-height:8px;font-size:0;">&nbsp;</td>
+              </tr>
+            </table>
+
+          </td>
+        </tr>
+
+        <!-- PREVIEW NOTE -->
+        <tr>
+          <td style="padding:8px 28px 0;">
+            <div style="font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Helvetica,Arial,sans-serif;font-size:12px;color:#5b6b68;font-style:italic;line-height:1.6;">This is a Signal Pulse&#8482; &#8212; an instant, automated preview of the first four signals. The full <strong style="color:#0e1413;">Signal Score&#8482;</strong> measures all six layers of the Signal Protocol&#8482;, verified by hand.</div>
+          </td>
+        </tr>
+
+        <!-- CTA -->
+        <tr>
+          <td align="center" style="padding:20px 28px 24px;">
+            <table role="presentation" cellpadding="0" cellspacing="0" border="0" style="border-collapse:collapse;">
+              <tr>
+                <td align="center" bgcolor="#0d9488" style="background:#0d9488;border-radius:8px;">
+                  <a href="https://signalflair.ai/pulse" target="_blank" style="display:inline-block;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Helvetica,Arial,sans-serif;font-size:15px;font-weight:700;color:#ffffff;text-decoration:none;padding:13px 28px;">Get your full Signal Score&#8482; &#8594;</a>
+                </td>
+              </tr>
+            </table>
+          </td>
+        </tr>
+
+        <!-- SIGN-OFF -->
+        <tr>
+          <td align="center" bgcolor="#0e1413" style="background:#0e1413;padding:24px 20px;">
+            <div style="font-family:'Instrument Serif',Georgia,'Times New Roman',serif;font-style:italic;font-size:26px;color:#2fe3d3;">What&#8217;s your Signal Score?</div>
+          </td>
+        </tr>
+
+        <!-- FOOTNOTE + DISCLAIMER -->
+        <tr>
+          <td style="padding:18px 28px 22px;">
+            <div style="font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Helvetica,Arial,sans-serif;font-size:11px;color:#5b6b68;line-height:1.6;">Case Zero &#8212; Signal Flair scored its own site 18/100 on June&nbsp;6, 2026, published it, and rebuilt in public. That&#8217;s the proof.</div>
+            <div style="font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Helvetica,Arial,sans-serif;font-size:11px;color:#8a938f;line-height:1.6;margin-top:12px;">The Signal Pulse&#8482; and Signal Score&#8482; measure AI readiness and proof density. They are not a guarantee of rankings, citations, or AI recommendations.</div>
+            <div style="font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Helvetica,Arial,sans-serif;font-size:11px;color:#5b6b68;line-height:1.6;margin-top:12px;">&#8212; Corey Ellis, Signal Flair &middot; hello@signalflair.ai</div>
+          </td>
+        </tr>
+
+      </table>
+      <!-- /CARD -->
+
+    </td>
+  </tr>
+</table>

@@ -1055,7 +1055,7 @@ export default function SignalFlairLanding() {
             <div className="ph-step">
               <div className="ph-band">Score 0–54 · Invisible</div>
               <div className="ph-offer">Build the Foundation</div>
-              <div className="ph-what">The full machine-readable build — <strong>plus your own AI-optimized landing page.</strong></div>
+              <div className="ph-what">The full machine-readable build — <strong>plus your own Smart Site™.</strong></div>
             </div>
             <div className="ph-step">
               <div className="ph-band">Score 55–74 · Partial</div>
@@ -1065,7 +1065,7 @@ export default function SignalFlairLanding() {
             <div className="ph-step">
               <div className="ph-band">Score 75–100 · Visible</div>
               <div className="ph-offer">Stay Found™</div>
-              <div className="ph-what">Ongoing proof maintenance and monitoring as AI shifts.</div>
+              <div className="ph-what">Ongoing monitoring and proof maintenance as AI shifts — three tiers, from $600/mo.</div>
             </div>
           </div>
           <div className="ph-note">Foundation &amp; Rebuild are <strong>one-time builds</strong> — you keep everything, even if you cancel. <strong>Stay Found™</strong> is the ongoing maintenance layer for businesses already visible. Most start with a free Field Report, then begin at the band it lands in.</div>
@@ -1076,13 +1076,19 @@ export default function SignalFlairLanding() {
           <div className="pa-anchor">The Foundation Build is $3,500. Once.</div>
           <div className="pa-foot">You keep everything we build, even if you cancel.</div>
         </div>
+        {/* ── BLOCK ① — Get Found (one-time build, score-gated) ── */}
+        <div className="price-block reveal">
+          <div className="pb-eyebrow">Step <span className="pb-num">①</span> — Get Found</div>
+          <div className="pb-lede">A one-time build. Your free <em>Field Report</em> sets your score; your score sets your price. You keep everything, even if you cancel.</div>
+        </div>
         <div className="price-feat">
           <div className="pf-left">
             <div className="pf-tag">Signal Proof Layer™ · Foundation Build</div>
             <div className="pf-name">Build the Foundation</div>
             <div className="pf-ideal">For the invisible — businesses scoring 0–54 with no AI footprint. The full infrastructure generative engines need to find, read, and recommend you. Built in 7–14 days.</div>
             <div className="pf-amount">$3,500</div>
-            <div className="pf-cadence">one-time build · CRM access optional</div>
+            <div className="pf-cadence">one-time build · score 0–54</div>
+            <div className="pf-onceline">One payment. Everything we build is deployed to <strong>your own site and domain</strong> — so it&apos;s yours to keep forever, even if you never work with us again. <span className="pf-once-sep">Live services — your CRM, monitoring, and fresh content — are Stay Found, below.</span></div>
             <a className="pf-btn" href="#cta">▸ Build the Foundation</a>
           </div>
           <div className="pf-right">
@@ -1093,9 +1099,10 @@ export default function SignalFlairLanding() {
               <div className="pf-item pf-lock">AI-readable trust layer + your live /proof/ page</div>
               <div className="pf-item">Full AI Visibility Audit — 5 engines (ChatGPT, Claude, Perplexity, Gemini, Google AI)</div>
               <div className="pf-item">llms.txt written and deployed</div>
-              <div className="pf-item">Schema markup installed — Org + LocalBusiness + more</div>
+              <div className="pf-item">Semantic Schema Architecture installed — Org + LocalBusiness + more</div>
               <div className="pf-item">AI crawlers unblocked — robots.txt fixed</div>
-              <div className="pf-item">1 AI-optimized landing page</div>
+              <div className="pf-item">Smart Site™ — your AI-optimized page, deployed to your own domain</div>
+              <div className="pf-item pf-lock">Mindcast Command — set up &amp; connected during your build <em>(ongoing CRM access continues on Stay Found)</em></div>
               <div className="pf-item">Entity clarity cleanup across data sources</div>
               <div className="pf-item">5 priority citation submissions</div>
               <div className="pf-item">90-Day AI Action Plan</div>
@@ -1103,41 +1110,86 @@ export default function SignalFlairLanding() {
             </div>
           </div>
         </div>
-        <div className="price-small">
-          <div className="psc">
+        <div className="price-small price-rebuild">
+          <div className="psc psc-rebuild">
             <div className="psc-name">Start the Rebuild</div>
             <div className="psc-ideal">For the partially visible — businesses with a foundation that needs sharpening. The core fixes that move your score fastest.</div>
             <div className="psc-price">$1,500</div>
-            <div className="psc-cad">one-time rebuild · CRM access included</div>
+            <div className="psc-cad">one-time rebuild · score 55–74</div>
             <div className="psc-items">
               <div className="psci psci-lock">Signal Proof Page™ deployed</div>
               <div className="psci psci-lock">Verified business record alignment</div>
               <div className="psci">Full AI Visibility Audit — 5 engines</div>
               <div className="psci">llms.txt written and deployed</div>
-              <div className="psci">Core schema markup installed</div>
+              <div className="psci">Semantic Schema Architecture installed (Org + LocalBusiness)</div>
               <div className="psci">AI crawlers unblocked — robots.txt fixed</div>
               <div className="psci">Priority citation submissions</div>
               <div className="psci">90-Day AI Action Plan</div>
-              <div className="psci">CRM access included</div>
             </div>
             <a className="psc-btn" href="#cta">▸ Start the Rebuild</a>
           </div>
-          <div className="psc">
-            <div className="psc-name">Stay Found™</div>
-            <div className="psc-ideal">For the AI-ready — businesses already visible who refuse to fall behind. Visibility compounds, so we work in seasons, not one-offs.</div>
-            <div className="psc-price">$600–$1,200<span style={{ fontSize: '0.4em' }}>/mo</span></div>
-            <div className="psc-cad">monthly · longer commitment, lower rate · CRM access included</div>
+        </div>
+
+        {/* ── BLOCK ② — Stay Found (monthly, good-better-best) ── */}
+        <div className="price-block reveal">
+          <div className="pb-eyebrow">Step <span className="pb-num">②</span> — Stay Found</div>
+          <div className="pb-lede">AI search shifts every month — so this is the <em>live layer:</em> your CRM, fresh content, and ongoing proof. For businesses already visible (score 75–100). Pick your level.</div>
+        </div>
+        <div className="price-stay">
+          <div className="psc sf-monitor">
+            <div className="psc-tier">Essential</div>
+            <div className="psc-name">Monitor</div>
+            <div className="psc-ideal">Keep your signal alive. Monthly re-verification so you never quietly drift back into invisibility.</div>
+            <div className="psc-price">$600–$800<span className="psc-per">/mo</span></div>
+            <div className="psc-cad">monthly · entry tier · lowest rate on a longer term</div>
             <div className="psc-items">
-              <div className="psci psci-lock">Monthly Stay Found™ re-verification + signal-drift monitoring</div>
-              <div className="psci psci-lock">Public change-log maintained — Verified by Signal Flair™</div>
-              <div className="psci psci-lock">Freshness updates + citation-share movement report</div>
-              <div className="psci">Monthly AI visibility scan — every major engine</div>
-              <div className="psci">Ongoing citation growth + schema &amp; llms.txt updates</div>
-              <div className="psci">AI crawler monitoring · CRM access included</div>
+              <div className="psci">Monthly Stay Found™ re-verification</div>
+              <div className="psci">Signal-drift monitoring</div>
+              <div className="psci">Public change-log — Verified by Signal Flair™</div>
+              <div className="psci">Monthly AI-visibility scan across major engines</div>
+              <div className="psci">Ongoing citation growth + schema / llms.txt updates</div>
+              <div className="psci">AI crawler monitoring</div>
+              <div className="psci">Mindcast Command — ongoing</div>
             </div>
-            <a className="psc-btn" href="#cta">▸ Stay Found</a>
+            <a className="psc-btn" href="#cta">▸ Choose Monitor</a>
+          </div>
+          <div className="psc sf-proof">
+            <div className="psc-badge">Most chosen</div>
+            <div className="psc-tier">Signature</div>
+            <div className="psc-name">Proof</div>
+            <div className="psc-ideal">The best value — the only tier that adds both the verified proof record <em>and</em> the Content Engine. AI engines cite fresh, evidence-dense pages, so ongoing content is how you stay cited.</div>
+            <div className="psc-price">$1,200–$1,800<span className="psc-per">/mo</span></div>
+            <div className="psc-cad">monthly · recommended · most-picked tier</div>
+            <div className="psc-items">
+              <div className="psci psci-lock">Everything in Monitor</div>
+              <div className="psci psci-lock"><strong>Verified before/after proof record</strong></div>
+              <div className="psci psci-lock"><span className="psci-body"><strong className="psci-title">Content Engine™ — by HyperForge</strong>Every month, published for you: 1 AEO-optimized blog · ready-to-post social carousels · niche-optimized branded graphics · one 30-second commercial <em>or</em> two UGC videos.</span></div>
+              <div className="psci psci-lock"><strong>Quarterly guarantee-of-work report</strong></div>
+              <div className="psci">Monthly AI-visibility scan across major engines</div>
+              <div className="psci">Ongoing citation growth + schema / llms.txt updates</div>
+              <div className="psci">AI crawler monitoring</div>
+              <div className="psci">Mindcast Command — ongoing</div>
+            </div>
+            <a className="psc-btn" href="#cta">▸ Choose Proof</a>
+          </div>
+          <div className="psc sf-multi">
+            <div className="psc-tier">Full-Scale</div>
+            <div className="psc-name">Multi</div>
+            <div className="psc-ideal">Everything in Signature across every location — plus more content. For multi-site businesses that need one signal, everywhere.</div>
+            <div className="psc-price">$2,000–$3,000<span className="psc-per">/mo</span></div>
+            <div className="psc-cad">monthly · multi-location</div>
+            <div className="psc-items">
+              <div className="psci psci-lock">Everything in Proof — every location</div>
+              <div className="psci psci-lock"><span className="psci-body"><strong className="psci-title">Content Engine™ — by HyperForge</strong>Expanded output across every location: more AEO blogs · carousels · niche-optimized branded graphics · monthly commercials <em>or</em> UGC videos — published for you.</span></div>
+              <div className="psci">Per-location AI-visibility scans</div>
+              <div className="psci">Consolidated proof reporting</div>
+              <div className="psci">Mindcast Command — ongoing</div>
+              <div className="psci">Priority support</div>
+            </div>
+            <a className="psc-btn" href="#cta">▸ Choose Multi</a>
           </div>
         </div>
+
         <div className="price-guarantee">Guarantee: <em>Delivery-based only</em> — never rankings, leads, or revenue. You keep everything built, even if you cancel.</div>
       </section>
 
@@ -1330,7 +1382,7 @@ export default function SignalFlairLanding() {
         <div className="mvb-rule" />
         <div className="mvb-inner">
           <div className="mvb-head">AI found you. Now make them stay.</div>
-          <div className="mvb-body">Signal Flair gets you found. What happens when they land is a different conversation — and a different brand. Cinematic campaigns, UGC creative, and AI-generated content live at Mental Vision.</div>
+          <div className="mvb-body">Signal Flair gets you found. When you&apos;re ready for the big swing — full cinematic campaigns, brand films, and premium AI-generated content — that&apos;s <strong>Mental Vision</strong>, our parent studio.</div>
           <a className="mvb-cta" href="https://mentalvision.ai" target="_blank" rel="noopener noreferrer">→ See what Mental Vision builds</a>
         </div>
         <div className="mvb-rule" />

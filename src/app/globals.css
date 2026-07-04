@@ -5,7 +5,7 @@
    Flair   = Fraunces (expressive editorial display)
    Accent  = Instrument Serif italic (the brand "flair" intervention)
    ════════════════════════════════════════════════════════════════════════ */
-@import url('https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght,SOFT,WONK@0,9..144,300..900,0..100,0..1;1,9..144,300..900,0..100,0..1&family=Geist+Mono:wght@300;400;500;600;700&family=Instrument+Serif:ital@0;1&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght,SOFT,WONK@0,9..144,300..900,0..100,0..1;1,9..144,300..900,0..100,0..1&family=Geist+Mono:wght@300;400;500;600;700&family=Instrument+Serif:ital@0;1&family=Caveat:wght@500;600;700&display=swap');
 
 :root{
   /* Brief palette — constrained, high-tension */
@@ -466,9 +466,9 @@ nav#hnav{position:relative;z-index:10;display:flex;align-items:center;justify-co
 .pf-item.pf-lock{color:rgba(0,212,191,0.95)}
 .pf-item.pf-lock::before{content:'◆';color:var(--teal);font-weight:400}
 .psci.psci-lock{font-weight:600}
-.psci.psci-lock::before{content:'◆';font-weight:400}
-.psc:nth-child(1) .psci-lock::before{color:var(--orange2)}
-.psc:nth-child(2) .psci-lock::before{color:var(--teal)}
+.psci.psci-lock::before{content:'◆';font-weight:400;color:var(--teal)}
+.psc-rebuild .psci-lock::before{color:var(--orange2)}
+.sf-proof .psci-lock::before,.sf-multi .psci-lock::before{color:var(--teal)}
 
 /* Proof → /proof/ live-record link */
 .proof-live-link{position:relative;z-index:2;display:block;width:max-content;margin:22px auto 0;font-family:var(--signal);font-size:11px;letter-spacing:0.16em;text-transform:uppercase;color:var(--orange2);text-decoration:none;border-bottom:1px solid rgba(232,71,10,0.4);padding-bottom:3px;transition:color .2s,border-color .2s}
@@ -477,69 +477,145 @@ nav#hnav{position:relative;z-index:10;display:flex;align-items:center;justify-co
 /* ════════════════════════════════════════════════════════════
    PRICING — TRIAGE BAND REPORT PANELS
    ════════════════════════════════════════════════════════════ */
-#pricing{background:var(--paper)}
-.pricing-header{padding:84px 56px 0;max-width:1320px;margin:0 auto;display:flex;flex-direction:column;align-items:flex-start;gap:30px;overflow:hidden}
+#pricing{background:
+  radial-gradient(1100px 620px at 18% 8%, rgba(255,244,95,0.10), transparent 60%),
+  radial-gradient(1000px 640px at 82% 42%, rgba(0,184,169,0.10), transparent 62%),
+  radial-gradient(900px 560px at 50% 96%, rgba(255,90,31,0.08), transparent 60%),
+  var(--paper)}
+.pricing-header{padding:84px 56px 0;max-width:1320px;margin:0 auto;display:flex;flex-direction:column;align-items:flex-start;gap:30px;overflow:visible}
 /* "Three offers. One right fit." — editorial display headline (mirrors the hero); one gradient-glow italic accent + animated flare swoosh */
 .pricing-vw{font-family:var(--flair);font-variation-settings:'opsz' 144,'wght' 560,'WONK' 1;font-size:clamp(46px,8.4vw,132px);line-height:0.92;letter-spacing:-0.018em;color:var(--ink);width:100%;margin:0}
-.pv-fit{display:inline-block;position:relative;font-family:var(--italic);font-style:italic;font-weight:400;letter-spacing:0;background:linear-gradient(100deg,#ff5a1f 0%,#ff8a3d 26%,#fff45f 52%,#ff8a3d 74%,#ff5a1f 100%);background-size:230% auto;-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;color:transparent;filter:drop-shadow(0 3px 22px rgba(255,90,31,0.34));animation:pv-shimmer 5s linear infinite}
+.pv-fit{display:inline-block;position:relative;font-family:var(--italic);font-style:italic;font-weight:400;letter-spacing:0;line-height:1.24;padding:0.04em 0.32em 0.16em 0.05em;overflow:visible;background:linear-gradient(100deg,#e8480a 0%,#ff5a1f 35%,#ff8a3d 55%,#ff5a1f 80%,#e8480a 100%);background-size:180% 150%;background-position:0 center;-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;color:transparent;filter:drop-shadow(0 2px 12px rgba(255,90,31,0.26));animation:pv-shimmer 5s linear infinite}
 .pv-fit::after{content:'';position:absolute;left:0.05em;right:0.05em;bottom:0.02em;height:0.05em;background:linear-gradient(90deg,transparent 0%,#ff5a1f 22%,#fff45f 50%,#ff5a1f 78%,transparent 100%);border-radius:999px;filter:blur(0.4px);opacity:0.7;animation:pv-flare 5s ease-in-out infinite}
 @keyframes pv-shimmer{to{background-position:230% center}}
 @keyframes pv-flare{0%,100%{opacity:0.32;transform:scaleX(0.92)}50%{opacity:0.82;transform:scaleX(1)}}
 @media(prefers-reduced-motion:reduce){.pv-fit{animation:none}.pv-fit::after{animation:none;opacity:0.6}}
 .pricing-sub{font-family:var(--signal);font-size:14.5px;color:rgba(11,10,9,0.82);max-width:560px;text-align:left;margin:6px 0 0;line-height:1.75}
-.price-feat{margin:52px 56px 0;max-width:1320px;margin-left:auto;margin-right:auto;background:var(--ink);display:grid;grid-template-columns:360px 1fr;gap:0;align-items:start;border:1px solid var(--ink);border-top:4px solid var(--hot);transform-origin:top center}
+/* ════════════════════════════════════════════════════════════
+   OMBRE ILLUMINATED EDGES — teal → pink → orange glowing halo
+   A blurred conic-gradient pseudo-element sits behind each glass
+   card, bleeding past the rounded edge to read as a bold ombre
+   lit ring. Card body stays translucent glass w/ hairline border
+   so text keeps full contrast.
+   ════════════════════════════════════════════════════════════ */
+.price-feat,.psc{position:relative;isolation:isolate}
+/* Ombre removed — clean opaque cards with a subtle colored top accent + faint tint (per-tier rules below). */
+.price-feat::before,.psc::before,.price-feat::after,.psc::after{display:none}
+
+.price-feat{margin:34px 56px 0;max-width:1320px;margin-left:auto;margin-right:auto;
+  background:linear-gradient(180deg,rgba(16,14,13,0.985),rgba(11,10,9,0.99));
+  display:grid;grid-template-columns:360px 1fr;gap:0;align-items:start;
+  border:1px solid rgba(248,241,231,0.22);border-top:3px solid var(--teal);border-radius:16px;transform-origin:top center;
+  box-shadow:0 22px 60px rgba(11,10,9,0.4),inset 0 1px 0 rgba(255,255,255,0.14)}
+/* Foundation — full-spectrum ombre, teal-forward start */
+.price-feat::before{background:conic-gradient(from 200deg at 50% 50%,
+  #00b8a9 0deg,#00b8a9 80deg,#ff3d82 175deg,#ff5a1f 265deg,#00b8a9 360deg)}
 .pf-left{padding:48px 48px 48px 52px;border-right:1px solid rgba(248,241,231,0.16)}
 .pf-badge{display:inline-block;font-family:var(--signal);font-size:9px;font-weight:600;letter-spacing:0.16em;text-transform:uppercase;color:var(--ink);background:var(--hot);padding:6px 12px;margin-bottom:22px}
 .pf-tag{font-family:var(--signal);font-size:10px;color:rgba(248,241,231,0.5);letter-spacing:0.18em;text-transform:uppercase;margin-bottom:10px}
-.pf-name{font-family:var(--flair);font-variation-settings:'opsz' 100,'wght' 520,'WONK' 1;font-size:32px;color:var(--bone);margin-bottom:6px}
-.pf-ideal{font-family:var(--signal);font-size:11.5px;color:rgba(248,241,231,0.66);margin-bottom:30px;padding-bottom:26px;border-bottom:1px solid rgba(248,241,231,0.16);line-height:1.65}
+.pf-name{font-family:var(--flair);font-variation-settings:'opsz' 100,'wght' 520,'WONK' 1;font-size:38px;color:var(--bone);margin-bottom:6px;text-shadow:0 0 26px rgba(255,244,95,0.28)}
+.pf-ideal{font-family:var(--signal);font-size:15px;color:rgba(248,241,231,0.84);margin-bottom:30px;padding-bottom:26px;border-bottom:1px solid rgba(248,241,231,0.16);line-height:1.7}
 .pf-amount{font-family:var(--flair);font-variation-settings:'opsz' 144,'wght' 480,'WONK' 1;font-size:82px;color:var(--hot);line-height:0.85;display:block;margin-bottom:8px}
-.pf-cadence{font-family:var(--signal);font-size:9.5px;color:rgba(248,241,231,0.55);margin-bottom:32px;letter-spacing:0.04em}
+.pf-cadence{font-family:var(--signal);font-size:11.5px;color:rgba(248,241,231,0.6);margin-bottom:14px;letter-spacing:0.04em}
+.pf-onceline{font-family:var(--signal);font-size:14.5px;line-height:1.6;color:rgba(248,241,231,0.92);margin-bottom:26px;padding:13px 15px;border-radius:10px;border:1px solid rgba(0,184,169,0.34);background:linear-gradient(180deg,rgba(0,184,169,0.08),rgba(255,90,31,0.04));border-left:3px solid var(--teal)}
+.pf-onceline .pf-once-sep{display:block;margin-top:5px;color:rgba(248,241,231,0.6);font-size:12px}
 .pf-btn{display:block;font-family:var(--signal);font-weight:600;font-size:12px;letter-spacing:0.16em;text-transform:uppercase;padding:17px 24px;text-decoration:none;color:var(--ink);background:var(--hot);text-align:center;border:1px solid var(--hot);transition:.18s;
   box-shadow:0 6px 26px rgba(255,244,95,0.45),0 0 0 1px rgba(255,244,95,0.15)}
 .pf-btn:hover{background:transparent;color:var(--hot);box-shadow:0 10px 38px rgba(255,244,95,0.65),inset 0 0 18px rgba(255,244,95,0.2)}
 .pf-right{padding:48px 52px}
-.pf-desc{font-family:var(--signal);font-size:11px;color:rgba(248,241,231,0.62);line-height:1.85;margin-bottom:30px}
-.pf-items{display:grid;grid-template-columns:1fr 1fr;gap:13px 44px}
-.pf-item{font-family:var(--signal);font-size:10.5px;color:rgba(248,241,231,0.74);line-height:1.55;display:flex;gap:10px;align-items:flex-start}
+.pf-desc{font-family:var(--signal);font-size:15px;color:rgba(248,241,231,0.8);line-height:1.8;margin-bottom:30px}
+.pf-items{display:grid;grid-template-columns:1fr 1fr;gap:15px 44px}
+.pf-item{font-family:var(--signal);font-size:15.5px;color:rgba(248,241,231,0.9);line-height:1.6;display:flex;gap:10px;align-items:flex-start}
 .pf-item::before{content:'›';color:var(--hot);flex-shrink:0;font-weight:700}
-.price-small{max-width:1320px;margin:0 auto;display:grid;grid-template-columns:1fr 1fr;gap:0;border:1px solid var(--ink);border-top:none}
-.psc{padding:42px 48px 44px;display:flex;flex-direction:column;transform-origin:top center}
-.psc:first-child{border-right:1px solid var(--ink)}
-.psc:nth-child(1){border-top:4px solid var(--orange2);background:linear-gradient(180deg,rgba(255,90,31,0.16),rgba(255,90,31,0.06))}
-.psc:nth-child(2){border-top:4px solid var(--teal);background:linear-gradient(180deg,rgba(0,184,169,0.16),rgba(0,184,169,0.06))}
-.psc:nth-child(1) .psc-name{color:var(--orange2)}
-.psc:nth-child(2) .psc-name{color:#0a7d72}
+/* ── Block eyebrow / lede — the two step headers ── */
+.price-block{max-width:1320px;margin:56px auto 0;padding:0 56px}
+.pb-eyebrow{font-family:var(--signal);font-size:12px;font-weight:700;letter-spacing:0.2em;text-transform:uppercase;color:var(--orange2);display:flex;align-items:center;gap:10px;margin-bottom:14px}
+.pb-eyebrow::before{content:'';width:26px;height:1px;background:var(--orange)}
+.pb-num{font-family:var(--flair);font-variation-settings:'opsz' 72,'wght' 560,'WONK' 1;font-size:1.5em;color:var(--hot);letter-spacing:0;line-height:0;text-shadow:0 0 18px rgba(255,244,95,0.55)}
+.pb-lede{font-family:var(--flair);font-variation-settings:'opsz' 100,'wght' 470,'WONK' 1;font-size:clamp(20px,2.3vw,30px);line-height:1.28;color:var(--ink);max-width:820px}
+.pb-lede em{font-family:var(--italic);font-style:italic;color:var(--orange2)}
+
+/* ── Recurring / secondary cards — lit glass panels ── */
+.price-small,.price-rebuild{max-width:1320px;margin:26px auto 0;padding:0 56px}
+.price-stay{max-width:1320px;margin:26px auto 0;padding:0 56px;display:grid;grid-template-columns:1fr 1.12fr 1fr;gap:22px;align-items:stretch}
+.psc{padding:38px 38px 40px;display:flex;flex-direction:column;transform-origin:top center;position:relative;border-radius:16px;
+  background:linear-gradient(180deg,rgba(244,239,230,0.985),rgba(239,233,223,0.985));
+  border:1px solid rgba(255,255,255,0.5);
+  box-shadow:0 16px 44px rgba(11,10,9,0.14),inset 0 1px 0 rgba(255,255,255,0.55)}
 /* initial hidden — the swing-in animation (anime.js, runs even under reduced-motion) reveals these */
-.price-feat,.price-small .psc{opacity:0}
+.price-feat,.psc{opacity:0}
+
+/* Rebuild — ombre begins on the orange arc */
+.psc-rebuild{border-top:3px solid var(--orange2);background:linear-gradient(180deg,rgba(255,90,31,0.06),rgba(244,239,230,0.985) 130px)}
+.psc-rebuild .psc-name,.psc-rebuild .psc-price{color:var(--orange2)}
+.psc-rebuild .psci::before{color:var(--orange2)}
+.psc-rebuild .psc-items{display:grid;grid-template-columns:1fr 1fr;gap:12px 40px}
+
+/* Monitor (Essential) — ombre begins on the teal arc */
+.sf-monitor{border-top:3px solid var(--teal);background:linear-gradient(180deg,rgba(0,184,169,0.07),rgba(244,239,230,0.985) 130px)}
+.sf-monitor .psc-name,.sf-monitor .psc-price,.sf-monitor .psci::before{color:#0a7d72}
+
+/* Proof (Signature) — the hero: boldest/brightest ombre, elevated, wider */
+.sf-proof{transform:translateY(-14px);z-index:2;border-top:4px solid var(--teal);
+  background:linear-gradient(180deg,rgba(0,184,169,0.1),rgba(245,242,236,0.99) 150px);
+  box-shadow:0 30px 74px rgba(11,10,9,0.2),inset 0 1px 0 rgba(255,255,255,0.6)}
+.price-stay .sf-proof::before{inset:-2px;opacity:0.42;filter:blur(10px);
+  background:conic-gradient(from 210deg at 50% 50%,
+    #00b8a9 0deg,#00b8a9 55deg,#ff3d82 150deg,#ff5a1f 250deg,#ffb066 300deg,#00b8a9 360deg)}
+.price-stay .sf-proof::after{inset:-10px;opacity:0.13;filter:blur(30px)}
+.sf-proof .psc-name{color:#087066;text-shadow:0 0 26px rgba(0,184,169,0.4)}
+.sf-proof .psc-price{color:#087066}
+.sf-proof .psci::before{color:var(--teal)}
+
+/* Multi (Full-Scale) — ombre begins on the pink arc, orange-forward */
+.sf-multi{border-top:3px solid var(--orange2);background:linear-gradient(180deg,rgba(255,90,31,0.06),rgba(244,239,230,0.985) 130px)}
+.sf-multi .psc-name,.sf-multi .psc-price{color:var(--orange2)}
+.sf-multi .psci::before{color:var(--orange2)}
+
+.psc-badge{position:absolute;top:-13px;left:50%;transform:translateX(-50%);white-space:nowrap;
+  font-family:var(--signal);font-size:10px;font-weight:700;letter-spacing:0.16em;text-transform:uppercase;color:var(--ink);
+  background:var(--teal);padding:6px 16px;border-radius:999px;box-shadow:0 6px 22px rgba(0,184,169,0.5)}
+.psc-tier{font-family:var(--signal);font-size:10.5px;font-weight:700;letter-spacing:0.2em;text-transform:uppercase;color:rgba(11,10,9,0.5);margin-bottom:10px}
+.sf-proof .psc-tier{color:#087066}
 .psc-tag{font-family:var(--signal);font-size:9.5px;color:var(--ink);background:var(--paper2);padding:6px 11px;align-self:flex-start;letter-spacing:0.16em;text-transform:uppercase;margin-bottom:16px}
-.psc-name{font-family:var(--flair);font-variation-settings:'opsz' 100,'wght' 520,'WONK' 1;font-size:27px;color:var(--ink);margin-bottom:6px}
-.psc-ideal{font-family:var(--signal);font-size:11.5px;color:rgba(11,10,9,0.72);margin-bottom:22px;padding-bottom:18px;border-bottom:1px solid var(--line-dark);line-height:1.6}
-.psc-price{font-family:var(--flair);font-variation-settings:'opsz' 144,'wght' 480,'WONK' 1;font-size:60px;line-height:0.85;margin-bottom:8px}
-.psc:nth-child(1) .psc-price{color:var(--orange2)}
-.psc:nth-child(2) .psc-price{color:var(--teal)}
-.psc-cad{font-family:var(--signal);font-size:9.5px;color:rgba(11,10,9,0.6);margin-bottom:26px;letter-spacing:0.04em}
-.psc-items{display:flex;flex-direction:column;gap:11px;margin-bottom:30px;flex:1}
-.psci{font-family:var(--signal);font-size:10.5px;color:rgba(11,10,9,0.74);line-height:1.5;display:flex;gap:9px;align-items:flex-start}
-.psci::before{content:'›';flex-shrink:0;font-weight:700}
-.psc:nth-child(1) .psci::before{color:var(--orange2)}
-.psc:nth-child(2) .psci::before{color:var(--teal)}
-/* Stay Found commitment ladder — 3 / 6 / 12-month terms */
-.psc-terms{display:flex;flex-direction:column;gap:7px;margin-bottom:26px;padding-top:18px;border-top:1px solid var(--line-dark)}
-.psc-term{display:flex;align-items:baseline;justify-content:space-between;gap:10px;flex-wrap:wrap;padding:10px 13px;border:1px solid var(--line-dark);background:rgba(0,184,169,0.05);transition:transform .18s,box-shadow .18s}
-.psc-term:hover{transform:translateX(3px)}
-.psc-term.feat{border-color:var(--teal);background:rgba(0,184,169,0.14);box-shadow:0 3px 14px rgba(0,184,169,0.14)}
-.pt-len{font-family:var(--signal);font-size:11px;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;color:var(--ink)}
-.pt-price{font-family:var(--flair);font-variation-settings:'opsz' 72,'wght' 540,'WONK' 1;font-size:23px;color:#0a7d72;line-height:1}
-.pt-price em{font-family:var(--signal);font-size:9px;font-style:normal;color:rgba(11,10,9,0.5);margin-left:1px}
-.pt-note{flex-basis:100%;font-family:var(--signal);font-size:9.5px;color:rgba(11,10,9,0.55);letter-spacing:0.02em;line-height:1.4}
-.psc-btn{display:block;text-align:center;font-family:var(--signal);font-weight:600;font-size:11.5px;letter-spacing:0.14em;text-transform:uppercase;padding:15px;text-decoration:none;transition:all .18s;margin-top:auto}
-.psc:nth-child(1) .psc-btn{border:1.5px solid var(--orange2);color:var(--orange2);box-shadow:0 4px 16px rgba(232,71,10,0.18)}
-.psc:nth-child(1) .psc-btn:hover{background:var(--orange2);color:var(--bone);box-shadow:0 8px 26px rgba(232,71,10,0.45)}
-.psc:nth-child(2) .psc-btn{border:1.5px solid var(--teal);color:#0a7d72;box-shadow:0 4px 16px rgba(0,184,169,0.18)}
-.psc:nth-child(2) .psc-btn:hover{background:var(--teal);color:var(--ink);box-shadow:0 8px 26px rgba(0,184,169,0.45)}
-.price-guarantee{max-width:1320px;margin:0 auto;font-family:var(--signal);font-size:10px;color:rgba(11,10,9,0.58);letter-spacing:0.08em;text-transform:uppercase;text-align:center;padding:22px 56px;border:1px solid var(--ink);border-top:none}
+.psc-name{font-family:var(--flair);font-variation-settings:'opsz' 100,'wght' 520,'WONK' 1;font-size:33px;color:var(--ink);margin-bottom:8px}
+.psc-ideal{font-family:var(--signal);font-size:15px;color:rgba(11,10,9,0.82);margin-bottom:22px;padding-bottom:18px;border-bottom:1px solid var(--line-dark);line-height:1.6}
+.psc-price{font-family:var(--flair);font-variation-settings:'opsz' 144,'wght' 480,'WONK' 1;font-size:52px;line-height:0.9;margin-bottom:8px;color:var(--ink)}
+.psc-per{font-family:var(--signal);font-size:0.28em;font-weight:600;letter-spacing:0.04em;margin-left:3px;vertical-align:0.5em;color:rgba(11,10,9,0.55)}
+.psc-cad{font-family:var(--signal);font-size:11.5px;color:rgba(11,10,9,0.62);margin-bottom:26px;letter-spacing:0.03em}
+.psc-items{display:flex;flex-direction:column;gap:12px;margin-bottom:30px;flex:1}
+.psci{font-family:var(--signal);font-size:15.5px;color:rgba(11,10,9,0.86);line-height:1.55;display:flex;gap:9px;align-items:flex-start}
+.psci::before{content:'›';flex-shrink:0;font-weight:700;color:var(--orange2)}
+.psci strong{font-weight:700;color:var(--ink)}
+/* Titled feature (e.g. Content Engine): bold label on its own line, description beneath */
+.psci-body{display:block}
+.psci-title{display:block;font-weight:700;color:var(--ink);margin-bottom:3px;letter-spacing:0.01em}
+.psci-body em{font-family:var(--italic);font-style:italic;color:var(--orange2);font-weight:700}
+.psc-btn{display:block;text-align:center;font-family:var(--signal);font-weight:600;font-size:12.5px;letter-spacing:0.14em;text-transform:uppercase;padding:16px;text-decoration:none;transition:all .18s;margin-top:auto;border-radius:8px}
+.psc-rebuild .psc-btn,.sf-multi .psc-btn{border:1.5px solid var(--orange2);color:var(--orange2);box-shadow:0 4px 16px rgba(232,71,10,0.18)}
+.psc-rebuild .psc-btn:hover,.sf-multi .psc-btn:hover{background:var(--orange2);color:var(--bone);box-shadow:0 8px 26px rgba(232,71,10,0.45)}
+.sf-monitor .psc-btn{border:1.5px solid var(--teal);color:#0a7d72;box-shadow:0 4px 16px rgba(0,184,169,0.18)}
+.sf-monitor .psc-btn:hover{background:var(--teal);color:var(--ink);box-shadow:0 8px 26px rgba(0,184,169,0.45)}
+.sf-proof .psc-btn{border:1.5px solid var(--teal);color:var(--ink);background:var(--teal);box-shadow:0 8px 30px rgba(0,184,169,0.5)}
+.sf-proof .psc-btn:hover{background:transparent;color:#087066;box-shadow:0 12px 40px rgba(0,184,169,0.6),inset 0 0 18px rgba(0,184,169,0.2)}
+
+.price-guarantee{max-width:1320px;margin:22px auto 0;font-family:var(--signal);font-size:10px;color:rgba(11,10,9,0.58);letter-spacing:0.08em;text-transform:uppercase;text-align:center;padding:22px 56px}
 .price-guarantee em{color:var(--orange2);font-style:normal;font-weight:700}
+/* Pricing responsive — stack cards, drop the Proof elevation, tighten padding */
+@media(max-width:1000px){
+  .price-feat{grid-template-columns:1fr;margin-left:16px;margin-right:16px}
+  .pf-left{border-right:none;border-bottom:1px solid rgba(248,241,231,0.16);padding:38px 30px}
+  .pf-right{padding:34px 30px}
+  .pf-items{grid-template-columns:1fr}
+  .price-block,.price-small,.price-rebuild,.price-stay,.price-guarantee{padding-left:16px;padding-right:16px}
+  .price-stay{grid-template-columns:1fr;gap:30px}
+  .sf-proof{transform:none}
+  .sf-proof::before{inset:-2px}
+  .psc-rebuild .psc-items{grid-template-columns:1fr}
+  /* keep the ombre bloom from spilling past the viewport on mobile */
+  .price-feat::after,.psc::after{inset:-8px;filter:blur(24px)}
+  .sf-proof::after{inset:-8px}
+}
 /* Pricing "how it works" — score → band → deliverable (kills the "which do I pick?" confusion) */
 .price-how{max-width:1320px;margin:36px auto 4px;padding:0 56px}
 .ph-lead{font-family:var(--flair);font-variation-settings:'opsz' 100,'wght' 500,'WONK' 1;font-size:clamp(20px,2.4vw,32px);line-height:1.18;color:var(--ink);margin-bottom:22px;max-width:780px}

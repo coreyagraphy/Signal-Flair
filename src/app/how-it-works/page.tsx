@@ -39,7 +39,7 @@ const STEPS: { k: string; t: string; d: string }[] = [
 const TIERS: { name: string; band: string; price: string; type: string }[] = [
   { name: 'Build the Foundation', band: 'Score 0–54', price: '$3,500', type: 'one-time' },
   { name: 'Start the Rebuild', band: 'Score 55–74', price: '$1,500', type: 'one-time' },
-  { name: 'Stay Found™', band: 'Score 75–100', price: '$600–$1,200/mo', type: 'recurring' },
+  { name: 'Stay Found™', band: 'Score 75–100', price: '$600–$3,000/mo', type: 'recurring · 3 tiers' },
   { name: 'Founding Client', band: 'Score 0–54 · first 10', price: '$1,750', type: 'one-time' },
 ]
 

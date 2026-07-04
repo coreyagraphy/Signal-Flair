@@ -15,6 +15,7 @@
  */
 import { useCallback, useEffect, useRef, useState } from 'react'
 import { track } from '@/lib/analytics'
+import { tierFor } from '@/lib/signal-tiers'
 
 const FUNCTION_URL = '/.netlify/functions/signal-pulse'
 // Client-side fallback webhook (only used if the function itself can't be reached).
@@ -26,7 +27,6 @@ const FALLBACK_WEBHOOK =
 const FALLBACK_EMAIL = 'hello@signalflair.ai'
 const EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]+$/
 const sleep = (ms: number) => new Promise((r) => setTimeout(r, ms))
-const pulseColor = (v: number) => (v < 40 ? '#ff4326' : v < 70 ? '#ff8a3d' : v < 85 ? '#ffe23a' : '#00d2bf')
 
 type Phase = 'idle' | 'scanning' | 'result' | 'sent'
 type Bucket = { key: string; label: string; score: number }
@@ -189,6 +189,10 @@ function PulseResult({ data, email, website }: { data: PulseData; email: string;
             source: 'signal-pulse-optin', full_score_optin: 'yes', preview_type: 'signal-pulse',
             lead_tag: 'Signal Score Optin', signal_pulse_score: data.pulse,
             signal_pulse_buckets: (data.buckets || []).map((b) => `${b.label}:${b.score}`).join(', '),
+            signal_pulse_access: (data.buckets || []).find((b) => b.key === 'access')?.score ?? '',
+            signal_pulse_structure: (data.buckets || []).find((b) => b.key === 'structure')?.score ?? '',
+            signal_pulse_trust: (data.buckets || []).find((b) => b.key === 'trust')?.score ?? '',
+            signal_pulse_answers: (data.buckets || []).find((b) => b.key === 'answers')?.score ?? '',
             signal_pulse_signals: data.signals ? JSON.stringify(data.signals) : '',
             submitted_at: new Date().toISOString(),
           }),
@@ -216,7 +220,8 @@ function PulseResult({ data, email, website }: { data: PulseData; email: string;
   }, [pulse])
 
   const C = 2 * Math.PI * 52
-  const color = pulseColor(pulse)
+  const tier = tierFor(pulse)
+  const color = tier.color
   const offset = armed ? C * (1 - pulse / 100) : C
 
   return (
@@ -232,11 +237,17 @@ function PulseResult({ data, email, website }: { data: PulseData; email: string;
           <div className="ssc-gauge-lbl">/ 100</div>
         </div>
       </div>
+      <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '12px', margin: '2px 0 22px' }}>
+        <div style={{ display: 'inline-flex', alignItems: 'center', gap: '8px', padding: '7px 16px', border: `1px solid ${tier.color}66`, background: `${tier.color}14`, borderRadius: '999px', color: tier.color, fontSize: '12px', fontWeight: 600, letterSpacing: '0.22em', textTransform: 'uppercase' }}>
+          <span style={{ width: '7px', height: '7px', borderRadius: '50%', background: tier.color, boxShadow: `0 0 10px ${tier.color}` }} />{tier.name}
+        </div>
+        <div style={{ fontFamily: "'Caveat','Instrument Serif',cursive", fontWeight: 700, fontSize: '42px', lineHeight: 1.08, color: '#ffffff', textShadow: `-0.6px -0.6px 0 ${tier.color}, 0.6px -0.6px 0 ${tier.color}, -0.6px 0.6px 0 ${tier.color}, 0.6px 0.6px 0 ${tier.color}, 0 0 8px ${tier.color}66`, transform: 'rotate(-2.5deg)', maxWidth: '440px', textAlign: 'center' }}>&ldquo;{tier.verdict}&rdquo;</div>
+      </div>
       <div className="ssc-bars">
         {data.buckets.map((b) => (
           <div className="ssc-bar-row" key={b.key}>
             <span className="ssc-bar-lbl">{b.label}</span>
-            <span className="ssc-bar"><span className="ssc-bar-fill" style={{ width: armed ? `${b.score}%` : 0, background: pulseColor(b.score) }} /></span>
+            <span className="ssc-bar"><span className="ssc-bar-fill" style={{ width: armed ? `${b.score}%` : 0, background: tierFor(b.score).color }} /></span>
             <span className="ssc-bar-num">{b.score}</span>
           </div>
         ))}
@@ -250,15 +261,16 @@ function PulseResult({ data, email, website }: { data: PulseData; email: string;
       )}
       {optState !== 'done' ? (
         <div className="ssc-optin">
-          <div className="ssc-optin-tag">This was just a preview</div>
-          <div className="ssc-optin-h">Want your <em>real</em> Signal Score™?</div>
+          <div className="ssc-optin-tag">Level 1 cleared</div>
+          <div className="ssc-optin-h">Ready for <em>Level 2</em>?</div>
           <div className="ssc-optin-b">
-            The Signal Pulse™ above is a quick automated read. Your full <strong>Signal Score™</strong> is the
-            complete card — every signal scored across all six Signal Protocol™ layers, live AI-visibility tests,
-            what’s dragging you down, and exactly how to fix it. Human-verified and sent to your inbox.
+            You just cleared Level 1 — the instant four-signal scan. <strong>Level 2</strong> is your full
+            <strong> Signal Score™</strong>: all six Signal Protocol™ layers scored, the two locked layers cracked
+            open, live AI-visibility tests, what’s dragging you down, and exactly how to fix it. Human-verified,
+            sent to your inbox.
           </div>
           <button className="ssc-optin-btn" onClick={optIn} disabled={optState === 'sending'}>
-            {optState === 'sending' ? 'Sending…' : '▸ Send me my full Signal Score™ breakdown'}
+            {optState === 'sending' ? 'Sending…' : '▸ Unlock Level 2 — my full Signal Score™'}
           </button>
           <div className="ssc-optin-fine">Free · delivered to {email} · no obligation</div>
         </div>

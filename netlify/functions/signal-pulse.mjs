@@ -191,6 +191,11 @@ export const handler = async (event) => {
           preview_type: 'signal-pulse',
           signal_pulse_score: result.ok ? result.pulse : '',
           signal_pulse_buckets: result.ok ? (result.buckets || []).map((b) => `${b.label}:${b.score}`).join(', ') : '',
+          // Flattened per-signal scores (for the Signal Pulse scorecard email template).
+          signal_pulse_access: result.ok ? (result.buckets.find((b) => b.key === 'access')?.score ?? '') : '',
+          signal_pulse_structure: result.ok ? (result.buckets.find((b) => b.key === 'structure')?.score ?? '') : '',
+          signal_pulse_trust: result.ok ? (result.buckets.find((b) => b.key === 'trust')?.score ?? '') : '',
+          signal_pulse_answers: result.ok ? (result.buckets.find((b) => b.key === 'answers')?.score ?? '') : '',
           signal_pulse_spa: result.spaLike ? 'yes' : 'no',
           submitted_at: new Date().toISOString(),
         }),

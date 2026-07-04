@@ -137,7 +137,7 @@ export default function SignalPulsePage() {
         <div className="ssc-vs">
           <div className="ssc-vs-card preview">
             <div className="ssc-vs-tag">Quick preview</div>
-            <div className="ssc-vs-desc">A fast, human-reviewed read on your first AI-readiness signals — enough to show where you stand and what to fix first.</div>
+            <div className="ssc-vs-desc">A fast, automated read on your first AI-readiness signals — enough to show where you stand and what to fix first. Instant, in seconds.</div>
             <a className="ssc-vs-cta" href="#pulse">▸ Get My Free Signal Pulse™</a>
           </div>
           <div className="ssc-vs-card full">
@@ -166,6 +166,19 @@ export default function SignalPulsePage() {
             </div>
             <a className="ssc-cz-cta" href="/proof/">▸ See Case Zero! →</a>
           </div>
+        </div>
+      </section>
+
+      {/* ── THE DIFFERENCE — we don't just score, we prove ── */}
+      <section className="ssc-section">
+        <div className="ssc-sec-head">
+          <span className="ssc-kicker">The difference</span>
+          <h2 className="ssc-h2">Most tools <em className="ssc-em-orange">score</em> you. We <em className="ssc-em-pink">prove it.</em></h2>
+          <p className="ssc-p">
+            Anyone can hand you a number. Signal Flair re-measures the same way after the work and gives you a verified
+            before/after record — so you can see exactly what changed. It’s proof of the work, not a promise of rankings —
+            and it’s the receipt no other tool ships.
+          </p>
         </div>
       </section>
 

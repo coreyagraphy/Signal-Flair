@@ -78,9 +78,9 @@ const jsonLd = {
         '@type': 'OfferCatalog',
         name: 'Signal Flair Offers',
         itemListElement: [
-          { '@type': 'Offer', name: 'Build the Foundation', description: 'Full AI-visibility build for businesses scoring 0–54: audit, llms.txt, schema, crawler access, entity cleanup, citations, 90-day plan, and an AI-optimized landing page.', price: '3500', priceCurrency: 'USD' },
+          { '@type': 'Offer', name: 'Build the Foundation', description: 'Full AI-visibility build for businesses scoring 0–54: audit, llms.txt, schema, crawler access, entity cleanup, citations, 90-day plan, a Smart Site™ (AI-optimized page) deployed to your own domain, and Mindcast Command CRM setup. Everything is deployed to your own site and yours to keep; ongoing services (CRM access, content, monitoring) are the separate Stay Found subscription.', price: '3500', priceCurrency: 'USD' },
           { '@type': 'Offer', name: 'Start the Rebuild', description: 'Core AI-visibility fixes for businesses scoring 55–74.', price: '1500', priceCurrency: 'USD' },
-          { '@type': 'Offer', name: 'Stay Found™', description: 'Stay Found™ ongoing proof maintenance — recurring checks, monitoring, and drift prevention for businesses scoring 75–100.', priceSpecification: { '@type': 'PriceSpecification', minPrice: '600', maxPrice: '1200', priceCurrency: 'USD' } },
+          { '@type': 'Offer', name: 'Stay Found™', description: 'Stay Found™ ongoing proof maintenance for businesses scoring 75–100, in three tiers: Monitor (re-verification + drift monitoring, $600–$800/mo), Proof (adds a verified before/after proof record and quarterly guarantee-of-work report, $1,200–$1,800/mo), and Multi (multi-location managed proof, $2,000–$3,000/mo).', priceSpecification: { '@type': 'PriceSpecification', minPrice: '600', maxPrice: '3000', priceCurrency: 'USD' } },
         ],
       },
     },
