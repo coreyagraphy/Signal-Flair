@@ -96,7 +96,16 @@ export default function RootLayout({
   return (
     <html lang="en">
       <head>
-        {/* LCP: the hero renders the poster first while the 4MB video streams in — preload it. */}
+        {/* Fonts: was a CSS @import (blocked behind the main stylesheet, then a 2-hop
+            googleapis→gstatic chain). As <link> tags the browser discovers and starts
+            these in parallel with everything else — same font URL, no chain. */}
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
+        <link
+          rel="stylesheet"
+          href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght,SOFT,WONK@0,9..144,300..900,0..100,0..1;1,9..144,300..900,0..100,0..1&family=Geist+Mono:wght@300;400;500;600;700&family=Instrument+Serif:ital@0;1&family=Caveat:wght@500;600;700&display=swap"
+        />
+        {/* LCP: the hero renders the poster first while the video streams in — preload it. */}
         <link rel="preload" as="image" href="/video/hero-poster.jpg" fetchPriority="high" />
       </head>
       <body>

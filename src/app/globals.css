@@ -5,7 +5,8 @@
    Flair   = Fraunces (expressive editorial display)
    Accent  = Instrument Serif italic (the brand "flair" intervention)
    ════════════════════════════════════════════════════════════════════════ */
-@import url('https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght,SOFT,WONK@0,9..144,300..900,0..100,0..1;1,9..144,300..900,0..100,0..1&family=Geist+Mono:wght@300;400;500;600;700&family=Instrument+Serif:ital@0;1&family=Caveat:wght@500;600;700&display=swap');
+/* Font <link> moved to layout.tsx <head> — a CSS @import here blocks behind this
+   whole stylesheet before even starting the font request chain. */
 
 :root{
   /* Brief palette — constrained, high-tension */
