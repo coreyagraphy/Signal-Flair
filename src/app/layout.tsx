@@ -5,7 +5,8 @@ import Analytics from '@/components/Analytics'
 export const metadata: Metadata = {
   metadataBase: new URL('https://signalflair.ai'),
   title: 'Signal Flair — AI Proof Infrastructure for Answer Engine Visibility',
-  description: 'Signal Flair builds AI Proof Infrastructure and Signal Score™ systems that help businesses and organizations become easier for ChatGPT, Claude, Gemini, Perplexity, and Google AI to access, understand, verify, and recommend.',
+  // Kept under ~155 chars so Google doesn't truncate it in search results.
+  description: 'Signal Flair builds the structured proof layer that helps ChatGPT, Claude, Gemini, and Perplexity find, verify, and recommend your business.',
   keywords: ['AI Proof Infrastructure', 'Signal Score', 'AI visibility', 'AEO', 'answer engine optimization', 'AI trust layer', 'Signal Proof Page', 'Competitor Signal Snapshot', 'llms.txt', 'schema markup', 'entity clarity', 'AI search', 'Indiana', 'nationwide'],
   openGraph: {
     title: 'Signal Flair — AI Proof Infrastructure for the AI answer era',
@@ -94,6 +95,10 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
+      <head>
+        {/* LCP: the hero renders the poster first while the 4MB video streams in — preload it. */}
+        <link rel="preload" as="image" href="/video/hero-poster.jpg" fetchPriority="high" />
+      </head>
       <body>
         {children}
         <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
