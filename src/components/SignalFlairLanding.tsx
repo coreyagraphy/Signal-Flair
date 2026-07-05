@@ -140,6 +140,22 @@ export default function SignalFlairLanding() {
     if (started.current) return // guard React strict-mode double-invoke
     started.current = true
 
+    /* ─── DEFER HERO VIDEO ─── load + play the 1.8MB hero loop only after the page is
+       idle, so the poster (LCP) paints without the video hogging bandwidth on slow 4G. */
+    const heroVid = document.getElementById('hero-video')
+    if (heroVid) {
+      const startVid = () => {
+        const src = heroVid.querySelector('source')
+        if (src && !src.src && src.dataset.src) {
+          src.src = src.dataset.src
+          heroVid.load()
+          heroVid.play().catch(() => {})
+        }
+      }
+      if (document.readyState === 'complete') setTimeout(startVid, 250)
+      else window.addEventListener('load', () => setTimeout(startVid, 250), { once: true })
+    }
+
     /* ─── LENIS SMOOTH SCROLL + GSAP SCROLLTRIGGER ─── */
     gsap.registerPlugin(ScrollTrigger)
     const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches
@@ -678,8 +694,10 @@ export default function SignalFlairLanding() {
       {/* ═══ HERO ═══ */}
       <section id="hero">
         <div id="hero-bg">
-          <video id="hero-video" autoPlay muted loop playsInline preload="metadata" poster="/video/hero-poster.jpg">
-            <source src="/video/signal-flair-hero.mp4" type="video/mp4" />
+          {/* Video src is deferred (see mount effect) so the 1.8MB file doesn't compete
+              with the hero paint on slow connections — the poster carries LCP. */}
+          <video id="hero-video" muted loop playsInline preload="none" poster="/video/hero-poster.jpg">
+            <source data-src="/video/signal-flair-hero.mp4" type="video/mp4" />
           </video>
           <div id="hero-grade" />
         </div>
