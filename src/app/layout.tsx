@@ -96,15 +96,27 @@ export default function RootLayout({
   return (
     <html lang="en">
       <head>
-        {/* Fonts: was a CSS @import (blocked behind the main stylesheet, then a 2-hop
-            googleapis→gstatic chain). As <link> tags the browser discovers and starts
-            these in parallel with everything else — same font URL, no chain. */}
+        {/* Fonts: a <link rel="stylesheet"> here is STILL render-blocking (same as the old
+            @import was) — Lighthouse flagged it again after the first fix. Fraunces uses
+            custom SOFT/WONK variable axes all over globals.css, so next/font/google (which
+            only exposes standard axes) would silently drop them — can't use it. Instead,
+            inject the stylesheet via a tiny inline script (classic loadCSS pattern): it
+            never blocks the parser, and display=swap in the URL already prevents invisible
+            text while it loads. <noscript> covers the no-JS case. */}
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
-        <link
-          rel="stylesheet"
-          href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght,SOFT,WONK@0,9..144,300..900,0..100,0..1;1,9..144,300..900,0..100,0..1&family=Geist+Mono:wght@300;400;500;600;700&family=Instrument+Serif:ital@0;1&family=Caveat:wght@500;600;700&display=swap"
+        <script
+          dangerouslySetInnerHTML={{
+            __html:
+              "(function(){var l=document.createElement('link');l.rel='stylesheet';l.href='https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght,SOFT,WONK@0,9..144,300..900,0..100,0..1;1,9..144,300..900,0..100,0..1&family=Geist+Mono:wght@300;400;500;600;700&family=Instrument+Serif:ital@0;1&family=Caveat:wght@500;600;700&display=swap';document.head.appendChild(l);})();",
+          }}
         />
+        <noscript>
+          <link
+            rel="stylesheet"
+            href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght,SOFT,WONK@0,9..144,300..900,0..100,0..1;1,9..144,300..900,0..100,0..1&family=Geist+Mono:wght@300;400;500;600;700&family=Instrument+Serif:ital@0;1&family=Caveat:wght@500;600;700&display=swap"
+          />
+        </noscript>
         {/* LCP: the hero renders the poster first while the video streams in — preload it. */}
         <link rel="preload" as="image" href="/video/hero-poster.jpg" fetchPriority="high" />
       </head>
