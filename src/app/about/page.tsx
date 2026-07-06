@@ -92,7 +92,7 @@ export default function AboutPage() {
           <p className="rsc-p">
             Case Zero is our own AI visibility audit. On June 2, 2026, Signal Flair scored
             <strong> 18 out of 100</strong> — Signal Invisible. We published it, rebuilt our own
-            foundation in public, and re-audited June 19 at <strong>73 out of 100 (+55)</strong>.
+            foundation in public, and re-audited July 5 at <strong>73 out of 100 (+55)</strong>.
             We show the climb — and the layers still building. We never fabricate scores,
             testimonials, or results. See the full live record on the <a href="/proof/">proof page</a>.
           </p>

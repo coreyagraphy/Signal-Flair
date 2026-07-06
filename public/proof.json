@@ -1,5 +1,5 @@
 {
-  "$comment": "Beacon — canonical client-owned proof record (internal artifact name). Served at /proof.json. Mirrors the visible Signal Proof Page™ at /proof/. Every claim carries a source OR verified:false. Filled with Signal Flair Case Zero (baseline June 2, 2026 → re-audit June 19, 2026).",
+  "$comment": "Beacon — canonical client-owned proof record (internal artifact name). Served at /proof.json. Mirrors the visible Signal Proof Page™ at /proof/. Every claim carries a source OR verified:false. Filled with Signal Flair Case Zero (baseline June 2, 2026 → re-audit July 5, 2026).",
   "@context": "https://signalflair.ai/beacon/v1",
   "type": "BeaconRecord",
   "version": "1.0",
@@ -20,7 +20,7 @@
   },
   "verification": {
     "verified_by": "Signal Flair",
-    "last_verified": "2026-06-19",
+    "last_verified": "2026-07-05",
     "next_review_due": "2026-08-06",
     "signals_confirmed": 0,
     "signals_total": 6,
@@ -29,13 +29,13 @@
   },
   "case_zero": {
     "is_case_zero": true,
-    "statement": "Signal Flair audited itself first. Scored 18/100 on June 2, 2026, then rebuilt its own AI proof foundation in public and re-audited at 73/100 on June 19, 2026 (+55). Model-informed Signal Score, not a live engine test. Documented transparently; still climbing to a target of 91.",
+    "statement": "Signal Flair audited itself first. Scored 18/100 on June 2, 2026, then rebuilt its own AI proof foundation in public and re-audited at 73/100 on July 5, 2026 (+55). Model-informed Signal Score, not a live engine test. Documented transparently; still climbing to a target of 91.",
     "baseline_score": 18,
     "baseline_on": "2026-06-02",
     "current_score": 73,
-    "current_on": "2026-06-19",
+    "current_on": "2026-07-05",
     "overall_score": 73,
-    "scored_on": "2026-06-19",
+    "scored_on": "2026-07-05",
     "evidence": "model-informed Signal Score — not a live engine test; Live AI Visibility remains an estimate",
     "baseline_signals": [
       { "signal": "AI Search Presence", "score": 4, "status": "Critical" },
@@ -93,9 +93,9 @@
         "before_score": 18,
         "before_date": "2026-06-02",
         "after_score": 73,
-        "after_date": "2026-06-19",
+        "after_date": "2026-07-05",
         "after_target": 91,
-        "date": "2026-06-19",
+        "date": "2026-07-05",
         "verified": true,
         "source": "https://signalflair.ai/proof/changelog"
       }
@@ -118,7 +118,7 @@
   },
   "freshness": {
     "content_hash": "",
-    "last_updated": "2026-06-19",
+    "last_updated": "2026-07-05",
     "update_policy": "Re-verified monthly under Stay Found™. Change log is public.",
     "indexnow_pinged": false
   }

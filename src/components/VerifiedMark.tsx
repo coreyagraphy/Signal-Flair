@@ -12,7 +12,7 @@ type Props = {
 }
 
 export default function VerifiedMark({
-  lastVerified = '2026-06-19',
+  lastVerified = '2026-07-05',
   confirmed = 0,
   total = 6,
   href = '/proof/changelog/',

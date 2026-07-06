@@ -26,7 +26,7 @@ const FAQS: { q: string; a: string }[] = [
   },
   {
     q: 'What is Case Zero?',
-    a: 'Case Zero is Signal Flair’s own AI visibility audit. On June 2, 2026 we scored 18 out of 100 — Signal Invisible. We published it, rebuilt our own proof foundation in public, and re-audited on June 19 at 73 out of 100 (+55). Two layers — Trust & Proof Density and Live AI Visibility — are still being closed, and we show those too. It is our own real before-and-after, and we never fabricate scores, wins, or testimonials.',
+    a: 'Case Zero is Signal Flair’s own AI visibility audit. On June 2, 2026 we scored 18 out of 100 — Signal Invisible. We published it, rebuilt our own proof foundation in public, and re-audited on July 5 at 73 out of 100 (+55). Two layers — Trust & Proof Density and Live AI Visibility — are still being closed, and we show those too. It is our own real before-and-after, and we never fabricate scores, wins, or testimonials.',
   },
   {
     q: 'What is a Field Report?',

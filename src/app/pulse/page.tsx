@@ -155,7 +155,7 @@ export default function SignalPulsePage() {
       <section className="ssc-section">
         <div className="ssc-cz">
           <div className="ssc-cz-gauge">
-            <div className="ssc-cz-num">18<span className="cz-arrow" aria-hidden="true">→</span>73<small>/100</small></div>
+            <div className="ssc-cz-num"><span className="cz-b">18</span><span className="cz-arrow" aria-hidden="true">→</span><span className="cz-a">73<small>/100</small></span></div>
             <div className="ssc-cz-lbl">Case Zero</div>
           </div>
           <div className="ssc-cz-body">

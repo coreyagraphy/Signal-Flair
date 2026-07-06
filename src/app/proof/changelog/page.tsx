@@ -5,7 +5,7 @@ import VerifiedMark from '@/components/VerifiedMark'
 export const metadata: Metadata = {
   title: 'Change Log — Verified Record | Signal Flair',
   description:
-    'The dated public record of what Signal Flair verified or updated, and when — including the June 19 re-audit (18 → 73, +55). Part of the live Signal Proof Page™ verified record. Next review due 2026-08-06.',
+    'The dated public record of what Signal Flair verified or updated, and when — including the July 5 re-audit (18 → 73, +55). Part of the live Signal Proof Page™ verified record. Next review due 2026-08-06.',
   alternates: { canonical: 'https://signalflair.ai/proof/changelog' },
 }
 
@@ -22,7 +22,7 @@ const LOG = [
     body: 'Live verified-record hub shipped: /proof/ pages, machine-readable /proof.json, discovery manifest at /.well-known/signalflair.json, schema.org JSON-LD, and an enhanced llms.txt. The record is now crawlable and inspection-ready.',
   },
   {
-    date: '2026-06-19',
+    date: '2026-07-05',
     title: 'Follow-up re-audit — 18 → 73 (+55)',
     body: 'After rebuilding our own AI proof foundation in public, the re-audit came back 73/100. Canonical six-layer read: Access & Crawlability 100, Structured Intelligence 100, Answer Architecture 77, Entity Clarity 63, Live AI Visibility 53, Trust & Proof Density 43. Model-informed Signal Score™ — not a live engine test; Live AI Visibility remains an estimate. Trust & Proof Density and Live AI Visibility are the layers still being closed.',
   },

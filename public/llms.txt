@@ -14,7 +14,7 @@
 - Industry: AI Proof Infrastructure / answer engine readiness
 - Founder: Corey Ellis
 - Contact: hello@signalflair.ai
-- Signal Score™ (Case Zero): 18/100 baseline (June 2, 2026) → 73/100 re-audit (June 19, 2026, +55); model-informed, not a live engine test
+- Signal Score™ (Case Zero): 18/100 baseline (June 2, 2026) → 73/100 re-audit (July 5, 2026, +55); model-informed, not a live engine test
 - Post-implementation target: 91/100 (readiness target, not achieved score)
 - Last Updated: 2026-06-30
 
@@ -53,7 +53,7 @@ The Signal Proof Page™ is the canonical human-visible proof hub at /proof/ —
 Stay Found™ is monthly proof maintenance: re-verification, change-log updates, schema and llms.txt freshness, crawler monitoring, and visibility spot checks. Not a one-time audit — proof kept current as AI engines and competitors change.
 
 ## Case Zero
-Signal Flair audited itself first as Case Zero — a transparent founder-run baseline published at 18/100 Signal Score™ on June 2, 2026. Signal Flair then rebuilt its own AI proof foundation in public and re-audited at 73/100 on June 19, 2026 (+55). This is a model-informed Signal Score™ read, not a live engine test; the Trust & Proof Density (43) and Live AI Visibility (53) layers are shown honestly as still building. Documented in public at /proof/, tracked to a post-implementation target of 91/100. Proof-before-pitch, not a hidden failure state.
+Signal Flair audited itself first as Case Zero — a transparent founder-run baseline published at 18/100 Signal Score™ on June 2, 2026. Signal Flair then rebuilt its own AI proof foundation in public and re-audited at 73/100 on July 5, 2026 (+55). This is a model-informed Signal Score™ read, not a live engine test; the Trust & Proof Density (43) and Live AI Visibility (53) layers are shown honestly as still building. Documented in public at /proof/, tracked to a post-implementation target of 91/100. Proof-before-pitch, not a hidden failure state.
 
 ## Proof assets (public)
 - Signal Proof Page™ (human hub): https://signalflair.ai/proof/
@@ -88,7 +88,7 @@ A point-in-time comparison showing how your Signal Score™ and six signal layer
 Ongoing proof maintenance — monthly re-verification, schema and llms.txt updates, crawler checks, and visibility monitoring.
 
 ### What is Case Zero?
-Signal Flair's self-audit — before-and-after of its own proof layer rebuild. Published transparently: 18/100 baseline (June 2, 2026) → 73/100 re-audit (June 19, 2026, +55).
+Signal Flair's self-audit — before-and-after of its own proof layer rebuild. Published transparently: 18/100 baseline (June 2, 2026) → 73/100 re-audit (July 5, 2026, +55).
 
 ### Does Signal Flair guarantee AI recommendations?
 No. Signal Flair improves AI readiness and proof signals but does not guarantee AI recommendations, rankings, citations, or inclusion in AI-generated answers.

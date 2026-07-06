@@ -990,7 +990,7 @@ export default function SignalFlairLanding() {
             <div className="proof-eyebrow">Case Zero · 18 → 73</div>
             <div className="proof-title">We ran it on<br /><em>ourselves first.</em></div>
           </div>
-          <div className="proof-meta">We don&apos;t show finished-case theater — we show our own climb. Signal Flair audited itself first (18/100), rebuilt the proof foundation in public, and re-audited seventeen days later at <strong>73/100 (+55)</strong>. The layers still building are on the record too. No fabricated testimonials.</div>
+          <div className="proof-meta">We don&apos;t show finished-case theater — we show our own climb. Signal Flair audited itself first (18/100), rebuilt the proof foundation in public, and re-audited just over a month later at <strong>73/100 (+55)</strong>. The layers still building are on the record too. No fabricated testimonials.</div>
         </div>
         <div className="proof-grid reveal">
           <div className="proof-card before">
@@ -1006,7 +1006,7 @@ export default function SignalFlairLanding() {
           </div>
           <div className="proof-arrow" aria-hidden="true">→</div>
           <div className="proof-card after">
-            <div className="pc-kicker">Re-audit · 06.19.2026</div>
+            <div className="pc-kicker">Re-audit · 07.05.2026</div>
             <div className="pc-top"><span className="pc-label">After</span><span className="pc-tag">+55</span></div>
             <span className="pc-score count">73<small>/100</small></span>
             <div className="pc-scorelbl">Signal Score™</div>
@@ -1018,7 +1018,7 @@ export default function SignalFlairLanding() {
           </div>
         </div>
         <div className="proof-note reveal">The 73 is a model-informed Signal Score™ read of our proof foundation — <strong>not a live engine test, and not a guarantee of AI ranking, citation, recommendation, or inclusion.</strong> Trust &amp; Proof Density and Live AI Visibility are the layers we&apos;re still closing, in the open.</div>
-        <div className="proof-note reveal">Signal Flair&apos;s own audit — baseline <strong>June 2, 2026</strong>, re-audit <strong>June 19</strong>. This is Case Zero: we ran the system on ourselves first, and we publish the real before-and-after as our own score climbs.</div>
+        <div className="proof-note reveal">Signal Flair&apos;s own audit — baseline <strong>June 2, 2026</strong>, re-audit <strong>July 5</strong>. This is Case Zero: we ran the system on ourselves first, and we publish the real before-and-after as our own score climbs.</div>
         <a className="proof-live-link reveal" href="/proof/">See our live record →</a>
         <div className="sl-markwrap reveal" style={{ margin: '26px auto 0', maxWidth: 560 }}>
           <a className="sl-mark" href="/case-studies/restor-team/">
@@ -1226,13 +1226,13 @@ export default function SignalFlairLanding() {
 
             <div className="cz-card">
               <div className="cz-k">CASE ZERO · 18 → 73</div>
-              <div className="cz-score">18<span className="cz-arrow" aria-hidden="true">→</span>73<small>/100</small></div>
+              <div className="cz-score"><span className="cz-b">18</span><span className="cz-arrow" aria-hidden="true">→</span><span className="cz-a">73<small>/100</small></span></div>
               <div className="cz-state">Signal Invisible → +55, rebuilt in public</div>
               <div className="cz-note">A company selling AI visibility — invisible to AI. I published the score. I rebuilt the foundation. I showed the climb.</div>
             </div>
 
             <div className="about-body fdr-body">
-              <p>On June 2, 2026, I ran the Signal Protocol™ on Signal Flair. We scored <strong>18 out of 100</strong> — Signal Invisible. I published it. Then I rebuilt our own foundation in public, and on June 19 the re-audit came back <strong>73 out of 100</strong>. That climb — 18 → 73, and the layers I&apos;m still closing — is <strong>Case Zero</strong>. I don&apos;t claim a number until I&apos;ve earned it.</p>
+              <p>On June 2, 2026, I ran the Signal Protocol™ on Signal Flair. We scored <strong>18 out of 100</strong> — Signal Invisible. I published it. Then I rebuilt our own foundation in public, and on July 5 the re-audit came back <strong>73 out of 100</strong>. That climb — 18 → 73, and the layers I&apos;m still closing — is <strong>Case Zero</strong>. I don&apos;t claim a number until I&apos;ve earned it.</p>
               <p>What I found was bigger than my own site. Most businesses with real customers, strong reputations, and years of work are still unreadable to the machines now making referral decisions. Not because the business is weak — because the infrastructure that lets AI understand and recommend them does not exist.</p>
               <p>Signal Flair builds that infrastructure. Not with random blog posts. Not with vague content strategies. With a number, a protocol, and a maintenance system that keeps the number true.</p>
             </div>

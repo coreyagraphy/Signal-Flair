@@ -5,7 +5,7 @@ import VerifiedMark from '@/components/VerifiedMark'
 export const metadata: Metadata = {
   title: 'Our Live Verified Record — Case Zero, 18 → 73 | Signal Flair',
   description:
-    'Signal Flair ran the Signal Protocol™ on itself first: 18/100 on June 2, 2026. We rebuilt our own AI proof foundation in public and re-audited June 19 — 73/100, +55. The full record, source-linked, with a public change log. We don’t claim. We show.',
+    'Signal Flair ran the Signal Protocol™ on itself first: 18/100 on June 2, 2026. We rebuilt our own AI proof foundation in public and re-audited July 5 — 73/100, +55. The full record, source-linked, with a public change log. We don’t claim. We show.',
   alternates: { canonical: 'https://signalflair.ai/proof' },
   openGraph: {
     title: 'Case Zero — 18 → 73 | Signal Flair’s own live verified record',
@@ -14,14 +14,14 @@ export const metadata: Metadata = {
   },
 }
 
-// Case Zero — REAL baseline (18, June 2, 2026) → follow-up re-audit (73, June 19, 2026).
+// Case Zero — REAL baseline (18, June 2, 2026) → follow-up re-audit (73, July 5, 2026).
 // The follow-up uses the canonical Signal Protocol™ six layers; source: internal Signal
 // Scorecard™ (model-informed, not a live engine test). Live AI Visibility remains estimated.
 const CASE_ZERO = {
   baseline: 18,
   baselineOn: '2026-06-02',
   current: 73,
-  currentOn: '2026-06-19',
+  currentOn: '2026-07-05',
   target: 91,
   // Current-state breakdown behind the 73 — canonical six layers.
   layers: [
@@ -153,13 +153,13 @@ export default function ProofHubPage() {
             On <strong>June 2, 2026</strong> we ran the Signal Protocol™ on our own brand-new site and
             scored <strong>18/100</strong> — a premium-looking site with near-zero AI visibility, the
             exact gap we fix. Then we rebuilt our own AI proof foundation in public. On
-            <strong> June 19</strong>, the re-audit came back <strong>73/100 — +55 points.</strong>{' '}
+            <strong> July 5</strong>, the re-audit came back <strong>73/100 — +55 points.</strong>{' '}
             Still climbing, tracked to a target of <strong>{CASE_ZERO.target}/100</strong>.
           </p>
           <div className="sl-scoreband">
             <div className="sl-scorebig">{CASE_ZERO.baseline}<small>/100</small><span className="sl-scoretarget-lbl">Baseline · Jun 2</span></div>
             <div className="sl-scorearrow" aria-hidden="true">→</div>
-            <div className="sl-scoretarget">{CASE_ZERO.current}<small>/100</small><span className="sl-scoretarget-lbl">Re-audit · Jun 19</span></div>
+            <div className="sl-scoretarget">{CASE_ZERO.current}<small>/100</small><span className="sl-scoretarget-lbl">Re-audit · Jul 5</span></div>
           </div>
           <div className="sl-signals">
             {CASE_ZERO.layers.map((s) => (
