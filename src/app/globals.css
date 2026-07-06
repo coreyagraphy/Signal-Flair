@@ -12,7 +12,7 @@
   /* Brief palette — constrained, high-tension */
   --ink:#0b0a09;     --ink2:#141210;    --paper:#f4eadb;   --bone:#f8f1e7;
   --paper2:#ece0cd;  --hot:#fff45f;     --orange:#ff5a1f;  --orange2:#e8470a;
-  --teal:#00b8a9;    --red:#ff1765;    --green:#1db954;
+  --teal:#00b8a9;    --red:#ff1765;
   /* Signal Magenta — Corey-approved 2026-06-07, BAND-SCOPED to THE ENTERPRISE SECRET only.
      Red-leaning neon magenta, explicitly NOT violet/purple. Do not use site-wide. */
   --signal-magenta:#FF2D78;  --signal-magenta-tint:#FF7FB0;
@@ -492,6 +492,10 @@ nav#hnav{position:relative;z-index:10;display:flex;align-items:center;justify-co
 @keyframes pv-flare{0%,100%{opacity:0.32;transform:scaleX(0.92)}50%{opacity:0.82;transform:scaleX(1)}}
 @media(prefers-reduced-motion:reduce){.pv-fit{animation:none}.pv-fit::after{animation:none;opacity:0.6}}
 .pricing-sub{font-family:var(--signal);font-size:14.5px;color:rgba(11,10,9,0.82);max-width:560px;text-align:left;margin:6px 0 0;line-height:1.75}
+.pricing-proof{font-family:var(--signal);font-size:13.5px;color:rgba(11,10,9,0.6);max-width:560px;text-align:left;margin:14px 0 0;line-height:1.6}
+.pricing-proof a{color:var(--orange);text-decoration:none;border-bottom:1px solid rgba(255,90,31,0.35);transition:border-color .2s}
+.pricing-proof a:hover{border-color:var(--orange)}
+.pricing-proof strong{color:var(--ink);font-weight:600}
 /* ════════════════════════════════════════════════════════════
    OMBRE ILLUMINATED EDGES — teal → pink → orange glowing halo
    A blurred conic-gradient pseudo-element sits behind each glass
@@ -721,7 +725,7 @@ nav#hnav{position:relative;z-index:10;display:flex;align-items:center;justify-co
 .sl-scorebig{font-family:var(--flair);font-variation-settings:'opsz' 144,'wght' 500,'WONK' 1;font-size:clamp(72px,12vw,120px);line-height:0.78;color:var(--red)}
 .sl-scorebig small,.sl-scoretarget small{font-size:0.28em;opacity:0.5;font-weight:400}
 .sl-scorearrow{font-family:var(--flair);font-size:38px;color:var(--orange)}
-.sl-scoretarget{font-family:var(--flair);font-variation-settings:'opsz' 144,'wght' 500,'WONK' 1;font-size:clamp(56px,9vw,92px);line-height:0.78;color:var(--green)}
+.sl-scoretarget{font-family:var(--flair);font-variation-settings:'opsz' 144,'wght' 500,'WONK' 1;font-size:clamp(56px,9vw,92px);line-height:0.78;color:var(--teal)}
 .sl-scoretarget-lbl{display:block;font-family:var(--signal);font-size:9px;letter-spacing:0.2em;text-transform:uppercase;color:rgba(11,10,9,0.42);margin-top:8px}
 /* signal rows with bar */
 .sl-signals{display:flex;flex-direction:column;margin:22px 0 8px;border:1px solid var(--line-dark)}
@@ -999,10 +1003,10 @@ footer{background:var(--ink2);border-top:1px solid var(--ink);padding:52px;posit
 .proof-card.after .pc-label{color:rgba(248,241,231,0.55)}
 .pc-tag{font-family:var(--signal);font-size:9px;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;padding:4px 9px}
 .proof-card.before .pc-tag{background:rgba(255,23,101,0.14);color:#c4123f}
-.proof-card.after .pc-tag{background:rgba(29,185,84,0.16);color:#4fe08a}
+.proof-card.after .pc-tag{background:rgba(0,184,169,0.16);color:#3fdccb}
 .pc-score{font-family:var(--flair);font-variation-settings:'opsz' 144,'wght' 500,'WONK' 1;font-size:84px;line-height:0.78;display:block;margin-bottom:4px}
 .proof-card.before .pc-score{color:var(--red);font-size:clamp(80px,9vw,104px)}
-.proof-card.after .pc-score{color:var(--green)}
+.proof-card.after .pc-score{color:var(--teal)}
 .pc-score small{font-size:24px;opacity:0.5}
 .pc-scorelbl{font-family:var(--signal);font-size:8.5px;letter-spacing:0.2em;text-transform:uppercase;margin-bottom:22px}
 .proof-card.before .pc-scorelbl{color:rgba(11,10,9,0.42)}
@@ -1014,7 +1018,7 @@ footer{background:var(--ink2);border-top:1px solid var(--ink);padding:52px;posit
 .proof-card.after .pc-name{color:rgba(248,241,231,0.78)}
 .pc-stamp{font-family:var(--signal);font-size:10px;font-weight:700;letter-spacing:0.06em;text-transform:uppercase;padding:3px 9px;white-space:nowrap}
 .pc-stamp.no{background:rgba(255,23,101,0.16);color:#ff5a8a}
-.pc-stamp.yes{background:rgba(29,185,84,0.16);color:#4fe08a}
+.pc-stamp.yes{background:rgba(0,184,169,0.16);color:#3fdccb}
 .pc-status{margin-top:auto;padding-top:20px;font-family:var(--signal);font-size:10px;letter-spacing:0.04em;line-height:1.6}
 .proof-card.before .pc-status{color:#c4123f}
 .proof-card.after .pc-status{color:#3fdccb}
@@ -1231,8 +1235,8 @@ footer{background:var(--ink2);border-top:1px solid var(--ink);padding:52px;posit
 .cz-score small{font-size:.34em;color:rgba(255,122,31,.6);font-weight:400}
 .cz-arrow{font-size:.5em;color:rgba(255,122,31,.7);margin:0 .12em;vertical-align:.08em}
 .cz-b{color:var(--red)}
-.cz-a{color:var(--green)}
-.cz-a small{color:rgba(29,185,84,.6)}
+.cz-a{color:var(--teal)}
+.cz-a small{color:rgba(0,184,169,.6)}
 .cz-state{font-family:var(--italic);font-style:italic;font-size:26px;color:#ff3d2e;margin-top:4px}
 .cz-note{margin-top:12px;font-family:var(--signal);font-size:12px;line-height:1.7;color:rgba(248,241,231,.7)}
 .fdr-body p{margin-bottom:14px}

@@ -24,7 +24,9 @@ export default function VerifiedMark({
       <span className="sl-mark-body">
         <span className="sl-mark-main">Verified by Signal Flair<sup>™</sup></span>
         <span className="sl-mark-meta">
-          Last verified {lastVerified} · {confirmed} of {total} signals confirmed
+          Last verified {lastVerified} · {confirmed > 0
+            ? `${confirmed} of ${total} facts independently confirmed`
+            : 'every fact source-linked or marked unverified'}
         </span>
         {note ? <span className="sl-mark-note">{note}</span> : null}
       </span>

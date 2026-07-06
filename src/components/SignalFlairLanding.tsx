@@ -1068,6 +1068,7 @@ export default function SignalFlairLanding() {
             One <em className="pv-fit">right fit.</em>
           </h2>
           <div className="pricing-sub">Commercial implementation pricing — one path alongside the Founding Pilot. Your Signal Score™ sets the starting point; most begin with a free baseline, then build the Signal Proof Layer™ at the band it lands in.</div>
+          <div className="pricing-proof">We don&apos;t just sell this — we ran it on our own site: <a href="/proof/"><strong>Signal Score™ 18 → 73</strong>, rebuilt in public →</a></div>
         </div>
         <div className="price-how reveal">
           <div className="ph-lead">You don&apos;t pick a package. Your free <em>Field Report</em> sets your starting line.</div>
