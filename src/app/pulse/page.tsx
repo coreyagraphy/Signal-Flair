@@ -155,14 +155,15 @@ export default function SignalPulsePage() {
       <section className="ssc-section">
         <div className="ssc-cz">
           <div className="ssc-cz-gauge">
-            <div className="ssc-cz-num">18<small>/100</small></div>
+            <div className="ssc-cz-num">18<span className="cz-arrow" aria-hidden="true">→</span>73<small>/100</small></div>
             <div className="ssc-cz-lbl">Case Zero</div>
           </div>
           <div className="ssc-cz-body">
             <div className="ssc-cz-h">We audited ourselves first.</div>
             <div className="ssc-cz-p">
-              Signal Flair started at 18/100. No inflated case study. No fake proof. We’re documenting the rebuild
-              publicly — so you can see the system work on us before you trust it with your business.
+              Signal Flair started at 18/100 and rebuilt in public to 73/100 (+55). No inflated case study. No fake
+              proof — we document the climb, and the layers still building, so you can see the system work on us
+              before you trust it with your business.
             </div>
             <a className="ssc-cz-cta" href="/proof/">▸ See Case Zero! →</a>
           </div>

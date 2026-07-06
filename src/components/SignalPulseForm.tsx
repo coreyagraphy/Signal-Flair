@@ -161,7 +161,7 @@ export default function SignalPulseForm() {
           <div className="ssc-success-mark" aria-hidden="true">✓</div>
           <div className="ssc-success-h">Your Signal Pulse™ request is in.</div>
           <div className="ssc-success-b">We’ve got your site and email. A reviewer will check your first AI-readiness signals and email your Signal Pulse™ — typically within 24 hours. Watch your inbox.</div>
-          <a className="ssc-success-link" href="/proof/">See Case Zero — our own 18/100 baseline →</a>
+          <a className="ssc-success-link" href="/proof/">See Case Zero — our own 18 → 73 climb →</a>
         </div>
       )}
     </div>
@@ -272,7 +272,7 @@ function PulseResult({ data, email, website }: { data: PulseData; email: string;
           <button className="ssc-optin-btn" onClick={optIn} disabled={optState === 'sending'}>
             {optState === 'sending' ? 'Sending…' : '▸ Unlock Level 2 — my full Signal Score™'}
           </button>
-          <div className="ssc-optin-fine">Free · delivered to {email} · no obligation</div>
+          <div className="ssc-optin-fine">Free · no obligation</div>
         </div>
       ) : (
         <div className="ssc-optin ssc-optin--done">
@@ -282,7 +282,7 @@ function PulseResult({ data, email, website }: { data: PulseData; email: string;
             Your full <strong>Signal Score™</strong> breakdown is being prepared for <strong>{email}</strong> — the
             complete card, human-verified. Keep an eye on your inbox.
           </div>
-          <a className="ssc-success-link" href="/proof/">See Case Zero — our own 18/100 baseline →</a>
+          <a className="ssc-success-link" href="/proof/">See Case Zero — our own 18 → 73 climb →</a>
         </div>
       )}
     </div>

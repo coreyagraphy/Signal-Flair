@@ -3,29 +3,34 @@ import SignalFlairLogo from '@/components/SignalFlairLogo'
 import VerifiedMark from '@/components/VerifiedMark'
 
 export const metadata: Metadata = {
-  title: 'Our Live Verified Record — Case Zero | Signal Flair',
+  title: 'Our Live Verified Record — Case Zero, 18 → 73 | Signal Flair',
   description:
-    'Signal Flair published its Signal Proof Page™ on itself first. This is our live, continuously re-verified record — Case Zero, 18/100, audited June 6, 2026 — with a public change log tracked to target. We don’t claim. We show.',
+    'Signal Flair ran the Signal Protocol™ on itself first: 18/100 on June 2, 2026. We rebuilt our own AI proof foundation in public and re-audited June 19 — 73/100, +55. The full record, source-linked, with a public change log. We don’t claim. We show.',
   alternates: { canonical: 'https://signalflair.ai/proof' },
   openGraph: {
-    title: 'Case Zero — Signal Flair’s own live verified record',
+    title: 'Case Zero — 18 → 73 | Signal Flair’s own live verified record',
     description:
-      'We audited ourselves first: 18/100 on June 6, 2026. The full record, source-linked, with a public change log.',
+      'We audited ourselves first: 18/100 on June 2, 2026. Then we rebuilt in public and re-audited to 73/100. The full record, source-linked, with a public change log.',
   },
 }
 
-// Case Zero — REAL baseline (June 6, 2026). Mirrors /proof.json exactly.
+// Case Zero — REAL baseline (18, June 2, 2026) → follow-up re-audit (73, June 19, 2026).
+// The follow-up uses the canonical Signal Protocol™ six layers; source: internal Signal
+// Scorecard™ (model-informed, not a live engine test). Live AI Visibility remains estimated.
 const CASE_ZERO = {
-  overall: 18,
-  scoredOn: '2026-06-06',
+  baseline: 18,
+  baselineOn: '2026-06-02',
+  current: 73,
+  currentOn: '2026-06-19',
   target: 91,
-  signals: [
-    { signal: 'AI Search Presence', score: 4, status: 'Critical' },
-    { signal: 'Entity Clarity', score: 5, status: 'Critical' },
-    { signal: 'Crawl Readiness', score: 35, status: 'Needs work' },
-    { signal: 'Authority Content', score: 12, status: 'Weak' },
-    { signal: 'Review Signal', score: 0, status: 'Missing' },
-    { signal: 'Conversion Proof', score: 20, status: 'Partial' },
+  // Current-state breakdown behind the 73 — canonical six layers.
+  layers: [
+    { layer: 'Access & Crawlability', score: 100 },
+    { layer: 'Structured Intelligence', score: 100 },
+    { layer: 'Answer Architecture', score: 77 },
+    { layer: 'Entity Clarity', score: 63 },
+    { layer: 'Live AI Visibility', score: 53 },
+    { layer: 'Trust & Proof Density', score: 43 },
   ],
 }
 
@@ -133,41 +138,45 @@ export default function ProofHubPage() {
           </p>
           <div className="sl-markwrap">
             <VerifiedMark
-              lastVerified={CASE_ZERO.scoredOn}
+              lastVerified={CASE_ZERO.currentOn}
               confirmed={0}
               total={6}
-              note="Case Zero — our own record at the start. The climb is public."
+              note="Case Zero — 18 → 73. We rebuilt our own foundation in public. The climb, and the gaps that remain, are on the record."
             />
           </div>
         </header>
 
-        {/* Case Zero score */}
+        {/* Case Zero score — 18 → 73 */}
         <section className="rsc-section">
-          <h2 className="rsc-h2">Case Zero — <em>18 / 100</em></h2>
+          <h2 className="rsc-h2">Case Zero — <em>18 → 73</em></h2>
           <p className="rsc-p">
-            Audited <strong>June 6, 2026</strong>. A premium-looking site with near-zero AI
-            visibility — the exact gap we fix. Documented transparently and re-measured at Day 30 and
-            Day 90, tracked to a target of <strong>{CASE_ZERO.target}/100</strong>.
+            On <strong>June 2, 2026</strong> we ran the Signal Protocol™ on our own brand-new site and
+            scored <strong>18/100</strong> — a premium-looking site with near-zero AI visibility, the
+            exact gap we fix. Then we rebuilt our own AI proof foundation in public. On
+            <strong> June 19</strong>, the re-audit came back <strong>73/100 — +55 points.</strong>{' '}
+            Still climbing, tracked to a target of <strong>{CASE_ZERO.target}/100</strong>.
           </p>
           <div className="sl-scoreband">
-            <div className="sl-scorebig">{CASE_ZERO.overall}<small>/100</small></div>
+            <div className="sl-scorebig">{CASE_ZERO.baseline}<small>/100</small><span className="sl-scoretarget-lbl">Baseline · Jun 2</span></div>
             <div className="sl-scorearrow" aria-hidden="true">→</div>
-            <div className="sl-scoretarget">{CASE_ZERO.target}<small>/100</small><span className="sl-scoretarget-lbl">Target</span></div>
+            <div className="sl-scoretarget">{CASE_ZERO.current}<small>/100</small><span className="sl-scoretarget-lbl">Re-audit · Jun 19</span></div>
           </div>
           <div className="sl-signals">
-            {CASE_ZERO.signals.map((s) => (
-              <div className="sl-sig" key={s.signal}>
-                <span className="sl-sig-name">{s.signal}</span>
+            {CASE_ZERO.layers.map((s) => (
+              <div className="sl-sig" key={s.layer}>
+                <span className="sl-sig-name">{s.layer}</span>
                 <span className="sl-sig-bar" aria-hidden="true"><span className="sl-sig-fill" style={{ width: `${s.score}%` }} /></span>
                 <span className="sl-sig-score">{s.score}<small>/100</small></span>
-                <span className={`sl-sig-status ${s.score < 10 ? 'crit' : s.score < 50 ? 'warn' : 'ok'}`}>{s.status}</span>
+                <span className={`sl-sig-status ${s.score < 50 ? 'warn' : 'ok'}`}>{s.score >= 90 ? 'Strong' : s.score >= 50 ? 'Solid' : 'Still building'}</span>
               </div>
             ))}
           </div>
           <p className="rsc-p sl-honest">
-            <strong>Zero signals independently confirmed at baseline.</strong> That is honest — it&apos;s
-            where every record starts before the work. Each one we verify against a real source moves
-            the count up, on the public <a href="/proof/changelog/">change log</a>.
+            <strong>We show the low layers too.</strong> Trust &amp; Proof Density (43) and Live AI
+            Visibility (53) are the gaps we&apos;re still closing — off-page proof and real-world
+            recognition take time, and we won&apos;t fabricate either. This breakdown is a model-informed
+            Signal Score™ read, not a live engine test. Every move is dated on the public
+            <a href="/proof/changelog/"> change log</a>.
           </p>
         </section>
 

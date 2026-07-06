@@ -5,21 +5,26 @@ import VerifiedMark from '@/components/VerifiedMark'
 export const metadata: Metadata = {
   title: 'Change Log — Verified Record | Signal Flair',
   description:
-    'The dated public record of what Signal Flair verified or updated, and when. Part of the live Signal Proof Page™ verified record. Next review due 2026-07-06.',
+    'The dated public record of what Signal Flair verified or updated, and when — including the June 19 re-audit (18 → 73, +55). Part of the live Signal Proof Page™ verified record. Next review due 2026-08-06.',
   alternates: { canonical: 'https://signalflair.ai/proof/changelog' },
 }
 
 // REAL entries only. Each is a dated action actually taken.
 const LOG = [
   {
+    date: '2026-06-02',
+    title: 'Case Zero baseline recorded',
+    body: 'Signal Flair audited itself first and scored 18/100 — Signal Invisible. A premium-looking site with near-zero AI visibility. Recorded as the honest starting point, the only proof number we owned at the time.',
+  },
+  {
     date: '2026-06-06',
     title: 'Signal Proof Page™ layer published',
     body: 'Live verified-record hub shipped: /proof/ pages, machine-readable /proof.json, discovery manifest at /.well-known/signalflair.json, schema.org JSON-LD, and an enhanced llms.txt. The record is now crawlable and inspection-ready.',
   },
   {
-    date: '2026-06-06',
-    title: 'Case Zero baseline recorded',
-    body: 'Signal Flair audited itself first and scored 18/100 across six signals — AI Search Presence 4, Entity Clarity 5, Crawl Readiness 35, Authority Content 12, Review Signal 0, Conversion Proof 20. Recorded as the honest starting point.',
+    date: '2026-06-19',
+    title: 'Follow-up re-audit — 18 → 73 (+55)',
+    body: 'After rebuilding our own AI proof foundation in public, the re-audit came back 73/100. Canonical six-layer read: Access & Crawlability 100, Structured Intelligence 100, Answer Architecture 77, Entity Clarity 63, Live AI Visibility 53, Trust & Proof Density 43. Model-informed Signal Score™ — not a live engine test; Live AI Visibility remains an estimate. Trust & Proof Density and Live AI Visibility are the layers still being closed.',
   },
 ]
 
@@ -35,7 +40,7 @@ export default function ProofChangelogPage() {
           <div className="rsc-eyebrow"><a href="/proof/" className="sl-back">← The record</a> · Change log</div>
           <h1 className="rsc-h1">What changed, <em>and when.</em></h1>
           <p className="rsc-lead">The dated public record. This is the moat — not a one-time fix, but a layer kept current. Every verification run lands here.</p>
-          <div className="sl-markwrap"><VerifiedMark confirmed={0} total={6} note="Next review due 2026-07-06" /></div>
+          <div className="sl-markwrap"><VerifiedMark confirmed={0} total={6} note="Next review due 2026-08-06" /></div>
         </header>
 
         <section className="rsc-section">
@@ -50,10 +55,10 @@ export default function ProofChangelogPage() {
               </div>
             ))}
             <div className="sl-cl-row sl-cl-due">
-              <div className="sl-cl-date">2026-07-06</div>
+              <div className="sl-cl-date">2026-08-06</div>
               <div className="sl-cl-body">
                 <div className="sl-cl-title">Next scheduled re-verification</div>
-                <p className="rsc-p">Day-30 re-measure: citation share across the five engines, facts re-verified, and the score re-run. Result posts here.</p>
+                <p className="rsc-p">Next re-measure: citation share across the five engines, facts re-verified, and the Signal Score™ re-run — with focus on the Trust &amp; Proof Density and Live AI Visibility layers. Result posts here.</p>
               </div>
             </div>
           </div>

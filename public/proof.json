@@ -1,5 +1,5 @@
 {
-  "$comment": "Beacon — canonical client-owned proof record (internal artifact name). Served at /proof.json. Mirrors the visible Signal Proof Page™ at /proof/. Every claim carries a source OR verified:false. Filled with Signal Flair Case Zero (June 6, 2026).",
+  "$comment": "Beacon — canonical client-owned proof record (internal artifact name). Served at /proof.json. Mirrors the visible Signal Proof Page™ at /proof/. Every claim carries a source OR verified:false. Filled with Signal Flair Case Zero (baseline June 2, 2026 → re-audit June 19, 2026).",
   "@context": "https://signalflair.ai/beacon/v1",
   "type": "BeaconRecord",
   "version": "1.0",
@@ -20,8 +20,8 @@
   },
   "verification": {
     "verified_by": "Signal Flair",
-    "last_verified": "2026-06-06",
-    "next_review_due": "2026-07-06",
+    "last_verified": "2026-06-19",
+    "next_review_due": "2026-08-06",
     "signals_confirmed": 0,
     "signals_total": 6,
     "method": "Each claim checked against a cited public source. Unverified claims are marked verified:false and never stamped.",
@@ -29,16 +29,29 @@
   },
   "case_zero": {
     "is_case_zero": true,
-    "statement": "Signal Flair audited itself first. Scored 18/100 on June 6, 2026. Documented transparently. Re-measured at Day 30 and Day 90.",
-    "overall_score": 18,
-    "scored_on": "2026-06-06",
-    "signals": [
+    "statement": "Signal Flair audited itself first. Scored 18/100 on June 2, 2026, then rebuilt its own AI proof foundation in public and re-audited at 73/100 on June 19, 2026 (+55). Model-informed Signal Score, not a live engine test. Documented transparently; still climbing to a target of 91.",
+    "baseline_score": 18,
+    "baseline_on": "2026-06-02",
+    "current_score": 73,
+    "current_on": "2026-06-19",
+    "overall_score": 73,
+    "scored_on": "2026-06-19",
+    "evidence": "model-informed Signal Score — not a live engine test; Live AI Visibility remains an estimate",
+    "baseline_signals": [
       { "signal": "AI Search Presence", "score": 4, "status": "Critical" },
       { "signal": "Entity Clarity", "score": 5, "status": "Critical" },
       { "signal": "Crawl Readiness", "score": 35, "status": "Needs work" },
       { "signal": "Authority Content", "score": 12, "status": "Weak" },
       { "signal": "Review Signal", "score": 0, "status": "Missing" },
       { "signal": "Conversion Proof", "score": 20, "status": "Partial" }
+    ],
+    "current_layers": [
+      { "layer": "Access & Crawlability", "score": 100 },
+      { "layer": "Structured Intelligence", "score": 100 },
+      { "layer": "Answer Architecture", "score": 77 },
+      { "layer": "Entity Clarity", "score": 63 },
+      { "layer": "Live AI Visibility", "score": 53 },
+      { "layer": "Trust & Proof Density", "score": 43 }
     ],
     "target_state": 91
   },
@@ -78,8 +91,11 @@
       {
         "title": "Case Zero — Signal Flair self-audit",
         "before_score": 18,
+        "before_date": "2026-06-02",
+        "after_score": 73,
+        "after_date": "2026-06-19",
         "after_target": 91,
-        "date": "2026-06-06",
+        "date": "2026-06-19",
         "verified": true,
         "source": "https://signalflair.ai/proof/changelog"
       }
@@ -102,7 +118,7 @@
   },
   "freshness": {
     "content_hash": "",
-    "last_updated": "2026-06-06",
+    "last_updated": "2026-06-19",
     "update_policy": "Re-verified monthly under Stay Found™. Change log is public.",
     "indexnow_pinged": false
   }

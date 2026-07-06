@@ -1229,6 +1229,7 @@ footer{background:var(--ink2);border-top:1px solid var(--ink);padding:52px;posit
 .cz-k{font-family:var(--signal);font-size:11px;letter-spacing:.22em;text-transform:uppercase;color:var(--orange);margin-bottom:8px}
 .cz-score{font-family:var(--flair);font-weight:600;font-size:64px;line-height:.9;color:#ff7a1f}
 .cz-score small{font-size:.34em;color:rgba(255,122,31,.6);font-weight:400}
+.cz-arrow{font-size:.5em;color:rgba(255,122,31,.7);margin:0 .12em;vertical-align:.08em}
 .cz-state{font-family:var(--italic);font-style:italic;font-size:26px;color:#ff3d2e;margin-top:4px}
 .cz-note{margin-top:12px;font-family:var(--signal);font-size:12px;line-height:1.7;color:rgba(248,241,231,.7)}
 .fdr-body p{margin-bottom:14px}
