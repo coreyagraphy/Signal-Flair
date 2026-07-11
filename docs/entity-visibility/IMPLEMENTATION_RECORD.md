@@ -46,7 +46,12 @@ Session: Claude Code (Fable 5), autonomous entity-visibility assignment under TH
 **DEPLOYED & LIVE-VERIFIED 2026-07-11** (Corey authorized "ship it").
 - **signalflair.ai** — `npm run ship` → Netlify `cozy-pie-596a1f`, deploy `6a52b0c3b3f404426cc17c9f` (49 assets + /pulse function). Live checks PASS: new article `/resources/how-ai-engines-verify-a-business/` → 200; homepage schema carries `Mental Vision LLC` + Coreyagraphy Instagram, **0 crunchbase**; `/about/` canonical trailing-slash + single `<html>`; llms.txt shows three-tier pricing + LLC + 2026-07-11.
 - **mentalvision.ai** — `netlify deploy --prod --build` → `mental-vision-v2`, deploy `6a52b1287785f62ab0610906`. Live checks PASS: llms.txt → 200 (was 404) with legal name + Signal Flair relationship; homepage schema carries `Mental Vision LLC` + `subOrganization` + `Mentalvisionllc`.
-- **IndexNow** re-ping submitted for 8 signalflair.ai URLs → HTTP 200 (Bing/Copilot/Perplexity/Yandex). Google is NOT in IndexNow → still needs GSC "Request indexing" (platforms/02).
+- **IndexNow** re-ping submitted for 8 signalflair.ai URLs → HTTP 200 (Bing/Copilot/Perplexity/Yandex).
+
+## Google Search Console (2026-07-11, driven live in Corey's console)
+- **signalflair.ai apex property VERIFIED** (auto-verified via existing `google5a5fea2e86d232cd.html`) + **sitemap.xml submitted, Status Success, 13 pages discovered.** This is the real fix for "0 indexed pages": the pre-existing verified property was `https://www.signalflair.ai/` (www) but the site canonicalizes to apex, so the www property had 0 indexed pages.
+- **mentalvision.ai apex property: verification file made to serve.** Next.js App Router 404s bare `.html` paths in public/, so added `public/gsv.txt` + a forced-200 rewrite in `netlify.toml` (`/google5a5fea2e86d232cd.html` → `/gsv.txt`); redeployed; confirmed live 200 with correct content. The GSC VERIFY button loads in a cross-origin Google iframe that the browser tool cannot click (and screenshots hang on it), so the **final one-click VERIFY is left to Corey** — guaranteed to succeed since the file serves. Then submit its sitemap.
+- Redundant `mental-vision-v2/public/google5a5fea2e86d232cd.html` left in place (harmless; the rewrite intercepts the path before it).
 
 ## Known limitations
 - LinkedIn URL used in sameAs (`linkedin.com/in/corey-ellis-3b4a0ab8`) is from search-indexed profile data; if Corey has a custom vanity URL, swap it (both layout.tsx and about/page.tsx + MV seo.tsx).

@@ -1,5 +1,12 @@
 # 02 — Google Search Console (20 min) — highest-leverage single action
 
+> **PROGRESS 2026-07-11 (Claude drove this live in your console):**
+> - ✅ **Signal Flair apex property `https://signalflair.ai/` VERIFIED** (auto-verified off the existing HTML file) **+ sitemap.xml submitted → Google discovered all 13 pages.** Done.
+> - ⏳ **Mental Vision apex `https://mentalvision.ai/`: verification file is now LIVE (200) — needs ONE click from you.** The final VERIFY button loads in a Google iframe Claude's browser can't reach. Finish it: GSC → property dropdown → "Add property" (or the pending mentalvision.ai flow) → URL prefix `https://mentalvision.ai/` → **VERIFY** (it will succeed instantly — the file `google5a5fea2e86d232cd.html` serves correctly). Then submit sitemap `sitemap.xml` for that property.
+> - Both apex properties are the FIX for the "0 indexed pages" problem: your verified `www` properties were the wrong scope because the sites canonicalize to the apex (non-www).
+> - Optional speed-up: URL-Inspect the homepage + new article and click "Request indexing" (the sitemap already covers them, so this is just faster).
+
+
 Signal Flair currently shows up for **zero** brand queries — even searching "signalflair.ai" returns the restaurant company. Nothing else in this kit works until Google indexes you.
 
 ## Step 0 — check what already exists (5 min)
