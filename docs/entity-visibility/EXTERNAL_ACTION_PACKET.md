@@ -82,7 +82,7 @@ URL: linkedin.com/in/corey-ellis-3b4a0ab8
 
 ## §5 Crunchbase (20 min)
 crunchbase.com → Add a Company. Note: a different "Corey Ellis" (Growcer) exists on Crunchbase — create your person profile with photo + LinkedIn link so the entities stay distinct.
-Fields: Name `Signal Flair` · website `https://signalflair.ai` · HQ `Brownsburg, Indiana` · Founded [fact #1] · Founder `Corey Ellis` · Industries: Marketing, SEO, Artificial Intelligence · Contact `hello@signalflair.ai` · LinkedIn `linkedin.com/company/signal-flair-ai` · Logo: `signal-flair-logo.svg` from the repo/public folder.
+Fields: Name `Signal Flair` · website `https://signalflair.ai` · HQ `Brownsburg, Indiana` · Founded `2026` · Founder `Corey Ellis` · Industries: Marketing, SEO, Artificial Intelligence · Contact `hello@signalflair.ai` · LinkedIn `linkedin.com/company/signal-flair-ai` · Logo: `signal-flair-logo.svg` from the repo/public folder.
 Short description: `Signal Flair builds AI Proof Infrastructure™ — measuring AI readiness with the 0–100 Signal Score™ and building the proof layer (llms.txt, schema, entity clarity, trust signals) that AI answer engines need to find, verify, and recommend a business.`
 **Then:** in `src/app/layout.tsx`, restore `'https://www.crunchbase.com/organization/signal-flair'` (or the actual slug Crunchbase assigns) to the `sameAs` array — a comment marks the exact spot — and redeploy. Ask Claude to do it in any session.
 
