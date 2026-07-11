@@ -20,7 +20,7 @@ No guarantees, no black boxes — delivery-based work with public proof. If AI c
 ```
 
 ## Experience section
-1. **Add new position:** Title `Founder` · Company `Signal Flair` (pick the company page so the logo links) · Start date [fact-pending: 2025 or 2026] · Location `Brownsburg, Indiana` · Description: first two paragraphs of the company description in file 05.
+1. **Add new position:** Title `Founder` · Company `Signal Flair` (pick the company page so the logo links) · Start date `2026` · Location `Brownsburg, Indiana` · Description: first two paragraphs of the company description in file 05.
 2. **Fix existing position:** Title → `Founder & Chief Visionary Officer` (correct spelling) · Company `Mental Vision`.
 
 ## Featured section (add these three links, in order)

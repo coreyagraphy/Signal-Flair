@@ -28,6 +28,6 @@ Do them in numbered order — each file is self-contained with paste-ready copy.
 - You: `Corey Ellis` — "Coreyagraphy" on social · Founder, Signal Flair · Founder & Chief Visionary Officer, Mental Vision
 - Never anywhere: guarantees of rankings/citations/AI recommendations · "$997" · "Agentic Engine Optimization" (it's **Answer** Engine Optimization)
 
-**Open facts that unblock fields marked [fact-pending]:** founding year (2025 or 2026?) · legal entity ("Mental Vision LLC"?) — answer in `../COREY_ELLIS_FACT_CONFIRMATION.md`.
+**✅ Confirmed facts (2026-07-11):** Signal Flair founded **2026** · legal entity **Mental Vision LLC** (Signal Flair is a brand of it). Every field below is now final — no pending blanks.
 
 **When a new profile goes live, tell Claude the URL** → it gets added to your schema `sameAs` + llms.txt and redeployed. That's how each profile becomes machine-readable proof.

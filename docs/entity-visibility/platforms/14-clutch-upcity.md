@@ -12,7 +12,7 @@ Pick **Clutch first**; add UpCity only if you want a second. Do NOT do mass dire
 | Website | `https://signalflair.ai` |
 | Location | Brownsburg, Indiana 46112, United States |
 | Email | hello@signalflair.ai |
-| Founded | [fact-pending #1] |
+| Founded | `2026` |
 | Employees | 1–10 |
 | Service lines | SEO (closest category) → specify Answer Engine Optimization / AI visibility in the description |
 | Min. project size | $1,000+ |

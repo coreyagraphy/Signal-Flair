@@ -5,8 +5,7 @@ Everything below blocks or improves a specific published claim. Nothing here blo
 ## Blocking (needed within Week 1)
 
 **1. Founding year of Signal Flair — 2025 or 2026?**
-Site schema says `foundingDate: "2026"`; the LinkedIn company page says "Founded 2025". Which is correct (first real operation vs. brand launch)? → Fixes: LinkedIn field, schema, Crunchbase field.
-**Answer:** ______
+✅ ANSWERED 2026-07-11 (Corey): **2026**. Site schema was already correct (`foundingDate: "2026"`) — no code change. Action shifted to the LinkedIn company page, which says 2025 and must be changed to 2026 (platforms/05). Crunchbase + Clutch fields filled with 2026.
 
 **2. Legal relationship wording.**
 ✅ ANSWERED 2026-07-11 (Corey): legal entity = **Mental Vision LLC**; Signal Flair is a brand of it. Implemented same day: `legalName: "Mental Vision LLC"` added to the Mental Vision Organization schema and to Signal Flair's `parentOrganization` node + both llms.txt files. Signal Flair's own org node deliberately carries NO legalName (it's a brand, not a separate legal entity). Public brand wording unchanged: "Mental Vision" / "a Mental Vision company" — the LLC suffix lives in machine-readable facts only.

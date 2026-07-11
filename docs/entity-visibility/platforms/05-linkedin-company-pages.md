@@ -7,7 +7,7 @@ Admin: https://www.linkedin.com/company/130684037/admin/ (public URL: linkedin.c
 |---|---|
 | Tagline | `Your business, found by AI.` |
 | Website | `https://signalflair.ai` (drop the www) |
-| Founded | [fact-pending #1 — 2025 or 2026] |
+| Founded | `2026` (currently shows 2025 — wrong; site schema + all profiles use 2026) |
 | Location | Brownsburg, IN 46112 (already correct — leave) |
 | Description | paste block below |
 

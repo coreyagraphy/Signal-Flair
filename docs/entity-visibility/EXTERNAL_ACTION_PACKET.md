@@ -39,7 +39,7 @@ URL: linkedin.com/company/signal-flair-ai (you're admin). Current defects → re
 |---|---|---|
 | Tagline | "Can AI find your Business, Right NOW?" | `Your business, found by AI.` |
 | Website | https://www.signalflair.ai | `https://signalflair.ai` |
-| Founded | 2025 | [fact-pending #1 — set to confirmed year] |
+| Founded | 2025 | `2026` (confirmed 2026-07-11) |
 | Description | "Agentic Engine Optimization…" | see block below |
 | Parent company | "Mental Vision Corp (Indianapolis, IN)" | see §3b |
 
@@ -73,7 +73,7 @@ URL: linkedin.com/in/corey-ellis-3b4a0ab8
 > Mental Vision (mentalvision.ai) is the studio side: cinematic video production, AI filmmaking, and AI adoption workshops that help small businesses use these tools without fear.
 >
 > No guarantees, no black boxes — delivery-based work with public proof. If AI can't find your business, let's fix that: hello@signalflair.ai
-**Experience entries:** add `Founder — Signal Flair · [year, fact #1]–present · Brownsburg, IN` (2-line summary from §3 description); keep/rename MV role to `Founder & Chief Visionary Officer — Mental Vision`.
+**Experience entries:** add `Founder — Signal Flair · 2026–present · Brownsburg, IN` (2-line summary from §3 description); keep/rename MV role to `Founder & Chief Visionary Officer — Mental Vision`.
 **Featured:** signalflair.ai/proof/ · signalflair.ai · mentalvision.ai.
 
 **§4.3 Canonical founder bio (reuse everywhere — sites, podcasts, events):**

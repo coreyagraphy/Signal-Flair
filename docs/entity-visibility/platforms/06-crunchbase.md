@@ -10,7 +10,7 @@ Why: Crunchbase is one of the highest-weight entity sources answer engines cross
 | Company name | `Signal Flair` |
 | Website | `https://signalflair.ai` |
 | Headquarters | `Brownsburg, Indiana, United States` |
-| Founded | [fact-pending #1] |
+| Founded | `2026` |
 | Founder | Corey Ellis (link/create your person profile, with headshot) |
 | Industries | Marketing · SEO · Artificial Intelligence |
 | Contact email | `hello@signalflair.ai` |
