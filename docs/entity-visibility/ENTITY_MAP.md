@@ -22,7 +22,7 @@
 | Public product terms (approved) | Signal Score™, Signal Proof Page™, Stay Found™, AI Proof Infrastructure™ + six layers (Access & Crawlability, Structured Intelligence, Entity Clarity, Answer Architecture, Trust & Proof Density, Live AI Visibility) | 53A PUBLIC_ALLOWED |
 | Live-but-drift-flagged terms | Signal Protocol™, Signal Pulse™, Signal Proof Layer™, Signal Baseline™, Competitor Signal Snapshot™ — usable where already live; don't expand until registry amendment | 53A drift list |
 | Internal-only | Proof OS (investor contexts only), Proof Flex™, Engine Lens Matrix™, etc. | 53A INTERNAL_ALLOWED |
-| Profiles | LinkedIn: linkedin.com/company/signal-flair-ai (EXISTS, needs edits) · Crunchbase: DOES NOT EXIST YET (removed from sameAs; recreate then restore) | verified 2026-07-11 |
+| Profiles | LinkedIn: linkedin.com/company/signal-flair-ai (EXISTS, needs edits) · Indy Chamber member profile: portal.indychamber.com/#/public/member-profile/4af79270-4832-4fca-9754-49cb2e88e912 (owner-confirmed 2026-07-11; hash-routed — crawlable indychamber.com/member-directory/ page NOT yet live, see packet §7) · Crunchbase: DOES NOT EXIST YET (removed from sameAs; recreate then restore) | verified 2026-07-11 |
 
 ### Mental Vision
 | Field | Canonical value | Source |
@@ -34,14 +34,14 @@
 | Email | create@mentalvision.ai (live on v2; confirm monitored — fact #3) | live v2 |
 | Location | Brownsburg, IN 46112 (contact schema); ⚠ LinkedIn parent line says Indianapolis — reconcile | live v2 vs LinkedIn |
 | Relationship | parent/umbrella of Signal Flair; also houses HyperForge (in-house AEO/content engine — internal, not on v2 site) | Proof OS entity registry |
-| Profiles | Corey's personal LinkedIn references "Mentalvision"; MV company page URL unknown (fact #4) | search evidence |
+| Profiles | Facebook facebook.com/Mentalvisionllc + Instagram instagram.com/mentalvision.ai (owner-confirmed 2026-07-11, in schema sameAs); LinkedIn company page URL still unknown (fact #4). Note: FB handle "Mentalvisionllc" suggests legal name "Mental Vision LLC" — confirm (fact #2) | owner-provided |
 
 ### Corey Ellis (founder entity)
 | Field | Value | Source |
 |---|---|---|
 | Name | Corey Ellis | canon |
 | Descriptor | Founder, Signal Flair · Founder & Chief Visionary Officer, Mental Vision · creative technologist, filmmaker, educator, AI builder | live MV /about |
-| Alias | Coreyagraphy (creative brand voice) | MV schema + canon |
+| Alias | Coreyagraphy — Corey's handle on ALL social media (owner-confirmed 2026-07-11): instagram.com/coreyagraphy + facebook.com/Coreyagraphy (both in Person sameAs) | owner-provided |
 | Location | Brownsburg, Indiana | canon |
 | LinkedIn | linkedin.com/in/corey-ellis-3b4a0ab8 (EXISTS; typo "Cheif", stale positioning, no Signal Flair) | verified |
 | Name-collision risk | Crunchbase "Corey Ellis" = Growcer CEO (different person); disc golfer; AFL player; musician | search evidence |

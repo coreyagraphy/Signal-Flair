@@ -10,6 +10,7 @@ Site schema says `foundingDate: "2026"`; the LinkedIn company page says "Founded
 
 **2. Legal relationship wording.**
 Canon records "Mental Vision — parent organization." Is there a legal entity (LLC/Inc/d/b/a) behind either brand, and is Signal Flair legally part of it or a brand of the same sole operation? Publishable wording today is "Signal Flair is a Mental Vision company/product" — confirm that stays the approved phrasing (schema uses `parentOrganization`/`subOrganization`; we deliberately avoid `owns`/`legalName` until this is answered).
+*Update 2026-07-11: your Facebook handle is "Mentalvisionllc" — is the legal entity "Mental Vision LLC", and is Signal Flair a d/b/a or brand of that LLC? If yes, `legalName` can be added to schema.*
 **Answer:** ______
 
 **3. Mental Vision public email.**
@@ -23,7 +24,7 @@ Does one exist (URL)? Your personal profile shows "Mentalvision" as employer, wh
 ## Non-blocking (Week 2–3)
 
 **5. Preferred founder title string** — "Founder" (SF) + "Founder & Chief Visionary Officer" (MV) is what's live. Keep exactly this split? **Answer:** ______
-**6. Approved social handles** for both brands (Instagram/YouTube/X/Facebook: exact URLs or "none yet") — footer placeholders exist on SF; nothing gets added to sameAs without a live URL. **Answer:** ______
+**6. Approved social handles** — ✅ PARTIALLY ANSWERED 2026-07-11: personal = instagram.com/coreyagraphy + facebook.com/Coreyagraphy ("Coreyagraphy" on all social); MV = facebook.com/Mentalvisionllc + instagram.com/mentalvision.ai. All four wired into schema. Still open: any SIGNAL FLAIR-brand handles (footer placeholders exist) + YouTube/X URLs if any. **Answer:** ______
 **7. Founder photo** — 4:5 portrait for the SF about section (slot has been open since June) + square headshot for profiles. Provide file or say "hold." **Answer:** ______
 **8. Google Business Profile** — does one exist for either brand already? If not, approve/deny creating SF as a service-area business (Brownsburg, address hidden) — packet §8. **Answer:** ______
 **9. Trademark status** — Signal Score™, Stay Found™, etc. are used with ™ (fine unregistered). Confirm none are registered (®) and none are under filing, so no surface over- or under-claims. **Answer:** ______

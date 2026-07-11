@@ -53,12 +53,12 @@ const jsonLd = {
       logo: 'https://signalflair.ai/signal-flair-logo.svg',
       areaServed: { '@type': 'Country', name: 'United States' },
       address: { '@type': 'PostalAddress', addressLocality: 'Brownsburg', addressRegion: 'IN', addressCountry: 'US' },
-      founder: { '@type': 'Person', name: 'Corey Ellis', sameAs: ['https://www.linkedin.com/in/corey-ellis-3b4a0ab8'] },
+      founder: { '@type': 'Person', name: 'Corey Ellis', alternateName: 'Coreyagraphy', sameAs: ['https://www.linkedin.com/in/corey-ellis-3b4a0ab8', 'https://www.instagram.com/coreyagraphy/', 'https://www.facebook.com/Coreyagraphy/'] },
       parentOrganization: { '@type': 'Organization', name: 'Mental Vision', url: 'https://mentalvision.ai' },
       // sameAs must only list profiles that verifiably exist — a dead URL here reads as
       // fake corroboration to answer engines. Crunchbase re-enters this array only after
       // the profile is actually created (see docs/entity-visibility/EXTERNAL_ACTION_PACKET.md).
-      sameAs: ['https://signalflair.ai/proof/', 'https://www.linkedin.com/company/signal-flair-ai', 'https://mentalvision.ai'],
+      sameAs: ['https://signalflair.ai/proof/', 'https://www.linkedin.com/company/signal-flair-ai', 'https://portal.indychamber.com/#/public/member-profile/4af79270-4832-4fca-9754-49cb2e88e912', 'https://mentalvision.ai'],
       contactPoint: { '@type': 'ContactPoint', email: 'hello@signalflair.ai', contactType: 'sales', areaServed: 'US' },
     },
     {
