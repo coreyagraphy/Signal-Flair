@@ -54,7 +54,7 @@ const jsonLd = {
       areaServed: { '@type': 'Country', name: 'United States' },
       address: { '@type': 'PostalAddress', addressLocality: 'Brownsburg', addressRegion: 'IN', addressCountry: 'US' },
       founder: { '@type': 'Person', name: 'Corey Ellis', alternateName: 'Coreyagraphy', sameAs: ['https://www.linkedin.com/in/corey-ellis-3b4a0ab8', 'https://www.instagram.com/coreyagraphy/', 'https://www.facebook.com/Coreyagraphy/'] },
-      parentOrganization: { '@type': 'Organization', name: 'Mental Vision', url: 'https://mentalvision.ai' },
+      parentOrganization: { '@type': 'Organization', name: 'Mental Vision', legalName: 'Mental Vision LLC', url: 'https://mentalvision.ai' },
       // sameAs must only list profiles that verifiably exist — a dead URL here reads as
       // fake corroboration to answer engines. Crunchbase re-enters this array only after
       // the profile is actually created (see docs/entity-visibility/EXTERNAL_ACTION_PACKET.md).

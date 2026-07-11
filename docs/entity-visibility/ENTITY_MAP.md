@@ -28,6 +28,7 @@
 | Field | Canonical value | Source |
 |---|---|---|
 | Name | **Mental Vision** — never "Mental Vision Corp" | standing directive |
+| Legal name | **Mental Vision LLC** (Corey-confirmed 2026-07-11; in schema `legalName`; brand copy stays "Mental Vision") | owner-confirmed |
 | Domain | **mentalvision.ai** (apex canonical; www 301s; v2 site LIVE) | verified |
 | Category | Creative technology studio — cinematic production, AI filmmaking, human-centered AI adoption | live v2 |
 | Founder | Corey Ellis ("Coreyagraphy"), Founder & Chief Visionary Officer | live v2 /about |

@@ -7,7 +7,7 @@
 
 ## Organization
 - Name: Signal Flair
-- Parent: Mental Vision — parent organization
+- Parent: Mental Vision — parent organization (legal entity: Mental Vision LLC)
 - Website: https://signalflair.ai
 - Location: Brownsburg, Indiana, United States
 - Service Area: United States (remote-capable, nationwide)

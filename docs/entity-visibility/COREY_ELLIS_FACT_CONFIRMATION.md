@@ -9,9 +9,7 @@ Site schema says `foundingDate: "2026"`; the LinkedIn company page says "Founded
 **Answer:** ______
 
 **2. Legal relationship wording.**
-Canon records "Mental Vision — parent organization." Is there a legal entity (LLC/Inc/d/b/a) behind either brand, and is Signal Flair legally part of it or a brand of the same sole operation? Publishable wording today is "Signal Flair is a Mental Vision company/product" — confirm that stays the approved phrasing (schema uses `parentOrganization`/`subOrganization`; we deliberately avoid `owns`/`legalName` until this is answered).
-*Update 2026-07-11: your Facebook handle is "Mentalvisionllc" — is the legal entity "Mental Vision LLC", and is Signal Flair a d/b/a or brand of that LLC? If yes, `legalName` can be added to schema.*
-**Answer:** ______
+✅ ANSWERED 2026-07-11 (Corey): legal entity = **Mental Vision LLC**; Signal Flair is a brand of it. Implemented same day: `legalName: "Mental Vision LLC"` added to the Mental Vision Organization schema and to Signal Flair's `parentOrganization` node + both llms.txt files. Signal Flair's own org node deliberately carries NO legalName (it's a brand, not a separate legal entity). Public brand wording unchanged: "Mental Vision" / "a Mental Vision company" — the LLC suffix lives in machine-readable facts only.
 
 **3. Mental Vision public email.**
 v2 site + schema publish `create@mentalvision.ai`. A June note deprecated create@ for *Signal Flair outreach* use. Confirm: create@ is monitored and stays MV's public inbox? (If not, tell me the replacement and I'll patch site + schema + llms.txt.)

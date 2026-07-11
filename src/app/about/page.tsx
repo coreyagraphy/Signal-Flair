@@ -38,7 +38,7 @@ const jsonLd = {
       areaServed: { '@type': 'Country', name: 'United States' },
       address: { '@type': 'PostalAddress', addressLocality: 'Brownsburg', addressRegion: 'IN', addressCountry: 'US' },
       founder: { '@id': 'https://signalflair.ai/#founder' },
-      parentOrganization: { '@type': 'Organization', name: 'Mental Vision', url: 'https://mentalvision.ai' },
+      parentOrganization: { '@type': 'Organization', name: 'Mental Vision', legalName: 'Mental Vision LLC', url: 'https://mentalvision.ai' },
     },
     {
       '@type': 'Person',
