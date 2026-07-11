@@ -14,7 +14,7 @@
 | Domain | **signalflair.ai** (apex canonical; www 301s) | live, verified |
 | Category | AI Proof Infrastructure™ / Answer Engine Optimization (AEO) | 53A registry (approved) |
 | Founder | Corey Ellis | canon + live |
-| Founding date | **2026** (Corey-confirmed 2026-07-11; site schema already correct; LinkedIn "2025" is the outlier → fix per platforms/05) | owner-confirmed |
+| Founding date | **2026** — consistent everywhere (Corey-confirmed + LinkedIn field updated and live-verified 2026-07-11) | owner-confirmed + observed |
 | Parent | Mental Vision (never "Corp") | Proof OS entity registry; proof.json |
 | Location | Brownsburg, Indiana — serving nationwide (no street published) | canon |
 | Email (only public inbox) | hello@signalflair.ai | canon |
