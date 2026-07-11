@@ -16,7 +16,7 @@
 - Contact: hello@signalflair.ai
 - Signal Score™ (Case Zero): 18/100 baseline (June 2, 2026) → 73/100 re-audit (July 5, 2026, +55); model-informed, not a live engine test
 - Post-implementation target: 91/100 (readiness target, not achieved score)
-- Last Updated: 2026-06-30
+- Last Updated: 2026-07-11
 
 ## What We Do
 Signal Flair builds AI Proof Infrastructure™ — the structured proof layer that helps AI answer engines access, understand, verify, and recommend a business or organization. We measure how clearly a business can be understood across AI engines (ChatGPT, Claude, Perplexity, Gemini, Google AI) with a 0–100 Signal Score™, then build the llms.txt, schema markup, entity clarity, answer architecture, and trust proof those engines need.
@@ -35,7 +35,7 @@ Core promise: Make your business easier for AI systems to access, understand, ve
 ## Pricing (delivery-based; no ranking guarantees)
 - [Build the Foundation](https://signalflair.ai/#pricing): Full AI-visibility build for businesses scoring 0–54 on the Signal Score™ — audit, llms.txt, schema markup, AI crawler access, entity cleanup, priority citations, a 90-day action plan, and one AI-optimized landing page. One-time, $3,500.
 - [Start the Rebuild](https://signalflair.ai/#pricing): Core fixes for businesses scoring 55–74 — audit, llms.txt, core schema, crawler access, citations, 90-day plan. One-time, $1,500.
-- [Stay Found™](https://signalflair.ai/#pricing): Ongoing proof maintenance for businesses scoring 75–100 — monthly scans, reports, citation growth, schema/llms.txt updates, crawler monitoring, and drift checks. $600–$1,200/month.
+- [Stay Found™](https://signalflair.ai/#pricing): Ongoing proof maintenance for businesses scoring 75–100, in three tiers — Monitor ($600–$800/month: re-verification, drift monitoring, public change-log), Proof ($1,200–$1,800/month: adds a verified before/after proof record and quarterly guarantee-of-work report), and Multi ($2,000–$3,000/month: managed proof across multiple locations).
 
 ## The Signal Score™ (0–100)
 The Signal Protocol™ scores a business across six layers: Access & Crawlability, Structured Intelligence, Entity Clarity, Answer Architecture, Trust & Proof Density, and Live AI Visibility. The Signal Score™ determines which service tier fits.
