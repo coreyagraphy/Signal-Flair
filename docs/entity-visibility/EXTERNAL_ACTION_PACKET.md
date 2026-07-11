@@ -58,7 +58,7 @@ The parent reference "Mental Vision Corp (Indianapolis, IN)" implies an old page
 If no MV page exists, create one with these fields, then link it as parent on the Signal Flair page (fact #4).
 
 ## §4 LinkedIn — personal profile (30 min)
-URL: linkedin.com/in/mentalvision-3b4a0ab8
+URL: linkedin.com/in/corey-ellis-3b4a0ab8
 
 **§4.1 Headline (fixes the "Cheif" typo):**
 `Founder, Signal Flair — AI Proof Infrastructure™ | Founder & Chief Visionary Officer, Mental Vision | Making businesses findable, verifiable, and recommendable to AI engines`

@@ -43,7 +43,7 @@
 | Descriptor | Founder, Signal Flair · Founder & Chief Visionary Officer, Mental Vision · creative technologist, filmmaker, educator, AI builder | live MV /about |
 | Alias | Coreyagraphy (creative brand voice) | MV schema + canon |
 | Location | Brownsburg, Indiana | canon |
-| LinkedIn | linkedin.com/in/mentalvision-3b4a0ab8 (EXISTS; typo "Cheif", stale positioning, no Signal Flair) | verified |
+| LinkedIn | linkedin.com/in/corey-ellis-3b4a0ab8 (EXISTS; typo "Cheif", stale positioning, no Signal Flair) | verified |
 | Name-collision risk | Crunchbase "Corey Ellis" = Growcer CEO (different person); disc golfer; AFL player; musician | search evidence |
 | Expertise (publishable) | AI visibility / AEO, entity clarity, structured data, AI implementation for small business, AI filmmaking, creative direction | both sites |
 

@@ -46,7 +46,7 @@ Session: Claude Code (Fable 5), autonomous entity-visibility assignment under TH
 **HOLD — deliberate.** Deploys are owner-gated (standing rule + env-var inlining caveat). Both repos left build-verified and deploy-ready. Exact procedures: EXTERNAL_ACTION_PACKET.md §1. **Nothing in this record is claimed live.**
 
 ## Known limitations
-- LinkedIn URL used in sameAs (`linkedin.com/in/mentalvision-3b4a0ab8`) is from search-indexed profile data; if Corey has a custom vanity URL, swap it (both layout.tsx and about/page.tsx + MV seo.tsx).
+- LinkedIn URL used in sameAs (`linkedin.com/in/corey-ellis-3b4a0ab8`) is from search-indexed profile data; if Corey has a custom vanity URL, swap it (both layout.tsx and about/page.tsx + MV seo.tsx).
 - foundingDate "2026" left as-is pending fact #1 (LinkedIn says 2025).
 - `Signal Locked` tier label (`src/lib/signal-tiers.ts:12`) is adjacent to the retired "Signal Lock™" term — left in place (it's a score-band label, not the product name); flag if canon tightens.
 - Internal `CLAUDE.md` still expands AEO as "Agentic Engine Optimization" (stale); not edited because OWNER_CANON_LOCK excludes it — recommend a one-line fix next owner pass.

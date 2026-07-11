@@ -53,7 +53,7 @@ const jsonLd = {
       logo: 'https://signalflair.ai/signal-flair-logo.svg',
       areaServed: { '@type': 'Country', name: 'United States' },
       address: { '@type': 'PostalAddress', addressLocality: 'Brownsburg', addressRegion: 'IN', addressCountry: 'US' },
-      founder: { '@type': 'Person', name: 'Corey Ellis', sameAs: ['https://www.linkedin.com/in/mentalvision-3b4a0ab8'] },
+      founder: { '@type': 'Person', name: 'Corey Ellis', sameAs: ['https://www.linkedin.com/in/corey-ellis-3b4a0ab8'] },
       parentOrganization: { '@type': 'Organization', name: 'Mental Vision', url: 'https://mentalvision.ai' },
       // sameAs must only list profiles that verifiably exist — a dead URL here reads as
       // fake corroboration to answer engines. Crunchbase re-enters this array only after

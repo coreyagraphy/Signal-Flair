@@ -47,7 +47,7 @@ const jsonLd = {
       jobTitle: 'Founder',
       worksFor: { '@id': 'https://signalflair.ai/#org' },
       homeLocation: { '@type': 'Place', name: 'Brownsburg, Indiana' },
-      sameAs: ['https://www.linkedin.com/in/mentalvision-3b4a0ab8', 'https://mentalvision.ai/about'],
+      sameAs: ['https://www.linkedin.com/in/corey-ellis-3b4a0ab8', 'https://mentalvision.ai/about'],
     },
   ],
 }
