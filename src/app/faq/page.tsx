@@ -5,7 +5,7 @@ export const metadata: Metadata = {
   title: 'FAQ — Signal Score, Case Zero, Field Report & Signal Proof Page | Signal Flair',
   description:
     'Answers to the core Signal Flair questions: what a Signal Score™ is, what Case Zero (18 → 73, June 2026) is, what a free Field Report includes, and the Founding Partner Pilot. AI Proof Infrastructure for businesses and organizations nationwide.',
-  alternates: { canonical: 'https://signalflair.ai/faq' },
+  alternates: { canonical: 'https://signalflair.ai/faq/' },
   openGraph: {
     title: 'Signal Flair — Frequently Asked Questions',
     description:

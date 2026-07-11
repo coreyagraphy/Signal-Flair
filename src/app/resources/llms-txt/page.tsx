@@ -5,7 +5,7 @@ export const metadata: Metadata = {
   title: 'What is llms.txt? Why Your Business Is Invisible to AI Without It | Signal Flair',
   description:
     'llms.txt is the file that tells AI engines — ChatGPT, Claude, Perplexity, Gemini, Google AI — who your business is. Fewer than 1% of local businesses have one. Here’s what it is, why it matters, and how to fix it.',
-  alternates: { canonical: 'https://signalflair.ai/resources/llms-txt' },
+  alternates: { canonical: 'https://signalflair.ai/resources/llms-txt/' },
   openGraph: {
     title: 'What is llms.txt? Why Your Business Is Invisible to AI Without It',
     description: 'The simple file that tells AI engines who your business is — and why fewer than 1% of local businesses have one.',

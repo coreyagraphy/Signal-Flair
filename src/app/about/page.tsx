@@ -5,7 +5,7 @@ export const metadata: Metadata = {
   title: 'About — AI Visibility & AEO · Brownsburg, Indiana | Signal Flair',
   description:
     'Signal Flair is an AI visibility and Answer Engine Optimization (AEO) agency based in Brownsburg, Indiana, serving nationwide — a product of Mental Vision, founded by Corey Ellis. We score how findable your business is to ChatGPT, Claude, Perplexity, Gemini, and Google AI, then build the layer they read.',
-  alternates: { canonical: 'https://signalflair.ai/about' },
+  alternates: { canonical: 'https://signalflair.ai/about/' },
   openGraph: {
     title: 'About Signal Flair — found by AI, by design',
     description:
@@ -19,7 +19,7 @@ const jsonLd = {
     {
       '@type': 'AboutPage',
       '@id': 'https://signalflair.ai/about#aboutpage',
-      url: 'https://signalflair.ai/about',
+      url: 'https://signalflair.ai/about/',
       name: 'About Signal Flair',
       isPartOf: { '@id': 'https://signalflair.ai/#website' },
       about: { '@id': 'https://signalflair.ai/#org' },
@@ -47,6 +47,7 @@ const jsonLd = {
       jobTitle: 'Founder',
       worksFor: { '@id': 'https://signalflair.ai/#org' },
       homeLocation: { '@type': 'Place', name: 'Brownsburg, Indiana' },
+      sameAs: ['https://www.linkedin.com/in/mentalvision-3b4a0ab8', 'https://mentalvision.ai/about'],
     },
   ],
 }

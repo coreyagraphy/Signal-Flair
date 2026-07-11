@@ -6,7 +6,7 @@ export const metadata: Metadata = {
   title: 'Trust Evidence — Verified Record | Signal Flair',
   description:
     'Signal Flair’s operator, parent company, and trust signals — shown honestly, including the gaps. Part of the live Signal Proof Page™ verified record.',
-  alternates: { canonical: 'https://signalflair.ai/proof/trust' },
+  alternates: { canonical: 'https://signalflair.ai/proof/trust/' },
 }
 
 export default function ProofTrustPage() {

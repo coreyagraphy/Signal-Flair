@@ -5,7 +5,7 @@ export const metadata: Metadata = {
   title: 'RESTOR Team Case Study | Signal Flair',
   description:
     'See how RESTOR Team used Signal Flair’s Signal Baseline™ and Competitor Signal Snapshot™ to understand its AI-readable proof foundation against a selected market peer.',
-  alternates: { canonical: 'https://signalflair.ai/case-studies/restor-team' },
+  alternates: { canonical: 'https://signalflair.ai/case-studies/restor-team/' },
   openGraph: {
     title: 'RESTOR Team — Founding Partner Snapshot | Signal Flair',
     description:

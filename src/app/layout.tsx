@@ -11,6 +11,15 @@ export const metadata: Metadata = {
   openGraph: {
     title: 'Signal Flair — AI Proof Infrastructure for the AI answer era',
     description: 'Signal Flair builds the structured proof layer that helps AI systems understand who you are, what you do, where you serve, and why you deserve to be recommended.',
+    url: 'https://signalflair.ai/',
+    siteName: 'Signal Flair',
+    type: 'website',
+    images: ['/video/hero-poster.jpg'],
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'Signal Flair — AI Proof Infrastructure for the AI answer era',
+    description: 'Signal Flair builds the structured proof layer that helps ChatGPT, Claude, Gemini, and Perplexity find, verify, and recommend your business.',
     images: ['/video/hero-poster.jpg'],
   },
 }
@@ -30,7 +39,7 @@ const jsonLd = {
       '@type': ['Organization', 'ProfessionalService'],
       '@id': 'https://signalflair.ai/#org',
       name: 'Signal Flair',
-      alternateName: 'Signal Flair AI Visibility',
+      alternateName: ['Signal Flair AI Visibility', 'SignalFlair'],
       url: 'https://signalflair.ai',
       email: 'hello@signalflair.ai',
       slogan: 'Your business, found by AI.',
@@ -44,9 +53,12 @@ const jsonLd = {
       logo: 'https://signalflair.ai/signal-flair-logo.svg',
       areaServed: { '@type': 'Country', name: 'United States' },
       address: { '@type': 'PostalAddress', addressLocality: 'Brownsburg', addressRegion: 'IN', addressCountry: 'US' },
-      founder: { '@type': 'Person', name: 'Corey Ellis' },
+      founder: { '@type': 'Person', name: 'Corey Ellis', sameAs: ['https://www.linkedin.com/in/mentalvision-3b4a0ab8'] },
       parentOrganization: { '@type': 'Organization', name: 'Mental Vision', url: 'https://mentalvision.ai' },
-      sameAs: ['https://signalflair.ai/proof/', 'https://www.linkedin.com/company/signal-flair-ai', 'https://www.crunchbase.com/organization/signal-flair', 'https://mentalvision.ai'],
+      // sameAs must only list profiles that verifiably exist — a dead URL here reads as
+      // fake corroboration to answer engines. Crunchbase re-enters this array only after
+      // the profile is actually created (see docs/entity-visibility/EXTERNAL_ACTION_PACKET.md).
+      sameAs: ['https://signalflair.ai/proof/', 'https://www.linkedin.com/company/signal-flair-ai', 'https://mentalvision.ai'],
       contactPoint: { '@type': 'ContactPoint', email: 'hello@signalflair.ai', contactType: 'sales', areaServed: 'US' },
     },
     {

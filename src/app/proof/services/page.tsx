@@ -6,7 +6,7 @@ export const metadata: Metadata = {
   title: 'Services & Areas — Verified Record | Signal Flair',
   description:
     'Signal Flair’s services, service areas, and availability — each source-linked. Part of the live Signal Proof Page™ verified record.',
-  alternates: { canonical: 'https://signalflair.ai/proof/services' },
+  alternates: { canonical: 'https://signalflair.ai/proof/services/' },
 }
 
 const SERVICES = [

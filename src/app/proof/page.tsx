@@ -6,7 +6,7 @@ export const metadata: Metadata = {
   title: 'Our Live Verified Record — Case Zero, 18 → 73 | Signal Flair',
   description:
     'Signal Flair ran the Signal Protocol™ on itself first: 18/100 on June 2, 2026. We rebuilt our own AI proof foundation in public and re-audited July 5 — 73/100, +55. The full record, source-linked, with a public change log. We don’t claim. We show.',
-  alternates: { canonical: 'https://signalflair.ai/proof' },
+  alternates: { canonical: 'https://signalflair.ai/proof/' },
   openGraph: {
     title: 'Case Zero — 18 → 73 | Signal Flair’s own live verified record',
     description:

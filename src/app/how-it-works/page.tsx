@@ -5,7 +5,7 @@ export const metadata: Metadata = {
   title: 'How It Works — Scan, Score, Fix, Stay Found | Signal Flair',
   description:
     'How Signal Flair works: we scan your business across five AI engines, score your AI visibility 0–100, fix the machine-readable layer (llms.txt, schema, crawler access), and keep your score true over time. Pricing is set by your score.',
-  alternates: { canonical: 'https://signalflair.ai/how-it-works' },
+  alternates: { canonical: 'https://signalflair.ai/how-it-works/' },
   openGraph: {
     title: 'How Signal Flair works — scan, score, fix, stay found',
     description:
