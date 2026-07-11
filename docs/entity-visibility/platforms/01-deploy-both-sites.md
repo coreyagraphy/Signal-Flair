@@ -1,5 +1,7 @@
 # 01 — Deploy both sites (15 min)
 
+> ✅ **DONE 2026-07-11** — both sites deployed and live-verified (SF deploy `6a52b0c3`, MV deploy `6a52b128`); IndexNow pinged. Steps kept below for future redeploys.
+
 Everything from the 2026-07-11 session is committed and build-verified but **not live** until you do this (or tell Claude "ship it").
 
 ## Signal Flair

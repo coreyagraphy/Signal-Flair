@@ -43,15 +43,18 @@ Session: Claude Code (Fable 5), autonomous entity-visibility assignment under TH
 | Existing verifiers | signal-flair has no test script; `aeo-verify.mjs` exists unwired (not run — targets live site; run post-deploy). Proof OS suites not run (repo untouched). |
 
 ## Deployment status
-**HOLD — deliberate.** Deploys are owner-gated (standing rule + env-var inlining caveat). Both repos left build-verified and deploy-ready. Exact procedures: EXTERNAL_ACTION_PACKET.md §1. **Nothing in this record is claimed live.**
+**DEPLOYED & LIVE-VERIFIED 2026-07-11** (Corey authorized "ship it").
+- **signalflair.ai** — `npm run ship` → Netlify `cozy-pie-596a1f`, deploy `6a52b0c3b3f404426cc17c9f` (49 assets + /pulse function). Live checks PASS: new article `/resources/how-ai-engines-verify-a-business/` → 200; homepage schema carries `Mental Vision LLC` + Coreyagraphy Instagram, **0 crunchbase**; `/about/` canonical trailing-slash + single `<html>`; llms.txt shows three-tier pricing + LLC + 2026-07-11.
+- **mentalvision.ai** — `netlify deploy --prod --build` → `mental-vision-v2`, deploy `6a52b1287785f62ab0610906`. Live checks PASS: llms.txt → 200 (was 404) with legal name + Signal Flair relationship; homepage schema carries `Mental Vision LLC` + `subOrganization` + `Mentalvisionllc`.
+- **IndexNow** re-ping submitted for 8 signalflair.ai URLs → HTTP 200 (Bing/Copilot/Perplexity/Yandex). Google is NOT in IndexNow → still needs GSC "Request indexing" (platforms/02).
 
 ## Known limitations
 - LinkedIn URL used in sameAs (`linkedin.com/in/corey-ellis-3b4a0ab8`) is from search-indexed profile data; if Corey has a custom vanity URL, swap it (both layout.tsx and about/page.tsx + MV seo.tsx).
-- foundingDate "2026" left as-is pending fact #1 (LinkedIn says 2025).
+- foundingDate "2026" CONFIRMED (Corey 2026-07-11); LinkedIn company page updated to 2026 and live-verified.
 - `Signal Locked` tier label (`src/lib/signal-tiers.ts:12`) is adjacent to the retired "Signal Lock™" term — left in place (it's a score-band label, not the product name); flag if canon tightens.
 - Internal `CLAUDE.md` still expands AEO as "Agentic Engine Optimization" (stale); not edited because OWNER_CANON_LOCK excludes it — recommend a one-line fix next owner pass.
 
 ## Rollback
-- signal-flair: `git revert d38b979 fc41eea` (or `git reset --hard 455b0cf` — branch unpushed, but revert preferred; deliverables commit revert likewise).
-- mental-vision-v2: `git revert 0ef5e3c` (or reset to `4ca9a4d`).
-- Nothing deployed, so live rollback is not applicable.
+- signal-flair: `git revert <commit>` then `npm run ship` to redeploy the reverted state. Entity commits: fc41eea, d38b979, ac78882, d63a091 (+ content 1726de0, docs).
+- mental-vision-v2: `git revert 0ef5e3c 40d3e57 e837a4b` then `netlify deploy --prod --build`.
+- Netlify keeps every deploy; instant rollback also available via the Netlify UI (Deploys → previous deploy → "Publish deploy") with no rebuild.
