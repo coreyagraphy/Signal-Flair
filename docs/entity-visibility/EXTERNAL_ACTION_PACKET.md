@@ -1,5 +1,7 @@
 # External Action Packet — paste-ready
 
+> **Easier format available:** this packet is now split into one simple file per platform in [`platforms/`](platforms/README.md) — start there. This document remains the consolidated reference.
+
 Every action below needs your identity/accounts. Copy is final unless marked [fact-pending]. Email-identity rule applied throughout: `hello@signalflair.ai` = public/inbound · `outreach@trysignalflair.com` = manual outbound pitches · never `connect@`/deprecated addresses.
 
 ---
