@@ -53,6 +53,12 @@ export default function SignalPulseForm() {
     try { setScanDomain(new URL(/^https?:\/\//i.test(website) ? website : 'https://' + website).hostname) } catch { setScanDomain(website) }
     setPhase('scanning')
 
+    // Until GHL notifications are wired: mirror the lead to Netlify Forms, which emails
+    // outreach@trysignalflair.com. Covers BOTH direct submits and signalflair.ai handoffs.
+    try {
+      fetch('/', { method: 'POST', headers: { 'Content-Type': 'application/x-www-form-urlencoded' }, body: new URLSearchParams({ 'form-name': 'signal-pulse', ...payload }).toString() }).catch(() => {})
+    } catch { /* best effort */ }
+
     // Call the function; keep a minimum on-screen scan time so it feels like a real scan.
     const scan: Promise<PulseData | null> = fetch(FUNCTION_URL, {
       method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(payload),
@@ -151,7 +157,10 @@ export default function SignalPulseForm() {
   return (
     <div className="ssc-form" id="pulse">
       {phase === 'idle' && (
-        <form ref={formRef} noValidate onSubmit={handleSubmit}>
+        <form name="signal-pulse" data-netlify="true" data-netlify-honeypot="bot-field" ref={formRef} noValidate onSubmit={handleSubmit}>
+          {/* Netlify Forms registration (deploy-time parsed) + spam honeypot */}
+          <input type="hidden" name="form-name" value="signal-pulse" />
+          <p style={{ display: 'none' }} aria-hidden="true"><label>Don&apos;t fill this out: <input name="bot-field" /></label></p>
           <div className="ssc-form-head">
             <span className="ssc-form-badge"><span className="ssc-dot" aria-hidden="true" />Signal Pulse™</span>
             <span className="ssc-form-sub">Tell us who you are and where to look — your Signal Pulse™ score appears in seconds. The full, human-verified Signal Score™ is an optional next step.</span>

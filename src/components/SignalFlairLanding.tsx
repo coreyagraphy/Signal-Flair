@@ -94,6 +94,13 @@ export default function SignalFlairLanding() {
     payload.form_type = 'field_report'
     payload.request_type = 'field_report'
 
+    // Until GHL notifications are wired: mirror every lead to Netlify Forms, which emails
+    // outreach@trysignalflair.com (site-wide submission hook). Fire-and-forget — runs even
+    // if the GHL webhook below fails, so no lead ever lands silently.
+    try {
+      fetch('/', { method: 'POST', headers: { 'Content-Type': 'application/x-www-form-urlencoded' }, body: new URLSearchParams(payload).toString() }).catch(() => {})
+    } catch { /* best effort */ }
+
     setLeadSubmitting(true)
     try {
       if (!FIELD_REPORT_WEBHOOK_URL) {
@@ -1405,7 +1412,10 @@ export default function SignalFlairLanding() {
               <div id="lead-form-wrap">
                 <div className="lead-h">Let&apos;s fix that before &ldquo;invisible&rdquo; becomes your <em>brand strategy.</em></div>
                 <div className="lead-subline">Your free Field Report: 3 of the 6 Signal Protocol™ layers, scanned across ChatGPT, Claude, Perplexity, Gemini &amp; Google AI — delivered in 24 hours. The full six-layer breakdown comes after.</div>
-                <form id="lead-form" ref={leadFormRef} noValidate onSubmit={handleLeadSubmit}>
+                <form id="lead-form" name="field-report" data-netlify="true" data-netlify-honeypot="bot-field" ref={leadFormRef} noValidate onSubmit={handleLeadSubmit}>
+                  {/* Netlify Forms registration (deploy-time parsed) + spam honeypot */}
+                  <input type="hidden" name="form-name" value="field-report" />
+                  <p style={{ display: 'none' }} aria-hidden="true"><label>Don&apos;t fill this out: <input name="bot-field" /></label></p>
                   <div className="lf-field">
                     <label className="lf-label" htmlFor="lf-name">Your name<span className="req">*</span></label>
                     <input className={`lf-input${leadFieldErrors.full_name ? ' invalid' : ''}`} id="lf-name" name="full_name" type="text" autoComplete="name" placeholder="Jane Smith" />
