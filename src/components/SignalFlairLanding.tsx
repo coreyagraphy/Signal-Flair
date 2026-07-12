@@ -115,6 +115,14 @@ export default function SignalFlairLanding() {
       }
       console.info('[Field Report] fetch complete')
       track('form_submit', { form_id: 'lead-form', primary_service: payload.primary_service, demo_mode: false })
+      // Handoff to /pulse: stash the lead (same-origin sessionStorage — never URL params)
+      // so the Pulse page can auto-run their scan without re-collecting anything.
+      try {
+        sessionStorage.setItem('sf_lead', JSON.stringify({
+          full_name: payload.full_name || '', business_name: payload.business_name || '',
+          website_url: payload.website_url || '', email: payload.email || '', phone: payload.phone || '',
+        }))
+      } catch { /* storage unavailable → /pulse just shows its own form */ }
       setLeadSuccess(true)
       setLeadFormError('')
       setLeadFieldErrors({})
@@ -739,9 +747,9 @@ export default function SignalFlairLanding() {
             <a className="nl" href="#signal">Proof Layer</a>
             <a className="nl" href="#founding">Pilot</a>
             <span className="ncta-eyebrow" aria-hidden="true">Stop losing deals to AI.</span>
-            <a className="ncta" href="/pulse/">
+            <a className="ncta" href="#field-report">
               <svg className="ncta-bolt" aria-hidden="true" width="11" height="15" viewBox="0 0 11 15"><path d="M7.2 0 0 8.6h3.9L3.1 15 11 5.9H6.4L7.2 0Z" fill="currentColor" /></svg>
-              Got a pulse?
+              What&apos;s my signal?
               <span className="ncta-arr" aria-hidden="true">→</span>
             </a>
           </div>
@@ -809,9 +817,9 @@ export default function SignalFlairLanding() {
           <a href="#check" style={snl}>Signal Score</a>
           <a href="#signal" style={snl}>Proof Layer</a>
           <a href="#founding" style={snl}>Pilot</a>
-          <a className="ncta" href="/pulse/">
+          <a className="ncta" href="#field-report">
             <svg className="ncta-bolt" aria-hidden="true" width="11" height="15" viewBox="0 0 11 15"><path d="M7.2 0 0 8.6h3.9L3.1 15 11 5.9H6.4L7.2 0Z" fill="currentColor" /></svg>
-            Got a pulse?
+            What&apos;s my signal?
             <span className="ncta-arr" aria-hidden="true">→</span>
           </a>
         </div>
@@ -898,7 +906,7 @@ export default function SignalFlairLanding() {
           </div>
         </div>
         <div className="sig-cta-wrap reveal">
-          <a className="sig-cta" href="/pulse/">▸ Run your Pulse. 60 seconds. No call. →</a>
+          <a className="sig-cta" href="#field-report">▸ What&apos;s my signal? →</a>
           <span className="sig-cta-note">free baseline · 24 hours · no call</span>
         </div>
       </section>
@@ -934,7 +942,7 @@ export default function SignalFlairLanding() {
         </div>
         <div className="proto-teaser reveal">
           <div className="proto-teaser-chant">What&apos;s your Signal Score?</div>
-          <a className="proto-teaser-cta" href="/pulse/">▸ Start with your free Signal Pulse™ →</a>
+          <a className="proto-teaser-cta" href="#field-report">▸ What&apos;s my signal? →</a>
         </div>
       </section>
 
@@ -1072,7 +1080,7 @@ export default function SignalFlairLanding() {
               <div className="founding-body">Signal Flair is a new AI Proof Infrastructure venture in Indianapolis, Indiana, serving organizations nationwide. We&apos;re opening a limited founding pilot for businesses, nonprofits, and civic partners that want to see how AI systems understand them — and build the proof layer to fix it. The goal isn&apos;t hype. It&apos;s documented proof: measure the before, build the missing infrastructure, track the after.</div>
               <div className="founding-ask">For: nonprofits, local service businesses, civic &amp; community partners, and trust-based providers — med spas, clinics, law firms, HVAC, electrical, and more. In return: permission to document your before/after (anonymized if you prefer).</div>
               <a className="founding-cta" href="#cta">▸ Explore a Founding Pilot</a>
-              <div className="founding-micro">Early-stage &amp; honest · documented proof, not testimonials · start with your free Signal Pulse™</div>
+              <div className="founding-micro">Early-stage &amp; honest · documented proof, not testimonials · the form below starts it</div>
             </div>
             <div className="founding-r">
               <div className="founding-price-tag">What founding partners receive</div>
@@ -1168,7 +1176,7 @@ export default function SignalFlairLanding() {
             <div className="pf-amount">$3,500</div>
             <div className="pf-cadence">one-time build · score 0–54</div>
             <div className="pf-onceline">One payment. Everything we build is deployed to <strong>your own site and domain</strong> — so it&apos;s yours to keep forever, even if you never work with us again. <span className="pf-once-sep">Live services — your CRM, monitoring, and fresh content — are Stay Found, below.</span></div>
-            <a className="pf-btn" href="/pulse/">▸ Build the Foundation</a>
+            <a className="pf-btn" href="#field-report">▸ Build the Foundation</a>
           </div>
           <div className="pf-right">
             <div className="pf-desc">The infrastructure AI actually reads. Full diagnostic, full technical fix, full structure — everything needed to go from invisible to recommendable across every major AI engine.</div>
@@ -1205,7 +1213,7 @@ export default function SignalFlairLanding() {
               <div className="psci">Priority citation submissions</div>
               <div className="psci">90-Day AI Action Plan</div>
             </div>
-            <a className="psc-btn" href="/pulse/">▸ Start the Rebuild</a>
+            <a className="psc-btn" href="#field-report">▸ Start the Rebuild</a>
           </div>
         </div>
 
@@ -1230,7 +1238,7 @@ export default function SignalFlairLanding() {
               <div className="psci">AI crawler monitoring</div>
               <div className="psci">Mindcast Command — ongoing</div>
             </div>
-            <a className="psc-btn" href="/pulse/">▸ Choose Monitor</a>
+            <a className="psc-btn" href="#field-report">▸ Choose Monitor</a>
           </div>
           <div className="psc sf-proof">
             <div className="psc-badge">Most chosen</div>
@@ -1249,7 +1257,7 @@ export default function SignalFlairLanding() {
               <div className="psci">AI crawler monitoring</div>
               <div className="psci">Mindcast Command — ongoing</div>
             </div>
-            <a className="psc-btn" href="/pulse/">▸ Choose Proof</a>
+            <a className="psc-btn" href="#field-report">▸ Choose Proof</a>
           </div>
           <div className="psc sf-multi">
             <div className="psc-tier">Full-Scale</div>
@@ -1265,7 +1273,7 @@ export default function SignalFlairLanding() {
               <div className="psci">Mindcast Command — ongoing</div>
               <div className="psci">Priority support</div>
             </div>
-            <a className="psc-btn" href="/pulse/">▸ Choose Multi</a>
+            <a className="psc-btn" href="#field-report">▸ Choose Multi</a>
           </div>
         </div>
 
@@ -1385,9 +1393,8 @@ export default function SignalFlairLanding() {
           <div className="cta-left">
             <div className="cta-y-pre reveal">AI Proof Infrastructure™</div>
             <div className="cta-y-title reveal">Your company isn&apos;t losing to a better competitor.<br />It&apos;s losing to the one AI <em>can</em> find.</div>
-            <div className="cta-y-sub reveal">Want the instant read? Run the free Signal Pulse™ — 60 seconds, no call. Want a human to look? Hand it to Corey with the form. Either way, you&apos;ll see exactly where your signal breaks.</div>
+            <div className="cta-y-sub reveal">One form, both answers: Corey reviews your signal personally, and your instant Signal Pulse™ preview unlocks the second you hit submit. You&apos;ll see exactly where your signal breaks.</div>
             <div className="cta-y-btns reveal" style={{ marginTop: '26px' }}>
-              <a className="cta-y-ghost" href="/pulse/">▸ Get your free Signal Pulse™ →</a>
               <a className="cta-y-ghost" href="#founding">▸ Explore a Founding Pilot →</a>
               <a className="cta-y-ghost" href="#check">▸ See all six layers →</a>
             </div>
@@ -1453,6 +1460,8 @@ export default function SignalFlairLanding() {
                 <div className="ls-mark" aria-hidden="true">✓</div>
                 <div className="ls-h">Field Report requested.</div>
                 <div className="ls-b">We&apos;re scanning your 3 critical signals across <strong>ChatGPT, Claude, Perplexity, Gemini &amp; Google AI</strong>. Your Field Report lands in your inbox within 24 hours — the full 6-signal breakdown comes next.</div>
+                <div className="ls-b" style={{ marginTop: '18px' }}>Can&apos;t wait 24 hours? Your instant preview runs <strong>right now</strong> — we already have everything we need.</div>
+                <a className="ls-pulse-cta" href="/pulse/">▸ Get My Pulse →</a>
               </div>
               )}
             </div>

@@ -36,43 +36,18 @@ export default function SignalPulseForm() {
   const formRef = useRef<HTMLFormElement>(null)
   const [phase, setPhase] = useState<Phase>('idle')
   const [formError, setFormError] = useState('')
-  const [fieldErrors, setFieldErrors] = useState<{ website_url?: string; email?: string }>({})
+  const [fieldErrors, setFieldErrors] = useState<{ website_url?: string; email?: string; full_name?: string }>({})
   const [result, setResult] = useState<PulseData | null>(null)
   const [email, setEmail] = useState('')
   const [websiteVal, setWebsiteVal] = useState('')
   const [scanDomain, setScanDomain] = useState('')
+  // signalflair.ai handoff — the homepage form stashes the lead in sessionStorage on
+  // submit; when present we skip collection entirely and auto-run their scan.
+  const [handoff, setHandoff] = useState<Record<string, string> | null>(null)
+  const [prefill, setPrefill] = useState<{ website: string; email: string; name: string }>({ website: '', email: '', name: '' })
 
-  const handleSubmit = useCallback(async (e: React.FormEvent<HTMLFormElement>) => {
-    e.preventDefault()
-    setFormError('')
-    const form = formRef.current
-    if (!form) return
-
-    const website = String(new FormData(form).get('website_url') || '').trim()
-    const emailVal = String(new FormData(form).get('email') || '').trim()
-    const errs: { website_url?: string; email?: string } = {}
-    if (!website) errs.website_url = 'Required'
-    else if (!/\.\w{2,}/.test(website)) errs.website_url = 'Enter a valid website'
-    if (!emailVal) errs.email = 'Required'
-    else if (!EMAIL_RE.test(emailVal)) errs.email = 'Enter a valid email'
-    setFieldErrors(errs)
-    if (Object.keys(errs).length) {
-      setFormError('Enter your website and a valid email to run your Signal Pulse™.')
-      ;(form.querySelector('.ssc-input.invalid') as HTMLInputElement | null)?.focus()
-      return
-    }
-
-    // hidden context
-    const qp = new URLSearchParams(window.location.search)
-    const setHidden = (n: string, v: string) => { const el = form.querySelector(`[name="${n}"]`) as HTMLInputElement | null; if (el) el.value = v }
-    setHidden('page_url', window.location.href)
-    setHidden('utm_source', qp.get('utm_source') || '')
-    setHidden('utm_medium', qp.get('utm_medium') || '')
-    setHidden('utm_campaign', qp.get('utm_campaign') || '')
-
-    const payload: Record<string, string> = Object.fromEntries(Array.from(new FormData(form).entries()).map(([k, v]) => [k, String(v)]))
-    payload.submitted_at = new Date().toISOString()
-
+  // Shared scan path — used by the visible form AND the handoff auto-run.
+  const executeScan = useCallback(async (payload: Record<string, string>, emailVal: string, website: string) => {
     setEmail(emailVal)
     setWebsiteVal(website)
     try { setScanDomain(new URL(/^https?:\/\//i.test(website) ? website : 'https://' + website).hostname) } catch { setScanDomain(website) }
@@ -107,23 +82,99 @@ export default function SignalPulseForm() {
     setPhase('sent')
   }, [])
 
+  // Handoff auto-run: arriving from the signalflair.ai contact form? Their info is already
+  // captured — never ask twice. Same email → GHL upserts the same contact (no dupes).
+  useEffect(() => {
+    try {
+      const raw = sessionStorage.getItem('sf_lead')
+      if (!raw) return
+      const lead = JSON.parse(raw) as Record<string, string>
+      if (!lead || !EMAIL_RE.test(lead.email || '') || !/\.\w{2,}/.test(lead.website_url || '')) return
+      setHandoff(lead)
+      track('pulse_handoff_autorun', { form_id: 'signal-pulse' })
+      executeScan({
+        website_url: lead.website_url, email: lead.email,
+        full_name: lead.full_name || '', phone: lead.phone || '', business_name: lead.business_name || '',
+        source: 'signalflair-handoff', preview_type: 'signal-pulse', lead_tag: 'Signal Pulse Request',
+        form_type: 'signal_pulse', request_type: 'signal_pulse_preview',
+        page_url: window.location.href, submitted_at: new Date().toISOString(),
+      }, lead.email, lead.website_url)
+    } catch { /* malformed storage → normal form */ }
+  }, [executeScan])
+
+  // "Not your site?" — clear the handoff, prefill the form with what we had, start over.
+  const resetHandoff = useCallback(() => {
+    try { sessionStorage.removeItem('sf_lead') } catch {}
+    setPrefill({ website: handoff?.website_url || '', email: handoff?.email || '', name: handoff?.full_name || '' })
+    setHandoff(null)
+    setResult(null)
+    setFormError('')
+    setPhase('idle')
+  }, [handoff])
+
+  const handleSubmit = useCallback(async (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault()
+    setFormError('')
+    const form = formRef.current
+    if (!form) return
+
+    const website = String(new FormData(form).get('website_url') || '').trim()
+    const emailVal = String(new FormData(form).get('email') || '').trim()
+    const nameVal = String(new FormData(form).get('full_name') || '').trim()
+    const errs: { website_url?: string; email?: string; full_name?: string } = {}
+    if (!nameVal) errs.full_name = 'Required'
+    if (!website) errs.website_url = 'Required'
+    else if (!/\.\w{2,}/.test(website)) errs.website_url = 'Enter a valid website'
+    if (!emailVal) errs.email = 'Required'
+    else if (!EMAIL_RE.test(emailVal)) errs.email = 'Enter a valid email'
+    setFieldErrors(errs)
+    if (Object.keys(errs).length) {
+      setFormError('Your name, website, and a valid email — that’s all the Pulse needs.')
+      ;(form.querySelector('.ssc-input.invalid') as HTMLInputElement | null)?.focus()
+      return
+    }
+
+    // hidden context
+    const qp = new URLSearchParams(window.location.search)
+    const setHidden = (n: string, v: string) => { const el = form.querySelector(`[name="${n}"]`) as HTMLInputElement | null; if (el) el.value = v }
+    setHidden('page_url', window.location.href)
+    setHidden('utm_source', qp.get('utm_source') || '')
+    setHidden('utm_medium', qp.get('utm_medium') || '')
+    setHidden('utm_campaign', qp.get('utm_campaign') || '')
+
+    const payload: Record<string, string> = Object.fromEntries(Array.from(new FormData(form).entries()).map(([k, v]) => [k, String(v)]))
+    payload.submitted_at = new Date().toISOString()
+
+    await executeScan(payload, emailVal, website)
+  }, [executeScan])
+
   return (
     <div className="ssc-form" id="pulse">
       {phase === 'idle' && (
         <form ref={formRef} noValidate onSubmit={handleSubmit}>
           <div className="ssc-form-head">
             <span className="ssc-form-badge"><span className="ssc-dot" aria-hidden="true" />Signal Pulse™</span>
-            <span className="ssc-form-sub">Enter your website and email — your Signal Pulse™ score appears in seconds. The full, human-verified Signal Score™ is an optional next step.</span>
+            <span className="ssc-form-sub">Tell us who you are and where to look — your Signal Pulse™ score appears in seconds. The full, human-verified Signal Score™ is an optional next step.</span>
+          </div>
+          <div className="ssc-field">
+            <label className="ssc-label" htmlFor="sp-name">Your name<span className="ssc-req">*</span></label>
+            <input className={`ssc-input${fieldErrors.full_name ? ' invalid' : ''}`} id="sp-name" name="full_name" type="text" autoComplete="name" placeholder="Jane Smith" defaultValue={prefill.name} />
+            <span className="ssc-err" aria-live="polite">{fieldErrors.full_name || ''}</span>
           </div>
           <div className="ssc-field">
             <label className="ssc-label" htmlFor="sp-url">Website URL<span className="ssc-req">*</span></label>
-            <input className={`ssc-input${fieldErrors.website_url ? ' invalid' : ''}`} id="sp-url" name="website_url" type="url" inputMode="url" autoComplete="url" placeholder="yourbusiness.com" />
+            <input className={`ssc-input${fieldErrors.website_url ? ' invalid' : ''}`} id="sp-url" name="website_url" type="url" inputMode="url" autoComplete="url" placeholder="yourbusiness.com" defaultValue={prefill.website} />
             <span className="ssc-err" aria-live="polite">{fieldErrors.website_url || ''}</span>
           </div>
           <div className="ssc-field">
             <label className="ssc-label" htmlFor="sp-email">Email<span className="ssc-req">*</span></label>
-            <input className={`ssc-input${fieldErrors.email ? ' invalid' : ''}`} id="sp-email" name="email" type="email" inputMode="email" autoComplete="email" placeholder="you@yourbusiness.com" />
+            <input className={`ssc-input${fieldErrors.email ? ' invalid' : ''}`} id="sp-email" name="email" type="email" inputMode="email" autoComplete="email" placeholder="you@yourbusiness.com" defaultValue={prefill.email} />
             <span className="ssc-err" aria-live="polite">{fieldErrors.email || ''}</span>
+          </div>
+          <div className="ssc-field">
+            <label className="ssc-label" htmlFor="sp-phone">Best number to reach you</label>
+            <input className="ssc-input" id="sp-phone" name="phone" type="tel" inputMode="tel" autoComplete="tel" placeholder="(optional)" />
+            <span className="ssc-err" aria-live="polite" />
           </div>
           <input type="hidden" name="source" defaultValue="signal-pulse" />
           <input type="hidden" name="preview_type" defaultValue="signal-pulse" />
@@ -142,6 +193,7 @@ export default function SignalPulseForm() {
 
       {phase === 'scanning' && (
         <div className="ssc-scan" role="status" aria-live="polite">
+          {handoff && <div style={{ fontFamily: "'Geist Mono',monospace", fontSize: '10px', letterSpacing: '0.2em', textTransform: 'uppercase' as const, opacity: 0.65, marginBottom: '14px' }}>Using the info you just sent — no re-entry needed</div>}
           <div className="ssc-scan-radar" aria-hidden="true"><i /><i /><i /></div>
           <div className="ssc-scan-title">Reading your AI signals…</div>
           <div className="ssc-scan-sub">{scanDomain}</div>
@@ -154,7 +206,16 @@ export default function SignalPulseForm() {
         </div>
       )}
 
-      {phase === 'result' && result && <PulseResult data={result} email={email} website={websiteVal} />}
+      {phase === 'result' && result && (
+        <>
+          <PulseResult data={result} email={email} website={websiteVal} fromHandoff={!!handoff} />
+          {handoff && (
+            <button type="button" onClick={resetHandoff} style={{ display: 'block', margin: '14px auto 0', background: 'none', border: 'none', cursor: 'pointer', fontFamily: "'Geist Mono',monospace", fontSize: '10.5px', letterSpacing: '0.16em', textTransform: 'uppercase' as const, textDecoration: 'underline', opacity: 0.6, color: 'inherit' }}>
+              Not your site? Run a different one →
+            </button>
+          )}
+        </>
+      )}
 
       {phase === 'sent' && (
         <div className="ssc-success" role="status" aria-live="polite">
@@ -162,14 +223,14 @@ export default function SignalPulseForm() {
           <div className="ssc-success-h">Your Signal Pulse™ request is in.</div>
           <div className="ssc-success-b">We’ve got your site and email. A reviewer will check your first AI-readiness signals and email your Signal Pulse™ — typically within 24 hours. Watch your inbox.</div>
           <a className="ssc-success-link" href="/proof/">See Case Zero — our own 18 → 73 climb →</a>
-          <a className="ssc-success-link" href="/#field-report">Want a human on it now? Hand it to Corey →</a>
+          {!handoff && <a className="ssc-success-link" href="/#field-report">Want a human on it now? Hand it to Corey →</a>}
         </div>
       )}
     </div>
   )
 }
 
-function PulseResult({ data, email, website }: { data: PulseData; email: string; website: string }) {
+function PulseResult({ data, email, website, fromHandoff = false }: { data: PulseData; email: string; website: string; fromHandoff?: boolean }) {
   const [n, setN] = useState(0)
   const [armed, setArmed] = useState(false)
   const [optState, setOptState] = useState<'idle' | 'sending' | 'done'>('idle')
@@ -284,7 +345,7 @@ function PulseResult({ data, email, website }: { data: PulseData; email: string;
             complete card, human-verified. Keep an eye on your inbox.
           </div>
           <a className="ssc-success-link" href="/proof/">See Case Zero — our own 18 → 73 climb →</a>
-          <a className="ssc-success-link" href="/#field-report">Skip the wait — hand it to Corey directly →</a>
+          {!fromHandoff && <a className="ssc-success-link" href="/#field-report">Skip the wait — hand it to Corey directly →</a>}
         </div>
       )}
     </div>

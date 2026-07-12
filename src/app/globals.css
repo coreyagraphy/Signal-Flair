@@ -1146,6 +1146,12 @@ footer{background:var(--ink2);border-top:1px solid var(--ink);padding:52px;posit
 .lead-success .ls-h{font-family:var(--flair);font-variation-settings:'opsz' 100,'wght' 520,'WONK' 1;font-size:24px;color:var(--bone);margin-bottom:12px}
 .lead-success .ls-b{font-family:var(--signal);font-size:12px;line-height:1.85;color:rgba(248,241,231,0.66);max-width:380px;margin:0 auto}
 .lead-success .ls-b strong{color:var(--hot)}
+/* post-submit reward CTA — the handoff into the instant Signal Pulse™ */
+.ls-pulse-cta{display:inline-block;margin-top:18px;padding:15px 30px;font-family:var(--signal);font-weight:700;font-size:13px;
+  letter-spacing:0.22em;text-transform:uppercase;text-decoration:none;color:var(--ink);background:var(--hot);
+  border:1.5px solid var(--hot);border-radius:14px;transition:background .18s,color .18s;
+  box-shadow:0 0 22px rgba(255,244,95,0.35);animation:ncta-glow 2.4s ease-in-out infinite}
+.ls-pulse-cta:hover{background:transparent;color:var(--hot)}
 
 /* ════════════════════════════════════════════════════════════
    RESPONSIVE — conversion sections
