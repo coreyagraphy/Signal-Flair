@@ -133,7 +133,9 @@ nav#hnav{position:relative;z-index:10;display:flex;align-items:center;justify-co
 .ncta-eyebrow{font-family:var(--signal);font-size:10px;font-weight:500;letter-spacing:0.3em;text-transform:uppercase;
   color:rgba(248,241,231,0.72);white-space:nowrap;text-shadow:0 0 12px rgba(0,0,0,0.5)}
 @media(max-width:900px){.ncta-eyebrow{display:none}}
-@media (prefers-reduced-motion: reduce){.ncta,.ncta::before{animation:none}.ncta::before{opacity:.5}}
+/* reduced motion: keep the signature glow pulse (opacity/shadow only — no transform/movement) */
+@keyframes ncta-halo-still{0%,100%{opacity:.3}50%{opacity:.85}}
+@media (prefers-reduced-motion: reduce){.ncta::before{animation:ncta-halo-still 2.4s ease-in-out infinite;transform:none}}
 
 #hero-layout{position:relative;z-index:5;flex:1 0 auto;display:flex;flex-direction:column;align-items:center;justify-content:center;
   text-align:center;padding:72px 40px;gap:16px;max-width:1200px;margin:0 auto;width:100%}
