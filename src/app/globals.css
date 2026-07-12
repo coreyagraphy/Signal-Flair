@@ -113,11 +113,27 @@ nav#hnav{position:relative;z-index:10;display:flex;align-items:center;justify-co
 .nl{font-family:var(--signal);font-weight:600;font-size:13px;color:rgba(248,241,231,0.96);letter-spacing:0.14em;text-transform:uppercase;text-decoration:none;transition:color .2s;text-shadow:0 0 16px rgba(248,241,231,0.18)}
 .nl:hover{color:var(--hot)}
 .nl:hover{color:var(--hot)}
-/* command CTA — rectangular, hard border, mono */
-.ncta{font-family:var(--signal);font-weight:600;font-size:12.5px;letter-spacing:0.14em;text-transform:uppercase;
-  padding:13px 22px;text-decoration:none;color:var(--ink);background:var(--hot);border:1px solid var(--hot);transition:.18s;
-  box-shadow:0 4px 20px rgba(255,244,95,0.4),0 0 0 1px rgba(255,244,95,0.15)}
-.ncta:hover{background:transparent;color:var(--hot);box-shadow:0 6px 28px rgba(255,244,95,0.6),inset 0 0 14px rgba(255,244,95,0.18)}
+/* command CTA — outlined capsule w/ bolt + circled arrow + pulsing signal-flare halo.
+   --ncta-c is the color channel (r,g,b): yellow on dark navs, orange on the light sticky nav. */
+.ncta{--ncta-c:255,244,95;position:relative;isolation:isolate;display:inline-flex;align-items:center;gap:11px;
+  font-family:var(--signal);font-weight:700;font-size:12.5px;letter-spacing:0.22em;text-transform:uppercase;
+  padding:12px 20px;text-decoration:none;color:rgb(var(--ncta-c));background:rgba(var(--ncta-c),0.05);
+  border:1.5px solid rgb(var(--ncta-c));border-radius:16px;transition:background .18s,color .18s;
+  animation:ncta-glow 2.4s ease-in-out infinite}
+.ncta::before{content:'';position:absolute;inset:-16px;z-index:-1;border-radius:28px;pointer-events:none;
+  background:radial-gradient(ellipse at center,rgba(var(--ncta-c),0.3),transparent 70%);
+  animation:ncta-halo 2.4s ease-in-out infinite}
+.ncta .ncta-bolt{flex:0 0 auto;filter:drop-shadow(0 0 6px rgba(var(--ncta-c),0.8))}
+.ncta .ncta-arr{flex:0 0 auto;display:inline-flex;align-items:center;justify-content:center;width:22px;height:22px;
+  border:1.5px solid currentColor;border-radius:50%;font-size:12px;line-height:1}
+.ncta:hover{background:rgb(var(--ncta-c));color:var(--ink)}
+@keyframes ncta-glow{0%,100%{box-shadow:0 0 10px rgba(var(--ncta-c),0.25)}50%{box-shadow:0 0 26px rgba(var(--ncta-c),0.6)}}
+@keyframes ncta-halo{0%,100%{opacity:.3;transform:scale(.94)}50%{opacity:.85;transform:scale(1.05)}}
+/* nav eyebrow — the quiet threat to the button's left (hero nav only) */
+.ncta-eyebrow{font-family:var(--signal);font-size:10px;font-weight:500;letter-spacing:0.3em;text-transform:uppercase;
+  color:rgba(248,241,231,0.72);white-space:nowrap;text-shadow:0 0 12px rgba(0,0,0,0.5)}
+@media(max-width:900px){.ncta-eyebrow{display:none}}
+@media (prefers-reduced-motion: reduce){.ncta,.ncta::before{animation:none}.ncta::before{opacity:.5}}
 
 #hero-layout{position:relative;z-index:5;flex:1 0 auto;display:flex;flex-direction:column;align-items:center;justify-content:center;
   text-align:center;padding:72px 40px;gap:16px;max-width:1200px;margin:0 auto;width:100%}
@@ -198,8 +214,9 @@ nav#hnav{position:relative;z-index:10;display:flex;align-items:center;justify-co
 #site-nav .nav-logo-tag{font-size:10px}
 #site-nav .nav-logo-tag .ntag-cat{font-size:13px}
 #site-nav .nav-logo em{color:var(--orange);font-family:var(--italic);font-style:italic;display:inline-block;border:1.5px solid currentColor;border-radius:3px;padding:0 7px 1px;margin-left:6px;line-height:1}
-#site-nav .ncta{color:var(--ink);background:var(--ink);border-color:var(--ink);color:var(--paper)}
-#site-nav .ncta:hover{background:var(--orange);border-color:var(--orange);color:var(--ink)}
+/* sticky nav sits on cream — flip the capsule to orange for contrast, same pulse */
+#site-nav .ncta{--ncta-c:255,90,31;color:rgb(var(--ncta-c));background:rgba(var(--ncta-c),0.06);border-color:rgb(var(--ncta-c))}
+#site-nav .ncta:hover{background:rgb(var(--ncta-c));color:var(--paper)}
 
 /* ════════════════════════════════════════════════════════════
    TELEMETRY TICKER — data feed, not marquee

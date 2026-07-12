@@ -230,34 +230,57 @@ export default function SignalFlairLanding() {
     // Ring is a fixed, near-full decorative gradient (set in the SVG markup). The score is
     // conveyed by the number, not the arc length — so the low score never looks like a broken arc.
 
-    // Gauge counter — GSAP ScrollTrigger. Counts 0→34 (ring + number together) when the
-    // gauge scrolls into view; re-arms (resets to 0) when scrolled back above the hero.
+    // Gauge counter — GSAP. Counts 0→34, then LIVES: intermittently wanders the 0–100 scale
+    // while you're on the site. The number is band-colored on the way UP (red → orange →
+    // amber → teal, matching the ring's scale) and forced RED while it's FALLING — the gauge
+    // reads like a live diagnostic, not a static sample. Re-arms via ScrollTrigger.
     let gaugeST = null
     function setupGaugeScroll() {
       if (gaugeST) return
       const el = document.getElementById('score-val')
-      const rp = document.getElementById('ring-prog')
       // color by value, matching the scorecard bands: red (bad) → orange → amber → teal (good)
       const colorFor = v => v < 40 ? '#ff4326' : v < 70 ? '#FF5A1F' : v < 85 ? '#FFE23A' : '#00B8A9'
+      const RED = '#ff4326'
       const counter = { v: 0 }
-      const paint = () => {
-        const c = colorFor(counter.v)
+      let prev = 0
+      const paint = (settled = false) => {
+        const falling = !settled && counter.v < prev - 0.01
+        const c = falling ? RED : colorFor(counter.v)
         if (el) { el.textContent = String(Math.round(counter.v)); el.style.color = c; el.style.textShadow = '0 0 40px ' + c + '70,0 4px 26px rgba(0,0,0,0.72)' }
+        prev = counter.v
         // ring keeps its fixed red→amber→teal gradient (CSS); only the number is band-colored
       }
+      // the wander loop — climbs, drops, recovers; each stop holds long enough to read
+      const TARGETS = [12, 58, 27, 73, 41, 88, 19, 66, 34]
+      const loopTl = gsap.timeline({ repeat: -1, paused: true })
+      loopTl.to({}, { duration: 2.6 }) // initial hold on the 34 diagnosis
+      TARGETS.forEach(t => {
+        loopTl.to(counter, { v: t, duration: 1.5, ease: 'power2.inOut', onUpdate: () => paint(), onComplete: () => paint(true) })
+          .to({}, { duration: 2.2 })
+      })
       const tween = gsap.fromTo(counter, { v: 0 }, {
-        v: 34, duration: reduceMotion ? 0.8 : 2.2, ease: 'expo.out', paused: true, onUpdate: paint,
-        onComplete: paint
+        v: 34, duration: reduceMotion ? 0.8 : 2.2, ease: 'expo.out', paused: true,
+        onUpdate: () => paint(), onComplete: () => { paint(true); loopTl.restart(true) },
       })
-      // re-arm on scroll: reset when scrolled above the hero, recount on return
-      gaugeST = ScrollTrigger.create({
-        trigger: '#score-gauge', start: 'top 85%',
-        onEnter: () => tween.restart(),
-        onEnterBack: () => tween.restart(),
-        onLeaveBack: () => { tween.pause(0); counter.v = 0; paint() }
-      })
-      // the gauge is on-screen at hero reveal — start the count now (don't wait on a scroll event)
+      // Start unconditionally — the gauge is on-screen at hero reveal. (ScrollTrigger was
+      // used here before, but its initial-state refresh could fire onLeaveBack and freeze
+      // the counter at 0 — e.g. in zero-height/emulated viewports. IntersectionObserver
+      // with explicit in/out state-tracking re-arms the count without that race.)
       tween.restart()
+      const gEl = document.getElementById('score-gauge')
+      if (gEl && 'IntersectionObserver' in window) {
+        let wasIn = null
+        gaugeST = new IntersectionObserver((entries) => {
+          entries.forEach((en) => {
+            const nowIn = en.isIntersecting
+            if (nowIn === wasIn) return
+            if (nowIn) { loopTl.pause(); tween.restart() } // (re)entered → recount, then wander
+            else if (wasIn === true) { tween.pause(); loopTl.pause() } // left after being seen → sleep
+            wasIn = nowIn
+          })
+        }, { threshold: 0.25 })
+        gaugeST.observe(gEl)
+      }
     }
 
     /* ─── (ORB-01 canvas robot removed — the only robot is the one in the hero video) ─── */
@@ -572,9 +595,9 @@ export default function SignalFlairLanding() {
       const sb = document.getElementById('skip'); if (sb) sb.style.display = 'none'
       const hb = document.getElementById('hero-bg'); if (hb) { hb.style.transition = 'opacity 0.6s ease'; hb.style.opacity = '1' }
       revealed = true // skip the (no-op) anime reveal timeline
-      // show the gauge at its final score directly (no count-up animation under reduced motion)
-      const sval = document.getElementById('score-val'), c = '#ff4326'
-      if (sval) { sval.textContent = '34'; sval.style.color = c; sval.style.textShadow = '0 0 40px ' + c + '70,0 4px 26px rgba(0,0,0,0.72)' }
+      // GSAP DOES run under reduced motion (see comment above) — start the live gauge here
+      // too, so the number wander/color-scale works even with Windows animations off.
+      setupGaugeScroll()
     } else {
       // Only play the cinematic once per browser session, and never on weak/mobile devices —
       // refreshes, in-tab navigation, and low-end hardware go straight to the hero (same fast
@@ -715,7 +738,12 @@ export default function SignalFlairLanding() {
             <a className="nl" href="#check">Signal Score</a>
             <a className="nl" href="#signal">Proof Layer</a>
             <a className="nl" href="#founding">Pilot</a>
-            <a className="ncta" href="/pulse/">▸ Run Your Free Signal Pulse™</a>
+            <span className="ncta-eyebrow" aria-hidden="true">Stop losing deals to AI.</span>
+            <a className="ncta" href="/pulse/">
+              <svg className="ncta-bolt" aria-hidden="true" width="11" height="15" viewBox="0 0 11 15"><path d="M7.2 0 0 8.6h3.9L3.1 15 11 5.9H6.4L7.2 0Z" fill="currentColor" /></svg>
+              Got a pulse?
+              <span className="ncta-arr" aria-hidden="true">→</span>
+            </a>
           </div>
         </nav>
         {/* Cinematic instrument panel: DIAGNOSIS above → SCORE GAUGE centerpiece → RECOVERY below */}
@@ -781,7 +809,11 @@ export default function SignalFlairLanding() {
           <a href="#check" style={snl}>Signal Score</a>
           <a href="#signal" style={snl}>Proof Layer</a>
           <a href="#founding" style={snl}>Pilot</a>
-          <a className="ncta" href="/pulse/">▸ Run Your Free Signal Pulse™</a>
+          <a className="ncta" href="/pulse/">
+            <svg className="ncta-bolt" aria-hidden="true" width="11" height="15" viewBox="0 0 11 15"><path d="M7.2 0 0 8.6h3.9L3.1 15 11 5.9H6.4L7.2 0Z" fill="currentColor" /></svg>
+            Got a pulse?
+            <span className="ncta-arr" aria-hidden="true">→</span>
+          </a>
         </div>
       </nav>
 
