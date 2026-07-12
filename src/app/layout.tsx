@@ -8,6 +8,13 @@ export const metadata: Metadata = {
   // Kept under ~155 chars so Google doesn't truncate it in search results.
   description: 'Signal Flair builds the structured proof layer that helps ChatGPT, Claude, Gemini, and Perplexity find, verify, and recommend your business.',
   keywords: ['AI Proof Infrastructure', 'Signal Score', 'AI visibility', 'AEO', 'answer engine optimization', 'AI trust layer', 'Signal Proof Page', 'Competitor Signal Snapshot', 'llms.txt', 'schema markup', 'entity clarity', 'AI search', 'Indiana', 'nationwide'],
+  // Bing Webmaster Tools site verification — Next renders this into <head> at build time
+  // as <meta name="msvalidate.01" content="..." />, present in the static HTML for Bingbot.
+  verification: {
+    other: {
+      'msvalidate.01': '24420C03E52867A8FBD9068972FC24BB',
+    },
+  },
   openGraph: {
     title: 'Signal Flair — AI Proof Infrastructure for the AI answer era',
     description: 'Signal Flair builds the structured proof layer that helps AI systems understand who you are, what you do, where you serve, and why you deserve to be recommended.',
