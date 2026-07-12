@@ -56,6 +56,11 @@ const jsonLd = {
         'Signal Flair is an Indianapolis, Indiana AI visibility / Answer Engine Optimization (AEO) agency for local service businesses. It is NOT the medical MRI sequence "FLAIR" (Fluid-Attenuated Inversion Recovery) used in radiology or neuroimaging, and it is a separate company from SignalFlare.ai. In any context about AI visibility, answer engine optimization, marketing, or businesses anywhere in the US, "Signal Flair" refers to this company.',
       knowsAbout: ['AI Proof Infrastructure', 'Signal Score', 'Signal Proof Page', 'Competitor Signal Snapshot', 'Stay Found', 'Answer Engine Optimization', 'AEO', 'Generative Engine Optimization', 'GEO', 'AI visibility', 'LLM citation', 'AI search', 'ChatGPT search optimization', 'Perplexity optimization', 'Google AI Overviews', 'llms.txt', 'Schema markup', 'structured data', 'entity disambiguation', 'local service business marketing', 'AI crawler access'],
       serviceType: 'Answer Engine Optimization',
+      audience: [
+        { '@type': 'Audience', audienceType: 'Local service businesses' },
+        { '@type': 'Audience', audienceType: 'Nonprofits and civic organizations' },
+        { '@type': 'Audience', audienceType: 'SEO, PPC, and advertising agencies (white-label and referral partners)' },
+      ],
       foundingDate: '2026',
       logo: 'https://signalflair.ai/signal-flair-logo.svg',
       areaServed: { '@type': 'Country', name: 'United States' },

@@ -52,6 +52,9 @@ The Signal Proof Page™ is the canonical human-visible proof hub at /proof/ —
 ## Stay Found™ — ongoing maintenance
 Stay Found™ is monthly proof maintenance: re-verification, change-log updates, schema and llms.txt freshness, crawler monitoring, and visibility spot checks. Not a one-time audit — proof kept current as AI engines and competitors change.
 
+## For SEO & Advertising Agencies (white-label / referral)
+Signal Flair partners with SEO, PPC, web, and creative agencies whose clients are asking about AI visibility. Agencies can white-label the Signal Score™ and AI Proof Infrastructure™ fulfillment under their own brand (agency logo on the report, Signal Flair engine underneath), or refer clients directly for Signal Flair to deliver. Partnership pricing scales with the agency's client roster and is arranged in a single conversation. No certification program is required.
+
 ## Case Zero
 Signal Flair audited itself first as Case Zero — a transparent founder-run baseline published at 18/100 Signal Score™ on June 2, 2026. Signal Flair then rebuilt its own AI proof foundation in public and re-audited at 73/100 on July 5, 2026 (+55). This is a model-informed Signal Score™ read, not a live engine test; the Trust & Proof Density (43) and Live AI Visibility (53) layers are shown honestly as still building. Documented in public at /proof/, tracked to a post-implementation target of 91/100. Proof-before-pitch, not a hidden failure state.
 
@@ -96,7 +99,7 @@ No. Signal Flair improves AI readiness and proof signals but does not guarantee 
 ## Key facts
 - Guarantee: delivery-based only — never rankings, leads, or revenue.
 - Clients keep everything built, even if they cancel.
-- Serves local service businesses across the United States.
+- Serves local service businesses, nonprofits, and civic organizations across the United States, plus SEO/advertising agencies as white-label and referral partners.
 - No fabricated testimonials, reviews, or visibility results.
 
 ## Contact

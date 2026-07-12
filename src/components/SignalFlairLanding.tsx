@@ -596,17 +596,18 @@ export default function SignalFlairLanding() {
     }
 
     /* ─── CTA ANALYTICS ─── */
-    // Every conversion CTA is an <a href="#cta"> that scrolls to the lead form. Delegate one
-    // listener on document: the founding-client apply button fires `founding_client_click`,
-    // all other score/build CTAs fire `cta_click` with the button label + section for funnel
-    // analysis. No-ops until GA_ID is set (track() guards internally).
+    // Conversion CTAs route to /pulse/ (primary funnel), #cta / #field-report (human path
+    // form), or #founding. Delegate one listener on document: the founding-client apply
+    // button fires `founding_client_click`, all others fire `cta_click` with label +
+    // section + destination for funnel analysis. No-ops until GA_ID is set (track() guards).
     const onCtaClick = (e) => {
-      const a = e.target instanceof Element ? e.target.closest('a[href="#cta"]') : null
+      const a = e.target instanceof Element ? e.target.closest('a[href="#cta"], a[href="#field-report"], a[href="/pulse/"]') : null
       if (!a) return
       const label = (a.textContent || '').replace(/[▸\s]+/g, ' ').trim()
       const section = a.closest('section')?.id || a.closest('[id]')?.id || ''
+      const dest = a.getAttribute('href') || ''
       if (a.classList.contains('founding-cta')) track('founding_client_click', { label, section })
-      else track('cta_click', { label, section })
+      else track('cta_click', { label, section, dest })
     }
     document.addEventListener('click', onCtaClick)
     return () => document.removeEventListener('click', onCtaClick)
@@ -714,7 +715,7 @@ export default function SignalFlairLanding() {
             <a className="nl" href="#check">Signal Score</a>
             <a className="nl" href="#signal">Proof Layer</a>
             <a className="nl" href="#founding">Pilot</a>
-            <a className="ncta" href="#cta">▸ Get Your Signal Score™</a>
+            <a className="ncta" href="/pulse/">▸ Run Your Free Signal Pulse™</a>
           </div>
         </nav>
         {/* Cinematic instrument panel: DIAGNOSIS above → SCORE GAUGE centerpiece → RECOVERY below */}
@@ -780,7 +781,7 @@ export default function SignalFlairLanding() {
           <a href="#check" style={snl}>Signal Score</a>
           <a href="#signal" style={snl}>Proof Layer</a>
           <a href="#founding" style={snl}>Pilot</a>
-          <a className="ncta" href="#cta">▸ Get Your Signal Score™</a>
+          <a className="ncta" href="/pulse/">▸ Run Your Free Signal Pulse™</a>
         </div>
       </nav>
 
@@ -865,7 +866,7 @@ export default function SignalFlairLanding() {
           </div>
         </div>
         <div className="sig-cta-wrap reveal">
-          <a className="sig-cta" href="#cta">▸ Get Your Signal Score™ →</a>
+          <a className="sig-cta" href="/pulse/">▸ Run your Pulse. 60 seconds. No call. →</a>
           <span className="sig-cta-note">free baseline · 24 hours · no call</span>
         </div>
       </section>
@@ -901,7 +902,7 @@ export default function SignalFlairLanding() {
         </div>
         <div className="proto-teaser reveal">
           <div className="proto-teaser-chant">What&apos;s your Signal Score?</div>
-          <a className="proto-teaser-cta" href="#cta">▸ Get Your Signal Score™ →</a>
+          <a className="proto-teaser-cta" href="/pulse/">▸ Start with your free Signal Pulse™ →</a>
         </div>
       </section>
 
@@ -1039,7 +1040,7 @@ export default function SignalFlairLanding() {
               <div className="founding-body">Signal Flair is a new AI Proof Infrastructure venture in Indianapolis, Indiana, serving organizations nationwide. We&apos;re opening a limited founding pilot for businesses, nonprofits, and civic partners that want to see how AI systems understand them — and build the proof layer to fix it. The goal isn&apos;t hype. It&apos;s documented proof: measure the before, build the missing infrastructure, track the after.</div>
               <div className="founding-ask">For: nonprofits, local service businesses, civic &amp; community partners, and trust-based providers — med spas, clinics, law firms, HVAC, electrical, and more. In return: permission to document your before/after (anonymized if you prefer).</div>
               <a className="founding-cta" href="#cta">▸ Explore a Founding Pilot</a>
-              <div className="founding-micro">Early-stage &amp; honest · documented proof, not testimonials · Get Your Signal Score™ to start</div>
+              <div className="founding-micro">Early-stage &amp; honest · documented proof, not testimonials · start with your free Signal Pulse™</div>
             </div>
             <div className="founding-r">
               <div className="founding-price-tag">What founding partners receive</div>
@@ -1055,6 +1056,31 @@ export default function SignalFlairLanding() {
                 <div className="fnd-i">Clear next steps to become easier for AI to verify</div>
               </div>
               <div className="founding-save">Limited founding cohort · flexible terms for pilots &amp; nonprofits</div>
+            </div>
+          </div>
+        </div>
+
+        {/* ═══ AGENCY LANE — white-label / referral track for SEO & ad agencies ═══ */}
+        <div className="founding reveal" id="agencies">
+          <div className="founding-inner">
+            <div className="founding-l">
+              <div className="founding-eyebrow">For SEO &amp; Ad Agencies</div>
+              <div className="founding-title">Your clients are asking about AI. <em>We&apos;re the answer you white-label.</em></div>
+              <div className="founding-body">Every &ldquo;why doesn&apos;t ChatGPT recommend us?&rdquo; email lands on your desk — and you&apos;re too smart to fake the answer. We scored ourselves first: 18/100, published it, rebuilt it in public to 73. That&apos;s the engine you&apos;d be putting your name on. White-label the Signal Score™, keep the relationship, keep the margin — or just send them over and we handle it.</div>
+              <div className="founding-ask">Pricing scales with your roster — sorted in one conversation, not a proposal PDF.</div>
+              <a className="founding-cta" href="#field-report">▸ Keep winging the AI answer. Or don&apos;t.</a>
+              <div className="founding-micro">One conversation · your brand on the report, our engine underneath · referral or full white-label</div>
+            </div>
+            <div className="founding-r">
+              <div className="founding-price-tag">What agencies get</div>
+              <div className="founding-items">
+                <div className="fnd-i">White-label Signal Score™ reports — your logo, our six-layer engine</div>
+                <div className="fnd-i">AEO fulfillment under your brand — llms.txt, schema, entity clarity, proof pages</div>
+                <div className="fnd-i">Or a straight referral lane — send the client, we handle delivery</div>
+                <div className="fnd-i">Case Zero as your proof — show clients the published 18 → 73 rebuild</div>
+                <div className="fnd-i">No certification course. No six-month buildout. Fulfilling next week.</div>
+              </div>
+              <div className="founding-save">Built for SEO, PPC, web &amp; creative agencies adding AI visibility to the menu</div>
             </div>
           </div>
         </div>
@@ -1110,7 +1136,7 @@ export default function SignalFlairLanding() {
             <div className="pf-amount">$3,500</div>
             <div className="pf-cadence">one-time build · score 0–54</div>
             <div className="pf-onceline">One payment. Everything we build is deployed to <strong>your own site and domain</strong> — so it&apos;s yours to keep forever, even if you never work with us again. <span className="pf-once-sep">Live services — your CRM, monitoring, and fresh content — are Stay Found, below.</span></div>
-            <a className="pf-btn" href="#cta">▸ Build the Foundation</a>
+            <a className="pf-btn" href="/pulse/">▸ Build the Foundation</a>
           </div>
           <div className="pf-right">
             <div className="pf-desc">The infrastructure AI actually reads. Full diagnostic, full technical fix, full structure — everything needed to go from invisible to recommendable across every major AI engine.</div>
@@ -1147,7 +1173,7 @@ export default function SignalFlairLanding() {
               <div className="psci">Priority citation submissions</div>
               <div className="psci">90-Day AI Action Plan</div>
             </div>
-            <a className="psc-btn" href="#cta">▸ Start the Rebuild</a>
+            <a className="psc-btn" href="/pulse/">▸ Start the Rebuild</a>
           </div>
         </div>
 
@@ -1172,7 +1198,7 @@ export default function SignalFlairLanding() {
               <div className="psci">AI crawler monitoring</div>
               <div className="psci">Mindcast Command — ongoing</div>
             </div>
-            <a className="psc-btn" href="#cta">▸ Choose Monitor</a>
+            <a className="psc-btn" href="/pulse/">▸ Choose Monitor</a>
           </div>
           <div className="psc sf-proof">
             <div className="psc-badge">Most chosen</div>
@@ -1191,7 +1217,7 @@ export default function SignalFlairLanding() {
               <div className="psci">AI crawler monitoring</div>
               <div className="psci">Mindcast Command — ongoing</div>
             </div>
-            <a className="psc-btn" href="#cta">▸ Choose Proof</a>
+            <a className="psc-btn" href="/pulse/">▸ Choose Proof</a>
           </div>
           <div className="psc sf-multi">
             <div className="psc-tier">Full-Scale</div>
@@ -1207,7 +1233,7 @@ export default function SignalFlairLanding() {
               <div className="psci">Mindcast Command — ongoing</div>
               <div className="psci">Priority support</div>
             </div>
-            <a className="psc-btn" href="#cta">▸ Choose Multi</a>
+            <a className="psc-btn" href="/pulse/">▸ Choose Multi</a>
           </div>
         </div>
 
@@ -1310,6 +1336,10 @@ export default function SignalFlairLanding() {
             <div className="faq-a">No. Signal Flair supports businesses, nonprofits, civic organizations, and community-facing programs — anyone that needs to become easier for AI systems to access, understand, verify, and recommend.</div>
           </details>
           <details className="faq-item">
+            <summary className="faq-q">I run an SEO or ad agency — can I offer this to my clients?<span className="faq-ic" aria-hidden="true" /></summary>
+            <div className="faq-a">Yes — that&apos;s the point of the agency lane. White-label the Signal Score™ and AEO fulfillment under your own brand (your logo on the report, our engine underneath), or refer clients over and we handle delivery. Pricing scales with your roster and gets sorted in one conversation — no certification course, no proposal PDF. <em>Your clients are already asking. Now you have the answer.</em></div>
+          </details>
+          <details className="faq-item">
             <summary className="faq-q">Do I have to get on a sales call?<span className="faq-ic" aria-hidden="true" /></summary>
             <div className="faq-a">No. Request your free Field Report above — we scan 3 critical signals and send your partial audit within 24 hours. No pitch, no pressure. <em>The ball stays in your court.</em></div>
           </details>
@@ -1322,8 +1352,8 @@ export default function SignalFlairLanding() {
         <div className="cta-inner">
           <div className="cta-left">
             <div className="cta-y-pre reveal">AI Proof Infrastructure™</div>
-            <div className="cta-y-title reveal">See what AI <em>actually knows</em><br />about your business — free.</div>
-            <div className="cta-y-sub reveal">Three critical AI signals — scanned across every major engine and delivered in 24 hours. No call. No pitch. Just the diagnosis: exactly where your signal breaks.</div>
+            <div className="cta-y-title reveal">Your company isn&apos;t losing to a better competitor.<br />It&apos;s losing to the one AI <em>can</em> find.</div>
+            <div className="cta-y-sub reveal">Want the instant read? Run the free Signal Pulse™ — 60 seconds, no call. Want a human to look? Hand it to Corey with the form. Either way, you&apos;ll see exactly where your signal breaks.</div>
             <div className="cta-y-btns reveal" style={{ marginTop: '26px' }}>
               <a className="cta-y-ghost" href="/pulse/">▸ Get your free Signal Pulse™ →</a>
               <a className="cta-y-ghost" href="#founding">▸ Explore a Founding Pilot →</a>
@@ -1334,42 +1364,42 @@ export default function SignalFlairLanding() {
             <div className="lead-card">
               {!leadSuccess && (
               <div id="lead-form-wrap">
-                <div className="lead-h">Get Your Free Signal Flair <em>Field Report</em></div>
-                <div className="lead-subline">We run 3 critical AI signals on your business and deliver a partial audit within 24 hours — no call required. Most local businesses score under 40. You&apos;ll see exactly where your signal breaks.</div>
+                <div className="lead-h">Let&apos;s fix that before &ldquo;invisible&rdquo; becomes your <em>brand strategy.</em></div>
+                <div className="lead-subline">Your free Field Report: 3 of the 6 Signal Protocol™ layers, scanned across ChatGPT, Claude, Perplexity, Gemini &amp; Google AI — delivered in 24 hours. The full six-layer breakdown comes after.</div>
                 <form id="lead-form" ref={leadFormRef} noValidate onSubmit={handleLeadSubmit}>
                   <div className="lf-field">
-                    <label className="lf-label" htmlFor="lf-name">Full Name<span className="req">*</span></label>
+                    <label className="lf-label" htmlFor="lf-name">Your name<span className="req">*</span></label>
                     <input className={`lf-input${leadFieldErrors.full_name ? ' invalid' : ''}`} id="lf-name" name="full_name" type="text" autoComplete="name" placeholder="Jane Smith" />
                     <span className="lf-err" aria-live="polite">{leadFieldErrors.full_name || ''}</span>
                   </div>
                   <div className="lf-field">
-                    <label className="lf-label" htmlFor="lf-biz">Business Name<span className="req">*</span></label>
+                    <label className="lf-label" htmlFor="lf-biz">Company name<span className="req">*</span></label>
                     <input className={`lf-input${leadFieldErrors.business_name ? ' invalid' : ''}`} id="lf-biz" name="business_name" type="text" autoComplete="organization" placeholder="Smith &amp; Co." />
                     <span className="lf-err" aria-live="polite">{leadFieldErrors.business_name || ''}</span>
                   </div>
                   <div className="lf-field full">
-                    <label className="lf-label" htmlFor="lf-url">Website URL<span className="req">*</span></label>
+                    <label className="lf-label" htmlFor="lf-url">Company website — where we&apos;ll go look<span className="req">*</span></label>
                     <input className={`lf-input${leadFieldErrors.website_url ? ' invalid' : ''}`} id="lf-url" name="website_url" type="url" inputMode="url" autoComplete="url" placeholder="yourbusiness.com" />
                     <span className="lf-err" aria-live="polite">{leadFieldErrors.website_url || ''}</span>
                   </div>
                   <div className="lf-field">
-                    <label className="lf-label" htmlFor="lf-email">Email<span className="req">*</span></label>
-                    <input className={`lf-input${leadFieldErrors.email ? ' invalid' : ''}`} id="lf-email" name="email" type="email" inputMode="email" autoComplete="email" placeholder="jane@yourbusiness.com" />
+                    <label className="lf-label" htmlFor="lf-email">Email address<span className="req">*</span></label>
+                    <input className={`lf-input${leadFieldErrors.email ? ' invalid' : ''}`} id="lf-email" name="email" type="email" inputMode="email" autoComplete="email" placeholder="the real one — not the inbox nobody checks" />
                     <span className="lf-err" aria-live="polite">{leadFieldErrors.email || ''}</span>
                   </div>
                   <div className="lf-field">
-                    <label className="lf-label" htmlFor="lf-phone">Phone</label>
+                    <label className="lf-label" htmlFor="lf-phone">Best number to reach you</label>
                     <input className="lf-input" id="lf-phone" name="phone" type="tel" inputMode="tel" autoComplete="tel" placeholder="(optional)" />
                     <span className="lf-err" aria-live="polite" />
                   </div>
                   <div className="lf-field">
-                    <label className="lf-label" htmlFor="lf-service">Primary Service<span className="req">*</span></label>
-                    <input className={`lf-input${leadFieldErrors.primary_service ? ' invalid' : ''}`} id="lf-service" name="primary_service" type="text" placeholder="e.g. HVAC, dental, law" />
+                    <label className="lf-label" htmlFor="lf-service">What do you do?<span className="req">*</span></label>
+                    <input className={`lf-input${leadFieldErrors.primary_service ? ' invalid' : ''}`} id="lf-service" name="primary_service" type="text" placeholder="e.g. HVAC, dental, law, SEO agency" />
                     <span className="lf-err" aria-live="polite">{leadFieldErrors.primary_service || ''}</span>
                   </div>
                   <div className="lf-field">
-                    <label className="lf-label" htmlFor="lf-city">City / Service Area</label>
-                    <input className="lf-input" id="lf-city" name="city" type="text" autoComplete="address-level2" placeholder="(optional)" />
+                    <label className="lf-label" htmlFor="lf-message">What should AI understand about your company?</label>
+                    <input className="lf-input" id="lf-message" name="message" type="text" placeholder="(optional — say it plain)" />
                     <span className="lf-err" aria-live="polite" />
                   </div>
                   <input type="hidden" name="source" defaultValue="signalflair.ai" />
@@ -1380,9 +1410,9 @@ export default function SignalFlairLanding() {
                   <input type="hidden" name="lead_tag" defaultValue="Field Report Request" />
                   <div className="lead-formerr" id="lead-formerr" aria-live="assertive">{leadFormError}</div>
                   <button type="submit" className="lead-submit" disabled={leadSubmitting}>
-                    {leadSubmitting ? 'Running…' : '▸ Run My Field Report'}
+                    {leadSubmitting ? 'On it…' : '▸ Show Me Why I’m Losing'}
                   </button>
-                  <div className="lead-micro">No credit card. No spam. Your Field Report lands in your inbox within 24 hours. This covers 3 of the 6 Signal Protocol™ layers — the full breakdown requires the complete audit.</div>
+                  <div className="lead-micro">Send it and Corey personally reviews your signal, finds the obvious problem, and gets back to you — a real reply, not a sequence. No automated sales maze. No 47-slide deck. No &ldquo;just circling back.&rdquo; We don&apos;t do that here.</div>
                 </form>
               </div>
               )}

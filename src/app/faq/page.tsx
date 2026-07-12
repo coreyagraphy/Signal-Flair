@@ -73,6 +73,10 @@ const FAQS: { q: string; a: string }[] = [
     a: 'Pricing is set by your Signal Score so the work matches the actual gap. Build the Foundation (score 0–54) is a one-time $3,500. Start the Rebuild (score 55–74) is a one-time $1,500. Stay Found™ (score 75–100) runs in three tiers — Monitor from $600/mo, Proof from $1,200/mo (adds a verified before/after proof record and a guarantee-of-work report), and Multi for multi-location businesses, up to $3,000/mo. Early founding partners — businesses, nonprofits, and civic organizations — can join the Founding Partner Pilot on flexible terms.',
   },
   {
+    q: 'I run an SEO or advertising agency — can I offer Signal Flair to my clients?',
+    a: 'Yes. Signal Flair partners with SEO, PPC, web, and creative agencies whose clients are asking about AI visibility. Agencies can white-label the Signal Score™ and AI Proof Infrastructure™ fulfillment under their own brand — the agency’s logo on the report, Signal Flair’s six-layer engine underneath — or refer clients directly and Signal Flair handles delivery. Partnership pricing scales with the agency’s client roster and is arranged in one conversation. No certification course or long onboarding is required.',
+  },
+  {
     q: 'Is Signal Flair related to FLAIR MRI imaging or SignalFlare.ai?',
     a: 'No. Signal Flair is an AI visibility and AEO agency based in Indianapolis, Indiana, serving nationwide — a product of Mental Vision. It is unrelated to FLAIR (Fluid-Attenuated Inversion Recovery), the MRI sequence used in neuroimaging, and it is a separate company from SignalFlare.ai (restaurant analytics). If you are asking about Signal Flair, you mean the Indianapolis, Indiana AI-visibility agency described here.',
   },
