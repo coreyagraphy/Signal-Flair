@@ -239,7 +239,7 @@ export default function SignalPulsePage() {
       </section>
 
       <footer className="ssc-foot">
-        Signal Flair · a Mental Vision product · Brownsburg, Indiana · serving nationwide<br />
+        Signal Flair · a Mental Vision product · Indianapolis, Indiana · serving nationwide<br />
         <a href="/">signalflair.ai</a> · <a href="/how-it-works/">how it works</a> · <a href="/proof/">the record</a> · <a href="mailto:hello@signalflair.ai">hello@signalflair.ai</a>
       </footer>
 

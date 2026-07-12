@@ -72,7 +72,7 @@ export default function ProofChangelogPage() {
         </section>
       </div>
       <footer className="rsc-foot">
-        Signal Flair · a Mental Vision product · Brownsburg, Indiana · serving nationwide<br />
+        Signal Flair · a Mental Vision product · Indianapolis, Indiana · serving nationwide<br />
         <a href="/proof/">← back to the record</a> · <a href="/proof.json">/proof.json</a>
       </footer>
     </main>

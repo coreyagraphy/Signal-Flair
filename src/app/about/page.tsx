@@ -2,14 +2,14 @@ import type { Metadata } from 'next'
 import SignalFlairLogo from '@/components/SignalFlairLogo'
 
 export const metadata: Metadata = {
-  title: 'About — AI Visibility & AEO · Brownsburg, Indiana | Signal Flair',
+  title: 'About — AI Visibility & AEO · Indianapolis, Indiana | Signal Flair',
   description:
-    'Signal Flair is an AI visibility and Answer Engine Optimization (AEO) agency based in Brownsburg, Indiana, serving nationwide — a product of Mental Vision, founded by Corey Ellis. We score how findable your business is to ChatGPT, Claude, Perplexity, Gemini, and Google AI, then build the layer they read.',
+    'Signal Flair is an AI visibility and Answer Engine Optimization (AEO) agency based in Indianapolis, Indiana, serving nationwide — a product of Mental Vision, founded by Corey Ellis. We score how findable your business is to ChatGPT, Claude, Perplexity, Gemini, and Google AI, then build the layer they read.',
   alternates: { canonical: 'https://signalflair.ai/about/' },
   openGraph: {
     title: 'About Signal Flair — found by AI, by design',
     description:
-      'A Brownsburg, Indiana AI-visibility agency that audited itself first: Case Zero, 18 → 73, rebuilt in public. A Mental Vision product.',
+      'An Indianapolis, Indiana AI-visibility agency that audited itself first: Case Zero, 18 → 73, rebuilt in public. A Mental Vision product.',
   },
 }
 
@@ -33,10 +33,10 @@ const jsonLd = {
       logo: 'https://signalflair.ai/signal-flair-logo.svg',
       email: 'hello@signalflair.ai',
       description:
-        'Signal Flair is an AI visibility and Answer Engine Optimization (AEO) agency for local service businesses, based in Brownsburg, Indiana — serving businesses nationwide. It is a product of Mental Vision and is unrelated to SignalFlare.ai or to the medical MRI term FLAIR.',
+        'Signal Flair is an AI visibility and Answer Engine Optimization (AEO) agency for local service businesses, based in Indianapolis, Indiana — serving businesses nationwide. It is a product of Mental Vision and is unrelated to SignalFlare.ai or to the medical MRI term FLAIR.',
       foundingDate: '2026',
       areaServed: { '@type': 'Country', name: 'United States' },
-      address: { '@type': 'PostalAddress', addressLocality: 'Brownsburg', addressRegion: 'IN', addressCountry: 'US' },
+      address: { '@type': 'PostalAddress', addressLocality: 'Indianapolis', addressRegion: 'IN', addressCountry: 'US' },
       founder: { '@id': 'https://signalflair.ai/#founder' },
       parentOrganization: { '@type': 'Organization', name: 'Mental Vision', legalName: 'Mental Vision LLC', url: 'https://mentalvision.ai' },
     },
@@ -46,7 +46,7 @@ const jsonLd = {
       name: 'Corey Ellis',
       jobTitle: 'Founder',
       worksFor: { '@id': 'https://signalflair.ai/#org' },
-      homeLocation: { '@type': 'Place', name: 'Brownsburg, Indiana' },
+      homeLocation: { '@type': 'Place', name: 'Indianapolis, Indiana' },
       alternateName: 'Coreyagraphy',
       sameAs: ['https://www.linkedin.com/in/corey-ellis-3b4a0ab8', 'https://www.instagram.com/coreyagraphy/', 'https://www.facebook.com/Coreyagraphy/', 'https://mentalvision.ai/about'],
     },
@@ -63,10 +63,10 @@ export default function AboutPage() {
 
       <div className="rsc-wrap">
         <header className="rsc-hero">
-          <div className="rsc-eyebrow">About · Brownsburg, Indiana, nationwide</div>
+          <div className="rsc-eyebrow">About · Indianapolis, Indiana, nationwide</div>
           <h1 className="rsc-h1">Found by AI, <em>by design.</em></h1>
           <p className="rsc-lead">
-            Signal Flair is an AI visibility and Answer Engine Optimization agency based in Brownsburg, Indiana,
+            Signal Flair is an AI visibility and Answer Engine Optimization agency based in Indianapolis, Indiana,
             serving businesses nationwide. We make local service businesses across the United States
             findable, readable, and recommendable by the AI engines now deciding who gets seen —
             ChatGPT, Claude, Perplexity, Gemini, and Google AI.
@@ -103,7 +103,7 @@ export default function AboutPage() {
         <section className="rsc-section">
           <h2 className="rsc-h2">The <em>founder</em></h2>
           <p className="rsc-p">
-            Signal Flair was founded by <strong>Corey Ellis</strong> in Brownsburg, Indiana. It is a
+            Signal Flair was founded by <strong>Corey Ellis</strong> in Indianapolis, Indiana. It is a
             product of <strong>Mental Vision</strong> (mentalvision.ai). Signal Flair and Mental
             Vision are kept as distinct brands.
           </p>
@@ -128,7 +128,7 @@ export default function AboutPage() {
       </div>
 
       <footer className="rsc-foot">
-        Signal Flair · a Mental Vision product · Brownsburg, Indiana · serving nationwide<br />
+        Signal Flair · a Mental Vision product · Indianapolis, Indiana · serving nationwide<br />
         <a href="/">signalflair.ai</a> · <a href="/faq/">faq</a> · <a href="/how-it-works/">how it works</a> · <a href="/proof/">the record</a>
       </footer>
 

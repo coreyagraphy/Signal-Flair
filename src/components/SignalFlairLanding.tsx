@@ -708,7 +708,7 @@ export default function SignalFlairLanding() {
         <nav id="hnav">
           <div>
             <div className="nav-logo"><SignalFlairLogo onDark pulse style={{ height: 56, width: 'auto', display: 'block' }} /></div>
-            <div className="nav-logo-tag"><span className="ntag-cat">AI Proof Infrastructure™</span> · Brownsburg, Indiana, serving nationwide</div>
+            <div className="nav-logo-tag"><span className="ntag-cat">AI Proof Infrastructure™</span> · Indianapolis, Indiana, serving nationwide</div>
           </div>
           <div style={{ display: 'flex', alignItems: 'center', gap: '24px' }}>
             <a className="nl" href="#check">Signal Score</a>
@@ -1036,7 +1036,7 @@ export default function SignalFlairLanding() {
             <div className="founding-l">
               <div className="founding-eyebrow">Founding Partner Pilot</div>
               <div className="founding-title">Help build the AI trust layer <em>before the market catches up.</em></div>
-              <div className="founding-body">Signal Flair is a new AI Proof Infrastructure venture in Brownsburg, Indiana, serving organizations nationwide. We&apos;re opening a limited founding pilot for businesses, nonprofits, and civic partners that want to see how AI systems understand them — and build the proof layer to fix it. The goal isn&apos;t hype. It&apos;s documented proof: measure the before, build the missing infrastructure, track the after.</div>
+              <div className="founding-body">Signal Flair is a new AI Proof Infrastructure venture in Indianapolis, Indiana, serving organizations nationwide. We&apos;re opening a limited founding pilot for businesses, nonprofits, and civic partners that want to see how AI systems understand them — and build the proof layer to fix it. The goal isn&apos;t hype. It&apos;s documented proof: measure the before, build the missing infrastructure, track the after.</div>
               <div className="founding-ask">For: nonprofits, local service businesses, civic &amp; community partners, and trust-based providers — med spas, clinics, law firms, HVAC, electrical, and more. In return: permission to document your before/after (anonymized if you prefer).</div>
               <a className="founding-cta" href="#cta">▸ Explore a Founding Pilot</a>
               <div className="founding-micro">Early-stage &amp; honest · documented proof, not testimonials · Get Your Signal Score™ to start</div>
@@ -1250,8 +1250,8 @@ export default function SignalFlairLanding() {
             <div className="about-sign">
               <div>
                 <div className="about-sign-name">— Corey Ellis</div>
-                <div className="about-sign-role">Founder · Signal Flair · Mental Vision · Brownsburg, Indiana</div>
-                <div className="about-sign-loc">Brownsburg, Indiana · serving businesses nationwide</div>
+                <div className="about-sign-role">Founder · Signal Flair · Mental Vision · Indianapolis, Indiana</div>
+                <div className="about-sign-loc">Indianapolis, Indiana · serving businesses nationwide</div>
               </div>
             </div>
           </div>
@@ -1414,7 +1414,7 @@ export default function SignalFlairLanding() {
         <div className="fi">
           <div>
             <a className="f-logo" href="#hero"><SignalFlairLogo onDark style={{ height: 56, width: 'auto', display: 'block' }} /></a>
-            <div className="f-tag">AI Proof Infrastructure™<br />Brownsburg, Indiana · Serving businesses nationwide · Est. 2026<br />Your business, found by AI.</div>
+            <div className="f-tag">AI Proof Infrastructure™<br />Indianapolis, Indiana · Serving businesses nationwide · Est. 2026<br />Your business, found by AI.</div>
             <a className="f-email" href="mailto:hello@signalflair.ai">hello@signalflair.ai</a>
           </div>
           <div><div className="f-head">Services</div><a className="f-link" href="#signal">AI Visibility Audit</a><a className="f-link" href="#signal">Foundation Build</a><a className="f-link" href="#signal">Stay Found™</a><a className="f-link" href="#check">What We Check</a><a className="f-link" href="#pricing">Pricing</a></div>
@@ -1427,7 +1427,7 @@ export default function SignalFlairLanding() {
           <div className="f-privacy">We never share your data. No spam.</div>
         </div>
         <div className="fb">
-          <div className="fb-l">Signal Flair is a Mental Vision product | Brownsburg, Indiana · Serving nationwide | signalflair.ai</div>
+          <div className="fb-l">Signal Flair is a Mental Vision product | Indianapolis, Indiana · Serving nationwide | signalflair.ai</div>
           <div className="fb-r">AI Proof Infrastructure™ · Signal Flair v1.0</div>
         </div>
       </footer>

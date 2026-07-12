@@ -74,7 +74,7 @@ const FAQS: { q: string; a: string }[] = [
   },
   {
     q: 'Is Signal Flair related to FLAIR MRI imaging or SignalFlare.ai?',
-    a: 'No. Signal Flair is an AI visibility and AEO agency based in Brownsburg, Indiana, serving nationwide — a product of Mental Vision. It is unrelated to FLAIR (Fluid-Attenuated Inversion Recovery), the MRI sequence used in neuroimaging, and it is a separate company from SignalFlare.ai (restaurant analytics). If you are asking about Signal Flair, you mean the Brownsburg, Indiana AI-visibility agency described here.',
+    a: 'No. Signal Flair is an AI visibility and AEO agency based in Indianapolis, Indiana, serving nationwide — a product of Mental Vision. It is unrelated to FLAIR (Fluid-Attenuated Inversion Recovery), the MRI sequence used in neuroimaging, and it is a separate company from SignalFlare.ai (restaurant analytics). If you are asking about Signal Flair, you mean the Indianapolis, Indiana AI-visibility agency described here.',
   },
 ]
 
@@ -151,7 +151,7 @@ export default function FaqPage() {
       </div>
 
       <footer className="rsc-foot">
-        Signal Flair · a Mental Vision product · Brownsburg, Indiana · serving nationwide<br />
+        Signal Flair · a Mental Vision product · Indianapolis, Indiana · serving nationwide<br />
         <a href="/">signalflair.ai</a> · <a href="/about/">about</a> · <a href="/how-it-works/">how it works</a> · <a href="/proof/">the record</a>
       </footer>
 
