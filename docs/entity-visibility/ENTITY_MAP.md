@@ -16,7 +16,7 @@
 | Founder | Corey Ellis | canon + live |
 | Founding date | **2026** — consistent everywhere (Corey-confirmed + LinkedIn field updated and live-verified 2026-07-11) | owner-confirmed + observed |
 | Parent | Mental Vision (never "Corp") | Proof OS entity registry; proof.json |
-| Location | Brownsburg, Indiana — serving nationwide (no street published) | canon |
+| Location | Indianapolis, Indiana — serving nationwide (no street published) | canon |
 | Email (only public inbox) | hello@signalflair.ai | canon |
 | Logo | https://signalflair.ai/signal-flair-logo.svg | repo |
 | Public product terms (approved) | Signal Score™, Signal Proof Page™, Stay Found™, AI Proof Infrastructure™ + six layers (Access & Crawlability, Structured Intelligence, Entity Clarity, Answer Architecture, Trust & Proof Density, Live AI Visibility) | 53A PUBLIC_ALLOWED |
@@ -33,7 +33,7 @@
 | Category | Creative technology studio — cinematic production, AI filmmaking, human-centered AI adoption | live v2 |
 | Founder | Corey Ellis ("Coreyagraphy"), Founder & Chief Visionary Officer | live v2 /about |
 | Email | create@mentalvision.ai (live on v2; confirm monitored — fact #3) | live v2 |
-| Location | Brownsburg, IN 46112 (contact schema); ⚠ LinkedIn parent line says Indianapolis — reconcile | live v2 vs LinkedIn |
+| Location | Indianapolis, IN 46260 (contact schema); LinkedIn parent line also Indianapolis — reconciled 2026-07-12 | live v2 = LinkedIn |
 | Relationship | parent/umbrella of Signal Flair; also houses HyperForge (in-house AEO/content engine — internal, not on v2 site) | Proof OS entity registry |
 | Profiles | Facebook facebook.com/Mentalvisionllc + Instagram instagram.com/mentalvision.ai (owner-confirmed 2026-07-11, in schema sameAs); LinkedIn company page URL still unknown (fact #4). Note: FB handle "Mentalvisionllc" suggests legal name "Mental Vision LLC" — confirm (fact #2) | owner-provided |
 
@@ -43,7 +43,7 @@
 | Name | Corey Ellis | canon |
 | Descriptor | Founder, Signal Flair · Founder & Chief Visionary Officer, Mental Vision · creative technologist, filmmaker, educator, AI builder | live MV /about |
 | Alias | Coreyagraphy — Corey's handle on ALL social media (owner-confirmed 2026-07-11): instagram.com/coreyagraphy + facebook.com/Coreyagraphy (both in Person sameAs) | owner-provided |
-| Location | Brownsburg, Indiana | canon |
+| Location | Indianapolis, Indiana | canon |
 | LinkedIn | linkedin.com/in/corey-ellis-3b4a0ab8 (EXISTS; typo "Cheif", stale positioning, no Signal Flair) | verified |
 | Name-collision risk | Crunchbase "Corey Ellis" = Growcer CEO (different person); disc golfer; AFL player; musician | search evidence |
 | Expertise (publishable) | AI visibility / AEO, entity clarity, structured data, AI implementation for small business, AI filmmaking, creative direction | both sites |

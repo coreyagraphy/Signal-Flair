@@ -7,7 +7,7 @@ Bio (150-char limit — paste):
 ```
 Founder — Signal Flair + Mental Vision
 I make businesses findable to AI engines
-Brownsburg, IN
+Indianapolis, IN
 ```
 Link: `https://signalflair.ai` (recommended — this is the brand that needs the corroboration; @mentalvision.ai's own profile carries the studio link).
 
@@ -16,7 +16,7 @@ Bio (paste):
 ```
 Creative technology studio
 Cinematic film + AI experiences
-Founder @coreyagraphy · Brownsburg, IN
+Founder @coreyagraphy · Indianapolis, IN
 ```
 Link: `https://mentalvision.ai`
 

@@ -9,7 +9,7 @@ Why: Crunchbase is one of the highest-weight entity sources answer engines cross
 |---|---|
 | Company name | `Signal Flair` |
 | Website | `https://signalflair.ai` |
-| Headquarters | `Brownsburg, Indiana, United States` |
+| Headquarters | `Indianapolis, Indiana, United States` |
 | Founded | `2026` |
 | Founder | Corey Ellis (link/create your person profile, with headshot) |
 | Industries | Marketing · SEO · Artificial Intelligence |
@@ -19,7 +19,7 @@ Why: Crunchbase is one of the highest-weight entity sources answer engines cross
 
 3. Description (paste):
 ```
-Signal Flair builds AI Proof Infrastructure™ — measuring AI readiness with the 0–100 Signal Score™ and building the proof layer (llms.txt, schema markup, entity clarity, trust signals) that AI answer engines like ChatGPT, Claude, Perplexity, Gemini, and Google AI need to find, verify, and recommend a business. Based in Brownsburg, Indiana, serving the United States. A Mental Vision company. Not affiliated with SignalFlare.ai.
+Signal Flair builds AI Proof Infrastructure™ — measuring AI readiness with the 0–100 Signal Score™ and building the proof layer (llms.txt, schema markup, entity clarity, trust signals) that AI answer engines like ChatGPT, Claude, Perplexity, Gemini, and Google AI need to find, verify, and recommend a business. Based in Indianapolis, Indiana, serving the United States. A Mental Vision company. Not affiliated with SignalFlare.ai.
 ```
 
 4. **After it's live: send Claude the final Crunchbase URL.** The schema has a marked spot waiting to re-add it to `sameAs` (it was removed because the profile didn't exist — dead links read as fake corroboration).

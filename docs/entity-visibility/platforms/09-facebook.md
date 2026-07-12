@@ -6,15 +6,15 @@ Both pages are already wired into your websites' schema — this file just makes
 1. **Display name:** make sure the page shows **"Mental Vision"** (the @Mentalvisionllc username can stay — display name is what matters). "Mental Vision Corp" must not appear anywhere.
 2. About → paste:
 ```
-Mental Vision is a creative technology studio: cinematic video production, AI filmmaking, and human-centered AI adoption — workshops, training, and hands-on implementation for teams and small businesses. Founder-led by Corey Ellis in Brownsburg, Indiana. Come see what you think.
+Mental Vision is a creative technology studio: cinematic video production, AI filmmaking, and human-centered AI adoption — workshops, training, and hands-on implementation for teams and small businesses. Founder-led by Corey Ellis in Indianapolis, Indiana. Come see what you think.
 ```
-3. Website: `https://mentalvision.ai` · Email: `create@mentalvision.ai` · Location: Brownsburg, IN.
+3. Website: `https://mentalvision.ai` · Email: `create@mentalvision.ai` · Location: Indianapolis, IN.
 4. Additional info (optional but good for the entity graph): `Our AI-visibility company: Signal Flair — signalflair.ai`
 
 ## B. Your profile — facebook.com/Coreyagraphy
 1. Intro/bio (paste):
 ```
-Founder — Signal Flair + Mental Vision. I make businesses findable to AI engines. Brownsburg, IN.
+Founder — Signal Flair + Mental Vision. I make businesses findable to AI engines. Indianapolis, IN.
 ```
 2. Work section: add `Founder — Signal Flair` and `Founder & Chief Visionary Officer — Mental Vision` (link both pages where Facebook lets you).
 3. Website links: `signalflair.ai` and `mentalvision.ai`.

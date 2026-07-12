@@ -19,8 +19,8 @@
 ## Week 2 — Corroboration + first public proof
 **Day 8 —** Approve MV /about cross-link block (packet §6); Claude implements + you deploy. (15 min)
 **Day 9 —** Publish founder post #1: the Case Zero story (draft §9 — canon caption included). Why: your best proof asset is already real; it just isn't distributed. Evidence: post URL. (20 min)
-**Day 10 —** Pick 2–3 quality citations from packet §7 (e.g., Clutch, Indy/Brownsburg chamber, one credible AI-tools directory) and submit. NO mass submissions. Evidence: submission confirmations. (45 min)
-**Day 11 —** GBP decision (packet §8). If yes: create service-area profile, address hidden, Brownsburg. Evidence: profile pending-verification state. (30 min)
+**Day 10 —** Pick 2–3 quality citations from packet §7 (e.g., Clutch, Indy/Indianapolis chamber, one credible AI-tools directory) and submit. NO mass submissions. Evidence: submission confirmations. (45 min)
+**Day 11 —** GBP decision (packet §8). If yes: create service-area profile, address hidden, Indianapolis. Evidence: profile pending-verification state. (30 min)
 **Day 12 —** Re-check GSC coverage; request indexing on any stragglers. Post #2: "How is AEO different from SEO?" (draft §9.2). (30 min)
 
 ## Week 3 — Authority asset

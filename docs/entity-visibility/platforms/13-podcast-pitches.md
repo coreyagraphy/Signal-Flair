@@ -14,7 +14,7 @@ Subject: `Your listeners are invisible to ChatGPT — and it's measurable`
 ```
 Hi [Name],
 
-Corey Ellis — founder of Signal Flair in Brownsburg, Indiana. When someone asks ChatGPT or Perplexity for a [plumber/roofer/dentist — match their audience] recommendation, most local businesses simply don't exist to those engines, and the owners have no idea.
+Corey Ellis — founder of Signal Flair in Indianapolis, Indiana. When someone asks ChatGPT or Perplexity for a [plumber/roofer/dentist — match their audience] recommendation, most local businesses simply don't exist to those engines, and the owners have no idea.
 
 I measure that gap for a living — and we scored our own company first: 18/100, then rebuilt it in public (the whole record is at signalflair.ai/proof).
 

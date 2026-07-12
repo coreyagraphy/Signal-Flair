@@ -22,7 +22,7 @@ Do them in numbered order — each file is self-contained with paste-ready copy.
 
 **The consistency rule that makes all of this work:** every platform uses the exact same facts.
 - Name: `Signal Flair` (never Flare) · `Mental Vision` (never Corp)
-- Location: `Brownsburg, Indiana` (46112 where a ZIP is asked; no street)
+- Location: `Indianapolis, Indiana` (46260 where a ZIP is asked; no street)
 - Emails: `hello@signalflair.ai` (Signal Flair) · `create@mentalvision.ai` (Mental Vision)
 - Websites: `https://signalflair.ai` · `https://mentalvision.ai`
 - You: `Corey Ellis` — "Coreyagraphy" on social · Founder, Signal Flair · Founder & Chief Visionary Officer, Mental Vision

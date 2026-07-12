@@ -12,7 +12,7 @@ You create the account (that part only you can do); everything else is below. Va
 ```
 When someone asks ChatGPT, Perplexity, or Google AI "who should I hire?", there's no page two. The engines recommend the businesses they can verify — and quietly skip the ones they can't.
 
-I'm Corey Ellis, founder of Signal Flair (signalflair.ai), an AI-visibility company in Brownsburg, Indiana, and Mental Vision (mentalvision.ai), a creative technology studio. I audited my own company first — it scored 18/100 — and rebuilt it in public. This newsletter is the working notebook: how AI answer engines evaluate businesses, what actually moves the needle, and what I'm seeing in real audits. Plain English, no guarantees, receipts included.
+I'm Corey Ellis, founder of Signal Flair (signalflair.ai), an AI-visibility company in Indianapolis, Indiana, and Mental Vision (mentalvision.ai), a creative technology studio. I audited my own company first — it scored 18/100 — and rebuilt it in public. This newsletter is the working notebook: how AI answer engines evaluate businesses, what actually moves the needle, and what I'm seeing in real audits. Plain English, no guarantees, receipts included.
 ```
 
 ## Welcome post (paste as your first post, title: "There is no page two")

@@ -293,5 +293,5 @@ Dead: `$2,500 / $1,250 / $797 / $997-flat / $400 / $750 / $297 / $497`
 
 ---
 
-*Signal Flair · Mental Vision · Brownsburg, Indiana*
+*Signal Flair · Mental Vision · Indianapolis, Indiana*
 *Package compiled: 2026-06-07*

@@ -31,7 +31,7 @@
 | P2.1 | Create Crunchbase org profile; then restore sameAs line in `src/app/layout.tsx` (comment marks spot) + redeploy | [K]→[C-ready] | fields in packet §5 |
 | P2.2 | MV /about visible cross-link block ("Also from Mental Vision: Signal Flair…") | [K approves, copy ready] | packet §6 — visible-copy change to an active design workstream, so approval-gated |
 | P2.3 | 2–3 quality directory/citation entries only (e.g., Clutch, local Indiana chamber, one AEO/AI-tools directory) — NO mass submissions | [K] | packet §7 |
-| P2.4 | Google Business Profile decision (service-area business, Brownsburg, address hidden) | [K] | packet §8; strengthens local entity + Maps-layer retrieval |
+| P2.4 | Google Business Profile decision (service-area business, Indianapolis, address hidden) | [K] | packet §8; strengthens local entity + Maps-layer retrieval |
 | P2.5 | Re-run branded queries; log deltas | [K] | OBSERVATIONS protocol |
 
 ## Phase 3 — Founder authority (Weeks 2–4, overlaps)

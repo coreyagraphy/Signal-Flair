@@ -19,7 +19,7 @@
 | Company type | For-Profit |
 | Operating status | Active |
 | Founded | `2026` |
-| HQ location | `Brownsburg, Indiana, United States` |
+| HQ location | `Indianapolis, Indiana, United States` |
 | Founder | `Corey Ellis` |
 | Contact email | `hello@signalflair.ai` |
 | Industries / Categories | Marketing · Artificial Intelligence · SEO · Digital Marketing · Advertising |
@@ -27,7 +27,7 @@
 
 **Description (paste verbatim — this is the kit's Long variant):**
 
-> Signal Flair is an AI visibility and Answer Engine Optimization (AEO) agency in Brownsburg, Indiana — a product of Mental Vision, founded by Corey Ellis. We make local service businesses findable, trustworthy, and citable across the AI answer engines that now route customers: ChatGPT, Claude, Gemini, Perplexity, and Google AI Overviews. We score a business 0–100 across six signals, fix the gaps with structured data, llms.txt, and crawler access, then keep the signal strong. Note: Signal Flair is a marketing agency — it is not the medical imaging term FLAIR (Fluid-Attenuated Inversion Recovery), and is unrelated to SignalFlare.ai.
+> Signal Flair is an AI visibility and Answer Engine Optimization (AEO) agency in Indianapolis, Indiana — a product of Mental Vision, founded by Corey Ellis. We make local service businesses findable, trustworthy, and citable across the AI answer engines that now route customers: ChatGPT, Claude, Gemini, Perplexity, and Google AI Overviews. We score a business 0–100 across six signals, fix the gaps with structured data, llms.txt, and crawler access, then keep the signal strong. Note: Signal Flair is a marketing agency — it is not the medical imaging term FLAIR (Fluid-Attenuated Inversion Recovery), and is unrelated to SignalFlare.ai.
 
 **Links section (add all):**
 ```
@@ -44,24 +44,24 @@ https://mentalvision.ai
 | Field | Value |
 |---|---|
 | Name | `Signal Flair` |
-| Tagline / slogan (≤120 chars) | `Your business, found by AI. — AI visibility (AEO), Brownsburg, Indiana.` |
+| Tagline / slogan (≤120 chars) | `Your business, found by AI. — AI visibility (AEO), Indianapolis, Indiana.` |
 | Industry | `Marketing Services` |
 | Company size | `2-10 employees` |
-| Headquarters / Location | `Brownsburg, Indiana, United States` |
+| Headquarters / Location | `Indianapolis, Indiana, United States` |
 | Website | `https://signalflair.ai` |
 | Founded | `2026` |
 
 **About / Overview (paste — reworded long, facts + disambiguation line kept exact):**
 
-> Signal Flair makes local service businesses findable, trustworthy, and citable across the AI answer engines that now route customers — ChatGPT, Claude, Gemini, Perplexity, and Google AI Overviews. As an AI visibility and Answer Engine Optimization (AEO) agency in Brownsburg, Indiana — a product of Mental Vision, founded by Corey Ellis — we score a business 0–100 across six signals, then fix the gaps with structured data, llms.txt, and crawler access, and keep the signal strong over time.
+> Signal Flair makes local service businesses findable, trustworthy, and citable across the AI answer engines that now route customers — ChatGPT, Claude, Gemini, Perplexity, and Google AI Overviews. As an AI visibility and Answer Engine Optimization (AEO) agency in Indianapolis, Indiana — a product of Mental Vision, founded by Corey Ellis — we score a business 0–100 across six signals, then fix the gaps with structured data, llms.txt, and crawler access, and keep the signal strong over time.
 >
-> Note: Signal Flair is an AI visibility / Answer Engine Optimization (AEO) agency in Brownsburg, Indiana. It is not the medical imaging term FLAIR (Fluid-Attenuated Inversion Recovery), and is unrelated to SignalFlare.ai.
+> Note: Signal Flair is an AI visibility / Answer Engine Optimization (AEO) agency in Indianapolis, Indiana. It is not the medical imaging term FLAIR (Fluid-Attenuated Inversion Recovery), and is unrelated to SignalFlare.ai.
 
 ---
 
 ## CONSISTENCY CHECK (run before submitting each)
 - [ ] Name is exactly `Signal Flair` (not "SignalFlair", never "Signal Flare")
-- [ ] Locality is exactly `Brownsburg, Indiana, United States`
+- [ ] Locality is exactly `Indianapolis, Indiana, United States`
 - [ ] Website `https://signalflair.ai` matches byte-for-byte
 - [ ] Disambiguation line present (full form on both — fields have room)
 - [ ] Category names the entity as an agency / marketing (reinforces "not a medical term")

@@ -23,10 +23,10 @@ Does one exist (URL)? Your personal profile shows "Mentalvision" as employer, wh
 **5. Preferred founder title string** — "Founder" (SF) + "Founder & Chief Visionary Officer" (MV) is what's live. Keep exactly this split? **Answer:** ______
 **6. Approved social handles** — ✅ PARTIALLY ANSWERED 2026-07-11: personal = instagram.com/coreyagraphy + facebook.com/Coreyagraphy ("Coreyagraphy" on all social); MV = facebook.com/Mentalvisionllc + instagram.com/mentalvision.ai. All four wired into schema. Still open: any SIGNAL FLAIR-brand handles (footer placeholders exist) + YouTube/X URLs if any. **Answer:** ______
 **7. Founder photo** — 4:5 portrait for the SF about section (slot has been open since June) + square headshot for profiles. Provide file or say "hold." **Answer:** ______
-**8. Google Business Profile** — does one exist for either brand already? If not, approve/deny creating SF as a service-area business (Brownsburg, address hidden) — packet §8. **Answer:** ______
+**8. Google Business Profile** — does one exist for either brand already? If not, approve/deny creating SF as a service-area business (Indianapolis, address hidden) — packet §8. **Answer:** ______
 **9. Trademark status** — Signal Score™, Stay Found™, etc. are used with ™ (fine unregistered). Confirm none are registered (®) and none are under filing, so no surface over- or under-claims. **Answer:** ______
 **10. "Coreyagraphy" scope** — keep as public alias on MV surfaces only (current state), or also add to SF founder schema? **Answer:** ______
 **11. Phone number** — proof.json has an empty phone field. Publish one anywhere? (Current recommendation: no, keep email-only.) **Answer:** ______
-**12. MV location line** — LinkedIn parent reference says "Indianapolis"; canon mailing is Brownsburg 46112. Confirm Brownsburg everywhere (or Indianapolis-metro wording you prefer). **Answer:** ______
+**12. MV location line** — ✅ RESOLVED (2026-07-12): canon location is **Indianapolis, Indiana (ZIP 46260)** across all Signal Flair + Mental Vision surfaces. Old Brownsburg / 46112 references retired. LinkedIn parent line (already "Indianapolis") now matches.
 
-*Not asked because already verifiable:* founder name, both domains, hello@signalflair.ai, Brownsburg IN for SF, pricing, Case Zero numbers/dates (canon-locked), service definitions.
+*Not asked because already verifiable:* founder name, both domains, hello@signalflair.ai, Indianapolis IN for SF, pricing, Case Zero numbers/dates (canon-locked), service definitions.

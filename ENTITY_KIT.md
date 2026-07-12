@@ -29,7 +29,7 @@ Category:       AI Visibility & Answer Engine Optimization (AEO) agency
 Parent company: Mental Vision
 Founder:        Corey Ellis
 Founded:        2026
-Location:       Brownsburg, Indiana, United States
+Location:       Indianapolis, Indiana, United States
 Service area:   United States — nationwide (remote)
 Website:        https://signalflair.ai
 Email:          hello@signalflair.ai
@@ -44,7 +44,7 @@ profiles unless Corey explicitly chooses it for a non-GHL experiment.
 
 ## 2. THE DISAMBIGUATION LINE (paste verbatim — this is the fix)
 
-> Signal Flair is an AI visibility / Answer Engine Optimization (AEO) agency in Brownsburg, Indiana.
+> Signal Flair is an AI visibility / Answer Engine Optimization (AEO) agency in Indianapolis, Indiana.
 > It is not the medical imaging term FLAIR (Fluid-Attenuated Inversion Recovery), and is unrelated to
 > SignalFlare.ai.
 
@@ -56,20 +56,20 @@ the full sentence, use the short form: **"AI visibility agency — not the FLAIR
 ## 3. DESCRIPTION VARIANTS (pick by field length)
 
 **Tagline (≤10 words):**
-> Your business, found by AI. — AI visibility, Brownsburg, Indiana.
+> Your business, found by AI. — AI visibility, Indianapolis, Indiana.
 
 **Short (~160 chars — meta/Bing/short bios):**
-> Signal Flair is a Brownsburg, Indiana AI visibility (AEO) agency. We make local service businesses
+> Signal Flair is a Indianapolis, Indiana AI visibility (AEO) agency. We make local service businesses
 > findable and citable across ChatGPT, Claude, Gemini, Perplexity & Google AI.
 
 **Medium (~300 chars — directory listings):**
-> Signal Flair is an AI visibility and Answer Engine Optimization (AEO) agency in Brownsburg,
+> Signal Flair is an AI visibility and Answer Engine Optimization (AEO) agency in Indianapolis,
 > Indiana, and a product of Mental Vision. We score how findable a local service business is to
 > AI answer engines — ChatGPT, Claude, Gemini, Perplexity, and Google AI Overviews — then build the
 > structured record those engines need to find, trust, and recommend it. Not the FLAIR MRI term.
 
 **Long (~640 chars — Crunchbase / Google Business Profile, 750 max):**
-> Signal Flair is an AI visibility and Answer Engine Optimization (AEO) agency in Brownsburg,
+> Signal Flair is an AI visibility and Answer Engine Optimization (AEO) agency in Indianapolis,
 > Indiana — a product of Mental Vision, founded by Corey Ellis. We make local service businesses
 > findable, trustworthy, and citable across the AI answer engines that now route customers: ChatGPT,
 > Claude, Gemini, Perplexity, and Google AI Overviews. We score a business 0–100 across six signals,
@@ -86,9 +86,9 @@ the full sentence, use the short form: **"AI visibility agency — not the FLAIR
 - **Google Business Profile** — Primary: **Marketing agency**. Secondary: *Internet marketing service*,
   *Marketing consultant*. (The "Marketing agency" category itself reinforces "agency, not a medical term.")
 - **Crunchbase** — Type: Company. Categories: *Marketing, Artificial Intelligence, SEO, Digital Marketing,
-  Advertising*. HQ: Brownsburg, Indiana.
-- **Clutch / Manifest / DesignRush / UpCity** — *Digital Marketing → SEO / AI*, Brownsburg, Indiana.
-- **LinkedIn** — Industry: *Marketing Services*. Location: Brownsburg, Indiana.
+  Advertising*. HQ: Indianapolis, Indiana.
+- **Clutch / Manifest / DesignRush / UpCity** — *Digital Marketing → SEO / AI*, Indianapolis, Indiana.
+- **LinkedIn** — Industry: *Marketing Services*. Location: Indianapolis, Indiana.
 
 ---
 
@@ -122,8 +122,8 @@ GBP especially — they feed the knowledge graph).
 **Tier B — Agency authority directories (citations + DR).**
 6. Clutch.co  ·  7. The Manifest (themanifest.com)  ·  8. DesignRush  ·  9. UpCity  ·  10. GoodFirms
 
-**Tier C — Local Brownsburg, Indiana (wins "Brownsburg, Indiana AI visibility" queries).**
-11. Indy Chamber directory  ·  12. Yelp for Business  ·  13. local Brownsburg, Indiana business listings
+**Tier C — Local Indianapolis, Indiana (wins "Indianapolis, Indiana AI visibility" queries).**
+11. Indy Chamber directory  ·  12. Yelp for Business  ·  13. local Indianapolis, Indiana business listings
 
 **Later (high value, needs notability/press first):**
 - **Wikidata** — the strongest knowledge-graph signal, but an item can be deleted if non-notable.
@@ -143,7 +143,7 @@ the trust-mark doctrine and the whole positioning.
 
 1. **A business phone number.** Google Business Profile and Bing Places both require one to verify.
    If you don't want to use a personal line, a Google Voice number works. *(Until then, GBP can't go live.)*
-2. **Address decision.** Recommend running as a **service-area business** (Brownsburg, Indiana, no public street
+2. **Address decision.** Recommend running as a **service-area business** (Indianapolis, Indiana, no public street
    address shown) — GBP supports this. If you have a real business address, list it consistently; if not,
    do NOT invent one.
 
@@ -152,7 +152,7 @@ the trust-mark doctrine and the whole positioning.
 ## 9. CONSISTENCY CHECKLIST (before submitting each profile)
 
 - [ ] Name is exactly `Signal Flair` (not "SignalFlair", not "Signal Flare")
-- [ ] Locality is exactly `Brownsburg, Indiana, United States`
+- [ ] Locality is exactly `Indianapolis, Indiana, United States`
 - [ ] Phone + website match the canonical block byte-for-byte
 - [ ] The disambiguation line is present (full or short form)
 - [ ] Category names the entity as an *agency / marketing* (reinforces "not a medical term")

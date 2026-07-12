@@ -10,7 +10,7 @@ Register on one or two (don't overcommit):
 
 Use `corey@signalflair.ai`. Profile on each:
 - Name: Corey Ellis · Title: `Founder, Signal Flair` · Company site: `https://signalflair.ai`
-- Bio (paste): `Corey Ellis is the founder of Signal Flair, an AI-visibility company that helps businesses get found, verified, and recommended by AI engines, and Mental Vision, a creative technology studio for cinematic production and practical AI adoption. He works from Brownsburg, Indiana, and publishes his methods in public at signalflair.ai/proof.`
+- Bio (paste): `Corey Ellis is the founder of Signal Flair, an AI-visibility company that helps businesses get found, verified, and recommended by AI engines, and Mental Vision, a creative technology studio for cinematic production and practical AI adoption. He works from Indianapolis, Indiana, and publishes his methods in public at signalflair.ai/proof.`
 - Headshot: same photo as LinkedIn.
 
 ## The workflow (this is where Claude does the labor)

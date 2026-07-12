@@ -10,7 +10,7 @@ Pick **Clutch first**; add UpCity only if you want a second. Do NOT do mass dire
 |---|---|
 | Company | `Signal Flair` |
 | Website | `https://signalflair.ai` |
-| Location | Brownsburg, Indiana 46112, United States |
+| Location | Indianapolis, Indiana 46260, United States |
 | Email | hello@signalflair.ai |
 | Founded | `2026` |
 | Employees | 1–10 |
@@ -20,7 +20,7 @@ Pick **Clutch first**; add UpCity only if you want a second. Do NOT do mass dire
 
 3. Description (paste):
 ```
-Signal Flair builds AI Proof Infrastructure™ — helping businesses get found, verified, and recommended by AI engines like ChatGPT, Claude, Perplexity, Gemini, and Google AI. We measure AI readiness with the 0–100 Signal Score™, then build the proof layer engines need: llms.txt, schema markup, entity clarity, answer architecture, and trust signals. We audited ourselves first and published the record at signalflair.ai/proof. One-time foundation builds and ongoing Stay Found™ maintenance for local service businesses. Brownsburg, Indiana — serving nationwide. Delivery-based commitments only; we never guarantee rankings or AI recommendations.
+Signal Flair builds AI Proof Infrastructure™ — helping businesses get found, verified, and recommended by AI engines like ChatGPT, Claude, Perplexity, Gemini, and Google AI. We measure AI readiness with the 0–100 Signal Score™, then build the proof layer engines need: llms.txt, schema markup, entity clarity, answer architecture, and trust signals. We audited ourselves first and published the record at signalflair.ai/proof. One-time foundation builds and ongoing Stay Found™ maintenance for local service businesses. Indianapolis, Indiana — serving nationwide. Delivery-based commitments only; we never guarantee rankings or AI recommendations.
 ```
 
 4. **Reviews:** Clutch profiles live on verified client reviews. When your first Founding Clients wrap, ask each for a Clutch review (they do a short verification call/form). Real clients only — this doubles as your Google-review ask moment.

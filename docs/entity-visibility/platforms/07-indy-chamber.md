@@ -12,9 +12,9 @@ Signal Flair is a current Indy Chamber member (member profile 4af79270-4832-4fca
 Listing details, if helpful:
 Name: Signal Flair
 Website: https://signalflair.ai
-Location: Brownsburg, Indiana
+Location: Indianapolis, Indiana
 Email: hello@signalflair.ai
-Description: Signal Flair helps businesses get found, verified, and recommended by AI engines like ChatGPT, Gemini, and Perplexity — AI visibility audits, structured data, and ongoing proof maintenance. Based in Brownsburg, serving the Indianapolis region and nationwide.
+Description: Signal Flair helps businesses get found, verified, and recommended by AI engines like ChatGPT, Gemini, and Perplexity — AI visibility audits, structured data, and ongoing proof maintenance. Based in Indianapolis, serving the Indianapolis region and nationwide.
 
 Thanks!
 Corey Ellis, Founder — Signal Flair

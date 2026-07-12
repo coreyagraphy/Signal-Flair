@@ -26,7 +26,7 @@ Session: Claude Code (Fable 5), autonomous entity-visibility assignment under TH
 ## Repo: mental-vision-v2 (`C:\Users\corey\OneDrive\Desktop\mental-vision-v2`)
 - Branch `main` (no remote). Pre-session HEAD `4ca9a4d` (clean).
 ### Commit `0ef5e3c` — entity: reciprocal Signal Flair graph edge, enriched Organization schema, llms.txt
-- `src/lib/seo.tsx`: Organization JSON-LD gains `@id`, description, Brownsburg 46112 address, areaServed, founder detail (Coreyagraphy alias, CVO title, LinkedIn sameAs), `subOrganization` → Signal Flair.
+- `src/lib/seo.tsx`: Organization JSON-LD gains `@id`, description, Indianapolis 46260 address, areaServed, founder detail (Coreyagraphy alias, CVO title, LinkedIn sameAs), `subOrganization` → Signal Flair.
 - `public/llms.txt`: NEW — studio facts sourced only from live v2 copy; Signal Flair relationship section; explicitly no legacy client claims imported.
 
 ## Repos NOT touched (holds honored)

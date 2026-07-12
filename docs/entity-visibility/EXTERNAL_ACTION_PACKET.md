@@ -50,13 +50,13 @@ URL: linkedin.com/company/signal-flair-ai (you're admin). Current defects → re
 >
 > We audited ourselves first — Case Zero: an 18/100 baseline (June 2, 2026), rebuilt in public to 73/100 (July 5, 2026) — a model-informed Signal Score™ read, not a live engine test, not a guarantee. The record is public at signalflair.ai/proof.
 >
-> Answer Engine Optimization (AEO) for local service businesses — HVAC, roofing, dental, legal, home services — based in Brownsburg, Indiana, serving nationwide. All commitments are delivery-based: we build and hand over the infrastructure. We never guarantee rankings, citations, or AI recommendations.
+> Answer Engine Optimization (AEO) for local service businesses — HVAC, roofing, dental, legal, home services — based in Indianapolis, Indiana, serving nationwide. All commitments are delivery-based: we build and hand over the infrastructure. We never guarantee rankings, citations, or AI recommendations.
 >
 > Signal Flair is a Mental Vision company. It is not affiliated with SignalFlare.ai.
 
 ### §3b Mental Vision company page
-The parent reference "Mental Vision Corp (Indianapolis, IN)" implies an old page you own. Rename it to **Mental Vision** (Corp is retired), set location Brownsburg IN, website `https://mentalvision.ai`, and paste:
-> Mental Vision is a creative technology studio: cinematic video production, AI filmmaking, and human-centered AI adoption — workshops, training, and implementation for teams and small businesses. Founder-led by Corey Ellis in Brownsburg, Indiana. Come see what you think. Mental Vision is also the parent company of Signal Flair (signalflair.ai), the AI-visibility and Answer Engine Optimization company.
+The parent reference "Mental Vision Corp (Indianapolis, IN)" implies an old page you own. Rename it to **Mental Vision** (Corp is retired), set location Indianapolis IN, website `https://mentalvision.ai`, and paste:
+> Mental Vision is a creative technology studio: cinematic video production, AI filmmaking, and human-centered AI adoption — workshops, training, and implementation for teams and small businesses. Founder-led by Corey Ellis in Indianapolis, Indiana. Come see what you think. Mental Vision is also the parent company of Signal Flair (signalflair.ai), the AI-visibility and Answer Engine Optimization company.
 If no MV page exists, create one with these fields, then link it as parent on the Signal Flair page (fact #4).
 
 ## §4 LinkedIn — personal profile (30 min)
@@ -66,23 +66,23 @@ URL: linkedin.com/in/corey-ellis-3b4a0ab8
 `Founder, Signal Flair — AI Proof Infrastructure™ | Founder & Chief Visionary Officer, Mental Vision | Making businesses findable, verifiable, and recommendable to AI engines`
 
 **§4.2 About:**
-> I run two companies from Brownsburg, Indiana.
+> I run two companies from Indianapolis, Indiana.
 >
 > Signal Flair (signalflair.ai) makes businesses findable to AI engines. When someone asks ChatGPT or Perplexity "who should I hire?", the engines only recommend businesses they can verify — most local businesses are invisible to them. We measure that gap with the 0–100 Signal Score™ and build the proof layer that closes it: llms.txt, schema, entity clarity, trust signals. We audited ourselves first and published the whole thing — 18/100 baseline, rebuilt in public to 73/100 (a model-informed read, not a live engine test, not a guarantee): signalflair.ai/proof.
 >
 > Mental Vision (mentalvision.ai) is the studio side: cinematic video production, AI filmmaking, and AI adoption workshops that help small businesses use these tools without fear.
 >
 > No guarantees, no black boxes — delivery-based work with public proof. If AI can't find your business, let's fix that: hello@signalflair.ai
-**Experience entries:** add `Founder — Signal Flair · 2026–present · Brownsburg, IN` (2-line summary from §3 description); keep/rename MV role to `Founder & Chief Visionary Officer — Mental Vision`.
+**Experience entries:** add `Founder — Signal Flair · 2026–present · Indianapolis, IN` (2-line summary from §3 description); keep/rename MV role to `Founder & Chief Visionary Officer — Mental Vision`.
 **Featured:** signalflair.ai/proof/ · signalflair.ai · mentalvision.ai.
 
 **§4.3 Canonical founder bio (reuse everywhere — sites, podcasts, events):**
-- Short (~50w): *Corey Ellis is the founder of Signal Flair, an AI-visibility company that helps businesses get found, verified, and recommended by AI engines, and Mental Vision, a creative technology studio for cinematic production and practical AI adoption. He works from Brownsburg, Indiana, and publishes his methods in public.*
+- Short (~50w): *Corey Ellis is the founder of Signal Flair, an AI-visibility company that helps businesses get found, verified, and recommended by AI engines, and Mental Vision, a creative technology studio for cinematic production and practical AI adoption. He works from Indianapolis, Indiana, and publishes his methods in public.*
 - One-liner: *Corey Ellis makes businesses findable to AI engines — founder of Signal Flair and Mental Vision.*
 
 ## §5 Crunchbase (20 min)
 crunchbase.com → Add a Company. Note: a different "Corey Ellis" (Growcer) exists on Crunchbase — create your person profile with photo + LinkedIn link so the entities stay distinct.
-Fields: Name `Signal Flair` · website `https://signalflair.ai` · HQ `Brownsburg, Indiana` · Founded `2026` · Founder `Corey Ellis` · Industries: Marketing, SEO, Artificial Intelligence · Contact `hello@signalflair.ai` · LinkedIn `linkedin.com/company/signal-flair-ai` · Logo: `signal-flair-logo.svg` from the repo/public folder.
+Fields: Name `Signal Flair` · website `https://signalflair.ai` · HQ `Indianapolis, Indiana` · Founded `2026` · Founder `Corey Ellis` · Industries: Marketing, SEO, Artificial Intelligence · Contact `hello@signalflair.ai` · LinkedIn `linkedin.com/company/signal-flair-ai` · Logo: `signal-flair-logo.svg` from the repo/public folder.
 Short description: `Signal Flair builds AI Proof Infrastructure™ — measuring AI readiness with the 0–100 Signal Score™ and building the proof layer (llms.txt, schema, entity clarity, trust signals) that AI answer engines need to find, verify, and recommend a business.`
 **Then:** in `src/app/layout.tsx`, restore `'https://www.crunchbase.com/organization/signal-flair'` (or the actual slug Crunchbase assigns) to the `sameAs` array — a comment marks the exact spot — and redeploy. Ask Claude to do it in any session.
 
@@ -91,11 +91,11 @@ Add after the founder narrative on mentalvision.ai/about:
 > **Also from Mental Vision:** [Signal Flair](https://signalflair.ai) — our AI-visibility company. It measures how clearly AI engines like ChatGPT, Claude, Perplexity, Gemini, and Google AI can find and verify a business (the 0–100 Signal Score™), then builds the proof layer those engines read. Separate brand, same founder.
 
 ## §7 Quality citations (pick 2–3; identical NAP block everywhere)
-NAP block: `Signal Flair · Brownsburg, Indiana 46112 · hello@signalflair.ai · https://signalflair.ai · AI visibility / Answer Engine Optimization (AEO) for local service businesses`
+NAP block: `Signal Flair · Indianapolis, Indiana 46260 · hello@signalflair.ai · https://signalflair.ai · AI visibility / Answer Engine Optimization (AEO) for local service businesses`
 Targets in priority order: 1) **Clutch.co** (agency profile, category Digital Marketing/SEO) 2) ~~Indy Chamber membership~~ ✅ ALREADY EXISTS (portal profile confirmed 2026-07-11, now in schema sameAs). **New ask instead:** the portal URL is a hash-route crawlers can't index, but Indy Chamber publishes crawlable member pages at `indychamber.com/member-directory/<slug>/` (other members have them; Signal Flair 404s). Email/ask your chamber rep to enable Signal Flair's public directory listing — a free, high-authority, crawlable citation. When live, swap it into `sameAs` in place of the portal URL. 3) **UpCity or DesignRush** (one, not both). Use the §3 description. Skip everything else — no mass submissions.
 
 ## §8 Google Business Profile (decision + 30 min)
-If approved (fact #8): business.google.com → service-area business `Signal Flair` · hide address · service area: Indianapolis metro (Brownsburg, Hendricks County + surrounding) · category `Marketing agency` (secondary: `Internet marketing service`) · website + hello@ · description from §3 (trim to 750 chars). Verification: video or postcard to the Brownsburg address — your call to proceed.
+If approved (fact #8): business.google.com → service-area business `Signal Flair` · hide address · service area: Indianapolis metro (Indianapolis, Hendricks County + surrounding) · category `Marketing agency` (secondary: `Internet marketing service`) · website + hello@ · description from §3 (trim to 750 chars). Verification: video or postcard to the Indianapolis address — your call to proceed.
 
 ## §9 Founder post drafts (LinkedIn, one per week)
 **9.1 Case Zero:** *We audited our own company before auditing anyone else's. June 2: Signal Score™ 18/100 — AI engines could barely see us. Five weeks of building the proof layer we sell — llms.txt, schema, entity cleanup, public change-log — and the July 5 re-audit read 73/100. That's a model-informed read, not a live engine test, and not a guarantee. But every step is public: signalflair.ai/proof. If you'd hire a contractor whose own house is falling down, ignore this post.*
@@ -109,5 +109,5 @@ Title: **How AI answer engines decide whether to trust a local business**. URL: 
 ## §11 Podcast/guest pitches (send 2, from outreach@trysignalflair.com)
 Targets: local-business podcasts (home services/trades marketing), Indiana small-business shows, marketing/SEO podcasts covering AI search.
 **Pitch draft:** Subject: `Your listeners are invisible to ChatGPT — and it's measurable`
-> Hi [Name] — Corey Ellis, founder of Signal Flair in Brownsburg, Indiana. When someone asks ChatGPT or Perplexity for a [plumber/roofer/dentist] recommendation, most local businesses simply don't exist to those engines — and owners have no idea. I measure that gap for a living (we scored our own company first: 18/100, published the whole rebuild in public). Happy to walk your audience through the five checks any owner can run free in ten minutes. No pitch, no jargon — [3 episode-specific sentences]. Proof of everything I'd talk about: signalflair.ai/proof. — Corey
+> Hi [Name] — Corey Ellis, founder of Signal Flair in Indianapolis, Indiana. When someone asks ChatGPT or Perplexity for a [plumber/roofer/dentist] recommendation, most local businesses simply don't exist to those engines — and owners have no idea. I measure that gap for a living (we scored our own company first: 18/100, published the whole rebuild in public). Happy to walk your audience through the five checks any owner can run free in ten minutes. No pitch, no jargon — [3 episode-specific sentences]. Proof of everything I'd talk about: signalflair.ai/proof. — Corey
 Acceptance: 2 sent, logged in the weekly checklist; any booking = a third-party page engines can verify.
