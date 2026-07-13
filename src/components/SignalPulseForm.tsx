@@ -45,11 +45,15 @@ export default function SignalPulseForm() {
   // submit; when present we skip collection entirely and auto-run their scan.
   const [handoff, setHandoff] = useState<Record<string, string> | null>(null)
   const [prefill, setPrefill] = useState<{ website: string; email: string; name: string }>({ website: '', email: '', name: '' })
+  const [leadName, setLeadName] = useState('')
+  const [leadPhone, setLeadPhone] = useState('')
 
   // Shared scan path — used by the visible form AND the handoff auto-run.
   const executeScan = useCallback(async (payload: Record<string, string>, emailVal: string, website: string) => {
     setEmail(emailVal)
     setWebsiteVal(website)
+    setLeadName(payload.full_name || '')
+    setLeadPhone(payload.phone || '')
     try { setScanDomain(new URL(/^https?:\/\//i.test(website) ? website : 'https://' + website).hostname) } catch { setScanDomain(website) }
     setPhase('scanning')
 
@@ -217,7 +221,7 @@ export default function SignalPulseForm() {
 
       {phase === 'result' && result && (
         <>
-          <PulseResult data={result} email={email} website={websiteVal} fromHandoff={!!handoff} />
+          <PulseResult data={result} email={email} website={websiteVal} fromHandoff={!!handoff} fullName={leadName} phoneHint={leadPhone} />
           {handoff && (
             <button type="button" onClick={resetHandoff} style={{ display: 'block', margin: '14px auto 0', background: 'none', border: 'none', cursor: 'pointer', fontFamily: "'Geist Mono',monospace", fontSize: '10.5px', letterSpacing: '0.16em', textTransform: 'uppercase' as const, textDecoration: 'underline', opacity: 0.6, color: 'inherit' }}>
               Not your site? Run a different one →
@@ -239,37 +243,59 @@ export default function SignalPulseForm() {
   )
 }
 
-function PulseResult({ data, email, website, fromHandoff = false }: { data: PulseData; email: string; website: string; fromHandoff?: boolean }) {
+function PulseResult({ data, email, website, fromHandoff = false, fullName = '', phoneHint = '' }: { data: PulseData; email: string; website: string; fromHandoff?: boolean; fullName?: string; phoneHint?: string }) {
   const [n, setN] = useState(0)
   const [armed, setArmed] = useState(false)
   const [optState, setOptState] = useState<'idle' | 'sending' | 'done'>('idle')
+  const [optPhone, setOptPhone] = useState(phoneHint)
+  const [optErr, setOptErr] = useState('')
   const pulse = data.pulse
 
-  // Opt-in for the full (human-verified) Signal Score™ conversation — a separate, tagged
-  // signal to GHL, distinct from the instant automated Pulse they already have.
+  // Level 2 = a QUALIFICATION GATE, by design (Corey, 2026-07-12): the full Signal Score™
+  // is never auto-emailed — it's delivered live on a call with Corey. Phone required.
+  // The request lands as a tagged GHL contact (via lead-intake) + the pulse workflow
+  // webhook (compat) + the Netlify Forms mirror (outreach@ email).
   const optIn = async () => {
+    const phoneVal = optPhone.trim()
+    if (phoneVal.replace(/\D/g, '').length < 7) {
+      setOptErr('A real number — that’s where the conversation happens.')
+      return
+    }
+    setOptErr('')
     setOptState('sending')
+    const pulseFields = {
+      website_url: website, email, full_name: fullName, phone: phoneVal,
+      source: 'signal-pulse-optin', full_score_optin: 'yes', call_requested: 'yes', preview_type: 'signal-pulse',
+      lead_tag: 'Signal Score Optin', signal_pulse_score: String(data.pulse),
+      signal_pulse_buckets: (data.buckets || []).map((b) => `${b.label}:${b.score}`).join(', '),
+      signal_pulse_access: String((data.buckets || []).find((b) => b.key === 'access')?.score ?? ''),
+      signal_pulse_structure: String((data.buckets || []).find((b) => b.key === 'structure')?.score ?? ''),
+      signal_pulse_trust: String((data.buckets || []).find((b) => b.key === 'trust')?.score ?? ''),
+      signal_pulse_answers: String((data.buckets || []).find((b) => b.key === 'answers')?.score ?? ''),
+      submitted_at: new Date().toISOString(),
+    }
+    // GHL contact with phone + call tag — the one that makes Corey's call list.
+    try {
+      await fetch('/.netlify/functions/lead-intake', {
+        method: 'POST', headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ ...pulseFields, extra_tags: ['signal-score-call-requested'] }),
+      })
+    } catch { /* best effort — webhook + Netlify mirror below still fire */ }
+    // Netlify Forms mirror → email notification to outreach@trysignalflair.com.
+    try {
+      fetch('/', { method: 'POST', headers: { 'Content-Type': 'application/x-www-form-urlencoded' }, body: new URLSearchParams({ 'form-name': 'signal-pulse', ...pulseFields }).toString() }).catch(() => {})
+    } catch { /* best effort */ }
+    // Legacy pulse-workflow webhook (kept for GHL workflow compatibility).
     try {
       if (FALLBACK_WEBHOOK) {
         const ctrl = new AbortController()
         const t = setTimeout(() => ctrl.abort(), 10000)
         await fetch(FALLBACK_WEBHOOK, {
           method: 'POST', headers: { 'Content-Type': 'application/json' }, signal: ctrl.signal,
-          body: JSON.stringify({
-            website_url: website, email,
-            source: 'signal-pulse-optin', full_score_optin: 'yes', preview_type: 'signal-pulse',
-            lead_tag: 'Signal Score Optin', signal_pulse_score: data.pulse,
-            signal_pulse_buckets: (data.buckets || []).map((b) => `${b.label}:${b.score}`).join(', '),
-            signal_pulse_access: (data.buckets || []).find((b) => b.key === 'access')?.score ?? '',
-            signal_pulse_structure: (data.buckets || []).find((b) => b.key === 'structure')?.score ?? '',
-            signal_pulse_trust: (data.buckets || []).find((b) => b.key === 'trust')?.score ?? '',
-            signal_pulse_answers: (data.buckets || []).find((b) => b.key === 'answers')?.score ?? '',
-            signal_pulse_signals: data.signals ? JSON.stringify(data.signals) : '',
-            submitted_at: new Date().toISOString(),
-          }),
+          body: JSON.stringify({ ...pulseFields, signal_pulse_signals: data.signals ? JSON.stringify(data.signals) : '' }),
         }).finally(() => clearTimeout(t))
       }
-      track('signal_score_optin', { form_id: 'signal-pulse', pulse: data.pulse })
+      track('signal_score_optin', { form_id: 'signal-pulse', pulse: data.pulse, call_requested: true })
     } catch { /* best effort */ }
     setOptState('done')
   }
@@ -337,24 +363,30 @@ function PulseResult({ data, email, website, fromHandoff = false }: { data: Puls
           <div className="ssc-optin-b">
             You just cleared Level 1 — the instant four-signal scan. <strong>Level 2</strong> is your full
             <strong> Signal Score™</strong>: all six Signal Protocol™ layers scored, the two locked layers cracked
-            open, live AI-visibility tests, what’s dragging you down, and exactly how to fix it. Human-verified,
-            sent to your inbox.
+            open, live AI-visibility tests, what’s dragging you down, and exactly how to fix it.
+            We don&apos;t email it as a PDF and wish you luck — <strong>Corey walks you through it on a call</strong>,
+            layer by layer. Drop your number if you actually want it fixed.
+          </div>
+          <div className="ssc-field" style={{ maxWidth: 340, margin: '14px auto 0' }}>
+            <label className="ssc-label" htmlFor="opt-phone">Best number for the call<span className="ssc-req">*</span></label>
+            <input className={`ssc-input${optErr ? ' invalid' : ''}`} id="opt-phone" type="tel" inputMode="tel" autoComplete="tel" placeholder="(317) 555-0136" value={optPhone} onChange={(e) => setOptPhone(e.target.value)} />
+            <span className="ssc-err" aria-live="polite">{optErr}</span>
           </div>
           <button className="ssc-optin-btn" onClick={optIn} disabled={optState === 'sending'}>
-            {optState === 'sending' ? 'Sending…' : '▸ Unlock Level 2 — my full Signal Score™'}
+            {optState === 'sending' ? 'On it…' : '▸ Talk me through my full Signal Score™'}
           </button>
-          <div className="ssc-optin-fine">Free · no obligation</div>
+          <div className="ssc-optin-fine">Free · no obligation · a real conversation, not a sales maze</div>
         </div>
       ) : (
         <div className="ssc-optin ssc-optin--done">
           <div className="ssc-optin-mark" aria-hidden="true">✓</div>
           <div className="ssc-optin-h">Locked in.</div>
           <div className="ssc-optin-b">
-            Your full <strong>Signal Score™</strong> breakdown is being prepared for <strong>{email}</strong> — the
-            complete card, human-verified. Keep an eye on your inbox.
+            Corey will personally call you at <strong>{optPhone.trim()}</strong> to walk through your full
+            <strong> Signal Score™</strong> — all six layers, what&apos;s dragging you, and the fix. No deck, no
+            &ldquo;circling back.&rdquo; Keep the phone close.
           </div>
           <a className="ssc-success-link" href="/proof/">See Case Zero — our own 18 → 73 climb →</a>
-          {!fromHandoff && <a className="ssc-success-link" href="/#field-report">Skip the wait — hand it to Corey directly →</a>}
         </div>
       )}
     </div>

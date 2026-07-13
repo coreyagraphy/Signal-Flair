@@ -1388,7 +1388,7 @@ export default function SignalFlairLanding() {
           </details>
           <details className="faq-item">
             <summary className="faq-q">Do I have to get on a sales call?<span className="faq-ic" aria-hidden="true" /></summary>
-            <div className="faq-a">No. Request your free Field Report above — we scan 3 critical signals and send your partial audit within 24 hours. No pitch, no pressure. <em>The ball stays in your court.</em></div>
+            <div className="faq-a">Not for the free stuff. The instant Signal Pulse™ and the free Field Report never require a call — no pitch, no pressure. The one exception is deliberate: your <strong>full Signal Score™</strong> is delivered <em>live, in a conversation</em> — Corey walks you through all six layers personally, because a number without the walkthrough is just a number. <em>The ball stays in your court.</em></div>
           </details>
         </div>
       </section>

@@ -51,7 +51,12 @@ export const handler = async (event) => {
 
   const { firstName, lastName } = splitName(body.full_name)
   const website = String(body.website_url || '').trim()
-  const tags = ['website-lead', String(body.lead_tag || 'Field Report Request')]
+  // Base tags + optional caller-supplied extras (e.g. signal-score-call-requested).
+  // Sanitized: strings only, trimmed, capped — tags drive GHL workflows, keep them clean.
+  const extraTags = Array.isArray(body.extra_tags)
+    ? body.extra_tags.filter((t) => typeof t === 'string').map((t) => t.trim().slice(0, 60)).filter(Boolean).slice(0, 5)
+    : []
+  const tags = [...new Set(['website-lead', String(body.lead_tag || 'Field Report Request'), ...extraTags])]
 
   const payload = {
     locationId: LOCATION_ID,
