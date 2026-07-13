@@ -203,5 +203,36 @@ export const handler = async (event) => {
     } catch { /* best effort */ }
   }
 
+  // ALSO upsert the contact directly via the GHL Contacts API (best effort). The inbound-
+  // webhook workflow above executes but has been observed NOT creating contacts — the
+  // direct upsert guarantees every Pulse lead lands in the CRM with tags, and workflows
+  // with Contact Created / tag triggers fire off it natively.
+  const ghlKey = (process.env.GHL_API_KEY || '').trim()
+  if (ghlKey && body.email) {
+    try {
+      const nameParts = String(body.full_name || '').trim().split(/\s+/)
+      const ctrl2 = new AbortController()
+      const t2 = setTimeout(() => ctrl2.abort(), 6000)
+      const up = await fetch('https://services.leadconnectorhq.com/contacts/upsert', {
+        method: 'POST',
+        signal: ctrl2.signal,
+        headers: { Authorization: `Bearer ${ghlKey}`, Version: '2021-07-28', 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          locationId: (process.env.GHL_LOCATION_ID || 'dmPSx68yJZdbLgQY5Osd').trim(),
+          email: String(body.email).trim(),
+          firstName: nameParts[0] || '',
+          lastName: nameParts.slice(1).join(' ') || '',
+          name: String(body.full_name || '').trim() || undefined,
+          phone: String(body.phone || '').trim() || undefined,
+          companyName: String(body.business_name || '').trim() || undefined,
+          website: /^https?:\/\//i.test(website) ? website : 'https://' + website,
+          source: body.source || 'signal-pulse',
+          tags: ['website-lead', 'signal pulse request'],
+        }),
+      }).finally(() => clearTimeout(t2))
+      console.info('[signal-pulse] contact upsert', up.status)
+    } catch (e) { console.error('[signal-pulse] contact upsert failed', String((e && e.message) || e)) }
+  }
+
   return { statusCode: 200, headers, body: JSON.stringify(result) }
 }
