@@ -285,18 +285,10 @@ function PulseResult({ data, email, website, fromHandoff = false, fullName = '',
     try {
       fetch('/', { method: 'POST', headers: { 'Content-Type': 'application/x-www-form-urlencoded' }, body: new URLSearchParams({ 'form-name': 'signal-pulse', ...pulseFields }).toString() }).catch(() => {})
     } catch { /* best effort */ }
-    // Legacy pulse-workflow webhook (kept for GHL workflow compatibility).
-    try {
-      if (FALLBACK_WEBHOOK) {
-        const ctrl = new AbortController()
-        const t = setTimeout(() => ctrl.abort(), 10000)
-        await fetch(FALLBACK_WEBHOOK, {
-          method: 'POST', headers: { 'Content-Type': 'application/json' }, signal: ctrl.signal,
-          body: JSON.stringify({ ...pulseFields, signal_pulse_signals: data.signals ? JSON.stringify(data.signals) : '' }),
-        }).finally(() => clearTimeout(t))
-      }
-      track('signal_score_optin', { form_id: 'signal-pulse', pulse: data.pulse, call_requested: true })
-    } catch { /* best effort */ }
+    // (Streamlined 2026-07-13: legacy pulse-workflow webhook leg OMITTED — lead-intake
+    // handles the contact, tags, and the call-confirmation card email; GHL workflows key
+    // off the tags. The Netlify mirror above keeps the outreach@ email notification.)
+    try { track('signal_score_optin', { form_id: 'signal-pulse', pulse: data.pulse, call_requested: true }) } catch { /* no-op */ }
     setOptState('done')
   }
 

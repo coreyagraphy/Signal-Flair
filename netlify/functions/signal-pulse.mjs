@@ -170,45 +170,13 @@ export const handler = async (event) => {
     return { statusCode: 200, headers, body: JSON.stringify({ ok: false, reason: msg === 'blocked_host' ? 'blocked' : 'invalid_url', error: msg }) }
   }
 
-  // Forward the lead + computed pulse to GHL (best effort; never blocks the response result).
-  const hook =
-    (process.env.SIGNAL_PULSE_WEBHOOK_URL || '').trim() ||
-    (process.env.NEXT_PUBLIC_SIGNAL_PULSE_WEBHOOK_URL || '').trim() ||
-    (process.env.NEXT_PUBLIC_FIELD_REPORT_WEBHOOK_URL || '').trim() ||
-    (process.env.NEXT_PUBLIC_GHL_WEBHOOK_URL || '').trim()
-  if (hook && (body.email || body.website_url)) {
-    try {
-      const ctrl = new AbortController()
-      const t = setTimeout(() => ctrl.abort(), 6000)
-      await fetch(hook, {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        signal: ctrl.signal,
-        body: JSON.stringify({
-          ...body,
-          source: body.source || 'signal-pulse',
-          lead_tag: 'Signal Pulse Request',
-          preview_type: 'signal-pulse',
-          signal_pulse_score: result.ok ? result.pulse : '',
-          signal_pulse_buckets: result.ok ? (result.buckets || []).map((b) => `${b.label}:${b.score}`).join(', ') : '',
-          // Flattened per-signal scores (for the Signal Pulse scorecard email template).
-          signal_pulse_access: result.ok ? (result.buckets.find((b) => b.key === 'access')?.score ?? '') : '',
-          signal_pulse_structure: result.ok ? (result.buckets.find((b) => b.key === 'structure')?.score ?? '') : '',
-          signal_pulse_trust: result.ok ? (result.buckets.find((b) => b.key === 'trust')?.score ?? '') : '',
-          signal_pulse_answers: result.ok ? (result.buckets.find((b) => b.key === 'answers')?.score ?? '') : '',
-          signal_pulse_spa: result.spaLike ? 'yes' : 'no',
-          submitted_at: new Date().toISOString(),
-        }),
-      }).finally(() => clearTimeout(t))
-    } catch { /* best effort */ }
-  }
-
-  // ALSO upsert the contact directly via the GHL Contacts API (best effort). The inbound-
-  // webhook workflow above executes but has been observed NOT creating contacts — the
-  // direct upsert guarantees every Pulse lead lands in the CRM with tags, and workflows
-  // with Contact Created / tag triggers fire off it natively.
+  // Streamlined spine (2026-07-13): the legacy inbound-webhook forward was OMITTED — that
+  // workflow executed without creating contacts. Everything now flows through the Contacts
+  // API: upsert w/ tags (workflows key off Contact Created / tags), then the Signal Flair
+  // scorecard email goes out directly via the conversations API. Best effort throughout.
   const ghlKey = (process.env.GHL_API_KEY || '').trim()
   if (ghlKey && body.email) {
+    let contactId = null
     try {
       const nameParts = String(body.full_name || '').trim().split(/\s+/)
       const ctrl2 = new AbortController()
@@ -227,11 +195,61 @@ export const handler = async (event) => {
           companyName: String(body.business_name || '').trim() || undefined,
           website: /^https?:\/\//i.test(website) ? website : 'https://' + website,
           source: body.source || 'signal-pulse',
-          tags: ['website-lead', 'signal pulse request'],
+          // tags NOT here — GHL upsert replaces the whole tag array; added additively below.
         }),
       }).finally(() => clearTimeout(t2))
+      const upData = await up.json().catch(() => ({}))
+      contactId = upData.contact && upData.contact.id
       console.info('[signal-pulse] contact upsert', up.status)
+      if (contactId) {
+        const ctrlT = new AbortController()
+        const tT = setTimeout(() => ctrlT.abort(), 6000)
+        await fetch(`https://services.leadconnectorhq.com/contacts/${contactId}/tags`, {
+          method: 'POST',
+          signal: ctrlT.signal,
+          headers: { Authorization: `Bearer ${ghlKey}`, Version: '2021-07-28', 'Content-Type': 'application/json' },
+          body: JSON.stringify({ tags: ['website-lead', 'signal pulse request'] }),
+        }).finally(() => clearTimeout(tT))
+      }
     } catch (e) { console.error('[signal-pulse] contact upsert failed', String((e && e.message) || e)) }
+
+    // Signal Flair card — the Pulse scorecard email, with their real numbers.
+    if (contactId && result.ok) {
+      const colorFor = (v) => (v < 40 ? '#ff4326' : v < 70 ? '#FF5A1F' : v < 85 ? '#FFE23A' : '#00B8A9')
+      const first = String(body.full_name || '').trim().split(/\s+/)[0] || 'there'
+      const domain = website.replace(/^https?:\/\//i, '').replace(/\/.*$/, '')
+      const bar = (label, score) => `
+        <tr>
+          <td style="padding:6px 0;font-size:11px;color:rgba(240,235,224,0.7);width:150px">${label}</td>
+          <td style="padding:6px 0">
+            <div style="background:rgba(240,235,224,0.12);border-radius:99px;height:8px;width:100%"><div style="background:${colorFor(score)};border-radius:99px;height:8px;width:${Math.max(4, Math.min(100, score))}%"></div></div>
+          </td>
+          <td style="padding:6px 0 6px 10px;font-size:12px;font-weight:700;color:${colorFor(score)};width:34px;text-align:right">${score}</td>
+        </tr>`
+      const html = `
+<div style="background:#f5f1e8;padding:28px 12px;font-family:Menlo,Consolas,monospace">
+  <div style="max-width:520px;margin:0 auto;background:#0a0a0a;border-radius:14px;padding:30px 26px;color:#f0ebe0">
+    <div style="font-size:11px;letter-spacing:3px;color:#00b8a9;text-transform:uppercase;margin-bottom:14px">SIGNAL FLAIR &middot; SIGNAL PULSE&trade; CARD</div>
+    <div style="font-size:20px;line-height:1.3;font-weight:700;margin-bottom:6px">${domain}</div>
+    <div style="font-size:52px;font-weight:700;color:${colorFor(result.pulse)};line-height:1;margin:14px 0 2px">${result.pulse}<span style="font-size:16px;color:rgba(240,235,224,0.5)"> / 100</span></div>
+    <div style="font-size:10.5px;letter-spacing:2px;color:rgba(240,235,224,0.55);text-transform:uppercase;margin-bottom:18px">Signal Pulse&trade; &middot; instant preview &middot; Level 1 of 2</div>
+    <table style="width:100%;border-collapse:collapse">${(result.buckets || []).map((b) => bar(b.label, b.score)).join('')}</table>
+    <div style="font-size:13px;line-height:1.8;color:rgba(240,235,224,0.85);margin-top:20px">Hey ${first} — this is the four-signal instant read. Your full <strong style="color:#fff45f">Signal Score&trade;</strong> covers all six Signal Protocol&trade; layers plus live AI-visibility tests, and <strong style="color:#00b8a9">Corey walks you through it on a call</strong> — not a PDF. Grab it on the results page, or just reply to this email.</div>
+    <div style="margin-top:22px;padding-top:14px;border-top:1px solid rgba(240,235,224,0.15);font-size:10.5px;color:rgba(240,235,224,0.5)">Signal Pulse&trade; is an automated preview, not the verified Signal Score&trade;.<br/>Signal Flair &middot; a Mental Vision product &middot; Indianapolis, Indiana &middot; serving nationwide</div>
+  </div>
+</div>`
+      try {
+        const ctrl3 = new AbortController()
+        const t3 = setTimeout(() => ctrl3.abort(), 8000)
+        const mail = await fetch('https://services.leadconnectorhq.com/conversations/messages', {
+          method: 'POST',
+          signal: ctrl3.signal,
+          headers: { Authorization: `Bearer ${ghlKey}`, Version: '2021-07-28', 'Content-Type': 'application/json' },
+          body: JSON.stringify({ type: 'Email', contactId, subject: `${first}, your Signal Pulse™ card: ${domain} scored ${result.pulse}/100`, html, emailFrom: 'hello@signalflair.ai' }),
+        }).finally(() => clearTimeout(t3))
+        console.info('[signal-pulse] scorecard email', mail.status)
+      } catch (e) { console.error('[signal-pulse] scorecard email failed', String((e && e.message) || e)) }
+    }
   }
 
   return { statusCode: 200, headers, body: JSON.stringify(result) }

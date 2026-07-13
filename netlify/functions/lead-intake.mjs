@@ -68,7 +68,9 @@ export const handler = async (event) => {
     companyName: String(body.business_name || '').trim() || undefined,
     website: website ? (/^https?:\/\//i.test(website) ? website : 'https://' + website) : undefined,
     source: String(body.source || 'signalflair.ai'),
-    tags,
+    // NOTE: tags deliberately NOT in the upsert payload — GHL upsert REPLACES the whole
+    // tag array (verified 2026-07-13: a later upsert wiped earlier funnel tags). Tags are
+    // added additively via POST /contacts/{id}/tags below instead.
   }
 
   try {
@@ -92,6 +94,64 @@ export const handler = async (event) => {
     const data = await res.json().catch(() => ({}))
     // Note (non-PII log): which fields arrived + created-vs-updated, for funnel debugging.
     console.info('[lead-intake] upserted contact', { new: data.new, hasPhone: !!payload.phone, hasCompany: !!payload.companyName, source: payload.source })
+
+    // Additive tagging (never wipes earlier funnel tags — see NOTE above).
+    if (data.contact && data.contact.id) {
+      try {
+        const ctrlT = new AbortController()
+        const tT = setTimeout(() => ctrlT.abort(), 6000)
+        await fetch(`${GHL_API}/contacts/${data.contact.id}/tags`, {
+          method: 'POST',
+          signal: ctrlT.signal,
+          headers: { Authorization: `Bearer ${key}`, Version: '2021-07-28', 'Content-Type': 'application/json' },
+          body: JSON.stringify({ tags }),
+        }).finally(() => clearTimeout(tT))
+      } catch (e) { console.error('[lead-intake] add-tags failed', String((e && e.message) || e)) }
+    }
+
+    // Signal Flair card — instant confirmation email via the GHL conversations API
+    // (sent from hello@signalflair.ai; queued best-effort, never blocks the response).
+    // Two variants: the Score-call confirmation (Level 2 opt-in) vs. the Field Report card.
+    const contactId = data.contact && data.contact.id
+    if (contactId) {
+      const isCall = String(body.call_requested || '') === 'yes' || extraTags.includes('signal-score-call-requested')
+      const first = firstName || 'there'
+      const card = (title, lines, footNote) => `
+<div style="background:#f5f1e8;padding:28px 12px;font-family:Menlo,Consolas,monospace">
+  <div style="max-width:520px;margin:0 auto;background:#0a0a0a;border-radius:14px;padding:30px 26px;color:#f0ebe0">
+    <div style="font-size:11px;letter-spacing:3px;color:#00b8a9;text-transform:uppercase;margin-bottom:14px">SIGNAL FLAIR · AI PROOF INFRASTRUCTURE&trade;</div>
+    <div style="font-size:21px;line-height:1.3;font-weight:700;margin-bottom:16px">${title}</div>
+    ${lines.map((l) => `<div style="font-size:13px;line-height:1.8;color:rgba(240,235,224,0.85);margin-bottom:10px">${l}</div>`).join('')}
+    <div style="margin-top:22px;padding-top:14px;border-top:1px solid rgba(240,235,224,0.15);font-size:10.5px;color:rgba(240,235,224,0.5)">${footNote}<br/>Signal Flair &middot; a Mental Vision product &middot; Indianapolis, Indiana &middot; serving nationwide</div>
+  </div>
+</div>`
+      const subject = isCall
+        ? `Locked in, ${first} — your Signal Score™ call is coming`
+        : `Got it, ${first} — your Field Report is in motion`
+      const html = isCall
+        ? card('Your full Signal Score™ walkthrough is locked in.', [
+            `Corey personally reviews all six Signal Protocol&trade; layers on your site${payload.website ? ` (${payload.website.replace(/^https?:\/\//, '')})` : ''} — then <strong style="color:#fff45f">calls you to walk through it live</strong>. What&rsquo;s dragging you, what it costs you, and exactly how to fix it.`,
+            payload.phone ? `Keep <strong style="color:#00b8a9">${payload.phone}</strong> close — that&rsquo;s where the conversation happens.` : 'Watch your phone — that&rsquo;s where the conversation happens.',
+            'No deck. No sales maze. No &ldquo;just circling back.&rdquo; We don&rsquo;t do that here.',
+          ], 'You requested this after running your free Signal Pulse&trade; at signalflair.ai/pulse.')
+        : card('Your free Field Report is in motion.', [
+            `We&rsquo;re scanning 3 critical AI signals on ${payload.website ? payload.website.replace(/^https?:\/\//, '') : 'your site'} across <strong style="color:#fff45f">ChatGPT, Claude, Perplexity, Gemini &amp; Google AI</strong>. Your Field Report lands in this inbox within 24 hours.`,
+            payload.phone ? `Corey reviews it personally — and since you left a number, <strong style="color:#00b8a9">expect a call at ${payload.phone}</strong> to talk through what he finds.` : 'Corey reviews every report personally — a real reply, not a sequence.',
+            'Meanwhile: can&rsquo;t wait? Run your instant Signal Pulse&trade; at <a href="https://signalflair.ai/pulse/" style="color:#00b8a9">signalflair.ai/pulse</a>.',
+          ], 'You requested this at signalflair.ai.')
+      try {
+        const ctrl3 = new AbortController()
+        const t3 = setTimeout(() => ctrl3.abort(), 8000)
+        const mail = await fetch(`${GHL_API}/conversations/messages`, {
+          method: 'POST',
+          signal: ctrl3.signal,
+          headers: { Authorization: `Bearer ${key}`, Version: '2021-07-28', 'Content-Type': 'application/json' },
+          body: JSON.stringify({ type: 'Email', contactId, subject, html, emailFrom: 'hello@signalflair.ai' }),
+        }).finally(() => clearTimeout(t3))
+        console.info('[lead-intake] card email', mail.status, isCall ? 'call-confirm' : 'field-report')
+      } catch (e) { console.error('[lead-intake] card email failed', String((e && e.message) || e)) }
+    }
+
     return { statusCode: 200, headers, body: JSON.stringify({ ok: true, new: !!data.new }) }
   } catch (e) {
     console.error('[lead-intake] error', String((e && e.message) || e))
