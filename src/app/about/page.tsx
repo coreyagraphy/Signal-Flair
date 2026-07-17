@@ -20,7 +20,7 @@ const jsonLd = {
     {
       '@type': 'AboutPage',
       '@id': 'https://signalflair.ai/about#aboutpage',
-      url: 'https://signalflair.ai/about',
+      url: 'https://signalflair.ai/about/',
       name: 'About Signal Flair',
       isPartOf: { '@id': 'https://signalflair.ai/#website' },
       about: { '@id': 'https://signalflair.ai/#org' },
@@ -149,7 +149,7 @@ export default function AboutPage() {
 
       <footer className="rsc-foot">
         Signal Flair · a Mental Vision product · Brownsburg, Indiana · serving nationwide<br />
-        <a href="/">signalflair.ai</a> · <a href="/faq/">faq</a> · <a href="/how-it-works/">how it works</a> · <a href="/proof/">the record</a>
+        <a href="/">signalflair.ai</a> · <a href="/faq/">faq</a> · <a href="/how-it-works/">how it works</a> · <a href="/proof/">the record</a> · <a href="/privacy/">privacy</a>
       </footer>
 
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />

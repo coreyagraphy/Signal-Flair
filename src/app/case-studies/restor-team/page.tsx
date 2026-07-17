@@ -5,7 +5,7 @@ export const metadata: Metadata = {
   title: 'RESTOR Team Case Study | Signal Flair',
   description:
     'See how RESTOR Team used Signal Flair’s Signal Baseline™ and Competitor Signal Snapshot™ to understand its AI-readable proof foundation against a selected market peer.',
-  alternates: { canonical: 'https://signalflair.ai/case-studies/restor-team' },
+  alternates: { canonical: 'https://signalflair.ai/case-studies/restor-team/' },
   robots: { index: false, follow: false },
   openGraph: {
     title: 'RESTOR Team — Founding Partner Snapshot | Signal Flair',
@@ -31,12 +31,12 @@ const jsonLd = {
       publisher: { '@id': 'https://signalflair.ai/#org' },
       about: { '@type': 'Organization', name: 'RESTOR Team', url: 'https://restorteam.com/' },
       isPartOf: { '@id': 'https://signalflair.ai/#website' },
-      mainEntityOfPage: 'https://signalflair.ai/case-studies/restor-team',
+      mainEntityOfPage: 'https://signalflair.ai/case-studies/restor-team/',
     },
     {
       '@type': 'WebPage',
       '@id': 'https://signalflair.ai/case-studies/restor-team#webpage',
-      url: 'https://signalflair.ai/case-studies/restor-team',
+      url: 'https://signalflair.ai/case-studies/restor-team/',
       name: 'RESTOR Team Case Study | Signal Flair',
       isPartOf: { '@id': 'https://signalflair.ai/#website' },
       about: { '@id': 'https://signalflair.ai/#org' },

@@ -108,6 +108,7 @@ No. Signal Flair improves AI readiness and proof signals but does not guarantee 
 
 ## Data & privacy
 Assessment history stays attached to the organization it belongs to. Signal Flair uses de-identified, aggregate patterns from accumulated assessments only to improve its own methodology — never to identify, profile, or resell any organization. Signal Flair is not a data center and does not: sell or monetize client or prospect data; publish private assessment records or evidence; train foundation models on private client data; or claim a large proprietary dataset. Clients keep everything built, even if they cancel.
+- Full privacy & data-use policy: https://signalflair.ai/privacy/
 
 ## Contact
 - Email: hello@signalflair.ai

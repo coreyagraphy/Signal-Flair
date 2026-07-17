@@ -1359,6 +1359,7 @@ export default function SignalFlairLanding() {
                     {leadSubmitting ? 'Running…' : '▸ Run My Field Report'}
                   </button>
                   <div className="lead-micro">No credit card. No spam. Your Field Report lands in your inbox within 24 hours. This covers 3 of the 6 Signal Protocol™ layers — the full breakdown requires the complete audit.</div>
+                  <div className="lead-consent">By requesting a Field Report you agree to our <a href="/privacy/">Privacy Policy</a>. We may use de-identified, aggregate assessment data to improve our methodology — we never sell your data.</div>
                 </form>
               </div>
               )}
@@ -1394,13 +1395,13 @@ export default function SignalFlairLanding() {
             <a className="f-email" href="mailto:hello@signalflair.ai">hello@signalflair.ai</a>
           </div>
           <div><div className="f-head">Services</div><a className="f-link" href="#signal">AI Visibility Audit</a><a className="f-link" href="#signal">Foundation Build</a><a className="f-link" href="#signal">Stay Found™</a><a className="f-link" href="#check">What We Check</a><a className="f-link" href="#pricing">Pricing</a></div>
-          <div><div className="f-head">Company</div><a className="f-link" href="#process">How It Works</a><a className="f-link" href="#pricing">Pricing</a><a className="f-link" href="/resources/llms-txt/">llms.txt Guide</a><a className="f-link" href="https://mentalvision.ai" target="_blank" rel="noopener noreferrer">Mental Vision</a><a className="f-link" href="mailto:hello@signalflair.ai">Contact</a></div>
-          <div><div className="f-head">Connect</div><a className="f-link" href="https://www.linkedin.com/company/signal-flair-ai" target="_blank" rel="noopener noreferrer">LinkedIn</a><a className="f-link" href="#">Instagram</a><a className="f-link" href="#">YouTube</a><a className="f-link" href="mailto:hello@signalflair.ai">hello@signalflair.ai</a></div>
+          <div><div className="f-head">Company</div><a className="f-link" href="#process">How It Works</a><a className="f-link" href="#pricing">Pricing</a><a className="f-link" href="/resources/llms-txt/">llms.txt Guide</a><a className="f-link" href="/privacy/">Privacy</a><a className="f-link" href="https://mentalvision.ai" target="_blank" rel="noopener noreferrer">Mental Vision</a><a className="f-link" href="mailto:hello@signalflair.ai">Contact</a></div>
+          <div><div className="f-head">Connect</div><a className="f-link" href="https://www.linkedin.com/company/signal-flair-ai" target="_blank" rel="noopener noreferrer">LinkedIn</a><a className="f-link" href="mailto:hello@signalflair.ai">hello@signalflair.ai</a></div>
         </div>
         <div className="f-chant-band">
           <div className="f-chant">What&apos;s your Signal Score?</div>
           <div className="f-tm">Signal Protocol™ · Signal Score™ · Stay Found™ · Verified by Signal Flair™</div>
-          <div className="f-privacy">We never share your data. No spam.</div>
+          <div className="f-privacy">We never sell your data. No spam. <a href="/privacy/">Privacy &amp; data use →</a></div>
         </div>
         <div className="fb">
           <div className="fb-l">Signal Flair is a Mental Vision product | Brownsburg, Indiana · Serving nationwide | signalflair.ai</div>

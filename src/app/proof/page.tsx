@@ -264,7 +264,7 @@ export default function ProofHubPage() {
 
       <footer className="rsc-foot">
         Signal Flair · a Mental Vision product · Brownsburg, Indiana · serving nationwide<br />
-        <a href="/">signalflair.ai</a> · <a href="/proof.json">/proof.json</a> · <a href="/proof/changelog/">change log</a>
+        <a href="/">signalflair.ai</a> · <a href="/proof.json">/proof.json</a> · <a href="/proof/changelog/">change log</a> · <a href="/privacy/">privacy</a>
       </footer>
 
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />

@@ -5,7 +5,7 @@ export const metadata: Metadata = {
   title: 'What is llms.txt? Why Your Business Is Invisible to AI Without It | Signal Flair',
   description:
     'llms.txt is the file that tells AI engines — ChatGPT, Claude, Perplexity, Gemini, Google AI — who your business is. Fewer than 1% of local businesses have one. Here’s what it is, why it matters, and how to fix it.',
-  alternates: { canonical: 'https://signalflair.ai/resources/llms-txt' },
+  alternates: { canonical: 'https://signalflair.ai/resources/llms-txt/' },
   openGraph: {
     title: 'What is llms.txt? Why Your Business Is Invisible to AI Without It',
     description: 'The simple file that tells AI engines who your business is — and why fewer than 1% of local businesses have one.',
@@ -23,7 +23,7 @@ const jsonLd = {
       description: 'A plain-English guide to llms.txt: what it is, what it does, how to create one, and why it matters for AI visibility.',
       author: { '@type': 'Organization', name: 'Signal Flair', url: 'https://signalflair.ai' },
       publisher: { '@id': 'https://signalflair.ai/#org' },
-      mainEntityOfPage: 'https://signalflair.ai/resources/llms-txt',
+      mainEntityOfPage: 'https://signalflair.ai/resources/llms-txt/',
       about: ['llms.txt', 'AI visibility', 'Answer Engine Optimization'],
     },
     {
@@ -143,7 +143,7 @@ export default function LlmsTxtResourcePage() {
 
       <footer className="rsc-foot">
         Signal Flair · a Mental Vision product · Brownsburg, Indiana · serving nationwide<br />
-        <a href="/">signalflair.ai</a> · <a href="/llms.txt">our llms.txt</a> · <a href="/#cta">Get your free Field Report</a>
+        <a href="/">signalflair.ai</a> · <a href="/llms.txt">our llms.txt</a> · <a href="/#cta">Get your free Field Report</a> · <a href="/privacy/">privacy</a>
       </footer>
 
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />

@@ -1061,6 +1061,9 @@ footer{background:var(--ink2);border-top:1px solid var(--ink);padding:52px;posit
 .lead-submit:hover:not(:disabled){background:transparent;color:var(--hot);box-shadow:0 12px 38px rgba(255,244,95,0.55),inset 0 0 16px rgba(255,244,95,0.2)}
 .lead-submit:disabled{opacity:0.55;cursor:default}
 .lead-micro{grid-column:1 / -1;font-family:var(--signal);font-size:9.5px;line-height:1.7;letter-spacing:0.02em;color:rgba(248,241,231,0.5);text-align:center;margin-top:6px}
+.lead-consent{grid-column:1 / -1;font-family:var(--signal);font-size:9px;line-height:1.65;letter-spacing:0.02em;color:rgba(248,241,231,0.38);text-align:center;margin-top:8px;padding-top:8px;border-top:1px solid rgba(248,241,231,0.08)}
+.lead-consent a{color:rgba(248,241,231,0.72);text-decoration:underline;text-underline-offset:2px;text-decoration-color:rgba(255,90,31,0.5)}
+.lead-consent a:hover{color:#ff5a1f;text-decoration-color:#ff5a1f}
 .lead-formerr{grid-column:1 / -1;font-family:var(--signal);font-size:10.5px;color:#ff5a8a;text-align:center;min-height:12px}
 .lead-success{display:none;text-align:center;padding:14px 6px 8px}
 .lead-success .ls-mark{font-family:var(--flair);font-variation-settings:'opsz' 144,'wght' 500;font-size:54px;color:var(--teal);line-height:1;margin-bottom:14px}
@@ -1210,4 +1213,6 @@ footer{background:var(--ink2);border-top:1px solid var(--ink);padding:52px;posit
 .f-chant{font-family:var(--italic);font-style:italic;font-size:clamp(26px,3.4vw,40px);color:#00d2bf;line-height:1.05}
 .f-tm{margin-top:16px;font-family:var(--signal);font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:rgba(248,241,231,.55)}
 .f-privacy{margin-top:8px;font-family:var(--signal);font-size:10.5px;letter-spacing:.08em;color:rgba(248,241,231,.38)}
+.f-privacy a{color:rgba(248,241,231,.6);text-decoration:none;border-bottom:1px solid rgba(255,90,31,.4);transition:color .18s,border-color .18s}
+.f-privacy a:hover{color:#ff5a1f;border-color:#ff5a1f}
 @media(max-width:560px){.f-chant-band{padding:24px 22px 4px}.f-tm{font-size:10px}}

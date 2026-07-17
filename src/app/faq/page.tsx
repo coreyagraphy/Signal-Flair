@@ -189,7 +189,7 @@ export default function FaqPage() {
 
       <footer className="rsc-foot">
         Signal Flair · a Mental Vision product · Brownsburg, Indiana · serving nationwide<br />
-        <a href="/">signalflair.ai</a> · <a href="/about/">about</a> · <a href="/how-it-works/">how it works</a> · <a href="/proof/">the record</a>
+        <a href="/">signalflair.ai</a> · <a href="/about/">about</a> · <a href="/how-it-works/">how it works</a> · <a href="/proof/">the record</a> · <a href="/privacy/">privacy</a>
       </footer>
 
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
