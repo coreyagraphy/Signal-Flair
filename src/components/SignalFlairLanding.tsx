@@ -881,10 +881,6 @@ export default function SignalFlairLanding() {
             </details>
           ))}
         </div>
-        <div className="proto-teaser reveal">
-          <div className="proto-teaser-chant">What&apos;s your Signal Score?</div>
-          <a className="proto-teaser-cta" href="#cta">▸ Get Your Signal Score™ →</a>
-        </div>
       </section>
 
       {/* ═══ TRUST — the pivot between "found" and "recommended" ═══ */}
@@ -1038,6 +1034,25 @@ export default function SignalFlairLanding() {
             </div>
           </div>
         </div>
+      </section>
+
+      {/* ═══ ASSESSMENT HISTORY — the evidence compounds (data moat) ═══ */}
+      <section id="history" data-cursor="dark">
+        <div className="ent-head reveal">
+          <div className="ent-eyebrow">The data moat · assessment history</div>
+        </div>
+        <div className="ent-turn reveal" style={{ marginTop: 8 }}>Most audits disappear into a PDF.<br /><em>Ours get smarter.</em></div>
+        <div className="ent-photo reveal">Signal Flair preserves the evidence behind each assessment — not just the final score.</div>
+        <div className="hist-neon reveal"><span className="hn-y">We keep the receipts.</span> <span className="hn-p">The machines keep changing.</span></div>
+        <div className="ent-build reveal">
+          <div className="ent-terms">
+            <div className="ent-term hist-t1"><span className="hist-lead">We don&apos;t overwrite history.</span> Every assessment — the date, the score, the six-layer breakdown, the findings, and the sources behind them — stays on the record. Prior assessments aren&apos;t erased.</div>
+            <div className="ent-term hist-t2"><span className="hist-lead">Each review shows what changed.</span> A later assessment compares against the last: what machines saw before, what improved, which signals moved, and where an organization still sends mixed messages.</div>
+            <div className="ent-term hist-t3"><span className="hist-lead">It compounds.</span> The method is built to get more useful as verified history adds up — a growing body of evidence about how AI systems read an organization. A checklist is easy to copy; accumulated, versioned evidence isn&apos;t.</div>
+          </div>
+        </div>
+        <div className="ent-turn reveal">The moat is not content volume.<br /><em>It is evidence coherence</em> — measured across the public surface, and preserved over time.</div>
+        <div className="ent-photo reveal" style={{ fontSize: 'clamp(14px,1.7vw,19px)', opacity: 0.72, marginTop: 6 }}>Not because we hoard data. Because we remember the evidence. Signal Flair doesn&apos;t sell assessment data, expose private client records, or claim industry-wide benchmarks.</div>
       </section>
 
       {/* ═══ PRICING ═══ */}
@@ -1345,7 +1360,7 @@ export default function SignalFlairLanding() {
           </div>
           <div><div className="f-head">Services</div><a className="f-link" href="#signal">AI Visibility Audit</a><a className="f-link" href="#signal">Foundation Build</a><a className="f-link" href="#signal">Stay Found™</a><a className="f-link" href="#check">What We Check</a><a className="f-link" href="#pricing">Pricing</a></div>
           <div><div className="f-head">Company</div><a className="f-link" href="#process">How It Works</a><a className="f-link" href="#pricing">Pricing</a><a className="f-link" href="/resources/llms-txt/">llms.txt Guide</a><a className="f-link" href="https://mentalvision.ai" target="_blank" rel="noopener noreferrer">Mental Vision</a><a className="f-link" href="mailto:hello@signalflair.ai">Contact</a></div>
-          <div><div className="f-head">Connect</div><a className="f-link" href="#">LinkedIn</a><a className="f-link" href="#">Instagram</a><a className="f-link" href="#">YouTube</a><a className="f-link" href="mailto:hello@signalflair.ai">hello@signalflair.ai</a></div>
+          <div><div className="f-head">Connect</div><a className="f-link" href="https://www.linkedin.com/company/signal-flair-ai" target="_blank" rel="noopener noreferrer">LinkedIn</a><a className="f-link" href="#">Instagram</a><a className="f-link" href="#">YouTube</a><a className="f-link" href="mailto:hello@signalflair.ai">hello@signalflair.ai</a></div>
         </div>
         <div className="f-chant-band">
           <div className="f-chant">What&apos;s your Signal Score?</div>

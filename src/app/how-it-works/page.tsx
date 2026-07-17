@@ -5,11 +5,12 @@ export const metadata: Metadata = {
   title: 'How It Works — Scan, Score, Fix, Stay Found | Signal Flair',
   description:
     'How Signal Flair works: we scan your business across five AI engines, score your AI visibility 0–100, fix the machine-readable layer (llms.txt, schema, crawler access), and keep your score true over time. Pricing is set by your score.',
-  alternates: { canonical: 'https://signalflair.ai/how-it-works' },
+  alternates: { canonical: 'https://signalflair.ai/how-it-works/' },
   openGraph: {
     title: 'How Signal Flair works — scan, score, fix, stay found',
     description:
       'Four steps from invisible to found, plus score-gated pricing so the work matches the actual gap.',
+    images: ['/video/hero-poster.jpg'],
   },
 }
 
@@ -32,7 +33,7 @@ const STEPS: { k: string; t: string; d: string }[] = [
   {
     k: '04',
     t: 'Stay Found',
-    d: 'AI search changes constantly. Stay Found™ provides recurring checks and proof maintenance — monthly re-scans, fresh citations, schema and llms.txt updates, and crawler monitoring — to help keep your Signal Score™ accurate as new engines ship and competitors catch up.',
+    d: 'AI search changes constantly. Stay Found™ provides recurring checks and proof maintenance — monthly re-scans, fresh citations, schema and llms.txt updates, and crawler monitoring — to help keep your Signal Score™ accurate as new engines ship and competitors catch up. Prior assessments aren’t overwritten: each review is preserved, so you can see what changed and what improved over time.',
   },
 ]
 
@@ -123,6 +124,17 @@ export default function HowItWorksPage() {
               </tbody>
             </table>
           </div>
+        </section>
+
+        <section className="rsc-section">
+          <h2 className="rsc-h2">The record gets <em>smarter.</em></h2>
+          <p className="rsc-p">
+            Most audits disappear into a PDF. Signal Flair preserves the evidence behind each assessment — the
+            date, the Signal Score™, the six-layer breakdown, the findings, and the sources — so the next review
+            can show what changed, what improved, and what still needs fixing. Prior assessments aren&apos;t
+            overwritten, and the methodology is designed to become more useful as verified history accumulates.
+            Signal Flair does not sell that data or train AI models on it.
+          </p>
         </section>
 
         <section className="rsc-section">

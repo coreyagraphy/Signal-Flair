@@ -5,11 +5,12 @@ export const metadata: Metadata = {
   title: 'FAQ — Signal Score, Case Zero, Field Report & Signal Proof Page | Signal Flair',
   description:
     'Answers to the core Signal Flair questions: what a Signal Score™ is, what Case Zero (18/100, June 6 2026) is, what a free Field Report includes, and the Founding Partner Pilot. AI Proof Infrastructure for businesses and organizations nationwide.',
-  alternates: { canonical: 'https://signalflair.ai/faq' },
+  alternates: { canonical: 'https://signalflair.ai/faq/' },
   openGraph: {
     title: 'Signal Flair — Frequently Asked Questions',
     description:
       'What is a Signal Score? What is Case Zero? What is a Field Report? What is a Signal Proof Page™? Straight answers, written to be extracted.',
+    images: ['/video/hero-poster.jpg'],
   },
 }
 
@@ -51,6 +52,22 @@ const FAQS: { q: string; a: string }[] = [
   {
     q: 'What is Stay Found™?',
     a: 'Stay Found™ is ongoing proof maintenance that keeps your Signal Score™ from drifting — monthly re-scans, fresh citations, schema and llms.txt updates, and crawler monitoring as new AI engines ship and competitors catch up. Signal Flair does not guarantee rankings, citations, recommendations, inclusion, or AI visibility. The work is designed to improve clarity, structure, crawlability, and proof readiness.',
+  },
+  {
+    q: 'What happens to my assessment after it is completed?',
+    a: 'It stays on the record. Signal Flair preserves the evidence behind each assessment — the date, the Signal Score™, the six-layer breakdown, the findings, and the sources behind them — so a later review can measure change instead of starting from scratch. Prior assessments are not overwritten.',
+  },
+  {
+    q: 'Does Signal Flair track changes over time?',
+    a: 'Yes. Repeated assessments compare against the ones before them, so you can see what machines saw before, what improved, which signals moved, and where your organization still sends mixed messages. Under Stay Found™ that history is kept current. Signal Flair does not guarantee rankings, citations, or recommendations.',
+  },
+  {
+    q: 'Are previous Signal Scores overwritten?',
+    a: 'No. Signal Flair maintains historical context rather than rewriting it — earlier Signal Scores and their supporting evidence are preserved so the before-and-after stays inspectable. The methodology is designed to become more useful as verified history accumulates.',
+  },
+  {
+    q: 'Does Signal Flair sell client data or train AI models on it?',
+    a: 'No. Signal Flair preserves assessment history to measure change for the client it belongs to — not to build a product from it. Signal Flair does not sell or monetize client or prospect data, does not train foundation models on client data, and does not claim large-scale industry benchmarks. Private assessment records are never published.',
   },
   {
     q: 'What is the difference between AEO and SEO?',
