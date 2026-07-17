@@ -46,6 +46,18 @@ const FAQS: { q: string; a: string }[] = [
     a: 'No. Signal Flair does not certify legal identity, decide copyright ownership, detect deepfakes, or claim that it can prove whether media was AI-generated. Signal Flair evaluates attribution readiness: whether public evidence connects an image, video, channel, creator, publisher, and organization clearly enough for machines to resolve the relationship.',
   },
   {
+    q: 'Can AI find and understand my images?',
+    a: 'Answer engines increasingly surface and reason over images. Signal Flair evaluates whether your important images are crawlable, described, and connected to your organization — so AI can find them, read what they show, and attribute them to you rather than a look-alike. It evaluates image discoverability and understanding readiness; it does not guarantee image-search rankings.',
+  },
+  {
+    q: 'Will voice assistants answer about my business correctly?',
+    a: 'Only if your facts are clear and consistent across the surfaces assistants draw from. Signal Flair evaluates whether your organization’s information is legible and non-contradictory enough for a voice assistant to answer about you correctly. It does not guarantee that any assistant will feature you.',
+  },
+  {
+    q: 'Do you help my videos or channel get found?',
+    a: 'Signal Flair evaluates video and channel discoverability readiness — whether your videos, channels, transcripts, captions, and website-to-channel relationships let AI surface and correctly attribute them. It does not run your channel, post content, or guarantee recommendations or placements.',
+  },
+  {
     q: 'What is Case Zero?',
     a: 'Case Zero is Signal Flair’s own AI visibility audit, completed June 6, 2026. Signal Flair scored 18 out of 100 — Signal Invisible. We published it and rebuilt in public. It is the only real proof number we own, and we never fabricate scores, wins, or testimonials.',
   },

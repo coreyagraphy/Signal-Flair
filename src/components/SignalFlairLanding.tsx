@@ -1054,6 +1054,42 @@ export default function SignalFlairLanding() {
         <div className="ent-photo reveal" style={{ fontSize: 'clamp(14px,1.7vw,19px)', opacity: 0.72, marginTop: 6 }}>Not because we hoard data. Because we remember the evidence. Signal Flair doesn&apos;t sell assessment data, expose private client records, or claim industry-wide benchmarks.</div>
       </section>
 
+      {/* ═══ SURFACE — multimodal discoverability (beyond the webpage) ═══ */}
+      <section id="surface" data-cursor="light">
+        <div className="mm-top reveal">
+          <div className="mm-eyebrow">The multimodal moat · beyond the webpage</div>
+          <div className="mm-title">Your website is one witness.<br />AI reads the <em>rest.</em></div>
+          <div className="mm-lead">Answer engines don&apos;t stop at your text. They meet your images, video, logo, channels, and profiles — and try to work out what each one is and who it belongs to. Signal Flair evaluates whether they can: whether your full visual and media presence is discoverable, interpretable, and correctly connected to the right organization.</div>
+        </div>
+        <div className="mm-grid">
+          <div className="mm-tile reveal" style={{ '--ac': '#00b8a9', '--acg': '0,184,169' }}>
+            <div className="mm-tile-t">Image search &amp; understanding</div>
+            <div className="mm-tile-d">Whether answer engines can find your images and read what they show — and connect them to the right organization, not a look-alike.</div>
+          </div>
+          <div className="mm-tile reveal" style={{ '--ac': '#ff5a1f', '--acg': '255,90,31' }}>
+            <div className="mm-tile-t">Video retrieval &amp; citation readiness</div>
+            <div className="mm-tile-d">Whether your videos, channels, transcripts, and captions can be surfaced and correctly attributed. Readiness — never a promise of recommendations.</div>
+          </div>
+          <div className="mm-tile reveal" style={{ '--ac': '#ff3d82', '--acg': '255,61,130' }}>
+            <div className="mm-tile-t">Voice-assistant answers</div>
+            <div className="mm-tile-d">Whether your organization&apos;s facts are clear and consistent enough for a voice assistant to answer about you correctly.</div>
+          </div>
+          <div className="mm-tile reveal" style={{ '--ac': '#ffb02e', '--acg': '255,176,46' }}>
+            <div className="mm-tile-t">Visual brand &amp; entity recognition</div>
+            <div className="mm-tile-d">Whether your logo, imagery, and visual identity resolve to the right entity — not a competitor, and not the wrong &ldquo;Signal Flair.&rdquo;</div>
+          </div>
+          <div className="mm-tile reveal" style={{ '--ac': '#00d2bf', '--acg': '0,210,191' }}>
+            <div className="mm-tile-t">Maps &amp; place discovery</div>
+            <div className="mm-tile-d">Whether your location and place signals are consistent and legible when people search visually, by map, or by camera.</div>
+          </div>
+          <div className="mm-tile reveal" style={{ '--ac': '#ff7a45', '--acg': '255,122,69' }}>
+            <div className="mm-tile-t">Creator &amp; publisher attribution</div>
+            <div className="mm-tile-d">Whether public evidence connects your media to the correct creator, publisher, channel, and organization — attribution readiness, not authentication.</div>
+          </div>
+        </div>
+        <div className="mm-note reveal">Signal Flair evaluates discoverability and attribution <strong>readiness</strong> — whether AI can find, interpret, and correctly connect your media to your organization. It does not authenticate media, verify legal identity, detect AI-generated content, or guarantee rankings, recommendations, or citations. Multimodal signals are read across the same six Signal Score™ layers — not a separate score.</div>
+      </section>
+
       {/* ═══ PRICING ═══ */}
       <section id="pricing" data-cursor="light">
         <div className="pricing-header reveal">
@@ -1221,6 +1257,10 @@ export default function SignalFlairLanding() {
           <details className="faq-item">
             <summary className="faq-q">How is Signal Flair different from SEO and AEO?<span className="faq-ic" aria-hidden="true" /></summary>
             <div className="faq-a">SEO gets you ranked. AEO gets you quoted. Signal Flair makes sure the machines know <em>who the hell they&apos;re talking about.</em> We work underneath both — connecting your website, structured data, profiles, images, video, public proof, and entity relationships so AI systems can connect the right information to the right organization. That&apos;s <strong>AI Proof Infrastructure™</strong>.</div>
+          </details>
+          <details className="faq-item">
+            <summary className="faq-q">What about my images, video, and profiles?<span className="faq-ic" aria-hidden="true" /></summary>
+            <div className="faq-a">Answer engines meet your images, video, logo, channels, and profiles — not just your text. Signal Flair evaluates whether AI can discover, interpret, and correctly connect your full visual and media presence to your organization: image and video discoverability, voice-assistant answers, visual brand recognition, and creator and publisher attribution readiness. It evaluates readiness — not guaranteed rankings, recommendations, or citations.</div>
           </details>
           <details className="faq-item">
             <summary className="faq-q">How does AI decide whether to trust your business?<span className="faq-ic" aria-hidden="true" /></summary>

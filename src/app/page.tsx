@@ -26,6 +26,10 @@ const HOMEPAGE_FAQ: { q: string; a: string }[] = [
     a: 'SEO gets you ranked. AEO gets you quoted. Signal Flair makes sure the machines know who the hell they’re talking about. We work underneath both — connecting your website, structured data, profiles, images, video, public proof, and entity relationships so AI systems can connect the right information to the right organization. That’s AI Proof Infrastructure™.',
   },
   {
+    q: 'What about my images, video, and profiles?',
+    a: 'Answer engines meet your images, video, logo, channels, and profiles — not just your text. Signal Flair evaluates whether AI can discover, interpret, and correctly connect your full visual and media presence to your organization: image and video discoverability, voice-assistant answers, visual brand recognition, and creator and publisher attribution readiness. It evaluates readiness — not guaranteed rankings, recommendations, or citations.',
+  },
+  {
     q: 'How does AI decide whether to trust your business?',
     a: 'Before any AI engine recommends you, it checks whether it can verify you. ChatGPT, Claude, Perplexity, Gemini, and Google AI Overviews cross-reference your site’s claims against what they can confirm elsewhere — schema, reviews, directory listings, citations, and credentials. When that proof is dense and consistent, you read as trustworthy; when it’s thin or contradictory, the engine quietly leaves you out. That’s the Trust & Proof Density layer of the Signal Protocol™ — and it’s the layer Signal Flair builds: schema, a Signal Proof Page™, llms.txt, and aligned entity signals, so AI can trust what it finds, not just find you.',
   },
