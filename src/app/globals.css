@@ -424,6 +424,18 @@ nav#hnav{position:relative;z-index:10;display:flex;align-items:center;justify-co
 #history{background:#0b0a09;position:relative;overflow:hidden;border-top:1px solid rgba(0,184,169,0.26);border-bottom:1px solid rgba(0,184,169,0.20);padding:94px 56px 100px}
 #history .ent-eyebrow{color:var(--teal)}
 #history .ent-turn em{color:var(--teal);text-shadow:0 0 30px rgba(0,184,169,0.32)}
+.hist-neon{font-family:var(--italic);font-style:italic;font-size:clamp(34px,5.4vw,72px);line-height:1.02;text-align:center;max-width:900px;margin:0 auto 30px}
+.hist-neon .hn-y{color:#fff45f;text-shadow:0 0 4px #fff45f,0 0 18px rgba(255,244,95,.85),0 0 42px rgba(255,244,95,.5)}
+.hist-neon .hn-p{color:#ff3d82;text-shadow:0 0 4px #ff3d82,0 0 18px rgba(255,61,130,.85),0 0 42px rgba(255,61,130,.5)}
+#history .ent-terms{gap:20px}
+#history .ent-term{border-left-width:3px}
+.hist-lead{display:block;margin-bottom:6px;font-family:var(--italic);font-style:italic;font-size:clamp(22px,3vw,34px);line-height:1.05}
+.hist-t1{border-left-color:rgba(255,244,95,.78)}
+.hist-t2{border-left-color:rgba(255,90,31,.78)}
+.hist-t3{border-left-color:rgba(255,61,130,.78)}
+.hist-t1 .hist-lead{color:#fff45f;text-shadow:0 0 5px rgba(255,244,95,.7),0 0 20px rgba(255,244,95,.42)}
+.hist-t2 .hist-lead{color:#ff7a2f;text-shadow:0 0 5px rgba(255,122,47,.7),0 0 20px rgba(255,90,31,.42)}
+.hist-t3 .hist-lead{color:#ff3d82;text-shadow:0 0 5px rgba(255,61,130,.7),0 0 20px rgba(255,61,130,.42)}
 .ent-bloom{position:absolute;left:50%;top:50%;width:62%;height:130%;transform:translate(-50%,-50%);background:radial-gradient(50% 50% at 50% 50%,rgba(255,45,120,0.11),transparent 70%);pointer-events:none;filter:blur(6px)}
 .ent-head{position:relative;z-index:2;max-width:1208px;margin:0 auto;text-align:center}
 .ent-eyebrow{font-family:var(--signal);font-size:11px;letter-spacing:0.34em;text-transform:uppercase;color:var(--signal-magenta);margin-bottom:18px}
@@ -1091,7 +1103,7 @@ footer{background:var(--ink2);border-top:1px solid var(--ink);padding:52px;posit
 .proto-bar-seg em{font-style:normal;font-size:9.5px;letter-spacing:.14em;text-transform:uppercase;color:rgba(23,19,18,.5);margin-bottom:3px}
 .proto-bar-tot{display:flex;align-items:center;font-family:'Fraunces',Georgia,serif;font-weight:600;font-size:22px;color:#ff5a1f;padding:0 8px}
 .proto-grid{max-width:1100px;margin:0 auto;display:grid;grid-template-columns:repeat(auto-fit,minmax(330px,1fr));gap:18px}
-.proto-layer{background:rgba(255,253,248,.82);-webkit-backdrop-filter:blur(8px);backdrop-filter:blur(8px);border:1px solid rgba(23,19,18,.12);border-radius:18px;padding:32px 30px 28px;box-shadow:0 30px 58px -26px rgba(23,19,18,.42),0 9px 22px -10px rgba(23,19,18,.22),0 0 54px -14px rgba(var(--acg,23 19 18),.3),inset 0 1px 0 rgba(255,255,255,.75)}
+.proto-layer{background:linear-gradient(158deg,rgba(var(--acg),.12) 0%,rgba(238,231,219,.95) 58%);-webkit-backdrop-filter:blur(8px);backdrop-filter:blur(8px);border:2px solid rgba(var(--acg),.55);border-radius:18px;padding:32px 30px 28px;box-shadow:0 46px 78px -22px rgba(23,19,18,.58),0 18px 38px -12px rgba(23,19,18,.36),0 0 66px -12px rgba(var(--acg),.42),inset 0 1px 0 rgba(255,255,255,.7)}
 .proto-layer-head{display:flex;align-items:center;gap:12px;margin-bottom:6px}
 .proto-layer-n{font-family:'Geist Mono',ui-monospace,monospace;font-weight:700;font-size:40px;letter-spacing:-.02em;color:var(--ac,#171312);line-height:1;text-shadow:0 0 20px rgba(var(--acg,23 19 18),.5)}
 .proto-layer-name{font-family:'Fraunces',Georgia,serif;font-weight:600;font-size:23px;color:#171312;flex:1}
@@ -1123,16 +1135,21 @@ footer{background:var(--ink2);border-top:1px solid var(--ink);padding:52px;posit
 /* Accordion behavior — collapsed by default, drops open on hover/tap */
 .proto-grid{align-items:start}
 .proto-layer{cursor:pointer;transition:border-color .2s ease,box-shadow .25s ease}
-.proto-layer:hover{border-color:rgba(var(--acg),.5)}
+.proto-layer:hover{border-color:rgba(var(--acg),.9)}
 .proto-layer>summary{list-style:none;cursor:pointer;outline:none;margin-bottom:0}
 .proto-layer>summary::-webkit-details-marker{display:none}
 .proto-layer>summary::marker{content:''}
-.proto-layer-caret{flex:none;width:9px;height:9px;border-right:2px solid rgba(23,19,18,.45);border-bottom:2px solid rgba(23,19,18,.45);transform:rotate(45deg);transition:transform .2s ease}
-.proto-layer[open] .proto-layer-caret{transform:rotate(225deg)}
+.proto-layer-caret{flex:none;width:34px;height:34px;border-radius:50%;border:1.5px solid rgba(var(--acg),.6);background:rgba(var(--acg),.12);position:relative;transition:background .2s ease,box-shadow .2s ease}
+.proto-layer-caret::after{content:'';position:absolute;left:50%;top:44%;width:9px;height:9px;border-right:2.5px solid var(--ac);border-bottom:2.5px solid var(--ac);transform:translate(-50%,-50%) rotate(45deg);transition:transform .2s ease}
+.proto-layer:not([open]) .proto-layer-caret{animation:caretPulse 2.4s ease-in-out infinite}
+.proto-layer:hover .proto-layer-caret{background:rgba(var(--acg),.24);box-shadow:0 0 18px rgba(var(--acg),.55)}
+.proto-layer[open] .proto-layer-caret{background:rgba(var(--acg),.26)}
+.proto-layer[open] .proto-layer-caret::after{transform:translate(-50%,-72%) rotate(225deg)}
+@keyframes caretPulse{0%,100%{box-shadow:0 0 0 0 rgba(var(--acg),0)}50%{box-shadow:0 0 0 6px rgba(var(--acg),.13)}}
 .proto-layer[open]>summary{margin-bottom:6px}
 /* Open: the HEADER stays unchanged — only the dropped panel takes the card's accent
    color + illumination. Each card's --ac/--acg is set inline per layer. */
-.proto-layer[open]{border-color:rgba(var(--acg),.5);box-shadow:0 16px 44px -22px rgba(var(--acg),.5)}
+.proto-layer[open]{border-color:rgba(var(--acg),.9);box-shadow:0 22px 54px -20px rgba(var(--acg),.6),0 40px 70px -24px rgba(23,19,18,.5)}
 .proto-drop{margin-top:14px;border-radius:11px;padding:16px 18px;background:linear-gradient(162deg,#0c0d10 0%,#131015 100%);box-shadow:0 0 0 1px rgba(var(--acg),.4),inset 0 0 60px -22px rgba(var(--acg),.55),0 14px 38px -18px rgba(var(--acg),.45);animation:protoDrop .28s ease both}
 @keyframes protoDrop{from{opacity:0;transform:translateY(-6px)}to{opacity:1;transform:translateY(0)}}
 .proto-drop .proto-layer-q{color:#fff;margin:0 0 14px;text-shadow:0 0 16px rgba(var(--acg),.6)}

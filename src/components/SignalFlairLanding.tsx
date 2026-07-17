@@ -881,10 +881,6 @@ export default function SignalFlairLanding() {
             </details>
           ))}
         </div>
-        <div className="proto-teaser reveal">
-          <div className="proto-teaser-chant">What&apos;s your Signal Score?</div>
-          <a className="proto-teaser-cta" href="#cta">▸ Get Your Signal Score™ →</a>
-        </div>
       </section>
 
       {/* ═══ TRUST — the pivot between "found" and "recommended" ═══ */}
@@ -1047,12 +1043,12 @@ export default function SignalFlairLanding() {
         </div>
         <div className="ent-turn reveal" style={{ marginTop: 8 }}>Most audits disappear into a PDF.<br /><em>Ours get smarter.</em></div>
         <div className="ent-photo reveal">Signal Flair preserves the evidence behind each assessment — not just the final score.</div>
+        <div className="hist-neon reveal"><span className="hn-y">We keep the receipts.</span> <span className="hn-p">The machines keep changing.</span></div>
         <div className="ent-build reveal">
-          <div className="ent-build-lead">We keep the receipts. The machines keep changing.</div>
           <div className="ent-terms">
-            <div className="ent-term"><span className="ent-term-t">We don&apos;t overwrite history.</span> Every assessment — the date, the score, the six-layer breakdown, the findings, and the sources behind them — stays on the record. Prior assessments aren&apos;t erased.</div>
-            <div className="ent-term"><span className="ent-term-t">Each review shows what changed.</span> A later assessment compares against the last: what machines saw before, what improved, which signals moved, and where an organization still sends mixed messages.</div>
-            <div className="ent-term"><span className="ent-term-t">It compounds.</span> The method is built to get more useful as verified history adds up — a growing body of evidence about how AI systems read an organization. A checklist is easy to copy; accumulated, versioned evidence isn&apos;t.</div>
+            <div className="ent-term hist-t1"><span className="hist-lead">We don&apos;t overwrite history.</span> Every assessment — the date, the score, the six-layer breakdown, the findings, and the sources behind them — stays on the record. Prior assessments aren&apos;t erased.</div>
+            <div className="ent-term hist-t2"><span className="hist-lead">Each review shows what changed.</span> A later assessment compares against the last: what machines saw before, what improved, which signals moved, and where an organization still sends mixed messages.</div>
+            <div className="ent-term hist-t3"><span className="hist-lead">It compounds.</span> The method is built to get more useful as verified history adds up — a growing body of evidence about how AI systems read an organization. A checklist is easy to copy; accumulated, versioned evidence isn&apos;t.</div>
           </div>
         </div>
         <div className="ent-turn reveal">The moat is not content volume.<br /><em>It is evidence coherence</em> — measured across the public surface, and preserved over time.</div>
