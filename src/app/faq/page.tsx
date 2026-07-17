@@ -10,6 +10,7 @@ export const metadata: Metadata = {
     title: 'Signal Flair — Frequently Asked Questions',
     description:
       'What is a Signal Score? What is Case Zero? What is a Field Report? What is a Signal Proof Page™? Straight answers, written to be extracted.',
+    images: ['/video/hero-poster.jpg'],
   },
 }
 

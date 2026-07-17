@@ -64,6 +64,7 @@ const jsonLd = {
       jobTitle: 'Founder',
       worksFor: { '@id': 'https://signalflair.ai/#org' },
       homeLocation: { '@type': 'Place', name: 'Brownsburg, Indiana' },
+      image: 'https://signalflair.ai/founder.jpg',
     },
     {
       '@type': 'WebSite',

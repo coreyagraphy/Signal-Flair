@@ -9,6 +9,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: 'What is llms.txt? Why Your Business Is Invisible to AI Without It',
     description: 'The simple file that tells AI engines who your business is — and why fewer than 1% of local businesses have one.',
+    images: ['/video/hero-poster.jpg'],
   },
 }
 

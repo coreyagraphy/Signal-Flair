@@ -10,6 +10,7 @@ export const metadata: Metadata = {
     title: 'About Signal Flair — found by AI, by design',
     description:
       'A Brownsburg, Indiana AI-visibility agency that audited itself first: Case Zero, 18/100, rebuilt in public. A Mental Vision product.',
+    images: ['/video/hero-poster.jpg'],
   },
 }
 
@@ -47,6 +48,7 @@ const jsonLd = {
       jobTitle: 'Founder',
       worksFor: { '@id': 'https://signalflair.ai/#org' },
       homeLocation: { '@type': 'Place', name: 'Brownsburg, Indiana' },
+      image: 'https://signalflair.ai/founder.jpg',
     },
   ],
 }

@@ -10,6 +10,7 @@ export const metadata: Metadata = {
     title: 'How Signal Flair works — scan, score, fix, stay found',
     description:
       'Four steps from invisible to found, plus score-gated pricing so the work matches the actual gap.',
+    images: ['/video/hero-poster.jpg'],
   },
 }
 

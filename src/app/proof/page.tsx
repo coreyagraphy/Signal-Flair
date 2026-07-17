@@ -11,6 +11,7 @@ export const metadata: Metadata = {
     title: 'Case Zero — Signal Flair’s own live verified record',
     description:
       'We audited ourselves first: 18/100 on June 6, 2026. The full record, source-linked, with a public change log.',
+    images: ['/video/hero-poster.jpg'],
   },
 }
 
