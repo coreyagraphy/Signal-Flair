@@ -1001,8 +1001,8 @@ export default function SignalFlairLanding() {
             <span className="sl-mark-pulse" aria-hidden="true" />
             <span className="sl-mark-body">
               <span className="sl-mark-main">RESTOR Team — Founding Partner Snapshot</span>
-              <span className="sl-mark-meta">Signal Baseline™ · Competitor Signal Snapshot™</span>
-              <span className="sl-mark-note">How AI systems read RESTOR Team compared with a selected market peer. View the snapshot →</span>
+              <span className="sl-mark-meta">Signal Baseline™ · Founding Partner assessment</span>
+              <span className="sl-mark-note">How clearly AI systems could access, understand, and verify RESTOR Team&apos;s public evidence. View the baseline →</span>
             </span>
             <span className="sl-mark-arrow" aria-hidden="true">→</span>
           </a>
@@ -1027,7 +1027,6 @@ export default function SignalFlairLanding() {
                 <div className="fnd-i">Signal Proof Layer™ recommendations</div>
                 <div className="fnd-i">Optional Signal Proof Page™ — your public proof asset</div>
                 <div className="fnd-i">Before-and-after documentation as your score climbs</div>
-                <div className="fnd-i">Competitor Signal Snapshot™ — a point-in-time side-by-side against one selected peer or competitor</div>
                 <div className="fnd-i">Clear next steps to become easier for AI to verify</div>
               </div>
               <div className="founding-save">Limited founding cohort · flexible terms for pilots &amp; nonprofits</div>
@@ -1220,12 +1219,8 @@ export default function SignalFlairLanding() {
             <div className="faq-a">A public, crawlable proof asset that shows your current Signal Score™, your proof-layer assets, trust signals, AI-visibility evidence, and a last-updated date — so both people and AI engines can verify you from one place. It stays fresh through Stay Found™ as your score climbs.</div>
           </details>
           <details className="faq-item">
-            <summary className="faq-q">What is a Competitor Signal Snapshot™?<span className="faq-ic" aria-hidden="true" /></summary>
-            <div className="faq-a">A point-in-time comparison of how your Signal Score™ and six signal layers stack up against one selected competitor, peer, or niche benchmark — so you can see where a rival is currently easier for AI to access, understand, verify, or surface, and which proof gaps to fix first. It&apos;s a snapshot, not a tracking dashboard: based on publicly available signals and observed AI responses at the time of review — never a claim about a competitor&apos;s private traffic, revenue, or strategy.</div>
-          </details>
-          <details className="faq-item">
-            <summary className="faq-q">How is this different from SEO?<span className="faq-ic" aria-hidden="true" /></summary>
-            <div className="faq-a">SEO optimizes for blue links on a results page. We optimize for the layer AI engines actually read — llms.txt, schema, crawler access — so when someone asks an AI for a recommendation, your business is the answer. <em>Different machine, different rules.</em> We don&apos;t do traditional SEO or paid ads.</div>
+            <summary className="faq-q">How is Signal Flair different from SEO and AEO?<span className="faq-ic" aria-hidden="true" /></summary>
+            <div className="faq-a">SEO gets you ranked. AEO gets you quoted. Signal Flair makes sure the machines know <em>who the hell they&apos;re talking about.</em> We work underneath both — connecting your website, structured data, profiles, images, video, public proof, and entity relationships so AI systems can connect the right information to the right organization. That&apos;s <strong>AI Proof Infrastructure™</strong>.</div>
           </details>
           <details className="faq-item">
             <summary className="faq-q">How does AI decide whether to trust your business?<span className="faq-ic" aria-hidden="true" /></summary>

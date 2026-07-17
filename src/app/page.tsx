@@ -22,12 +22,8 @@ const HOMEPAGE_FAQ: { q: string; a: string }[] = [
     a: 'A public, crawlable proof asset that shows your current Signal Score™, your proof-layer assets, trust signals, AI-visibility evidence, and a last-updated date — so both people and AI engines can verify you from one place. It stays fresh through Stay Found™ as your score climbs.',
   },
   {
-    q: 'What is a Competitor Signal Snapshot™?',
-    a: 'A point-in-time comparison of how your Signal Score™ and six signal layers stack up against one selected competitor, peer, or niche benchmark — so you can see where a rival is currently easier for AI to access, understand, verify, or surface, and which proof gaps to fix first. It’s a snapshot, not a tracking dashboard: based on publicly available signals and observed AI responses at the time of review — never a claim about a competitor’s private traffic, revenue, or strategy.',
-  },
-  {
-    q: 'How is this different from SEO?',
-    a: 'SEO optimizes for blue links on a results page. We optimize for the layer AI engines actually read — llms.txt, schema, crawler access — so when someone asks an AI for a recommendation, your business is the answer. Different machine, different rules. We don’t do traditional SEO or paid ads.',
+    q: 'How is Signal Flair different from SEO and AEO?',
+    a: 'SEO gets you ranked. AEO gets you quoted. Signal Flair makes sure the machines know who the hell they’re talking about. We work underneath both — connecting your website, structured data, profiles, images, video, public proof, and entity relationships so AI systems can connect the right information to the right organization. That’s AI Proof Infrastructure™.',
   },
   {
     q: 'How does AI decide whether to trust your business?',

@@ -1,5 +1,5 @@
 # robots.txt — signalflair.ai
-# Posture: EXPLICIT OPEN. Signal Flair is an AI-visibility agency.
+# Posture: EXPLICIT OPEN. Signal Flair is an AI Proof Infrastructure company.
 # Unlike publishers protecting IP, we WANT to be ingested for both
 # training (long-term model knowledge) and live retrieval (citations).
 # Every directive below is intentional. This file is itself a proof asset.
