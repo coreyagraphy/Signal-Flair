@@ -1,5 +1,11 @@
 # robots.txt — signalflair.ai
 # Posture: EXPLICIT OPEN. Signal Flair is an AI Proof Infrastructure company.
+# Mode: evidence coherence across the full public surface — site, structured data,
+#   profiles, images, video, channels, and proof — measured with the Signal Score(TM) and
+#   preserved as versioned, self-improving assessment history (de-identified, aggregate;
+#   not a data center, no selling client data, no foundation-model training on it).
+# Multimodal: images, video, and media assets are intentionally open for AI discovery
+#   and correct attribution. Machine-readable context: /llms.txt /proof.json /.well-known/signalflair.json
 # Unlike publishers protecting IP, we WANT to be ingested for both
 # training (long-term model knowledge) and live retrieval (citations).
 # Every directive below is intentional. This file is itself a proof asset.

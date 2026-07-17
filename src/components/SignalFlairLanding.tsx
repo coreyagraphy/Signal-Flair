@@ -1051,7 +1051,7 @@ export default function SignalFlairLanding() {
           </div>
         </div>
         <div className="ent-turn reveal">The moat is not content volume.<br /><em>It is evidence coherence</em> — measured across the public surface, and preserved over time.</div>
-        <div className="ent-photo reveal" style={{ fontSize: 'clamp(14px,1.7vw,19px)', opacity: 0.72, marginTop: 6 }}>Not because we hoard data. Because we remember the evidence. Signal Flair doesn&apos;t sell assessment data, expose private client records, or claim industry-wide benchmarks.</div>
+        <div className="ent-photo reveal" style={{ fontSize: 'clamp(14px,1.7vw,19px)', opacity: 0.72, marginTop: 6 }}>Not because we hoard data. Because we remember the evidence — and the methodology sharpens as verified, de-identified history adds up. Signal Flair is not a data center: it doesn&apos;t sell your data, expose private client records, train foundation models on your evidence, or claim industry-wide benchmarks.</div>
       </section>
 
       {/* ═══ SURFACE — multimodal discoverability (beyond the webpage) ═══ */}
