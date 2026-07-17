@@ -856,7 +856,7 @@ export default function SignalFlairLanding() {
       <section id="check" data-cursor="light">
         <div className="proto-top reveal">
           <div className="proto-eyebrow">THE SIGNAL PROTOCOL™</div>
-          <div className="proto-title">24-Point AI Visibility<br /><em>Diagnostic.</em></div>
+          <div className="proto-title"><span className="proto-24">24</span>-Point AI Visibility<br /><em>Diagnostic.</em></div>
           <div className="proto-meta">Six signal layers, four checkpoints each — scoring whether AI can find, read, trust, and recommend you.</div>
         </div>
         <div className="proto-grid">
