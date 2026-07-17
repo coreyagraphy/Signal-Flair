@@ -421,6 +421,9 @@ nav#hnav{position:relative;z-index:10;display:flex;align-items:center;justify-co
    Standout: near-black bg, orange(threat)/teal(answer) split, glowing magenta seam, non-card.
    ════════════════════════════════════════════════════════════ */
 #enterprise{background:#0a0a0a;position:relative;overflow:hidden;border-top:1px solid rgba(255,45,120,0.28);border-bottom:1px solid rgba(255,45,120,0.28);padding:94px 56px 100px}
+#history{background:#0b0a09;position:relative;overflow:hidden;border-top:1px solid rgba(0,184,169,0.26);border-bottom:1px solid rgba(0,184,169,0.20);padding:94px 56px 100px}
+#history .ent-eyebrow{color:var(--teal)}
+#history .ent-turn em{color:var(--teal);text-shadow:0 0 30px rgba(0,184,169,0.32)}
 .ent-bloom{position:absolute;left:50%;top:50%;width:62%;height:130%;transform:translate(-50%,-50%);background:radial-gradient(50% 50% at 50% 50%,rgba(255,45,120,0.11),transparent 70%);pointer-events:none;filter:blur(6px)}
 .ent-head{position:relative;z-index:2;max-width:1208px;margin:0 auto;text-align:center}
 .ent-eyebrow{font-family:var(--signal);font-size:11px;letter-spacing:0.34em;text-transform:uppercase;color:var(--signal-magenta);margin-bottom:18px}
@@ -448,6 +451,7 @@ nav#hnav{position:relative;z-index:10;display:flex;align-items:center;justify-co
 .ent-cta:hover{background:transparent;color:var(--signal-magenta);box-shadow:0 14px 46px rgba(255,45,120,0.6),inset 0 0 20px rgba(255,45,120,0.2)}
 @media(max-width:1000px){
   #enterprise{padding:64px 20px 72px}
+  #history{padding:64px 20px 72px}
   .ent-split{grid-template-columns:1fr}
   .ent-col{padding:10px 0}
   .ent-seam{width:100%;height:1px;background:linear-gradient(90deg,transparent,var(--signal-magenta),transparent);margin:30px 0}

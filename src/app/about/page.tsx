@@ -100,6 +100,27 @@ export default function AboutPage() {
         </section>
 
         <section className="rsc-section">
+          <h2 className="rsc-h2">We keep the <em>receipts.</em></h2>
+          <p className="rsc-lead">
+            SEO gets you ranked. AEO gets you quoted. We make sure the machines know who the hell they&apos;re
+            talking about — and we keep the receipts so we can prove what changed.
+          </p>
+          <p className="rsc-p">
+            Signal Flair works underneath both — connecting your identity, proof, structure, profiles, images,
+            video, and public signals so AI systems can understand the right organization and verify what&apos;s
+            true. And we don&apos;t toss the evidence after the audit. We preserve the scores, findings, sources,
+            and assessment history so each new review can show what changed, what improved, and what still needs
+            fixing. Prior assessments aren&apos;t overwritten — the before-and-after stays inspectable.
+          </p>
+          <p className="rsc-p">
+            The moat is not content volume. It is <em>evidence coherence</em> — across your website, profiles,
+            images, video, public proof, and entity relationships — and the history showing how that evidence
+            changes over time. Signal Flair does not sell client or prospect data, train AI models on it, or claim
+            industry-wide benchmarks, and never publishes private assessment records.
+          </p>
+        </section>
+
+        <section className="rsc-section">
           <h2 className="rsc-h2">The <em>founder</em></h2>
           <p className="rsc-p">
             Signal Flair was founded by <strong>Corey Ellis</strong> in Brownsburg, Indiana. It is a

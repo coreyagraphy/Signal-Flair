@@ -54,6 +54,22 @@ const FAQS: { q: string; a: string }[] = [
     a: 'Stay Found™ is ongoing proof maintenance that keeps your Signal Score™ from drifting — monthly re-scans, fresh citations, schema and llms.txt updates, and crawler monitoring as new AI engines ship and competitors catch up. Signal Flair does not guarantee rankings, citations, recommendations, inclusion, or AI visibility. The work is designed to improve clarity, structure, crawlability, and proof readiness.',
   },
   {
+    q: 'What happens to my assessment after it is completed?',
+    a: 'It stays on the record. Signal Flair preserves the evidence behind each assessment — the date, the Signal Score™, the six-layer breakdown, the findings, and the sources behind them — so a later review can measure change instead of starting from scratch. Prior assessments are not overwritten.',
+  },
+  {
+    q: 'Does Signal Flair track changes over time?',
+    a: 'Yes. Repeated assessments compare against the ones before them, so you can see what machines saw before, what improved, which signals moved, and where your organization still sends mixed messages. Under Stay Found™ that history is kept current. Signal Flair does not guarantee rankings, citations, or recommendations.',
+  },
+  {
+    q: 'Are previous Signal Scores overwritten?',
+    a: 'No. Signal Flair maintains historical context rather than rewriting it — earlier Signal Scores and their supporting evidence are preserved so the before-and-after stays inspectable. The methodology is designed to become more useful as verified history accumulates.',
+  },
+  {
+    q: 'Does Signal Flair sell client data or train AI models on it?',
+    a: 'No. Signal Flair preserves assessment history to measure change for the client it belongs to — not to build a product from it. Signal Flair does not sell or monetize client or prospect data, does not train foundation models on client data, and does not claim large-scale industry benchmarks. Private assessment records are never published.',
+  },
+  {
     q: 'What is the difference between AEO and SEO?',
     a: 'SEO ranks you in a list of blue links on a search results page. AEO — Answer Engine Optimization — makes you the answer an AI gives. We optimize the layer AI engines actually read: llms.txt, schema markup, entity clarity, and crawler access, so when someone asks an AI for a recommendation, your business is the answer. We do not do traditional SEO or paid ads.',
   },

@@ -1040,6 +1040,25 @@ export default function SignalFlairLanding() {
         </div>
       </section>
 
+      {/* ═══ ASSESSMENT HISTORY — the evidence compounds (data moat) ═══ */}
+      <section id="history" data-cursor="dark">
+        <div className="ent-head reveal">
+          <div className="ent-eyebrow">The data moat · assessment history</div>
+        </div>
+        <div className="ent-turn reveal" style={{ marginTop: 8 }}>Most audits disappear into a PDF.<br /><em>Ours get smarter.</em></div>
+        <div className="ent-photo reveal">Signal Flair preserves the evidence behind each assessment — not just the final score.</div>
+        <div className="ent-build reveal">
+          <div className="ent-build-lead">We keep the receipts. The machines keep changing.</div>
+          <div className="ent-terms">
+            <div className="ent-term"><span className="ent-term-t">We don&apos;t overwrite history.</span> Every assessment — the date, the score, the six-layer breakdown, the findings, and the sources behind them — stays on the record. Prior assessments aren&apos;t erased.</div>
+            <div className="ent-term"><span className="ent-term-t">Each review shows what changed.</span> A later assessment compares against the last: what machines saw before, what improved, which signals moved, and where an organization still sends mixed messages.</div>
+            <div className="ent-term"><span className="ent-term-t">It compounds.</span> The method is built to get more useful as verified history adds up — a growing body of evidence about how AI systems read an organization. A checklist is easy to copy; accumulated, versioned evidence isn&apos;t.</div>
+          </div>
+        </div>
+        <div className="ent-turn reveal">The moat is not content volume.<br /><em>It is evidence coherence</em> — measured across the public surface, and preserved over time.</div>
+        <div className="ent-photo reveal" style={{ fontSize: 'clamp(14px,1.7vw,19px)', opacity: 0.72, marginTop: 6 }}>Not because we hoard data. Because we remember the evidence. Signal Flair doesn&apos;t sell assessment data, expose private client records, or claim industry-wide benchmarks.</div>
+      </section>
+
       {/* ═══ PRICING ═══ */}
       <section id="pricing" data-cursor="light">
         <div className="pricing-header reveal">
