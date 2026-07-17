@@ -6,7 +6,7 @@ export const metadata: Metadata = {
   title: 'Proof & Cases — Verified Record | Signal Flair',
   description:
     'Real before/after only. Case Zero is the first documented case — Signal Flair’s own audit, 18/100, tracked to target. Part of the live Signal Proof Page™ record.',
-  alternates: { canonical: 'https://signalflair.ai/proof/proof' },
+  alternates: { canonical: 'https://signalflair.ai/proof/proof/' },
 }
 
 export default function ProofCasesPage() {

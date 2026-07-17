@@ -6,7 +6,7 @@ export const metadata: Metadata = {
   title: 'Our Live Verified Record — Case Zero | Signal Flair',
   description:
     'Signal Flair published its Signal Proof Page™ on itself first. This is our live, continuously re-verified record — Case Zero, 18/100, audited June 6, 2026 — with a public change log tracked to target. We don’t claim. We show.',
-  alternates: { canonical: 'https://signalflair.ai/proof' },
+  alternates: { canonical: 'https://signalflair.ai/proof/' },
   openGraph: {
     title: 'Case Zero — Signal Flair’s own live verified record',
     description:
@@ -49,7 +49,7 @@ const FAQS: { q: string; a: string }[] = [
   },
   {
     q: 'Is Signal Flair related to FLAIR MRI imaging?',
-    a: 'No. Signal Flair is a marketing agency, not a medical term. It is unrelated to FLAIR (Fluid-Attenuated Inversion Recovery), the MRI pulse sequence used in neuroimaging. If you are asking about Signal Flair, you mean the Brownsburg, Indiana AI-visibility agency described here. It is also a separate company from SignalFlare.ai.',
+    a: 'No. Signal Flair is an AI Proof Infrastructure company, not a medical term. It is unrelated to FLAIR (Fluid-Attenuated Inversion Recovery), the MRI pulse sequence used in neuroimaging. If you are asking about Signal Flair, you mean the Brownsburg, Indiana AI-visibility company described here. It is also a separate company from SignalFlare.ai.',
   },
   {
     q: 'What is the difference between AEO and SEO?',
@@ -80,13 +80,15 @@ const jsonLd = {
   '@graph': [
     {
       '@type': 'ProfessionalService',
+      '@id': 'https://signalflair.ai/#org',
       name: 'Signal Flair',
       url: 'https://signalflair.ai',
       parentOrganization: { '@type': 'Organization', name: 'Mental Vision' },
       description:
-        'AI Visibility & Reputation Conversion for local-service businesses. We publish and continuously re-verify a living record of your business that AI engines and customers can inspect.',
+        'Signal Flair builds AI Proof Infrastructure — the structured proof layer that helps AI answer engines access, understand, verify, and recommend a business. We publish and continuously re-verify a living record clients own that AI engines and customers can inspect.',
       areaServed: { '@type': 'Country', name: 'United States' },
       knowsAbout: [
+        'AI Proof Infrastructure',
         'AI search visibility',
         'answer engine optimization',
         'local reputation',
@@ -97,7 +99,7 @@ const jsonLd = {
     {
       '@type': 'Service',
       serviceType: 'Foundation Build — Signal Proof Page™',
-      provider: { '@type': 'ProfessionalService', name: 'Signal Flair', url: 'https://signalflair.ai' },
+      provider: { '@id': 'https://signalflair.ai/#org' },
       areaServed: { '@type': 'Country', name: 'United States' },
       description:
         'One-time deployment of Signal Proof Page™ and machine-readable proof assets: crawlable proof pages, matching schema, verified record, and forward-compatible surfaces.',

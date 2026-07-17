@@ -5,7 +5,7 @@ export const metadata: Metadata = {
   title: 'Founding Partner Pilot Preview — Operator Route Map | Signal Flair',
   description:
     'Internal founder/operator preview: route-to-market categories, prospecting lanes, and pilot-test angles for AI Proof Infrastructure™. Not client-facing sales copy.',
-  alternates: { canonical: 'https://signalflair.ai/proof/partner' },
+  alternates: { canonical: 'https://signalflair.ai/proof/partner/' },
   robots: { index: false, follow: false },
 }
 

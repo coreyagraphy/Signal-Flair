@@ -8,8 +8,17 @@ export const metadata: Metadata = {
   description: 'Signal Flair builds AI Proof Infrastructure and Signal Score™ systems that help businesses and organizations become easier for ChatGPT, Claude, Gemini, Perplexity, and Google AI to access, understand, verify, and recommend.',
   keywords: ['AI Proof Infrastructure', 'Signal Score', 'AI visibility', 'AEO', 'answer engine optimization', 'AI trust layer', 'Signal Proof Page', 'Competitor Signal Snapshot', 'llms.txt', 'schema markup', 'entity clarity', 'AI search', 'Indiana', 'nationwide'],
   openGraph: {
+    type: 'website',
+    siteName: 'Signal Flair',
+    url: 'https://signalflair.ai',
     title: 'Signal Flair — AI Proof Infrastructure for the AI answer era',
     description: 'Signal Flair builds the structured proof layer that helps AI systems understand who you are, what you do, where you serve, and why you deserve to be recommended.',
+    images: [{ url: '/video/hero-poster.jpg', width: 3840, height: 2160, alt: 'Signal Flair — AI Proof Infrastructure' }],
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'Signal Flair — AI Proof Infrastructure for Answer Engine Visibility',
+    description: 'The structured proof layer that helps ChatGPT, Claude, Gemini, Perplexity, and Google AI access, understand, verify, and recommend your business.',
     images: ['/video/hero-poster.jpg'],
   },
 }
@@ -43,10 +52,18 @@ const jsonLd = {
       logo: 'https://signalflair.ai/signal-flair-logo.svg',
       areaServed: { '@type': 'Country', name: 'United States' },
       address: { '@type': 'PostalAddress', addressLocality: 'Brownsburg', addressRegion: 'IN', addressCountry: 'US' },
-      founder: { '@type': 'Person', name: 'Corey Ellis' },
+      founder: { '@id': 'https://signalflair.ai/#founder' },
       parentOrganization: { '@type': 'Organization', name: 'Mental Vision', url: 'https://mentalvision.ai' },
       sameAs: ['https://signalflair.ai/proof/', 'https://www.linkedin.com/company/signal-flair-ai', 'https://www.crunchbase.com/organization/signal-flair', 'https://mentalvision.ai'],
       contactPoint: { '@type': 'ContactPoint', email: 'hello@signalflair.ai', contactType: 'sales', areaServed: 'US' },
+    },
+    {
+      '@type': 'Person',
+      '@id': 'https://signalflair.ai/#founder',
+      name: 'Corey Ellis',
+      jobTitle: 'Founder',
+      worksFor: { '@id': 'https://signalflair.ai/#org' },
+      homeLocation: { '@type': 'Place', name: 'Brownsburg, Indiana' },
     },
     {
       '@type': 'WebSite',

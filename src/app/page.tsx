@@ -2,7 +2,7 @@ import type { Metadata } from 'next'
 import SignalFlairLanding from '@/components/SignalFlairLanding'
 
 export const metadata: Metadata = {
-  alternates: { canonical: 'https://www.signalflair.ai/' },
+  alternates: { canonical: 'https://signalflair.ai/' },
 }
 
 // FAQPage schema for the homepage. MUST mirror the visible #faq section in

@@ -6,7 +6,7 @@ export const metadata: Metadata = {
   title: 'Change Log — Verified Record | Signal Flair',
   description:
     'The dated public record of what Signal Flair verified or updated, and when. Part of the live Signal Proof Page™ verified record. Next review due 2026-07-06.',
-  alternates: { canonical: 'https://signalflair.ai/proof/changelog' },
+  alternates: { canonical: 'https://signalflair.ai/proof/changelog/' },
 }
 
 // REAL entries only. Each is a dated action actually taken.
