@@ -46,7 +46,7 @@ const DOCTRINE: [string, string, string][] = [
 const FAQS: { q: string; a: string }[] = [
   {
     q: 'What is Signal Flair?',
-    a: 'Signal Flair is an AI visibility and Answer Engine Optimization (AEO) agency based in Brownsburg, Indiana, serving businesses nationwide. It scores how visible a local service business is to AI answer engines — ChatGPT, Claude, Gemini, Perplexity, and Google AI Overviews — then rebuilds the missing signals so the business gets found and cited. Signal Flair is a product of Mental Vision.',
+    a: 'Signal Flair is an AI Proof Infrastructure company based in Brownsburg, Indiana, serving businesses and organizations nationwide — the evidence layer underneath SEO and AEO. It measures how clearly AI answer engines — ChatGPT, Claude, Gemini, Perplexity, and Google AI Overviews — can access, understand, verify, and connect a business to the right organization, then builds the missing proof. Signal Flair is a product of Mental Vision.',
   },
   {
     q: 'Is Signal Flair related to FLAIR MRI imaging?',
@@ -264,7 +264,7 @@ export default function ProofHubPage() {
 
       <footer className="rsc-foot">
         Signal Flair · a Mental Vision product · Brownsburg, Indiana · serving nationwide<br />
-        <a href="/">signalflair.ai</a> · <a href="/proof.json">/proof.json</a> · <a href="/proof/changelog/">change log</a>
+        <a href="/">signalflair.ai</a> · <a href="/proof.json">/proof.json</a> · <a href="/proof/changelog/">change log</a> · <a href="/privacy/">privacy</a>
       </footer>
 
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />

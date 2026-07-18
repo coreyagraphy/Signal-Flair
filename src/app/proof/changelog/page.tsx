@@ -5,7 +5,7 @@ import VerifiedMark from '@/components/VerifiedMark'
 export const metadata: Metadata = {
   title: 'Change Log — Verified Record | Signal Flair',
   description:
-    'The dated public record of what Signal Flair verified or updated, and when. Part of the live Signal Proof Page™ verified record. Next review due 2026-07-06.',
+    'The dated public record of what Signal Flair verified or updated, and when. Part of the live Signal Proof Page™ verified record. Next review due 2026-08-17.',
   alternates: { canonical: 'https://signalflair.ai/proof/changelog/' },
 }
 
@@ -35,7 +35,7 @@ export default function ProofChangelogPage() {
           <div className="rsc-eyebrow"><a href="/proof/" className="sl-back">← The record</a> · Change log</div>
           <h1 className="rsc-h1">What changed, <em>and when.</em></h1>
           <p className="rsc-lead">The dated public record. This is the moat — not a one-time fix, but a layer kept current. Every verification run lands here.</p>
-          <div className="sl-markwrap"><VerifiedMark confirmed={0} total={6} note="Next review due 2026-07-06" /></div>
+          <div className="sl-markwrap"><VerifiedMark confirmed={0} total={6} note="Next review due 2026-08-17" /></div>
         </header>
 
         <section className="rsc-section">
@@ -50,10 +50,10 @@ export default function ProofChangelogPage() {
               </div>
             ))}
             <div className="sl-cl-row sl-cl-due">
-              <div className="sl-cl-date">2026-07-06</div>
+              <div className="sl-cl-date">2026-08-17</div>
               <div className="sl-cl-body">
                 <div className="sl-cl-title">Next scheduled re-verification</div>
-                <p className="rsc-p">Day-30 re-measure: citation share across the five engines, facts re-verified, and the score re-run. Result posts here.</p>
+                <p className="rsc-p">Re-measure: citation share across the five engines, facts re-verified, and the score re-run. Result posts here.</p>
               </div>
             </div>
           </div>

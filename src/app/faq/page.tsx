@@ -26,6 +26,38 @@ const FAQS: { q: string; a: string }[] = [
     a: 'AI Proof Infrastructure is the structured layer of business information, technical signals, trust proof, and public verification assets that helps AI answer engines understand and verify an organization. Signal Flair builds it — not just an audit, but the proof layer that makes you easier for ChatGPT, Claude, Gemini, Perplexity, and Google AI to access, understand, verify, and recommend.',
   },
   {
+    q: 'How is Signal Flair different from SEO and AEO?',
+    a: 'SEO gets you ranked. AEO gets you quoted. Signal Flair makes sure the machines know who the hell they’re talking about. We work underneath both — connecting your website, structured data, profiles, images, video, public proof, and entity relationships so AI systems can connect the right information to the right organization. That’s AI Proof Infrastructure™.',
+  },
+  {
+    q: 'What does Signal Flair evaluate beyond my website?',
+    a: 'Your website is only one witness. AI systems also encounter social profiles, founder information, images, videos, platform channels, third-party references, public proof, and structured data. Signal Flair examines whether those signals agree, support the same claims, and point back to the correct organization.',
+  },
+  {
+    q: 'What is evidence coherence?',
+    a: 'Evidence coherence means the organization’s public signals tell the same factual story. The website, profiles, images, video, proof, company information, and founder relationships should reinforce one another instead of giving machines conflicting versions of the organization. The moat is not more content. It is evidence that agrees.',
+  },
+  {
+    q: 'Does Signal Flair evaluate images and video?',
+    a: 'Yes, when they are relevant to the organization’s public presence. Signal Flair examines whether important images, videos, channels, transcripts, publisher references, and creator relationships can be discovered, understood, attributed, and connected to the correct entity. Signal Flair does not judge whether the creative is attractive — it evaluates whether machines can identify what the media belongs to.',
+  },
+  {
+    q: 'Does Signal Flair authenticate media or verify creators?',
+    a: 'No. Signal Flair does not certify legal identity, decide copyright ownership, detect deepfakes, or claim that it can prove whether media was AI-generated. Signal Flair evaluates attribution readiness: whether public evidence connects an image, video, channel, creator, publisher, and organization clearly enough for machines to resolve the relationship.',
+  },
+  {
+    q: 'Can AI find and understand my images?',
+    a: 'Answer engines increasingly surface and reason over images. Signal Flair evaluates whether your important images are crawlable, described, and connected to your organization — so AI can find them, read what they show, and attribute them to you rather than a look-alike. It evaluates image discoverability and understanding readiness; it does not guarantee image-search rankings.',
+  },
+  {
+    q: 'Will voice assistants answer about my business correctly?',
+    a: 'Only if your facts are clear and consistent across the surfaces assistants draw from. Signal Flair evaluates whether your organization’s information is legible and non-contradictory enough for a voice assistant to answer about you correctly. It does not guarantee that any assistant will feature you.',
+  },
+  {
+    q: 'Do you help my videos or channel get found?',
+    a: 'Signal Flair evaluates video and channel discoverability readiness — whether your videos, channels, transcripts, captions, and website-to-channel relationships let AI surface and correctly attribute them. It does not run your channel, post content, or guarantee recommendations or placements.',
+  },
+  {
     q: 'What is Case Zero?',
     a: 'Case Zero is Signal Flair’s own AI visibility audit, completed June 6, 2026. Signal Flair scored 18 out of 100 — Signal Invisible. We published it and rebuilt in public. It is the only real proof number we own, and we never fabricate scores, wins, or testimonials.',
   },
@@ -42,20 +74,12 @@ const FAQS: { q: string; a: string }[] = [
     a: 'The Signal Proof Page™ is your canonical, crawlable proof hub — a client-owned record published as human-readable pages and linked machine-readable assets (proof.json, llms.txt) so AI engines and customers can inspect what you do, where you serve, and the proof behind it. Deployed on Foundation Build and Start the Rebuild.',
   },
   {
-    q: 'What is a Competitor Signal Snapshot™?',
-    a: 'A Competitor Signal Snapshot™ is a point-in-time comparison showing how your Signal Score™ and six signal layers compare against a selected competitor, peer, or niche benchmark. It helps you see where a competitor may currently be easier for AI systems to access, understand, verify, or surface — and which proof gaps your organization should fix first.',
-  },
-  {
-    q: 'Is a Competitor Signal Snapshot™ ongoing competitor tracking?',
-    a: 'No. It is a point-in-time review based on publicly available signals and observed AI responses at the time of analysis — not a dashboard, not surveillance. It makes no claim about a competitor’s private traffic, revenue, rankings, or internal strategy.',
-  },
-  {
     q: 'What is Stay Found™?',
     a: 'Stay Found™ is ongoing proof maintenance that keeps your Signal Score™ from drifting — monthly re-scans, fresh citations, schema and llms.txt updates, and crawler monitoring as new AI engines ship and competitors catch up. Signal Flair does not guarantee rankings, citations, recommendations, inclusion, or AI visibility. The work is designed to improve clarity, structure, crawlability, and proof readiness.',
   },
   {
     q: 'What happens to my assessment after it is completed?',
-    a: 'It stays on the record. Signal Flair preserves the evidence behind each assessment — the date, the Signal Score™, the six-layer breakdown, the findings, and the sources behind them — so a later review can measure change instead of starting from scratch. Prior assessments are not overwritten.',
+    a: 'We keep the receipts. Signal Flair preserves the date, assessment type, Signal Score™, six-layer breakdown, findings, and supporting evidence instead of replacing the old record with the newest number. Later assessments can show what changed across the website, profiles, images, video, public proof, and entity relationships — and what is still sending mixed messages.',
   },
   {
     q: 'Does Signal Flair track changes over time?',
@@ -66,12 +90,8 @@ const FAQS: { q: string; a: string }[] = [
     a: 'No. Signal Flair maintains historical context rather than rewriting it — earlier Signal Scores and their supporting evidence are preserved so the before-and-after stays inspectable. The methodology is designed to become more useful as verified history accumulates.',
   },
   {
-    q: 'Does Signal Flair sell client data or train AI models on it?',
-    a: 'No. Signal Flair preserves assessment history to measure change for the client it belongs to — not to build a product from it. Signal Flair does not sell or monetize client or prospect data, does not train foundation models on client data, and does not claim large-scale industry benchmarks. Private assessment records are never published.',
-  },
-  {
-    q: 'What is the difference between AEO and SEO?',
-    a: 'SEO ranks you in a list of blue links on a search results page. AEO — Answer Engine Optimization — makes you the answer an AI gives. We optimize the layer AI engines actually read: llms.txt, schema markup, entity clarity, and crawler access, so when someone asks an AI for a recommendation, your business is the answer. We do not do traditional SEO or paid ads.',
+    q: 'How does Signal Flair use assessment history?',
+    a: 'Private assessment history stays attached to the organization it belongs to. Signal Flair does not sell raw client or prospect records, publish private evidence, or train foundation models on private assessment data. Prior assessments are preserved so your organization can compare future reviews against them.',
   },
   {
     q: 'How does AI decide whether to trust your business?',
@@ -91,7 +111,7 @@ const FAQS: { q: string; a: string }[] = [
   },
   {
     q: 'Is Signal Flair related to FLAIR MRI imaging or SignalFlare.ai?',
-    a: 'No. Signal Flair is an AI visibility and AEO agency based in Brownsburg, Indiana, serving nationwide — a product of Mental Vision. It is unrelated to FLAIR (Fluid-Attenuated Inversion Recovery), the MRI sequence used in neuroimaging, and it is a separate company from SignalFlare.ai (restaurant analytics). If you are asking about Signal Flair, you mean the Brownsburg, Indiana AI-visibility agency described here.',
+    a: 'No. Signal Flair is an AI Proof Infrastructure company based in Brownsburg, Indiana, serving nationwide — a product of Mental Vision, and the evidence layer underneath SEO and AEO. It is unrelated to FLAIR (Fluid-Attenuated Inversion Recovery), the MRI sequence used in neuroimaging, and it is a separate company from SignalFlare.ai (restaurant analytics). If you are asking about Signal Flair, you mean the Brownsburg, Indiana AI Proof Infrastructure company described here.',
   },
 ]
 
@@ -169,7 +189,7 @@ export default function FaqPage() {
 
       <footer className="rsc-foot">
         Signal Flair · a Mental Vision product · Brownsburg, Indiana · serving nationwide<br />
-        <a href="/">signalflair.ai</a> · <a href="/about/">about</a> · <a href="/how-it-works/">how it works</a> · <a href="/proof/">the record</a>
+        <a href="/">signalflair.ai</a> · <a href="/about/">about</a> · <a href="/how-it-works/">how it works</a> · <a href="/proof/">the record</a> · <a href="/privacy/">privacy</a>
       </footer>
 
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />

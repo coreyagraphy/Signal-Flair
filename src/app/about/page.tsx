@@ -4,12 +4,12 @@ import SignalFlairLogo from '@/components/SignalFlairLogo'
 export const metadata: Metadata = {
   title: 'About — AI Visibility & AEO · Brownsburg, Indiana | Signal Flair',
   description:
-    'Signal Flair is an AI visibility and Answer Engine Optimization (AEO) agency based in Brownsburg, Indiana, serving nationwide — a product of Mental Vision, founded by Corey Ellis. We score how findable your business is to ChatGPT, Claude, Perplexity, Gemini, and Google AI, then build the layer they read.',
+    'Signal Flair is an AI Proof Infrastructure company based in Brownsburg, Indiana, serving nationwide — a product of Mental Vision, founded by Corey Ellis. It works underneath SEO and AEO, connecting your website, profiles, proof, images, video, and entity relationships so AI systems can verify who you are.',
   alternates: { canonical: 'https://signalflair.ai/about/' },
   openGraph: {
     title: 'About Signal Flair — found by AI, by design',
     description:
-      'A Brownsburg, Indiana AI-visibility agency that audited itself first: Case Zero, 18/100, rebuilt in public. A Mental Vision product.',
+      'A Brownsburg, Indiana AI Proof Infrastructure company that audited itself first: Case Zero, 18/100, rebuilt in public. A Mental Vision product.',
     images: ['/video/hero-poster.jpg'],
   },
 }
@@ -20,7 +20,7 @@ const jsonLd = {
     {
       '@type': 'AboutPage',
       '@id': 'https://signalflair.ai/about#aboutpage',
-      url: 'https://signalflair.ai/about',
+      url: 'https://signalflair.ai/about/',
       name: 'About Signal Flair',
       isPartOf: { '@id': 'https://signalflair.ai/#website' },
       about: { '@id': 'https://signalflair.ai/#org' },
@@ -48,7 +48,7 @@ const jsonLd = {
       jobTitle: 'Founder',
       worksFor: { '@id': 'https://signalflair.ai/#org' },
       homeLocation: { '@type': 'Place', name: 'Brownsburg, Indiana' },
-      image: 'https://signalflair.ai/founder.jpg',
+      image: 'https://signalflair.ai/corey-ellis-founder.png',
     },
   ],
 }
@@ -66,7 +66,7 @@ export default function AboutPage() {
           <div className="rsc-eyebrow">About · Brownsburg, Indiana, nationwide</div>
           <h1 className="rsc-h1">Found by AI, <em>by design.</em></h1>
           <p className="rsc-lead">
-            Signal Flair is an AI visibility and Answer Engine Optimization agency based in Brownsburg, Indiana,
+            Signal Flair is an AI Proof Infrastructure company based in Brownsburg, Indiana,
             serving businesses nationwide. We make local service businesses across the United States
             findable, readable, and recommendable by the AI engines now deciding who gets seen —
             ChatGPT, Claude, Perplexity, Gemini, and Google AI.
@@ -149,7 +149,7 @@ export default function AboutPage() {
 
       <footer className="rsc-foot">
         Signal Flair · a Mental Vision product · Brownsburg, Indiana · serving nationwide<br />
-        <a href="/">signalflair.ai</a> · <a href="/faq/">faq</a> · <a href="/how-it-works/">how it works</a> · <a href="/proof/">the record</a>
+        <a href="/">signalflair.ai</a> · <a href="/faq/">faq</a> · <a href="/how-it-works/">how it works</a> · <a href="/proof/">the record</a> · <a href="/privacy/">privacy</a>
       </footer>
 
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />

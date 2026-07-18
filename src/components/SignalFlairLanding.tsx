@@ -856,7 +856,7 @@ export default function SignalFlairLanding() {
       <section id="check" data-cursor="light">
         <div className="proto-top reveal">
           <div className="proto-eyebrow">THE SIGNAL PROTOCOL™</div>
-          <div className="proto-title">24-Point AI Visibility<br /><em>Diagnostic.</em></div>
+          <div className="proto-title"><span className="proto-24">24</span>-Point AI Visibility<br /><em>Diagnostic.</em></div>
           <div className="proto-meta">Six signal layers, four checkpoints each — scoring whether AI can find, read, trust, and recommend you.</div>
         </div>
         <div className="proto-grid">
@@ -1001,8 +1001,8 @@ export default function SignalFlairLanding() {
             <span className="sl-mark-pulse" aria-hidden="true" />
             <span className="sl-mark-body">
               <span className="sl-mark-main">RESTOR Team — Founding Partner Snapshot</span>
-              <span className="sl-mark-meta">Signal Baseline™ · Competitor Signal Snapshot™</span>
-              <span className="sl-mark-note">How AI systems read RESTOR Team compared with a selected market peer. View the snapshot →</span>
+              <span className="sl-mark-meta">Signal Baseline™ · Founding Partner assessment</span>
+              <span className="sl-mark-note">How clearly AI systems could access, understand, and verify RESTOR Team&apos;s public evidence. View the baseline →</span>
             </span>
             <span className="sl-mark-arrow" aria-hidden="true">→</span>
           </a>
@@ -1027,7 +1027,6 @@ export default function SignalFlairLanding() {
                 <div className="fnd-i">Signal Proof Layer™ recommendations</div>
                 <div className="fnd-i">Optional Signal Proof Page™ — your public proof asset</div>
                 <div className="fnd-i">Before-and-after documentation as your score climbs</div>
-                <div className="fnd-i">Competitor Signal Snapshot™ — a point-in-time side-by-side against one selected peer or competitor</div>
                 <div className="fnd-i">Clear next steps to become easier for AI to verify</div>
               </div>
               <div className="founding-save">Limited founding cohort · flexible terms for pilots &amp; nonprofits</div>
@@ -1052,7 +1051,43 @@ export default function SignalFlairLanding() {
           </div>
         </div>
         <div className="ent-turn reveal">The moat is not content volume.<br /><em>It is evidence coherence</em> — measured across the public surface, and preserved over time.</div>
-        <div className="ent-photo reveal" style={{ fontSize: 'clamp(14px,1.7vw,19px)', opacity: 0.72, marginTop: 6 }}>Not because we hoard data. Because we remember the evidence. Signal Flair doesn&apos;t sell assessment data, expose private client records, or claim industry-wide benchmarks.</div>
+        <div className="ent-photo reveal" style={{ fontSize: 'clamp(14px,1.7vw,19px)', opacity: 0.72, marginTop: 6 }}>Not because we hoard data. Because we remember the evidence — and the methodology sharpens as verified, de-identified history adds up. Signal Flair is not a data center: it doesn&apos;t sell your data, expose private client records, train foundation models on your evidence, or claim industry-wide benchmarks.</div>
+      </section>
+
+      {/* ═══ SURFACE — multimodal discoverability (beyond the webpage) ═══ */}
+      <section id="surface" data-cursor="light">
+        <div className="mm-top reveal">
+          <div className="mm-eyebrow">The multimodal moat · beyond the webpage</div>
+          <div className="mm-title">Your website is one witness.<br />AI reads the <em>rest.</em></div>
+          <div className="mm-lead">Answer engines don&apos;t stop at your text. They meet your images, video, logo, channels, and profiles — and try to work out what each one is and who it belongs to. Signal Flair evaluates whether they can: whether your full visual and media presence is discoverable, interpretable, and correctly connected to the right organization.</div>
+        </div>
+        <div className="mm-grid">
+          <div className="mm-tile reveal" style={{ '--ac': '#00b8a9', '--acg': '0,184,169' }}>
+            <div className="mm-tile-t">Image search &amp; understanding</div>
+            <div className="mm-tile-d">Whether answer engines can find your images and read what they show — and connect them to the right organization, not a look-alike.</div>
+          </div>
+          <div className="mm-tile reveal" style={{ '--ac': '#ff5a1f', '--acg': '255,90,31' }}>
+            <div className="mm-tile-t">Video retrieval &amp; citation readiness</div>
+            <div className="mm-tile-d">Whether your videos, channels, transcripts, and captions can be surfaced and correctly attributed. Readiness — never a promise of recommendations.</div>
+          </div>
+          <div className="mm-tile reveal" style={{ '--ac': '#ff3d82', '--acg': '255,61,130' }}>
+            <div className="mm-tile-t">Voice-assistant answers</div>
+            <div className="mm-tile-d">Whether your organization&apos;s facts are clear and consistent enough for a voice assistant to answer about you correctly.</div>
+          </div>
+          <div className="mm-tile reveal" style={{ '--ac': '#ffb02e', '--acg': '255,176,46' }}>
+            <div className="mm-tile-t">Visual brand &amp; entity recognition</div>
+            <div className="mm-tile-d">Whether your logo, imagery, and visual identity resolve to the right entity — not a competitor, and not the wrong &ldquo;Signal Flair.&rdquo;</div>
+          </div>
+          <div className="mm-tile reveal" style={{ '--ac': '#00d2bf', '--acg': '0,210,191' }}>
+            <div className="mm-tile-t">Maps &amp; place discovery</div>
+            <div className="mm-tile-d">Whether your location and place signals are consistent and legible when people search visually, by map, or by camera.</div>
+          </div>
+          <div className="mm-tile reveal" style={{ '--ac': '#ff7a45', '--acg': '255,122,69' }}>
+            <div className="mm-tile-t">Creator &amp; publisher attribution</div>
+            <div className="mm-tile-d">Whether public evidence connects your media to the correct creator, publisher, channel, and organization — attribution readiness, not authentication.</div>
+          </div>
+        </div>
+        <div className="mm-note reveal">Signal Flair evaluates discoverability and attribution <strong>readiness</strong> — whether AI can find, interpret, and correctly connect your media to your organization. It does not authenticate media, verify legal identity, detect AI-generated content, or guarantee rankings, recommendations, or citations. Multimodal signals are read across the same six Signal Score™ layers — not a separate score.</div>
       </section>
 
       {/* ═══ PRICING ═══ */}
@@ -1160,7 +1195,7 @@ export default function SignalFlairLanding() {
       <section id="about">
         <div className="about-inner">
           <div className="about-photo reveal">
-            <img className="about-portrait" src="/founder.jpg" alt="Corey Ellis, founder of Signal Flair" />
+            <img className="about-portrait" src="/corey-ellis-founder.png" alt="Corey Ellis, founder of Signal Flair" width={1536} height={1536} loading="lazy" decoding="async" />
             <div className="about-photo-cap">Corey Ellis · Founder</div>
           </div>
           <div className="about-copy reveal">
@@ -1220,12 +1255,12 @@ export default function SignalFlairLanding() {
             <div className="faq-a">A public, crawlable proof asset that shows your current Signal Score™, your proof-layer assets, trust signals, AI-visibility evidence, and a last-updated date — so both people and AI engines can verify you from one place. It stays fresh through Stay Found™ as your score climbs.</div>
           </details>
           <details className="faq-item">
-            <summary className="faq-q">What is a Competitor Signal Snapshot™?<span className="faq-ic" aria-hidden="true" /></summary>
-            <div className="faq-a">A point-in-time comparison of how your Signal Score™ and six signal layers stack up against one selected competitor, peer, or niche benchmark — so you can see where a rival is currently easier for AI to access, understand, verify, or surface, and which proof gaps to fix first. It&apos;s a snapshot, not a tracking dashboard: based on publicly available signals and observed AI responses at the time of review — never a claim about a competitor&apos;s private traffic, revenue, or strategy.</div>
+            <summary className="faq-q">How is Signal Flair different from SEO and AEO?<span className="faq-ic" aria-hidden="true" /></summary>
+            <div className="faq-a">SEO gets you ranked. AEO gets you quoted. Signal Flair makes sure the machines know <em>who the hell they&apos;re talking about.</em> We work underneath both — connecting your website, structured data, profiles, images, video, public proof, and entity relationships so AI systems can connect the right information to the right organization. That&apos;s <strong>AI Proof Infrastructure™</strong>.</div>
           </details>
           <details className="faq-item">
-            <summary className="faq-q">How is this different from SEO?<span className="faq-ic" aria-hidden="true" /></summary>
-            <div className="faq-a">SEO optimizes for blue links on a results page. We optimize for the layer AI engines actually read — llms.txt, schema, crawler access — so when someone asks an AI for a recommendation, your business is the answer. <em>Different machine, different rules.</em> We don&apos;t do traditional SEO or paid ads.</div>
+            <summary className="faq-q">What about my images, video, and profiles?<span className="faq-ic" aria-hidden="true" /></summary>
+            <div className="faq-a">Answer engines meet your images, video, logo, channels, and profiles — not just your text. Signal Flair evaluates whether AI can discover, interpret, and correctly connect your full visual and media presence to your organization: image and video discoverability, voice-assistant answers, visual brand recognition, and creator and publisher attribution readiness. It evaluates readiness — not guaranteed rankings, recommendations, or citations.</div>
           </details>
           <details className="faq-item">
             <summary className="faq-q">How does AI decide whether to trust your business?<span className="faq-ic" aria-hidden="true" /></summary>
@@ -1324,6 +1359,7 @@ export default function SignalFlairLanding() {
                     {leadSubmitting ? 'Running…' : '▸ Run My Field Report'}
                   </button>
                   <div className="lead-micro">No credit card. No spam. Your Field Report lands in your inbox within 24 hours. This covers 3 of the 6 Signal Protocol™ layers — the full breakdown requires the complete audit.</div>
+                  <div className="lead-consent">By requesting a Field Report you agree to our <a href="/privacy/">Privacy Policy</a>. We may use de-identified, aggregate assessment data to improve our methodology — we never sell your data.</div>
                 </form>
               </div>
               )}
@@ -1359,13 +1395,13 @@ export default function SignalFlairLanding() {
             <a className="f-email" href="mailto:hello@signalflair.ai">hello@signalflair.ai</a>
           </div>
           <div><div className="f-head">Services</div><a className="f-link" href="#signal">AI Visibility Audit</a><a className="f-link" href="#signal">Foundation Build</a><a className="f-link" href="#signal">Stay Found™</a><a className="f-link" href="#check">What We Check</a><a className="f-link" href="#pricing">Pricing</a></div>
-          <div><div className="f-head">Company</div><a className="f-link" href="#process">How It Works</a><a className="f-link" href="#pricing">Pricing</a><a className="f-link" href="/resources/llms-txt/">llms.txt Guide</a><a className="f-link" href="https://mentalvision.ai" target="_blank" rel="noopener noreferrer">Mental Vision</a><a className="f-link" href="mailto:hello@signalflair.ai">Contact</a></div>
-          <div><div className="f-head">Connect</div><a className="f-link" href="https://www.linkedin.com/company/signal-flair-ai" target="_blank" rel="noopener noreferrer">LinkedIn</a><a className="f-link" href="#">Instagram</a><a className="f-link" href="#">YouTube</a><a className="f-link" href="mailto:hello@signalflair.ai">hello@signalflair.ai</a></div>
+          <div><div className="f-head">Company</div><a className="f-link" href="#process">How It Works</a><a className="f-link" href="#pricing">Pricing</a><a className="f-link" href="/resources/llms-txt/">llms.txt Guide</a><a className="f-link" href="/privacy/">Privacy</a><a className="f-link" href="https://mentalvision.ai" target="_blank" rel="noopener noreferrer">Mental Vision</a><a className="f-link" href="mailto:hello@signalflair.ai">Contact</a></div>
+          <div><div className="f-head">Connect</div><a className="f-link" href="https://www.linkedin.com/company/signal-flair-ai" target="_blank" rel="noopener noreferrer">LinkedIn</a><a className="f-link" href="mailto:hello@signalflair.ai">hello@signalflair.ai</a></div>
         </div>
         <div className="f-chant-band">
           <div className="f-chant">What&apos;s your Signal Score?</div>
           <div className="f-tm">Signal Protocol™ · Signal Score™ · Stay Found™ · Verified by Signal Flair™</div>
-          <div className="f-privacy">We never share your data. No spam.</div>
+          <div className="f-privacy">We never sell your data. No spam. <a href="/privacy/">Privacy &amp; data use →</a></div>
         </div>
         <div className="fb">
           <div className="fb-l">Signal Flair is a Mental Vision product | Brownsburg, Indiana · Serving nationwide | signalflair.ai</div>

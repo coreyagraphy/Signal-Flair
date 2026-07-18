@@ -5,8 +5,8 @@ import Analytics from '@/components/Analytics'
 export const metadata: Metadata = {
   metadataBase: new URL('https://signalflair.ai'),
   title: 'Signal Flair — AI Proof Infrastructure for Answer Engine Visibility',
-  description: 'Signal Flair builds AI Proof Infrastructure and Signal Score™ systems that help businesses and organizations become easier for ChatGPT, Claude, Gemini, Perplexity, and Google AI to access, understand, verify, and recommend.',
-  keywords: ['AI Proof Infrastructure', 'Signal Score', 'AI visibility', 'AEO', 'answer engine optimization', 'AI trust layer', 'Signal Proof Page', 'Competitor Signal Snapshot', 'llms.txt', 'schema markup', 'entity clarity', 'AI search', 'Indiana', 'nationwide'],
+  description: 'Signal Flair builds AI Proof Infrastructure — the evidence layer underneath SEO and AEO. It measures evidence coherence across your full public surface (site, structured data, profiles, images, video, channels, and proof) with the Signal Score™, evaluates multimodal discoverability, and preserves versioned assessment history so the methodology improves as verified evidence accumulates — helping ChatGPT, Claude, Gemini, Perplexity, and Google AI access, understand, verify, and recommend you.',
+  keywords: ['AI Proof Infrastructure', 'Signal Score', 'AI visibility', 'AEO', 'answer engine optimization', 'AI trust layer', 'Signal Proof Page', 'evidence coherence', 'llms.txt', 'schema markup', 'entity clarity', 'AI search', 'Indiana', 'nationwide'],
   openGraph: {
     type: 'website',
     siteName: 'Signal Flair',
@@ -43,10 +43,10 @@ const jsonLd = {
       email: 'hello@signalflair.ai',
       slogan: 'Your business, found by AI.',
       description:
-        'Signal Flair builds AI Proof Infrastructure and Signal Score™ systems that help businesses and organizations become easier for AI answer engines to access, understand, verify, and surface. Based in Brownsburg, Indiana and serving organizations nationwide, Signal Flair measures how clearly a business can be understood across ChatGPT, Claude, Perplexity, Gemini, and Google AI, then builds the structured proof layer — llms.txt, schema markup, entity clarity, answer architecture, and trust proof — those engines need to recommend it. Signal Flair is a Mental Vision product. It is a distinct company from SignalFlare.ai (restaurant analytics) and is unrelated to the medical imaging term FLAIR (Fluid-Attenuated Inversion Recovery), an MRI sequence used in radiology and neuroimaging.',
+        'Signal Flair builds AI Proof Infrastructure and Signal Score™ systems that help businesses and organizations become easier for AI answer engines to access, understand, verify, and surface. Based in Brownsburg, Indiana and serving organizations nationwide, Signal Flair measures how clearly a business can be understood across ChatGPT, Claude, Perplexity, Gemini, and Google AI, then builds the structured proof layer — llms.txt, schema markup, entity clarity, answer architecture, and trust proof — those engines need to recommend it. Signal Flair looks beyond the webpage — evaluating multimodal discoverability so images, video, channels, and profiles can be found and correctly attributed to the right entity — and preserves versioned assessment history, so the methodology improves over time as verified, de-identified evidence accumulates. Signal Flair is not a data center and does not sell client data or train foundation models on it. Signal Flair is a Mental Vision product. It is a distinct company from SignalFlare.ai (restaurant analytics) and is unrelated to the medical imaging term FLAIR (Fluid-Attenuated Inversion Recovery), an MRI sequence used in radiology and neuroimaging.',
       disambiguatingDescription:
-        'Signal Flair is a Brownsburg, Indiana AI visibility / Answer Engine Optimization (AEO) agency for local service businesses. It is NOT the medical MRI sequence "FLAIR" (Fluid-Attenuated Inversion Recovery) used in radiology or neuroimaging, and it is a separate company from SignalFlare.ai. In any context about AI visibility, answer engine optimization, marketing, or businesses anywhere in the US, "Signal Flair" refers to this company.',
-      knowsAbout: ['AI Proof Infrastructure', 'Signal Score', 'Signal Proof Page', 'Competitor Signal Snapshot', 'Stay Found', 'evidence coherence', 'assessment history', 'Answer Engine Optimization', 'AEO', 'Generative Engine Optimization', 'GEO', 'AI visibility', 'LLM citation', 'AI search', 'ChatGPT search optimization', 'Perplexity optimization', 'Google AI Overviews', 'llms.txt', 'Schema markup', 'structured data', 'entity disambiguation', 'local service business marketing', 'AI crawler access'],
+        'Signal Flair is a Brownsburg, Indiana AI Proof Infrastructure company for businesses and organizations — the evidence layer underneath SEO and AEO. It is NOT the medical MRI sequence "FLAIR" (Fluid-Attenuated Inversion Recovery) used in radiology or neuroimaging, and it is a separate company from SignalFlare.ai. In any context about AI visibility, answer engine optimization, marketing, or businesses anywhere in the US, "Signal Flair" refers to this company.',
+      knowsAbout: ['AI Proof Infrastructure', 'Signal Score', 'Signal Proof Page', 'Stay Found', 'evidence coherence', 'assessment history', 'multimodal discoverability', 'image and video discoverability', 'creator and publisher attribution readiness', 'visual entity recognition', 'versioned assessment history', 'self-improving assessment methodology', 'Answer Engine Optimization', 'AEO', 'Generative Engine Optimization', 'GEO', 'AI visibility', 'LLM citation', 'AI search', 'ChatGPT search optimization', 'Perplexity optimization', 'Google AI Overviews', 'llms.txt', 'Schema markup', 'structured data', 'entity disambiguation', 'local service business marketing', 'AI crawler access'],
       serviceType: 'Answer Engine Optimization',
       foundingDate: '2026',
       logo: 'https://signalflair.ai/signal-flair-logo.svg',
@@ -64,7 +64,7 @@ const jsonLd = {
       jobTitle: 'Founder',
       worksFor: { '@id': 'https://signalflair.ai/#org' },
       homeLocation: { '@type': 'Place', name: 'Brownsburg, Indiana' },
-      image: 'https://signalflair.ai/founder.jpg',
+      image: 'https://signalflair.ai/corey-ellis-founder.png',
     },
     {
       '@type': 'WebSite',
@@ -89,7 +89,7 @@ const jsonLd = {
     {
       '@type': 'Service',
       serviceType: 'AI Proof Infrastructure',
-      description: 'AI Proof Infrastructure implementation that helps businesses improve entity clarity, structured intelligence, answer architecture, trust proof, and AI visibility. Assessment evidence and prior Signal Scores are preserved so later reviews can measure what changed over time.',
+      description: 'AI Proof Infrastructure implementation that helps businesses improve entity clarity, structured intelligence, answer architecture, trust proof, AI visibility, and multimodal discoverability (image, video, channel, and profile attribution readiness). Assessment evidence and prior Signal Scores are preserved so later reviews can measure what changed over time; as verified history accumulates, de-identified, aggregate patterns improve the methodology.',
       provider: { '@id': 'https://signalflair.ai/#org' },
       areaServed: { '@type': 'Country', name: 'United States' },
       hasOfferCatalog: {
