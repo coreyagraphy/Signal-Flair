@@ -41,7 +41,7 @@ Founder: Corey Ellis, Brownsburg, Indiana.
 ## Tech stack
 
 - Framework: Next.js (static export, `output: 'export'`, `trailingSlash: true`)
-- Hosting: Netlify (production) — dev server runs at localhost:3210
+- Hosting: Netlify (production), git-linked to `coreyagraphy/Signal-Flair` — every push to `main` auto-builds and deploys (no more manual drag-drop). Dev server runs at localhost:3210
 - Backend / CRM: GoHighLevel (GHL) — also reachable via a Jarvis/neutral intake router
 - Form submissions: POST to the intake webhook — `NEXT_PUBLIC_FIELD_REPORT_WEBHOOK_URL` (router) → `NEXT_PUBLIC_GHL_WEBHOOK_URL` (fallback); see `SignalFlairLanding.tsx` + "Intake form wiring" below
 - Analytics: Google Analytics 4 (GA4)
@@ -53,8 +53,8 @@ Founder: Corey Ellis, Brownsburg, Indiana.
 
 - **Never move nameservers.** Only repoint the website A/CNAME record to Netlify.
   Moving nameservers wipes MX/SPF/DKIM/DMARC and kills the live email warmup.
-- Production deploy is gated on DNS propagation. Confirm with Corey before running build.
-- Build command: `npm run build` → deploys the `out/` folder to Netlify.
+- **Deploy = merge to `main`.** Netlify is git-linked (site `cozy-pie-596a1f`); it runs `next build` and publishes `out/` automatically on every push to `main`. Build config lives in `netlify.toml`. No manual zip/drag-drop.
+- Env vars (GA4 ID, GHL webhook) are set in Netlify → Environment variables and inlined at build time — change them there, then trigger a rebuild (any push to `main`).
 - Dev: `next dev --hostname 0.0.0.0 --port 3210`
 
 ---
@@ -151,7 +151,7 @@ Clients keep everything built, even on cancel.
 ## Pending tasks (priority order)
 
 1. **Commit all pending changes** — `git add -A && git commit -m "feat: Foundation Build — [describe what's staged]"`
-2. **Wire intake webhook** — ✅ PREPPED (2026-06-07). Form reads `NEXT_PUBLIC_FIELD_REPORT_WEBHOOK_URL` **first**, then falls back to `NEXT_PUBLIC_GHL_WEBHOOK_URL`. **GO LIVE: set either env var in Netlify (or `.env.local`) before `npm run build` — no code edit.** Both unset = real error (no fake success). 10s fetch timeout added so a hung webhook can't freeze the submit button.
+2. **Wire intake webhook** — ✅ LIVE (2026-07-18). `NEXT_PUBLIC_GHL_WEBHOOK_URL` is set in Netlify (production, all contexts) to the GHL Signal Pulse inbound webhook (location `dmPSx68yJZdbLgQY5Osd`); the form POSTs real leads on the next build after it was set. Form still reads `NEXT_PUBLIC_FIELD_REPORT_WEBHOOK_URL` first if a router is ever added. Both unset = real error (no fake success). 10s fetch timeout guards a hung webhook. NOTE: it's a build-time (`NEXT_PUBLIC_`) var — changing it requires a rebuild (push to `main`).
 3. **GA4 analytics** — ✅ SCAFFOLDED (2026-06-07, disabled until ID set). gtag loader = `src/components/Analytics.tsx` (rendered in layout, returns null with no ID); helper = `src/lib/analytics.ts` (`track()`, safe no-op until live). Events wired: `form_submit` (lead form success), `cta_click` (every `#cta` CTA, with label+section), `founding_client_click` (founding apply button). Auto `page_view` covers the resource page. **GO LIVE: set `NEXT_PUBLIC_GA_ID=G-XXXXXXXXXX` in Netlify env (or `.env.local` for dev) — see `.env.example`.** No code change needed.
 4. **Integrate Case Zero section** — replace illustrative proof card with the real self-audit
 5. **LinkedIn sameAs** — Corey creates page at linkedin.com/company/setup/new, then add URL to sameAs array in Organization schema
