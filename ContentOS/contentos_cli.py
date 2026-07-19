@@ -326,6 +326,51 @@ def cmd_analytics(args) -> int:
     return 0
 
 
+def cmd_codec_inventory(args) -> int:
+    settings = load_settings()
+    settings.paths.ensure()
+    from services import capability_service
+    caps = capability_service.collect_capabilities()
+    json_path, report = capability_service.write_reports(settings, caps)
+    families = capability_service.family_support(caps)
+    supported = sum(1 for f in families.values() if f["supported"])
+    print(f"FFmpeg: {caps['ffmpeg_version']}")
+    print(f"Codec families supported: {supported}/{len(families)}")
+    print(f"Inventory: {json_path}")
+    print(f"Report: {report}")
+    return 0
+
+
+def cmd_mezzanine(args) -> int:
+    settings, store = bootstrap()
+    from services.proxy_service import make_mezzanine
+    out = make_mezzanine(settings, store, args.job_id, profile=args.profile)
+    print(f"Mezzanine created and verified: {out}")
+    return 0
+
+
+def cmd_assets(args) -> int:
+    settings, store = bootstrap()
+    from services import asset_library_service as als
+    if args.action == "register":
+        if not args.target:
+            print("usage: assets register <folder>", file=sys.stderr)
+            return 1
+        lib_id = als.register_library(settings, store, Path(args.target))
+        print(f"Registered library {lib_id}. Scan with: assets scan {lib_id}")
+    elif args.action == "scan":
+        results = als.scan(settings, store, library_id=args.target)
+        print(json.dumps(results, indent=2))
+    elif args.action == "list":
+        for row in als.list_assets(store, asset_type=args.target):
+            print(f"[{row['asset_type']:<14}] {row['availability']:<12} "
+                  f"{row['relative_path']}")
+    elif args.action == "report":
+        path = als.write_report(settings, store, library_id=args.target)
+        print(f"Report: {path}")
+    return 0
+
+
 def cmd_migrate(args) -> int:
     settings = load_settings()
     settings.paths.ensure()
@@ -417,6 +462,24 @@ def build_parser() -> argparse.ArgumentParser:
 
     sub.add_parser("migrate", help="apply database migrations").set_defaults(fn=cmd_migrate)
     sub.add_parser("validate", help="validate repository health").set_defaults(fn=cmd_validate)
+
+    sub.add_parser("codec-inventory",
+                   help="inventory the installed ffmpeg build's codecs"
+                   ).set_defaults(fn=cmd_codec_inventory)
+
+    p = sub.add_parser("mezzanine", help="generate a professional editing proxy")
+    p.add_argument("job_id")
+    p.add_argument("--profile", default="prores_proxy",
+                   choices=["prores_proxy", "prores_422", "prores_422_hq",
+                            "dnxhr_lb", "dnxhr_sq", "dnxhr_hqx"])
+    p.set_defaults(fn=cmd_mezzanine)
+
+    p = sub.add_parser("assets", help="creative asset library operations")
+    p.add_argument("action", choices=["register", "scan", "list", "report"])
+    p.add_argument("target", nargs="?",
+                   help="folder path (register), library id (scan/report), "
+                        "or type filter (list)")
+    p.set_defaults(fn=cmd_assets)
     return parser
 
 
