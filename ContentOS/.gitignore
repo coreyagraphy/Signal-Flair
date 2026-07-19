@@ -59,3 +59,7 @@ Adobe Premiere Pro Auto-Save/
 # OS
 Thumbs.db
 .DS_Store
+
+# Codec matrix private samples (Corey's real footage — never committed)
+tests/codec_samples_private/
+data/capabilities/

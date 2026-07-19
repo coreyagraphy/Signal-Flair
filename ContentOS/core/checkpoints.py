@@ -13,7 +13,7 @@ from .job_store import JobStore
 # Artifact keys that must exist on disk for each stage to be considered done.
 STAGE_ARTIFACTS: dict[str, list[str]] = {
     "ingested": ["managed_original"],
-    "analyzed": ["metadata_json"],
+    "analyzed": ["metadata_json", "codec_report"],
     "proxied": ["proxy_video", "audio_asr_wav"],
     "transcribed": ["transcript_json"],
     "captioned": ["captions_srt", "captions_vtt"],

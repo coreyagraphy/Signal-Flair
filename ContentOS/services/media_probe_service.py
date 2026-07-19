@@ -66,7 +66,16 @@ def probe_media(path: Path) -> dict:
 
 
 def run(settings: Settings, store: JobStore, job_id: str) -> dict:
-    """Stage runner for 'analyzed': write normalized metadata JSON."""
+    """Stage runner for 'analyzed': metadata JSON + codec verification.
+
+    The stage fails with a precise, typed status (unsupported_codec, damaged,
+    drm_protected, …) when the decode-test ladder cannot verify the source —
+    never a generic "cannot play file".
+    """
+    from core.exceptions import StageBlocked
+
+    from . import codec_service
+
     artifacts = store.artifacts(job_id)
     source = Path(artifacts["managed_original"])
     meta = probe_media(source)
@@ -77,5 +86,20 @@ def run(settings: Settings, store: JobStore, job_id: str) -> dict:
     job = store.get_job(job_id)
     store.update_asset(job["asset_id"], metadata_json=json.dumps(
         {k: v for k, v in meta.items() if k != "raw"}, default=str))
-    return {"duration": meta["duration_seconds"], "resolution":
-            f"{meta['width']}x{meta['height']}", "fps": meta["frame_rate"]}
+
+    codec_report = codec_service.verify_source(settings, source, job_id=job_id)
+    report_path = codec_service.write_codec_report(settings, job_id, codec_report)
+    store.set_artifact(job_id, "codec_report", report_path)
+    status = codec_report["status"]
+    if status not in ("codec_verified", "codec_verified_software_fallback"):
+        raise StageBlocked(
+            f"Source not codec-verified: {status}. "
+            f"{codec_report.get('recommended_path', '')} "
+            f"See Output/reports/{job_id}_codec_report.md",
+            code=status)
+    return {"duration": meta["duration_seconds"],
+            "resolution": f"{meta['width']}x{meta['height']}",
+            "fps": meta["frame_rate"], "codec_status": status,
+            "decoder_used": codec_report.get("decoder_used"),
+            "vfr": codec_report.get("vfr", False),
+            "warnings": len(codec_report.get("warnings", []))}
