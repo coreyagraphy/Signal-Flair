@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Content OS review — {JOB_ID}</title>
+<style>
+  :root { color-scheme: light dark; }
+  body { font-family: system-ui, sans-serif; margin: 0; padding: 24px;
+         max-width: 1100px; margin-inline: auto; font-size: 17px; line-height: 1.5; }
+  h1 { font-size: 1.5rem; } h2 { font-size: 1.15rem; margin-top: 2rem; }
+  video { width: 100%; max-height: 60vh; background: #000; border-radius: 8px; }
+  .videos { display: grid; grid-template-columns: 2fr 1fr; gap: 16px; }
+  .panel { border: 1px solid #8884; border-radius: 8px; padding: 16px; margin-top: 16px; }
+  table { border-collapse: collapse; width: 100%; }
+  td, th { padding: 6px 10px; border-bottom: 1px solid #8883; text-align: left; }
+  input[type=number] { width: 5em; font-size: 1rem; }
+  textarea, input[type=text] { width: 100%; font-size: 1rem; box-sizing: border-box; }
+  button { font-size: 1rem; padding: 10px 18px; border-radius: 6px; cursor: pointer; }
+  .primary { background: #1a7f5a; color: #fff; border: none; }
+  .danger { background: #b33; color: #fff; border: none; }
+  pre { white-space: pre-wrap; font-size: 0.85rem; background: #8881; padding: 12px;
+        border-radius: 6px; max-height: 300px; overflow: auto; }
+  #status { font-weight: 600; }
+</style>
+</head>
+<body>
+<h1>Review: {JOB_ID}</h1>
+<p>Draft quality gates: <strong>{QUALITY_SUMMARY}</strong></p>
+
+<div class="videos">
+  <div><h2>Horizontal draft</h2>
+    <video id="vidH" controls src="{DRAFT_HORIZONTAL}"></video></div>
+  <div><h2>Vertical draft</h2>
+    <video id="vidV" controls src="{DRAFT_VERTICAL}"></video></div>
+</div>
+
+<div class="panel">
+  <h2>Timestamp notes</h2>
+  <p>Current time: <span id="curTime">0.0</span>s
+     <button onclick="grabTime()">Use current time</button></p>
+  <p>
+    Start <input type="number" id="noteStart" step="0.1" value="0">
+    End (optional) <input type="number" id="noteEnd" step="0.1">
+    Type
+    <select id="noteType">
+      <option>note</option><option>remove</option><option>protect</option>
+      <option>caption</option><option>graphic</option><option>framing</option>
+      <option>audio</option>
+    </select>
+  </p>
+  <textarea id="noteText" rows="2" placeholder="What should change here?"></textarea>
+  <p><button onclick="addNote()">Add note</button></p>
+  <table id="notesTable"><tr><th>Start</th><th>End</th><th>Type</th><th>Note</th></tr></table>
+</div>
+
+<div class="panel">
+  <h2>Ratings (1–100)</h2>
+  <table id="ratings"></table>
+</div>
+
+<div class="panel">
+  <h2>Decision</h2>
+  <p>
+    <button class="primary" onclick="submitReview('approved')">Approve</button>
+    <button class="danger" onclick="submitReview('revision_requested')">Request revision</button>
+    <button onclick="downloadNotes()">Download notes JSON (offline mode)</button>
+  </p>
+  <p id="status"></p>
+</div>
+
+<div class="panel"><h2>Cut report</h2><pre>{CUT_REPORT}</pre></div>
+
+<script>
+const JOB_ID = "{JOB_ID}";
+const DIMS = ["hook","pacing","clarity","caption_quality","visual_interest",
+              "brand_fit","platform_fit","audio_quality","editing_quality","overall"];
+const notes = [];
+const ratingsTable = document.getElementById("ratings");
+for (const d of DIMS) {
+  const row = ratingsTable.insertRow();
+  row.insertCell().textContent = d.replace("_", " ");
+  const cell = row.insertCell();
+  const input = document.createElement("input");
+  input.type = "number"; input.min = 1; input.max = 100; input.id = "r_" + d;
+  cell.appendChild(input);
+}
+const vid = document.getElementById("vidH");
+vid.addEventListener("timeupdate", () =>
+  document.getElementById("curTime").textContent = vid.currentTime.toFixed(1));
+function grabTime() {
+  document.getElementById("noteStart").value = vid.currentTime.toFixed(1);
+}
+function addNote() {
+  const note = {
+    timestamp_seconds: parseFloat(document.getElementById("noteStart").value) || 0,
+    end_seconds: document.getElementById("noteEnd").value
+      ? parseFloat(document.getElementById("noteEnd").value) : null,
+    note_type: document.getElementById("noteType").value,
+    text: document.getElementById("noteText").value.trim(),
+  };
+  if (!note.text) return;
+  notes.push(note);
+  const row = document.getElementById("notesTable").insertRow();
+  for (const v of [note.timestamp_seconds, note.end_seconds ?? "", note.note_type, note.text])
+    row.insertCell().textContent = v;
+  document.getElementById("noteText").value = "";
+}
+function payload(decision) {
+  const ratings = {};
+  for (const d of DIMS) {
+    const v = document.getElementById("r_" + d).value;
+    if (v) ratings[d] = parseInt(v, 10);
+  }
+  return { job_id: JOB_ID, decision, ratings, notes };
+}
+async function submitReview(decision) {
+  const body = JSON.stringify(payload(decision));
+  try {
+    const resp = await fetch("/api/review", { method: "POST",
+      headers: {"Content-Type": "application/json"}, body });
+    document.getElementById("status").textContent = resp.ok
+      ? "Submitted: " + decision
+      : "Server error " + resp.status + " — use Download notes JSON instead.";
+  } catch (err) {
+    document.getElementById("status").textContent =
+      "No review server running — use Download notes JSON, then run: " +
+      "python contentos_cli.py feedback-complete " + JOB_ID + " --file <downloaded.json>";
+  }
+}
+function downloadNotes() {
+  const blob = new Blob([JSON.stringify(payload("revision_requested"), null, 2)],
+                       { type: "application/json" });
+  const a = document.createElement("a");
+  a.href = URL.createObjectURL(blob);
+  a.download = JOB_ID + "_review.json";
+  a.click();
+}
+</script>
+</body>
+</html>
