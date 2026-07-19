@@ -63,3 +63,7 @@ Thumbs.db
 # Codec matrix private samples (Corey's real footage — never committed)
 tests/codec_samples_private/
 data/capabilities/
+remotion/node_modules/
+remotion/out/
+Output/graphics/*
+!Output/graphics/.gitkeep
