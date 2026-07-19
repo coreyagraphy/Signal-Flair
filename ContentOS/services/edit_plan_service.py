@@ -175,7 +175,13 @@ def run(settings: Settings, store: JobStore, job_id: str) -> dict:
         "variants": [
             {"name": "horizontal", "aspect": "16:9", "width": 1920, "height": 1080},
             {"name": "vertical", "aspect": "9:16", "width": 1080, "height": 1920,
-             "reframe": "center_crop"},
+             "reframe": "center_crop",
+             # No subject tracker is installed yet — the center crop may cut
+             # an off-center speaker out of frame. Flagged honestly so the
+             # reviewer and the Premiere manifest both know.
+             "manual_reframe_required": True,
+             "reframe_note": "center-crop fallback; verify speaker framing "
+                             "or reframe manually in Premiere"},
         ],
         "broll_placeholders": [],
         "markers": [{"time": 0.0, "label": "hook", "note": selected.get("hook", "")}],

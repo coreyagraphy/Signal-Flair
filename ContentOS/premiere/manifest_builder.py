@@ -26,9 +26,13 @@ def build_manifest(settings: Settings, *, job_id: str, edit_plan: dict,
         } for seg in edit_plan["segments"]]
         if variant.get("reframe") == "center_crop":
             for clip in clips:
-                clip["transform"] = {"reframe": "center_crop",
-                                     "note": "replace with tracked keyframes when "
-                                             "auto-reframe adapter has run"}
+                clip["transform"] = {
+                    "reframe": "center_crop",
+                    "manual_reframe_required": bool(
+                        variant.get("manual_reframe_required")),
+                    "note": variant.get("reframe_note",
+                                        "replace with tracked keyframes when "
+                                        "auto-reframe adapter has run")}
         sequences.append({
             "name": f"{job_id}_{variant['name']}",
             "width": variant["width"], "height": variant["height"],
