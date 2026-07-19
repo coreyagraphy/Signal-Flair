@@ -354,12 +354,20 @@ def cmd_assets(args) -> int:
     from services import asset_library_service as als
     if args.action == "register":
         if not args.target:
-            print("usage: assets register <folder>", file=sys.stderr)
+            print("usage: assets register <folder> [--name <library_name>]",
+                  file=sys.stderr)
             return 1
-        lib_id = als.register_library(settings, store, Path(args.target))
+        lib_id = als.register_library(settings, store, Path(args.target),
+                                      name=getattr(args, "name", None))
         print(f"Registered library {lib_id}. Scan with: assets scan {lib_id}")
     elif args.action == "scan":
-        results = als.scan(settings, store, library_id=args.target)
+        target = args.target
+        # Accept either a library id or a folder path (auto-registering it).
+        if target and (Path(target).exists() or "\\" in target or "/" in target):
+            target = als.register_library(settings, store, Path(target),
+                                          name=getattr(args, "name", None))
+            print(f"Auto-registered library {target}")
+        results = als.scan(settings, store, library_id=target)
         print(json.dumps(results, indent=2))
     elif args.action == "list":
         for row in als.list_assets(store, asset_type=args.target):
@@ -477,8 +485,9 @@ def build_parser() -> argparse.ArgumentParser:
     p = sub.add_parser("assets", help="creative asset library operations")
     p.add_argument("action", choices=["register", "scan", "list", "report"])
     p.add_argument("target", nargs="?",
-                   help="folder path (register), library id (scan/report), "
+                   help="folder path (register/scan), library id (scan/report), "
                         "or type filter (list)")
+    p.add_argument("--name", help="library name (e.g. ocular_sound_design)")
     p.set_defaults(fn=cmd_assets)
     return parser
 

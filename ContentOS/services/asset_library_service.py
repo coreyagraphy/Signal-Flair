@@ -129,17 +129,21 @@ def _lut_size(path: Path) -> int | None:
     return None
 
 
-def register_library(settings: Settings, store: JobStore, root: Path) -> str:
+def register_library(settings: Settings, store: JobStore, root: Path,
+                     name: str | None = None) -> str:
     root = root.expanduser()
     existing = store.conn.execute(
         "SELECT id FROM asset_libraries WHERE root_path = ?",
         (str(root),)).fetchone()
     if existing:
+        if name:
+            store.conn.execute("UPDATE asset_libraries SET name = ? WHERE id = ?",
+                               (name, existing["id"]))
         return existing["id"]
     lib_id = new_id("lib")
     store.conn.execute(
         "INSERT INTO asset_libraries(id, root_path, name) VALUES (?,?,?)",
-        (lib_id, str(root), root.name))
+        (lib_id, str(root), name or root.name))
     return lib_id
 
 
@@ -183,6 +187,7 @@ def scan(settings: Settings, store: JobStore, library_id: str | None = None,
 
             digest = None
             media = {}
+            audio_metrics = {}
             lut = None
             if availability == "local":
                 if size and size <= MAX_HASH_BYTES:
@@ -200,6 +205,13 @@ def scan(settings: Settings, store: JobStore, library_id: str | None = None,
                         totals["unreadable"] += 1
                 if asset_type == "lut" and path.suffix.lower() == ".cube":
                     lut = _lut_size(path)
+                if asset_type in ("sound_effect", "music", "audio") and media:
+                    from services.audio_analysis_service import analyze_audio
+                    try:
+                        audio_metrics = analyze_audio(
+                            path, duration_hint=media.get("duration_seconds"))
+                    except Exception:
+                        audio_metrics = {}
             else:
                 totals["online_only"] += availability == "online_only"
 
@@ -220,8 +232,10 @@ def scan(settings: Settings, store: JobStore, library_id: str | None = None,
                 " filename, extension, asset_type, size_bytes, sha256,"
                 " duration_seconds, width, height, frame_rate, sample_rate,"
                 " channels, has_alpha, codec, lut_size, routing,"
-                " app_dependency, availability, preview_path, last_verified_at)"
-                " VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)"
+                " app_dependency, availability, preview_path, last_verified_at,"
+                " integrated_lufs, true_peak_db, leading_silence_seconds,"
+                " trailing_silence_seconds, loop_or_oneshot)"
+                " VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)"
                 " ON CONFLICT(library_id, relative_path) DO UPDATE SET"
                 "  asset_type = excluded.asset_type,"
                 "  size_bytes = excluded.size_bytes,"
@@ -229,6 +243,12 @@ def scan(settings: Settings, store: JobStore, library_id: str | None = None,
                 "  availability = excluded.availability,"
                 "  preview_path = COALESCE(excluded.preview_path,"
                 "                          creative_assets.preview_path),"
+                "  integrated_lufs = COALESCE(excluded.integrated_lufs,"
+                "                             creative_assets.integrated_lufs),"
+                "  true_peak_db = COALESCE(excluded.true_peak_db,"
+                "                          creative_assets.true_peak_db),"
+                "  loop_or_oneshot = COALESCE(excluded.loop_or_oneshot,"
+                "                             creative_assets.loop_or_oneshot),"
                 "  last_verified_at = excluded.last_verified_at",
                 (asset_id, lib["id"], rel, path.name, path.suffix.lower(),
                  asset_type, size, digest, media.get("duration_seconds"),
@@ -238,7 +258,12 @@ def scan(settings: Settings, store: JobStore, library_id: str | None = None,
                  media.get("codec"), lut, routing,
                  APP_DEPENDENCY.get(asset_type),
                  availability, str(preview) if preview else None,
-                 datetime.now(timezone.utc).isoformat()))
+                 datetime.now(timezone.utc).isoformat(),
+                 audio_metrics.get("integrated_lufs"),
+                 audio_metrics.get("true_peak_db"),
+                 audio_metrics.get("leading_silence_seconds"),
+                 audio_metrics.get("trailing_silence_seconds"),
+                 audio_metrics.get("loop_or_oneshot")))
             totals["by_type"][asset_type] = totals["by_type"].get(asset_type, 0) + 1
         store.conn.execute(
             "UPDATE asset_libraries SET scan_status = 'scanned',"
