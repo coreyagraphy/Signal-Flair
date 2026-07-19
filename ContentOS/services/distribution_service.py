@@ -92,6 +92,7 @@ def run(settings: Settings, store: JobStore, job_id: str) -> dict:
             "approval_state": "pending",
             "validation": {"passed": not problems, "problems": problems},
         }
+        import sqlite3
         try:
             store.conn.execute(
                 "INSERT INTO publish_plans(id, job_id, platform, media_path, title,"
@@ -101,19 +102,24 @@ def run(settings: Settings, store: JobStore, job_id: str) -> dict:
                 (plan["plan_id"], job_id, platform, plan["media_path"], plan["title"],
                  plan["description"], None, plan["timezone"], plan["privacy"], idem,
                  "pending", json.dumps(plan["validation"]), json.dumps(plan)))
-        except Exception:
-            # Idempotency collision — this plan already exists; keep existing.
+            plans.append(plan)
+        except sqlite3.IntegrityError:
+            # Idempotency collision — the plan already exists; keep it.
             continue
-        plans.append(plan)
 
+    # On re-runs, the artifact must reflect ALL existing plans for the job —
+    # never an empty list just because inserts collided (Agent G finding 10).
+    all_rows = store.conn.execute(
+        "SELECT plan_json FROM publish_plans WHERE job_id = ?", (job_id,)).fetchall()
+    all_plans = [json.loads(r["plan_json"]) for r in all_rows]
     job_dir = settings.paths.job_dir(job_id)
     out = job_dir / "publish_plans.json"
-    out.write_text(json.dumps({"plans": plans}, indent=2, ensure_ascii=False),
+    out.write_text(json.dumps({"plans": all_plans}, indent=2, ensure_ascii=False),
                    encoding="utf-8")
     store.set_artifact(job_id, "publish_plan", out)
-    return {"plans": len(plans),
-            "validation_failures": sum(1 for p in plans
-                                       if not p["validation"]["passed"])}
+    return {"plans": len(all_plans), "new_plans": len(plans),
+            "validation_failures": sum(1 for p in all_plans
+                                       if not p.get("validation", {}).get("passed"))}
 
 
 def execute(settings: Settings, store: JobStore, job_id: str,
@@ -140,9 +146,12 @@ def execute(settings: Settings, store: JobStore, job_id: str,
                 results.append({"platform": row["platform"], "status": "blocked",
                                 "reason": "plan not approved"})
                 continue
-            adapter = {"zernio": ZernioAdapter(settings.zernio_api_key,
-                                               settings.zernio_profile_id),
-                       }.get("zernio")
+            # Route by the plan's platform — never a hardcoded provider.
+            if row["platform"] in ("youtube", "youtube_short"):
+                adapter = YouTubeAdapter(settings.youtube_api_key)
+            else:
+                adapter = ZernioAdapter(settings.zernio_api_key,
+                                        settings.zernio_profile_id)
             try:
                 result = adapter.publish(plan)
             except ProviderUnavailable as exc:

@@ -34,7 +34,12 @@ TERMINAL = {"analytics_pending"}
 # Extra transitions beyond simple linear advancement.
 _EXTRA: dict[str, set[str]] = {
     "awaiting_review": {"revision_requested", "approved"},
-    "revision_requested": {"edit_planned", "clips_selected", "captioned", "awaiting_review"},
+    # A revision may re-enter ANY rebuildable stage: caption-only feedback
+    # restarts at captioned; ratings-only or audio/graphic notes restart at
+    # draft_rendered (cheapest rebuild that yields a new draft).
+    "revision_requested": {"transcribed", "captioned", "strategized",
+                           "clips_selected", "edit_planned", "draft_rendered",
+                           "awaiting_review"},
     "approved": {"final_rendered"},
     "distribution_prepared": {"scheduled", "exported"},
     "scheduled": {"analytics_pending"},
@@ -59,7 +64,10 @@ def allowed_next(stage: str) -> set[str]:
 
 
 def check_transition(current: str, target: str) -> None:
+    # "failed" is a STATUS, never a stage — entering it as a stage would make
+    # the job unrecoverable (Agent G finding 13).
     if target == "failed":
-        return
+        raise TransitionError(
+            "'failed' is a job status, not a stage; use JobStore.set_error")
     if target not in allowed_next(current):
         raise TransitionError(f"Illegal transition {current} -> {target}")

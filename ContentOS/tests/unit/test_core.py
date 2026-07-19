@@ -33,8 +33,15 @@ def test_state_machine_review_branches():
         state_machine.check_transition("approved", "discovered")
 
 
-def test_failed_always_allowed():
-    state_machine.check_transition("transcribed", "failed")
+def test_failed_is_a_status_not_a_stage():
+    # Entering 'failed' as a stage would make a job unrecoverable.
+    with pytest.raises(TransitionError):
+        state_machine.check_transition("transcribed", "failed")
+
+
+def test_revision_can_reenter_any_rebuild_stage():
+    for stage in ("captioned", "edit_planned", "draft_rendered", "strategized"):
+        state_machine.check_transition("revision_requested", stage)
 
 
 def test_safe_name_blocks_traversal():

@@ -31,4 +31,4 @@ silence_noise_floor_db: -35.0
 ingest_stable_seconds: 2.0
 ingest_poll_seconds: 1.0
 ingest_max_file_gb: 64.0
-worker_claim_timeout_minutes: 30
+worker_claim_timeout_minutes: 240

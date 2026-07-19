@@ -140,9 +140,9 @@ def run(settings: Settings, store: JobStore, job_id: str) -> dict:
                                     "duration": round(rmeta["duration_seconds"], 2)}
 
     sheet = settings.paths.output_thumbnails / f"{job_id}_contact_sheet.png"
-    horizontal = artifacts.get("draft_horizontal")
-    if make_contact_sheet(Path(store.artifacts(job_id)["draft_horizontal"]), sheet,
-                          planned_duration):
+    fresh = store.artifacts(job_id)
+    any_draft = fresh.get("draft_horizontal") or fresh.get("draft_vertical")
+    if any_draft and make_contact_sheet(Path(any_draft), sheet, planned_duration):
         store.set_artifact(job_id, "contact_sheet", sheet)
     return {"variants": results, "planned_duration": round(planned_duration, 2)}
 
@@ -172,6 +172,13 @@ def render_final(settings: Settings, store: JobStore, job_id: str) -> dict:
             (new_id("render"), job_id, "final", variant["name"], str(out),
              rmeta["duration_seconds"]))
         results[variant["name"]] = out.name
-    store.set_artifact(job_id, "final_render",
-                       settings.paths.output_finals / f"{job_id}_final_vertical.mp4")
+    # Point final_render at the vertical variant when present, else the first
+    # rendered variant — never a hardcoded path that may not exist.
+    preferred = settings.paths.output_finals / f"{job_id}_final_vertical.mp4"
+    if not preferred.exists():
+        first = next(iter(results.values()), None)
+        if first is None:
+            raise MediaError("render_final produced no variants")
+        preferred = settings.paths.output_finals / first
+    store.set_artifact(job_id, "final_render", preferred)
     return {"variants": results}

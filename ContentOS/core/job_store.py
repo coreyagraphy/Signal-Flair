@@ -112,11 +112,15 @@ class JobStore:
         current = job["stage"]
         if target_stage != current:
             state_machine.check_transition(current, target_stage)
-        self.conn.execute(
+        cur = self.conn.execute(
             "UPDATE jobs SET stage = ?, status = ?, error_code = ?, error_message = ?,"
             " updated_at = ? WHERE id = ? AND stage = ?",
             (target_stage, status, error_code, error_message, _now(), job_id, current),
         )
+        if cur.rowcount != 1:
+            raise TransitionError(
+                f"Concurrent modification: job {job_id} left stage {current} "
+                "while transitioning")
         self.add_event(job_id, "transition",
                        {"from": current, "to": target_stage, "status": status,
                         "error_code": error_code})

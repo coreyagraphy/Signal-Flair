@@ -75,6 +75,17 @@ def load_capabilities(settings: Settings) -> dict:
 
 def write_capabilities(settings: Settings, doc: dict) -> Path:
     path = settings.paths.config / "premiere_capabilities.yaml"
+    # Preserve hand-mapped operation_map entries that still point at tools the
+    # server actually exposes — re-discovery must not wipe operator work.
+    if path.exists():
+        try:
+            previous = yaml.safe_load(path.read_text(encoding="utf-8")) or {}
+            observed = {t["name"] for t in doc.get("observed_tools", [])}
+            for op, tool in (previous.get("operation_map") or {}).items():
+                if tool and tool in observed and not doc["operation_map"].get(op):
+                    doc["operation_map"][op] = tool
+        except yaml.YAMLError:
+            pass
     path.write_text(yaml.safe_dump(doc, sort_keys=False, allow_unicode=True),
                     encoding="utf-8")
     report = settings.paths.root / "docs" / "premiere" / "PREMIERE_MCP_CAPABILITY_REPORT.md"

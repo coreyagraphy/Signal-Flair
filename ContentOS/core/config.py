@@ -57,7 +57,10 @@ class Settings:
     ingest_stable_seconds: float = 2.0
     ingest_poll_seconds: float = 1.0
     ingest_max_file_gb: float = 64.0
-    worker_claim_timeout_minutes: int = 30
+    # Must exceed the longest single stage (renders may take hours). The claim
+    # is refreshed at every stage boundary; this bounds recovery of a claim
+    # whose worker died mid-stage.
+    worker_claim_timeout_minutes: int = 240
 
     # Cut analysis defaults (mandate section 14) — conservative on purpose.
     minimum_removable_silence_ms: int = 1200

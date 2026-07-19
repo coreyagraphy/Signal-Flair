@@ -63,6 +63,25 @@ def clean_transcript(transcript: dict, glossary: dict[str, str]) -> dict:
             seg["raw_text"] = original
             seg["text"] = cleaned
             changes.append({"segment": seg["id"], "notes": notes})
+    # Captions build from words[] when present, so cleanup must also apply
+    # there: drop standalone filler tokens, fix glossary spellings.
+    single_fillers = {f.rstrip(",") for f in FILLERS if " " not in f}
+    cleaned_words = []
+    removed_words = 0
+    for w in out.get("words", []):
+        token = (w.get("word") or "").strip().strip(".,!?;:").lower()
+        if token in single_fillers:
+            removed_words += 1
+            continue
+        bare = (w.get("word") or "").strip()
+        fixed = glossary.get(bare.lower())
+        if fixed:
+            w = {**w, "word": fixed, "raw_word": bare}
+        cleaned_words.append(w)
+    out["words"] = cleaned_words
+    if removed_words:
+        changes.append({"segment": None,
+                        "notes": [f"removed {removed_words} filler word timings"]})
     low_conf = [w for w in out.get("words", [])
                 if w.get("confidence", 1.0) < LOW_CONFIDENCE and w.get("word")]
     out["low_confidence_words"] = low_conf[:500]

@@ -27,12 +27,15 @@ def _protected_ranges(store: JobStore, job_id: str) -> list[tuple[float, float]]
 
 def _word_safe(cut_start: float, cut_end: float, words: list[dict],
                pad: float = 0.05) -> bool:
-    """A cut is word-safe when no word straddles either cut boundary."""
+    """A cut is word-safe when no word straddles a boundary AND no word falls
+    entirely inside the removed range (a swallowed word is deleted speech)."""
     for w in words:
         ws, we = w.get("start", 0), w.get("end", 0)
         if ws - pad < cut_start < we + pad:
             return False
         if ws - pad < cut_end < we + pad:
+            return False
+        if cut_start <= ws and we <= cut_end:
             return False
     return True
 
@@ -98,17 +101,26 @@ def analyze_cuts(settings: Settings, *, wav_path: Path, clip_start: float,
 
 def build_segments(clip_start: float, clip_end: float, cuts: list[dict],
                    min_clip_seconds: float) -> list[dict]:
-    """Timeline segments = clip range minus removed cuts, chronological order."""
+    """Timeline segments = clip range minus removed cuts, chronological order.
+
+    A speech span shorter than min_clip_seconds is never silently discarded —
+    the adjacent cut is skipped instead so the content survives (Agent G
+    finding 5).
+    """
     removals = sorted([c for c in cuts if c["action"] == "remove"],
                       key=lambda c: c["start"])
     segments = []
     cursor = clip_start
     for cut in removals:
-        if cut["start"] - cursor >= min_clip_seconds:
-            segments.append({"source_in": round(cursor, 3),
-                             "source_out": round(cut["start"], 3)})
+        if cut["start"] - cursor < min_clip_seconds:
+            # Keeping the fragment matters more than removing this dead air.
+            cut["action"] = "skipped"
+            cut["reason"] += "; skipped: adjacent speech fragment too short to cut around"
+            continue
+        segments.append({"source_in": round(cursor, 3),
+                         "source_out": round(cut["start"], 3)})
         cursor = max(cursor, cut["end"])
-    if clip_end - cursor >= min_clip_seconds or not segments:
+    if clip_end - cursor >= 0.05 or not segments:
         segments.append({"source_in": round(cursor, 3),
                          "source_out": round(clip_end, 3)})
     timeline = 0.0

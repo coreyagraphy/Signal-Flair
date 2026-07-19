@@ -6,6 +6,7 @@ resumes from the failed stage without redoing verified work.
 """
 from __future__ import annotations
 
+import os
 import socket
 import traceback
 from typing import Callable
@@ -40,7 +41,9 @@ def registered_stages() -> list[str]:
 
 
 def _worker_name() -> str:
-    return f"{socket.gethostname()}"
+    # Hostname alone is NOT unique on one machine — two worker processes on
+    # the same box would share a claim (Agent G finding 2). PID disambiguates.
+    return f"{socket.gethostname()}:{os.getpid()}"
 
 
 def run_stage(settings: Settings, store: JobStore, job_id: str, stage: str) -> dict:
@@ -75,6 +78,11 @@ def advance(settings: Settings, store: JobStore, job_id: str,
                 return current
             nxt = _next_auto_stage(current, target)
             if nxt is None:
+                return current
+            # Refresh the claim at every stage boundary so a long stage
+            # (renders run up to 2h) doesn't let the claim expire mid-work.
+            if not store.claim_job(job_id, worker):
+                log.warning("Lost claim on %s; another worker took over", job_id)
                 return current
             try:
                 store.transition(job_id, nxt, status="running")

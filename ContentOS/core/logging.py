@@ -35,6 +35,16 @@ class RedactionFilter(logging.Filter):
         if redacted != message:
             record.msg = redacted
             record.args = ()
+        # Tracebacks bypass msg — pre-format and redact them too, otherwise a
+        # secret inside an exception message leaks via logger.exception().
+        if record.exc_info and not record.exc_text:
+            import traceback
+            text = "".join(traceback.format_exception(*record.exc_info))
+            for value in _secret_values():
+                if value in text:
+                    text = text.replace(value, "[REDACTED]")
+            record.exc_text = text
+            record.exc_info = None
         return True
 
 

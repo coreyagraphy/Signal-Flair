@@ -9,10 +9,12 @@ server exposes before any call is mapped.
 from __future__ import annotations
 
 import json
+import os
 import shlex
 import subprocess
 import threading
 import queue
+import time
 from dataclasses import dataclass, field
 
 from core.exceptions import ProviderUnavailable, SubprocessFailed
@@ -97,7 +99,6 @@ class StdioMcpClient:
         req_id = self._next_id
         self._send({"jsonrpc": "2.0", "id": req_id, "method": method,
                     "params": params})
-        import time
         deadline = time.monotonic() + self.timeout
         while time.monotonic() < deadline:
             try:
@@ -109,9 +110,11 @@ class StdioMcpClient:
                     raise SubprocessFailed(
                         f"MCP {method} error: {msg['error']}", retryable=False)
                 return msg.get("result", {})
-            # Requeue unrelated messages (notifications are dropped).
+            # Requeue unrelated messages (notifications are dropped) — with a
+            # short pause so an unmatched message doesn't busy-spin the loop.
             if "id" in msg:
                 self._responses.put(msg)
+                time.sleep(0.05)
         raise SubprocessFailed(f"MCP {method} timed out after {self.timeout}s")
 
     # -- public ----------------------------------------------------------
@@ -126,6 +129,9 @@ class StdioMcpClient:
 
 
 def client_from_settings(settings) -> StdioMcpClient:
-    args = shlex.split(settings.premiere_mcp_args) if settings.premiere_mcp_args else []
+    # posix=False on Windows — POSIX shlex would strip the backslashes out of
+    # paths like C:\Users\corey\premiere-mcp\dist\index.js.
+    args = shlex.split(settings.premiere_mcp_args, posix=(os.name != "nt")) \
+        if settings.premiere_mcp_args else []
     return StdioMcpClient(settings.premiere_mcp_command, args,
                           settings.premiere_mcp_timeout_seconds)

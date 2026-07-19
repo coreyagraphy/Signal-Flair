@@ -142,3 +142,27 @@ def test_restart_resume(settings, store, synthetic_media, pipeline_env):
     assert store2.get_job(job_id)["stage"] == "transcribed"
     stage = pipeline.advance(settings, store2, job_id)
     assert stage == "awaiting_review"
+
+
+def test_generic_note_revision_does_not_wedge(settings, store, synthetic_media,
+                                              pipeline_env):
+    """Regression for Agent G finding 1: a ratings-only / audio-note revision
+    must re-enter draft_rendered legally and rebuild to review."""
+    from core import pipeline
+    from services import ingest_service, review_service
+
+    job_id = ingest_service.ingest_file(settings, store, pipeline_env,
+                                        wait_stable=False)
+    _place_fixture(settings, job_id, synthetic_media)
+    stage = pipeline.advance(settings, store, job_id)
+    assert stage == "awaiting_review"
+
+    result = review_service.submit_feedback(
+        settings, store, job_id, ratings={"overall": 70},
+        decision="revision_requested",
+        notes=[{"timestamp_seconds": 5.0, "note_type": "audio",
+                "text": "music feels loud here"}])
+    assert result["invalidated"][0] == "draft_rendered"
+    assert store.get_job(job_id)["stage"] == "draft_rendered"
+    stage = pipeline.advance(settings, store, job_id)
+    assert stage == "awaiting_review"

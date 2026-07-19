@@ -64,6 +64,9 @@ def test_failed_stage_records_error_and_retries(settings, store, monkeypatch):
         out = settings.paths.job_dir(_job_id) / "metadata.json"
         out.write_text("{}", encoding="utf-8")
         _store.set_artifact(_job_id, "metadata_json", out)
+        codec = settings.paths.job_dir(_job_id) / "codec_report.json"
+        codec.write_text("{}", encoding="utf-8")
+        _store.set_artifact(_job_id, "codec_report", codec)
         return {}
 
     pipeline.register("analyzed", flaky_runner)

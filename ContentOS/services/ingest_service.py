@@ -69,11 +69,13 @@ def ingest_file(settings: Settings, store: JobStore, source: Path,
 
     Raises DuplicateAsset / MediaError; caller decides whether to quarantine.
     """
+    # Symlink check must run on the ORIGINAL path — resolve() first would
+    # erase the link and make this check dead code (Agent G finding 3).
+    if source.is_symlink():
+        raise MediaError(f"Refusing symlinked input: {source}")
     source = source.resolve()
     if not source.exists():
         raise MediaError(f"File does not exist: {source}")
-    if source.is_symlink():
-        raise MediaError(f"Refusing symlinked input: {source}")
     if source.suffix.lower() not in ACCEPTED_EXTENSIONS:
         raise MediaError(f"Unsupported extension {source.suffix}: {source.name}")
 
@@ -98,19 +100,35 @@ def ingest_file(settings: Settings, store: JobStore, source: Path,
     digest = sha256_file(source)
     existing = store.find_asset_by_hash(digest)
     if existing is not None:
-        raise DuplicateAsset(
-            f"{source.name} already ingested as asset {existing['id']}"
-        )
+        # An orphan row (no managed copy completed, no job) must not
+        # permanently poison the hash registry (Agent G finding 4).
+        job_count = store.conn.execute(
+            "SELECT COUNT(*) AS c FROM jobs WHERE asset_id = ?",
+            (existing["id"],)).fetchone()["c"]
+        managed_ok = existing["managed_path"] and Path(existing["managed_path"]).exists()
+        if job_count == 0 and not managed_ok:
+            log.warning("Removing orphan asset row %s for re-ingest", existing["id"])
+            store.conn.execute("DELETE FROM source_assets WHERE id = ?",
+                               (existing["id"],))
+        else:
+            raise DuplicateAsset(
+                f"{source.name} already ingested as asset {existing['id']}"
+            )
 
     asset_id = store.create_asset(original_path=source, sha256=digest, size_bytes=size)
 
-    # Managed copy + hash verification before anything moves.
+    # Managed copy + hash verification before anything moves. On failure the
+    # asset row is removed so the footage can be re-ingested later.
     managed = settings.paths.media_originals / f"{asset_id}_{safe_name(source.name)}"
-    shutil.copy2(str(source), str(managed))
-    copied_hash = sha256_file(managed)
-    if copied_hash != digest:
+    try:
+        shutil.copy2(str(source), str(managed))
+        copied_hash = sha256_file(managed)
+        if copied_hash != digest:
+            raise MediaError(f"Managed copy hash mismatch for {source.name}")
+    except Exception:
         managed.unlink(missing_ok=True)
-        raise MediaError(f"Managed copy hash mismatch for {source.name}")
+        store.conn.execute("DELETE FROM source_assets WHERE id = ?", (asset_id,))
+        raise
 
     store.update_asset(
         asset_id, managed_path=str(managed),

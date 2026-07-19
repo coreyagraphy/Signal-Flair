@@ -90,7 +90,10 @@ def build_cues_from_words(words: list[dict], style: CaptionStyle) -> list[dict]:
             flush()
     flush()
 
-    # Enforce monotonic, non-overlapping cues.
+    # Enforce monotonic, non-overlapping cues. Note: under very dense speech
+    # this truncation can undercut min_cue_seconds / reading-speed targets —
+    # those are best-effort; the quality gate reports (non-critically) when
+    # cues exceed the readable threshold.
     for i in range(1, len(cues)):
         if cues[i]["start"] < cues[i - 1]["end"]:
             cues[i - 1]["end"] = round(min(cues[i - 1]["end"], cues[i]["start"]), 3)
@@ -98,13 +101,35 @@ def build_cues_from_words(words: list[dict], style: CaptionStyle) -> list[dict]:
 
 
 def build_cues_from_segments(segments: list[dict], style: CaptionStyle) -> list[dict]:
+    """Segment-based cues; long segment text is split into multiple cues with
+    proportional timing so no cue exceeds max_lines."""
+    budget = style.max_chars_per_line * style.max_lines
     cues = []
     for seg in segments:
         text = (seg.get("text") or "").strip()
         if not text:
             continue
-        cues.append({"start": round(seg["start"], 3), "end": round(seg["end"], 3),
-                     "text": _wrap(text, style)})
+        words = text.split()
+        chunks: list[str] = []
+        current = ""
+        for word in words:
+            candidate = f"{current} {word}".strip()
+            if len(candidate) > budget and current:
+                chunks.append(current)
+                current = word
+            else:
+                current = candidate
+        if current:
+            chunks.append(current)
+        seg_start, seg_end = seg["start"], seg["end"]
+        span = max(0.01, seg_end - seg_start)
+        total_chars = sum(len(c) for c in chunks) or 1
+        t = seg_start
+        for chunk in chunks:
+            dur = span * len(chunk) / total_chars
+            cues.append({"start": round(t, 3), "end": round(min(seg_end, t + dur), 3),
+                         "text": _wrap(chunk, style)})
+            t += dur
     return cues
 
 
@@ -123,13 +148,38 @@ def _wrap(text: str, style: CaptionStyle) -> str:
             line = candidate
     if line:
         lines.append(line)
-    return "\n".join(lines[: style.max_lines * 3])
+    return "\n".join(lines[: style.max_lines])
+
+
+def resolve_font(style: CaptionStyle) -> str:
+    """Return font_family if it exists on this machine, else fallback_font.
+
+    Checks the platform font directories by filename match — a real check,
+    not a documented fiction (Agent G finding 15).
+    """
+    import platform
+    from pathlib import Path as _P
+    if platform.system() == "Windows":
+        font_dirs = [_P("C:/Windows/Fonts")]
+    elif platform.system() == "Darwin":
+        font_dirs = [_P("/System/Library/Fonts"), _P("/Library/Fonts")]
+    else:
+        font_dirs = [_P("/usr/share/fonts"), _P("/usr/local/share/fonts")]
+    needle = style.font_family.lower().replace(" ", "")
+    for d in font_dirs:
+        if not d.exists():
+            continue
+        for f in d.rglob("*"):
+            if f.suffix.lower() in (".ttf", ".otf", ".ttc") and \
+                    needle in f.stem.lower().replace(" ", ""):
+                return style.font_family
+    return style.fallback_font
 
 
 def ass_style_args(style: CaptionStyle, vertical: bool = False) -> str:
-    """force_style string for ffmpeg subtitles filter (with fallback font)."""
+    """force_style string for ffmpeg subtitles filter, with real font fallback."""
     size = style.font_size + (10 if vertical else 0)
-    return (f"FontName={style.font_family},FontSize={size},"
+    return (f"FontName={resolve_font(style)},FontSize={size},"
             f"PrimaryColour={style.primary_color},OutlineColour={style.outline_color},"
             f"Outline=2,MarginV={style.safe_area_bottom_pct * 4}")
 

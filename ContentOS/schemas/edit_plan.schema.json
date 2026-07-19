@@ -44,7 +44,7 @@
         "properties": {
           "start": {"type": "number"},
           "end": {"type": "number"},
-          "action": {"type": "string", "enum": ["remove", "flagged"]},
+          "action": {"type": "string", "enum": ["remove", "flagged", "skipped"]},
           "reason": {"type": "string"},
           "confidence": {"type": "number", "minimum": 0, "maximum": 1}
         }

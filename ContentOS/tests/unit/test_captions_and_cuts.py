@@ -1,6 +1,8 @@
 """Unit tests: caption segmentation, word-safe cuts, protected pauses."""
 from __future__ import annotations
 
+import pytest
+
 from services.caption_service import (CaptionStyle, build_cues_from_segments,
                                       build_cues_from_words)
 from services.edit_plan_service import _word_safe, build_segments
@@ -59,6 +61,7 @@ def test_word_safe_cut_detection():
     assert _word_safe(1.6, 1.9, words)          # cut in the gap: safe
     assert not _word_safe(1.2, 1.9, words)      # start inside "hello": unsafe
     assert not _word_safe(1.6, 2.2, words)      # end inside "world": unsafe
+    assert not _word_safe(0.9, 2.5, words)      # words swallowed whole: unsafe
 
 
 def test_build_segments_preserves_chronology_and_min_duration():
@@ -77,6 +80,29 @@ def test_build_segments_preserves_chronology_and_min_duration():
 
 def test_build_segments_never_empty():
     segments = build_segments(0.0, 1.0, [{"start": 0.0, "end": 1.0,
-                                          "action": "remove"}],
+                                          "action": "remove", "reason": "x"}],
                               min_clip_seconds=0.8)
     assert segments  # always at least one segment survives
+
+
+def test_short_fragments_kept_by_skipping_cut():
+    # A 0.5s hook fragment before dead air must survive: the cut is skipped,
+    # not the speech (Agent G finding 5).
+    cuts = [{"start": 0.5, "end": 3.0, "action": "remove", "reason": "dead air"}]
+    segments = build_segments(0.0, 10.0, cuts, min_clip_seconds=0.8)
+    assert segments[0]["source_in"] == 0.0
+    assert segments[-1]["source_out"] == 10.0
+    total = sum(s["source_out"] - s["source_in"] for s in segments)
+    assert total == pytest.approx(10.0)          # nothing lost
+    assert cuts[0]["action"] == "skipped"        # and it's explained
+
+
+def test_segment_cues_respect_max_lines():
+    style = CaptionStyle(max_chars_per_line=20, max_lines=2)
+    long_text = "word " * 40
+    cues = build_cues_from_segments(
+        [{"start": 0.0, "end": 10.0, "text": long_text.strip()}], style)
+    assert len(cues) > 1                          # long segment split up
+    for cue in cues:
+        assert len(cue["text"].split("\n")) <= 2  # never more than max_lines
+    assert cues[-1]["end"] <= 10.0 + 1e-6
