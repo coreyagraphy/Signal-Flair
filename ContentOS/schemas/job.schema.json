@@ -1,0 +1,17 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Content OS job (export shape)",
+  "type": "object",
+  "required": ["id", "asset_id", "format_id", "stage", "status"],
+  "properties": {
+    "id": {"type": "string"},
+    "asset_id": {"type": "string"},
+    "format_id": {"type": "string"},
+    "stage": {"type": "string"},
+    "status": {"type": "string", "enum": ["pending", "running", "blocked", "failed", "done"]},
+    "retry_count": {"type": "integer", "minimum": 0},
+    "error_code": {"type": ["string", "null"]},
+    "error_message": {"type": ["string", "null"]},
+    "artifacts": {"type": "object"}
+  }
+}

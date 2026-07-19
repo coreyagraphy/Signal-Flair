@@ -1,0 +1,15 @@
+# Research provider configuration.
+# local_docs is always on and free. External providers activate only when
+# their API key exists AND a verified client implementation ships.
+providers:
+  local_docs:
+    enabled: true
+  brave_search:
+    enabled: false          # requires BRAVE_SEARCH_API_KEY + client implementation
+  perplexity:
+    enabled: false          # requires PERPLEXITY_API_KEY + client implementation
+  firecrawl:
+    enabled: false          # requires FIRECRAWL_API_KEY + client implementation
+  youtube_data:
+    enabled: false          # requires YOUTUBE_API_KEY + client implementation
+cache_days: 7

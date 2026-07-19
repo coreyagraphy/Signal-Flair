@@ -1,0 +1,45 @@
+# Caption style presets. Fonts fall back to fallback_font when not installed.
+default: clean_white
+styles:
+  clean_white:
+    font_family: "DejaVu Sans"
+    fallback_font: "Arial"
+    font_size: 48
+    primary_color: "&HFFFFFF&"
+    outline_color: "&H000000&"
+    max_chars_per_line: 34
+    max_lines: 2
+  bold_yellow_keyword:
+    font_family: "DejaVu Sans"
+    fallback_font: "Arial"
+    font_size: 54
+    primary_color: "&H00F4FF&"      # yellow (ASS is BGR)
+    outline_color: "&H000000&"
+    max_chars_per_line: 28
+    max_lines: 2
+    uppercase: true
+  high_contrast_social:
+    font_family: "DejaVu Sans"
+    fallback_font: "Arial"
+    font_size: 56
+    primary_color: "&HFFFFFF&"
+    outline_color: "&H000000&"
+    max_chars_per_line: 24
+    max_lines: 2
+    uppercase: true
+  mental_vision_neon:
+    font_family: "DejaVu Sans"
+    fallback_font: "Arial"
+    font_size: 50
+    primary_color: "&HA9B800&"      # teal-ish (BGR)
+    outline_color: "&H000000&"
+    max_chars_per_line: 30
+    max_lines: 2
+  minimal_documentary:
+    font_family: "DejaVu Serif"
+    fallback_font: "Georgia"
+    font_size: 40
+    primary_color: "&HFFFFFF&"
+    outline_color: "&H000000&"
+    max_chars_per_line: 42
+    max_lines: 2

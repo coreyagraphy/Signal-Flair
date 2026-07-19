@@ -1,0 +1,61 @@
+# Secrets and local environment
+.env
+.env.local
+*.key
+
+# Runtime data (never commit media, databases, caches, or logs)
+data/contentos.db
+data/contentos.db-*
+data/jobs/
+data/review/
+data/cache/
+data/research/
+data/events/
+data/logs/
+
+# Managed media (personal footage stays local)
+Input/inbox/*
+Input/processing/*
+Input/completed/*
+Input/failed/*
+Media/originals/*
+Media/proxies/*
+Media/audio/*
+Media/broll/*
+Media/music/*
+Media/sound_effects/*
+Media/graphics/*
+Output/drafts/*
+Output/finals/*
+Output/captions/*
+Output/thumbnails/*
+Output/premiere/*
+Output/manifests/*
+Output/social/*
+Output/reports/*
+
+# Keep directory structure
+!**/.gitkeep
+
+# Python
+__pycache__/
+*.pyc
+.venv/
+venv/
+.pytest_cache/
+.coverage
+htmlcov/
+.mypy_cache/
+.ruff_cache/
+
+# Model caches
+models/
+.cache/
+
+# Adobe autosaves
+*.prproj.bak
+Adobe Premiere Pro Auto-Save/
+
+# OS
+Thumbs.db
+.DS_Store

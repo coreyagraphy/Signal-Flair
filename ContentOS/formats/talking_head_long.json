@@ -1,0 +1,14 @@
+{
+  "format_id": "talking_head_long",
+  "name": "Talking-head long-form",
+  "description": "Long-form horizontal edit: dead-air removal only, sidecar captions, chronology preserved. Clip selection keeps the full voiced range.",
+  "min_duration_seconds": 120,
+  "max_duration_seconds": 1800,
+  "target_duration_seconds": 600,
+  "aspect": "16:9",
+  "platforms": ["youtube"],
+  "hook_window_seconds": 15,
+  "prefer_contiguous": true,
+  "caption_style": "minimal_documentary",
+  "autopilot_enabled": false
+}

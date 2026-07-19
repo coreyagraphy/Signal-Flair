@@ -1,0 +1,14 @@
+{
+  "format_id": "educational_short",
+  "name": "Educational short",
+  "description": "30-90s vertical teaching moment: one concept, clear payoff, specific detail favored over emotional energy.",
+  "min_duration_seconds": 30,
+  "max_duration_seconds": 90,
+  "target_duration_seconds": 55,
+  "aspect": "9:16",
+  "platforms": ["youtube_short", "tiktok", "linkedin"],
+  "hook_window_seconds": 2.5,
+  "prefer_contiguous": true,
+  "caption_style": "clean_white",
+  "autopilot_enabled": false
+}

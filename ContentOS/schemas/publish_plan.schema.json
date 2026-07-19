@@ -1,0 +1,25 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Content OS publish plan",
+  "type": "object",
+  "required": ["plan_id", "job_id", "platform", "media_path", "idempotency_key", "dry_run"],
+  "properties": {
+    "plan_id": {"type": "string"},
+    "job_id": {"type": "string"},
+    "platform": {"type": "string"},
+    "media_path": {"type": "string"},
+    "title": {"type": "string"},
+    "description": {"type": "string"},
+    "hashtags": {"type": "array", "items": {"type": "string"}},
+    "thumbnail": {"type": ["string", "null"]},
+    "scheduled_at": {"type": ["string", "null"]},
+    "timezone": {"type": "string"},
+    "privacy": {"type": "string", "enum": ["private", "unlisted", "public"]},
+    "first_comment": {"type": ["string", "null"]},
+    "cta": {"type": ["string", "null"]},
+    "idempotency_key": {"type": "string"},
+    "approval_state": {"type": "string", "enum": ["pending", "approved", "rejected"]},
+    "dry_run": {"type": "boolean"},
+    "validation": {"type": "object"}
+  }
+}

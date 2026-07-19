@@ -1,0 +1,28 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Content OS review submission",
+  "type": "object",
+  "required": ["job_id", "decision"],
+  "properties": {
+    "job_id": {"type": "string"},
+    "decision": {"type": "string", "enum": ["approved", "revision_requested"]},
+    "ratings": {
+      "type": "object",
+      "additionalProperties": {"type": "integer", "minimum": 1, "maximum": 100}
+    },
+    "notes": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["text"],
+        "properties": {
+          "timestamp_seconds": {"type": ["number", "null"]},
+          "end_seconds": {"type": ["number", "null"]},
+          "note_type": {"type": "string",
+            "enum": ["note", "remove", "protect", "caption", "graphic", "framing", "audio"]},
+          "text": {"type": "string", "maxLength": 4000}
+        }
+      }
+    }
+  }
+}

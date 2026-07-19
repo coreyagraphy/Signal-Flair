@@ -1,0 +1,25 @@
+# Platform validation rules used by distribution_service.
+platforms:
+  youtube_short:
+    aspect: "9:16"
+    min_duration_seconds: 5
+    max_duration_seconds: 180
+    max_file_gb: 2
+  tiktok:
+    aspect: "9:16"
+    min_duration_seconds: 3
+    max_duration_seconds: 600
+    max_file_gb: 4
+  instagram_reel:
+    aspect: "9:16"
+    min_duration_seconds: 3
+    max_duration_seconds: 90
+    max_file_gb: 4
+  linkedin:
+    min_duration_seconds: 3
+    max_duration_seconds: 900
+    max_file_gb: 5
+  youtube:
+    aspect: "16:9"
+    min_duration_seconds: 10
+    max_file_gb: 128

@@ -1,0 +1,23 @@
+[project]
+name = "contentos"
+version = "0.1.0"
+description = "Content OS — local-first, model-neutral content operating system"
+requires-python = ">=3.10"
+dependencies = ["pyyaml>=6.0,<7", "jsonschema>=4.17,<5"]
+
+[project.optional-dependencies]
+asr = ["faster-whisper>=1.0"]
+ui = ["streamlit>=1.30"]
+dev = ["pytest>=7.4,<9", "pytest-cov>=4.1,<6", "ruff>=0.4,<1"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+addopts = "-q"
+
+[tool.ruff]
+line-length = 100
+target-version = "py310"
+
+[tool.ruff.lint]
+select = ["E", "F", "W", "B"]
+ignore = ["E501"]

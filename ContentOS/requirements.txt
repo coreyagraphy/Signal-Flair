@@ -1,0 +1,8 @@
+# Content OS runtime dependencies (minimal by design — stdlib preferred).
+pyyaml>=6.0,<7
+jsonschema>=4.17,<5
+
+# Optional extras — install per feature:
+#   pip install faster-whisper        # local GPU/CPU transcription
+#   pip install streamlit             # control panel (app.py)
+#   pip install watchdog              # event-driven watcher (polling works without it)

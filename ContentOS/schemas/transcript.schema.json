@@ -1,0 +1,41 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Content OS transcript",
+  "type": "object",
+  "required": ["engine", "engine_mode", "segments"],
+  "properties": {
+    "engine": {"type": "string"},
+    "engine_mode": {"type": "string"},
+    "language": {"type": ["string", "null"]},
+    "duration_seconds": {"type": "number", "minimum": 0},
+    "segments": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["id", "start", "end", "text"],
+        "properties": {
+          "id": {"type": "integer"},
+          "start": {"type": "number", "minimum": 0},
+          "end": {"type": "number", "minimum": 0},
+          "text": {"type": "string"},
+          "confidence": {"type": "number"}
+        }
+      }
+    },
+    "words": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["start", "end", "word"],
+        "properties": {
+          "start": {"type": "number"},
+          "end": {"type": "number"},
+          "word": {"type": "string"},
+          "confidence": {"type": "number"}
+        }
+      }
+    },
+    "flags": {"type": "array", "items": {"type": "string"}},
+    "raw": {"type": "object"}
+  }
+}

@@ -1,0 +1,21 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Content OS format template",
+  "type": "object",
+  "required": ["format_id", "name", "min_duration_seconds", "max_duration_seconds",
+               "aspect", "platforms"],
+  "properties": {
+    "format_id": {"type": "string"},
+    "name": {"type": "string"},
+    "description": {"type": "string"},
+    "min_duration_seconds": {"type": "number", "exclusiveMinimum": 0},
+    "max_duration_seconds": {"type": "number", "exclusiveMinimum": 0},
+    "target_duration_seconds": {"type": "number", "exclusiveMinimum": 0},
+    "aspect": {"type": "string"},
+    "platforms": {"type": "array", "minItems": 1, "items": {"type": "string"}},
+    "hook_window_seconds": {"type": "number"},
+    "prefer_contiguous": {"type": "boolean"},
+    "caption_style": {"type": "string"},
+    "autopilot_enabled": {"type": "boolean"}
+  }
+}

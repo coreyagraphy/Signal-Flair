@@ -1,0 +1,21 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Content OS strategy brief",
+  "type": "object",
+  "required": ["job_id", "created_at", "provider", "themes", "signal_class", "evidence"],
+  "properties": {
+    "job_id": {"type": "string"},
+    "created_at": {"type": "string"},
+    "prompt_version": {"type": "string"},
+    "provider": {"type": "string"},
+    "heuristic": {"type": "boolean"},
+    "themes": {"type": "array", "items": {"type": "string"}},
+    "signal_class": {"type": "string",
+      "enum": ["verified_trend", "emerging_signal", "anecdotal_signal",
+               "evergreen_need", "internal_hypothesis"]},
+    "no_speech_recognition": {"type": "boolean"},
+    "taste_rules_applied": {"type": "array", "items": {"type": "string"}},
+    "evidence": {"type": "array", "items": {"type": "object"}},
+    "generated": {"type": "string"}
+  }
+}
