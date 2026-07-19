@@ -6,6 +6,10 @@ GPU-, Premiere-, or account-bound below is code-complete but NOT yet
 executed in its real environment. Nothing on this list is claimed as done.
 
 ## Needs the Windows workstation (Corey or a local session)
+
+**One-command start**: docs/WINDOWS_VERIFICATION_PLAYBOOK.md +
+`scripts/windows_phase.ps1 -Step all` automate items 1-4, 6-7 below plus
+the VettaRey source resolution/ingest.
 1. **Clone/pull the branch** into
    `C:\Users\corey\OneDrive\Desktop\ContentOS_Claude_Codex_Ready`
    (the repo lives at `ContentOS/` inside `coreyagraphy/Signal-Flair`,
@@ -33,8 +37,9 @@ executed in its real environment. Nothing on this list is claimed as done.
   explicit dry-run opt-out + per-plan approval.
 
 ## Not implemented (stated plainly)
-- Remotion rendering route (assets can be routed/classified to it, no
-  renderer exists).
+- ~~Remotion rendering route~~ IMPLEMENTED 2026-07-19: title-reveal
+  compositions render to ProRes 4444 with alpha (proven in the build
+  container); Windows re-render is one playbook command.
 - DaVinci Resolve fallback adapter.
 - Subject-tracked auto-reframe (vertical drafts use center crop; the manifest
   records where tracked keyframes belong).
