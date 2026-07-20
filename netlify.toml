@@ -32,3 +32,10 @@
   from = "/signal-pulse/*"
   to = "/pulse/"
   status = 301
+
+# Long-lived caching for heavy static media (the compressed background videos rarely change).
+# stale-while-revalidate lets repeat visitors render instantly while a fresh copy is fetched.
+[[headers]]
+  for = "/video/*"
+  [headers.values]
+    Cache-Control = "public, max-age=86400, stale-while-revalidate=604800"
