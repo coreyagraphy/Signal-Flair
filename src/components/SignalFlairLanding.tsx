@@ -1292,7 +1292,7 @@ export default function SignalFlairLanding() {
         <div className="about-inner">
           <div className="about-photo reveal">
             <img className="about-portrait" src="/founder.jpg" alt="Corey Ellis, founder of Signal Flair" loading="lazy" fetchPriority="low" />
-            <div className="about-photo-cap">Corey Ellis · Founder</div>
+            <div className="about-photo-cap"><span className="about-cap-name">Corey Ellis</span><span className="about-cap-role">Founder</span></div>
           </div>
           <div className="about-copy reveal">
             <div className="about-eyebrow">The founder · the proof story</div>
