@@ -715,7 +715,7 @@ export default function SignalFlairLanding() {
               border: 0,
             }}
           >
-            Most local businesses are invisible to AI. What&apos;s your Signal Score?
+            AI can find your business. But does it understand it? What&apos;s your Signal Score?
           </h1>
           <div className="hero-word" aria-hidden="true">FOUND.</div>
           <div className="h-side top">
@@ -782,7 +782,7 @@ export default function SignalFlairLanding() {
 
       {/* ═══ PROBLEM ═══ */}
       <section id="problem" data-cursor="light">
-        <div className="prob-wall" id="prob-wall">INVISIBLE.</div>
+        <div className="prob-wall" id="prob-wall">UNREADABLE.</div>
         <div className="prob-inner">
           <div className="prob-left reveal">
             <div className="prob-label">The Diagnosis</div>
@@ -804,7 +804,7 @@ export default function SignalFlairLanding() {
             </div>
             <div className="pv-col ai">
               <div className="pv-h"><span className="pv-ey">AI View</span><span className="pv-tag">Can&apos;t Read You</span></div>
-              <div className="pv-row"><span className="pv-name">Live AI Visibility</span><span className="pv-stamp bad">Invisible</span></div>
+              <div className="pv-row"><span className="pv-name">Live AI Visibility</span><span className="pv-stamp bad">Weak</span></div>
               <div className="pv-row"><span className="pv-name">Entity Clarity</span><span className="pv-stamp bad">Unclear</span></div>
               <div className="pv-row"><span className="pv-name">Access &amp; Crawlability</span><span className="pv-stamp warn">Partial</span></div>
               <div className="pv-row"><span className="pv-name">Citations · 5 engines</span><span className="pv-stamp bad">0 Found</span></div>
@@ -1007,6 +1007,44 @@ export default function SignalFlairLanding() {
             <span className="sl-mark-arrow" aria-hidden="true">→</span>
           </a>
         </div>
+        {/* ═══ REAL-WORLD AUDIT — anonymized multi-engine baseline (see ANONYMIZED_BASELINE_CASE_INTERNAL.md before naming the org) ═══ */}
+        <div className="rw reveal" id="real-world-audit">
+          <div className="rw-head">
+            <div className="rw-eyebrow">Real-World AI Visibility Audit</div>
+            <h3 className="rw-title">One business. Three AI engines.<br /><em>Three different identities.</em></h3>
+            <p className="rw-body">
+              The organization appeared in ChatGPT, Gemini, and Perplexity — but each engine understood it
+              differently. One found only a thin version. Another relied on an outdated identity. A third
+              recognized the amenities but missed the larger story.
+            </p>
+          </div>
+          <div className="rw-grid">
+            <div className="rw-card">
+              <div className="rw-card-h"><span className="rw-engine">ChatGPT</span><span className="rw-stamp">Thin Version</span></div>
+              <div className="rw-card-d">Confirmed the organization exists — and little else. The programs, the role, the track record: missing.</div>
+            </div>
+            <div className="rw-card">
+              <div className="rw-card-h"><span className="rw-engine">Perplexity</span><span className="rw-stamp">Outdated Identity</span></div>
+              <div className="rw-card-d">Described the organization as it used to be — real sources, stale story. Yesterday&apos;s identity, presented as today&apos;s.</div>
+            </div>
+            <div className="rw-card">
+              <div className="rw-card-h"><span className="rw-engine">Gemini</span><span className="rw-stamp">Partial Picture</span></div>
+              <div className="rw-card-d">Understood the space and the reviews, missed the mission. A place, not an organization.</div>
+            </div>
+          </div>
+          <div className="rw-conclusion">Showing up is not the same as being <em>understood, trusted, or represented correctly.</em></div>
+          <ul className="rw-points">
+            <li>Found does not mean accurately represented.</li>
+            <li>Mentions do not guarantee entity clarity.</li>
+            <li>Different answers reveal an uncontrolled AI identity.</li>
+            <li>Signal Flair builds the proof foundation AI systems need to understand and recommend a business confidently.</li>
+          </ul>
+          <div className="rw-ctarow">
+            <a className="rw-cta" href="#cta">▸ See What AI Understands About Your Business</a>
+            <a className="rw-more" href="/case-studies/three-engines-three-stories/">Read the anonymized baseline audit →</a>
+          </div>
+        </div>
+
         <div className="founding reveal" id="founding">
           <div className="founding-inner">
             <div className="founding-l">
@@ -1103,7 +1141,7 @@ export default function SignalFlairLanding() {
           <div className="ph-lead">You don&apos;t pick a package. Your free <em>Field Report</em> sets your starting line.</div>
           <div className="ph-map">
             <div className="ph-step">
-              <div className="ph-band">Score 0–54 · Invisible</div>
+              <div className="ph-band">Score 0–54 · Weak Signal</div>
               <div className="ph-offer">Build the Foundation</div>
               <div className="ph-what">The full machine-readable build — <strong>plus your own AI-optimized landing page.</strong></div>
             </div>
@@ -1130,13 +1168,13 @@ export default function SignalFlairLanding() {
           <div className="pf-left">
             <div className="pf-tag">Signal Proof Layer™ · Foundation Build</div>
             <div className="pf-name">Build the Foundation</div>
-            <div className="pf-ideal">For the invisible — businesses scoring 0–54 with no AI footprint. The full infrastructure generative engines need to find, read, and recommend you. Built in 7–14 days.</div>
+            <div className="pf-ideal">For the weak-signal band — businesses scoring 0–54, showing up by luck instead of by design. The full infrastructure generative engines need to find, read, and recommend you. Built in 7–14 days.</div>
             <div className="pf-amount">$3,500</div>
             <div className="pf-cadence">one-time build · CRM access optional</div>
             <a className="pf-btn" href="#cta">▸ Build the Foundation</a>
           </div>
           <div className="pf-right">
-            <div className="pf-desc">The infrastructure AI actually reads. Full diagnostic, full technical fix, full structure — everything needed to go from invisible to recommendable across every major AI engine.</div>
+            <div className="pf-desc">The infrastructure AI actually reads. Full diagnostic, full technical fix, full structure — everything needed to go from misread to recommendable across every major AI engine.</div>
             <div className="pf-items">
               <div className="pf-item pf-lock">Signal Proof Page™ deployed — your owned, verified record</div>
               <div className="pf-item pf-lock">Verified business record alignment across AI-read sources</div>

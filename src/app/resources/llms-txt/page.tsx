@@ -2,12 +2,12 @@ import type { Metadata } from 'next'
 import SignalFlairLogo from '@/components/SignalFlairLogo'
 
 export const metadata: Metadata = {
-  title: 'What is llms.txt? Why Your Business Is Invisible to AI Without It | Signal Flair',
+  title: 'What is llms.txt? Why AI Misreads Your Business Without It | Signal Flair',
   description:
     'llms.txt is the file that tells AI engines — ChatGPT, Claude, Perplexity, Gemini, Google AI — who your business is. Fewer than 1% of local businesses have one. Here’s what it is, why it matters, and how to fix it.',
   alternates: { canonical: 'https://signalflair.ai/resources/llms-txt/' },
   openGraph: {
-    title: 'What is llms.txt? Why Your Business Is Invisible to AI Without It',
+    title: 'What is llms.txt? Why AI Misreads Your Business Without It',
     description: 'The simple file that tells AI engines who your business is — and why fewer than 1% of local businesses have one.',
     images: ['/video/hero-poster.jpg'],
   },
@@ -19,7 +19,7 @@ const jsonLd = {
   '@graph': [
     {
       '@type': 'Article',
-      headline: 'What is llms.txt and why most businesses are invisible to AI without it',
+      headline: 'What is llms.txt and why AI misreads most businesses without it',
       description: 'A plain-English guide to llms.txt: what it is, what it does, how to create one, and why it matters for AI visibility.',
       author: { '@type': 'Organization', name: 'Signal Flair', url: 'https://signalflair.ai' },
       publisher: { '@id': 'https://signalflair.ai/#org' },
@@ -69,7 +69,7 @@ export default function LlmsTxtResourcePage() {
       <div className="rsc-wrap">
         <header className="rsc-hero">
           <div className="rsc-eyebrow">Resource · AI Visibility</div>
-          <h1 className="rsc-h1">What is <span className="rsc-code">llms.txt</span> — and why most businesses are <em>invisible</em> to AI without it</h1>
+          <h1 className="rsc-h1">What is <span className="rsc-code">llms.txt</span> — and why AI <em>misreads</em> most businesses without it</h1>
           <p className="rsc-lead">Fewer than 1% of local businesses have this file. Here&apos;s what it is, why it matters, and how to fix it — in plain English.</p>
         </header>
 
@@ -136,7 +136,7 @@ export default function LlmsTxtResourcePage() {
       </div>
 
       <section className="rsc-cta">
-        <h2 className="rsc-cta-h">Want to know how visible <em>(or invisible)</em> your business is to AI?</h2>
+        <h2 className="rsc-cta-h">AI can find your business. But does it <em>understand</em> it?</h2>
         <p className="rsc-cta-b">Run your free Field Report. We&apos;ll scan 3 critical signals across ChatGPT, Claude, Perplexity, Gemini, and Google AI — and show you exactly where your business breaks, including whether you have an llms.txt file working for you.</p>
         <a className="rsc-cta-btn" href="/#cta">▸ Get My Free Field Report</a>
       </section>

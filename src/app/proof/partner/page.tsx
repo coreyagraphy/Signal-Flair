@@ -50,7 +50,7 @@ const ROUTE_LANES: RouteLane[] = [
     title: 'Funders',
     why: 'Foundations and grantmakers need portfolio organizations to maintain accurate, inspectable proof as discovery shifts toward AI-mediated answers.',
     examples: 'Community foundations, regional grantmakers, corporate giving programs.',
-    angle: '“Help grantees stay findable and verifiable — not invisible in the layer AI actually reads.”',
+    angle: '“Help grantees stay findable and verifiable — not misread in the layer AI actually reads.”',
     offer: 'Portfolio readiness spot-checks + Proof Distribution Layer™ action plan per grantee cohort.',
   },
   {

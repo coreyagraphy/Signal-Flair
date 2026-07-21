@@ -9,7 +9,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: 'How Signal Flair works — scan, score, fix, stay found',
     description:
-      'Four steps from invisible to found, plus score-gated pricing so the work matches the actual gap.',
+      'Four steps from found-by-luck to found-by-design, plus score-gated pricing so the work matches the actual gap.',
     images: ['/video/hero-poster.jpg'],
   },
 }
@@ -88,10 +88,11 @@ export default function HowItWorksPage() {
       <div className="rsc-wrap">
         <header className="rsc-hero">
           <div className="rsc-eyebrow">How it works</div>
-          <h1 className="rsc-h1">Invisible to <em>found,</em> in four steps.</h1>
+          <h1 className="rsc-h1">Found by luck to found by <em>design,</em> in four steps.</h1>
           <p className="rsc-lead">
-            Signal Flair does exactly three things — score your AI visibility, build the layer AI
-            reads, and keep it true. Here is the whole process, and what each step costs.
+            AI can probably find your business. The real question is whether it understands it — and tells
+            the right story. Signal Flair does exactly three things: score your AI visibility, build the
+            layer AI reads, and keep it true. Here is the whole process, and what each step costs.
           </p>
         </header>
 
