@@ -242,7 +242,7 @@ export default function ProofHubPage() {
             <a className="sl-hub-card" href="/proof/proof/">
               <span className="sl-hub-k">03</span>
               <span className="sl-hub-t">Proof &amp; cases</span>
-              <span className="sl-hub-d">Real before/after only. Case Zero is the first, documented in full.</span>
+              <span className="sl-hub-d">Real, dated records only — Case Zero, plus The Mill, our first client baseline (published with permission).</span>
             </a>
             <a className="sl-hub-card" href="/proof/changelog/">
               <span className="sl-hub-k">04</span>

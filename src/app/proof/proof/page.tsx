@@ -5,7 +5,7 @@ import VerifiedMark from '@/components/VerifiedMark'
 export const metadata: Metadata = {
   title: 'Proof & Cases — Verified Record | Signal Flair',
   description:
-    'Real before/after only. Case Zero is the first documented case — Signal Flair’s own audit, 18/100, tracked to target. Part of the live Signal Proof Page™ record.',
+    'Real, dated, permission-cleared records only. Case Zero is Signal Flair’s own audit (18/100, tracked to target); The Mill is the first published client baseline (35/100). No fabricated before/afters. Part of the live Signal Proof Page™ record.',
   alternates: { canonical: 'https://signalflair.ai/proof/proof/' },
 }
 
@@ -20,7 +20,7 @@ export default function ProofCasesPage() {
         <header className="rsc-hero">
           <div className="rsc-eyebrow"><a href="/proof/" className="sl-back">← The record</a> · Proof &amp; cases</div>
           <h1 className="rsc-h1">Real proof. <em>Only.</em></h1>
-          <p className="rsc-lead">No illustrative numbers, no fabricated testimonials. Every case here is a real, dated, source-linked record. Right now there is exactly one: ours.</p>
+          <p className="rsc-lead">No illustrative numbers, no fabricated testimonials. Every case here is a real, dated, source-linked record — our own before/after in progress, plus the first client baseline, published with permission.</p>
           <div className="sl-markwrap"><VerifiedMark confirmed={0} total={6} /></div>
         </header>
 
@@ -45,11 +45,34 @@ export default function ProofCasesPage() {
         </section>
 
         <section className="rsc-section">
-          <h2 className="rsc-h2">Client cases</h2>
+          <h2 className="rsc-h2">The Mill — <em>first client baseline</em></h2>
+          <div className="sl-scoreband">
+            <div className="sl-scorebig">35<small>/100</small></div>
+            <div className="sl-scorearrow" aria-hidden="true">→</div>
+            <div className="sl-scoretarget">80+<small></small><span className="sl-scoretarget-lbl">Projected</span></div>
+          </div>
+          <p className="rsc-p">
+            A real Proof OS™ audit of The Mill — the coworking and event space at the center of Amplify
+            Bloomington — published with the client&apos;s permission. It appeared in ChatGPT, Gemini, and
+            Perplexity, but each engine told a different, incomplete story: showing up by luck, not by design.
+            This is a <strong>baseline</strong> — the before, dated and documented. No remediation has been
+            performed yet, so there is no after to claim; the 80+ figure is a modeled target, not a result.
+          </p>
+          <div className="sl-kv"><span>Client</span><span>The Mill · Amplify Bloomington · Bloomington, IN</span></div>
+          <div className="sl-kv"><span>Date</span><span>2026-07-21</span></div>
+          <div className="sl-kv"><span>Baseline</span><span>35 / 100 (live-fetched, seven-signal)</span></div>
+          <div className="sl-kv"><span>Target</span><span>80+ / 100 (projected, not guaranteed)</span></div>
+          <div className="sl-kv"><span>Status</span><span><span className="sl-verified">baseline · before/after pending</span></span></div>
+          <div className="sl-kv"><span>Read</span><span><a href="/case-studies/three-engines-three-stories/">The full Mill audit →</a></span></div>
+        </section>
+
+        <section className="rsc-section">
+          <h2 className="rsc-h2">Documented before/afters</h2>
           <p className="rsc-p">
             The first ten Founding Clients become the first ten documented installs — each a real
-            before/after, published here only with permission and only once results exist. Until then,
-            this space stays empty rather than filled with invented proof.
+            before/after, published here only with permission and only once results exist. The Mill is the
+            first published baseline; its after joins the record when the remediation and controlled retest
+            are complete. Until a case has real results, it stays a labeled baseline, never invented proof.
           </p>
         </section>
 
