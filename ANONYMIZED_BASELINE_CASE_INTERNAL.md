@@ -1,53 +1,46 @@
-# INTERNAL — Anonymized Multi-Engine Baseline Case (do not publish this file's contents)
+# INTERNAL — The Mill Multi-Engine Baseline Case (do not publish this file's contents)
 
-> **Status: ANONYMIZED. Written permission from the organization has NOT been recorded.**
-> This repo-root file is internal documentation only — root `.md` files are not part of the
+> **Status: NAMED & PUBLIC. Corey confirmed permission to use The Mill as a named use case (2026-07-21).**
+> The two public surfaces below were de-anonymized on 2026-07-21 and now name The Mill / Amplify Bloomington,
+> publish the 35/100 baseline, and describe the real findings — framed as a fixable baseline, no remediation claimed.
+> This repo-root file remains internal documentation only — root `.md` files are not part of the
 > Next.js static export (`out/`), so nothing here ships to signalflair.ai. Keep it that way:
-> never move this content into `src/`, `public/`, or any page.
+> never move this file's raw internal content (email drafts, pricing questions, timestamps) into `src/`/`public/`.
 
 ## What this covers
 
-Two public surfaces were added on 2026-07-21, both fully anonymized:
+Two public surfaces (added anonymized 2026-07-21, then named the same day with permission):
 
 1. Homepage section `#real-world-audit` in `src/components/SignalFlairLanding.tsx`
-   ("One business. Three AI engines. Three different identities.")
+   ("One business. Three AI engines. Three different stories." — names The Mill / Amplify Bloomington)
 2. Use-case page `src/app/case-studies/three-engines-three-stories/page.tsx`
-   ("AI Found the Business — But Told Three Different Stories")
+   ("AI Found The Mill — But Told Three Different Stories")
 
-## Publication restrictions currently in force
+## What IS published (client-cleared)
 
-Until Corey records **written permission** from the organization, the public site must NOT contain:
+- Names: The Mill, Amplify Bloomington, Dimension Mill (the legacy brand); Bloomington, IN
+- Baseline Signal Score™ 35/100, AI Foundation 22/100, Traditional 49/100
+- The full seven-signal breakdown, the robots.txt "AI — do not enter" finding, the entity split,
+  and the three-engine live proof (ChatGPT thin guess / Perplexity wrong domain / Gemini amenities-only)
+- The phased 90-day plan and the modeled 35 → 55+ → 80+ targets (clearly labeled projections, not guarantees)
 
-- The organization's name, former name, or program names (including its city/region)
-- Its logo or any imagery of its space
-- The exact baseline score (**35/100** — internal only; public copy says only "weak-signal band (0–54)")
-- Screenshots of engine answers or identifiable citations/sources
-- Any wording that makes the organization reasonably identifiable
-  (public descriptor is deliberately generic: "a community-focused coworking & entrepreneurship organization";
-  no state, no city, no founding year, no speaking-engagement context)
+## What is still HELD BACK (editorial judgment — not on the public site)
 
-## Replacement points once written permission is recorded
+- The exact competitor review comparison ("4.7 vs competitors' 5.0") — public copy says only
+  "listed beside competitors, never as the pick." Avoids publicly ranking a client below named rivals on reviews.
+- Internal engagement artifacts: email drafts, the Mental Vision / Signal Flair pricing split, engagement
+  timestamps, Cloudflare / website-ownership questions, and the ChatGPT go-to-market prompt. Never publish these.
+- No screenshots of engine answers are published (none were provided as licensed assets).
 
-In `src/app/case-studies/three-engines-three-stories/page.tsx`:
+## Future update points (do NOT pre-write remediation results)
 
-- Hero + snapshot card: insert organization name and link; add logo if licensed
-- "Baseline Signal Score™" row: replace "Weak-signal band (0–54) — exact score withheld…" with **35/100**
-- "Audited" row: may state the exact audit date
-- Engine sections: add approved quoted excerpts / screenshots of each engine's answer as evidence
-- Add approved quotations from the organization, if provided
-- Metadata/JSON-LD: add `about: { '@type': 'Organization', name: …, url: … }` (mirror restor-team pattern)
+Once corrections are actually performed and a controlled retest is run:
 
-In `src/components/SignalFlairLanding.tsx` (`#real-world-audit`):
-
-- Body copy may name the organization; the three engine cards may cite evidence
-
-When remediation actually happens (do NOT pre-write any of this):
-
-- Corrections performed (list of proof-layer fixes)
-- Controlled retest results per engine (same prompts, documented dates)
-- Before-and-after Signal Score™
-- Client testimonial (only if genuinely given)
-- Until then the page must keep its "baseline only — no remediation performed, no improvement claimed" framing
+- Add corrections-performed list, per-engine retest results (same prompts, dated), before/after Signal Score™
+- Add a client testimonial only if genuinely given
+- Until then the page MUST keep its "baseline only — no remediation performed, no improvement claimed" framing
+- The modeled 35 → 55+ → 80+ targets must stay labeled as projections, never as achieved results
+- If The Mill later licenses its logo or approved engine-answer screenshots, add them as evidence
 
 ## Speaking-positioning (documented, not built)
 
@@ -57,7 +50,7 @@ speaking system was created. When one is added, include this talk concept:
 - **Title:** AI Can Find Your Business. But Does It Understand It?
 - **Description:** A live, practical demonstration showing how ChatGPT, Gemini, and Perplexity can
   interpret the same organization differently — and what businesses must do to establish a clear,
-  verifiable AI identity.
+  verifiable AI identity. (The Mill is the ready-made live demo.)
 
 Recommended smallest implementation: a `/speaking/` page on the `rsc` layout (same pattern as
 `/how-it-works/`), linked from the footer, with this talk plus the Case Zero story.
@@ -73,3 +66,5 @@ Unqualified "invisible" messaging was retired site-wide. Retained occurrences, w
   that a business is invisible to AI.
 - **CSS/JS code comments** using "invisible" (globals.css, SignalFlairLanding.tsx): visual-state
   comments, not messaging.
+- Note: the Mill audit itself explicitly reframes "invisible" → "showing up by luck, not by design"
+  (the score is falsifiable — the business does appear). Public Mill copy uses that framing throughout.

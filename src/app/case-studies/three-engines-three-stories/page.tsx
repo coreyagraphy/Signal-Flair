@@ -2,34 +2,34 @@ import type { Metadata } from 'next'
 import SignalFlairLogo from '@/components/SignalFlairLogo'
 
 export const metadata: Metadata = {
-  title: 'AI Found the Business — But Told Three Different Stories | Signal Flair',
+  title: 'AI Found The Mill — But Told Three Different Stories | Signal Flair',
   description:
-    'An anonymized baseline audit: one organization appeared in ChatGPT, Gemini, and Perplexity — and each engine described a different, incomplete version of it. Showing up is not the same as being understood.',
+    'A real Signal Flair (Proof OS™) AI-visibility audit of The Mill / Amplify Bloomington. It appeared in ChatGPT, Gemini, and Perplexity — and each engine told a different, incomplete story. Baseline Signal Score™ 35/100, with a phased plan to fix it.',
   alternates: { canonical: 'https://signalflair.ai/case-studies/three-engines-three-stories/' },
   openGraph: {
-    title: 'AI Found the Business — But Told Three Different Stories',
+    title: 'AI Found The Mill — But Told Three Different Stories',
     description:
-      'One organization. Three AI engines. Three different identities. An anonymized Signal Baseline™ showing why appearing in AI answers is not the same as being understood.',
+      'One business. Three AI engines. Three different identities. A real baseline Signal Baseline™ audit of The Mill / Amplify Bloomington — showing up by luck, not by design.',
   },
 }
 
-// Anonymized baseline audit — the audited organization is NOT named anywhere in
-// this file, by agreement, until written permission is recorded. See
-// ANONYMIZED_BASELINE_CASE_INTERNAL.md (repo root, not exported) before editing.
+// Named case study — published with the client's permission (recorded 2026-07-21).
+// Baseline audit only: no remediation has been performed, no improvement is claimed.
+// See ANONYMIZED_BASELINE_CASE_INTERNAL.md (repo root, not exported) for history.
 const jsonLd = {
   '@context': 'https://schema.org',
   '@graph': [
     {
       '@type': 'Article',
       '@id': 'https://signalflair.ai/case-studies/three-engines-three-stories#article',
-      headline: 'AI Found the Business — But Told Three Different Stories',
+      headline: 'AI Found The Mill — But Told Three Different Stories',
       description:
-        'An anonymized Signal Baseline™ audit: one organization appeared in ChatGPT, Gemini, and Perplexity, and each engine presented a different, incomplete identity.',
+        'A real Signal Flair Proof OS™ AI-visibility audit of The Mill / Amplify Bloomington: it appeared in ChatGPT, Gemini, and Perplexity, and each engine presented a different, incomplete identity. Baseline Signal Score™ 35/100.',
       datePublished: '2026-07-21',
       dateModified: '2026-07-21',
       author: { '@id': 'https://signalflair.ai/#org' },
       publisher: { '@id': 'https://signalflair.ai/#org' },
-      about: ['AI visibility', 'entity clarity', 'Answer Engine Optimization'],
+      about: { '@type': 'Organization', name: 'The Mill', url: 'https://amplifybloomington.org/the-mill' },
       isPartOf: { '@id': 'https://signalflair.ai/#website' },
       mainEntityOfPage: 'https://signalflair.ai/case-studies/three-engines-three-stories/',
     },
@@ -37,12 +37,23 @@ const jsonLd = {
       '@type': 'WebPage',
       '@id': 'https://signalflair.ai/case-studies/three-engines-three-stories#webpage',
       url: 'https://signalflair.ai/case-studies/three-engines-three-stories/',
-      name: 'AI Found the Business — But Told Three Different Stories | Signal Flair',
+      name: 'AI Found The Mill — But Told Three Different Stories | Signal Flair',
       isPartOf: { '@id': 'https://signalflair.ai/#website' },
       about: { '@id': 'https://signalflair.ai/#org' },
     },
   ],
 }
+
+// 7-signal breakdown — live-fetched from the site's own source on the audit date.
+const SIGNALS: { n: string; name: string; score: string; note: string }[] = [
+  { n: '01', name: 'Crawler Access', score: '15', note: 'robots.txt blanket-disallows the major AI training crawlers (GPTBot, ClaudeBot, Google-Extended, CCBot + more). Regular Googlebot is not blocked.' },
+  { n: '02', name: 'llms.txt / AI Guidance', score: '10', note: '/llms.txt returns a 404 — no AI-readable map telling engines what matters and how to cite it.' },
+  { n: '03', name: 'Structured Data', score: '30', note: 'No hand-written meta description; og:type set to article; no LocalBusiness, FAQ, or Event JSON-LD schema.' },
+  { n: '04', name: 'Entity Clarity', score: '35', note: 'Brand split across amplifybloomington.org and the still-live legacy dimensionmill.org; directories still read "Dimension Mill."' },
+  { n: '05', name: 'Structured Content', score: '52', note: 'Clean H2/H3 hierarchy, but no answer-shaped FAQ content and key images missing alt text.' },
+  { n: '06', name: 'Technical SEO Foundation', score: '66', note: 'Yoast, 8 XML sitemaps, canonicals, custom post types, mobile theme. The strongest signal — a genuinely solid base.' },
+  { n: '07', name: 'Authority & Citations', score: '44', note: 'Strong launch earned media, but on a new domain — authority not yet consolidated from the legacy site.' },
+]
 
 export default function ThreeEnginesCaseStudy() {
   return (
@@ -55,15 +66,15 @@ export default function ThreeEnginesCaseStudy() {
       <div className="rsc-wrap">
         {/* 1 · HERO */}
         <header className="rsc-hero">
-          <div className="rsc-eyebrow">Anonymized Baseline Audit</div>
+          <div className="rsc-eyebrow">Real-World AI Visibility Audit</div>
           <h1 className="rsc-h1">
-            AI found the business — but told <em>three different stories.</em>
+            AI found The Mill — but told <em>three different stories.</em>
           </h1>
           <p className="rsc-lead">
-            Signal Flair ran a Signal Baseline™ on a real community-focused coworking and entrepreneurship
-            organization. It appeared in ChatGPT, Gemini, and Perplexity — and each engine described a different,
-            incomplete version of who it is. Showing up is not the same as being understood, trusted, or
-            represented correctly.
+            Signal Flair ran a Proof OS™ audit on The Mill — the coworking and event space at the center of
+            Amplify Bloomington. It appeared in ChatGPT, Gemini, and Perplexity — and each engine described a
+            different, incomplete version of the business. It isn&apos;t losing the ranking game. It&apos;s showing up
+            by luck, not by design, in the engines that now answer for it.
           </p>
           <div className="rsc-ctarow" style={{ display: 'flex', gap: '12px', flexWrap: 'wrap', marginTop: '24px' }}>
             <a className="rsc-navcta" href="/#cta">▸ See What AI Understands About Your Business</a>
@@ -75,18 +86,21 @@ export default function ThreeEnginesCaseStudy() {
           <div className="sl-rec">
             <div className="sl-rec-h">
               <span className="sl-rec-name">Audit at a glance</span>
-              <span className="sl-verified">Anonymized Baseline</span>
+              <span className="sl-verified">Baseline · used with permission</span>
             </div>
             <p className="rsc-p">
-              This is a real audit of a real organization, published with the identifying details removed. The
-              organization has not yet authorized public identification, so no name, location, score, or
-              screenshot appears here. Everything described below was observed directly in live AI engine answers.
+              This is a real Proof OS™ audit, published with The Mill&apos;s permission. Every score was
+              live-fetched from the site&apos;s own source on the audit date — robots.txt, sitemaps, headers,
+              metadata, and on-page structure — not from memory or a dashboard estimate. It is a baseline: no
+              remediation has been performed yet, and no improvement is claimed.
             </p>
-            <div className="sl-kv"><span>Subject</span><span>A community-focused coworking &amp; entrepreneurship organization (anonymized)</span></div>
-            <div className="sl-kv"><span>Deliverable</span><span>Signal Baseline™ — multi-engine AI visibility audit</span></div>
-            <div className="sl-kv"><span>Engines reviewed</span><span>ChatGPT · Perplexity · Gemini</span></div>
-            <div className="sl-kv"><span>Status</span><span>Baseline only — no remediation performed yet</span></div>
-            <div className="sl-kv"><span>Baseline Signal Score™</span><span>Weak-signal band (0–54) — exact score withheld pending authorization</span></div>
+            <div className="sl-kv"><span>Subject</span><span>The Mill — coworking &amp; event space, flagship of Amplify Bloomington · Bloomington, IN</span></div>
+            <div className="sl-kv"><span>Deliverable</span><span>Proof OS™ Signal Baseline™ — seven-signal AI &amp; search visibility audit</span></div>
+            <div className="sl-kv"><span>Engines validated live</span><span>ChatGPT · Perplexity · Gemini</span></div>
+            <div className="sl-kv"><span>Baseline Signal Score™</span><span>35 / 100 — showing up by luck, not by design</span></div>
+            <div className="sl-kv"><span>AI Visibility Foundation</span><span>22 / 100</span></div>
+            <div className="sl-kv"><span>Traditional Search</span><span>49 / 100 — indexable, competent build, dragged by the brand split</span></div>
+            <div className="sl-kv"><span>Status</span><span>Baseline complete · phased plan drafted · no remediation performed yet</span></div>
             <div className="sl-kv"><span>Audited</span><span>July 2026</span></div>
           </div>
         </section>
@@ -95,85 +109,140 @@ export default function ThreeEnginesCaseStudy() {
         <section className="rsc-section">
           <h2 className="rsc-h2">The <em>situation</em></h2>
           <p className="rsc-p">
-            The organization is established, active, and well regarded in its community. It runs a physical space,
-            supports founders and small businesses, and has years of real programming behind it. By every human
-            measure, it is easy to find and easy to trust.
+            The Mill built a real headquarters. It sits in Bloomington&apos;s Trades District innovation zone, it
+            has strong launch press, and it&apos;s the flagship of Amplify Bloomington — a civic and innovation
+            platform launched in early 2026 that grew out of the well-known Dimension Mill brand. By every human
+            measure, it&apos;s established and easy to trust.
           </p>
           <p className="rsc-p">
-            Then we asked the AI engines about it. All three responded — no engine drew a blank. But no two engines
-            told the same story, and none of them told the whole one.
+            Then we asked the AI engines. All three answered — none drew a blank. But no two told the same story,
+            and none told the whole one. The machines were describing a real headquarters from the sidewalk.
           </p>
         </section>
 
-        {/* 4 · WHAT EACH ENGINE UNDERSTOOD */}
+        {/* 4 · HEADLINE FINDING */}
+        <section className="rsc-section">
+          <h2 className="rsc-h2">The headline finding: the site&apos;s own robots file says <em>&ldquo;AI — do not enter.&rdquo;</em></h2>
+          <p className="rsc-p">
+            The single most important line in the audit is in the site&apos;s live robots.txt. It issues a blanket
+            disallow to nearly every major AI crawler — GPTBot, ClaudeBot, Google-Extended, CCBot, and more — and
+            sets a content signal of <span className="rsc-code">ai-train=no</span>. When someone asks an engine
+            &ldquo;where should I cowork in Bloomington?&rdquo;, the crawlers that would let those models
+            <em> learn</em> the business are turned away — so the answer runs on a live guess, not real knowledge
+            of The Mill.
+          </p>
+          <p className="rsc-p">
+            Regular Googlebot is unaffected, so traditional search still works. This is almost certainly an
+            unattended &ldquo;block AI bots&rdquo; default from the site&apos;s CDN — not a decision anyone made on
+            purpose. Which makes it the highest-leverage item in the whole report: roughly a one-afternoon fix with
+            outsized upside.
+          </p>
+        </section>
+
+        {/* 5 · WHAT EACH ENGINE UNDERSTOOD (live proof) */}
         <section className="rsc-section">
           <h2 className="rsc-h2">What each engine <em>understood</em></h2>
+          <p className="rsc-p">
+            We asked all three the same question — &ldquo;coworking in Bloomington, Indiana&rdquo; — live, on the
+            audit date. All three surfaced The Mill, and each exposed a different crack in the same foundation.
+          </p>
           <div className="sl-rec">
-            <div className="sl-rec-h"><span className="sl-rec-name">ChatGPT</span><span className="sl-verified">Thin version</span></div>
+            <div className="sl-rec-h"><span className="sl-rec-name">ChatGPT — found you as a guess</span><span className="sl-verified">Thin, unowned</span></div>
             <p className="rsc-p" style={{ margin: 0 }}>
-              ChatGPT found the organization — but only a thin version of it. It could confirm the organization
-              exists and roughly what category it belongs to, with little of the substance: the programs, the
-              community role, the track record. A stranger reading the answer would learn the organization is real
-              and almost nothing else.
+              ChatGPT surfaced The Mill through a live web search — because its search bot is open even though the
+              training crawler is blocked, so the model never actually <em>learned</em> the business. The answer was
+              thin and hedged, and listed larger competitors right alongside it: no hours, no pricing, no edge.
+              Proves a thin, unowned presence.
             </p>
           </div>
           <div className="sl-rec">
-            <div className="sl-rec-h"><span className="sl-rec-name">Perplexity</span><span className="sl-verified">Outdated identity</span></div>
+            <div className="sl-rec-h"><span className="sl-rec-name">Perplexity — sent people to the wrong site</span><span className="sl-verified">Wrong domain</span></div>
             <p className="rsc-p" style={{ margin: 0 }}>
-              Perplexity leaned on an older organizational identity. Its answer described the organization as it
-              used to present itself — not as it operates today. The sources it reached for were real, but stale,
-              so the story it told was yesterday&apos;s.
+              Perplexity listed The Mill — but the link it cited pointed to <span className="rsc-code">dimensionmill.org</span>,
+              the legacy domain being retired, not the current amplifybloomington.org. Every AI mention leaks to the
+              site the business is trying to move off of. Proves the two-domain brand split.
             </p>
           </div>
           <div className="sl-rec">
-            <div className="sl-rec-h"><span className="sl-rec-name">Gemini</span><span className="sl-verified">Partial picture</span></div>
+            <div className="sl-rec-h"><span className="sl-rec-name">Gemini — reduced you to wifi &amp; coffee</span><span className="sl-verified">Amenities only</span></div>
             <p className="rsc-p" style={{ margin: 0 }}>
-              Gemini understood the amenities and the reviews — the physical space, what visitors say about it —
-              but missed the broader organizational story. It described a place, not a mission. Accurate as far as
-              it went; it just didn&apos;t go far.
+              Gemini leaned on the Google Business Profile rather than the website (Google-Extended is blocked), so
+              it described The Mill in terms of amenities — &ldquo;wifi, coffee&rdquo; — with no membership, no
+              events, and none of the Amplify story, and it listed The Mill beside larger competitors. Proves the
+              business is locked out of telling its own story.
             </p>
           </div>
+          <p className="rsc-p">
+            Three engines, three different failures, one root cause: nothing on the site is built for machines to
+            read, and the brand points in two directions. In every answer, The Mill was listed beside its
+            competitors — never as <em>the</em> pick.
+          </p>
         </section>
 
-        {/* 5 · THE IDENTITY GAP */}
+        {/* 6 · THE IDENTITY GAP */}
         <section className="rsc-section">
-          <h2 className="rsc-h2">The identity <em>gap</em></h2>
+          <h2 className="rsc-h2">The identity <em>gap:</em> one business, three names</h2>
           <p className="rsc-p">
-            Put the three answers side by side and you get three different organizations: a thin sketch, an
-            outdated profile, and a well-reviewed building. None of them is wrong enough to correct. None of them
-            is right enough to trust. And the organization controls none of the three.
+            A brand-new civic platform inherited a well-known coworking brand, and the identity hasn&apos;t
+            consolidated yet. Search and AI systems resolve entities by consistency — and right now the signals
+            contradict each other across three names and two live domains:
           </p>
+          <ul className="rsc-ul">
+            <li><strong>Amplify Bloomington</strong> — the new parent brand and domain. Strong press, low domain age, still establishing authority.</li>
+            <li><strong>The Mill</strong> — the coworking and event space itself, and the page we audited. A generic term, easily confused.</li>
+            <li><strong>Dimension Mill</strong> — the legacy brand on a still-live domain, ranking for the same terms. Directories still use it, and Perplexity cited it instead of the new site.</li>
+          </ul>
           <p className="rsc-p">
-            That is the identity gap: when every AI engine tells a different story, the business does not control
-            its AI identity. The engines are assembling it from whatever fragments they can reach — and each engine
-            reaches different fragments.
+            All three point at the same building — but no engine is being told they&apos;re the same entity. When
+            every AI engine tells a different story, the business does not control its AI identity. The upside: this
+            is fixable authority, not lost authority. The press exists and the location is iconic. It just needs to
+            be pointed at one target and made machine-legible.
           </p>
         </section>
 
-        {/* 6 · WHY APPEARING IS NOT ENOUGH */}
+        {/* 7 · WHY APPEARING IS NOT ENOUGH */}
         <section className="rsc-section">
           <h2 className="rsc-h2">Why appearing is <em>not enough</em></h2>
           <p className="rsc-p">
-            A traditional visibility check would have marked this audit a pass: the organization shows up in all
-            three engines. But showing up by luck is not the same as showing up by design. Signal Flair&apos;s
-            baseline evaluates what actually determines whether AI can represent a business correctly — whether AI
-            systems can:
+            A traditional visibility check would have marked this a pass: The Mill shows up in all three engines.
+            But showing up by luck is not the same as showing up by design. Proof OS™ evaluates what actually
+            determines whether AI can represent a business correctly — whether AI systems can:
           </p>
           <ul className="rsc-ul">
             <li><strong>Access the business</strong> — reach the site and its machine-readable assets.</li>
-            <li><strong>Identify the correct entity</strong> — resolve the right organization, not a look-alike or a former identity.</li>
-            <li><strong>Understand what it does</strong> — the services, programs, and role, not just the category.</li>
-            <li><strong>Verify important claims</strong> — cross-check what the organization says about itself.</li>
+            <li><strong>Identify the correct entity</strong> — resolve one brand, not a former identity on a retired domain.</li>
+            <li><strong>Understand what it does</strong> — the membership, the events, the role, not just &ldquo;wifi and coffee.&rdquo;</li>
+            <li><strong>Verify important claims</strong> — cross-check what the business says about itself.</li>
             <li><strong>Find consistent supporting evidence</strong> — the same facts, everywhere the engine looks.</li>
             <li><strong>Recommend it with confidence</strong> — because everything above holds together.</li>
           </ul>
           <p className="rsc-p">
-            This organization passed the first check and struggled with the rest. That pattern — found, but not
-            understood — is what most &ldquo;AI visibility&rdquo; checks never look for.
+            The Mill passed the first check and struggled with the rest. That pattern — found, but not understood —
+            is exactly what most &ldquo;AI visibility&rdquo; checks never look for.
           </p>
         </section>
 
-        {/* 7 · WHERE SIGNAL FLAIR SITS */}
+        {/* 8 · SCORECARD */}
+        <section className="rsc-section">
+          <h2 className="rsc-h2">Where the score <em>comes from</em></h2>
+          <p className="rsc-p">
+            The composite leans toward machine-readability — the signals that decide whether an engine can find,
+            read, trust, and cite a business — with the brand-split penalty counted against both the AI and
+            traditional tracks. A solid technical base still can&apos;t offset a locked front door to AI.
+          </p>
+          <div className="sl-doctrine-wrap">
+            <table className="sl-doctrine">
+              <thead><tr><th>#</th><th>Signal</th><th>Score</th><th>What we found</th></tr></thead>
+              <tbody>
+                {SIGNALS.map((s) => (
+                  <tr key={s.n}><td>{s.n}</td><td>{s.name}</td><td>{s.score}</td><td>{s.note}</td></tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
+        </section>
+
+        {/* 9 · SEO vs AEO vs SIGNAL FLAIR */}
         <section className="rsc-section">
           <h2 className="rsc-h2">Where this sits next to <em>SEO and AEO</em></h2>
           <ul className="rsc-ul">
@@ -182,48 +251,52 @@ export default function ThreeEnginesCaseStudy() {
             <li><strong>Signal Flair</strong> builds the proof infrastructure beneath and around both — the access, entity clarity, structured intelligence, answer architecture, trust evidence, and live visibility AI systems need to understand and confidently represent a business.</li>
           </ul>
           <p className="rsc-p">
-            Signal Flair does not replace SEO or AEO. This audit is the reason both need a foundation: the
-            organization&apos;s pages were discoverable and its information was extractable — and the engines still
-            assembled three different identities, because the underlying proof layer was thin, scattered, and
-            partly out of date.
+            Signal Flair does not replace SEO or AEO. The Mill is the reason both need a foundation: its pages were
+            indexable and its build was competent — a 49/100 traditional-search track and a genuinely solid technical
+            base — and the engines still assembled three different identities, because the underlying proof layer was
+            blocked, thin, and split across two domains.
           </p>
         </section>
 
-        {/* 8 · HOW SIGNAL FLAIR CORRECTS THE FOUNDATION */}
+        {/* 10 · HOW SIGNAL FLAIR CORRECTS THE FOUNDATION */}
         <section className="rsc-section">
           <h2 className="rsc-h2">How Signal Flair corrects the <em>foundation</em></h2>
           <p className="rsc-p">
-            For a baseline like this one, the correction path is the Signal Proof Layer™: deploy the
-            machine-readable assets (llms.txt, aligned schema), resolve the entity signals so every engine lands on
-            the current identity, shape answer-first content around the questions engines actually ask, and build
-            the density of verifiable, consistent evidence that lets an engine trust what it finds.
+            The plan is sequenced deliberately — access before structure, structure before authority. There&apos;s no
+            point earning citations for a page the engines still aren&apos;t allowed to read.
           </p>
+          <ul className="rsc-ul">
+            <li><strong>Phase 1 · Days 1–14 · Unlock the door</strong> — remove the AI-crawler block from robots.txt / the CDN, publish a hand-built llms.txt, 301-redirect the legacy domain to the new pages, and align the Google Business Profile and directories to one brand and one address.</li>
+            <li><strong>Phase 2 · Days 15–45 · Make it machine-legible</strong> — add LocalBusiness, FAQPage, and Event JSON-LD schema, write unique meta descriptions and image alt text sitewide, fix og:type, and add answer-shaped FAQ blocks to key pages.</li>
+            <li><strong>Phase 3 · Days 46–90 · Become the answer</strong> — consolidate the launch earned-media links onto the new domain, run a local citation and review program, add a cinematic content layer for the space, and re-run Proof OS™ to track the Signal Score™ climb.</li>
+          </ul>
           <p className="rsc-p">
-            To be clear about what this page is: <strong>a baseline, not a before-and-after.</strong> No
-            remediation has been performed for this organization, and no improvement is claimed. When corrections
-            are made and a controlled retest is run — and when the organization authorizes it — the documented
-            results will be published here.
+            To be clear about what this page is: <strong>a baseline, not a before-and-after.</strong> No remediation
+            has been performed yet, and no improvement is claimed. The projected targets — 35 today, 55+ by Day 14,
+            80+ by Day 90 — are modeled from the fix set, not guaranteed rankings. When the corrections are made and a
+            controlled retest is run, the documented results will be published here.
           </p>
         </section>
 
-        {/* 9 · WHAT HAPPENS NEXT */}
+        {/* 11 · WHAT HAPPENS NEXT */}
         <section className="rsc-section">
           <h2 className="rsc-h2">What happens <em>next</em></h2>
           <p className="rsc-p">
-            The findings have been delivered to the organization. If it moves forward, the sequence is the one
-            Signal Flair always runs: fix the proof layer, retest against the same engines with the same prompts,
-            and preserve both assessments so the change is documented rather than claimed.
+            The jump from 35 to the mid-50s happens the day the crawlers are unblocked and llms.txt ships — no new
+            content required, just access restored. The climb into the 80s is the structured-data and authority work
+            compounding over the quarter. The infrastructure is roughly 80% built; it&apos;s just pointed away from
+            the future of search. The next step is the 14-day emergency sprint, then a re-score at Day 30.
           </p>
         </section>
 
-        {/* 10 · DISCLAIMER */}
+        {/* 12 · DISCLAIMER */}
         <section className="rsc-section">
           <div className="sl-rec">
             <p className="rsc-p sl-machine" style={{ margin: 0 }}>
-              This is an anonymized baseline audit based on live AI engine responses observed at a single point in
-              time. The organization is unnamed pending written authorization; the exact baseline score is withheld
-              for the same reason. No remediation results are claimed. Signal Flair does not guarantee rankings,
-              citations, leads, or revenue.
+              Published with The Mill&apos;s permission. This is a baseline Proof OS™ audit based on the site&apos;s
+              live source and on live AI engine responses observed at a single point in time; the ranking snapshot is
+              directional, not a rank-tracker time series. No remediation results are claimed. Projected scores are
+              modeled targets, not guarantees. Signal Flair does not guarantee rankings, citations, leads, or revenue.
             </p>
           </div>
         </section>

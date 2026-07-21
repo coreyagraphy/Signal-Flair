@@ -1007,29 +1007,30 @@ export default function SignalFlairLanding() {
             <span className="sl-mark-arrow" aria-hidden="true">→</span>
           </a>
         </div>
-        {/* ═══ REAL-WORLD AUDIT — anonymized multi-engine baseline (see ANONYMIZED_BASELINE_CASE_INTERNAL.md before naming the org) ═══ */}
+        {/* ═══ REAL-WORLD AUDIT — The Mill / Amplify Bloomington, named with permission (recorded 2026-07-21; see ANONYMIZED_BASELINE_CASE_INTERNAL.md) ═══ */}
         <div className="rw reveal" id="real-world-audit">
           <div className="rw-head">
             <div className="rw-eyebrow">Real-World AI Visibility Audit</div>
-            <h3 className="rw-title">One business. Three AI engines.<br /><em>Three different identities.</em></h3>
+            <h3 className="rw-title">One business. Three AI engines.<br /><em>Three different stories.</em></h3>
             <p className="rw-body">
-              The organization appeared in ChatGPT, Gemini, and Perplexity — but each engine understood it
-              differently. One found only a thin version. Another relied on an outdated identity. A third
-              recognized the amenities but missed the larger story.
+              We ran a Proof OS™ audit on The Mill — the coworking and event space at the center of Amplify
+              Bloomington. It appeared in ChatGPT, Gemini, and Perplexity — but each engine told a different,
+              incomplete story. One found only a thin version. One pointed to the wrong domain. One reduced it to
+              amenities. Baseline Signal Score™: 35/100.
             </p>
           </div>
           <div className="rw-grid">
             <div className="rw-card">
-              <div className="rw-card-h"><span className="rw-engine">ChatGPT</span><span className="rw-stamp">Thin Version</span></div>
-              <div className="rw-card-d">Confirmed the organization exists — and little else. The programs, the role, the track record: missing.</div>
+              <div className="rw-card-h"><span className="rw-engine">ChatGPT</span><span className="rw-stamp">Thin Guess</span></div>
+              <div className="rw-card-d">Found it through live search only — the training crawler is blocked, so the model never learned the business. Thin, hedged, listed beside competitors.</div>
             </div>
             <div className="rw-card">
-              <div className="rw-card-h"><span className="rw-engine">Perplexity</span><span className="rw-stamp">Outdated Identity</span></div>
-              <div className="rw-card-d">Described the organization as it used to be — real sources, stale story. Yesterday&apos;s identity, presented as today&apos;s.</div>
+              <div className="rw-card-h"><span className="rw-engine">Perplexity</span><span className="rw-stamp">Wrong Domain</span></div>
+              <div className="rw-card-d">Cited the legacy domain being retired, not the current site. Every AI mention leaked to the wrong address.</div>
             </div>
             <div className="rw-card">
-              <div className="rw-card-h"><span className="rw-engine">Gemini</span><span className="rw-stamp">Partial Picture</span></div>
-              <div className="rw-card-d">Understood the space and the reviews, missed the mission. A place, not an organization.</div>
+              <div className="rw-card-h"><span className="rw-engine">Gemini</span><span className="rw-stamp">Amenities Only</span></div>
+              <div className="rw-card-d">Leaned on the Google Business Profile — &ldquo;wifi &amp; coffee&rdquo; — with none of the membership, events, or Amplify story.</div>
             </div>
           </div>
           <div className="rw-conclusion">Showing up is not the same as being <em>understood, trusted, or represented correctly.</em></div>
@@ -1041,7 +1042,7 @@ export default function SignalFlairLanding() {
           </ul>
           <div className="rw-ctarow">
             <a className="rw-cta" href="#cta">▸ See What AI Understands About Your Business</a>
-            <a className="rw-more" href="/case-studies/three-engines-three-stories/">Read the anonymized baseline audit →</a>
+            <a className="rw-more" href="/case-studies/three-engines-three-stories/">Read the full Mill audit →</a>
           </div>
         </div>
 
