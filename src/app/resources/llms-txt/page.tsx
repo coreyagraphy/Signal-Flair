@@ -62,7 +62,7 @@ export default function LlmsTxtResourcePage() {
   return (
     <main className="rsc">
       <nav className="rsc-nav">
-        <a className="rsc-logo" href="/" aria-label="Signal Flair home"><SignalFlairLogo style={{ height: 56, width: 'auto', display: 'block' }} /></a>
+        <a className="rsc-logo" href="/" aria-label="Signal Flair home"><SignalFlairLogo style={{ height: 70, width: 'auto', display: 'block' }} /></a>
         <a className="rsc-navcta" href="/#cta">▸ Free Signal Pulse™</a>
       </nav>
 
@@ -95,11 +95,11 @@ export default function LlmsTxtResourcePage() {
           <div className="rsc-ba">
             <div className="rsc-bacard before">
               <div className="rsc-balabel">Before · no llms.txt</div>
-              <div className="rsc-baquote">&ldquo;A local company in Brownsburg, Indiana that does something with… [vague description].&rdquo;</div>
+              <div className="rsc-baquote">&ldquo;A local company in Indianapolis, Indiana that does something with… [vague description].&rdquo;</div>
             </div>
             <div className="rsc-bacard after">
               <div className="rsc-balabel">After · proper llms.txt</div>
-              <div className="rsc-baquote">&ldquo;A family-owned HVAC company serving Brownsburg, Indiana and surrounding areas since 2012, specializing in repair and installation — consistently rated 4.9 stars.&rdquo;</div>
+              <div className="rsc-baquote">&ldquo;A family-owned HVAC company serving Indianapolis, Indiana and surrounding areas since 2012, specializing in repair and installation — consistently rated 4.9 stars.&rdquo;</div>
             </div>
           </div>
         </section>
@@ -142,7 +142,7 @@ export default function LlmsTxtResourcePage() {
       </section>
 
       <footer className="rsc-foot">
-        Signal Flair · a Mental Vision product · Brownsburg, Indiana · serving nationwide<br />
+        Signal Flair · a Mental Vision product · Indianapolis, Indiana · serving nationwide<br />
         <a href="/">signalflair.ai</a> · <a href="/llms.txt">our llms.txt</a> · <a href="/#cta">Run your free Signal Pulse™</a> · <a href="/privacy/">privacy</a>
       </footer>
 

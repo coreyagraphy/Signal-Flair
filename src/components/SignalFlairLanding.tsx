@@ -696,8 +696,8 @@ export default function SignalFlairLanding() {
         <div id="hero-center-scrim" />
         <nav id="hnav">
           <div>
-            <div className="nav-logo"><SignalFlairLogo onDark pulse style={{ height: 56, width: 'auto', display: 'block' }} /></div>
-            <div className="nav-logo-tag"><span className="ntag-cat">AI Proof Infrastructure™</span> · Brownsburg, Indiana, serving nationwide</div>
+            <div className="nav-logo"><SignalFlairLogo onDark pulse style={{ height: 70, width: 'auto', display: 'block' }} /></div>
+            <div className="nav-logo-tag"><span className="ntag-cat">AI Proof Infrastructure™</span> · Indianapolis, Indiana, serving nationwide</div>
           </div>
           <div style={{ display: 'flex', alignItems: 'center', gap: '24px' }}>
             <a className="nl" href="#check">Signal Score</a>
@@ -762,7 +762,7 @@ export default function SignalFlairLanding() {
       {/* ═══ STICKY NAV ═══ */}
       <nav id="site-nav">
         <div>
-          <a className="nav-logo" href="#hero" style={{ display: 'flex', alignItems: 'center' }}><SignalFlairLogo style={{ height: 56, width: 'auto', display: 'block' }} /></a>
+          <a className="nav-logo" href="#hero" style={{ display: 'flex', alignItems: 'center' }}><SignalFlairLogo style={{ height: 70, width: 'auto', display: 'block' }} /></a>
           <div className="nav-logo-tag" style={{ color: 'rgba(23,19,18,0.55)' }}><span className="ntag-cat">AI Proof Infrastructure™</span></div>
         </div>
         <div className="snav-actions" style={{ display: 'flex', alignItems: 'center', gap: '24px' }}>
@@ -1165,6 +1165,21 @@ export default function SignalFlairLanding() {
           </div>
           <div className="ph-note">Builds are <strong>one-time</strong> — you keep everything, even if you cancel. <strong>Stay Found™</strong> plans are open to every client after a build. Most start with the free Signal Pulse™.</div>
         </div>
+
+        {/* The stack, decoded — every branded term defined before the cards use it */}
+        <div className="decode reveal">
+          <div className="decode-lead">The stack, <em>decoded.</em></div>
+          <div className="decode-grid">
+            <div className="decode-item"><span className="decode-t">The Proof Stack™</span><span className="decode-d">The full infrastructure layer AI reads before it recommends you.</span></div>
+            <div className="decode-item"><span className="decode-t">Machine Trust Layer™</span><span className="decode-d">The structured data protocol AI engines require to verify who you are.</span></div>
+            <div className="decode-item"><span className="decode-t">Entity Lock™</span><span className="decode-d">One verified identity for your business across every engine, map, and directory.</span></div>
+            <div className="decode-item"><span className="decode-t">Answer Architecture™</span><span className="decode-d">Content engineered in the exact shape AI pulls answers from.</span></div>
+            <div className="decode-item"><span className="decode-t">Citation Capture</span><span className="decode-d">The monthly work of winning and holding AI citations.</span></div>
+            <div className="decode-item"><span className="decode-t">Signal Telemetry</span><span className="decode-d">Live drift detection across ChatGPT, Gemini, Perplexity &amp; Claude.</span></div>
+            <div className="decode-item"><span className="decode-t">Signal Satellites™</span><span className="decode-d">Per-location micro-sites, each built AI-readable from day one.</span></div>
+            <div className="decode-item"><span className="decode-t">Content Payload</span><span className="decode-d">A monthly drop of premium, AEO-optimized content — engineered for humans and machines.</span></div>
+          </div>
+        </div>
         <div className="price-anchor reveal">
           <div className="pa-lead">Every customer an AI engine routes to your competitor instead of you is a closed job you&apos;ll never see.</div>
           <div className="pa-mid">Bundle &amp; save <em>$2,000</em> — start a 12-month Signal Proof plan with your build and the Foundation Build drops from $5,500 to $3,500. Bundle applies to the Foundation Build only; discounts don&apos;t stack unless stated.</div>
@@ -1223,7 +1238,7 @@ export default function SignalFlairLanding() {
               <div className="psci">Answer Architecture™ expansion every month</div>
               <div className="psci">Proof Density Engine — compounding reviews, mentions &amp; authority at citation weight</div>
               <div className="psci">Quarterly re-audit + Signal Telemetry — live drift detection</div>
-              <div className="psci">Content Payload — 2 weeks of social content every month (one location; +$450/mo per extra location)</div>
+              <div className="psci psci-lock">Content Payload — 2 weeks of premium, AEO-optimized content every month, incl. one :30 commercial (one location; +$450/mo per extra location)</div>
               <div className="psci">Signal Satellites™ available at +$250/mo per Satellite</div>
             </div>
             <a className="psc-btn" href="#cta">▸ Keep Me Found</a>
@@ -1238,10 +1253,33 @@ export default function SignalFlairLanding() {
               <div className="psci">Proof Density Engine at full velocity — active review program</div>
               <div className="psci">Priority turnaround + dedicated strategy</div>
               <div className="psci">Mental Vision cinematic content bundle</div>
-              <div className="psci">Content Payload — a full month of content every month (one location; +$450/mo per extra location)</div>
+              <div className="psci psci-lock">Content Payload — a full month of premium, AEO-optimized content, incl. one :30 commercial (one location; +$450/mo per extra location)</div>
               <div className="psci">Signal Satellites™ management included</div>
             </div>
             <a className="psc-btn" href="#cta">▸ Go Dominate</a>
+          </div>
+        </div>
+
+        {/* Content Payload — content is the fuel, elevated to premium */}
+        <div className="price-how reveal fuel" id="content-payload">
+          <div className="ph-lead">Content is the <em>payload.</em></div>
+          <div className="ph-note" style={{ marginTop: 0 }}>Every Stay Found™ plan ships a monthly <strong>Content Payload</strong> — premium, done-for-you content engineered for humans <em>and</em> machines. This is not filler posted into the void: every piece is <strong>AEO-optimized with machine-readable metadata</strong> before it ships, so the engines can index it, attribute it, and cite it. And every payload includes <strong>one 30-second commercial</strong> — a cinematic, broadcast-grade spot for your business, every single month.</div>
+          <div className="ph-map" style={{ marginTop: '20px' }}>
+            <div className="ph-step">
+              <div className="ph-band">Engineered, not posted</div>
+              <div className="ph-offer">AEO-optimized with metadata</div>
+              <div className="ph-what">Every piece carries the structured metadata answer engines index — built to be found, read, and cited, not just scrolled past.</div>
+            </div>
+            <div className="ph-step">
+              <div className="ph-band">Every month</div>
+              <div className="ph-offer">One :30 commercial included</div>
+              <div className="ph-what">A 30-second commercial for your business in every monthly payload — premium, cinematic, and yours to run anywhere.</div>
+            </div>
+            <div className="ph-step">
+              <div className="ph-band">Scaled to your plan</div>
+              <div className="ph-offer">2 weeks or a full month</div>
+              <div className="ph-what">Signal Proof ships 2 weeks of content monthly; Signal Dominate ships a full month at full velocity, backed by the Mental Vision cinematic engine.</div>
+            </div>
           </div>
         </div>
 
@@ -1335,8 +1373,8 @@ export default function SignalFlairLanding() {
             <div className="about-sign">
               <div>
                 <div className="about-sign-name">— Corey Ellis</div>
-                <div className="about-sign-role">Founder · Signal Flair · Mental Vision · Brownsburg, Indiana</div>
-                <div className="about-sign-loc">Brownsburg, Indiana · serving businesses nationwide</div>
+                <div className="about-sign-role">Founder · Signal Flair · Mental Vision · Indianapolis, Indiana</div>
+                <div className="about-sign-loc">Indianapolis, Indiana · serving businesses nationwide</div>
               </div>
             </div>
           </div>
@@ -1364,7 +1402,7 @@ export default function SignalFlairLanding() {
           </details>
           <details className="faq-item">
             <summary className="faq-q">Why is there a monthly plan?<span className="faq-ic" aria-hidden="true" /></summary>
-            <div className="faq-a">Because AI search is a moving target. New engines ship, models retrain, competitors catch up, and AI agents are arriving. Stay Found™ plans — Signal Proof and Signal Dominate — run Citation Capture, expand your Answer Architecture™ monthly, compound proof with the Proof Density Engine, and watch drift with Signal Telemetry, so the foundation you built keeps earning citations.</div>
+            <div className="faq-a">Because AI search is a moving target. New engines ship, models retrain, competitors catch up, and AI agents are arriving. Stay Found™ plans — Signal Proof and Signal Dominate — run Citation Capture, expand your Answer Architecture™ monthly, compound proof with the Proof Density Engine, and watch drift with Signal Telemetry. And every month ships your Content Payload: premium, done-for-you content engineered for humans and machines — AEO-optimized with machine-readable metadata, including a 30-second commercial — so the foundation you built keeps earning citations.</div>
           </details>
           <details className="faq-item">
             <summary className="faq-q">What are Signal Satellites™?<span className="faq-ic" aria-hidden="true" /></summary>
@@ -1502,8 +1540,8 @@ export default function SignalFlairLanding() {
       <footer>
         <div className="fi">
           <div>
-            <a className="f-logo" href="#hero"><SignalFlairLogo onDark style={{ height: 56, width: 'auto', display: 'block' }} /></a>
-            <div className="f-tag">AI Proof Infrastructure™<br />Brownsburg, Indiana · Serving businesses nationwide · Est. 2026<br />Your business, found by AI.</div>
+            <a className="f-logo" href="#hero"><SignalFlairLogo onDark style={{ height: 70, width: 'auto', display: 'block' }} /></a>
+            <div className="f-tag">AI Proof Infrastructure™<br />Indianapolis, Indiana · Serving businesses nationwide · Est. 2026<br />Your business, found by AI.</div>
             <a className="f-email" href="mailto:hello@signalflair.ai">hello@signalflair.ai</a>
           </div>
           <div><div className="f-head">Services</div><a className="f-link" href="#signal">AI Visibility Audit</a><a className="f-link" href="#signal">Foundation Build</a><a className="f-link" href="#signal">Stay Found™</a><a className="f-link" href="#check">What We Check</a><a className="f-link" href="#pricing">Pricing</a></div>
@@ -1516,7 +1554,7 @@ export default function SignalFlairLanding() {
           <div className="f-privacy">We never sell your data. No spam. <a href="/privacy/">Privacy &amp; data use →</a></div>
         </div>
         <div className="fb">
-          <div className="fb-l">Signal Flair is a Mental Vision product | Brownsburg, Indiana · Serving nationwide | signalflair.ai</div>
+          <div className="fb-l">Signal Flair is a Mental Vision product | Indianapolis, Indiana · Serving nationwide | signalflair.ai</div>
           <div className="fb-r">AI Proof Infrastructure™ · Signal Flair v1.0</div>
         </div>
       </footer>

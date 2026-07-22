@@ -37,7 +37,7 @@ export default function PrivacyPage() {
   return (
     <main className="rsc sl">
       <nav className="rsc-nav">
-        <a className="rsc-logo" href="/" aria-label="Signal Flair home"><SignalFlairLogo style={{ height: 56, width: 'auto', display: 'block' }} /></a>
+        <a className="rsc-logo" href="/" aria-label="Signal Flair home"><SignalFlairLogo style={{ height: 70, width: 'auto', display: 'block' }} /></a>
         <a className="rsc-navcta" href="/#field-report">▸ Free Signal Pulse™</a>
       </nav>
 
@@ -46,7 +46,7 @@ export default function PrivacyPage() {
           <div className="rsc-eyebrow">Privacy &amp; data use · Effective July 17, 2026</div>
           <h1 className="rsc-h1">Your data, <em>handled straight.</em></h1>
           <p className="rsc-lead">
-            Signal Flair is AI Proof Infrastructure — a product of Mental Vision, based in Brownsburg,
+            Signal Flair is AI Proof Infrastructure — a product of Mental Vision, based in Indianapolis,
             Indiana. This page explains, in plain language, what we collect, how we use it, and the
             commitments we hold ourselves to. No dark patterns, no fine-print surprises.
           </p>
@@ -146,7 +146,7 @@ export default function PrivacyPage() {
       </div>
 
       <footer className="rsc-foot">
-        Signal Flair · a Mental Vision product · Brownsburg, Indiana · serving nationwide<br />
+        Signal Flair · a Mental Vision product · Indianapolis, Indiana · serving nationwide<br />
         <a href="/">signalflair.ai</a> · <a href="/about/">about</a> · <a href="/faq/">faq</a> · <a href="/how-it-works/">how it works</a> · <a href="/proof/">the record</a>
       </footer>
 

@@ -59,7 +59,7 @@ export default function ThreeEnginesCaseStudy() {
   return (
     <main className="rsc sl">
       <nav className="rsc-nav">
-        <a className="rsc-logo" href="/" aria-label="Signal Flair home"><SignalFlairLogo style={{ height: 56, width: 'auto', display: 'block' }} /></a>
+        <a className="rsc-logo" href="/" aria-label="Signal Flair home"><SignalFlairLogo style={{ height: 70, width: 'auto', display: 'block' }} /></a>
         <a className="rsc-navcta" href="/#cta">▸ Get Your Signal Score™</a>
       </nav>
 
@@ -310,7 +310,7 @@ export default function ThreeEnginesCaseStudy() {
       </div>
 
       <footer className="rsc-foot">
-        Signal Flair · a Mental Vision product · Brownsburg, Indiana · serving nationwide<br />
+        Signal Flair · a Mental Vision product · Indianapolis, Indiana · serving nationwide<br />
         <a href="/">signalflair.ai</a> · <a href="/about/">about</a> · <a href="/how-it-works/">how it works</a> · <a href="/proof/">the record</a> · <a href="/faq/">faq</a>
       </footer>
 

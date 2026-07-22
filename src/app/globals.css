@@ -1242,3 +1242,119 @@ footer{background:var(--ink2);border-top:1px solid var(--ink);padding:52px;posit
 .rw-more:hover,.rw-more:focus-visible{color:var(--orange);border-color:var(--orange)}
 @media(max-width:900px){.rw-grid{grid-template-columns:1fr}.rw-points{grid-template-columns:1fr}}
 @media(max-width:760px){.rw{padding:0 22px;margin-top:56px}}
+
+/* ════════════════════════════════════════════════════════════════════════
+   LEGIBILITY & BOLDNESS PASS — Corey-directed 2026-07-22.
+   Fluid type (clamp scales with viewport), bigger body copy, bolder cards,
+   deeper shadows, stronger separation. Later-in-file overrides by design.
+   ════════════════════════════════════════════════════════════════════════ */
+
+/* ── Fluid body copy — landing (was 12–14px fixed) ── */
+.prob-body,.sig-rbody,.mm-lead,.cta-y-sub{font-size:clamp(15.5px,0.6vw + 12px,18px);line-height:1.8}
+.sig-tagline,.ent-photo,.proof-meta{font-size:clamp(15px,0.55vw + 12px,17.5px);line-height:1.8}
+.mm-tile-d,.proc-body,.ent-term,.faq-a,.lead-subline{font-size:clamp(15px,0.5vw + 12px,17px);line-height:1.8}
+.faq-q{font-size:clamp(16px,0.6vw + 13px,19px)}
+.proto-meta{font-size:clamp(15px,0.55vw + 12px,17.5px)}
+.mm-note{font-size:clamp(13.5px,0.4vw + 11px,15px);line-height:1.8}
+.lead-micro,.lead-consent{font-size:clamp(12px,0.35vw + 10px,13.5px);line-height:1.7}
+.h-sub{font-size:clamp(13px,0.4vw + 11px,15px)}
+.hf-tk{font-size:clamp(12px,0.35vw + 10px,14px)}
+.rw-body{font-size:clamp(15.5px,0.6vw + 12px,18px)}
+.rw-card-d{font-size:clamp(14.5px,0.45vw + 12px,16px);line-height:1.8}
+.rw-points li{font-size:clamp(14.5px,0.45vw + 12px,16px)}
+.founding-body,.founding-ask{font-size:clamp(15px,0.5vw + 12px,17px);line-height:1.85}
+.fnd-i{font-size:clamp(14px,0.45vw + 11.5px,15.5px);line-height:1.7}
+.founding-micro{font-size:clamp(12.5px,0.35vw + 10.5px,14px)}
+.pv-name,.pv-stamp{font-size:clamp(13px,0.4vw + 11px,14.5px)}
+
+/* ── Fluid body copy — pricing ── */
+.pricing-sub{font-size:clamp(15.5px,0.6vw + 12px,18px);line-height:1.8}
+.ph-band{font-size:clamp(12px,0.35vw + 10px,13.5px);font-weight:700}
+.ph-offer{font-size:clamp(19px,0.9vw + 13px,26px)}
+.ph-what{font-size:clamp(14.5px,0.45vw + 12px,16.5px);line-height:1.8}
+.ph-note{font-size:clamp(14px,0.45vw + 11.5px,16px);line-height:1.85}
+.pa-lead{font-size:clamp(21px,1.4vw + 12px,34px)}
+.pa-mid{font-size:clamp(16px,0.7vw + 12px,20px);line-height:1.8}
+.pa-anchor{font-size:clamp(18px,1vw + 12px,26px)}
+.pa-foot{font-size:clamp(13px,0.4vw + 11px,15px)}
+.pf-desc{font-size:clamp(15px,0.55vw + 12px,17.5px);line-height:1.8}
+.pf-item,.psci{font-size:clamp(14px,0.45vw + 11.5px,16px);line-height:1.75}
+.pf-ideal,.psc-ideal{font-size:clamp(14.5px,0.5vw + 12px,16.5px);line-height:1.8}
+.pf-cadence,.psc-cad{font-size:clamp(12.5px,0.35vw + 10.5px,14px)}
+.psc-name{font-size:clamp(20px,1vw + 13px,28px)}
+.psc-price{font-size:clamp(34px,2.6vw + 14px,54px)}
+.price-guarantee{font-size:clamp(12.5px,0.4vw + 10.5px,14.5px)}
+
+/* ── Fluid body copy — rsc pages (faq, how-it-works, proof, cases) ── */
+.rsc-p,.rsc-ul li{font-size:clamp(15.5px,0.55vw + 12.5px,18px);line-height:1.85}
+.rsc-lead{font-size:clamp(17px,0.8vw + 13px,21px);line-height:1.75}
+.sl-faq-a{font-size:clamp(15px,0.5vw + 12px,17px);line-height:1.85}
+.sl-faq-q{font-size:clamp(16px,0.6vw + 13px,19px)}
+.sl-kv span{font-size:clamp(13.5px,0.4vw + 11.5px,15.5px)}
+.sl-hub-d{font-size:clamp(14px,0.45vw + 11.5px,16px);line-height:1.75}
+.rsc-cta-b{font-size:clamp(15px,0.5vw + 12px,17.5px)}
+.sl-doctrine{font-size:clamp(14px,0.45vw + 11.5px,15.5px)}
+.sl-doctrine thead th{font-size:clamp(11px,0.3vw + 9.5px,12.5px);padding:16px 18px}
+.sl-doctrine tbody td{padding:16px 18px;line-height:1.65}
+
+/* ── Nav logo & tagline — bigger presence ── */
+.nav-logo-tag{font-size:clamp(12.5px,0.35vw + 10.5px,14px);letter-spacing:0.12em}
+
+/* ── Cards: bolder borders, deeper shadows, real separation, hover lift ── */
+.ph-map{gap:clamp(16px,1.6vw,26px)}
+.ph-step{background:#fdf7ec;border:2px solid var(--ink);border-radius:14px;padding:clamp(22px,2vw,32px);box-shadow:0 16px 40px rgba(11,10,9,0.16);position:relative;overflow:hidden;transition:transform .25s ease,box-shadow .25s ease}
+.ph-step::before{content:'';position:absolute;top:0;left:0;right:0;height:5px;background:var(--orange)}
+.ph-step:nth-child(1)::before{background:var(--teal)}
+.ph-step:nth-child(2)::before{background:var(--orange)}
+.ph-step:nth-child(3)::before{background:var(--signal-magenta)}
+.ph-step:hover{transform:translateY(-5px);box-shadow:0 26px 56px rgba(11,10,9,0.24)}
+.price-small{gap:clamp(16px,1.6vw,24px);border:none}
+.price-small .psc{border-radius:14px;box-shadow:0 18px 44px rgba(11,10,9,0.18);transition:transform .25s ease,box-shadow .25s ease}
+.price-small .psc:hover{transform:translateY(-6px);box-shadow:0 30px 64px rgba(11,10,9,0.28)}
+.psc:nth-child(1){border:2px solid var(--orange2)}
+.psc:nth-child(2){border:2px solid var(--teal);box-shadow:0 18px 48px rgba(0,184,169,0.28)}
+.psc:nth-child(2):hover{box-shadow:0 30px 68px rgba(0,184,169,0.4)}
+.psc:nth-child(3){border:2px solid var(--ink)}
+.price-feat{border-radius:16px;overflow:hidden;box-shadow:0 26px 64px rgba(11,10,9,0.32),0 0 0 2px var(--hot)}
+.sl-doctrine-wrap{border-radius:12px;border-width:2px;box-shadow:0 14px 36px rgba(11,10,9,0.14)}
+.rw-card{transition:transform .25s ease,box-shadow .25s ease}
+.rw-card:hover{transform:translateY(-5px);box-shadow:0 26px 56px rgba(11,10,9,0.3)}
+.mm-tile{transition:transform .25s ease,box-shadow .25s ease}
+.mm-tile:hover{transform:translateY(-4px)}
+
+/* ── Buttons: fix default-purple leak + bolder CTAs ── */
+.psc-btn{border:2px solid var(--ink);color:var(--ink);background:transparent;font-size:clamp(12.5px,0.35vw + 10.5px,14px);padding:16px 18px;border-radius:8px}
+.psc-btn:hover,.psc-btn:focus-visible{background:var(--ink);color:var(--hot);box-shadow:0 10px 30px rgba(11,10,9,0.35)}
+.psc:nth-child(1) .psc-btn{border:2px solid var(--orange2);color:var(--orange2)}
+.psc:nth-child(2) .psc-btn{border:2px solid var(--teal);color:#0a7d72}
+.psc:nth-child(3) .psc-btn{border:2px solid var(--ink);color:var(--ink)}
+.psc:nth-child(3) .psc-btn:hover{background:var(--ink);color:var(--hot)}
+.ph-step .psc-btn{display:inline-block}
+.pf-btn{font-size:clamp(12.5px,0.35vw + 10.5px,14px);border-radius:8px;border-width:2px}
+
+/* ── The stack, decoded — dark definition panel (terms explained up front) ── */
+.decode{max-width:1320px;margin:34px auto 0;background:var(--ink);border-radius:16px;padding:clamp(26px,2.6vw,44px);box-shadow:0 24px 60px rgba(11,10,9,0.3);border-top:5px solid var(--hot)}
+.decode-lead{font-family:var(--flair);font-variation-settings:'opsz' 100,'wght' 500,'WONK' 1;font-size:clamp(22px,1.6vw + 12px,34px);color:var(--bone);margin-bottom:22px}
+.decode-lead em{font-family:var(--italic);font-style:italic;color:var(--hot)}
+.decode-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:clamp(14px,1.4vw,22px)}
+.decode-item{display:flex;flex-direction:column;gap:7px;border-left:2.5px solid rgba(255,244,95,0.55);padding-left:14px}
+.decode-t{font-family:var(--signal);font-weight:700;font-size:clamp(13.5px,0.4vw + 11.5px,15.5px);color:var(--hot);letter-spacing:0.02em}
+.decode-d{font-family:var(--signal);font-size:clamp(13px,0.4vw + 11px,14.5px);line-height:1.7;color:rgba(248,241,231,0.85)}
+@media(max-width:1000px){.decode-grid{grid-template-columns:1fr 1fr}}
+@media(max-width:600px){.decode-grid{grid-template-columns:1fr}.decode{border-radius:12px}}
+
+/* ── Content Payload — premium dark feature panel ── */
+.price-how.fuel{background:var(--ink);border-radius:16px;padding:clamp(28px,2.8vw,48px);max-width:1320px;margin-left:auto;margin-right:auto;box-shadow:0 26px 64px rgba(11,10,9,0.34);border-top:5px solid var(--orange)}
+.fuel .ph-lead{color:var(--bone)}
+.fuel .ph-lead em{color:var(--orange)}
+.fuel .ph-note{color:rgba(248,241,231,0.88)}
+.fuel .ph-note strong{color:var(--hot)}
+.fuel .ph-note em{color:var(--orange)}
+
+/* ── Mobile: keep the scale, keep the separation ── */
+@media(max-width:760px){
+  .ph-map{grid-template-columns:1fr}
+  .ph-step{padding:24px 20px}
+  .price-how.fuel,.decode{margin-left:14px;margin-right:14px}
+  .price-small{gap:16px}
+}

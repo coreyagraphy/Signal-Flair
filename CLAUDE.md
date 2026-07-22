@@ -34,7 +34,7 @@ ChatGPT, Claude, Perplexity, Gemini, Google AI Overviews.
 It is a product of Mental Vision (mentalvision.ai). Keep the two brands separate.
 Signal Flair is NOT Mental Vision. Do not bleed aesthetics or copy between them.
 
-Founder: Corey Ellis, Brownsburg, Indiana.
+Founder: Corey Ellis. Public-facing city = Indianapolis, Indiana (Corey-directed 2026-07-22; all client-facing copy, schema, NAP, and llms.txt use Indianapolis — do not reintroduce Brownsburg).
 
 ---
 
@@ -207,7 +207,7 @@ Fixes in progress:
 - Founding Client case studies will add more entity signals over time
 
 Do not confuse the two companies in any copy, schema, or content.
-Signal Flair = AEO for local businesses, Brownsburg, Indiana.
+Signal Flair = AEO for local businesses, Indianapolis, Indiana.
 SignalFlare.ai = restaurant decision intelligence, Texas. Completely different.
 
 ---

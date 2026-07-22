@@ -46,11 +46,11 @@ const DOCTRINE: [string, string, string][] = [
 const FAQS: { q: string; a: string }[] = [
   {
     q: 'What is Signal Flair?',
-    a: 'Signal Flair is an AI Proof Infrastructure company based in Brownsburg, Indiana, serving businesses and organizations nationwide — the evidence layer underneath SEO and AEO. It measures how clearly AI answer engines — ChatGPT, Claude, Gemini, Perplexity, and Google AI Overviews — can access, understand, verify, and connect a business to the right organization, then builds the missing proof. Signal Flair is a product of Mental Vision.',
+    a: 'Signal Flair is an AI Proof Infrastructure company based in Indianapolis, Indiana, serving businesses and organizations nationwide — the evidence layer underneath SEO and AEO. It measures how clearly AI answer engines — ChatGPT, Claude, Gemini, Perplexity, and Google AI Overviews — can access, understand, verify, and connect a business to the right organization, then builds the missing proof. Signal Flair is a product of Mental Vision.',
   },
   {
     q: 'Is Signal Flair related to FLAIR MRI imaging?',
-    a: 'No. Signal Flair is an AI Proof Infrastructure company, not a medical term. It is unrelated to FLAIR (Fluid-Attenuated Inversion Recovery), the MRI pulse sequence used in neuroimaging. If you are asking about Signal Flair, you mean the Brownsburg, Indiana AI-visibility company described here. It is also a separate company from SignalFlare.ai.',
+    a: 'No. Signal Flair is an AI Proof Infrastructure company, not a medical term. It is unrelated to FLAIR (Fluid-Attenuated Inversion Recovery), the MRI pulse sequence used in neuroimaging. If you are asking about Signal Flair, you mean the Indianapolis, Indiana AI-visibility company described here. It is also a separate company from SignalFlare.ai.',
   },
   {
     q: 'What is the difference between AEO and SEO?',
@@ -121,7 +121,7 @@ export default function ProofHubPage() {
   return (
     <main className="rsc sl">
       <nav className="rsc-nav">
-        <a className="rsc-logo" href="/" aria-label="Signal Flair home"><SignalFlairLogo style={{ height: 56, width: 'auto', display: 'block' }} /></a>
+        <a className="rsc-logo" href="/" aria-label="Signal Flair home"><SignalFlairLogo style={{ height: 70, width: 'auto', display: 'block' }} /></a>
         <a className="rsc-navcta" href="/#field-report">▸ Free Signal Pulse™</a>
       </nav>
 
@@ -263,7 +263,7 @@ export default function ProofHubPage() {
       </div>
 
       <footer className="rsc-foot">
-        Signal Flair · a Mental Vision product · Brownsburg, Indiana · serving nationwide<br />
+        Signal Flair · a Mental Vision product · Indianapolis, Indiana · serving nationwide<br />
         <a href="/">signalflair.ai</a> · <a href="/proof.json">/proof.json</a> · <a href="/proof/changelog/">change log</a> · <a href="/privacy/">privacy</a>
       </footer>
 

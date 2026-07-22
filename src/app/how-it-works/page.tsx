@@ -82,7 +82,7 @@ export default function HowItWorksPage() {
   return (
     <main className="rsc sl">
       <nav className="rsc-nav">
-        <a className="rsc-logo" href="/" aria-label="Signal Flair home"><SignalFlairLogo style={{ height: 56, width: 'auto', display: 'block' }} /></a>
+        <a className="rsc-logo" href="/" aria-label="Signal Flair home"><SignalFlairLogo style={{ height: 70, width: 'auto', display: 'block' }} /></a>
         <a className="rsc-navcta" href="/#field-report">▸ Free Signal Pulse™</a>
       </nav>
 
@@ -163,7 +163,7 @@ export default function HowItWorksPage() {
       </div>
 
       <footer className="rsc-foot">
-        Signal Flair · a Mental Vision product · Brownsburg, Indiana · serving nationwide<br />
+        Signal Flair · a Mental Vision product · Indianapolis, Indiana · serving nationwide<br />
         <a href="/">signalflair.ai</a> · <a href="/faq/">faq</a> · <a href="/about/">about</a> · <a href="/proof/">the record</a> · <a href="/privacy/">privacy</a>
       </footer>
 

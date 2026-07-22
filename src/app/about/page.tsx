@@ -2,14 +2,14 @@ import type { Metadata } from 'next'
 import SignalFlairLogo from '@/components/SignalFlairLogo'
 
 export const metadata: Metadata = {
-  title: 'About — AI Visibility & AEO · Brownsburg, Indiana | Signal Flair',
+  title: 'About — AI Visibility & AEO · Indianapolis, Indiana | Signal Flair',
   description:
-    'Signal Flair is an AI Proof Infrastructure company based in Brownsburg, Indiana, serving nationwide — a product of Mental Vision, founded by Corey Ellis. It works underneath SEO and AEO, connecting your website, profiles, proof, images, video, and entity relationships so AI systems can verify who you are.',
+    'Signal Flair is an AI Proof Infrastructure company based in Indianapolis, Indiana, serving nationwide — a product of Mental Vision, founded by Corey Ellis. It works underneath SEO and AEO, connecting your website, profiles, proof, images, video, and entity relationships so AI systems can verify who you are.',
   alternates: { canonical: 'https://signalflair.ai/about/' },
   openGraph: {
     title: 'About Signal Flair — found by AI, by design',
     description:
-      'A Brownsburg, Indiana AI Proof Infrastructure company that audited itself first: Case Zero, 18/100, rebuilt in public. A Mental Vision product.',
+      'An Indianapolis, Indiana AI Proof Infrastructure company that audited itself first: Case Zero, 18/100, rebuilt in public. A Mental Vision product.',
     images: ['/video/hero-poster.jpg'],
   },
 }
@@ -34,10 +34,10 @@ const jsonLd = {
       logo: 'https://signalflair.ai/signal-flair-logo.svg',
       email: 'hello@signalflair.ai',
       description:
-        'Signal Flair builds AI Proof Infrastructure — the structured proof layer that helps AI answer engines access, understand, verify, and recommend a business. Based in Brownsburg, Indiana and serving organizations nationwide, it is a product of Mental Vision. It is unrelated to SignalFlare.ai and to the medical MRI term FLAIR (Fluid-Attenuated Inversion Recovery).',
+        'Signal Flair builds AI Proof Infrastructure — the structured proof layer that helps AI answer engines access, understand, verify, and recommend a business. Based in Indianapolis, Indiana and serving organizations nationwide, it is a product of Mental Vision. It is unrelated to SignalFlare.ai and to the medical MRI term FLAIR (Fluid-Attenuated Inversion Recovery).',
       foundingDate: '2026',
       areaServed: { '@type': 'Country', name: 'United States' },
-      address: { '@type': 'PostalAddress', addressLocality: 'Brownsburg', addressRegion: 'IN', addressCountry: 'US' },
+      address: { '@type': 'PostalAddress', addressLocality: 'Indianapolis', addressRegion: 'IN', addressCountry: 'US' },
       founder: { '@id': 'https://signalflair.ai/#founder' },
       parentOrganization: { '@type': 'Organization', name: 'Mental Vision', url: 'https://mentalvision.ai' },
     },
@@ -47,7 +47,7 @@ const jsonLd = {
       name: 'Corey Ellis',
       jobTitle: 'Founder',
       worksFor: { '@id': 'https://signalflair.ai/#org' },
-      homeLocation: { '@type': 'Place', name: 'Brownsburg, Indiana' },
+      homeLocation: { '@type': 'Place', name: 'Indianapolis, Indiana' },
       image: 'https://signalflair.ai/corey-ellis-founder.png',
     },
   ],
@@ -57,16 +57,16 @@ export default function AboutPage() {
   return (
     <main className="rsc sl">
       <nav className="rsc-nav">
-        <a className="rsc-logo" href="/" aria-label="Signal Flair home"><SignalFlairLogo style={{ height: 56, width: 'auto', display: 'block' }} /></a>
+        <a className="rsc-logo" href="/" aria-label="Signal Flair home"><SignalFlairLogo style={{ height: 70, width: 'auto', display: 'block' }} /></a>
         <a className="rsc-navcta" href="/#field-report">▸ Free Signal Pulse™</a>
       </nav>
 
       <div className="rsc-wrap">
         <header className="rsc-hero">
-          <div className="rsc-eyebrow">About · Brownsburg, Indiana, nationwide</div>
+          <div className="rsc-eyebrow">About · Indianapolis, Indiana, nationwide</div>
           <h1 className="rsc-h1">Found by AI, <em>by design.</em></h1>
           <p className="rsc-lead">
-            Signal Flair is an AI Proof Infrastructure company based in Brownsburg, Indiana,
+            Signal Flair is an AI Proof Infrastructure company based in Indianapolis, Indiana,
             serving businesses nationwide. We make local service businesses across the United States
             findable, readable, and recommendable by the AI engines now deciding who gets seen —
             ChatGPT, Claude, Perplexity, Gemini, and Google AI.
@@ -123,7 +123,7 @@ export default function AboutPage() {
         <section className="rsc-section">
           <h2 className="rsc-h2">The <em>founder</em></h2>
           <p className="rsc-p">
-            Signal Flair was founded by <strong>Corey Ellis</strong> in Brownsburg, Indiana. It is a
+            Signal Flair was founded by <strong>Corey Ellis</strong> in Indianapolis, Indiana. It is a
             product of <strong>Mental Vision</strong> (mentalvision.ai). Signal Flair and Mental
             Vision are kept as distinct brands.
           </p>
@@ -148,7 +148,7 @@ export default function AboutPage() {
       </div>
 
       <footer className="rsc-foot">
-        Signal Flair · a Mental Vision product · Brownsburg, Indiana · serving nationwide<br />
+        Signal Flair · a Mental Vision product · Indianapolis, Indiana · serving nationwide<br />
         <a href="/">signalflair.ai</a> · <a href="/faq/">faq</a> · <a href="/how-it-works/">how it works</a> · <a href="/proof/">the record</a> · <a href="/privacy/">privacy</a>
       </footer>
 
