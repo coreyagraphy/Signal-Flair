@@ -1304,15 +1304,17 @@ export default function SignalFlairLanding() {
         <div className="price-how reveal">
           <div className="ph-map" style={{ gridTemplateColumns: 'repeat(auto-fit,minmax(280px,1fr))' }}>
             <div className="ph-step">
-              <div className="ph-band">Enterprise / Civic</div>
+              <div className="ph-band">Enterprise · Civic · Multi-Location</div>
               <div className="ph-offer">Big footprint? Let&apos;s pull up.</div>
-              <div className="ph-what">Franchises, multi-location brands, chambers, civic orgs. Engagements start at <strong>$12K build + $3K/mo</strong> — or fixed-scope 90-day builds from <strong>$15K</strong>.</div>
+              <div className="ph-what">Franchises, multi-location brands, chambers, civic and economic-development orgs — the ones who need a whole ecosystem read and rebuilt for AI, not a single page. We scope it together and move fast.</div>
+              <div className="ph-price-line">Engagements start at $12K build + $3K/mo</div>
+              <div className="ph-price-sub">or a fixed-scope 90-day build from $15K</div>
               <a className="psc-btn" href="#cta" style={{ marginTop: '14px' }}>▸ Pull Up</a>
             </div>
             <div className="ph-step">
               <div className="ph-band">Agency white-label</div>
               <div className="ph-offer">Run an agency? Put our engine behind your name.</div>
-              <div className="ph-what">The Proof Stack™, Citation Capture, and Signal Telemetry — delivered under your brand, for your clients.</div>
+              <div className="ph-what">White-label Signal Flair&apos;s builds and plans — The Proof Stack™, Citation Capture, Signal Telemetry — resell under your own brand, keep the margin. We stay invisible; you look like the AI-visibility expert your clients need.</div>
               <a className="psc-btn" href="#cta" style={{ marginTop: '14px' }}>▸ Partner Up</a>
             </div>
           </div>
@@ -1320,7 +1322,8 @@ export default function SignalFlairLanding() {
 
         {/* Where This Is Going — future-proof trust section */}
         <div className="price-how reveal">
-          <div className="ph-lead">Where this is <em>going.</em></div>
+          <div className="ph-eyebrow">Where this is going</div>
+          <div className="ph-lead">We&apos;re not pricing for today. We&apos;re building for <em>what&apos;s next.</em></div>
           <div className="ph-map" style={{ gridTemplateColumns: 'repeat(auto-fit,minmax(280px,1fr))' }}>
             <div className="ph-step">
               <div className="ph-band">Layer 7 · already measured</div>
