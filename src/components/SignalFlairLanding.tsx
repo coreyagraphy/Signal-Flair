@@ -1300,30 +1300,29 @@ export default function SignalFlairLanding() {
           </div>
         </div>
 
-        {/* Enterprise / Civic + Agency */}
-        <div className="price-how reveal">
-          <div className="ph-map" style={{ gridTemplateColumns: 'repeat(auto-fit,minmax(280px,1fr))' }}>
-            <div className="ph-step">
-              <div className="ph-band">Enterprise · Civic · Multi-Location</div>
-              <div className="ph-offer">Big footprint? Let&apos;s pull up.</div>
-              <div className="ph-what">Franchises, multi-location brands, chambers, civic and economic-development orgs — the ones who need a whole ecosystem read and rebuilt for AI, not a single page. We scope it together and move fast.</div>
-              <div className="ph-price-line">Engagements start at $12K build + $3K/mo</div>
-              <div className="ph-price-sub">or a fixed-scope 90-day build from $15K</div>
-              <a className="psc-btn" href="#cta" style={{ marginTop: '14px' }}>▸ Pull Up</a>
+        {/* Enterprise / Civic + Agency — dark closing stretch (mockup port, brand-skinned) */}
+        <div className="bigplay reveal">
+          <div className="bp-ent">
+            <div className="bp-body-wrap">
+              <div className="bp-eyebrow">Enterprise · Civic · Multi-Location</div>
+              <div className="bp-h">Big footprint? Let&apos;s pull up.</div>
+              <div className="bp-body">Franchises, multi-location brands, chambers, civic and economic-development orgs — the ones who need a whole ecosystem read and rebuilt for AI, not a single page. We scope it together and move fast.</div>
+              <div className="bp-price">Engagements start at $12K build + $3K/mo</div>
+              <div className="bp-price-sub">or a fixed-scope 90-day build from $15K</div>
             </div>
-            <div className="ph-step">
-              <div className="ph-band">Agency white-label</div>
-              <div className="ph-offer">Run an agency? Put our engine behind your name.</div>
-              <div className="ph-what">White-label Signal Flair&apos;s builds and plans — The Proof Stack™, Citation Capture, Signal Telemetry — resell under your own brand, keep the margin. We stay invisible; you look like the AI-visibility expert your clients need.</div>
-              <a className="psc-btn" href="#cta" style={{ marginTop: '14px' }}>▸ Partner Up</a>
-            </div>
+            <a className="bp-cta" href="#cta">Pull Up →</a>
+          </div>
+          <div className="bp-agency">
+            <div className="bp-h">Run an agency? Put our engine behind your name.</div>
+            <div className="bp-body">White-label Signal Flair&apos;s builds and plans — The Proof Stack™, Citation Capture, Signal Telemetry — resell under your own brand, keep the margin. We stay invisible; you look like the AI-visibility expert your clients need.</div>
+            <a className="bp-cta ghost" href="#cta">Partner Up →</a>
           </div>
         </div>
 
         {/* Where This Is Going — future-proof trust section */}
-        <div className="price-how reveal">
+        <div className="price-how reveal wg-center">
           <div className="ph-eyebrow">Where this is going</div>
-          <div className="ph-lead">We&apos;re not pricing for today. We&apos;re building for <em>what&apos;s next.</em></div>
+          <div className="ph-lead wg-big">We&apos;re not pricing for today. We&apos;re building for <em>what&apos;s next.</em></div>
           <div className="ph-map" style={{ gridTemplateColumns: 'repeat(auto-fit,minmax(280px,1fr))' }}>
             <div className="ph-step">
               <div className="ph-band">Layer 7 · already measured</div>
