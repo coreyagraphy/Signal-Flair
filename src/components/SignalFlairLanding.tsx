@@ -34,6 +34,21 @@ export default function SignalFlairLanding() {
   const [leadSuccess, setLeadSuccess] = useState(false)
   const [leadFormError, setLeadFormError] = useState('')
   const [leadFieldErrors, setLeadFieldErrors] = useState({})
+  // Monthly/Annual billing toggle — affects ONLY the two Stay Found™ monthly plans.
+  // Annual = 12 months for the price of 10 (the "2 months free" policy, stated honestly).
+  const [billing, setBilling] = useState('monthly')
+  const setBillingMode = useCallback((mode) => {
+    setBilling((prev) => {
+      if (prev === mode) return prev
+      try { track('billing_toggle', { billing: mode, section: 'pricing' }) } catch {}
+      if (typeof window !== 'undefined' && !window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+        requestAnimationFrame(() => {
+          animate('.bill-flip', { scale: [0.92, 1], opacity: [0.35, 1], duration: 520, ease: 'out(3)' })
+        })
+      }
+      return mode
+    })
+  }, [])
 
   const validateLeadField = useCallback((name, val) => {
     const v = (val ?? '').trim()
@@ -1199,62 +1214,66 @@ export default function SignalFlairLanding() {
           <div className="pf-right">
             <div className="pf-desc">The infrastructure AI actually reads. Full diagnostic, full technical fix, full structure — everything needed to go from misread to recommendable across every major AI engine.</div>
             <div className="pf-items">
-              <div className="pf-item pf-lock">Machine Trust Layer™ — the structured data protocol AI engines require to verify who you are</div>
-              <div className="pf-item pf-lock">Entity Lock™ — one verified identity across every engine, map, and directory</div>
-              <div className="pf-item pf-lock">Signal Proof Page™ deployed — your owned, verified record</div>
-              <div className="pf-item">Model Ingestion Manifest — the access file that tells AI models what to read and how to cite you</div>
-              <div className="pf-item">Crawl Clearance Protocol — engine-level access repair so AI crawlers are allowed in</div>
-              <div className="pf-item">Answer Architecture™ — content engineered in the exact shape AI pulls answers from</div>
-              <div className="pf-item">Smart Site™ — your primary site rebuilt AI-first</div>
-              <div className="pf-item">Full AI Visibility Audit — 5 engines (ChatGPT, Claude, Perplexity, Gemini, Google AI)</div>
-              <div className="pf-item">Signal Telemetry — live drift detection, included</div>
-              <div className="pf-item">90-Day AI Action Plan · delivered in 7–14 days</div>
+              <div className="pf-item pf-lock"><strong>Machine Trust Layer™</strong> — the structured data protocol AI engines require to verify who you are</div>
+              <div className="pf-item pf-lock"><strong>Entity Lock™</strong> — one verified identity across every engine, map, and directory</div>
+              <div className="pf-item pf-lock"><strong>Signal Proof Page™</strong> deployed — your owned, verified record</div>
+              <div className="pf-item"><strong>Model Ingestion Manifest</strong> — the access file that tells AI models what to read and how to cite you</div>
+              <div className="pf-item"><strong>Crawl Clearance Protocol</strong> — engine-level access repair so AI crawlers are allowed in</div>
+              <div className="pf-item"><strong>Answer Architecture™</strong> — content engineered in the exact shape AI pulls answers from</div>
+              <div className="pf-item"><strong>Smart Site™</strong> — your primary site rebuilt AI-first</div>
+              <div className="pf-item"><strong>Full AI Visibility Audit</strong> — 5 engines (ChatGPT, Claude, Perplexity, Gemini, Google AI)</div>
+              <div className="pf-item"><strong>Signal Telemetry</strong> — live drift detection, included</div>
+              <div className="pf-item"><strong>90-Day AI Action Plan</strong> · delivered in 7–14 days</div>
             </div>
           </div>
         </div>
-        <div className="price-small">
+        <div className="bill-toggle-wrap reveal" role="group" aria-label="Billing period for Stay Found monthly plans">
+          <button type="button" className={billing === 'monthly' ? 'bt-opt active' : 'bt-opt'} aria-pressed={billing === 'monthly'} onClick={() => setBillingMode('monthly')}>Monthly</button>
+          <button type="button" className={billing === 'annual' ? 'bt-opt active' : 'bt-opt'} aria-pressed={billing === 'annual'} onClick={() => setBillingMode('annual')}>Annual<span className="bt-save">2 months free</span></button>
+        </div>
+        <div className="price-small" data-billing={billing}>
           <div className="psc">
             <div className="psc-name">Rebuild</div>
             <div className="psc-ideal">The lighter-scope build — when the audit shows a foundation worth keeping and fixing, not replacing.</div>
             <div className="psc-price">$3,000</div>
             <div className="psc-cad">one-time build</div>
             <div className="psc-items">
-              <div className="psci psci-lock">Machine Trust Layer™ cleanup — structured data AI can verify</div>
-              <div className="psci">Model Ingestion Manifest + Crawl Clearance Protocol — access opened, citation-ready</div>
-              <div className="psci">Entity Lock™ — one verified identity everywhere</div>
-              <div className="psci">Signal Proof Page™ deployed</div>
-              <div className="psci">90-Day AI Action Plan</div>
-              <div className="psci">Signal Telemetry included — live drift detection</div>
+              <div className="psci psci-lock"><strong>Machine Trust Layer™</strong> cleanup — structured data AI can verify</div>
+              <div className="psci"><strong>Model Ingestion Manifest + Crawl Clearance Protocol</strong> — access opened, citation-ready</div>
+              <div className="psci"><strong>Entity Lock™</strong> — one verified identity everywhere</div>
+              <div className="psci"><strong>Signal Proof Page™</strong> deployed</div>
+              <div className="psci"><strong>90-Day AI Action Plan</strong></div>
+              <div className="psci"><strong>Signal Telemetry</strong> included — live drift detection</div>
             </div>
             <a className="psc-btn" href="#cta">▸ Start My Rebuild</a>
           </div>
           <div className="psc">
             <div className="psc-name">Signal Proof — ⭐ Most Popular</div>
             <div className="psc-ideal">The monthly plan that keeps your Proof Stack™ cited and current — Stay Found™ for one location.</div>
-            <div className="psc-price">$1,800<span style={{ fontSize: '0.4em' }}>/mo</span></div>
-            <div className="psc-cad">monthly · annual billing = 2 months free</div>
+            <div className="psc-price bill-flip">{billing === 'monthly' ? <>$1,800<span style={{ fontSize: '0.4em' }}>/mo</span></> : <>$1,500<span style={{ fontSize: '0.4em' }}>/mo</span></>}</div>
+            <div className="psc-cad bill-flip">{billing === 'monthly' ? 'monthly · switch to annual for 2 months free' : 'billed annually — $18,000/yr · 2 months free'}</div>
             <div className="psc-items">
-              <div className="psci psci-lock">Citation Capture — winning and holding AI citations across ChatGPT, Perplexity, Gemini &amp; Claude</div>
-              <div className="psci">Answer Architecture™ expansion every month</div>
-              <div className="psci">Proof Density Engine — compounding reviews, mentions &amp; authority at citation weight</div>
-              <div className="psci">Quarterly re-audit + Signal Telemetry — live drift detection</div>
-              <div className="psci psci-lock">Content Payload — 2 weeks of premium, AEO-optimized content every month, incl. one :30 commercial (one location; +$450/mo per extra location)</div>
-              <div className="psci">Signal Satellites™ available at +$250/mo per Satellite</div>
+              <div className="psci psci-lock"><strong>Citation Capture</strong> — winning and holding AI citations across ChatGPT, Perplexity, Gemini &amp; Claude</div>
+              <div className="psci"><strong>Answer Architecture™</strong> expansion every month</div>
+              <div className="psci"><strong>Proof Density Engine</strong> — compounding reviews, mentions &amp; authority at citation weight</div>
+              <div className="psci"><strong>Quarterly re-audit + Signal Telemetry</strong> — live drift detection</div>
+              <div className="psci psci-lock"><strong>Content Payload</strong> — 2 weeks of premium, AEO-optimized content every month, incl. <strong>one :30 commercial</strong> (one location; +$450/mo per extra location)</div>
+              <div className="psci"><strong>Signal Satellites™</strong> available at +$250/mo per Satellite</div>
             </div>
             <a className="psc-btn" href="#cta">▸ Keep Me Found</a>
           </div>
           <div className="psc">
             <div className="psc-name">Signal Dominate</div>
             <div className="psc-ideal">Everything in Signal Proof at full velocity — for multi-location brands that want every branch cited in its own market.</div>
-            <div className="psc-price">from $3,500<span style={{ fontSize: '0.4em' }}>/mo</span></div>
-            <div className="psc-cad">monthly · annual billing = 2 months free</div>
+            <div className="psc-price bill-flip">{billing === 'monthly' ? <>from $3,500<span style={{ fontSize: '0.4em' }}>/mo</span></> : <>from $2,917<span style={{ fontSize: '0.4em' }}>/mo</span></>}</div>
+            <div className="psc-cad bill-flip">{billing === 'monthly' ? 'monthly · switch to annual for 2 months free' : 'billed annually — from $35,000/yr · 2 months free'}</div>
             <div className="psc-items">
-              <div className="psci psci-lock">Multi-location Citation Capture</div>
-              <div className="psci">Proof Density Engine at full velocity — active review program</div>
-              <div className="psci">Priority turnaround + dedicated strategy</div>
-              <div className="psci">Mental Vision cinematic content bundle</div>
-              <div className="psci psci-lock">Content Payload — a full month of premium, AEO-optimized content, incl. one :30 commercial (one location; +$450/mo per extra location)</div>
-              <div className="psci">Signal Satellites™ management included</div>
+              <div className="psci psci-lock"><strong>Multi-location Citation Capture</strong></div>
+              <div className="psci"><strong>Proof Density Engine</strong> at full velocity — active review program</div>
+              <div className="psci"><strong>Priority turnaround</strong> + dedicated strategy</div>
+              <div className="psci"><strong>Mental Vision cinematic content bundle</strong></div>
+              <div className="psci psci-lock"><strong>Content Payload</strong> — a full month of premium, AEO-optimized content, incl. <strong>one :30 commercial</strong> (one location; +$450/mo per extra location)</div>
+              <div className="psci"><strong>Signal Satellites™</strong> management included</div>
             </div>
             <a className="psc-btn" href="#cta">▸ Go Dominate</a>
           </div>
