@@ -14,7 +14,7 @@ export default function ProofCasesPage() {
     <main className="rsc sl">
       <nav className="rsc-nav">
         <a className="rsc-logo" href="/" aria-label="Signal Flair home"><SignalFlairLogo style={{ height: 56, width: 'auto', display: 'block' }} /></a>
-        <a className="rsc-navcta" href="/#field-report">▸ Free Field Report</a>
+        <a className="rsc-navcta" href="/#field-report">▸ Free Signal Pulse™</a>
       </nav>
       <div className="rsc-wrap">
         <header className="rsc-hero">
@@ -69,7 +69,7 @@ export default function ProofCasesPage() {
         <section className="rsc-section">
           <h2 className="rsc-h2">Documented before/afters</h2>
           <p className="rsc-p">
-            The first ten Founding Clients become the first ten documented installs — each a real
+            The Founding Five become the first documented installs — each a real
             before/after, published here only with permission and only once results exist. The Mill is the
             first published baseline; its after joins the record when the remediation and controlled retest
             are complete. Until a case has real results, it stays a labeled baseline, never invented proof.
@@ -78,8 +78,8 @@ export default function ProofCasesPage() {
 
         <section className="rsc-cta">
           <h2 className="rsc-cta-h">Be one of the first documented <em>wins.</em></h2>
-          <p className="rsc-cta-b">Start with a free Field Report — 3 signals, 24 hours, no call.</p>
-          <a className="rsc-cta-btn" href="/#field-report">▸ Get My Free Field Report</a>
+          <p className="rsc-cta-b">Start with a free Signal Pulse™ — 3 of your 7 signal layers, 24 hours, no call.</p>
+          <a className="rsc-cta-btn" href="/#field-report">▸ Run My Signal</a>
         </section>
       </div>
       <footer className="rsc-foot">

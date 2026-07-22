@@ -63,7 +63,7 @@ export default function LlmsTxtResourcePage() {
     <main className="rsc">
       <nav className="rsc-nav">
         <a className="rsc-logo" href="/" aria-label="Signal Flair home"><SignalFlairLogo style={{ height: 56, width: 'auto', display: 'block' }} /></a>
-        <a className="rsc-navcta" href="/#cta">▸ Free Field Report</a>
+        <a className="rsc-navcta" href="/#cta">▸ Free Signal Pulse™</a>
       </nav>
 
       <div className="rsc-wrap">
@@ -137,13 +137,13 @@ export default function LlmsTxtResourcePage() {
 
       <section className="rsc-cta">
         <h2 className="rsc-cta-h">AI can find your business. But does it <em>understand</em> it?</h2>
-        <p className="rsc-cta-b">Run your free Field Report. We&apos;ll scan 3 critical signals across ChatGPT, Claude, Perplexity, Gemini, and Google AI — and show you exactly where your business breaks, including whether you have an llms.txt file working for you.</p>
-        <a className="rsc-cta-btn" href="/#cta">▸ Get My Free Field Report</a>
+        <p className="rsc-cta-b">Run your free Signal Pulse™. We&apos;ll scan 3 critical signals across ChatGPT, Claude, Perplexity, Gemini, and Google AI — and show you exactly where your business breaks, including whether you have an llms.txt file working for you.</p>
+        <a className="rsc-cta-btn" href="/#cta">▸ Run My Signal</a>
       </section>
 
       <footer className="rsc-foot">
         Signal Flair · a Mental Vision product · Brownsburg, Indiana · serving nationwide<br />
-        <a href="/">signalflair.ai</a> · <a href="/llms.txt">our llms.txt</a> · <a href="/#cta">Get your free Field Report</a> · <a href="/privacy/">privacy</a>
+        <a href="/">signalflair.ai</a> · <a href="/llms.txt">our llms.txt</a> · <a href="/#cta">Run your free Signal Pulse™</a> · <a href="/privacy/">privacy</a>
       </footer>
 
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />

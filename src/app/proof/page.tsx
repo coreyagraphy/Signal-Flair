@@ -66,7 +66,7 @@ const FAQS: { q: string; a: string }[] = [
   },
   {
     q: 'How does the Signal Flair score work?',
-    a: 'Signal Flair rates a business 0–100 with the Signal Protocol™ across six layers: Access & Crawlability, Structured Intelligence, Entity Clarity, Answer Architecture, Trust & Proof Density, and Live AI Visibility. The resulting Signal Score™ sets the entry point — a foundation build, a targeted rebuild, or ongoing maintenance — so the work matches the actual gap.',
+    a: 'Signal Flair rates a business 0–100 with the Signal Protocol™ across seven layers: Access & Crawlability, Structured Intelligence, Entity Clarity, Answer Architecture, Trust & Proof Density, Live AI Visibility, and Agent & Commerce Readiness. The resulting Signal Score™ Audit sets the scope — a build, a rebuild, or ongoing maintenance — so the work matches the actual gap, never a score gate.',
   },
   {
     q: 'Does Signal Flair guarantee placement in ChatGPT or Google AI Overviews?',
@@ -122,7 +122,7 @@ export default function ProofHubPage() {
     <main className="rsc sl">
       <nav className="rsc-nav">
         <a className="rsc-logo" href="/" aria-label="Signal Flair home"><SignalFlairLogo style={{ height: 56, width: 'auto', display: 'block' }} /></a>
-        <a className="rsc-navcta" href="/#field-report">▸ Free Field Report</a>
+        <a className="rsc-navcta" href="/#field-report">▸ Free Signal Pulse™</a>
       </nav>
 
       <div className="rsc-wrap">
@@ -257,8 +257,8 @@ export default function ProofHubPage() {
 
         <section className="rsc-cta">
           <h2 className="rsc-cta-h">Want a record like this for <em>your</em> business?</h2>
-          <p className="rsc-cta-b">Start with a free Field Report — 3 signals, 24 hours, no call. You&apos;ll see exactly where your signal breaks before you decide anything.</p>
-          <a className="rsc-cta-btn" href="/#field-report">▸ Get My Free Field Report</a>
+          <p className="rsc-cta-b">Start with a free Signal Pulse™ — 3 of your 7 signal layers, 24 hours, no call. You&apos;ll see exactly where your signal breaks before you decide anything.</p>
+          <a className="rsc-cta-btn" href="/#field-report">▸ Run My Signal</a>
         </section>
       </div>
 

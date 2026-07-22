@@ -2,14 +2,14 @@ import type { Metadata } from 'next'
 import SignalFlairLogo from '@/components/SignalFlairLogo'
 
 export const metadata: Metadata = {
-  title: 'FAQ — Signal Score, Case Zero, Field Report & Signal Proof Page | Signal Flair',
+  title: 'FAQ — Signal Score, Case Zero, Signal Pulse & Signal Proof Page | Signal Flair',
   description:
-    'Answers to the core Signal Flair questions: what a Signal Score™ is, what Case Zero (18/100, June 6 2026) is, what a free Field Report includes, and the Founding Partner Pilot. AI Proof Infrastructure for businesses and organizations nationwide.',
+    'Answers to the core Signal Flair questions: what a Signal Score™ is, what Case Zero (18/100, June 6 2026) is, what a free Signal Pulse™ includes, and the Founding Five. AI Proof Infrastructure for businesses and organizations nationwide.',
   alternates: { canonical: 'https://signalflair.ai/faq/' },
   openGraph: {
     title: 'Signal Flair — Frequently Asked Questions',
     description:
-      'What is a Signal Score? What is Case Zero? What is a Field Report? What is a Signal Proof Page™? Straight answers, written to be extracted.',
+      'What is a Signal Score? What is Case Zero? What is a Signal Pulse™? What is a Signal Proof Page™? Straight answers, written to be extracted.',
     images: ['/video/hero-poster.jpg'],
   },
 }
@@ -19,7 +19,7 @@ export const metadata: Metadata = {
 const FAQS: { q: string; a: string }[] = [
   {
     q: 'What is a Signal Score™?',
-    a: 'A Signal Score™ is a number from 0 to 100, produced by the Signal Protocol™, that measures how visible and trustworthy your business appears to AI search engines like ChatGPT, Perplexity, Google AI, and Gemini. Most local businesses score under 40 and don’t know it.',
+    a: 'A Signal Score™ is a number from 0 to 100, produced by the Signal Protocol™ across seven layers — Access & Crawlability, Structured Intelligence, Entity Clarity, Answer Architecture, Trust & Proof Density, Live AI Visibility, and Agent & Commerce Readiness — that measures how visible and trustworthy your business appears to AI search engines like ChatGPT, Perplexity, Google AI, and Gemini. Most local businesses score under 40 and don’t know it.',
   },
   {
     q: 'What is AI Proof Infrastructure™?',
@@ -62,16 +62,24 @@ const FAQS: { q: string; a: string }[] = [
     a: 'Case Zero is Signal Flair’s own AI visibility audit, completed June 6, 2026. Signal Flair scored 18 out of 100 — Signal Invisible. We published it and rebuilt in public. It is the only real proof number we own, and we never fabricate scores, wins, or testimonials.',
   },
   {
-    q: 'What is a Field Report?',
-    a: 'A Field Report is a free 3-signal AI visibility diagnostic. It shows your Signal Score™ across the three most critical Signal Protocol™ layers — Entity Clarity, Trust & Proof Density, and Live AI Visibility. It is a diagnosis, never a prescription. The prescription is the work. No sales call required; we send your partial audit within 24 hours.',
+    q: 'What is a Signal Pulse™?',
+    a: 'A Signal Pulse™ is a free instant-preview diagnostic across 3 of your 7 Signal Protocol™ layers — Entity Clarity, Trust & Proof Density, and Live AI Visibility. It is a diagnosis, never a prescription. The prescription is the work. No sales call required; we send your preview within 24 hours, and the full 7-layer Signal Score™ Audit is free during the founding period ($500 after).',
   },
   {
-    q: 'What is the Founding Partner Pilot?',
-    a: 'The Founding Partner Pilot is an early-stage program for businesses, nonprofits, civic organizations, and community partners that want to measure how AI systems currently understand them and document building a stronger proof layer. It starts with a Signal Score™ baseline, identifies the missing proof, and tracks the before-and-after — documented proof, not hype.',
+    q: 'What is the Founding Five?',
+    a: 'The Founding Five is Signal Flair’s founding cohort — exactly five seats. Members get 35% off their build and their first 3 months of Signal Proof at 50%, in exchange for permission to publish a named before-and-after case study. Documented proof, not hype.',
+  },
+  {
+    q: 'What are Signal Satellites™?',
+    a: 'Signal Satellites™ are lean, per-location micro-sites — each with its own Machine Trust Layer™, Entity Lock™, and Answer Architecture™ — so every branch gets found and cited in its own market instead of hiding behind one homepage. $1,500 per Satellite build (included when you add a location to a build), managed under Signal Dominate, or +$250/mo per Satellite on Signal Proof.',
+  },
+  {
+    q: 'Do you offer a CRM?',
+    a: 'No. Signal Flair is AI-visibility infrastructure — we don’t sell or replace a CRM. We build and maintain the layer AI engines read; your CRM, booking, and sales tools stay yours.',
   },
   {
     q: 'What is a Signal Proof Page™?',
-    a: 'The Signal Proof Page™ is your canonical, crawlable proof hub — a client-owned record published as human-readable pages and linked machine-readable assets (proof.json, llms.txt) so AI engines and customers can inspect what you do, where you serve, and the proof behind it. Deployed on Foundation Build and Start the Rebuild.',
+    a: 'The Signal Proof Page™ is your canonical, crawlable proof hub — a client-owned record published as human-readable pages and linked machine-readable assets (proof.json, llms.txt) so AI engines and customers can inspect what you do, where you serve, and the proof behind it. Deployed with every build — Rebuild and Foundation Build.',
   },
   {
     q: 'What is Stay Found™?',
@@ -79,7 +87,7 @@ const FAQS: { q: string; a: string }[] = [
   },
   {
     q: 'What happens to my assessment after it is completed?',
-    a: 'We keep the receipts. Signal Flair preserves the date, assessment type, Signal Score™, six-layer breakdown, findings, and supporting evidence instead of replacing the old record with the newest number. Later assessments can show what changed across the website, profiles, images, video, public proof, and entity relationships — and what is still sending mixed messages.',
+    a: 'We keep the receipts. Signal Flair preserves the date, assessment type, Signal Score™, layer-by-layer breakdown, findings, and supporting evidence instead of replacing the old record with the newest number. Later assessments can show what changed across the website, profiles, images, video, public proof, and entity relationships — and what is still sending mixed messages.',
   },
   {
     q: 'Does Signal Flair track changes over time?',
@@ -107,7 +115,7 @@ const FAQS: { q: string; a: string }[] = [
   },
   {
     q: 'How much does Signal Flair cost?',
-    a: 'Pricing is set by your Signal Score so the work matches the actual gap. Build the Foundation (score 0–54) is a one-time $3,500. Start the Rebuild (score 55–74) is a one-time $1,500. Stay Found™ (score 75–100) is $600–$1,200 per month. Early founding partners — businesses, nonprofits, and civic organizations — can join the Founding Partner Pilot on flexible terms.',
+    a: 'The Signal Pulse™ is free, and the full Signal Score™ Audit is free during the founding period ($500 after). Builds are one-time, scoped by the audit: Rebuild is $3,000; the Foundation Build is $5,500 — or $3,500 bundled with a 12-month Signal Proof plan (save $2,000). Stay Found™ monthly plans: Signal Proof is $1,800/mo and Signal Dominate starts at $3,500/mo. Add a location for $1,500, Satellite included. You keep everything built, even if you cancel.',
   },
   {
     q: 'Is Signal Flair related to FLAIR MRI imaging or SignalFlare.ai?',
@@ -132,7 +140,7 @@ export default function FaqPage() {
     <main className="rsc sl">
       <nav className="rsc-nav">
         <a className="rsc-logo" href="/" aria-label="Signal Flair home"><SignalFlairLogo style={{ height: 56, width: 'auto', display: 'block' }} /></a>
-        <a className="rsc-navcta" href="/#field-report">▸ Free Field Report</a>
+        <a className="rsc-navcta" href="/#field-report">▸ Free Signal Pulse™</a>
       </nav>
 
       <div className="rsc-wrap">
@@ -182,8 +190,8 @@ export default function FaqPage() {
 
         <section className="rsc-cta">
           <h2 className="rsc-cta-h">Find out where <em>your</em> signal breaks.</h2>
-          <p className="rsc-cta-b">A free Field Report — 3 signals, 24 hours, no call. You&apos;ll see your Signal Score before you decide anything.</p>
-          <a className="rsc-cta-btn" href="/#field-report">▸ Get My Free Field Report</a>
+          <p className="rsc-cta-b">A free Signal Pulse™ — 3 of your 7 signal layers, 24 hours, no call. You&apos;ll see your Signal Score before you decide anything.</p>
+          <a className="rsc-cta-btn" href="/#field-report">▸ Run My Signal</a>
         </section>
       </div>
 

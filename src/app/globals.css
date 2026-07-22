@@ -524,7 +524,7 @@ nav#hnav{position:relative;z-index:10;display:flex;align-items:center;justify-co
 .pf-items{display:grid;grid-template-columns:1fr 1fr;gap:13px 44px}
 .pf-item{font-family:var(--signal);font-size:10.5px;color:rgba(248,241,231,0.74);line-height:1.55;display:flex;gap:10px;align-items:flex-start}
 .pf-item::before{content:'›';color:var(--hot);flex-shrink:0;font-weight:700}
-.price-small{max-width:1320px;margin:0 auto;display:grid;grid-template-columns:1fr 1fr;gap:0;border:1px solid var(--ink);border-top:none}
+.price-small{max-width:1320px;margin:0 auto;display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:0;border:1px solid var(--ink);border-top:none}
 .psc{padding:42px 48px 44px;display:flex;flex-direction:column;transform-origin:top center}
 .psc:first-child{border-right:1px solid var(--ink)}
 .psc:nth-child(1){border-top:4px solid var(--orange2);background:linear-gradient(180deg,rgba(255,90,31,0.16),rgba(255,90,31,0.06))}
@@ -1108,7 +1108,7 @@ footer{background:var(--ink2);border-top:1px solid var(--ink);padding:52px;posit
   .price-feat,.price-small .psc{opacity:1 !important}
 }
 
-/* ─── THE SIGNAL PROTOCOL™ — 24-point diagnostic (#check, cream section) ─── */
+/* ─── THE SIGNAL PROTOCOL™ — 28-point diagnostic (#check, cream section) ─── */
 .proto-top{max-width:1100px;margin:0 auto 58px}
 .proto-eyebrow{font-family:'Geist Mono',ui-monospace,monospace;font-size:16px;font-weight:600;letter-spacing:.22em;text-transform:uppercase;color:#ff5a1f;margin-bottom:18px}
 .proto-title{font-family:'Fraunces',Georgia,serif;font-weight:600;font-size:clamp(34px,5vw,62px);line-height:.98;color:#171312;letter-spacing:-.01em}

@@ -107,7 +107,7 @@ export default function RestorTeamCaseStudy() {
             <li><strong>Live AI Visibility</strong> — how RESTOR surfaces in real AI engine answers.</li>
           </ul>
           <p className="rsc-p">
-            Alongside the six layers, the Baseline included an AI-engine visibility review, prompt-based visibility
+            Alongside the six layers used at the time of audit, the Baseline included an AI-engine visibility review, prompt-based visibility
             checks, the Competitor Signal Snapshot™, a list of the highest-priority proof gaps, and the recommended
             next actions.
           </p>

@@ -16,7 +16,7 @@
 - Contact: hello@signalflair.ai
 - Signal Score™ (Case Zero baseline): 18/100 (scored June 6, 2026)
 - Post-implementation target: 91/100 (readiness target, not achieved score)
-- Last Updated: 2026-07-17
+- Last Updated: 2026-07-21
 
 ## What We Do
 Signal Flair builds AI Proof Infrastructure™ — the structured proof layer that helps AI answer engines access, understand, verify, and recommend a business or organization. We measure how clearly a business can be understood across AI engines (ChatGPT, Claude, Perplexity, Gemini, Google AI) with a 0–100 Signal Score™, then build the llms.txt, schema markup, entity clarity, answer architecture, and trust proof those engines need.
@@ -24,20 +24,25 @@ Signal Flair builds AI Proof Infrastructure™ — the structured proof layer th
 Core promise: Make your business easier for AI systems to access, understand, verify, and recommend.
 
 ## Primary Services
-- Signal Baseline™ — diagnostic and Signal Score™ across six layers
-- Signal Proof Layer™ — schema, llms.txt, proof.json, crawler access
+- Signal Score™ Audit — full diagnostic and Signal Score™ across seven layers (free during the founding period)
+- The Proof Stack™ — Machine Trust Layer™ (structured data), Model Ingestion Manifest (llms.txt), proof.json, Crawl Clearance Protocol (crawler access), Entity Lock™
 - Signal Proof Page™ — canonical human- and machine-readable proof URL
 - Stay Found™ — ongoing monthly proof maintenance and re-verification
 - Signal Score™ — AI readiness measurement
 - AI Proof Infrastructure™ implementation
 
-## Pricing (delivery-based; no ranking guarantees)
-- [Build the Foundation](https://signalflair.ai/#pricing): Full AI-visibility build for businesses scoring 0–54 on the Signal Score™ — audit, llms.txt, schema markup, AI crawler access, entity cleanup, priority citations, a 90-day action plan, and one AI-optimized landing page. One-time, $3,500.
-- [Start the Rebuild](https://signalflair.ai/#pricing): Core fixes for businesses scoring 55–74 — audit, llms.txt, core schema, crawler access, citations, 90-day plan. One-time, $1,500.
-- [Stay Found™](https://signalflair.ai/#pricing): Ongoing proof maintenance for businesses scoring 75–100 — monthly scans, reports, citation growth, schema/llms.txt updates, crawler monitoring, and drift checks. $600–$1,200/month.
+## Pricing (delivery-based; no ranking guarantees; scope set by the free audit, not a score gate)
+- [Signal Pulse™](https://signalflair.ai/#cta): Free instant preview across 3 of the 7 Signal Protocol™ layers, delivered within 24 hours. $0.
+- [Signal Score™ Audit](https://signalflair.ai/#cta): Full 7-layer diagnostic + Proof OS™ action plan + what ChatGPT, Perplexity, and Gemini say about the business today. Free during the founding period ($500 after).
+- [Rebuild](https://signalflair.ai/#pricing): Lighter-scope one-time build — Machine Trust Layer™ cleanup, Model Ingestion Manifest + Crawl Clearance Protocol, Entity Lock™, Signal Proof Page™, 90-day plan, Signal Telemetry. One-time, $3,000.
+- [Foundation Build](https://signalflair.ai/#pricing): The full Proof Stack™ at scale + Smart Site™ rebuild + full web-wide Entity Lock™. One-time, $5,500 — or $3,500 bundled with a 12-month Signal Proof plan (save $2,000). Add a location: $1,500, Signal Satellite™ included.
+- [Signal Proof](https://signalflair.ai/#pricing): Stay Found™ monthly plan — Citation Capture across ChatGPT/Perplexity/Gemini/Claude, monthly Answer Architecture™ expansion, Proof Density Engine, quarterly re-audit + Signal Telemetry, Content Payload (2 weeks of social content/month, one location). $1,800/month; annual billing = 2 months free.
+- [Signal Dominate](https://signalflair.ai/#pricing): Everything in Signal Proof plus multi-location Citation Capture, full-velocity Proof Density Engine, priority turnaround, Mental Vision cinematic content bundle, a full month of Content Payload, and Signal Satellites™ management. From $3,500/month; annual billing = 2 months free.
+- Signal Satellites™: per-location micro-sites, AI-readable from day one. $1,500 per Satellite build (included when adding a location to a build); managed under Signal Dominate; +$250/mo per Satellite on Signal Proof. Extra-location Content Payload: +$450/mo per location.
+- Enterprise / Civic: engagements start at $12K build + $3K/mo, or fixed-scope 90-day builds from $15K. Agency white-label available.
 
 ## The Signal Score™ (0–100)
-The Signal Protocol™ scores a business across six layers: Access & Crawlability, Structured Intelligence, Entity Clarity, Answer Architecture, Trust & Proof Density, and Live AI Visibility. The Signal Score™ determines which service tier fits.
+The Signal Protocol™ scores a business across seven layers: Access & Crawlability, Structured Intelligence, Entity Clarity, Answer Architecture, Trust & Proof Density, Live AI Visibility, and Agent & Commerce Readiness (whether AI agents can book, buy, and act on the business). The free Signal Score™ Audit sets the scope of the work — there is no score gate.
 
 ## How Signal Flair Builds Proof
 - Query fan-out: the Signal Proof Layer™ is built to answer not just one keyword but the related sub-questions answer engines generate when users ask for recommendations, comparisons, services, locations, and trust proof.
@@ -46,7 +51,7 @@ The Signal Protocol™ scores a business across six layers: Access & Crawlabilit
 - Signal Registry™ (forward-looking): Signal Flair is building the Signal Registry™ to record prompt results, AI-visibility snapshots, source citations, and before/after Signal Score™ changes as client engagements run. It is an emerging capability, not a large existing dataset and not an industry benchmark. As that record grows, Signal Flair may share anonymized, aggregate observations about how organizations appear across AI answer engines — never client-identifying data.
 
 ## Assessment history & the evidence record
-Signal Flair preserves the evidence behind each assessment — not just the final score. Each assessment's date, Signal Score™, six-layer breakdown, findings, and evidence sources are kept on the record rather than overwritten, so a later review can show what machines saw before, what changed, which signals improved, and what remains unresolved. The methodology is self-improving: as verified history accumulates, de-identified, aggregate patterns sharpen the Signal Score™ and reveal which evidence gaps repeatedly matter — a growing body of evidence about how AI systems understand organizations, not a one-time checklist, so each review benefits from what earlier ones taught the system. Boundaries: Signal Flair is not a data center. It does not sell or monetize client or prospect data, does not train foundation models on private client data, does not publish private assessment records, and does not claim large-scale industry benchmarks, percentiles, or predictive scoring.
+Signal Flair preserves the evidence behind each assessment — not just the final score. Each assessment's date, Signal Score™, layer-by-layer breakdown, findings, and evidence sources are kept on the record rather than overwritten, so a later review can show what machines saw before, what changed, which signals improved, and what remains unresolved. The methodology is self-improving: as verified history accumulates, de-identified, aggregate patterns sharpen the Signal Score™ and reveal which evidence gaps repeatedly matter — a growing body of evidence about how AI systems understand organizations, not a one-time checklist, so each review benefits from what earlier ones taught the system. Boundaries: Signal Flair is not a data center. It does not sell or monetize client or prospect data, does not train foundation models on private client data, does not publish private assessment records, and does not claim large-scale industry benchmarks, percentiles, or predictive scoring.
 
 ## Multimodal discoverability & interpretation
 Answer engines and AI systems do not only read text. Signal Flair evaluates whether an organization's full visual and media presence can be discovered, interpreted, attributed, and connected to the correct entity:
@@ -56,7 +61,7 @@ Answer engines and AI systems do not only read text. Signal Flair evaluates whet
 - Visual brand & entity recognition — whether logo, imagery, and visual identity resolve to the correct entity.
 - Maps & place discovery — whether location and place signals are consistent and legible for visual, map, and camera-based discovery.
 - Creator & publisher attribution readiness — whether public evidence connects media to the correct creator, publisher, channel, and organization.
-Boundaries: Signal Flair evaluates discoverability and attribution readiness. It does not authenticate media, verify legal identity, adjudicate copyright, detect AI-generated content, or guarantee rankings, recommendations, citations, or knowledge-panel inclusion. Multimodal signals are evaluated across the same six Signal Score™ layers — not a separate score.
+Boundaries: Signal Flair evaluates discoverability and attribution readiness. It does not authenticate media, verify legal identity, adjudicate copyright, detect AI-generated content, or guarantee rankings, recommendations, citations, or knowledge-panel inclusion. Multimodal signals are evaluated across the same seven Signal Score™ layers — not a separate score.
 
 ## Signal Proof Page™ — verified proof record
 The Signal Proof Page™ is the canonical human-visible proof hub at /proof/ — a client-owned, source-linked record of business facts published as crawlable pages and machine-readable data. AI systems and customers can inspect what the business does, where it serves, and the proof behind it. Deployed on Foundation Build and Start the Rebuild. Every claim is checked against a cited public source or marked unverified; the last-verified date is real.
@@ -74,8 +79,8 @@ Signal Flair audited itself first as Case Zero — a transparent founder-run bas
 - Discovery manifest: https://signalflair.ai/.well-known/signalflair.json
 - Public change log: https://signalflair.ai/proof/changelog
 
-## The Field Report (free entry point)
-The only free front door is the Signal Flair Field Report: a partial read across three of the six Signal Protocol™ layers (Entity Clarity, Trust & Proof Density, Live AI Visibility), delivered within 24 hours, no call required. The full 6-layer audit follows the Field Report.
+## Signal Pulse™ (free entry point)
+The free front door is the Signal Pulse™: an instant-preview read across three of the seven Signal Protocol™ layers (Entity Clarity, Trust & Proof Density, Live AI Visibility), delivered within 24 hours, no call required. The full 7-layer Signal Score™ Audit follows the Signal Pulse™ — free during the founding period ($500 after).
 
 ## Frequently Asked Questions
 
@@ -86,7 +91,7 @@ Signal Flair builds AI Proof Infrastructure™ for businesses and organizations 
 The structured layer of business information, technical signals, trust proof, and public verification assets that helps AI answer engines understand and verify an organization.
 
 ### What is Signal Score™?
-A six-layer measurement of AI readiness and proof density: Access & Crawlability, Structured Intelligence, Entity Clarity, Answer Architecture, Trust & Proof Density, and Live AI Visibility.
+A seven-layer measurement of AI readiness and proof density: Access & Crawlability, Structured Intelligence, Entity Clarity, Answer Architecture, Trust & Proof Density, Live AI Visibility, and Agent & Commerce Readiness.
 
 ### What is a Signal Proof Page™?
 The canonical crawlable proof hub — human-readable pages plus linked machine-readable assets (proof.json, llms.txt) where a business publishes verified facts.

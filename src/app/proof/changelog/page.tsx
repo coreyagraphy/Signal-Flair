@@ -28,7 +28,7 @@ export default function ProofChangelogPage() {
     <main className="rsc sl">
       <nav className="rsc-nav">
         <a className="rsc-logo" href="/" aria-label="Signal Flair home"><SignalFlairLogo style={{ height: 56, width: 'auto', display: 'block' }} /></a>
-        <a className="rsc-navcta" href="/#field-report">▸ Free Field Report</a>
+        <a className="rsc-navcta" href="/#field-report">▸ Free Signal Pulse™</a>
       </nav>
       <div className="rsc-wrap">
         <header className="rsc-hero">
@@ -62,8 +62,8 @@ export default function ProofChangelogPage() {
 
         <section className="rsc-cta">
           <h2 className="rsc-cta-h">Your record, kept <em>current.</em></h2>
-          <p className="rsc-cta-b">Start with a free Field Report — 3 signals, 24 hours, no call.</p>
-          <a className="rsc-cta-btn" href="/#field-report">▸ Get My Free Field Report</a>
+          <p className="rsc-cta-b">Start with a free Signal Pulse™ — 3 of your 7 signal layers, 24 hours, no call.</p>
+          <a className="rsc-cta-btn" href="/#field-report">▸ Run My Signal</a>
         </section>
       </div>
       <footer className="rsc-foot">

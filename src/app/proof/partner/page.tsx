@@ -66,7 +66,7 @@ const PROOF_STACK = [
   {
     tag: 'Measure',
     name: 'Signal Baseline™',
-    body: 'Signal Protocol™ diagnostic. Signal Score™ across six layers. Prioritized gap list — not a generic PDF.',
+    body: 'Signal Protocol™ diagnostic. Signal Score™ across seven layers. Prioritized gap list — not a generic PDF.',
   },
   {
     tag: 'Build',
@@ -86,7 +86,7 @@ const PROOF_STACK = [
 ]
 
 const MEASUREMENTS = [
-  'Signal Score™ — composite 0–100 across six proof layers',
+  'Signal Score™ — composite 0–100 across seven proof layers',
   'Layer-by-layer readiness: access, structure, entity, answers, trust, visibility',
   'Live AI visibility observations (manual in pilot; automated later)',
   'Before/after proof density on Signal Proof Page™',
