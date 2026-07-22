@@ -187,9 +187,12 @@ Both env vars unset (and no override) = submission fails with a real error and `
 
 **Email roles (Phase 10H):** `hello@signalflair.ai` = inside GHL (Field Report, intake, automations, client follow-up, GHL-based outreach, GHL replies, form fallback). `outreach@trysignalflair.com` = outside/non-GHL outreach only (manual prospecting, experiments outside GHL) — not used on the public website. Avoid `connect@signalflair.ai` and `create@mentalvision.ai` unless documented.
 
+**Payload fields (2026-07-22):** form fields + `submitted_at`, `form_type`/`request_type` (= `field_report`), UTM params, `lead_tag`, and **`billing_preference`** — `'annual'` or `'monthly'` if the visitor used the pricing toggle, `'not_selected'` if they never touched it (never a fake default). Corey must map `billing_preference` to a GHL custom field / workflow branch to use it in follow-up.
+
 GHL workflow should:
 - Create/Update Contact from payload fields
 - Add tag: "AI Visibility Score Request"
+- Map `billing_preference` → custom field (annual-intent leads = prioritize)
 - Notify Corey internally
 - Start inbound nurture sequence (4-touch — not yet built)
 

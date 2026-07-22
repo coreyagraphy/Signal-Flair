@@ -36,10 +36,16 @@ export default function SignalFlairLanding() {
   const [leadFieldErrors, setLeadFieldErrors] = useState({})
   // Monthly/Annual billing toggle — affects ONLY the two Stay Found™ monthly plans.
   // Annual = 12 months for the price of 10 (the "2 months free" policy, stated honestly).
+  // billingRef mirrors the state for the lead-form payload (the submit handler's
+  // useCallback closes over state once; the ref always carries the live value) and
+  // records whether the visitor actually touched the toggle — untouched submits send
+  // "not_selected" rather than a default that would masquerade as a real preference.
   const [billing, setBilling] = useState('monthly')
+  const billingRef = useRef({ mode: 'monthly', touched: false })
   const setBillingMode = useCallback((mode) => {
     setBilling((prev) => {
       if (prev === mode) return prev
+      billingRef.current = { mode, touched: true }
       try { track('billing_toggle', { billing: mode, section: 'pricing' }) } catch {}
       if (typeof window !== 'undefined' && !window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
         requestAnimationFrame(() => {
@@ -108,6 +114,9 @@ export default function SignalFlairLanding() {
     payload.submitted_at = new Date().toISOString()
     payload.form_type = 'field_report'
     payload.request_type = 'field_report'
+    // Billing preference from the pricing toggle — 'annual' / 'monthly' if the
+    // visitor used the toggle, 'not_selected' if they never touched it.
+    payload.billing_preference = billingRef.current.touched ? billingRef.current.mode : 'not_selected'
 
     setLeadSubmitting(true)
     try {
@@ -129,7 +138,7 @@ export default function SignalFlairLanding() {
         clearTimeout(timer)
       }
       console.info('[Field Report] fetch complete')
-      track('form_submit', { form_id: 'lead-form', primary_service: payload.primary_service, demo_mode: false })
+      track('form_submit', { form_id: 'lead-form', primary_service: payload.primary_service, billing_preference: payload.billing_preference, demo_mode: false })
       setLeadSuccess(true)
       setLeadFormError('')
       setLeadFieldErrors({})
