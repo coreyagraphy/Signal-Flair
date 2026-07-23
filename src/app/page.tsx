@@ -63,6 +63,25 @@ const HOMEPAGE_FAQ: { q: string; a: string }[] = [
   },
 ]
 
+// VideoObject for the homepage one-minute explainer. Describes only what the
+// video visibly contains; transcript mirrors the WebVTT track exactly.
+const videoJsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'VideoObject',
+  '@id': 'https://signalflair.ai/#one-minute-explainer',
+  name: 'The One-Minute Version — SEO vs AEO vs Signal Flair',
+  description:
+    'A one-minute animated explainer: SEO gets you found in a list, AEO gets you used in an answer, and Signal Flair gets you verified — the proof infrastructure AI systems check before they recommend a business.',
+  thumbnailUrl: 'https://signalflair.ai/media/signalflair-one-minute-explainer-poster.webp',
+  contentUrl: 'https://signalflair.ai/media/signalflair-one-minute-explainer.mp4',
+  uploadDate: '2026-07-23',
+  duration: 'PT1M14S',
+  inLanguage: 'en-US',
+  publisher: { '@id': 'https://signalflair.ai/#org' },
+  transcript:
+    "Somewhere right now, a customer just asked ChatGPT to pick a company like yours — and ChatGPT picked somebody. The question is whether it even knew you exist. Search engines stopped handing out lists and started handing out answers. SEO ranks you in a list; AEO makes you the answer. But here's what nobody tells you: being readable isn't being believable. An AI can quote your website and still refuse to recommend your business. Machines cross-reference. If your address disagrees with your listing and your reviews float around unattached, the machine doesn't argue — it moves on. This is where SignalFlair wins. Instead of guessing, it measures — a Signal Score from zero to one hundred, showing exactly how visible and trustworthy you look to AI. The fix is infrastructure, not vibes: a crawlable Signal Proof page, machine-readable files like llms.txt and proof.json — assets an AI can actually inspect. So: SEO gets you found in a list, AEO gets you used in an answer, and SignalFlair gets you verified — the part the other two depend on. Because AI doesn't warn you before it checks. Stay ready, so you don't have to get ready.",
+}
+
 const faqJsonLd = {
   '@context': 'https://schema.org',
   '@type': 'FAQPage',
@@ -79,6 +98,7 @@ export default function Home() {
     <>
       <SignalFlairLanding />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqJsonLd) }} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(videoJsonLd) }} />
     </>
   )
 }

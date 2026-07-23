@@ -857,12 +857,37 @@ export default function SignalFlairLanding() {
           <h2 className="om-title">SEO gets you found. AEO gets you used. <em>Signal Flair helps AI verify the business behind the answer.</em></h2>
           <p className="om-sub">No buzzword soup. Here&apos;s what changed — and why being readable still isn&apos;t the same as being believable.</p>
           <div className="om-frame">
-            <div className="om-plate" role="img" aria-label="The Signal Flair one-minute explainer film premieres here soon">
-              <div className="om-plate-mark" aria-hidden="true">▸</div>
-              <div className="om-plate-line1">THE FILM LANDS HERE.</div>
-              <div className="om-plate-line2">60 seconds · SEO vs AEO vs proof · rolling soon</div>
-            </div>
+            {/* No autoplay, preload=none — poster only until the visitor presses play. */}
+            <video
+              controls
+              preload="none"
+              playsInline
+              poster="/media/signalflair-one-minute-explainer-poster.webp"
+              aria-label="The Signal Flair one-minute explainer: SEO vs AEO vs proof"
+            >
+              <source src="/media/signalflair-one-minute-explainer.mp4" type="video/mp4" />
+              <track kind="captions" src="/media/signalflair-one-minute-explainer.vtt" srcLang="en" label="English" default />
+              Your browser doesn&apos;t support embedded video. <a href="/media/signalflair-one-minute-explainer.mp4">Download the film</a>.
+            </video>
           </div>
+          <details className="om-transcript">
+            <summary>Read the transcript</summary>
+            <p>
+              Somewhere right now, a customer just asked ChatGPT to pick a company like yours — and ChatGPT
+              picked somebody. The question is whether it even knew you exist. Search engines stopped handing
+              out lists and started handing out answers. SEO ranks you in a list; AEO makes you the answer.
+              But here&apos;s what nobody tells you: being readable isn&apos;t being believable. An AI can quote
+              your website and still refuse to recommend your business. Machines cross-reference. If your
+              address disagrees with your listing and your reviews float around unattached, the machine
+              doesn&apos;t argue — it moves on. This is where SignalFlair wins. Instead of guessing, it
+              measures — a Signal Score from zero to one hundred, showing exactly how visible and trustworthy
+              you look to AI. The fix is infrastructure, not vibes: a crawlable Signal Proof page,
+              machine-readable files like llms.txt and proof.json — assets an AI can actually inspect. So: SEO
+              gets you found in a list, AEO gets you used in an answer, and SignalFlair gets you verified —
+              the part the other two depend on. Because AI doesn&apos;t warn you before it checks. Stay ready,
+              so you don&apos;t have to get ready.
+            </p>
+          </details>
           <div className="om-ctarow">
             <a className="om-cta" href="#cta">Run My Signal →</a>
           </div>

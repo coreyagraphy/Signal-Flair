@@ -1465,3 +1465,9 @@ footer{background:var(--ink2);border-top:1px solid var(--ink);padding:52px;posit
 .om-cta{display:inline-block;font-family:var(--signal);font-weight:700;font-size:clamp(13px,0.4vw + 11px,15px);letter-spacing:0.1em;text-transform:uppercase;color:var(--bone);background:var(--orange);border:2px solid var(--orange);border-radius:10px;padding:17px 34px;text-decoration:none;transition:all .2s;box-shadow:0 12px 34px rgba(255,90,31,0.35)}
 .om-cta:hover,.om-cta:focus-visible{background:var(--orange2);border-color:var(--orange2);transform:translateY(-3px);box-shadow:0 18px 44px rgba(255,90,31,0.5)}
 @media(max-width:600px){.om-frame{border-radius:12px}}
+
+/* ── One-minute explainer: transcript disclosure ── */
+.om-transcript{max-width:960px;margin:18px auto 0;text-align:left;font-family:var(--signal);border:1.5px solid var(--line-dark);border-radius:10px;background:rgba(11,10,9,0.04)}
+.om-transcript summary{cursor:pointer;padding:14px 18px;font-weight:700;font-size:clamp(12.5px,0.35vw + 10.5px,14px);letter-spacing:0.12em;text-transform:uppercase;color:rgba(11,10,9,0.72)}
+.om-transcript summary:hover{color:var(--orange2)}
+.om-transcript p{padding:0 18px 18px;font-size:clamp(14px,0.45vw + 11.5px,16px);line-height:1.85;color:rgba(11,10,9,0.78)}
