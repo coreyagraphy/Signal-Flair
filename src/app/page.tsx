@@ -59,7 +59,7 @@ const HOMEPAGE_FAQ: { q: string; a: string }[] = [
   },
   {
     q: 'Do I have to get on a sales call?',
-    a: 'No. Run your free Signal Pulse™ above — we scan 3 of your 7 signal layers and send your preview within 24 hours. No pitch, no pressure. The ball stays in your court.',
+    a: 'No. Run the free Signal Pulse™ and we will send the preview within 24 hours. If you want the full Signal Score™ after that, say so. No forced call. The ball stays in your court.',
   },
 ]
 

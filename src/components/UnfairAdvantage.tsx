@@ -32,32 +32,32 @@ const HEADLINE_LINE1 = 'The AI already has an opinion.';
 const HEADLINE_LINE2 = 'Do you know what it is?';
 
 const SUBHEADLINE =
-  'Most AEO tools hand you a dashboard and a score, then leave the fixing to you. Signal Flair is different: we measure whether ChatGPT, Claude, Perplexity, and Google AI can actually find you — then build the proof layer that closes the gaps.';
+  'Most AEO tools hand you a dashboard, point at the problem, and disappear. Signal Flair measures what ChatGPT, Claude, Perplexity, and Google AI can actually find — then builds the proof layer that closes the gaps. A score is useful. A fix is better.';
 
 const BOXES = [
   {
     num: '1',
     numColor: '#ff5a1f',
-    title: 'We Start With Proof',
-    body: 'Agencies give you decks. We give you a score — 0 to 100, measured the same way across every AI engine making recommendations right now.',
+    title: 'Bring Receipts',
+    body: 'Agencies bring decks. We bring a 0–100 score, the evidence behind it, and the same measuring stick every time.',
   },
   {
     num: '2',
     numColor: '#00b8a9',
-    title: 'Speak AI Fluently',
+    title: 'Make the Machines Get It',
     body: 'Most businesses don\'t.\nMost agencies can\'t.',
   },
   {
     num: '3',
     numColor: '#fff45f',
-    title: 'Future-Proof by Design',
+    title: 'Built Past the Trend',
     body: 'New engines come.\nInfrastructure stays.',
   },
   {
     num: '4',
     numColor: '#ff5a1f',
     title: 'No Lock-In. Ever.',
-    body: 'The llms.txt, the schema, the infrastructure — it\'s yours the day we build it. Cancel anytime. You keep everything.',
+    body: 'The infrastructure is yours the day we build it. Leave whenever you want. Take everything with you.',
   },
 ];
 

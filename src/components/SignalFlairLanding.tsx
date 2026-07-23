@@ -746,7 +746,7 @@ export default function SignalFlairLanding() {
               border: 0,
             }}
           >
-            AI can find your business. But does it understand it? What&apos;s your Signal Score?
+            AI found your business. It still might have you completely wrong. Run your Signal Score™ and see what the machines think they know.
           </h1>
           <div className="hero-word" aria-hidden="true">FOUND.</div>
           <div className="h-side top">
@@ -818,7 +818,7 @@ export default function SignalFlairLanding() {
           <div className="prob-left reveal">
             <div className="prob-label">The Diagnosis</div>
             <div className="prob-headline">Great business.<br /><em>Weak signal.</em></div>
-            <div className="prob-body">Two machines read your business and disagree completely. Humans see a trusted local operator. AI engines — the ones now booking appointments and routing customers — see almost nothing. Not because you&apos;re bad. Because you&apos;re unreadable.</div>
+            <div className="prob-body">People get it. AI doesn&apos;t. One engine sees a trusted local business. Another barely sees a business at all. And these are the machines now answering questions, comparing options, and steering customers. Your work is not the problem. Your signal is.</div>
             <div className="prob-stats">
               <div className="psr"><span className="psr-n count">&lt;1%</span><span className="psr-l">Have llms.txt</span></div>
               <div className="psr"><span className="psr-n count">4M+</span><span className="psr-l">AI Searches Daily<br />&amp; Climbing</span></div>
@@ -853,27 +853,27 @@ export default function SignalFlairLanding() {
         <div className="sig-top reveal">
           <div>
             <div className="sig-eyebrow">What does Signal Flair build?</div>
-            <div className="sig-big">THREE THINGS.<br />DONE <em>RIGHT.</em></div>
+            <div className="sig-big">FIND THE BREAK.<br />FIX THE SIGNAL.<br /><em>KEEP IT ALIVE.</em></div>
           </div>
-          <div className="sig-tagline">Signal Flair builds AI Proof Infrastructure™ — the structured proof layer that helps AI systems access, understand, verify, and surface your business. We do it in three moves: diagnose the baseline, build the proof, and keep it fresh.</div>
+          <div className="sig-tagline">Signal Flair builds AI Proof Infrastructure™: the proof layer machines use to access, understand, verify, and surface your business. First we measure the problem. Then we build what is missing. Then we keep it from going stale.</div>
         </div>
         <div className="sig-rows">
           <div className="sig-row reveal">
             <div className="sig-proto"><div className="sig-rn">01</div><div className="sig-plabel">Diagnostic · Signal Score™</div></div><div className="sig-rd" />
             <div className="sig-rtitle">Signal Score™<br />Audit</div>
-            <div className="sig-rbody"><em>The before-photo of how AI sees you.</em> Your full 7-layer Signal Score™ — a 0–100 baseline across ChatGPT, Perplexity, Claude, Gemini, and Google AI, plus what each engine actually says about you today. Free during the founding period. Most businesses score under 40 — now you&apos;ll know why.</div>
+            <div className="sig-rbody"><em>This is the before picture — and AI does not get a filter.</em> Your full 7-layer Signal Score™ shows how ChatGPT, Perplexity, Claude, Gemini, and Google AI read your business right now, from 0 to 100. During the founding period, the full audit is free. If your score is ugly, good. Now we know exactly where to start.</div>
             <div><span className="sig-rtag">Scoring + Reporting</span></div>
           </div>
           <div className="sig-row reveal">
             <div className="sig-proto"><div className="sig-rn">02</div><div className="sig-plabel">Implementation · The Proof Stack™</div></div><div className="sig-rd" />
             <div className="sig-rtitle">The Proof<br />Stack™</div>
-            <div className="sig-rbody"><em>The full infrastructure layer AI reads before it recommends you.</em> Model Ingestion Manifest deployed, Machine Trust Layer™ installed, Crawl Clearance Protocol run, Entity Lock™ and Answer Architecture™ built — the structured proof AI needs to understand, verify, and recommend you. Built in 7–14 days, not months.</div>
+            <div className="sig-rbody"><em>This is the part AI actually reads.</em> We deploy the Model Ingestion Manifest, install the Machine Trust Layer™, run the Crawl Clearance Protocol, lock down your entity, and build the Answer Architecture™. In plain English: we give the machines a clean, verifiable version of your business. Built in 7–14 days. Not six months of meetings about meetings.</div>
             <div><span className="sig-rtag">Manifest + Trust Layer</span></div>
           </div>
           <div className="sig-row reveal">
             <div className="sig-proto"><div className="sig-rn">03</div><div className="sig-plabel">Maintenance · Stay Found™</div></div><div className="sig-rd" />
             <div className="sig-rtitle">Stay<br />Found™</div>
-            <div className="sig-rbody"><em>Visibility isn&apos;t a one-time fix.</em> AI search evolves monthly and your competitors are catching up. Stay Found™ plans run Citation Capture — the monthly work of winning and holding AI citations — with the Proof Density Engine compounding your third-party proof and Signal Telemetry watching for drift across ChatGPT, Gemini, Perplexity &amp; Claude.</div>
+            <div className="sig-rbody"><em>Getting found once is cute. Staying found is the job.</em> AI changes. Competitors move. Proof gets stale. Stay Found™ runs Citation Capture, compounds third-party proof through the Proof Density Engine, and uses Signal Telemetry to catch drift across ChatGPT, Gemini, Perplexity, and Claude.</div>
             <div><span className="sig-rtag">Telemetry + Citation Capture</span></div>
           </div>
         </div>
@@ -955,8 +955,8 @@ export default function SignalFlairLanding() {
       {/* ═══ Stay Found™ maintenance reveal — flows straight out of "You can't copy the system." ═══ */}
       <section id="signal-lock-reveal" data-cursor="dark">
         <div className="slr-inner reveal">
-          <div className="mr-name">Stay Found<sup className="mr-tm">™</sup> is not a one-time audit.</div>
-          <div className="mr-body">An audit is a photograph. It shows you what was true the day the shutter clicked. But your competitors did not stop moving when the photographer left. AI systems did not stop changing. Your reviews, citations, pages, schema, and crawler access did not freeze in place.</div>
+          <div className="mr-name">An audit tells you what was true that day. <span className="mr-tm-line">Then the day ends.</span></div>
+          <div className="mr-body">Your competitors keep moving. AI systems keep changing. Reviews, citations, pages, schema, and crawler access drift. Stay Found™ is the maintenance layer that keeps checking the work instead of framing an old report and calling it strategy.</div>
           <div className="mr-body"><strong>Stay Found™ is the maintenance layer that helps reduce proof drift over time.</strong> Four maintenance layers:</div>
           <div className="lock-layers">
             <div className="lock-layer"><span className="lock-layer-n">01</span>Monthly Signal Score™ verification</div>
@@ -965,7 +965,7 @@ export default function SignalFlairLanding() {
             <div className="lock-layer"><span className="lock-layer-n">04</span>Live AI visibility spot tests</div>
           </div>
           <div className="mr-body">The <strong>Verified by Signal Flair™</strong> mark is what you carry because the score is being maintained — not because it was checked once.</div>
-          <div className="mr-kicker">Anyone can tell you your score today. Stay Found™ is built to help keep your proof current.</div>
+          <div className="mr-kicker">Anyone can score you today. Stay Found™ checks whether that score still deserves to be true tomorrow.</div>
           <a className="mr-cta" href="#field-report">▸ Start with a free Signal Pulse™ →</a>
         </div>
       </section>
@@ -977,8 +977,8 @@ export default function SignalFlairLanding() {
           <div className="ent-eyebrow">The enterprise secret</div>
           <div className="ent-title">THE ENTERPRISE<br />SECRET</div>
         </div>
-        <div className="ent-lede reveal">Enterprise-grade visibility audits can run <strong>$15,000–$50,000</strong> when bundled into agency retainers, strategy decks, and implementation plans. For a local business, that model is usually too expensive, too slow, and too disconnected from ownership.</div>
-        <div className="ent-photo reveal">It is also a photograph. And a photograph starts getting old the moment the market moves.</div>
+        <div className="ent-lede reveal">Enterprise visibility work can run <strong>$15,000–$50,000</strong> once the retainers, decks, and implementation plans pile up. For most local businesses, that means too much money, too much waiting, and too little they actually own.</div>
+        <div className="ent-photo reveal">And after all that? It is still a snapshot. The market moves. The snapshot doesn&apos;t.</div>
         <div className="ent-build reveal">
           <div className="ent-build-lead">Signal Flair built the maintained version that a local business can actually own.</div>
           <div className="ent-terms">
@@ -1040,14 +1040,15 @@ export default function SignalFlairLanding() {
         </div>
         {/* ═══ REAL-WORLD AUDIT — The Mill / Amplify Bloomington, named with permission (recorded 2026-07-21; see ANONYMIZED_BASELINE_CASE_INTERNAL.md) ═══ */}
         <div className="rw reveal" id="real-world-audit">
-          <div className="rw-head">
-            <div className="rw-eyebrow">Real-World AI Visibility Audit</div>
-            <h3 className="rw-title">One business. Three AI engines.<br /><em>Three different stories.</em></h3>
+          <div className="rw-head rw-marquee">
+            <div className="rw-case-tag"><span className="rw-case-dot" aria-hidden="true" />Case File · Real-World AI Visibility Audit<span className="rw-case-score">35/100</span></div>
+            <h3 className="rw-title rw-title-xl">One business. Three AI engines.<br /><em>Three different stories.</em></h3>
+            <div className="rw-client-line"><span className="rw-client-logo" aria-hidden="true">▚</span><span className="rw-client-name">The Mill</span><span className="rw-client-meta">· Amplify Bloomington · audited July 2026</span></div>
             <p className="rw-body">
-              We ran a Proof OS™ audit on The Mill — the coworking and event space at the center of Amplify
-              Bloomington. It appeared in ChatGPT, Gemini, and Perplexity — but each engine told a different,
-              incomplete story. One found only a thin version. One pointed to the wrong domain. One reduced it to
-              amenities. Baseline Signal Score™: 35/100.
+              We audited The Mill — the coworking and event space at the center of Amplify Bloomington. ChatGPT,
+              Gemini, and Perplexity all found it. Great. They also told three different, incomplete stories. One
+              gave us the thin version. One sent people to the wrong domain. One reduced the place to amenities.
+              Signal Score™: 35/100. Found? Technically. Understood? Not even close.
             </p>
           </div>
           <div className="rw-grid">
@@ -1064,7 +1065,7 @@ export default function SignalFlairLanding() {
               <div className="rw-card-d">Leaned on the Google Business Profile — &ldquo;wifi &amp; coffee&rdquo; — with none of the membership, events, or Amplify story.</div>
             </div>
           </div>
-          <div className="rw-conclusion">Showing up is not the same as being <em>understood, trusted, or represented correctly.</em></div>
+          <div className="rw-conclusion">Being mentioned is not the win. <em>Being understood correctly is.</em></div>
           <ul className="rw-points">
             <li>Found does not mean accurately represented.</li>
             <li>Mentions do not guarantee entity clarity.</li>
@@ -1081,8 +1082,8 @@ export default function SignalFlairLanding() {
           <div className="founding-inner">
             <div className="founding-l">
               <div className="founding-eyebrow">The Founding Five</div>
-              <div className="founding-title">Get in on the ground floor. <em>Only 5 seats.</em></div>
-              <div className="founding-body">Signal Flair is opening exactly five founding seats. Founding Five members get <strong>35% off their build</strong> and their <strong>first 3 months of Signal Proof at 50%</strong> — in exchange for one thing: permission to publish your named before-and-after as a documented case study. The goal isn&apos;t hype. It&apos;s documented proof: measure the before, build The Proof Stack™, publish the after.</div>
+              <div className="founding-title">Five seats. <em>Then the door closes.</em></div>
+              <div className="founding-body">Signal Flair is opening exactly five founding seats. Members get <strong>35% off the build</strong> and the <strong>first three months of Signal Proof at 50%</strong>. In return, we need permission to publish the named before-and-after as a documented case study. No manufactured victory lap. We measure the before, build The Proof Stack™, and publish what actually changed.</div>
               <div className="founding-ask">For: local service businesses, nonprofits, civic &amp; community partners, and trust-based providers — med spas, clinics, law firms, HVAC, electrical, and more.</div>
               <a className="founding-cta" href="#cta">▸ Claim My Seat</a>
               <div className="founding-micro">5 of 5 seats remaining — updated July 21, 2026 · documented proof, not testimonials</div>
@@ -1128,7 +1129,7 @@ export default function SignalFlairLanding() {
         <div className="mm-top reveal">
           <div className="mm-eyebrow">The multimodal moat · beyond the webpage</div>
           <div className="mm-title">Your website is one witness.<br />AI reads the <em>rest.</em></div>
-          <div className="mm-lead">Answer engines don&apos;t stop at your text. They meet your images, video, logo, channels, and profiles — and try to work out what each one is and who it belongs to. Signal Flair evaluates whether they can: whether your full visual and media presence is discoverable, interpretable, and correctly connected to the right organization.</div>
+          <div className="mm-lead">AI does not stop at your homepage. It reads your images, video, logo, channels, maps, and profiles — then tries to decide what belongs to whom. Signal Flair checks whether that full media footprint can be found, interpreted, and connected to the right organization. Because looking like yourself is useless if the machines attach it to somebody else.</div>
         </div>
         <div className="mm-grid">
           <div className="mm-tile reveal" style={{ '--ac': '#00b8a9', '--acg': '0,184,169' }}>
@@ -1166,7 +1167,7 @@ export default function SignalFlairLanding() {
             Start free. Build once.<br />
             Stay <em className="pv-fit">found.</em>
           </h2>
-          <div className="pricing-sub">New to the block. Built to take over. Your free Signal Score™ Audit sets the scope — then you build The Proof Stack™ once and keep it cited with a Stay Found™ plan. No score gates, no guesswork.</div>
+          <div className="pricing-sub">New to the block. Built to take over. Your free Signal Score™ Audit tells us what is broken. The Proof Stack™ fixes it once. Stay Found™ keeps the signal current. No mystery package. No guessing what you need.</div>
         </div>
         <div className="price-how reveal">
           <div className="ph-lead">You don&apos;t pick a package. Your free <em>Signal Score™ Audit</em> sets the scope.</div>
@@ -1291,7 +1292,7 @@ export default function SignalFlairLanding() {
         {/* Content Payload — content is the fuel, elevated to premium */}
         <div className="price-how reveal fuel" id="content-payload">
           <div className="ph-lead">Content is the <em>payload.</em></div>
-          <div className="ph-note" style={{ marginTop: 0 }}>Every Stay Found™ plan ships a monthly <strong>Content Payload</strong> — premium, done-for-you content engineered for humans <em>and</em> machines. This is not filler posted into the void: every piece is <strong>AEO-optimized with machine-readable metadata</strong> before it ships, so the engines can index it, attribute it, and cite it. And every payload includes <strong>one 30-second commercial</strong> — a cinematic, broadcast-grade spot for your business, every single month.</div>
+          <div className="ph-note" style={{ marginTop: 0 }}>Every Stay Found™ plan includes a monthly <strong>Content Payload</strong>: premium, done-for-you content built for humans and marked up for machines. This is not filler launched into the void. Each piece ships with <strong>AEO-focused, machine-readable metadata</strong> so it can be indexed, attributed, and cited. Every payload also includes <strong>one 30-second commercial</strong>. Real creative. Every month.</div>
           <div className="ph-map" style={{ marginTop: '20px' }}>
             <div className="ph-step">
               <div className="ph-band">Engineered, not posted</div>
@@ -1314,7 +1315,7 @@ export default function SignalFlairLanding() {
         {/* Signal Satellites™ — per-location microsites */}
         <div className="price-how reveal" id="satellites">
           <div className="ph-lead">Every location deserves its own <em>signal.</em></div>
-          <div className="ph-note" style={{ marginTop: 0 }}><strong>Signal Satellites™</strong> — per-location micro-sites, each built AI-readable from day one. Each Satellite carries its own Machine Trust Layer™, Entity Lock™, and Answer Architecture™ — so every branch gets found and cited in its own market, instead of hiding behind one homepage.</div>
+          <div className="ph-note" style={{ marginTop: 0 }}>One homepage should not have to explain twenty locations. <strong>Signal Satellites™</strong> give each location its own AI-readable microsite, Machine Trust Layer™, Entity Lock™, and Answer Architecture™. Every branch gets a clear identity in its own market instead of disappearing behind corporate&apos;s homepage.</div>
           <div className="sl-doctrine-wrap" style={{ marginTop: '18px' }}>
             <table className="sl-doctrine">
               <thead><tr><th>Per-location add-on</th><th>Price</th><th>Applies to</th></tr></thead>
@@ -1333,8 +1334,8 @@ export default function SignalFlairLanding() {
           <div className="bp-ent">
             <div className="bp-body-wrap">
               <div className="bp-eyebrow">Enterprise · Civic · Multi-Location</div>
-              <div className="bp-h">Big footprint? Let&apos;s pull up.</div>
-              <div className="bp-body">Franchises, multi-location brands, chambers, civic and economic-development orgs — the ones who need a whole ecosystem read and rebuilt for AI, not a single page. We scope it together and move fast.</div>
+              <div className="bp-h">Big footprint? Pull up.</div>
+              <div className="bp-body">Franchises. Multi-location brands. Chambers. Civic and economic-development organizations. You do not need one page tuned. You need the whole ecosystem read, rebuilt, and made clear to AI. We scope it. Then we move.</div>
               <div className="bp-price">Engagements start at $12K build + $3K/mo</div>
               <div className="bp-price-sub">or a fixed-scope 90-day build from $15K</div>
             </div>
@@ -1342,15 +1343,15 @@ export default function SignalFlairLanding() {
           </div>
           <div className="bp-agency">
             <div className="bp-h">Run an agency? Put our engine behind your name.</div>
-            <div className="bp-body">White-label Signal Flair&apos;s builds and plans — The Proof Stack™, Citation Capture, Signal Telemetry — resell under your own brand, keep the margin. We stay invisible; you look like the AI-visibility expert your clients need.</div>
-            <a className="bp-cta ghost" href="#cta">Partner Up →</a>
+            <div className="bp-body">White-label The Proof Stack™, Citation Capture, and Signal Telemetry under your brand. You keep the client and the margin. We stay behind the curtain. You become the person with an actual answer when the client asks, &ldquo;Why doesn&apos;t ChatGPT recommend us?&rdquo;</div>
+            <a className="bp-cta ghost" href="#cta">Put Us Behind Your Brand →</a>
           </div>
         </div>
 
         {/* Where This Is Going — future-proof trust section */}
         <div className="price-how reveal wg-center">
           <div className="ph-eyebrow">Where this is going</div>
-          <div className="ph-lead wg-big">We&apos;re not pricing for today. We&apos;re building for <em>what&apos;s next.</em></div>
+          <div className="ph-lead wg-big">AI agents are coming for the transaction. <em>We&apos;re already measuring the door.</em></div>
           <div className="ph-map" style={{ gridTemplateColumns: 'repeat(auto-fit,minmax(280px,1fr))' }}>
             <div className="ph-step">
               <div className="ph-band">Layer 7 · already measured</div>
@@ -1468,7 +1469,7 @@ export default function SignalFlairLanding() {
           </details>
           <details className="faq-item">
             <summary className="faq-q">Do I have to get on a sales call?<span className="faq-ic" aria-hidden="true" /></summary>
-            <div className="faq-a">No. Run your free Signal Pulse™ above — we scan 3 of your 7 signal layers and send your preview within 24 hours. No pitch, no pressure. <em>The ball stays in your court.</em></div>
+            <div className="faq-a">No. Run the free Signal Pulse™ and we will send the preview within 24 hours. If you want the full Signal Score™ after that, say so. No forced call. <em>The ball stays in your court.</em></div>
           </details>
         </div>
       </section>
@@ -1479,8 +1480,8 @@ export default function SignalFlairLanding() {
         <div className="cta-inner">
           <div className="cta-left">
             <div className="cta-y-pre reveal">AI Proof Infrastructure™</div>
-            <div className="cta-y-title reveal">See what AI <em>actually knows</em><br />about your business — free.</div>
-            <div className="cta-y-sub reveal">Three critical AI signals — scanned across every major engine and delivered in 24 hours. No call. No pitch. Just the diagnosis: exactly where your signal breaks.</div>
+            <div className="cta-y-title reveal">AI is talking about your business.<br /><em>Go see what it said.</em></div>
+            <div className="cta-y-sub reveal">We scan three critical signals across the major engines and send the preview within 24 hours. You see where the signal breaks. What you do next is up to you.</div>
             <div className="cta-y-btns reveal" style={{ marginTop: '26px' }}>
               <a className="cta-y-ghost" href="#founding">▸ Claim a Founding Five Seat →</a>
               <a className="cta-y-ghost" href="#check">▸ See all seven layers →</a>

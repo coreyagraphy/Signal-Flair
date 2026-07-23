@@ -1418,3 +1418,20 @@ footer{background:var(--ink2);border-top:1px solid var(--ink);padding:52px;posit
 .pf-item,.psci{display:block;position:relative;padding-left:22px}
 .pf-item::before,.psci::before{position:absolute;left:0;top:0}
 .pf-item strong,.psci strong{display:inline}
+
+/* ── THE MILL AUDIT MARQUEE — big, illuminated, unmissable (Corey 2026-07-22) ── */
+.rw-marquee{max-width:960px}
+.rw-case-tag{display:inline-flex;align-items:center;gap:12px;font-family:var(--signal);font-weight:700;font-size:clamp(12px,0.35vw + 10.5px,14px);letter-spacing:0.22em;text-transform:uppercase;color:var(--bone);background:var(--ink);border:1.5px solid rgba(255,45,120,0.6);border-radius:100px;padding:10px 20px;box-shadow:0 0 28px rgba(255,45,120,0.28),0 10px 30px rgba(11,10,9,0.3)}
+.rw-case-dot{width:9px;height:9px;border-radius:50%;background:var(--signal-magenta);box-shadow:0 0 12px rgba(255,45,120,0.9);animation:rw-pulse 2.2s ease-in-out infinite}
+@keyframes rw-pulse{0%,100%{opacity:1;transform:scale(1)}50%{opacity:0.55;transform:scale(0.8)}}
+@media(prefers-reduced-motion:reduce){.rw-case-dot{animation:none}}
+.rw-case-score{font-family:var(--signal);font-weight:700;color:var(--signal-magenta-tint);border-left:1px solid rgba(248,241,231,0.25);padding-left:12px}
+.rw-title-xl{font-size:clamp(38px,5.6vw + 8px,84px);line-height:0.98;margin-top:26px;letter-spacing:-0.02em;text-shadow:0 0 60px rgba(255,90,31,0.18)}
+.rw-title-xl em{display:inline-block;font-size:1.04em;color:var(--orange);filter:drop-shadow(0 0 26px rgba(255,90,31,0.45));animation:rw-glow 4s ease-in-out infinite}
+@keyframes rw-glow{0%,100%{filter:drop-shadow(0 0 18px rgba(255,90,31,0.35))}50%{filter:drop-shadow(0 0 40px rgba(255,90,31,0.6))}}
+@media(prefers-reduced-motion:reduce){.rw-title-xl em{animation:none}}
+.rw-client-line{display:flex;align-items:baseline;gap:12px;margin-top:22px;flex-wrap:wrap}
+.rw-client-logo{font-size:clamp(20px,1.4vw + 12px,30px);color:var(--teal);line-height:1;align-self:center;text-shadow:0 0 16px rgba(0,184,169,0.5)}
+.rw-client-name{font-family:var(--italic);font-style:italic;font-size:clamp(26px,2.2vw + 12px,44px);color:var(--ink);line-height:1}
+.rw-client-meta{font-family:var(--signal);font-size:clamp(13px,0.4vw + 11px,15.5px);color:rgba(11,10,9,0.6);letter-spacing:0.04em}
+@media(max-width:600px){.rw-case-tag{letter-spacing:0.14em;padding:9px 14px;gap:9px}}
