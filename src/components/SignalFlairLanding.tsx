@@ -848,6 +848,27 @@ export default function SignalFlairLanding() {
         </div>
       </section>
 
+      {/* ═══ THE ONE-MINUTE VERSION — homepage explainer film (after The Diagnosis, before the build section).
+           OM_VIDEO_READY flips to true when public/media/signalflair-one-minute-explainer.mp4 +
+           poster + captions land — the plate below swaps for the real player. No fake controls until then. ═══ */}
+      <section id="one-minute" data-cursor="light">
+        <div className="om-inner reveal">
+          <div className="om-kicker">The One-Minute Version</div>
+          <h2 className="om-title">SEO gets you found. AEO gets you used. <em>Signal Flair helps AI verify the business behind the answer.</em></h2>
+          <p className="om-sub">No buzzword soup. Here&apos;s what changed — and why being readable still isn&apos;t the same as being believable.</p>
+          <div className="om-frame">
+            <div className="om-plate" role="img" aria-label="The Signal Flair one-minute explainer film premieres here soon">
+              <div className="om-plate-mark" aria-hidden="true">▸</div>
+              <div className="om-plate-line1">THE FILM LANDS HERE.</div>
+              <div className="om-plate-line2">60 seconds · SEO vs AEO vs proof · rolling soon</div>
+            </div>
+          </div>
+          <div className="om-ctarow">
+            <a className="om-cta" href="#cta">Run My Signal →</a>
+          </div>
+        </div>
+      </section>
+
       {/* ═══ SERVICES ═══ */}
       <section id="signal">
         <div className="sig-top reveal">
