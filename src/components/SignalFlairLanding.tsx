@@ -866,7 +866,10 @@ export default function SignalFlairLanding() {
               aria-label="The Signal Flair one-minute explainer: SEO vs AEO vs proof"
             >
               <source src="/media/signalflair-one-minute-explainer.mp4" type="video/mp4" />
-              <track kind="captions" src="/media/signalflair-one-minute-explainer.vtt" srcLang="en" label="English" default />
+              {/* Track is deliberately NOT default: the video carries burned-in captions, so
+                  rendering the VTT too would double the text. It stays available via the
+                  player's CC control and for assistive tech. */}
+              <track kind="captions" src="/media/signalflair-one-minute-explainer.vtt" srcLang="en" label="English" />
               Your browser doesn&apos;t support embedded video. <a href="/media/signalflair-one-minute-explainer.mp4">Download the film</a>.
             </video>
           </div>
