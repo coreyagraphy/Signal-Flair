@@ -1435,3 +1435,15 @@ footer{background:var(--ink2);border-top:1px solid var(--ink);padding:52px;posit
 .rw-client-name{font-family:var(--italic);font-style:italic;font-size:clamp(26px,2.2vw + 12px,44px);color:var(--ink);line-height:1}
 .rw-client-meta{font-family:var(--signal);font-size:clamp(13px,0.4vw + 11px,15.5px);color:rgba(11,10,9,0.6);letter-spacing:0.04em}
 @media(max-width:600px){.rw-case-tag{letter-spacing:0.14em;padding:9px 14px;gap:9px}}
+
+/* ── FOUNDING FIVE DEAL CHIPS — the special, illuminated (Corey 2026-07-23) ── */
+.fnd-deal{display:flex;gap:16px;flex-wrap:wrap;margin:24px 0 22px}
+.fnd-chip{display:flex;flex-direction:column;gap:5px;border-radius:12px;padding:18px 24px;min-width:min(240px,100%)}
+.fnd-chip-hot{background:var(--hot);color:var(--ink);box-shadow:0 0 38px rgba(255,244,95,0.4),0 14px 34px rgba(11,10,9,0.35);animation:fnd-glow-hot 3.6s ease-in-out infinite}
+.fnd-chip-orange{background:var(--orange);color:var(--bone);box-shadow:0 0 34px rgba(255,90,31,0.45),0 14px 34px rgba(11,10,9,0.35);animation:fnd-glow-org 3.6s 1.8s ease-in-out infinite}
+@keyframes fnd-glow-hot{0%,100%{box-shadow:0 0 26px rgba(255,244,95,0.3),0 14px 34px rgba(11,10,9,0.35)}50%{box-shadow:0 0 52px rgba(255,244,95,0.55),0 14px 34px rgba(11,10,9,0.35)}}
+@keyframes fnd-glow-org{0%,100%{box-shadow:0 0 24px rgba(255,90,31,0.35),0 14px 34px rgba(11,10,9,0.35)}50%{box-shadow:0 0 48px rgba(255,90,31,0.6),0 14px 34px rgba(11,10,9,0.35)}}
+@media(prefers-reduced-motion:reduce){.fnd-chip-hot,.fnd-chip-orange{animation:none}}
+.fnd-chip-big{font-family:var(--flair);font-variation-settings:'opsz' 100,'wght' 640,'WONK' 1;font-size:clamp(24px,1.6vw + 14px,36px);line-height:1;letter-spacing:-0.01em}
+.fnd-chip-sub{font-family:var(--signal);font-weight:600;font-size:clamp(12px,0.35vw + 10.5px,14px);letter-spacing:0.06em;opacity:0.85}
+@media(max-width:560px){.fnd-chip{padding:16px 18px}}

@@ -1083,7 +1083,11 @@ export default function SignalFlairLanding() {
             <div className="founding-l">
               <div className="founding-eyebrow">The Founding Five</div>
               <div className="founding-title">Five seats. <em>Then the door closes.</em></div>
-              <div className="founding-body">Signal Flair is opening exactly five founding seats. Members get <strong>35% off the build</strong> and the <strong>first three months of Signal Proof at 50%</strong>. In return, we need permission to publish the named before-and-after as a documented case study. No manufactured victory lap. We measure the before, build The Proof Stack™, and publish what actually changed.</div>
+              <div className="fnd-deal" aria-label="Founding Five offer">
+                <div className="fnd-chip fnd-chip-hot"><span className="fnd-chip-big">35% OFF</span><span className="fnd-chip-sub">the build — Rebuild or Foundation</span></div>
+                <div className="fnd-chip fnd-chip-orange"><span className="fnd-chip-big">3 MONTHS AT 50%</span><span className="fnd-chip-sub">Signal Proof, your first quarter</span></div>
+              </div>
+              <div className="founding-body">Signal Flair is opening exactly five founding seats. In return, we need permission to publish the named before-and-after as a documented case study. No manufactured victory lap. We measure the before, build The Proof Stack™, and publish what actually changed.</div>
               <div className="founding-ask">For: local service businesses, nonprofits, civic &amp; community partners, and trust-based providers — med spas, clinics, law firms, HVAC, electrical, and more.</div>
               <a className="founding-cta" href="#cta">▸ Claim My Seat</a>
               <div className="founding-micro">5 of 5 seats remaining — updated July 21, 2026 · documented proof, not testimonials</div>
