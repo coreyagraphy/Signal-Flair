@@ -111,6 +111,38 @@ Per-location: add a location $1,500 one-time (Satellite included) · Satellite m
 Guarantee: delivery-based only. Never rankings, leads, or revenue.
 Clients keep everything built, even on cancel.
 
+---
+
+## 🔒 TERMINOLOGY — FINAL & LOCKED (Signal_Flair_Final_Terminology_Brief.md, 2026-07-31)
+Supersedes all earlier terminology recommendations. Do not change without Corey's explicit authorization.
+
+**Category:** AI Proof Infrastructure™ · **Core line:** "AI found your business. It still might have you completely wrong."
+**Positioning:** Signal Flair makes your business findable, understandable, verifiable, and actionable across AI systems.
+
+| Owned term | Plain-language meaning (always pair them) |
+|---|---|
+| AI Proof Infrastructure™ | The structured evidence layer that helps AI systems accurately understand and trust a business |
+| Signal Score™ | A diagnostic showing how clearly and confidently AI systems can understand the business |
+| The Proof Stack™ | Verified entity facts, proof assets, structured data, and technical signals in one defensible foundation |
+| Stay Found™ | Ongoing monitoring, verification, and maintenance as business facts and AI systems change |
+| Answer Engine Optimization | Improves how answer engines discover, interpret, and support claims about the business |
+| AI Agent Readiness | Prepares current, **permissioned** business information and actions for agent-assisted experiences |
+| Machine-Readable Proof | Evidence organized so machines can retrieve and interpret it |
+| Entity Clarity | A consistent understanding of who the business is and how its facts connect |
+| AI Visibility | Whether and how accurately a business appears across AI-driven discovery and answers |
+
+**AEO = Answer Engine Optimization.** Define it on first use on every page. AI Agent Readiness is a *separate, more advanced* capability — never merge them.
+
+⛔ **REJECTED — never use:** Agentic Engine Optimization · Agentic AEO · Omni-Signal Protocol · Recommendation Media Structuring · Interest Graph as a Signal Flair offer · "SEO is dead/dying" · claims that a Signal Score or structured entities cause virality or feed distribution · guaranteed rankings/citations/recommendations/traffic/leads/revenue · control over any third-party system · autonomous agent actions without explicit permission and verifiable boundaries.
+
+**SEO framing (required):** "SEO helps businesses rank. AI visibility determines whether machines can understand, trust, and use their information. Signal Flair builds the missing proof layer." SEO agencies = partners, never outdated opponents.
+
+**Media boundary (only defensible bridge):** "Signal Flair helps machines correctly identify, understand, and attribute the media. Mental Vision creates media designed to earn human attention." Signal Flair never becomes a social-content, creative-production, or algorithm-growth agency.
+
+**Differentiator:** "We do not promise to manipulate algorithms. We build and maintain the verified evidence AI systems need to understand a business accurately."
+
+---
+
 ### Canonical CTAs — Corey-approved 2026-07-31. Do not replace.
 | Slot | Label |
 |---|---|

@@ -94,7 +94,7 @@ const jsonLd = {
         'answer engine optimization',
         'local reputation',
         'schema markup',
-        'agentic readiness',
+        'AI Agent Readiness',
       ],
     },
     {
@@ -186,7 +186,7 @@ export default function ProofHubPage() {
           <ul className="rsc-ul">
             <li><strong>Verified, not claimed</strong> — every fact carries a cited source or is marked unverified. Never stamped without proof.</li>
             <li><strong>Dated &amp; current</strong> — a real last-verified date and a public change log. It doesn&apos;t drift back.</li>
-            <li><strong>Inspection-ready</strong> — crawlable HTML first, with forward-compatible machine surfaces for the agentic web.</li>
+            <li><strong>Inspection-ready</strong> — crawlable HTML first, with forward-compatible machine surfaces for agent-assisted experiences.</li>
           </ul>
           <p className="rsc-p">
             Signal Flair does not guarantee rankings, citations, recommendations, inclusion, or AI
@@ -198,7 +198,7 @@ export default function ProofHubPage() {
         {/* AEO vs SEO doctrine — the on-site definition AI summarizes */}
         <section className="rsc-section">
           <h2 className="rsc-h2">AEO is not <em>SEO.</em></h2>
-          <p className="rsc-p">Answer Engine Optimization makes you the answer an AI gives. Search Engine Optimization makes you a blue link a human might click. Different game, different scoreboard.</p>
+          <p className="rsc-p">SEO helps businesses rank. AI visibility determines whether machines can understand, trust, and use their information. Signal Flair builds the missing proof layer — underneath both, not instead of either. Answer Engine Optimization makes you the answer an AI gives; Search Engine Optimization makes you a blue link a human might click. They complement each other.</p>
           <div className="sl-doctrine-wrap">
             <table className="sl-doctrine">
               <thead><tr><th>Dimension</th><th>Classic SEO</th><th>AEO · Signal Flair</th></tr></thead>

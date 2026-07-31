@@ -687,7 +687,7 @@ export default function SignalFlairLanding() {
     { hex: '#ffb02e', rgb: '255,176,46' },  // gold
     { hex: '#00d2bf', rgb: '0,210,191' },   // cyan
     { hex: '#ff7a45', rgb: '255,122,69' },  // coral
-    { hex: '#ff1765', rgb: '255,23,101' },  // brand red — layer 7, the agentic frontier
+    { hex: '#ff1765', rgb: '255,23,101' },  // brand red — layer 7, AI Agent Readiness
   ]
 
   return (
@@ -1255,6 +1255,9 @@ export default function SignalFlairLanding() {
             <div className="decode-item"><span className="decode-t">Citation Capture</span><span className="decode-d">The monthly work of winning and holding AI citations.</span></div>
             <div className="decode-item"><span className="decode-t">Signal Telemetry</span><span className="decode-d">Live drift detection across ChatGPT, Gemini, Perplexity &amp; Claude.</span></div>
             <div className="decode-item"><span className="decode-t">Signal Satellites™</span><span className="decode-d">Per-location micro-sites, each built AI-readable from day one.</span></div>
+            <div className="decode-item"><span className="decode-t">AI Visibility</span><span className="decode-d">Whether and how accurately your business appears across AI-driven discovery and answers.</span></div>
+            <div className="decode-item"><span className="decode-t">Machine-Readable Proof</span><span className="decode-d">Evidence organized so machines can retrieve and interpret it.</span></div>
+            <div className="decode-item"><span className="decode-t">Entity Clarity</span><span className="decode-d">A consistent understanding of who your business is and how its facts connect.</span></div>
             <div className="decode-item"><span className="decode-t">Answer Engine Optimization (AEO)</span><span className="decode-d">Improves how answer engines discover, interpret, and support claims about your business.</span></div>
             <div className="decode-item"><span className="decode-t">AI Agent Readiness</span><span className="decode-d">Prepares current, permissioned business information and actions for agent-assisted experiences.</span></div>
             <div className="decode-item"><span className="decode-t">Content Payload</span><span className="decode-d">A monthly drop of premium content structured around verified facts — for humans and machines.</span></div>
@@ -1398,7 +1401,7 @@ export default function SignalFlairLanding() {
           </div>
           <div className="bp-agency">
             <div className="bp-h">Run an agency? Put our engine behind your name.</div>
-            <div className="bp-body">White-label The Proof Stack™, Citation Capture, and Signal Telemetry under your brand. You keep the client and the margin. We stay behind the curtain. You become the person with an actual answer when the client asks, &ldquo;Why doesn&apos;t ChatGPT recommend us?&rdquo;</div>
+            <div className="bp-body">Run SEO or paid media? We are the layer underneath, not a replacement. White-label The Proof Stack™, Citation Capture, and Signal Telemetry under your brand. You keep the client and the margin. We stay behind the curtain. You become the person with an actual answer when the client asks, &ldquo;Why doesn&apos;t ChatGPT recommend us?&rdquo;</div>
             <a className="bp-cta ghost" href="#cta">Put Us Behind Your Brand →</a>
           </div>
         </div>
@@ -1420,7 +1423,7 @@ export default function SignalFlairLanding() {
             </div>
           </div>
         </div>
-        <div className="price-guarantee">We do not promise to manipulate algorithms. We build the proof layer AI systems need to understand what your business is, what it does, where it operates, and why its claims deserve trust.<br />Guarantee: <em>Delivery-based only</em> — never rankings, leads, or revenue. You keep everything built, even if you cancel.</div>
+        <div className="price-guarantee">We do not promise to manipulate algorithms. We build and maintain the verified evidence AI systems need to understand a business accurately.<br />Guarantee: <em>Delivery-based only</em> — never rankings, leads, or revenue. You keep everything built, even if you cancel.</div>
       </section>
 
       {/* ═══ ABOUT — founder / Case Zero proof story ═══ */}
@@ -1616,7 +1619,7 @@ export default function SignalFlairLanding() {
         <div className="mvb-rule" />
         <div className="mvb-inner">
           <div className="mvb-head">AI found you. Now make them stay.</div>
-          <div className="mvb-body">Signal Flair gets you found. What happens when they land is a different conversation — and a different brand. Cinematic campaigns, UGC creative, and AI-generated content live at Mental Vision.</div>
+          <div className="mvb-body">Signal Flair helps machines correctly identify, understand, and attribute the media. Mental Vision creates media designed to earn human attention. Cinematic campaigns, UGC creative, and AI-generated content live at Mental Vision.</div>
           <a className="mvb-cta" href="https://mentalvision.ai" target="_blank" rel="noopener noreferrer">→ See what Mental Vision builds</a>
         </div>
         <div className="mvb-rule" />

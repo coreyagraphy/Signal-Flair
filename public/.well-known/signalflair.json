@@ -1,5 +1,5 @@
 {
-  "$comment": "Beacon discovery manifest (internal artifact name). Served at /.well-known/signalflair.json. Points agents and crawlers to the Signal Proof Page™ hub and machine-readable proof.json. Forward-compatible: published for the agentic web, not a current-ROI claim.",
+  "$comment": "Beacon discovery manifest (internal artifact name). Served at /.well-known/signalflair.json. Points agents and crawlers to the Signal Proof Page™ hub and machine-readable proof.json. Forward-compatible: published for agent-assisted experiences, not a current-ROI claim.",
   "@context": "https://signalflair.ai/beacon/v1",
   "type": "BeaconDiscovery",
   "version": "1.0",
