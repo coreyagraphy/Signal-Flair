@@ -111,6 +111,22 @@ Per-location: add a location $1,500 one-time (Satellite included) · Satellite m
 Guarantee: delivery-based only. Never rankings, leads, or revenue.
 Clients keep everything built, even on cancel.
 
+### Canonical CTAs — Corey-approved 2026-07-31. Do not replace.
+| Slot | Label |
+|---|---|
+| Nav / primary conversion | **▸ Get Your Signal Score™** |
+| Lead-form submit | **▸ Run My Signal** |
+| Secondary nav (sub-pages) | ▸ Free Signal Pulse™ |
+| Enterprise · Civic card | Pull Up → |
+| Agency white-label card | Put Us Behind Your Brand → |
+| Founding Five | ▸ Claim My Seat |
+
+The July 31 Terminology Upgrade Brief recommended "See Your Signal Score" and
+"Build Your Proof Stack." Corey **declined** the swap: the established labels stay.
+"Build Your Proof Stack" may appear as supporting language or a future *secondary*
+CTA, but must never displace the primary conversion path above. Never use
+"Book a call," "Learn more," "Contact us," or "Let's" in a CTA.
+
 ---
 
 ## What has been built (session ending 2026-06-06)
