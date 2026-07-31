@@ -766,7 +766,7 @@ export default function SignalFlairLanding() {
 
           <div className="h-side bottom">
             <div className="h-headline" aria-hidden="true">Scanned. Structured. Trusted. <span style={{ fontStyle: 'italic', background: 'linear-gradient(125deg,rgba(0,220,220,1) 0%,rgba(180,255,255,0.9) 30%,rgba(0,200,200,0.95) 60%,rgba(150,255,255,0.85) 100%)', backgroundSize: '250% 250%', WebkitBackgroundClip: 'text', backgroundClip: 'text', WebkitTextFillColor: 'transparent', animation: 'glass-shimmer 8s 2s ease-in-out infinite', filter: 'drop-shadow(0 0 14px rgba(0,166,166,0.4))' }}>Found.</span></div>
-            <div className="h-sub">llms.txt live · bots unblocked · built so AI can find, read &amp; <span className="hsub-trust">trust</span> you</div>
+            <div className="h-sub">Be found. Be understood. Be <span className="hsub-trust">trusted</span> — by AI.</div>
           </div>
         </div>
         <div id="hfoot">
@@ -800,7 +800,7 @@ export default function SignalFlairLanding() {
       {/* ═══ TICKER ═══ */}
       <div id="ticker">
         <div className="t-row t-row-1">
-          {[['AI Visibility Scoring', 1], ['AEO · Agentic Engine Optimization', 0], ['llms.txt Deployment', 1], ['Schema Markup', 0], ['AI Crawler Access', 1], ['Citation Growth', 0], ['AI Visibility Scoring', 1], ['AEO · Agentic Engine Optimization', 0], ['llms.txt Deployment', 1], ['Schema Markup', 0], ['AI Crawler Access', 1], ['Citation Growth', 0]].map((it, i) => (
+          {[['AI Visibility Scoring', 1], ['AEO · Answer Engine Optimization', 0], ['llms.txt Deployment', 1], ['Schema Markup', 0], ['AI Crawler Access', 1], ['Citation Growth', 0], ['AI Visibility Scoring', 1], ['AEO · Answer Engine Optimization', 0], ['llms.txt Deployment', 1], ['Schema Markup', 0], ['AI Crawler Access', 1], ['Citation Growth', 0]].map((it, i) => (
             <div key={i} className={`t-item${it[1] ? ' hi' : ''}`}>{it[0]}<div className="t-sep" /></div>
           ))}
         </div>
@@ -904,7 +904,7 @@ export default function SignalFlairLanding() {
             <div className="sig-eyebrow">What does Signal Flair build?</div>
             <div className="sig-big">FIND THE BREAK.<br />FIX THE SIGNAL.<br /><em>KEEP IT ALIVE.</em></div>
           </div>
-          <div className="sig-tagline">Signal Flair builds AI Proof Infrastructure™: the proof layer machines use to access, understand, verify, and surface your business. First we measure the problem. Then we build what is missing. Then we keep it from going stale.</div>
+          <div className="sig-tagline">Signal Flair builds <strong>AI Proof Infrastructure™</strong> — the proof layer that helps answer engines and AI agents understand who you are, what you do, where you operate, and why your claims deserve trust. Four outcomes, in plain English: <strong>findable, understandable, verifiable, actionable.</strong> First we measure the problem. Then we build what is missing. Then we keep it from going stale.</div>
         </div>
         <div className="sig-rows">
           <div className="sig-row reveal">
@@ -1255,7 +1255,9 @@ export default function SignalFlairLanding() {
             <div className="decode-item"><span className="decode-t">Citation Capture</span><span className="decode-d">The monthly work of winning and holding AI citations.</span></div>
             <div className="decode-item"><span className="decode-t">Signal Telemetry</span><span className="decode-d">Live drift detection across ChatGPT, Gemini, Perplexity &amp; Claude.</span></div>
             <div className="decode-item"><span className="decode-t">Signal Satellites™</span><span className="decode-d">Per-location micro-sites, each built AI-readable from day one.</span></div>
-            <div className="decode-item"><span className="decode-t">Content Payload</span><span className="decode-d">A monthly drop of premium, AEO-optimized content — engineered for humans and machines.</span></div>
+            <div className="decode-item"><span className="decode-t">Answer Engine Optimization (AEO)</span><span className="decode-d">Improves how answer engines discover, interpret, and support claims about your business.</span></div>
+            <div className="decode-item"><span className="decode-t">AI Agent Readiness</span><span className="decode-d">Prepares current, permissioned business information and actions for agent-assisted experiences.</span></div>
+            <div className="decode-item"><span className="decode-t">Content Payload</span><span className="decode-d">A monthly drop of premium content structured around verified facts — for humans and machines.</span></div>
           </div>
         </div>
         <div className="price-anchor reveal">
@@ -1320,7 +1322,7 @@ export default function SignalFlairLanding() {
               <div className="psci"><strong>Answer Architecture™</strong> expansion every month</div>
               <div className="psci"><strong>Proof Density Engine</strong> — compounding reviews, mentions &amp; authority at citation weight</div>
               <div className="psci"><strong>Quarterly re-audit + Signal Telemetry</strong> — live drift detection</div>
-              <div className="psci psci-lock"><strong>Content Payload</strong> — 2 weeks of premium, AEO-optimized content every month, incl. <strong>one :30 commercial</strong> (one location; +$450/mo per extra location)</div>
+              <div className="psci psci-lock"><strong>Content Payload</strong> — 2 weeks of premium content structured around verified facts every month, incl. <strong>one :30 commercial</strong> (one location; +$450/mo per extra location)</div>
               <div className="psci"><strong>Signal Satellites™</strong> available at +$250/mo per Satellite</div>
             </div>
             <a className="psc-btn" href="#cta">▸ Keep Me Found</a>
@@ -1335,7 +1337,7 @@ export default function SignalFlairLanding() {
               <div className="psci"><strong>Proof Density Engine</strong> at full velocity — active review program</div>
               <div className="psci"><strong>Priority turnaround</strong> + dedicated strategy</div>
               <div className="psci"><strong>Mental Vision cinematic content bundle</strong></div>
-              <div className="psci psci-lock"><strong>Content Payload</strong> — a full month of premium, AEO-optimized content, incl. <strong>one :30 commercial</strong> (one location; +$450/mo per extra location)</div>
+              <div className="psci psci-lock"><strong>Content Payload</strong> — a full month of premium content structured around verified facts, incl. <strong>one :30 commercial</strong> (one location; +$450/mo per extra location)</div>
               <div className="psci"><strong>Signal Satellites™</strong> management included</div>
             </div>
             <a className="psc-btn" href="#cta">▸ Go Dominate</a>
@@ -1345,11 +1347,11 @@ export default function SignalFlairLanding() {
         {/* Content Payload — content is the fuel, elevated to premium */}
         <div className="price-how reveal fuel" id="content-payload">
           <div className="ph-lead">Content is the <em>payload.</em></div>
-          <div className="ph-note" style={{ marginTop: 0 }}>Every Stay Found™ plan includes a monthly <strong>Content Payload</strong>: premium, done-for-you content built for humans and marked up for machines. This is not filler launched into the void. Each piece ships with <strong>AEO-focused, machine-readable metadata</strong> so it can be indexed, attributed, and cited. Every payload also includes <strong>one 30-second commercial</strong>. Real creative. Every month.</div>
+          <div className="ph-note" style={{ marginTop: 0 }}>Every Stay Found™ plan includes a monthly <strong>Content Payload</strong>: premium, done-for-you content built for humans and marked up for machines. This is not filler launched into the void. Each piece is structured around verified facts and ships with <strong>machine-readable metadata</strong> so it can be indexed, attributed, and cited. Every payload also includes <strong>one 30-second commercial</strong>. Real creative. Every month.</div>
           <div className="ph-map" style={{ marginTop: '20px' }}>
             <div className="ph-step">
               <div className="ph-band">Engineered, not posted</div>
-              <div className="ph-offer">AEO-optimized with metadata</div>
+              <div className="ph-offer">Evidence-backed, with metadata</div>
               <div className="ph-what">Every piece carries the structured metadata answer engines index — built to be found, read, and cited, not just scrolled past.</div>
             </div>
             <div className="ph-step">
@@ -1409,7 +1411,7 @@ export default function SignalFlairLanding() {
             <div className="ph-step">
               <div className="ph-band">Layer 7 · already measured</div>
               <div className="ph-offer">Agent &amp; Commerce Readiness</div>
-              <div className="ph-what">AI shopping agents will soon book, buy, and choose on the customer&apos;s behalf. The 7th layer of the Signal Protocol™ already measures whether your business is ready for them — direction, not a promise.</div>
+              <div className="ph-what">AI agents are starting to book, buy, and choose on a customer&apos;s behalf — within the permissions a business grants them. The 7th layer of the Signal Protocol™ already measures whether your current, permissioned business information and actions are ready for those agent-assisted experiences — direction, not a promise.</div>
             </div>
             <div className="ph-step">
               <div className="ph-band">On the roadmap</div>
@@ -1418,7 +1420,7 @@ export default function SignalFlairLanding() {
             </div>
           </div>
         </div>
-        <div className="price-guarantee">Guarantee: <em>Delivery-based only</em> — never rankings, leads, or revenue. You keep everything built, even if you cancel.</div>
+        <div className="price-guarantee">We do not promise to manipulate algorithms. We build the proof layer AI systems need to understand what your business is, what it does, where it operates, and why its claims deserve trust.<br />Guarantee: <em>Delivery-based only</em> — never rankings, leads, or revenue. You keep everything built, even if you cancel.</div>
       </section>
 
       {/* ═══ ABOUT — founder / Case Zero proof story ═══ */}
@@ -1486,7 +1488,7 @@ export default function SignalFlairLanding() {
           </details>
           <details className="faq-item">
             <summary className="faq-q">Why is there a monthly plan?<span className="faq-ic" aria-hidden="true" /></summary>
-            <div className="faq-a">Because AI search is a moving target. New engines ship, models retrain, competitors catch up, and AI agents are arriving. Stay Found™ plans — Signal Proof and Signal Dominate — run Citation Capture, expand your Answer Architecture™ monthly, compound proof with the Proof Density Engine, and watch drift with Signal Telemetry. And every month ships your Content Payload: premium, done-for-you content engineered for humans and machines — AEO-optimized with machine-readable metadata, including a 30-second commercial — so the foundation you built keeps earning citations.</div>
+            <div className="faq-a">Because AI search is a moving target. New engines ship, models retrain, competitors catch up, and AI agents are arriving. Stay Found™ plans — Signal Proof and Signal Dominate — run Citation Capture, expand your Answer Architecture™ monthly, compound proof with the Proof Density Engine, and watch drift with Signal Telemetry. And every month ships your Content Payload: premium, done-for-you content engineered for humans and machines — structured around verified facts with machine-readable metadata, including a 30-second commercial — so the foundation you built keeps earning citations.</div>
           </details>
           <details className="faq-item">
             <summary className="faq-q">What are Signal Satellites™?<span className="faq-ic" aria-hidden="true" /></summary>
@@ -1510,7 +1512,7 @@ export default function SignalFlairLanding() {
           </details>
           <details className="faq-item">
             <summary className="faq-q">What makes Signal Flair different?<span className="faq-ic" aria-hidden="true" /></summary>
-            <div className="faq-a">SEO gets you ranked. AEO gets you quoted. Signal Flair makes sure the machines know <em>who the hell they&apos;re talking about.</em> We build the proof infrastructure beneath both — The Proof Stack™: structured facts machines can verify (Machine Trust Layer™), one identity everywhere (Entity Lock™), content shaped for extraction (Answer Architecture™), and compounding third-party proof — so AI systems connect the right information to the right organization.</div>
+            <div className="faq-a">SEO gets you ranked. AEO — Answer Engine Optimization — gets you quoted. Signal Flair makes sure the machines know <em>who the hell they&apos;re talking about.</em> We build the proof infrastructure beneath both — The Proof Stack™: structured facts machines can verify (Machine Trust Layer™), one identity everywhere (Entity Lock™), content shaped for extraction (Answer Architecture™), and compounding third-party proof — so AI systems connect the right information to the right organization.</div>
           </details>
           <details className="faq-item">
             <summary className="faq-q">What is a Signal Proof Page™?<span className="faq-ic" aria-hidden="true" /></summary>

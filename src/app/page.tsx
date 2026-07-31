@@ -23,7 +23,7 @@ const HOMEPAGE_FAQ: { q: string; a: string }[] = [
   },
   {
     q: 'Why is there a monthly plan?',
-    a: 'Because AI search is a moving target. New engines ship, models retrain, competitors catch up, and AI agents are arriving. Stay Found™ plans — Signal Proof and Signal Dominate — run Citation Capture, expand your Answer Architecture™ monthly, compound proof with the Proof Density Engine, and watch drift with Signal Telemetry. And every month ships your Content Payload: premium, done-for-you content engineered for humans and machines — AEO-optimized with machine-readable metadata, including a 30-second commercial — so the foundation you built keeps earning citations.',
+    a: 'Because AI search is a moving target. New engines ship, models retrain, competitors catch up, and AI agents are arriving. Stay Found™ plans — Signal Proof and Signal Dominate — run Citation Capture, expand your Answer Architecture™ monthly, compound proof with the Proof Density Engine, and watch drift with Signal Telemetry. And every month ships your Content Payload: premium, done-for-you content engineered for humans and machines — structured around verified facts with machine-readable metadata, including a 30-second commercial — so the foundation you built keeps earning citations.',
   },
   {
     q: 'What are Signal Satellites™?',
@@ -47,7 +47,7 @@ const HOMEPAGE_FAQ: { q: string; a: string }[] = [
   },
   {
     q: 'What makes Signal Flair different?',
-    a: 'SEO gets you ranked. AEO gets you quoted. Signal Flair makes sure the machines know who the hell they’re talking about. We build the proof infrastructure beneath both — The Proof Stack™: structured facts machines can verify (Machine Trust Layer™), one identity everywhere (Entity Lock™), content shaped for extraction (Answer Architecture™), and compounding third-party proof — so AI systems connect the right information to the right organization.',
+    a: 'SEO gets you ranked. AEO — Answer Engine Optimization — gets you quoted. Signal Flair makes sure the machines know who the hell they’re talking about. We build the proof infrastructure beneath both — The Proof Stack™: structured facts machines can verify (Machine Trust Layer™), one identity everywhere (Entity Lock™), content shaped for extraction (Answer Architecture™), and compounding third-party proof — so AI systems connect the right information to the right organization.',
   },
   {
     q: 'What is a Signal Proof Page™?',

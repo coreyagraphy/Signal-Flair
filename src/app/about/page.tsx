@@ -2,7 +2,7 @@ import type { Metadata } from 'next'
 import SignalFlairLogo from '@/components/SignalFlairLogo'
 
 export const metadata: Metadata = {
-  title: 'About — AI Visibility & AEO · Indianapolis, Indiana | Signal Flair',
+  title: 'About — AI Visibility & Answer Engine Optimization | Signal Flair',
   description:
     'Signal Flair is an AI Proof Infrastructure company based in Indianapolis, Indiana, serving nationwide — a product of Mental Vision, founded by Corey Ellis. It works underneath SEO and AEO, connecting your website, profiles, proof, images, video, and entity relationships so AI systems can verify who you are.',
   alternates: { canonical: 'https://signalflair.ai/about/' },
@@ -102,7 +102,7 @@ export default function AboutPage() {
         <section className="rsc-section">
           <h2 className="rsc-h2">We keep the <em>receipts.</em></h2>
           <p className="rsc-lead">
-            SEO gets you ranked. AEO gets you quoted. We make sure the machines know who the hell they&apos;re
+            SEO gets you ranked. AEO — Answer Engine Optimization — gets you quoted. We make sure the machines know who the hell they&apos;re
             talking about — and we keep the receipts so we can prove what changed.
           </p>
           <p className="rsc-p">

@@ -247,7 +247,7 @@ export default function ThreeEnginesCaseStudy() {
           <h2 className="rsc-h2">Where this sits next to <em>SEO and AEO</em></h2>
           <ul className="rsc-ul">
             <li><strong>SEO</strong> helps search engines discover and rank your pages.</li>
-            <li><strong>AEO</strong> structures your information so answer engines can extract useful answers from it.</li>
+            <li><strong>AEO (Answer Engine Optimization)</strong> structures your information so answer engines can extract useful answers from it.</li>
             <li><strong>Signal Flair</strong> builds the proof infrastructure beneath and around both — the access, entity clarity, structured intelligence, answer architecture, trust evidence, and live visibility AI systems need to understand and confidently represent a business.</li>
           </ul>
           <p className="rsc-p">

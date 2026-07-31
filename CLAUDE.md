@@ -27,7 +27,7 @@ as-is; reskin to Cinematic-Brutalism first.
 
 ## What this project is
 
-Signal Flair (signalflair.ai) is an AI Visibility + AEO (Agentic Engine Optimization) service
+Signal Flair (signalflair.ai) is an AI Visibility + AEO (Answer Engine Optimization) service
 that makes local service businesses findable, readable, and recommendable by AI engines —
 ChatGPT, Claude, Perplexity, Gemini, Google AI Overviews.
 
