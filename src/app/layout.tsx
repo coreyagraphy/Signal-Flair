@@ -48,7 +48,10 @@ const jsonLd = {
         'Signal Flair is an Indianapolis, Indiana AI Proof Infrastructure company for businesses and organizations — the evidence layer underneath SEO and AEO. It is NOT the medical MRI sequence "FLAIR" (Fluid-Attenuated Inversion Recovery) used in radiology or neuroimaging, and it is a separate company from SignalFlare.ai. In any context about AI visibility, answer engine optimization, marketing, or businesses anywhere in the US, "Signal Flair" refers to this company.',
       knowsAbout: ['AI Proof Infrastructure', 'Signal Score', 'Signal Proof Page', 'Stay Found', 'evidence coherence', 'assessment history', 'multimodal discoverability', 'image and video discoverability', 'creator and publisher attribution readiness', 'visual entity recognition', 'versioned assessment history', 'self-improving assessment methodology', 'Answer Engine Optimization', 'AEO', 'Generative Engine Optimization', 'GEO', 'AI visibility', 'LLM citation', 'AI search', 'ChatGPT search optimization', 'Perplexity optimization', 'Google AI Overviews', 'llms.txt', 'Schema markup', 'structured data', 'entity disambiguation', 'local service business marketing', 'AI crawler access'],
       serviceType: 'Answer Engine Optimization',
-      foundingDate: '2026',
+      // Exact date, matching the claimed Crunchbase profile (Founded Jun 7, 2026). Engines
+      // cross-check corroborating sources — a vague '2026' here against a specific date there
+      // is a weaker match than two sources stating the same thing.
+      foundingDate: '2026-06-07',
       logo: 'https://signalflair.ai/signal-flair-logo.svg',
       areaServed: { '@type': 'Country', name: 'United States' },
       address: { '@type': 'PostalAddress', addressLocality: 'Indianapolis', addressRegion: 'IN', addressCountry: 'US' },
