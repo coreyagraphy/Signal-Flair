@@ -268,6 +268,60 @@ GHL-side automations while GHL is live. Avoid `connect@signalflair.ai` and
 
 ---
 
+## 📍 /pulse — the Signal Pulse™ landing page (Corey's landing page)
+
+**This page has been declared non-existent twice and lost both times. It is real, it is live,
+and it is documented here so that never happens again.** Before touching or doubting it, read
+this section and the branch-hygiene rule below.
+
+**Route:** `/pulse/` (indexed, in `sitemap.xml`). Old `/signal-pulse` and `/signal-pulse/*`
+301 → `/pulse/` via `netlify.toml`. Do **not** add a redirect on `/pulse` itself — a
+`force = true` redirect there once shadowed the real page.
+
+**What it does:** a visitor enters name / website / email and gets an instant, deterministic
+0–100 Signal Pulse™ in seconds — a live preview, not the full Signal Score™ Audit. It is the
+top-of-funnel free tool and the only page that scores a prospect on the spot.
+
+### Files (all real — verified 2026-08-03)
+| File | Lines | Role |
+|---|---|---|
+| `src/app/pulse/page.tsx` | 250 | The page — hero, `CHECKS`, `LAYERS`, Case Zero band, JSON-LD |
+| `src/components/SignalPulseForm.tsx` | 386 | The form + scan animation + result gauge. Phases: `idle → scanning → result → sent` |
+| `src/components/SignalPulseHeroVideo.tsx` | 63 | Hero video |
+| `src/components/BrandBgVideo.tsx` | 64 | Background band video |
+| `src/lib/signal-tiers.ts` | 16 | Tier names/colors/verdicts — shared with `/scorecard`, single source of truth |
+| `netlify/functions/signal-pulse.mjs` | 256 | Server-side deterministic scan (no CORS limit) |
+| `src/app/globals.css` | 213 `.ssc-*` rules | Self-contained dark namespace, radar/scanline motifs |
+| `public/video/signal-pulse-{hero,band}.mp4` + `-poster.jpg` / `-band-poster.jpg` | — | Media |
+
+### Scoring — deterministic, reproducible, four public buckets
+`signal-pulse.mjs` fetches the prospect's homepage, `robots.txt` and sitemap server-side, then
+scores four buckets shown to the visitor:
+
+| Bucket | Weight | Question asked |
+|---|---|---|
+| Access | 0.30 | Can AI systems crawl the site? |
+| Structure | 0.30 | Can AI understand the business? |
+| Trust | 0.20 | Can AI verify the claims? |
+| Answers | 0.20 | Can AI answer *with* the business? |
+
+`pulse = access*0.3 + structure*0.3 + trust*0.2 + answers*0.2`, clamped 0–100.
+
+- This is the **preview only**. The full Signal Score™ is 7 layers (listed in `LAYERS` on the
+  page) and is a human/Proof OS follow-up — never computed here, so nothing is overstated.
+- SSRF-guarded (refuses localhost/private ranges) and flags `spaLike` / `lowConfidence` rather
+  than reporting a misleadingly low score for a JS-rendered site.
+- **This same function is how Case Zero layers get re-measured.** Point it at the built site to
+  reproduce the Aug 3 numbers — that is what makes the 91 reproducible instead of asserted.
+
+### Lead capture
+Form name **`signal-pulse`** (registered in Netlify Forms, `bot-field` honeypot). Fires Netlify
+Forms **and** the function in parallel — see the intake-wiring section. Also handles the
+homepage → /pulse handoff: the homepage form stashes the lead in `sessionStorage`, and /pulse
+auto-runs that scan instead of re-asking.
+
+---
+
 ## 🚨 Branch hygiene — do not strand work again
 
 Work has been lost twice by assuming a branch didn't exist. **`git branch -a` only lists refs
@@ -311,6 +365,7 @@ SignalFlare.ai = restaurant decision intelligence, Texas. Completely different.
 | `src/app/layout.tsx` | Site-wide JSON-LD (Organization, Person, WebSite, Service, OfferCatalog) |
 | `src/app/proof/page.tsx` | Signal Proof Page™ hub — the Case Zero trajectory lives here |
 | `src/app/proof/changelog/page.tsx` | The dated public record. Every re-audit gets an entry |
+| `src/app/pulse/page.tsx` · `src/components/SignalPulseForm.tsx` | The **/pulse landing page** — see its own section above before doubting it exists |
 | `src/lib/signal-tiers.ts` | Single source of truth for tier names/colors/verdicts |
 | `netlify/functions/signal-pulse.mjs` | Deterministic AI-readiness scan. Also how Case Zero layers are re-measured |
 | `netlify/functions/lead-intake.mjs` | GHL Contacts API upsert (secondary channel; GHL being cancelled) |
