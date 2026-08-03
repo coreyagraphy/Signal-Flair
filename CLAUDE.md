@@ -331,7 +331,7 @@ SignalFlare.ai = restaurant decision intelligence, Texas. Completely different.
 ## Things Corey must do himself (Claude Code cannot do these)
 
 - ~~Create the LinkedIn company page~~ ✅ done — linkedin.com/company/signal-flair-ai
-- ~~Confirm the Crunchbase profile~~ ✅ done — real, claimed, verified. Remaining Crunchbase work is profile hygiene: the `Marketing Automation` tag is off-positioning (Signal Flair is not a marketing-automation tool) and should be swapped for something truer to AI Proof Infrastructure
+- ~~Confirm the Crunchbase profile~~ ✅ done — real, claimed, verified. Profile hygiene done too (2026-08-03): the off-positioning `Marketing Automation` tag was swapped for `AI infrastructure`, which is the closest match in Crunchbase's fixed taxonomy to the site's own `AI Proof Infrastructure` category (`proof.json` → `business.category`, `llms.txt` → Industry). Crunchbase is now corroborating, not contradicting
 - ~~Create the GHL inbound webhook~~ — obsolete. The old inbound webhook was orphaned (workflow deleted, answered 200, executed nothing). Leads now go to Netlify Forms; GHL is being cancelled
 - ~~Drop in the founder photo~~ ✅ done — `/founder.jpg` (1024px, 101KB) on the homepage; `/corey-ellis-founder.png` still backs the schema `image`
 - Confirm DNS propagation before production deploy
