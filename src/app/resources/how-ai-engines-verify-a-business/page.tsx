@@ -124,6 +124,30 @@ export default function HowAiVerifiesPage() {
           <h2 className="rsc-h2">See where you stand</h2>
           <p className="rsc-p">Signal Pulse™ gives you a free instant read of your AI readiness at <a href="/pulse/">signalflair.ai/pulse</a>, and the free Signal Score™ Audit goes deeper — <a href="/#cta">request one here</a>. More questions? The <a href="/faq/">FAQ</a> covers what a Signal Score™ measures and what we never promise: we build and hand over the infrastructure — we don&apos;t guarantee rankings, citations, or AI recommendations.</p>
         </section>
+
+        <section className="rsc-section">
+          <h2 className="rsc-h2">Read <em>next</em></h2>
+          <div className="sl-hub">
+            <a className="sl-hub-card" href="/resources/llms-txt/">
+              <span className="sl-hub-k">01</span>
+              <span className="sl-hub-t">What is llms.txt?</span>
+              <span className="sl-hub-d">The plain-text file AI systems read first — what goes in it and why.</span>
+            </a>
+            <a className="sl-hub-card" href="/pulse/">
+              <span className="sl-hub-k">02</span>
+              <span className="sl-hub-t">Free Signal Pulse™</span>
+              <span className="sl-hub-d">An instant, deterministic read on how AI engines see your site.</span>
+            </a>
+            <a className="sl-hub-card" href="/proof/">
+              <span className="sl-hub-k">03</span>
+              <span className="sl-hub-t">Case Zero</span>
+              <span className="sl-hub-d">Our own audit — 18/100 to 91/100, every reading dated.</span>
+            </a>
+          </div>
+          <p className="rsc-p sl-machine">
+            Machine-readable: <a href="/llms.txt">/llms.txt</a> · <a href="/proof.json">/proof.json</a> · <a href="/.well-known/signalflair.json">discovery manifest</a>
+          </p>
+        </section>
       </div>
 
       <section className="rsc-cta">

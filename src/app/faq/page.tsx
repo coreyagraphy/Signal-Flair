@@ -172,10 +172,10 @@ export default function FaqPage() {
               <span className="sl-hub-t">How it works</span>
               <span className="sl-hub-d">Scan, score, fix, stay found — and what each step costs.</span>
             </a>
-            <a className="sl-hub-card" href="/about/">
+            <a className="sl-hub-card" href="/resources/how-ai-engines-verify-a-business/">
               <span className="sl-hub-k">02</span>
-              <span className="sl-hub-t">About Signal Flair</span>
-              <span className="sl-hub-d">Who we are, the founder, and the entity we are not.</span>
+              <span className="sl-hub-t">How AI engines decide to trust you</span>
+              <span className="sl-hub-d">The seven layers engines cross-check — and the 30-day fixes.</span>
             </a>
             <a className="sl-hub-card" href="/proof/">
               <span className="sl-hub-k">03</span>

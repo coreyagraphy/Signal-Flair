@@ -17,6 +17,7 @@
     "email": "hello@signalflair.ai",
     "google_business_profile_url": "",
     "same_as": [
+      "https://signalflair.ai/proof/",
       "https://www.linkedin.com/company/signal-flair-ai",
       "https://mentalvision.ai"
     ]
@@ -24,7 +25,7 @@
   "verification": {
     "verified_by": "Signal Flair",
     "last_verified": "2026-08-03",
-    "next_review_due": "2026-11-03",
+    "next_review_due": "2026-08-17",
     "signals_confirmed": 0,
     "signals_total": 6,
     "method": "Each claim checked against a cited public source. Unverified claims are marked verified:false and never stamped.",

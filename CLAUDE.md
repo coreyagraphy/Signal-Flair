@@ -1,6 +1,7 @@
 # CLAUDE.md — Signal Flair
 # Claude Code reads this at the start of every session.
-# Last updated: 2026-06-07 — Cinematic-Brutalism confirmed canonical (per SIGNAL_FLAIR_BRIEFING_COMPLETE.md)
+# Last updated: 2026-08-03 — Case Zero 18 → 73 → 91 published; Netlify Forms is the primary lead channel.
+# Design direction (Cinematic-Brutalism) unchanged and still canonical.
 
 ---
 
@@ -13,7 +14,7 @@ confirmed from live build screenshots. The cream + dark section mix is intention
 both; do NOT flatten to all-dark or all-light.
 
 - **Palette (live build):** yellow `#fff45f` · orange `#ff5a1f` · teal `#00b8a9` · cream
-  `#f0ebe0` (approx) · near-black `#0a0a0a` · pink/magenta for AI-view warning badges. Full table below.
+  `#f4eadb` · near-black `#0a0a0a` · pink/magenta for AI-view warning badges. Full table below.
 - **Fonts:** Fraunces (display) + Instrument Serif italic (accents) + Geist Mono (mono/diagnostic).
   Do NOT use Inter, Saira Condensed, Hanken Grotesk, or any condensed grotesque.
 - **A new logo is coming** — hold all brand-level visual decisions until it lands.
@@ -42,8 +43,8 @@ Founder: Corey Ellis. Public-facing city = Indianapolis, Indiana (Corey-directed
 
 - Framework: Next.js (static export, `output: 'export'`, `trailingSlash: true`)
 - Hosting: Netlify (production), git-linked to `coreyagraphy/Signal-Flair` — every push to `main` auto-builds and deploys (no more manual drag-drop). Dev server runs at localhost:3210
-- Backend / CRM: GoHighLevel (GHL) — also reachable via a Jarvis/neutral intake router
-- Form submissions: POST to the intake webhook — `NEXT_PUBLIC_FIELD_REPORT_WEBHOOK_URL` (router) → `NEXT_PUBLIC_GHL_WEBHOOK_URL` (fallback); see `SignalFlairLanding.tsx` + "Intake form wiring" below
+- Lead delivery: **Netlify Forms** (primary, no env var needed) → email to `outreach@trysignalflair.com`. GoHighLevel is a parallel secondary and **is being cancelled** — see "Intake form wiring" below
+- Serverless: Netlify Functions (`netlify/functions/`) — `signal-pulse` (deterministic scan) and `lead-intake` (GHL Contacts API)
 - Analytics: Google Analytics 4 (GA4)
 - No database. No server-side rendering. Static only.
 
@@ -67,9 +68,9 @@ Founder: Corey Ellis. Public-facing city = Indianapolis, Indiana (Corey-directed
 | Yellow | `#fff45f` | Primary accent — score gauge, AI engine name highlights, "RIGHT." |
 | Orange | `#ff5a1f` | CTAs, italic accents ("right now?", "Weak signal."), logo box, service tags |
 | Teal | `#00b8a9` | "Found.", human-view badges, monitoring tags |
-| Cream | `#f0ebe0` (approx) | Light section backgrounds (problem/diagnostic) |
-| Near-black | `#0a0a0a` | Dark section backgrounds (hero, services, "THREE THINGS") |
-| Pink/magenta | — | AI-view warning badges (BLOCKED, MISSING, ABSENT, 0 FOUND) |
+| Cream | `#f4eadb` (`--cream` / `--paper`) | Light section backgrounds (problem/diagnostic) |
+| Near-black | `#0b0a09` (`--ink`) | Dark section backgrounds (hero, services, "THREE THINGS") |
+| Pink/magenta | `#ff1765` (`--pink` / `--red`) | AI-view warning badges (BLOCKED, MISSING, ABSENT, 0 FOUND) · the Case Zero 18 baseline |
 
 The cream + dark mix within the same page is the Cinematic-Brutalism signature. Keep it.
 
@@ -161,56 +162,71 @@ CTA, but must never displace the primary conversion path above. Never use
 
 ---
 
-## What has been built (session ending 2026-06-06)
+## Site map — what is actually built (verified 2026-08-03)
 
-### Live on site (deployed to localhost:3210, not yet production):
-- Hero section with video background
-- Problem section ("INVISIBLE")
-- AI Visibility Score / Live Scan mockup
-- Three Pillars (What Signal Flair Does)
-- Six Signals table
-- Four Steps process (SCAN → SCORE → FIX → STAY FOUND)
-- Pricing section (three tiers, score-gated)
-- Footer with LinkedIn/Instagram/YouTube placeholders
+20 static routes. Every public page carries nav + footer + a closing CTA.
 
-### Built and integrated (conversion layer):
-- Lead-capture audit form (replaces all mailto: CTAs)
-  - Fields: full name, business name, website URL, email, service (optional), phone (optional)
-  - Hidden: source, page_url, utm params, timestamp, lead_tag
-  - Intake webhook (`NEXT_PUBLIC_FIELD_REPORT_WEBHOOK_URL` → `NEXT_PUBLIC_GHL_WEBHOOK_URL`) — set before going live
-  - Success state: animated confirmation with engine list
-- Honest Proof section:
-  - Before/after score card (illustrative, labeled as such)
-  - Founding Client block ($3,500 anchor → $1,750, first 10)
-- Founder / About section (photo slot open — needs real photo from Corey)
-- FAQ section (7 questions, accordion, aria-accessible)
-- Mid-page CTA strip (between proof and founder sections)
+| Route | Purpose | Indexed |
+|---|---|---|
+| `/` | Homepage — hero, diagnosis, one-minute explainer, 7-layer protocol, Mill audit, Case Zero proof, pricing w/ billing toggle, Founding Five, lead form | ✅ |
+| `/pulse/` | Signal Pulse™ landing — instant deterministic score via Netlify Function | ✅ |
+| `/how-it-works/` · `/about/` · `/faq/` · `/privacy/` | Core sub-pages | ✅ |
+| `/proof/` | Signal Proof Page™ hub — Case Zero 18 → 73 → 91 | ✅ |
+| `/proof/proof/` · `/proof/services/` · `/proof/trust/` · `/proof/changelog/` | Record detail | ✅ |
+| `/proof/partner/` | Internal operator route map — NOT client-facing | ❌ noindex |
+| `/case-studies/three-engines-three-stories/` | The Mill audit (35/100, published w/ permission) | ✅ |
+| `/case-studies/restor-team/` | RESTOR Team snapshot | ✅ |
+| `/resources/llms-txt/` · `/resources/how-ai-engines-verify-a-business/` | Authority articles | ✅ |
+| `/scorecard/` | Per-lead hosted scorecard, driven by query params | ❌ noindex |
+| `/404` | Branded not-found | ❌ noindex |
 
-### Built, ready to integrate:
-- Case Zero self-audit section (`signalflair-case-zero.html`)
-  - Signal Flair's own audit: 18/100, audited 2026-06-06
-  - Six signals: AI Search Presence 4 · Entity Clarity 5 · Crawl Readiness 35 ·
-    Authority Content 12 · Review Signal 0 · Conversion Proof 20
-  - Animated gauge, collision callout, four-node timeline
-  - Replaces the illustrative before/after card
+**Conversion layer:** lead form (`#lead-form`, Netlify Forms primary — see intake wiring
+above), Signal Pulse form on `/pulse`, GA4 events (`form_submit`, `cta_click`,
+`billing_toggle`, `founding_client_click`), monthly/annual pricing toggle that writes
+`billing_preference` into the payload.
 
-### AEO / technical (dogfood Foundation Build):
-- `/llms.txt` — Signal Flair's own llms.txt deployed at root
-- `robots.txt` — AI crawlers confirmed unblocked
-- Organization + LocalBusiness JSON-LD schema on homepage
-- Article + FAQPage JSON-LD on /resources/llms-txt/
-- `sitemap.xml` updated
-- `/resources/llms-txt/` — educational resource page, live and verified
+**Machine-readable surface (dogfooding the Foundation Build):** `/llms.txt`, `/proof.json`,
+`/.well-known/signalflair.json` + `/signalflair-discovery.json`, `/robots.txt` (explicit-open
+to every AI agent), `/sitemap.xml`, and JSON-LD on every page — Organization, Person, WebSite,
+Service, OfferCatalog, FAQPage, VideoObject, Article, BreadcrumbList.
+
+**Case Zero is integrated and real:** the homepage proof section is the actual self-audit
+(18 → 73 → 91), not an illustrative card. See the proof-record rules below.
+
+---
+
+## Case Zero — the published record (do not drift)
+
+Three dated readings. The composite at each is the **plain average of that reading's layer
+scores** — the July 5 layers sum to 436, and 436/6 rounds to the published 73. That is why
+layer detail is always attached to the reading it was computed from.
+
+| Reading | Score | Date | Model |
+|---|---|---|---|
+| Baseline | 18/100 | 2026-06-06 | six-signal (frozen at audit-date model) |
+| Re-audit | 73/100 | 2026-07-05 | six-layer |
+| Current | 91/100 | 2026-08-03 | six-layer |
+
+- July 5 layers: Access & Crawlability 100 · Structured Intelligence 100 · Answer
+  Architecture 77 · Entity Clarity 63 · Live AI Visibility 53 · Trust & Proof Density 43.
+- Aug 3 machine-verified layers (re-run `netlify/functions/signal-pulse.mjs` against the
+  built site to reproduce): Access & Crawlability 100 · Structured Intelligence 100 ·
+  Answer Architecture 90.
+- **Never render a six-bar chart under the 91.** The remaining three layers need live engine
+  tests and third-party verification; estimating them would not reconcile with the average,
+  and any reader can check the arithmetic.
+- Next scheduled re-verification: **2026-08-17** — published on `/proof/changelog/` and in
+  `proof.json`. Do not move that date in one place only.
 
 ---
 
 ## Pending tasks (priority order)
 
-1. **Commit all pending changes** — `git add -A && git commit -m "feat: Foundation Build — [describe what's staged]"`
+1. **Verify the Crunchbase `sameAs`** — see task 5. Everything else on this list is done or blocked on Corey.
 2. **Wire intake webhook** — ✅ LIVE (2026-07-18). `NEXT_PUBLIC_GHL_WEBHOOK_URL` is set in Netlify (production, all contexts) to the GHL Signal Pulse inbound webhook (location `dmPSx68yJZdbLgQY5Osd`); the form POSTs real leads on the next build after it was set. Form still reads `NEXT_PUBLIC_FIELD_REPORT_WEBHOOK_URL` first if a router is ever added. Both unset = real error (no fake success). 10s fetch timeout guards a hung webhook. NOTE: it's a build-time (`NEXT_PUBLIC_`) var — changing it requires a rebuild (push to `main`).
 3. **GA4 analytics** — ✅ LIVE (2026-07-18). `NEXT_PUBLIC_GA_ID` set in Netlify (`G-5VZR713RKS`, all contexts). gtag loader = `src/components/Analytics.tsx` (rendered in layout); helper = `src/lib/analytics.ts` (`track()`). Events wired: `form_submit` (lead form success), `cta_click` (every `#cta` CTA, with label+section), `founding_client_click` (founding apply button). Auto `page_view` covers every page. NOTE: build-time (`NEXT_PUBLIC_`) var — changing it requires a rebuild (push to `main`).
-4. **Integrate Case Zero section** — replace illustrative proof card with the real self-audit
-5. **LinkedIn sameAs** — Corey creates page at linkedin.com/company/setup/new, then add URL to sameAs array in Organization schema
+4. **Integrate Case Zero section** — ✅ DONE (2026-08-03). The homepage proof section is the real self-audit (18 → 73 → 91); the illustrative card is gone. See "Case Zero — the published record" above.
+5. **LinkedIn sameAs** — ✅ DONE (2026-08-03). Page is live at `linkedin.com/company/signal-flair-ai` (Corey-confirmed). Present in the site-wide Organization `sameAs` (`layout.tsx`), the footer, `/proof/trust`, `llms.txt`, `proof.json`, and now the `record.profiles` block in both discovery manifests. ⚠️ **Crunchbase is still UNVERIFIED** — `crunchbase.com/organization/signal-flair` sits in the site-wide `sameAs` but nobody has confirmed it resolves. A `sameAs` pointing at a 404 actively damages Entity Clarity, the layer it is meant to help. Confirm it or drop it.
 6. **Production deploy** — after DNS confirmed, run build, deploy out/ to Netlify
 
 ---
@@ -271,11 +287,11 @@ is ahead of `main`, land it or record why it wasn't — never leave it unexamine
 ## Entity disambiguation (critical — do not ignore)
 
 Signal Flair is being confused with SignalFlare.ai (a restaurant analytics company by Extropy360).
-This is the #1 entity clarity problem — score: 5/100.
+This is the #1 entity clarity problem. Entity Clarity scored 5/100 at the June 6 baseline and 63/100 at the July 5 re-audit — improving, still the weakest area alongside Trust & Proof Density.
 
 Fixes in progress:
 - llms.txt deployed (describes Signal Flair accurately)
-- Schema sameAs array — add LinkedIn URL once Corey creates the company page
+- Schema `sameAs` — ✅ LinkedIn company page live and wired into every surface (2026-08-03). Crunchbase entry still unverified, see pending task 5.
 - /resources/llms-txt/ resource page adds authority content
 - Founding Client case studies will add more entity signals over time
 
@@ -285,27 +301,39 @@ SignalFlare.ai = restaurant decision intelligence, Texas. Completely different.
 
 ---
 
-## Key files reference
+## Key files reference (verified to exist 2026-08-03)
 
 | File | Purpose |
 |---|---|
 | `CLAUDE.md` (this file) | Project context for Claude Code |
-| `JARVIS_2026-06-07.md` | Tomorrow's task list |
-| `signalflair-conversion-sections.html` | Four drop-in sections (form, proof, founder, FAQ) |
-| `signalflair-case-zero.html` | Self-audit case study (ready to integrate) |
-| `signalflair-case-zero-copy.md` | Hooks, social posts, video script, objection handlers |
-| `signalflair-llms.txt` | Signal Flair's own llms.txt |
-| `SIGNAL_FLAIR_IMPLEMENTATION_NOTES.md` | Palette corrections, decisions log |
-| `verify-conversion.mjs` | Playwright QA script — bypasses broken preview MCP |
+| `src/components/SignalFlairLanding.tsx` | The homepage — every section, the lead form, the 7-layer protocol data |
+| `src/app/globals.css` | All styles. No CSS modules, no Tailwind |
+| `src/app/layout.tsx` | Site-wide JSON-LD (Organization, Person, WebSite, Service, OfferCatalog) |
+| `src/app/proof/page.tsx` | Signal Proof Page™ hub — the Case Zero trajectory lives here |
+| `src/app/proof/changelog/page.tsx` | The dated public record. Every re-audit gets an entry |
+| `src/lib/signal-tiers.ts` | Single source of truth for tier names/colors/verdicts |
+| `netlify/functions/signal-pulse.mjs` | Deterministic AI-readiness scan. Also how Case Zero layers are re-measured |
+| `netlify/functions/lead-intake.mjs` | GHL Contacts API upsert (secondary channel; GHL being cancelled) |
+| `public/llms.txt` · `public/proof.json` | Machine-readable proof surface — keep in sync with the pages |
+| `public/.well-known/signalflair.json` | Discovery manifest (+ non-dotted mirror `signalflair-discovery.json`) |
+| `netlify.toml` | Build config, redirects, cache headers |
 | `DEPLOY.md` | Deployment safety rules (do not move nameservers) |
+| `docs/entity-visibility/` | Entity audit + 15 platform action kits (internal) |
+| `ANONYMIZED_BASELINE_CASE_INTERNAL.md` | The Mill permission status — what is published vs held back |
+
+⚠️ The previous version of this table listed eight files, seven of which did not exist
+(`JARVIS_2026-06-07.md`, `signalflair-conversion-sections.html`, `signalflair-case-zero.html`,
+`signalflair-case-zero-copy.md`, `signalflair-llms.txt`, `SIGNAL_FLAIR_IMPLEMENTATION_NOTES.md`,
+`verify-conversion.mjs`). If you add a row here, confirm the path first.
 
 ---
 
 ## Things Corey must do himself (Claude Code cannot do these)
 
-- Create the LinkedIn company page at linkedin.com/company/setup/new
-- Create the GHL inbound webhook and provide the URL
-- Drop in the founder photo (4:5 portrait) for the About section
+- ~~Create the LinkedIn company page~~ ✅ done — linkedin.com/company/signal-flair-ai
+- Confirm the Crunchbase profile resolves (or say so and it comes out of the schema)
+- ~~Create the GHL inbound webhook~~ — obsolete. The old inbound webhook was orphaned (workflow deleted, answered 200, executed nothing). Leads now go to Netlify Forms; GHL is being cancelled
+- ~~Drop in the founder photo~~ ✅ done — `/founder.jpg` (1024px, 101KB) on the homepage; `/corey-ellis-founder.png` still backs the schema `image`
 - Confirm DNS propagation before production deploy
 - Approve production deploy
 
@@ -319,4 +347,4 @@ SignalFlare.ai = restaurant decision intelligence, Texas. Completely different.
 - Do not change pricing without Corey confirming
 - Do not bleed Signal Flair and Mental Vision aesthetics together
 - Do not send the site to production without DNS confirmation
-- Do not replace the Case Zero score (18/100) with different numbers — it is real and documented
+- Do not alter any Case Zero reading (18 · 73 · 91) or its dates without Corey's explicit say-so — each is real and documented. Never publish a layer breakdown that does not average to the score above it

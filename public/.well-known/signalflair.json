@@ -10,6 +10,10 @@
   },
   "record": {
     "canonical_json": "https://signalflair.ai/proof.json",
+    "profiles": [
+      "https://www.linkedin.com/company/signal-flair-ai",
+      "https://mentalvision.ai"
+    ],
     "human_hub": "https://signalflair.ai/proof/",
     "changelog": "https://signalflair.ai/proof/changelog",
     "llms_txt": "https://signalflair.ai/llms.txt",
@@ -19,7 +23,7 @@
   "verification": {
     "verified_by": "Signal Flair",
     "last_verified": "2026-08-03",
-    "next_review_due": "2026-11-03",
+    "next_review_due": "2026-08-17",
     "signals_confirmed": 0,
     "signals_total": 6
   },
