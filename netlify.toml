@@ -9,19 +9,32 @@
 [build.environment]
   NODE_VERSION = "20"
 
-# /pulse — no such page has ever been built; the Signal Pulse™ CTA lives at the
-# homepage intake form (#field-report), which is where every in-site Pulse button
-# already points. Anyone arriving from outside marketing with /pulse used to hit a
-# 404. 302 (not 301) on purpose: if a dedicated Pulse landing page is built later,
-# search engines won't have cached this as permanent.
+# Signal Pulse™ instant-preview serverless function (deterministic AI-readiness checks).
+# Ships from ./netlify/functions alongside the static export — this is a Function, NOT the
+# Next SSR runtime, so the "pure static site" rule above still holds.
+[functions]
+  directory = "netlify/functions"
+  node_bundler = "esbuild"
+
+# Pretty alias for the function (the client also accepts the direct /.netlify/functions path).
 [[redirects]]
-  from = "/pulse"
-  to = "/#field-report"
-  status = 302
-  force = true
+  from = "/api/signal-pulse"
+  to = "/.netlify/functions/signal-pulse"
+  status = 200
+
+# Old page route -> current short route (the page moved from /signal-pulse to /pulse).
+[[redirects]]
+  from = "/signal-pulse"
+  to = "/pulse/"
+  status = 301
 
 [[redirects]]
-  from = "/pulse/"
-  to = "/#field-report"
-  status = 302
-  force = true
+  from = "/signal-pulse/*"
+  to = "/pulse/"
+  status = 301
+
+# Long-lived caching for heavy static media (compressed background videos rarely change).
+[[headers]]
+  for = "/video/*"
+  [headers.values]
+    Cache-Control = "public, max-age=86400, stale-while-revalidate=604800"
