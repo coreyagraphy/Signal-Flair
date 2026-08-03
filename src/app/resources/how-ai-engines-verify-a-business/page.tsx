@@ -126,6 +126,17 @@ export default function HowAiVerifiesPage() {
         </section>
       </div>
 
+      <section className="rsc-cta">
+        <h2 className="rsc-cta-h">AI can find your business. But does it <em>understand</em> it?</h2>
+        <p className="rsc-cta-b">Run your free Signal Pulse™. We&apos;ll scan 3 of the 7 Signal Protocol™ layers across ChatGPT, Claude, Perplexity, Gemini, and Google AI — and show you exactly which of the checks above your business fails today.</p>
+        <a className="rsc-cta-btn" href="/#cta">▸ Run My Signal</a>
+      </section>
+
+      <footer className="rsc-foot">
+        Signal Flair · a Mental Vision product · Indianapolis, Indiana · serving nationwide<br />
+        <a href="/">signalflair.ai</a> · <a href="/llms.txt">our llms.txt</a> · <a href="/#cta">Run your free Signal Pulse™</a> · <a href="/privacy/">privacy</a>
+      </footer>
+
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
     </main>
   )

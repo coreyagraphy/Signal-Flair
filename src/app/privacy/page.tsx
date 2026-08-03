@@ -38,7 +38,7 @@ export default function PrivacyPage() {
     <main className="rsc sl">
       <nav className="rsc-nav">
         <a className="rsc-logo" href="/" aria-label="Signal Flair home"><SignalFlairLogo style={{ height: 70, width: 'auto', display: 'block' }} /></a>
-        <a className="rsc-navcta" href="/#field-report">▸ Free Signal Pulse™</a>
+        <a className="rsc-navcta" href="/#cta">▸ Free Signal Pulse™</a>
       </nav>
 
       <div className="rsc-wrap">
@@ -141,7 +141,7 @@ export default function PrivacyPage() {
         <section className="rsc-cta">
           <h2 className="rsc-cta-h">See where <em>your</em> business stands.</h2>
           <p className="rsc-cta-b">A free Signal Pulse™ — 3 of your 7 signal layers, 24 hours, no call. No credit card, no spam.</p>
-          <a className="rsc-cta-btn" href="/#field-report">▸ Run My Signal</a>
+          <a className="rsc-cta-btn" href="/#cta">▸ Run My Signal</a>
         </section>
       </div>
 

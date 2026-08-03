@@ -41,7 +41,7 @@ export default function ProofServicesPage() {
     <main className="rsc sl">
       <nav className="rsc-nav">
         <a className="rsc-logo" href="/" aria-label="Signal Flair home"><SignalFlairLogo style={{ height: 70, width: 'auto', display: 'block' }} /></a>
-        <a className="rsc-navcta" href="/#field-report">▸ Free Signal Pulse™</a>
+        <a className="rsc-navcta" href="/#cta">▸ Free Signal Pulse™</a>
       </nav>
       <div className="rsc-wrap">
         <header className="rsc-hero">
@@ -71,7 +71,7 @@ export default function ProofServicesPage() {
         <section className="rsc-cta">
           <h2 className="rsc-cta-h">See where <em>your</em> signal breaks.</h2>
           <p className="rsc-cta-b">A free Signal Pulse™ scans 3 of your 7 signal layers and lands in your inbox in 24 hours. No call.</p>
-          <a className="rsc-cta-btn" href="/#field-report">▸ Run My Signal</a>
+          <a className="rsc-cta-btn" href="/#cta">▸ Run My Signal</a>
         </section>
       </div>
       <footer className="rsc-foot">

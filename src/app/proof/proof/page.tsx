@@ -14,7 +14,7 @@ export default function ProofCasesPage() {
     <main className="rsc sl">
       <nav className="rsc-nav">
         <a className="rsc-logo" href="/" aria-label="Signal Flair home"><SignalFlairLogo style={{ height: 70, width: 'auto', display: 'block' }} /></a>
-        <a className="rsc-navcta" href="/#field-report">▸ Free Signal Pulse™</a>
+        <a className="rsc-navcta" href="/#cta">▸ Free Signal Pulse™</a>
       </nav>
       <div className="rsc-wrap">
         <header className="rsc-hero">
@@ -79,7 +79,7 @@ export default function ProofCasesPage() {
         <section className="rsc-cta">
           <h2 className="rsc-cta-h">Be one of the first documented <em>wins.</em></h2>
           <p className="rsc-cta-b">Start with a free Signal Pulse™ — 3 of your 7 signal layers, 24 hours, no call.</p>
-          <a className="rsc-cta-btn" href="/#field-report">▸ Run My Signal</a>
+          <a className="rsc-cta-btn" href="/#cta">▸ Run My Signal</a>
         </section>
       </div>
       <footer className="rsc-foot">
