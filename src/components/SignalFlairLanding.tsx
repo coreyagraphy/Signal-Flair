@@ -1072,10 +1072,10 @@ export default function SignalFlairLanding() {
         <div className="proof-bgword" aria-hidden="true">PROOF.</div>
         <div className="proof-head reveal">
           <div>
-            <div className="proof-eyebrow">Case Zero · the before state</div>
+            <div className="proof-eyebrow">Case Zero · 18 → 73 → 91</div>
             <div className="proof-title">We ran it on<br /><em>ourselves first.</em></div>
           </div>
-          <div className="proof-meta">Case Zero is the starting line — not a finished case study. Signal Flair audited itself first, published the baseline Signal Score™ (18/100), and is documenting the rebuild in public. No fabricated testimonials, no finished-case theater.</div>
+          <div className="proof-meta">Case Zero is our own audit, published at the score we actually got. Signal Flair scored <strong>18/100</strong> on June 6, 2026, then built the same proof layer we sell and re-measured in public — <strong>73</strong> on July 5, <strong>91</strong> on August 3. Every reading dated. No fabricated testimonials, no finished-case theater.</div>
         </div>
         <div className="proof-grid reveal">
           <div className="proof-card before">
@@ -1091,17 +1091,19 @@ export default function SignalFlairLanding() {
           </div>
           <div className="proof-arrow" aria-hidden="true">→</div>
           <div className="proof-card after">
-            <div className="pc-top"><span className="pc-label">Post-implementation target</span><span className="pc-tag">Next target</span></div>
+            <div className="pc-kicker">Re-audit · 08.03.2026</div>
+            <div className="pc-top"><span className="pc-label">After</span><span className="pc-tag">+73</span></div>
             <span className="pc-score count">91<small>/100</small></span>
             <div className="pc-scorelbl">Signal Score™</div>
-            <div className="pc-row"><span className="pc-name">Proof assets</span><span className="pc-stamp no">Target: published &amp; crawlable</span></div>
-            <div className="pc-row"><span className="pc-name">Schema &amp; llms.txt</span><span className="pc-stamp no">Target: aligned</span></div>
-            <div className="pc-row"><span className="pc-name">Visibility journal</span><span className="pc-stamp no">Ongoing checks</span></div>
-            <div className="pc-status">Readiness target · measured Day 30 &amp; Day 90</div>
+            <div className="pc-row"><span className="pc-name">Access &amp; Crawlability</span><span className="pc-stamp yes">100/100</span></div>
+            <div className="pc-row"><span className="pc-name">Structured Intelligence</span><span className="pc-stamp yes">100/100</span></div>
+            <div className="pc-row"><span className="pc-name">Answer Architecture</span><span className="pc-stamp yes">90/100</span></div>
+            <div className="pc-row"><span className="pc-name">Jul 5 re-audit</span><span className="pc-stamp yes">73/100</span></div>
+            <div className="pc-status">Re-measured in public. Every reading dated.</div>
           </div>
         </div>
-        <div className="proof-note reveal">Next target: improve AI-readiness after owned proof assets are published, crawlable, and aligned across the site. <strong>This is a readiness target, not a guarantee of AI ranking, citation, recommendation, or inclusion.</strong></div>
-        <div className="proof-note reveal">Signal Flair&apos;s own audit — <strong>June 6, 2026</strong>. This is Case Zero: we ran the system on ourselves first, and we publish the real before-and-after as our own score climbs.</div>
+        <div className="proof-note reveal">The three layers above are re-measured by the same deterministic scanner that runs every Signal Pulse™, pointed at this site. <strong>A Signal Score™ measures the proof layer — it is not a guarantee of AI ranking, citation, recommendation, or inclusion.</strong></div>
+        <div className="proof-note reveal">Signal Flair&apos;s own audit — baseline <strong>June 6, 2026</strong>, re-audited <strong>July 5</strong> and <strong>August 3</strong>. This is Case Zero: we ran the system on ourselves first, and we published the weak scores on the way up, not just the good one.</div>
         <a className="proof-live-link reveal" href="/proof/">See our live record →</a>
         <div className="sl-markwrap reveal" style={{ margin: '26px auto 0', maxWidth: 560 }}>
           <a className="sl-mark" href="/case-studies/restor-team/">
@@ -1474,7 +1476,7 @@ export default function SignalFlairLanding() {
             </div>
 
             <div className="about-body fdr-body">
-              <p>On June 6, 2026, I ran the Signal Protocol™ on Signal Flair. We scored <strong>18 out of 100</strong>. That number is <strong>Case Zero</strong> — the only proof number I will claim until I earn the next one.</p>
+              <p>On June 6, 2026, I ran the Signal Protocol™ on Signal Flair. We scored <strong>18 out of 100</strong>. That number is <strong>Case Zero</strong> — and I said it was the only number I&rsquo;d claim until I earned the next one. I earned it: <strong>73</strong> on July 5, <strong>91</strong> on August 3, every reading published on the way up.</p>
               <p>What I found was bigger than my own site. Most businesses with real customers, strong reputations, and years of work are still unreadable to the machines now making referral decisions. Not because the business is weak — because the infrastructure that lets AI understand and recommend them does not exist.</p>
               <p>Signal Flair builds that infrastructure. Not with random blog posts. Not with vague content strategies. With a number, a protocol, and a maintenance system that keeps the number true.</p>
             </div>

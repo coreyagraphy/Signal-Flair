@@ -106,7 +106,7 @@ export default function HowAiVerifiesPage() {
 
         <section className="rsc-section">
           <h2 className="rsc-h2">We ran this on ourselves first</h2>
-          <p className="rsc-p">Signal Flair&apos;s own baseline audit — Case Zero — scored <strong>18/100</strong> on June 2, 2026. A premium-looking site, nearly invisible to AI. We spent five weeks building the same proof layer we sell: llms.txt, schema, entity cleanup, crawler access, a public proof record. The July 5 re-audit read <strong>73/100</strong> — a model-informed Signal Score™ read, not a live engine test, and not a guarantee of AI ranking, citation, or recommendation. The work performed between measurements correlates with the change; it does not prove engine behavior changed. Every step is public at <a href="/proof/">signalflair.ai/proof</a>.</p>
+          <p className="rsc-p">Signal Flair&apos;s own baseline audit — Case Zero — scored <strong>18/100</strong> on June 6, 2026. A premium-looking site, nearly invisible to AI. We spent five weeks building the same proof layer we sell: llms.txt, schema, entity cleanup, crawler access, a public proof record. The July 5 re-audit read <strong>73/100</strong>, and the August 3 re-audit <strong>91/100</strong> — Signal Score™ readings of the proof layer, not live engine tests, and not a guarantee of AI ranking, citation, or recommendation. The work performed between measurements correlates with the change; it does not prove engine behavior changed. Every step is public at <a href="/proof/">signalflair.ai/proof</a>.</p>
         </section>
 
         <section className="rsc-section">

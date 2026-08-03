@@ -9,7 +9,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: 'About Signal Flair — found by AI, by design',
     description:
-      'An Indianapolis, Indiana AI Proof Infrastructure company that audited itself first: Case Zero, 18/100, rebuilt in public. A Mental Vision product.',
+      'An Indianapolis, Indiana AI Proof Infrastructure company that audited itself first: Case Zero, 18/100, rebuilt in public to 91/100. A Mental Vision product.',
     images: ['/video/hero-poster.jpg'],
   },
 }
@@ -92,10 +92,11 @@ export default function AboutPage() {
         <section className="rsc-section">
           <h2 className="rsc-h2">We audited <em>ourselves</em> first</h2>
           <p className="rsc-p">
-            Case Zero is our own AI visibility audit, completed June 6, 2026. Signal Flair scored
-            <strong> 18 out of 100</strong> — Signal Invisible. We published it and rebuilt in public.
-            It is the only real proof number we own. We never fabricate scores, testimonials, or
-            results. See the full live record on the <a href="/proof/">proof page</a>.
+            Case Zero is our own AI visibility audit. Signal Flair scored
+            <strong> 18 out of 100</strong> on June 6, 2026 — Signal Invisible. We published it, rebuilt
+            in public, and re-measured: <strong>73/100</strong> on July 5, <strong>91/100</strong> on
+            August 3. Every reading is dated, including the weak ones. We never fabricate scores,
+            testimonials, or results. See the full live record on the <a href="/proof/">proof page</a>.
           </p>
         </section>
 

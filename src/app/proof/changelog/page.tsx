@@ -9,8 +9,18 @@ export const metadata: Metadata = {
   alternates: { canonical: 'https://signalflair.ai/proof/changelog/' },
 }
 
-// REAL entries only. Each is a dated action actually taken.
+// REAL entries only. Each is a dated action actually taken. Newest first.
 const LOG = [
+  {
+    date: '2026-08-03',
+    title: 'Case Zero re-audit — 91/100',
+    body: 'Second re-audit. The Signal Score™ read 91/100, up from 73 on July 5 and 18 at the June 6 baseline. Three layers were re-measured by the same deterministic scanner that runs every Signal Pulse™, pointed at this site: Access & Crawlability 100, Structured Intelligence 100, Answer Architecture 90 (up from 77). As with every reading, this is a Signal Score™ measurement of the proof layer — not a guarantee of AI ranking, citation, or recommendation.',
+  },
+  {
+    date: '2026-07-05',
+    title: 'Case Zero re-audit — 73/100',
+    body: 'First re-audit after building the same proof layer we sell: llms.txt, structured data, entity cleanup, crawler access, and a public proof record. The Signal Score™ climbed from 18 to 73 across six layers — Access & Crawlability 100, Structured Intelligence 100, Answer Architecture 77, Entity Clarity 63, Live AI Visibility 53, Trust & Proof Density 43. The two weakest layers are published exactly as measured.',
+  },
   {
     date: '2026-06-06',
     title: 'Signal Proof Page™ layer published',

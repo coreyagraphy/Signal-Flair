@@ -13,17 +13,18 @@
     "human_hub": "https://signalflair.ai/proof/",
     "changelog": "https://signalflair.ai/proof/changelog",
     "llms_txt": "https://signalflair.ai/llms.txt",
-    "sitemap": "https://signalflair.ai/sitemap.xml"
+    "sitemap": "https://signalflair.ai/sitemap.xml",
+    "case_zero_score": "91/100 (2026-08-03); baseline 18/100 (2026-06-06); re-audit 73/100 (2026-07-05)"
   },
   "verification": {
     "verified_by": "Signal Flair",
-    "last_verified": "2026-06-06",
-    "next_review_due": "2026-08-17",
+    "last_verified": "2026-08-03",
+    "next_review_due": "2026-11-03",
     "signals_confirmed": 0,
     "signals_total": 6
   },
   "actions": {
-    "field_report": "https://signalflair.ai/#field-report",
+    "field_report": "https://signalflair.ai/#cta",
     "contact": "hello@signalflair.ai",
     "book": "",
     "request_quote": ""

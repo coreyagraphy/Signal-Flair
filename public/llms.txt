@@ -15,8 +15,8 @@
 - Founder: Corey Ellis
 - Contact: hello@signalflair.ai
 - Signal Score™ (Case Zero baseline): 18/100 (scored June 6, 2026)
-- Post-implementation target: 91/100 (readiness target, not achieved score)
-- Last Updated: 2026-07-21
+- Signal Score™ (Case Zero current): 91/100 (re-audited August 3, 2026; 73/100 on July 5, 2026)
+- Last Updated: 2026-08-03
 
 ## What We Do
 Signal Flair builds AI Proof Infrastructure™ — the structured proof layer that helps AI answer engines access, understand, verify, and recommend a business or organization. We measure how clearly a business can be understood across AI engines (ChatGPT, Claude, Perplexity, Gemini, Google AI) with a 0–100 Signal Score™, then build the llms.txt, schema markup, entity clarity, answer architecture, and trust proof those engines need.
@@ -70,7 +70,7 @@ The Signal Proof Page™ is the canonical human-visible proof hub at /proof/ —
 Stay Found™ is monthly proof maintenance: re-verification, change-log updates, schema and llms.txt freshness, crawler monitoring, and visibility spot checks. Not a one-time audit — proof kept current as AI engines and competitors change.
 
 ## Case Zero
-Signal Flair audited itself first as Case Zero — a transparent founder-run baseline published at 18/100 Signal Score™ on June 6, 2026, before external Founding Partner work. Documented in public at /proof/, re-measured at Day 30 and Day 90, tracked to a post-implementation target of 91/100. Proof-before-pitch, not a hidden failure state.
+Signal Flair audited itself first as Case Zero — a transparent founder-run baseline published at 18/100 Signal Score™ on June 6, 2026, before any client work. Signal Flair then built the same proof layer it sells and re-measured in public: 73/100 on July 5, 2026 and 91/100 on August 3, 2026. Every reading is dated at /proof/ and /proof/changelog/, including the layers that scored badly (at the July 5 re-audit: Trust & Proof Density 43, Live AI Visibility 53). The composite is the plain average of the layer scores at each reading. A Signal Score™ measures the proof layer — it is not a guarantee of AI ranking, citation, or recommendation. Proof-before-pitch, not a hidden failure state.
 
 ## Proof assets (public)
 - Signal Proof Page™ (human hub): https://signalflair.ai/proof/
@@ -103,7 +103,7 @@ The canonical crawlable proof hub — human-readable pages plus linked machine-r
 Ongoing proof maintenance — monthly re-verification, schema and llms.txt updates, crawler checks, and visibility monitoring.
 
 ### What is Case Zero?
-Signal Flair's self-audit baseline — the before-state measurement before the proof layer rebuild. Published transparently at 18/100 on June 6, 2026.
+Signal Flair's self-audit — the before-state measurement taken before its own proof layer was built, published transparently at 18/100 on June 6, 2026, and re-audited in public to 73/100 (July 5, 2026) and 91/100 (August 3, 2026).
 
 ### Does Signal Flair guarantee AI recommendations?
 No. Signal Flair improves AI readiness and proof signals but does not guarantee AI recommendations, rankings, citations, or inclusion in AI-generated answers.

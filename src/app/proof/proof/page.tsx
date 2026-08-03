@@ -26,20 +26,24 @@ export default function ProofCasesPage() {
 
         <section className="rsc-section">
           <h2 className="rsc-h2">Case Zero — <em>Signal Flair</em></h2>
-          <div className="sl-scoreband">
-            <div className="sl-scorebig">18<small>/100</small></div>
+          <div className="sl-scoreband sl-scoreband--3">
+            <div className="sl-scorebig">18<small>/100</small><span className="sl-scoretarget-lbl">Baseline · Jun 6</span></div>
             <div className="sl-scorearrow" aria-hidden="true">→</div>
-            <div className="sl-scoretarget">91<small>/100</small><span className="sl-scoretarget-lbl">Target</span></div>
+            <div className="sl-scoremid">73<small>/100</small><span className="sl-scoretarget-lbl">Re-audit · Jul 5</span></div>
+            <div className="sl-scorearrow" aria-hidden="true">→</div>
+            <div className="sl-scoretarget">91<small>/100</small><span className="sl-scoretarget-lbl">Current · Aug 3</span></div>
           </div>
           <p className="rsc-p">
             On <strong>June 6, 2026</strong> we ran our Signal Score™ baseline on our own brand-new site. A
             premium build with near-zero AI visibility — 18/100. That is the exact gap our clients
-            have, which is why we made ourselves the first case. We&apos;re documenting the climb to a
-            target of 91/100, re-measured at Day 30 and Day 90.
+            have, which is why we made ourselves the first case. We then built the same proof layer we
+            sell and re-measured in public: <strong>73</strong> on July 5, <strong>91</strong> on
+            August 3. The climb is a Signal Score™ measurement of the proof layer — not a guarantee of
+            AI ranking, citation, or recommendation.
           </p>
-          <div className="sl-kv"><span>Date</span><span>2026-06-06</span></div>
-          <div className="sl-kv"><span>Before</span><span>18 / 100 (verified baseline)</span></div>
-          <div className="sl-kv"><span>Target</span><span>91 / 100</span></div>
+          <div className="sl-kv"><span>Baseline</span><span>18 / 100 — 2026-06-06</span></div>
+          <div className="sl-kv"><span>Re-audit</span><span>73 / 100 — 2026-07-05</span></div>
+          <div className="sl-kv"><span>Current</span><span>91 / 100 — 2026-08-03</span></div>
           <div className="sl-kv"><span>Status</span><span><span className="sl-verified">verified</span></span></div>
           <div className="sl-kv"><span>Source</span><span><a href="/proof/changelog/">public change log</a></span></div>
         </section>

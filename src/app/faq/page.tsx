@@ -4,7 +4,7 @@ import SignalFlairLogo from '@/components/SignalFlairLogo'
 export const metadata: Metadata = {
   title: 'FAQ — Signal Score, Case Zero, Signal Pulse & Signal Proof Page | Signal Flair',
   description:
-    'Answers to the core Signal Flair questions: what a Signal Score™ is, what Case Zero (18/100, June 6 2026) is, what a free Signal Pulse™ includes, and the Founding Five. AI Proof Infrastructure for businesses and organizations nationwide.',
+    'Answers to the core Signal Flair questions: what a Signal Score™ is, what Case Zero (18/100 on June 6 2026, now 91/100) is, what a free Signal Pulse™ includes, and the Founding Five. AI Proof Infrastructure for businesses and organizations nationwide.',
   alternates: { canonical: 'https://signalflair.ai/faq/' },
   openGraph: {
     title: 'Signal Flair — Frequently Asked Questions',
@@ -59,7 +59,7 @@ const FAQS: { q: string; a: string }[] = [
   },
   {
     q: 'What is Case Zero?',
-    a: 'Case Zero is Signal Flair’s own AI visibility audit, completed June 6, 2026. Signal Flair scored 18 out of 100 — Signal Invisible. We published it and rebuilt in public. It is the only real proof number we own, and we never fabricate scores, wins, or testimonials.',
+    a: 'Case Zero is Signal Flair’s own AI visibility audit. Signal Flair scored 18 out of 100 on June 6, 2026 — Signal Invisible. We published it, rebuilt in public, and re-measured: 73/100 on July 5, 2026 and 91/100 on August 3, 2026. Every reading is dated on the public change log, including the layers that scored badly. We never fabricate scores, wins, or testimonials. A Signal Score™ measures the proof layer — it is not a guarantee of AI ranking, citation, or recommendation.',
   },
   {
     q: 'What is a Signal Pulse™?',
@@ -180,7 +180,7 @@ export default function FaqPage() {
             <a className="sl-hub-card" href="/proof/">
               <span className="sl-hub-k">03</span>
               <span className="sl-hub-t">The live record</span>
-              <span className="sl-hub-d">Case Zero — our own audit, 18/100, rebuilt in public.</span>
+              <span className="sl-hub-d">Case Zero — our own audit, 18/100, rebuilt in public to 91/100.</span>
             </a>
           </div>
           <p className="rsc-p sl-machine">

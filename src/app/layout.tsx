@@ -81,7 +81,7 @@ const jsonLd = {
       name: 'Signal Flair Case Zero — Signal Proof Page™',
       url: 'https://signalflair.ai/proof/',
       description:
-        'Public proof record for Signal Flair Case Zero — transparent Signal Score™ baseline (18/100, June 6, 2026) and AI Proof Infrastructure™ documentation.',
+        'Public proof record for Signal Flair Case Zero — transparent Signal Score™ baseline (18/100, June 6, 2026), re-audited to 73/100 on July 5 and 91/100 on August 3, 2026, plus AI Proof Infrastructure™ documentation.',
       dateModified: '2026-06-06',
       about: { '@id': 'https://signalflair.ai/#org' },
       isPartOf: { '@id': 'https://signalflair.ai/#website' },

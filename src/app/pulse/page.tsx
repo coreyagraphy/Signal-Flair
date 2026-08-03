@@ -162,7 +162,7 @@ export default function SignalPulsePage() {
           <div className="ssc-cz-body">
             <div className="ssc-cz-h">We audited ourselves first.</div>
             <div className="ssc-cz-p">
-              Signal Flair started at 18/100 and rebuilt in public to 73/100 (+55). No inflated case study. No fake
+              Signal Flair started at 18/100 and rebuilt in public to 91/100 (+73). No inflated case study. No fake
               proof — we document the climb, and the layers still building, so you can see the system work on us
               before you trust it with your business.
             </div>

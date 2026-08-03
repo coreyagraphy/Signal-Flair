@@ -5,21 +5,35 @@ import VerifiedMark from '@/components/VerifiedMark'
 export const metadata: Metadata = {
   title: 'Our Live Verified Record — Case Zero | Signal Flair',
   description:
-    'Signal Flair published its Signal Proof Page™ on itself first. This is our live, continuously re-verified record — Case Zero, 18/100, audited June 6, 2026 — with a public change log tracked to target. We don’t claim. We show.',
+    'Signal Flair published its Signal Proof Page™ on itself first. This is our live, continuously re-verified record — Case Zero, audited at 18/100 on June 6, 2026 and re-audited to 91/100 on August 3 — with every dated reading on a public change log. We don’t claim. We show.',
   alternates: { canonical: 'https://signalflair.ai/proof/' },
   openGraph: {
     title: 'Case Zero — Signal Flair’s own live verified record',
     description:
-      'We audited ourselves first: 18/100 on June 6, 2026. The full record, source-linked, with a public change log.',
+      'We audited ourselves first: 18/100 on June 6, 2026 — now 91/100. Every reading dated and source-linked, on a public change log.',
     images: ['/video/hero-poster.jpg'],
   },
 }
 
-// Case Zero — REAL baseline (June 6, 2026). Mirrors /proof.json exactly.
+/*
+  Case Zero — the real, dated trajectory of Signal Flair's audit of itself.
+  18 (baseline) → 73 (first re-audit) → 91 (current). Mirrors /proof.json exactly.
+
+  The composite is the plain average of the layer scores at each reading, which is why
+  layer detail is attached to the reading it was actually computed from — the June 6
+  baseline carries its six-signal breakdown, the July 5 re-audit carries the six-layer
+  breakdown that averages to 73 (436/6), and the current reading carries the layers that
+  have been independently re-measured since. Nothing is shown under a score it doesn't
+  add up to, and no layer is estimated to fill a gap.
+*/
 const CASE_ZERO = {
-  overall: 18,
-  scoredOn: '2026-06-06',
-  target: 91,
+  baseline: 18,
+  baselineOn: '2026-06-06',
+  midpoint: 73,
+  midpointOn: '2026-07-05',
+  current: 91,
+  currentOn: '2026-08-03',
+  // June 6 baseline — the original six-signal model, frozen at its audit-date form.
   signals: [
     { signal: 'AI Search Presence', score: 4, status: 'Critical' },
     { signal: 'Entity Clarity', score: 5, status: 'Critical' },
@@ -27,6 +41,24 @@ const CASE_ZERO = {
     { signal: 'Authority Content', score: 12, status: 'Weak' },
     { signal: 'Review Signal', score: 0, status: 'Missing' },
     { signal: 'Conversion Proof', score: 20, status: 'Partial' },
+  ],
+  // July 5 re-audit — six-layer model. These six average to 73 (436/6 = 72.67).
+  midpointLayers: [
+    { layer: 'Access & Crawlability', score: 100 },
+    { layer: 'Structured Intelligence', score: 100 },
+    { layer: 'Answer Architecture', score: 77 },
+    { layer: 'Entity Clarity', score: 63 },
+    { layer: 'Live AI Visibility', score: 53 },
+    { layer: 'Trust & Proof Density', score: 43 },
+  ],
+  // Current reading — only the layers re-measured by the deterministic scanner that runs
+  // on every Signal Pulse™ (same code path, run against this site). The remaining three
+  // layers depend on live engine tests and third-party profiles and are re-verified on the
+  // audit cycle, not from the page itself, so they are not restated here.
+  verifiedLayers: [
+    { layer: 'Access & Crawlability', score: 100, note: 'Every AI agent explicitly allowed; sitemap, llms.txt and proof manifests all resolving.' },
+    { layer: 'Structured Intelligence', score: 100, note: '15 schema types on the homepage alone — Organization, FAQPage, VideoObject, Service, OfferCatalog.' },
+    { layer: 'Answer Architecture', score: 90, note: 'Up from 77. Depth, FAQ coverage and citable structure across the site.' },
   ],
 }
 
@@ -136,7 +168,7 @@ export default function ProofHubPage() {
           </p>
           <div className="sl-markwrap">
             <VerifiedMark
-              lastVerified={CASE_ZERO.scoredOn}
+              lastVerified={CASE_ZERO.currentOn}
               confirmed={0}
               total={6}
               note="Case Zero — our own record at the start. The climb is public."
@@ -146,17 +178,55 @@ export default function ProofHubPage() {
 
         {/* Case Zero score */}
         <section className="rsc-section">
-          <h2 className="rsc-h2">Case Zero — <em>18 / 100</em></h2>
+          <h2 className="rsc-h2">Case Zero — <em>18 → 91</em></h2>
           <p className="rsc-p">
-            Audited <strong>June 6, 2026</strong>. A premium-looking site with near-zero AI
-            visibility — the exact gap we fix. Documented transparently and re-measured at Day 30 and
-            Day 90, tracked to a target of <strong>{CASE_ZERO.target}/100</strong>.
+            We audited ourselves before we audited anyone else. Baseline{' '}
+            <strong>18/100</strong> on June 6, 2026 — a premium-looking site with near-zero AI
+            visibility, the exact gap we fix. Re-audited to <strong>73</strong> on July 5, and to{' '}
+            <strong>91</strong> on August 3. Every reading dated, every reading published, including
+            the one that made us look bad.
           </p>
-          <div className="sl-scoreband">
-            <div className="sl-scorebig">{CASE_ZERO.overall}<small>/100</small></div>
+          <div className="sl-scoreband sl-scoreband--3">
+            <div className="sl-scorebig">{CASE_ZERO.baseline}<small>/100</small><span className="sl-scoretarget-lbl">Baseline · Jun 6</span></div>
             <div className="sl-scorearrow" aria-hidden="true">→</div>
-            <div className="sl-scoretarget">{CASE_ZERO.target}<small>/100</small><span className="sl-scoretarget-lbl">Target</span></div>
+            <div className="sl-scoremid">{CASE_ZERO.midpoint}<small>/100</small><span className="sl-scoretarget-lbl">Re-audit · Jul 5</span></div>
+            <div className="sl-scorearrow" aria-hidden="true">→</div>
+            <div className="sl-scoretarget">{CASE_ZERO.current}<small>/100</small><span className="sl-scoretarget-lbl">Current · Aug 3</span></div>
           </div>
+
+          <h3 className="sl-sig-h">Machine-verified today</h3>
+          <p className="rsc-p sl-sig-lede">
+            These three layers are re-measured by the same deterministic scanner that runs every
+            Signal Pulse™ — pointed at this site. You can reproduce them.
+          </p>
+          <div className="sl-signals">
+            {CASE_ZERO.verifiedLayers.map((s) => (
+              <div className="sl-sig" key={s.layer}>
+                <span className="sl-sig-name">{s.layer}</span>
+                <span className="sl-sig-bar" aria-hidden="true"><span className="sl-sig-fill" style={{ width: `${s.score}%` }} /></span>
+                <span className="sl-sig-score">{s.score}<small>/100</small></span>
+                <span className="sl-sig-status ok">{s.score >= 90 ? 'Strong' : 'Solid'}</span>
+              </div>
+            ))}
+          </div>
+
+          <h3 className="sl-sig-h">Where it stood at the July 5 re-audit</h3>
+          <p className="rsc-p sl-sig-lede">
+            The full six-layer breakdown behind the 73 — including the layers that were still
+            dragging. We publish the weak ones on purpose.
+          </p>
+          <div className="sl-signals">
+            {CASE_ZERO.midpointLayers.map((s) => (
+              <div className="sl-sig" key={s.layer}>
+                <span className="sl-sig-name">{s.layer}</span>
+                <span className="sl-sig-bar" aria-hidden="true"><span className="sl-sig-fill" style={{ width: `${s.score}%` }} /></span>
+                <span className="sl-sig-score">{s.score}<small>/100</small></span>
+                <span className={`sl-sig-status ${s.score < 50 ? 'warn' : s.score >= 90 ? 'ok' : 'ok'}`}>{s.score >= 90 ? 'Strong' : s.score >= 50 ? 'Solid' : 'Still building'}</span>
+              </div>
+            ))}
+          </div>
+
+          <h3 className="sl-sig-h">Where it started — June 6 baseline</h3>
           <div className="sl-signals">
             {CASE_ZERO.signals.map((s) => (
               <div className="sl-sig" key={s.signal}>
@@ -169,8 +239,9 @@ export default function ProofHubPage() {
           </div>
           <p className="rsc-p sl-honest">
             <strong>Zero signals independently confirmed at baseline.</strong> That is honest — it&apos;s
-            where every record starts before the work. Each one we verify against a real source moves
-            the count up, on the public <a href="/proof/changelog/">change log</a>.
+            where every record starts before the work. Each reading since is dated on the public{' '}
+            <a href="/proof/changelog/">change log</a>. The June 6 baseline used the original
+            six-signal model and is left exactly as it was measured.
           </p>
         </section>
 

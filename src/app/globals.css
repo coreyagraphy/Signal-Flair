@@ -1746,3 +1746,18 @@ footer{background:var(--ink2);border-top:1px solid var(--ink);padding:52px;posit
 
 /* ── Netlify Forms honeypot ── never shown to humans; bots that fill it get dropped. */
 .lf-hp{display:none!important}
+
+/* ── Case Zero three-point trajectory (18 → 73 → 91) ──
+   Palette stays inside the locked set: red for the baseline, orange for the in-progress
+   mid-point, teal for current. Yellow is deliberately NOT used here — the proof page sits
+   on cream, and yellow-on-cream fails contrast. */
+.sl-scoreband--3{gap:18px}
+.sl-scoremid{font-family:var(--flair);font-variation-settings:'opsz' 144,'wght' 500,'WONK' 1;font-size:clamp(52px,8vw,84px);line-height:0.78;color:var(--orange)}
+.sl-scoremid small{font-size:0.28em;opacity:0.5;font-weight:400}
+.sl-scoreband--3 .sl-scorearrow{font-size:30px}
+.sl-sig-h{font-family:var(--signal);font-size:11px;letter-spacing:0.2em;text-transform:uppercase;color:rgba(11,10,9,0.55);margin:34px 0 6px}
+.sl-sig-lede{margin-top:0!important;opacity:0.8}
+@media (max-width:640px){
+  .sl-scoreband--3{gap:10px}
+  .sl-scoreband--3 .sl-scorearrow{font-size:22px}
+}

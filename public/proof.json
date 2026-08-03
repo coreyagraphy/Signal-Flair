@@ -1,5 +1,5 @@
 {
-  "$comment": "Beacon — canonical client-owned proof record (internal artifact name). Served at /proof.json. Mirrors the visible Signal Proof Page™ at /proof/. Every claim carries a source OR verified:false. Filled with Signal Flair Case Zero (June 6, 2026).",
+  "$comment": "Beacon — canonical client-owned proof record (internal artifact name). Served at /proof.json. Mirrors the visible Signal Proof Page™ at /proof/. Every claim carries a source OR verified:false. Filled with Signal Flair Case Zero — baseline June 6, 2026; current reading August 3, 2026.",
   "@context": "https://signalflair.ai/beacon/v1",
   "type": "BeaconRecord",
   "version": "1.0",
@@ -10,7 +10,9 @@
     "category": "AI Proof Infrastructure",
     "summary": "AI Proof Infrastructure — evidence coherence across an organization's full public surface (site, structured data, profiles, images, video, channels, and proof), measured with the Signal Score™ across seven layers, extended to multimodal discoverability (image, video, channel, and creator/publisher attribution readiness), and preserved as versioned, self-improving assessment history. Signal Flair is not a data center; it does not sell client data, publish private records, or train foundation models on private client data.",
     "disambiguation": "Signal Flair is an Indianapolis, Indiana AI Proof Infrastructure company — the evidence layer underneath SEO and AEO (Answer Engine Optimization). It is NOT the medical MRI sequence FLAIR (Fluid-Attenuated Inversion Recovery) used in radiology/neuroimaging, and it is a separate company from SignalFlare.ai (restaurant analytics).",
-    "service_area": ["United States — nationwide (remote)"],
+    "service_area": [
+      "United States — nationwide (remote)"
+    ],
     "phone": "",
     "email": "hello@signalflair.ai",
     "google_business_profile_url": "",
@@ -21,8 +23,8 @@
   },
   "verification": {
     "verified_by": "Signal Flair",
-    "last_verified": "2026-06-06",
-    "next_review_due": "2026-08-17",
+    "last_verified": "2026-08-03",
+    "next_review_due": "2026-11-03",
     "signals_confirmed": 0,
     "signals_total": 6,
     "method": "Each claim checked against a cited public source. Unverified claims are marked verified:false and never stamped.",
@@ -30,24 +32,115 @@
   },
   "case_zero": {
     "is_case_zero": true,
-    "statement": "Signal Flair audited itself first. Scored 18/100 on June 6, 2026. Documented transparently. Re-measured at Day 30 and Day 90.",
-    "overall_score": 18,
-    "scored_on": "2026-06-06",
+    "statement": "Signal Flair audited itself first. Scored 18/100 on June 6, 2026, then built the same proof layer it sells and re-measured in public: 73/100 on July 5, 2026 and 91/100 on August 3, 2026. Every reading is dated and published, including the layers that scored badly. A Signal Score measures the proof layer; it is not a guarantee of AI ranking, citation, or recommendation.",
+    "overall_score": 91,
+    "scored_on": "2026-08-03",
     "signals": [
-      { "signal": "AI Search Presence", "score": 4, "status": "Critical" },
-      { "signal": "Entity Clarity", "score": 5, "status": "Critical" },
-      { "signal": "Crawl Readiness", "score": 35, "status": "Needs work" },
-      { "signal": "Authority Content", "score": 12, "status": "Weak" },
-      { "signal": "Review Signal", "score": 0, "status": "Missing" },
-      { "signal": "Conversion Proof", "score": 20, "status": "Partial" }
+      {
+        "signal": "AI Search Presence",
+        "score": 4,
+        "status": "Critical"
+      },
+      {
+        "signal": "Entity Clarity",
+        "score": 5,
+        "status": "Critical"
+      },
+      {
+        "signal": "Crawl Readiness",
+        "score": 35,
+        "status": "Needs work"
+      },
+      {
+        "signal": "Authority Content",
+        "score": 12,
+        "status": "Weak"
+      },
+      {
+        "signal": "Review Signal",
+        "score": 0,
+        "status": "Missing"
+      },
+      {
+        "signal": "Conversion Proof",
+        "score": 20,
+        "status": "Partial"
+      }
     ],
-    "target_state": 91
+    "baseline_score": 18,
+    "baseline_scored_on": "2026-06-06",
+    "readings": [
+      {
+        "score": 18,
+        "scored_on": "2026-06-06",
+        "label": "Baseline",
+        "model": "six-signal (audit-date model, frozen)"
+      },
+      {
+        "score": 73,
+        "scored_on": "2026-07-05",
+        "label": "Re-audit",
+        "model": "six-layer"
+      },
+      {
+        "score": 91,
+        "scored_on": "2026-08-03",
+        "label": "Current",
+        "model": "six-layer"
+      }
+    ],
+    "method": "The composite is the plain average of the layer scores at each reading. Layer detail is published against the reading it was computed from; no layer is estimated to fill a gap.",
+    "layers_2026_07_05": [
+      {
+        "layer": "Access & Crawlability",
+        "score": 100
+      },
+      {
+        "layer": "Structured Intelligence",
+        "score": 100
+      },
+      {
+        "layer": "Answer Architecture",
+        "score": 77
+      },
+      {
+        "layer": "Entity Clarity",
+        "score": 63
+      },
+      {
+        "layer": "Live AI Visibility",
+        "score": 53
+      },
+      {
+        "layer": "Trust & Proof Density",
+        "score": 43
+      }
+    ],
+    "layers_machine_verified_2026_08_03": [
+      {
+        "layer": "Access & Crawlability",
+        "score": 100,
+        "method": "deterministic scan"
+      },
+      {
+        "layer": "Structured Intelligence",
+        "score": 100,
+        "method": "deterministic scan"
+      },
+      {
+        "layer": "Answer Architecture",
+        "score": 90,
+        "method": "deterministic scan"
+      }
+    ]
   },
   "services": [
     {
       "name": "Foundation Build",
       "description": "One-time deployment of Signal Proof Page™ and AI Proof Infrastructure for businesses scoring 0-54.",
-      "service_area": ["United States — nationwide (remote)"],
+      "service_area": [
+        "United States — nationwide (remote)"
+      ],
       "availability": "Active",
       "price_basis": "fixed",
       "verified": true,
@@ -56,7 +149,9 @@
     {
       "name": "Stay Found™",
       "description": "Stay Found™ monthly proof maintenance — re-verification, change-log updates, and visibility monitoring for businesses scoring 75-100.",
-      "service_area": ["United States (remote)"],
+      "service_area": [
+        "United States (remote)"
+      ],
       "availability": "Active",
       "price_basis": "range",
       "verified": true,
@@ -64,7 +159,10 @@
     }
   ],
   "trust_evidence": {
-    "years_in_business": { "value": "", "verified": false },
+    "years_in_business": {
+      "value": "",
+      "verified": false
+    },
     "licenses": [],
     "insurance": [],
     "review_summary": {
@@ -79,8 +177,11 @@
       {
         "title": "Case Zero — Signal Flair self-audit",
         "before_score": 18,
-        "after_target": 91,
-        "date": "2026-06-06",
+        "after_score": 91,
+        "after_scored_on": "2026-08-03",
+        "midpoint_score": 73,
+        "midpoint_scored_on": "2026-07-05",
+        "before_scored_on": "2026-06-06",
         "verified": true,
         "source": "https://signalflair.ai/proof/changelog"
       }
