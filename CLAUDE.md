@@ -215,34 +215,56 @@ CTA, but must never displace the primary conversion path above. Never use
 
 ---
 
-## Intake form wiring (GHL/Jarvis intake router)
+## Intake form wiring — Netlify Forms primary, GHL secondary (2026-08-03)
 
-The form resolves its destination in this order (`SignalFlairLanding.tsx`):
-`NEXT_PUBLIC_FIELD_REPORT_WEBHOOK_URL` → `NEXT_PUBLIC_GHL_WEBHOOK_URL` → `FIELD_REPORT_WEBHOOK_OVERRIDE`.
+**GHL is being cancelled. Netlify Forms is now the lead channel that must work.**
 
-**Two routing options (no code edit — just env vars in Netlify → Environment variables, or `.env.local` for dev):**
-- **Straight to GHL:** set `NEXT_PUBLIC_GHL_WEBHOOK_URL` to the URL from GHL → Automation → Workflows →
-  Inbound Webhook trigger. This is the safe default — and stays the automatic fallback.
-- **Through a router (Jarvis / neutral intake):** set `NEXT_PUBLIC_FIELD_REPORT_WEBHOOK_URL` to the router
-  endpoint. It is tried **first**; if unset or it errors, GHL catches the lead — so you never drop one.
+Both forms fire **both** channels in parallel and report success if **either** one accepts:
 
-The form picks the value up automatically (build-time inlined for static export — redeploy after changing). See `.env.example`.
+| Channel | Where | Destination |
+|---|---|---|
+| **Primary — Netlify Forms** | `data-netlify` markup on `#lead-form` (name `field-report`) and the /pulse form (name `signal-pulse`) | Netlify → Forms → Notifications → email **`outreach@trysignalflair.com`** |
+| Secondary — GHL | `NEXT_PUBLIC_FIELD_REPORT_WEBHOOK_URL` → `NEXT_PUBLIC_GHL_WEBHOOK_URL` → `FIELD_REPORT_WEBHOOK_OVERRIDE` | GHL sub-account `dmPSx68yJZdbLgQY5Osd` |
 
-**Quick local test alternative:** paste a URL into `FIELD_REPORT_WEBHOOK_OVERRIDE` in the lead-form block
-of `SignalFlairLanding.tsx` (env vars take precedence if set).
+Netlify Forms needs no env var — Netlify parses the form out of the static export at deploy
+time. Both forms carry a `bot-field` honeypot. **After the first deploy that registers a new
+form, the email notification must be (re)confirmed in Netlify → Forms → Notifications.**
 
-Both env vars unset (and no override) = submission fails with a real error and `hello@signalflair.ai` fallback — no fake success.
+**When GHL is cancelled:** unset `NEXT_PUBLIC_FIELD_REPORT_WEBHOOK_URL`,
+`NEXT_PUBLIC_GHL_WEBHOOK_URL` and `GHL_API_KEY` in Netlify, then redeploy. Nothing else
+changes — the forms keep delivering to `outreach@trysignalflair.com`.
 
-**Email roles (Phase 10H):** `hello@signalflair.ai` = inside GHL (Field Report, intake, automations, client follow-up, GHL-based outreach, GHL replies, form fallback). `outreach@trysignalflair.com` = outside/non-GHL outreach only (manual prospecting, experiments outside GHL) — not used on the public website. Avoid `connect@signalflair.ai` and `create@mentalvision.ai` unless documented.
+**GHL secondary path (while still active):** point `NEXT_PUBLIC_FIELD_REPORT_WEBHOOK_URL` at
+`/.netlify/functions/lead-intake`, which upserts via the official **GHL Contacts API**
+(needs server-side `GHL_API_KEY`). Do **not** go back to the GHL *inbound webhook* — that
+webhook was found orphaned (its workflow had been deleted); it answered 200 forever and
+executed nothing, so leads sent to it vanished silently.
 
-**Payload fields (2026-07-22):** form fields + `submitted_at`, `form_type`/`request_type` (= `field_report`), UTM params, `lead_tag`, and **`billing_preference`** — `'annual'` or `'monthly'` if the visitor used the pricing toggle, `'not_selected'` if they never touched it (never a fake default). Corey must map `billing_preference` to a GHL custom field / workflow branch to use it in follow-up.
+**Payload fields:** form fields + `submitted_at`, `form_type`/`request_type` (= `field_report`),
+UTM params, `lead_tag`, and **`billing_preference`** — `'annual'` / `'monthly'` if the visitor
+used the pricing toggle, `'not_selected'` if they never touched it (never a fake default).
 
-GHL workflow should:
-- Create/Update Contact from payload fields
-- Add tag: "AI Visibility Score Request"
-- Map `billing_preference` → custom field (annual-intent leads = prioritize)
-- Notify Corey internally
-- Start inbound nurture sequence (4-touch — not yet built)
+**Email roles:** `outreach@trysignalflair.com` = **lead notifications from the website forms**
+(post-GHL; supersedes the Phase 10H "not used on the public website" note) plus non-GHL
+outreach. `hello@signalflair.ai` = the address shown in on-page fallback copy and used by
+GHL-side automations while GHL is live. Avoid `connect@signalflair.ai` and
+`create@mentalvision.ai` unless documented.
+
+---
+
+## 🚨 Branch hygiene — do not strand work again
+
+Work has been lost twice by assuming a branch didn't exist. **`git branch -a` only lists refs
+this clone has already fetched.** Before concluding a page, file, or feature "was never built":
+
+```bash
+git ls-remote --heads origin          # the real list of remote branches
+git fetch origin && git log --oneline origin/main..origin/<branch>   # what's stranded
+```
+
+Known history: `/pulse` was declared non-existent twice while it sat on
+`feature/signal-scan-immersive-landing-page`, along with ~50 other commits. If a remote branch
+is ahead of `main`, land it or record why it wasn't — never leave it unexamined.
 
 ---
 

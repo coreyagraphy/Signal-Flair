@@ -1743,3 +1743,6 @@ footer{background:var(--ink2);border-top:1px solid var(--ink);padding:52px;posit
   .ssc-scan-steps li{animation:none;opacity:.75}
   .ssc-gauge-arc,.ssc-bar-fill{transition:none}
 }
+
+/* ── Netlify Forms honeypot ── never shown to humans; bots that fill it get dropped. */
+.lf-hp{display:none!important}

@@ -17,6 +17,14 @@ const FIELD_REPORT_WEBHOOK_URL =
   (process.env.NEXT_PUBLIC_GHL_WEBHOOK_URL ?? '').trim() ||
   FIELD_REPORT_WEBHOOK_OVERRIDE
 const FIELD_REPORT_FALLBACK_EMAIL = 'hello@signalflair.ai'
+/**
+ * Netlify Forms is the PRIMARY lead channel: Netlify parses this form name out of the
+ * static export at deploy time and fires a submission_created email notification to
+ * outreach@trysignalflair.com. It is independent of GoHighLevel, so leads keep landing
+ * after the GHL sub-account is cancelled. GHL (below) runs in parallel as a secondary
+ * while it is still active — a submission counts as delivered if EITHER channel accepts it.
+ */
+const NETLIFY_FORM_NAME = 'field-report'
 
 const LEAD_REQUIRED = ['full_name', 'business_name', 'website_url', 'email', 'primary_service']
 const LEAD_EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]+$/
@@ -119,45 +127,64 @@ export default function SignalFlairLanding() {
     payload.billing_preference = billingRef.current.touched ? billingRef.current.mode : 'not_selected'
 
     setLeadSubmitting(true)
-    try {
-      if (!FIELD_REPORT_WEBHOOK_URL) {
-        throw new Error('webhook_not_configured')
-      }
-      console.info('[Field Report] fetch starting')
+
+    // Both channels fire in parallel. Netlify Forms is the one that has to work
+    // (it emails outreach@trysignalflair.com and outlives GHL); GHL is best-effort.
+    const withTimeout = async (ms, fn) => {
       const ctrl = new AbortController()
-      const timer = setTimeout(() => ctrl.abort(), 10000)
-      try {
-        const res = await fetch(FIELD_REPORT_WEBHOOK_URL, {
-          method: 'POST',
-          headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify(payload),
-          signal: ctrl.signal,
-        })
-        if (!res.ok) throw new Error('status ' + res.status)
-      } finally {
-        clearTimeout(timer)
-      }
-      console.info('[Field Report] fetch complete')
-      track('form_submit', { form_id: 'lead-form', primary_service: payload.primary_service, billing_preference: payload.billing_preference, demo_mode: false })
+      const timer = setTimeout(() => ctrl.abort(), ms)
+      try { return await fn(ctrl.signal) } finally { clearTimeout(timer) }
+    }
+
+    const netlifyPost = withTimeout(10000, (signal) =>
+      fetch('/', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+        body: new URLSearchParams({ 'form-name': NETLIFY_FORM_NAME, ...payload }).toString(),
+        signal,
+      }).then((res) => {
+        if (!res.ok) throw new Error('netlify status ' + res.status)
+        return true
+      }),
+    )
+
+    const ghlPost = FIELD_REPORT_WEBHOOK_URL
+      ? withTimeout(10000, (signal) =>
+          fetch(FIELD_REPORT_WEBHOOK_URL, {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify(payload),
+            signal,
+          }).then((res) => {
+            if (!res.ok) throw new Error('ghl status ' + res.status)
+            return true
+          }),
+        )
+      : Promise.reject(new Error('webhook_not_configured'))
+
+    const [netlifyResult, ghlResult] = await Promise.allSettled([netlifyPost, ghlPost])
+    console.info('[Field Report] netlify:', netlifyResult.status, '· ghl:', ghlResult.status)
+
+    if (netlifyResult.status === 'fulfilled' || ghlResult.status === 'fulfilled') {
+      track('form_submit', {
+        form_id: 'lead-form',
+        primary_service: payload.primary_service,
+        billing_preference: payload.billing_preference,
+        demo_mode: false,
+        channel: netlifyResult.status === 'fulfilled' ? 'netlify_forms' : 'ghl',
+      })
       setLeadSuccess(true)
       setLeadFormError('')
       setLeadFieldErrors({})
-    } catch (err) {
-      console.error('[Field Report] submit failed', err)
-      if (err?.name === 'AbortError') {
-        setLeadFormError(`Request timed out. Email ${FIELD_REPORT_FALLBACK_EMAIL} and we'll follow up manually.`)
-      } else if (err?.message === 'webhook_not_configured') {
-        setLeadFormError(
-          process.env.NODE_ENV === 'development'
-            ? 'Field Report webhook not configured. Set NEXT_PUBLIC_FIELD_REPORT_WEBHOOK_URL or NEXT_PUBLIC_GHL_WEBHOOK_URL in .env.local and restart dev.'
-            : `Signal Pulse™ intake is temporarily unavailable. Email ${FIELD_REPORT_FALLBACK_EMAIL} and we'll follow up manually.`,
-        )
-      } else {
-        setLeadFormError(`We couldn't submit your Signal Pulse™ request. Email ${FIELD_REPORT_FALLBACK_EMAIL} and we'll follow up manually.`)
-      }
-    } finally {
-      setLeadSubmitting(false)
+    } else {
+      console.error('[Field Report] submit failed', netlifyResult.reason, ghlResult.reason)
+      setLeadFormError(
+        process.env.NODE_ENV === 'development'
+          ? 'Lead intake unreachable in dev — Netlify Forms only accepts POSTs on a deployed Netlify site. Deploy, or set NEXT_PUBLIC_FIELD_REPORT_WEBHOOK_URL to test the GHL path locally.'
+          : `We couldn't submit your Signal Pulse™ request. Email ${FIELD_REPORT_FALLBACK_EMAIL} and we'll follow up manually.`,
+      )
     }
+    setLeadSubmitting(false)
   }, [validateLeadField])
 
   useEffect(() => {
@@ -1430,7 +1457,9 @@ export default function SignalFlairLanding() {
       <section id="about">
         <div className="about-inner">
           <div className="about-photo reveal">
-            <img className="about-portrait" src="/corey-ellis-founder.png" alt="Corey Ellis, founder of Signal Flair" width={1536} height={1536} loading="lazy" decoding="async" />
+            {/* Same portrait as /corey-ellis-founder.png (which schema still points at for
+                its higher resolution) — this 1024px JPG is 101 KB vs the PNG's 1.5 MB. */}
+            <img className="about-portrait" src="/founder.jpg" alt="Corey Ellis, founder of Signal Flair" width={1024} height={1024} loading="lazy" decoding="async" />
             <div className="about-photo-cap">Corey Ellis · Founder</div>
           </div>
           <div className="about-copy reveal">
@@ -1551,7 +1580,11 @@ export default function SignalFlairLanding() {
               <div id="lead-form-wrap">
                 <div className="lead-h">Run Your Free <em>Signal Pulse™</em></div>
                 <div className="lead-subline">We run 3 of the 7 Signal Protocol™ layers on your business and deliver an instant-preview read within 24 hours — no call required. Most local businesses score under 40. You&apos;ll see exactly where your signal breaks. The full Signal Score™ Audit — free during the founding period ($500 after) — comes next.</div>
-                <form id="lead-form" ref={leadFormRef} noValidate onSubmit={handleLeadSubmit}>
+                <form id="lead-form" name={NETLIFY_FORM_NAME} data-netlify="true" data-netlify-honeypot="bot-field" ref={leadFormRef} noValidate onSubmit={handleLeadSubmit}>
+                  {/* Netlify Forms registration — parsed out of the static export at deploy
+                      time. The honeypot is never shown to humans; bots that fill it are dropped. */}
+                  <input type="hidden" name="form-name" value={NETLIFY_FORM_NAME} />
+                  <p className="lf-hp" aria-hidden="true"><label>Don&apos;t fill this out if you&apos;re human: <input name="bot-field" tabIndex={-1} autoComplete="off" /></label></p>
                   <div className="lf-field">
                     <label className="lf-label" htmlFor="lf-name">Full Name<span className="req">*</span></label>
                     <input className={`lf-input${leadFieldErrors.full_name ? ' invalid' : ''}`} id="lf-name" name="full_name" type="text" autoComplete="name" placeholder="Jane Smith" />
@@ -1593,6 +1626,12 @@ export default function SignalFlairLanding() {
                   <input type="hidden" name="utm_medium" defaultValue="" />
                   <input type="hidden" name="utm_campaign" defaultValue="" />
                   <input type="hidden" name="lead_tag" defaultValue="Field Report Request" />
+                  {/* Declared so Netlify registers them as columns on the submission —
+                      the values are filled in by the submit handler, not the visitor. */}
+                  <input type="hidden" name="submitted_at" defaultValue="" />
+                  <input type="hidden" name="form_type" defaultValue="field_report" />
+                  <input type="hidden" name="request_type" defaultValue="field_report" />
+                  <input type="hidden" name="billing_preference" defaultValue="not_selected" />
                   <div className="lead-formerr" id="lead-formerr" aria-live="assertive">{leadFormError}</div>
                   <button type="submit" className="lead-submit" disabled={leadSubmitting}>
                     {leadSubmitting ? 'Running…' : '▸ Run My Signal'}

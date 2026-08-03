@@ -1,0 +1,66 @@
+<!--
+  EMAIL A — "Your Signal Pulse™ score is in" (email-safe HTML, CRM-ready)
+  ----------------------------------------------------------------------
+  Paste into the Signal Pulse workflow's Email A → HTML/code view.
+  Subject: Your Signal Pulse™ score is in
+  The teal button links to the LIVE premium scorecard, personalized per lead via the
+  signal_pulse_* merge fields. company is LAST in the URL (ampersand-safe).
+  Requires the 4 custom fields mapped in the Create Contact step:
+    signal_pulse_access / signal_pulse_structure / signal_pulse_trust / signal_pulse_answers
+-->
+<table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0" bgcolor="#f4f6f5" style="border-collapse:collapse;background:#f4f6f5;margin:0;padding:0;">
+  <tr>
+    <td align="center" style="padding:24px 12px;">
+      <table role="presentation" width="600" cellpadding="0" cellspacing="0" border="0" style="border-collapse:collapse;width:600px;max-width:600px;background:#ffffff;border:1px solid #e3e8e6;border-radius:14px;overflow:hidden;">
+
+        <!-- header -->
+        <tr>
+          <td bgcolor="#0e1413" style="background:#0e1413;padding:22px 28px;">
+            <div style="font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Helvetica,Arial,sans-serif;font-size:11px;letter-spacing:2px;text-transform:uppercase;color:#9fb4b0;font-weight:700;">Signal Flair · Signal Pulse&#8482;</div>
+          </td>
+        </tr>
+
+        <!-- body -->
+        <tr>
+          <td style="padding:28px 28px 8px;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Helvetica,Arial,sans-serif;color:#28322f;">
+            <p style="margin:0 0 16px;font-size:16px;line-height:1.6;">Hi there,</p>
+            <p style="margin:0 0 16px;font-size:16px;line-height:1.6;">You just ran a Signal Pulse&#8482; on <strong>{{contact.pulse_website_url}}</strong> — here&#8217;s your instant read.</p>
+            <p style="margin:0 0 4px;font-size:16px;line-height:1.6;">Your Signal Pulse: <strong style="color:#0d9488;">{{contact.signal_pulse_score}}/100</strong>.</p>
+          </td>
+        </tr>
+
+        <!-- BUTTON -->
+        <tr>
+          <td align="center" style="padding:14px 28px 22px;">
+            <table role="presentation" cellpadding="0" cellspacing="0" border="0" align="center" style="border-collapse:collapse;">
+              <tr>
+                <td align="center" bgcolor="#0d9488" style="background:#0d9488;border-radius:10px;">
+                  <a href="https://signalflair.ai/scorecard/?score={{contact.signal_pulse_score}}&amp;kind=pulse&amp;access={{contact.signal_pulse_access}}&amp;structure={{contact.signal_pulse_structure}}&amp;trust={{contact.signal_pulse_trust}}&amp;answers={{contact.signal_pulse_answers}}&amp;company={{contact.company_name}}" target="_blank" style="display:inline-block;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Helvetica,Arial,sans-serif;font-size:16px;font-weight:700;color:#ffffff;text-decoration:none;padding:15px 34px;">View your Signal Scorecard &#8594;</a>
+                </td>
+              </tr>
+            </table>
+          </td>
+        </tr>
+
+        <!-- explanation + CTA -->
+        <tr>
+          <td style="padding:0 28px 8px;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Helvetica,Arial,sans-serif;color:#28322f;">
+            <p style="margin:0 0 16px;font-size:15px;line-height:1.6;color:#48524f;">That&#8217;s an instant, automated read of the first signals AI answer engines (ChatGPT, Claude, Perplexity, Gemini) use to find and understand your site — access, structure, trust, and answers.</p>
+            <p style="margin:0 0 16px;font-size:15px;line-height:1.6;color:#48524f;">It&#8217;s a preview, not the full picture. The complete <strong style="color:#0e1413;">Signal Score&#8482;</strong> measures all six layers of the Signal Protocol&#8482;, verified by hand — exactly what&#8217;s keeping AI from surfacing your business, and what to fix first.</p>
+            <p style="margin:0 0 20px;font-size:16px;line-height:1.6;">Want your full Signal Score&#8482;? Just reply <strong>YES</strong> and I&#8217;ll get it started — no call required.</p>
+          </td>
+        </tr>
+
+        <!-- sign-off -->
+        <tr>
+          <td style="padding:0 28px 26px;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Helvetica,Arial,sans-serif;">
+            <p style="margin:0;font-size:14px;line-height:1.6;color:#28322f;">&#8212; Corey Ellis</p>
+            <p style="margin:2px 0 0;font-size:13px;line-height:1.6;color:#5b6b68;">Signal Flair &middot; hello@signalflair.ai</p>
+            <p style="margin:14px 0 0;font-size:11px;line-height:1.6;color:#8a938f;">The Signal Pulse&#8482; and Signal Score&#8482; measure AI readiness and proof density. Not a guarantee of rankings, citations, or AI recommendations.</p>
+          </td>
+        </tr>
+
+      </table>
+    </td>
+  </tr>
+</table>
