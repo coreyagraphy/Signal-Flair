@@ -77,9 +77,12 @@ export default function SignalPulsePage() {
       <div className="ssc-scanline" aria-hidden="true" />
 
       <nav className="ssc-nav">
-        <a className="ssc-nav-logo" href="/" aria-label="Signal Flair home">
-          <SignalFlairLogo onDark style={{ height: 68, width: 'auto', display: 'block' }} />
-        </a>
+        <div>
+          <a className="ssc-nav-logo" href="/" aria-label="Signal Flair home">
+            <SignalFlairLogo onDark style={{ height: 68, width: 'auto', display: 'block' }} />
+          </a>
+          <div className="ssc-nav-tag"><span className="cat-mark">AI Proof Infrastructure™</span></div>
+        </div>
         <a className="ssc-nav-cta" href="#pulse">▸ GET YOUR PULSE</a>
       </nav>
 

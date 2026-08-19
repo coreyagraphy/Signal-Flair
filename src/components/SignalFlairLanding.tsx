@@ -399,11 +399,13 @@ export default function SignalFlairLanding() {
     const siteNav = document.getElementById('site-nav')
     window.addEventListener('scroll', () => { siteNav.classList.toggle('visible', window.scrollY > window.innerHeight * 0.8) }, { passive: true })
 
-    /* ─── HERO ENGINE-NAME ROTATOR — keeps shuffling AI · ChatGPT · Claude · Perplexity · Gemini · Google ─── */
+    /* ─── HERO ENGINE-NAME ROTATOR ─── */
     const rotEl = document.getElementById('engine-rot')
     if (rotEl) {
-      // final list, fixed ALPHABETICAL order so the cycle is predictable and none get skipped
-      const ROT = ['AI Overviews', 'Claude', 'Cohere', 'Gemini', 'GPT', 'Grok', 'Kimi', 'Llama', 'Mistral', 'Perplexity']
+      // Corey's locked hero set (2026-08-19), in his order. Do NOT add engines that are not
+      // on this list, and do not re-alphabetise it — which names appear on the hero is a
+      // deliberate brand choice, not a technical one.
+      const ROT = ['ChatGPT', 'Gemini', 'Claude', 'Perplexity', 'Grok', 'Meta AI', 'Google AI Overviews', 'Copilot', 'Kimi', 'DeepSeek', 'Mistral', 'Llama']
       // each swap advances through the flare palette (yellow → orange → teal → pink)...
       const ROT_COLORS = ['#fff45f', '#ff5a1f', '#00d2bf', '#ff3d82']
       // ...and through the three brand fonts, so each word gets a different typeface too
@@ -596,7 +598,7 @@ export default function SignalFlairLanding() {
         <nav id="hnav">
           <div>
             <div className="nav-logo"><SignalFlairLogo onDark pulse style={{ height: 70, width: 'auto', display: 'block' }} /></div>
-            <div className="nav-logo-tag"><span className="ntag-cat">AI Proof Infrastructure™</span> · Indianapolis, Indiana, serving nationwide</div>
+            <div className="nav-logo-tag"><span className="ntag-cat cat-mark">AI Proof Infrastructure™</span> · Indianapolis, Indiana, serving nationwide</div>
           </div>
           <div style={{ display: 'flex', alignItems: 'center', gap: '24px' }}>
             <a className="nl" href="#check">Signal Score</a>
@@ -607,25 +609,15 @@ export default function SignalFlairLanding() {
         </nav>
         {/* Cinematic instrument panel: DIAGNOSIS above → SCORE GAUGE centerpiece → RECOVERY below */}
         <div id="hero-layout">
-          <h1
-            className="h-sr-only"
-            style={{
-              position: 'absolute',
-              width: '1px',
-              height: '1px',
-              padding: 0,
-              margin: '-1px',
-              overflow: 'hidden',
-              clip: 'rect(0,0,0,0)',
-              whiteSpace: 'nowrap',
-              border: 0,
-            }}
-          >
-            AI found your business. It still might have you completely wrong. Run your Signal Score™ and see what the machines think they know.
-          </h1>
           <div className="hero-word" aria-hidden="true">FOUND.</div>
           <div className="h-side top">
-            <div className="h-eyebrow"><div className="h-ey-dot" />AI Proof Infrastructure™</div>
+            {/* The category phrase IS the h1 — visible, not a screen-reader-only string.
+                The rotating headline below it is aria-hidden because its text swaps on a
+                timer, which is why the h1 lives here rather than there. */}
+            <h1 className="h-cat-h1">
+              <span className="h-eyebrow"><span className="h-ey-dot" /><span className="cat-mark">AI Proof Infrastructure™</span></span>
+              <span className="h-cat-line">Built for <strong>AI search</strong>, <strong>answer engines</strong>, and the <strong>agents</strong> coming next.</span>
+            </h1>
             <div className="h-headline" aria-hidden="true">Can <span id="engine-rot" className="eng-rot">Claude</span> <span id="verb-rot" className="verb-rot">find</span> your business <span className="glass-text-orange">right now?</span></div>
           </div>
 
@@ -663,7 +655,7 @@ export default function SignalFlairLanding() {
       <nav id="site-nav">
         <div>
           <a className="nav-logo" href="#hero" style={{ display: 'flex', alignItems: 'center' }}><SignalFlairLogo style={{ height: 70, width: 'auto', display: 'block' }} /></a>
-          <div className="nav-logo-tag" style={{ color: 'rgba(23,19,18,0.55)' }}><span className="ntag-cat">AI Proof Infrastructure™</span></div>
+          <div className="nav-logo-tag" style={{ color: 'rgba(23,19,18,0.55)' }}><span className="ntag-cat cat-mark on-paper">AI Proof Infrastructure™</span></div>
         </div>
         <div className="snav-actions" style={{ display: 'flex', alignItems: 'center', gap: '24px' }}>
           <a href="#check" style={snl}>Signal Score</a>
@@ -780,7 +772,7 @@ export default function SignalFlairLanding() {
             <div className="sig-eyebrow">What does Signal Flair build?</div>
             <div className="sig-big">FIND THE BREAK.<br />FIX THE SIGNAL.<br /><em>KEEP IT ALIVE.</em></div>
           </div>
-          <div className="sig-tagline">Signal Flair builds <strong>AI Proof Infrastructure™</strong> — the proof layer that helps answer engines and AI agents understand who you are, what you do, where you operate, and why your claims deserve trust. Four outcomes, in plain English: <strong>findable, understandable, verifiable, actionable.</strong> First we measure the problem. Then we build what is missing. Then we keep it from going stale.</div>
+          <div className="sig-tagline">Signal Flair builds <strong className="cat-mark">AI Proof Infrastructure™</strong> — the proof layer that helps answer engines and AI agents understand who you are, what you do, where you operate, and why your claims deserve trust. Four outcomes, in plain English: <strong>findable, understandable, verifiable, actionable.</strong> First we measure the problem. Then we build what is missing. Then we keep it from going stale.</div>
         </div>
         <div className="sig-rows">
           <div className="sig-row reveal">
@@ -1453,7 +1445,7 @@ export default function SignalFlairLanding() {
         <div className="cta-deco">FOUND.</div>
         <div className="cta-inner">
           <div className="cta-left">
-            <div className="cta-y-pre reveal">AI Proof Infrastructure™</div>
+            <div className="cta-y-pre reveal"><span className="cat-mark on-paper">AI Proof Infrastructure™</span></div>
             <div className="cta-y-title reveal">AI is talking about your business.<br /><em>Go see what it said.</em></div>
             <div className="cta-y-sub reveal">Your Pulse reads the live signals in seconds — right here on the site, no waiting on an email. You see where the signal breaks. What you do next is up to you.</div>
             <div className="cta-y-btns reveal" style={{ marginTop: '26px' }}>
@@ -1489,7 +1481,7 @@ export default function SignalFlairLanding() {
         <div className="fi">
           <div>
             <a className="f-logo" href="#hero"><SignalFlairLogo onDark style={{ height: 70, width: 'auto', display: 'block' }} /></a>
-            <div className="f-tag">AI Proof Infrastructure™<br />Indianapolis, Indiana · Serving businesses nationwide · Est. 2026<br />Your business, found by AI.</div>
+            <div className="f-tag"><span className="cat-mark">AI Proof Infrastructure™</span>Built for AI search, answer engines, and the agents coming next.<br />Indianapolis, Indiana · Serving businesses nationwide · Est. 2026<br />Your business, found by AI.</div>
             <a className="f-email" href="mailto:hello@signalflair.ai">hello@signalflair.ai</a>
           </div>
           <div><div className="f-head">Services</div><a className="f-link" href="#signal">AI Visibility Audit</a><a className="f-link" href="#signal">Foundation Build</a><a className="f-link" href="#signal">Stay Found™</a><a className="f-link" href="#check">What We Check</a><a className="f-link" href="#pricing">Pricing</a></div>
