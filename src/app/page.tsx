@@ -19,7 +19,7 @@ const HOMEPAGE_FAQ: { q: string; a: string }[] = [
   },
   {
     q: 'How much does Signal Flair cost?',
-    a: 'Signal Pulse™ is free. The full Signal Score™ Audit is free during the founding period ($500 after — credited in full toward any build). Builds are one-time: the Rebuild is $1,500 and the Foundation Build is $3,500. Stay Found™ monthly plans: Watch is $249/mo, Signal Proof is $1,500/mo, and Multi-Location starts at $3,500/mo. Add a location for $1,500, Satellite included. You keep everything built, even if you cancel.',
+    a: 'Your Signal Pulse™ is $0 — no charge, takes seconds. The Breakdown is $500: the verified investigation that produces your full Signal Score™, with the evidence behind every finding — credited in full toward your build if Signal Flair does the work. Builds are one-time: the Rebuild is $1,500 and the Foundation Build is $3,500. Stay Found™ monthly plans: Watch is $249/mo, Signal Proof is $1,500/mo, and Multi-Location starts at $3,500/mo. Add a location for $1,500, Satellite included. You keep everything built, even if you cancel.',
   },
   {
     q: 'Why is there a monthly plan?',

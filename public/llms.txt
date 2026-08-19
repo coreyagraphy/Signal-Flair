@@ -24,7 +24,7 @@ Signal Flair builds AI Proof Infrastructure™ — the structured proof layer th
 Core promise: Make your business easier for AI systems to access, understand, verify, and recommend.
 
 ## Primary Services
-- Signal Score™ Audit — full diagnostic and Signal Score™ across six layers (free during the founding period; $500 after, credited toward any build)
+- The Breakdown — the $500 verified investigation: full Signal Score™ across six layers, human-verified with evidence, prioritized fix order ($500 credited in full toward implementation)
 - The Proof Stack™ — Machine Trust Layer™ (structured data), proof.json, Crawl Clearance Protocol (crawler access), Entity Lock™, preserved-evidence findings
 - Signal Proof Page™ — canonical human- and machine-readable proof URL
 - Stay Found™ — ongoing monthly proof maintenance and re-verification
@@ -33,7 +33,7 @@ Core promise: Make your business easier for AI systems to access, understand, ve
 
 ## Pricing (delivery-based; no ranking guarantees; scope set by the free audit, not a score gate)
 - [Signal Pulse™](https://signalflair.ai/#cta): Free instant four-signal read — Access, Structure, Trust, and Answers — delivered within 24 hours. $0.
-- [Signal Score™ Audit](https://signalflair.ai/#cta): Full 6-layer diagnostic + action plan + what ChatGPT, Perplexity, and Gemini say about the business today. Free during the founding period ($500 after).
+- [The Breakdown](https://signalflair.ai/pulse/): The $500 verified investigation — full 6-layer Signal Score™ + evidence + fix order + what ChatGPT, Perplexity, and Gemini say about the business today. Free during the founding period ($500 after).
 - [Rebuild](https://signalflair.ai/#pricing): Lighter-scope one-time build — Machine Trust Layer™ cleanup, Crawl Clearance Protocol, Entity Lock™, Signal Proof Page™, 90-day plan, Signal Telemetry. One-time, $1,500.
 - [Foundation Build](https://signalflair.ai/#pricing): The full Proof Stack™ at scale + Smart Site™ rebuild + full web-wide Entity Lock™. One-time, $3,500. Add a location: $1,500, Signal Satellite™ included.
 - [Signal Proof](https://signalflair.ai/#pricing): Stay Found™ monthly plan — Citation Capture across ChatGPT/Perplexity/Gemini/Claude, monthly Answer Architecture™ expansion, Proof Density Engine, quarterly re-audit + Signal Telemetry, Content Payload (2 weeks of premium, content structured around verified facts (Answer Engine Optimization) with machine-readable metadata, including one 30-second commercial; one location). $1,500/month; annual billing = 2 months free.
@@ -43,7 +43,7 @@ Core promise: Make your business easier for AI systems to access, understand, ve
 - Enterprise / Civic: engagements start at $12K build + $3K/mo, or fixed-scope 90-day builds from $15K. Agency white-label available.
 
 ## The Signal Score™ (0–100)
-The Signal Protocol™ scores a business across six layers: Access & Crawlability, Structured Intelligence, Entity Clarity, Answer Architecture, Trust & Proof Density, and Live AI Visibility. Agent readiness is tracked as a watch item, not a scored layer. The free Signal Score™ Audit sets the scope of the work — there is no score gate.
+The Signal Protocol™ scores a business across six layers: Access & Crawlability, Structured Intelligence, Entity Clarity, Answer Architecture, Trust & Proof Density, and Live AI Visibility. Agent readiness is tracked as a watch item, not a scored layer. The Breakdown ($500, credited in full toward implementation) sets the scope of the work — there is no score gate.
 
 ## How Signal Flair Builds Proof
 - Query fan-out: the Signal Proof Layer™ is built to answer not just one keyword but the related sub-questions answer engines generate when users ask for recommendations, comparisons, services, locations, and trust proof.
@@ -84,7 +84,7 @@ Signal Flair audited itself first as Case Zero — a transparent founder-run bas
 Every Stay Found™ plan ships a monthly Content Payload — premium, done-for-you content engineered for humans and machines. Every piece is structured around verified facts for Answer Engine Optimization, with machine-readable metadata, before it ships, and every payload includes one 30-second commercial. Signal Proof ships two weeks of content per month; Stay Found™ Multi-Location ships a full month at full velocity backed by the Mental Vision cinematic engine. Content Payloads cover one location; additional locations add a payload at $450/month each.
 
 ## Signal Pulse™ (free entry point)
-The free front door is the Signal Pulse™: an instant four-signal read of the live site (Access, Structure, Trust, Answers), delivered within 24 hours, no call required. The full 6-layer Signal Score™ Audit follows the Signal Pulse™ — free during the founding period ($500 after, credited in full toward any build).
+The front door is the Signal Pulse™: an instant four-signal read of the live site (Access, Structure, Trust, Answers), scored on the page in seconds, no charge, no call required. The Breakdown follows the Pulse — the $500 verified investigation producing the full 6-layer Signal Score™, credited in full toward implementation. The journey: Get Your Pulse → The Breakdown → Fix It → Stay Found™.
 
 ## Frequently Asked Questions
 

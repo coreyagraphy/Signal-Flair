@@ -7,11 +7,10 @@ import { tierFor } from '../../lib/signal-tiers'
   /scorecard — hosted, per-lead Signal Scorecard™ in the premium "instrument" style.
   Reads values from the URL query string so the CRM can link to it with merge fields:
     /scorecard/?company={{contact.company_name}}&score={{contact.signal_score}}
-      &access={{contact.layer_access}}&structure={{contact.layer_structure}}
-      &entity={{contact.layer_entity}}&answers={{contact.layer_answers}}
-      &trust={{contact.layer_trust}}&live={{contact.layer_live}}&agent={{contact.layer_agent}}&date=July%201,%202026
-  Pulse variant (4 signals) links the same page with signal_pulse_* values; the three
-  layers with no value render honestly as "Pending".
+      &access=..&structure=..&entity=..&answers=..&trust=..&live=..&date=July%201,%202026
+  Pulse variant (4 signals) links the same page with signal_pulse_* values; layers with
+  no value render honestly as locked/Pending, and the readout is labeled a PARTIAL read —
+  a score computed from available checks must never present as a complete audit.
   No score param at all  ->  the marketing "SAMPLE READOUT" view (87, blurbs only).
 */
 
@@ -24,7 +23,6 @@ const LAYERS: Layer[] = [
   { n: '04', key: 'answers', name: 'Answer Architecture', blurb: 'Is there something to cite.', accent: '#fff45f' },
   { n: '05', key: 'trust', name: 'Trust & Proof Density', blurb: 'How much verifiable evidence exists.', accent: '#00d2bf' },
   { n: '06', key: 'live', name: 'Live AI Visibility', blurb: 'Does it actually surface in answers.', accent: '#ff5a1f' },
-  { n: '07', key: 'agent', name: 'Agent & Commerce Readiness', blurb: 'Can an AI agent actually act on it.', accent: '#37c4ff' },
 ]
 
 const clampScore = (v: string | null): number | null => {
@@ -90,6 +88,9 @@ export default function ScorecardPage() {
   }, [ready, target])
 
   const offset = CIRC * (1 - display / 100)
+  const verifiedCount = sample ? LAYERS.length : LAYERS.filter((l) => layerScores[l.key] != null).length
+  const pendingCount = LAYERS.length - verifiedCount
+  const partial = !sample && pendingCount > 0
   const headline = company || 'The Signal Score™'
   const readoutLabel = sample ? 'Sample readout' : (company || 'Signal Scorecard™')
 
@@ -145,10 +146,17 @@ export default function ScorecardPage() {
 
           {isPulse && (
             <div className="sfsc-level">
-              <strong>Level 1: cleared.</strong> You scanned four of six signals on the spot. Two are still <strong className="sfsc-lock-word">🔒 locked</strong> — <strong>Level&nbsp;2</strong> is your full Signal Score™: the boss fight that cracks them open and hands you the walkthrough to 100.
+              <strong>Level 1: cleared.</strong> You scanned {verifiedCount} of six signals on the spot. {pendingCount === 2 ? 'Two' : String(pendingCount)} are still <strong className="sfsc-lock-word">🔒 locked</strong> — <strong>Level&nbsp;2</strong> is your full Signal Score™: the boss fight that cracks them open and hands you the walkthrough to 100.
             </div>
           )}
 
+          {partial && (
+            <div style={{ display: 'flex', flexWrap: 'wrap', gap: '8px', margin: '14px 0 0' }}>
+              <span style={{ fontFamily: 'inherit', fontSize: '11px', letterSpacing: '0.14em', textTransform: 'uppercase', padding: '5px 10px', border: '1px solid rgba(0,210,191,0.5)', color: '#00d2bf', borderRadius: '4px' }}>{verifiedCount} verified</span>
+              <span style={{ fontFamily: 'inherit', fontSize: '11px', letterSpacing: '0.14em', textTransform: 'uppercase', padding: '5px 10px', border: '1px solid rgba(255,207,51,0.5)', color: '#ffcf33', borderRadius: '4px' }}>{pendingCount} not yet verified</span>
+              <span style={{ fontFamily: 'inherit', fontSize: '11px', letterSpacing: '0.14em', textTransform: 'uppercase', padding: '5px 10px', border: '1px solid rgba(255,90,31,0.55)', color: '#ff5a1f', borderRadius: '4px' }}>Partial read</span>
+            </div>
+          )}
           <div className="sfsc-foot">
             {asOf ? `As of ${asOf} · ` : ''}{isPulse ? 'Level 1 of 2 · ' : ''}The six layers are public. The scoring method is not.
           </div>
@@ -178,7 +186,8 @@ export default function ScorecardPage() {
             </svg>
             <div className="sfsc-readout">
               <div className="sfsc-score" style={{ color: tier.color }}>{display}</div>
-              <div className="sfsc-score-lbl">/ 100 · {isPulse ? 'Signal Pulse' : 'Signal Score'}&trade;</div>
+              <div className="sfsc-score-lbl">/ 100 · {isPulse ? 'Signal Pulse' : 'Signal Score'}&trade;{partial ? ' · partial read' : ''}</div>
+              {partial && <div style={{ fontSize: '10px', letterSpacing: '0.12em', textTransform: 'uppercase', color: '#ffcf33', marginTop: '4px' }}>{verifiedCount} of {LAYERS.length} layers verified — not a complete audit</div>}
               <div className="sfsc-sample">{readoutLabel}</div>
             </div>
           </div>

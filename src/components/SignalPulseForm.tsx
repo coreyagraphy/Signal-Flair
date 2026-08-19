@@ -4,14 +4,13 @@
  *
  * On submit it calls the Netlify function (/.netlify/functions/signal-pulse), which fetches
  * the prospect's site server-side and returns a deterministic 0–100 Signal Pulse™ + four
- * bucket scores in a few seconds. The page animates a live gauge. The function also forwards
- * the lead + score to GHL, so the fuller Signal Score™ follow-up is emailed.
+ * bucket scores in a few seconds. The page animates a live gauge. Lead delivery is Netlify
+ * Forms → email (GHL retired 2026-08-18; BOS will connect to this flow later).
  *
  * Robust fallbacks:
- *  - function unavailable (e.g. local dev, or pre-deploy) → post straight to the GHL webhook
- *    and show the "request received, we'll email it" state (no fake score).
- *  - unreachable/invalid URL → clear message; the lead is still captured server-side when possible.
- * Lead routing stays SEPARATE from the homepage Signal Pulse intake (source=signal-pulse).
+ *  - function unavailable (e.g. local dev, or pre-deploy) → optional fallback webhook
+ *    and the "request received, we'll email it" state (no fake score).
+ *  - unreachable/invalid URL → clear message; the lead is still captured when possible.
  */
 import { useCallback, useEffect, useRef, useState } from 'react'
 import { track } from '@/lib/analytics'
@@ -22,7 +21,6 @@ const FUNCTION_URL = '/.netlify/functions/signal-pulse'
 const FALLBACK_WEBHOOK =
   (process.env.NEXT_PUBLIC_SIGNAL_PULSE_WEBHOOK_URL ?? '').trim() ||
   (process.env.NEXT_PUBLIC_FIELD_REPORT_WEBHOOK_URL ?? '').trim() ||
-  (process.env.NEXT_PUBLIC_GHL_WEBHOOK_URL ?? '').trim() ||
   ''
 const FALLBACK_EMAIL = 'hello@signalflair.ai'
 const EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]+$/
@@ -57,8 +55,8 @@ export default function SignalPulseForm() {
     try { setScanDomain(new URL(/^https?:\/\//i.test(website) ? website : 'https://' + website).hostname) } catch { setScanDomain(website) }
     setPhase('scanning')
 
-    // Until GHL notifications are wired: mirror the lead to Netlify Forms, which emails
-    // outreach@trysignalflair.com. Covers BOTH direct submits and signalflair.ai handoffs.
+    // Lead delivery: Netlify Forms → email to outreach@trysignalflair.com. Covers BOTH
+    // direct submits and homepage handoffs. (BOS integration will attach here later.)
     try {
       fetch('/', { method: 'POST', headers: { 'Content-Type': 'application/x-www-form-urlencoded' }, body: new URLSearchParams({ 'form-name': 'signal-pulse', ...payload }).toString() }).catch(() => {})
     } catch { /* best effort */ }
@@ -92,8 +90,8 @@ export default function SignalPulseForm() {
     setPhase('sent')
   }, [])
 
-  // Handoff auto-run: arriving from the signalflair.ai contact form? Their info is already
-  // captured — never ask twice. Same email → GHL upserts the same contact (no dupes).
+  // Handoff auto-run: legacy sessionStorage handoff from older homepage forms — honored
+  // if present so nobody is asked twice. The homepage now links straight to /pulse.
   useEffect(() => {
     try {
       const raw = sessionStorage.getItem('sf_lead')
@@ -167,7 +165,7 @@ export default function SignalPulseForm() {
           <p style={{ display: 'none' }} aria-hidden="true"><label>Don&apos;t fill this out: <input name="bot-field" /></label></p>
           <div className="ssc-form-head">
             <span className="ssc-form-badge"><span className="ssc-dot" aria-hidden="true" />Signal Pulse™</span>
-            <span className="ssc-form-sub">Tell us who you are and where to look — your Signal Pulse™ score appears in seconds. The full, human-verified Signal Score™ is an optional next step.</span>
+            <span className="ssc-form-sub">Tell us who you are and where to look — your Pulse appears in seconds. The Breakdown, the human-verified investigation, is the optional next step.</span>
           </div>
           <div className="ssc-field">
             <label className="ssc-label" htmlFor="sp-name">Your name<span className="ssc-req">*</span></label>
@@ -200,7 +198,7 @@ export default function SignalPulseForm() {
           <input type="hidden" name="utm_campaign" defaultValue="" />
           <div className="ssc-formerr" aria-live="assertive">{formError}</div>
           <button type="submit" className="ssc-submit">▸ Get My Signal Pulse™</button>
-          <div className="ssc-micro">No credit card. No spam. Signal Pulse™ is an instant preview — your full Signal Score™ is human-verified across all seven Signal Protocol™ layers.</div>
+          <div className="ssc-micro">No charge. Takes seconds. No spam — and no call required. The Breakdown (the human-verified investigation across all six layers) is optional, after.</div>
         </form>
       )}
 
@@ -251,10 +249,9 @@ function PulseResult({ data, email, website, fromHandoff = false, fullName = '',
   const [optErr, setOptErr] = useState('')
   const pulse = data.pulse
 
-  // Level 2 = a QUALIFICATION GATE, by design (Corey, 2026-07-12): the full Signal Score™
-  // is never auto-emailed — it's delivered live on a call with Corey. Phone required.
-  // The request lands as a tagged GHL contact (via lead-intake) + the pulse workflow
-  // webhook (compat) + the Netlify Forms mirror (outreach@ email).
+  // The Breakdown ($500, credited toward the build) is requested here — phone required,
+  // because it includes a personal walkthrough. The request lands via the Netlify Forms
+  // mirror (email to outreach@). BOS will pick this flow up when it connects.
   const optIn = async () => {
     const phoneVal = optPhone.trim()
     if (phoneVal.replace(/\D/g, '').length < 7) {
@@ -265,8 +262,8 @@ function PulseResult({ data, email, website, fromHandoff = false, fullName = '',
     setOptState('sending')
     const pulseFields = {
       website_url: website, email, full_name: fullName, phone: phoneVal,
-      source: 'signal-pulse-optin', full_score_optin: 'yes', call_requested: 'yes', preview_type: 'signal-pulse',
-      lead_tag: 'Signal Score Optin', signal_pulse_score: String(data.pulse),
+      source: 'breakdown-request', breakdown_requested: 'yes', call_requested: 'yes', preview_type: 'signal-pulse',
+      lead_tag: 'Breakdown Request', signal_pulse_score: String(data.pulse),
       signal_pulse_buckets: (data.buckets || []).map((b) => `${b.label}:${b.score}`).join(', '),
       signal_pulse_access: String((data.buckets || []).find((b) => b.key === 'access')?.score ?? ''),
       signal_pulse_structure: String((data.buckets || []).find((b) => b.key === 'structure')?.score ?? ''),
@@ -274,21 +271,11 @@ function PulseResult({ data, email, website, fromHandoff = false, fullName = '',
       signal_pulse_answers: String((data.buckets || []).find((b) => b.key === 'answers')?.score ?? ''),
       submitted_at: new Date().toISOString(),
     }
-    // GHL contact with phone + call tag — the one that makes Corey's call list.
-    try {
-      await fetch('/.netlify/functions/lead-intake', {
-        method: 'POST', headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ ...pulseFields, extra_tags: ['signal-score-call-requested'] }),
-      })
-    } catch { /* best effort — webhook + Netlify mirror below still fire */ }
-    // Netlify Forms mirror → email notification to outreach@trysignalflair.com.
+    // Netlify Forms → email notification to outreach@trysignalflair.com (primary channel).
     try {
       fetch('/', { method: 'POST', headers: { 'Content-Type': 'application/x-www-form-urlencoded' }, body: new URLSearchParams({ 'form-name': 'signal-pulse', ...pulseFields }).toString() }).catch(() => {})
     } catch { /* best effort */ }
-    // (Streamlined 2026-07-13: legacy pulse-workflow webhook leg OMITTED — lead-intake
-    // handles the contact, tags, and the call-confirmation card email; GHL workflows key
-    // off the tags. The Netlify mirror above keeps the outreach@ email notification.)
-    try { track('signal_score_optin', { form_id: 'signal-pulse', pulse: data.pulse, call_requested: true }) } catch { /* no-op */ }
+    try { track('breakdown_request', { form_id: 'signal-pulse', pulse: data.pulse, call_requested: true }) } catch { /* no-op */ }
     setOptState('done')
   }
 
@@ -341,6 +328,13 @@ function PulseResult({ data, email, website, fromHandoff = false, fullName = '',
           </div>
         ))}
       </div>
+      <div style={{ margin: '14px auto 0', maxWidth: 460, textAlign: 'center', fontFamily: "'Geist Mono',monospace", fontSize: '10.5px', letterSpacing: '0.14em', textTransform: 'uppercase' as const, color: 'rgba(240,235,224,0.55)', display: 'flex', flexWrap: 'wrap', justifyContent: 'center', gap: '6px 14px' }}>
+        <span>Coverage: 4 of 6 signal layers</span>
+        <span aria-hidden="true">·</span>
+        <span>automated read{data.lowConfidence ? ' · PARTIAL' : ''}</span>
+        <span aria-hidden="true">·</span>
+        <span>Entity &amp; Live AI Visibility not covered by Pulse</span>
+      </div>
       {data.lowConfidence && (
         <div className="ssc-result-note">
           {data.spaLike
@@ -350,33 +344,34 @@ function PulseResult({ data, email, website, fromHandoff = false, fullName = '',
       )}
       {optState !== 'done' ? (
         <div className="ssc-optin">
-          <div className="ssc-optin-tag">Level 1 cleared</div>
-          <div className="ssc-optin-h">Ready for <em>Level 2</em>?</div>
+          <div className="ssc-optin-tag">Pulse complete — that was the quick read</div>
+          <div className="ssc-optin-h">Ready for <em>The Breakdown</em>? · $500</div>
           <div className="ssc-optin-b">
-            You just cleared Level 1 — the instant four-signal scan. <strong>Level 2</strong> is your full
-            <strong> Signal Score™</strong>: all seven Signal Protocol™ layers scored, the two locked layers cracked
-            open, live AI-visibility tests, what’s dragging you down, and exactly how to fix it.
-            We don&apos;t email it as a PDF and wish you luck — <strong>Corey walks you through it on a call</strong>,
-            layer by layer. Drop your number if you actually want it fixed.
+            Pulse gave you the quick read. <strong>The Breakdown</strong> shows you what&apos;s really going on:
+            your full <strong>Signal Score™</strong> across all six layers, <strong>human-verified</strong> — with the
+            evidence behind every finding, what could <em>not</em> be verified, live AI-visibility checks where
+            supported, and a prioritized fix order. <strong>Corey walks you through it personally.</strong> It&apos;s
+            the point where Signal Flair verifies what&apos;s real before you spend thousands fixing it — and if we
+            do the work, <strong>the full $500 goes toward your build</strong>.
           </div>
           <div className="ssc-field" style={{ maxWidth: 340, margin: '14px auto 0' }}>
-            <label className="ssc-label" htmlFor="opt-phone">Best number for the call<span className="ssc-req">*</span></label>
+            <label className="ssc-label" htmlFor="opt-phone">Best number for your walkthrough<span className="ssc-req">*</span></label>
             <input className={`ssc-input${optErr ? ' invalid' : ''}`} id="opt-phone" type="tel" inputMode="tel" autoComplete="tel" placeholder="(317) 555-0136" value={optPhone} onChange={(e) => setOptPhone(e.target.value)} />
             <span className="ssc-err" aria-live="polite">{optErr}</span>
           </div>
           <button className="ssc-optin-btn" onClick={optIn} disabled={optState === 'sending'}>
-            {optState === 'sending' ? 'On it…' : '▸ Talk me through my full Signal Score™'}
+            {optState === 'sending' ? 'On it…' : '▸ Get The Breakdown — $500'}
           </button>
-          <div className="ssc-optin-fine">Free · no obligation · a real conversation, not a sales maze</div>
+          <div className="ssc-optin-fine">$500 · credited in full toward your build · a real conversation, not a sales maze</div>
         </div>
       ) : (
         <div className="ssc-optin ssc-optin--done">
           <div className="ssc-optin-mark" aria-hidden="true">✓</div>
           <div className="ssc-optin-h">Locked in.</div>
           <div className="ssc-optin-b">
-            Corey will personally call you at <strong>{optPhone.trim()}</strong> to walk through your full
-            <strong> Signal Score™</strong> — all six layers, what&apos;s dragging you, and the fix. No deck, no
-            &ldquo;circling back.&rdquo; Keep the phone close.
+            Corey will personally call you at <strong>{optPhone.trim()}</strong> to set up your
+            <strong> Breakdown</strong> — the verified investigation: all six layers, the evidence, what&apos;s
+            dragging you, and the fix order. The $500 credits in full toward your build. Keep the phone close.
           </div>
           <a className="ssc-success-link" href="/proof/">See Case Zero — our own 18 → 91 climb →</a>
         </div>

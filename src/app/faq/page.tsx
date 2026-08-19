@@ -63,7 +63,7 @@ const FAQS: { q: string; a: string }[] = [
   },
   {
     q: 'What is a Signal Pulse™?',
-    a: 'A Signal Pulse™ is a free instant four-signal read — Access, Structure, Trust, and Answers — run against your live site. It is a diagnosis, never a prescription. The prescription is the work. No sales call required; we send your read within 24 hours, and the full 6-layer Signal Score™ Audit is free during the founding period ($500 after, credited in full toward any build).',
+    a: 'A Signal Pulse™ is the quick read — four live signals (Access, Structure, Trust, Answers) scored against your site in seconds, on the page, at no charge. It is a diagnosis, never a prescription. When you want the verified picture, The Breakdown ($500) produces your full Signal Score™ across all six layers, human-verified with the evidence — and the full $500 credits toward your build.',
   },
   {
     q: 'What is the Founding Five?',
@@ -115,7 +115,7 @@ const FAQS: { q: string; a: string }[] = [
   },
   {
     q: 'How much does Signal Flair cost?',
-    a: 'The Signal Pulse™ is free, and the full Signal Score™ Audit is free during the founding period ($500 after — credited in full toward any build). Builds are one-time, scoped by the audit: the Rebuild is $1,500 and the Foundation Build is $3,500. Stay Found™ monthly plans: Watch is $249/mo, Signal Proof is $1,500/mo, and Multi-Location starts at $3,500/mo. Add a location for $1,500, Satellite included. You keep everything built, even if you cancel.',
+    a: 'The Signal Pulse™ is $0 — no charge, takes seconds. The Breakdown is $500: the verified investigation that produces your full Signal Score™, credited in full toward your build if Signal Flair does the work. Builds are one-time, scoped by The Breakdown: the Rebuild is $1,500 and the Foundation Build is $3,500. Stay Found™ monthly plans: Watch is $249/mo, Signal Proof is $1,500/mo, and Multi-Location starts at $3,500/mo. Add a location for $1,500, Satellite included. You keep everything built, even if you cancel.',
   },
   {
     q: 'Is Signal Flair related to FLAIR MRI imaging or SignalFlare.ai?',

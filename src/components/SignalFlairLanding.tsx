@@ -10,25 +10,9 @@ import SignalFlairLogo from './SignalFlairLogo'
 import UnfairAdvantage from './UnfairAdvantage'
 import { track } from '@/lib/analytics'
 
-/** Build-time inlined (static export). Platform-neutral: Jarvis or other routers can use FIELD_REPORT_WEBHOOK_URL. */
-const FIELD_REPORT_WEBHOOK_OVERRIDE = ''
-const FIELD_REPORT_WEBHOOK_URL =
-  (process.env.NEXT_PUBLIC_FIELD_REPORT_WEBHOOK_URL ?? '').trim() ||
-  (process.env.NEXT_PUBLIC_GHL_WEBHOOK_URL ?? '').trim() ||
-  FIELD_REPORT_WEBHOOK_OVERRIDE
-const FIELD_REPORT_FALLBACK_EMAIL = 'hello@signalflair.ai'
-/**
- * Netlify Forms is the PRIMARY lead channel: Netlify parses this form name out of the
- * static export at deploy time and fires a submission_created email notification to
- * outreach@trysignalflair.com. It is independent of GoHighLevel, so leads keep landing
- * after the GHL sub-account is cancelled. GHL (below) runs in parallel as a secondary
- * while it is still active — a submission counts as delivered if EITHER channel accepts it.
- */
-const NETLIFY_FORM_NAME = 'field-report'
-
-const LEAD_REQUIRED = ['full_name', 'business_name', 'website_url', 'email', 'primary_service']
-const LEAD_EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]+$/
-
+// Lead capture: the homepage no longer embeds an intake form. The single journey is
+// GET YOUR PULSE -> /pulse (SignalPulseForm posts to Netlify Forms + the signal-pulse
+// function there). GHL was retired 2026-08-18; BOS will connect to lead flow later.
 /**
  * SignalFlairLanding — the canonical Signal Flair landing page / homepage.
  * Ported from the approved "mentalvision-bold" design. Markup is JSX; the
@@ -37,17 +21,8 @@ const LEAD_EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]+$/
  */
 export default function SignalFlairLanding() {
   const started = useRef(false)
-  const leadFormRef = useRef(null)
-  const [leadSubmitting, setLeadSubmitting] = useState(false)
-  const [leadSuccess, setLeadSuccess] = useState(false)
-  const [leadFormError, setLeadFormError] = useState('')
-  const [leadFieldErrors, setLeadFieldErrors] = useState({})
-  // Monthly/Annual billing toggle — affects ONLY the two Stay Found™ monthly plans.
+  // Monthly/Annual billing toggle — affects ONLY the Stay Found™ monthly plans.
   // Annual = 12 months for the price of 10 (the "2 months free" policy, stated honestly).
-  // billingRef mirrors the state for the lead-form payload (the submit handler's
-  // useCallback closes over state once; the ref always carries the live value) and
-  // records whether the visitor actually touched the toggle — untouched submits send
-  // "not_selected" rather than a default that would masquerade as a real preference.
   const [billing, setBilling] = useState('monthly')
   const billingRef = useRef({ mode: 'monthly', touched: false })
   const setBillingMode = useCallback((mode) => {
@@ -63,129 +38,6 @@ export default function SignalFlairLanding() {
       return mode
     })
   }, [])
-
-  const validateLeadField = useCallback((name, val) => {
-    const v = (val ?? '').trim()
-    if (LEAD_REQUIRED.includes(name) && !v) return 'Required'
-    if (name === 'email' && v && !LEAD_EMAIL_RE.test(v)) return 'Enter a valid email'
-    if (name === 'website_url' && v && !/\.\w{2,}/.test(v)) return 'Enter a valid website'
-    return ''
-  }, [])
-
-  const handleLeadSubmit = useCallback(async (e) => {
-    e.preventDefault()
-    console.info('[Field Report] submit handler fired')
-    setLeadFormError('')
-    setLeadSuccess(false)
-
-    const form = leadFormRef.current
-    if (!form) {
-      console.error('[Field Report] form ref missing')
-      setLeadFormError(`Signal Pulse™ intake error. Email ${FIELD_REPORT_FALLBACK_EMAIL} and we'll follow up manually.`)
-      return
-    }
-
-    console.info('[Field Report] validation started')
-    const nextFieldErrors = {}
-    let firstInvalid = null
-    const inputs = form.querySelectorAll('input:not([type=hidden])')
-    inputs.forEach((inp) => {
-      const msg = validateLeadField(inp.name, inp.value)
-      if (msg) {
-        nextFieldErrors[inp.name] = msg
-        if (!firstInvalid) firstInvalid = inp
-      }
-    })
-    setLeadFieldErrors(nextFieldErrors)
-
-    if (firstInvalid) {
-      console.info('[Field Report] validation failed')
-      setLeadFormError('Please complete all required fields (marked with *).')
-      firstInvalid.focus()
-      return
-    }
-
-    console.info('[Field Report] validation passed')
-    console.info('[Field Report] webhook configured:', Boolean(FIELD_REPORT_WEBHOOK_URL))
-
-    const qp = new URLSearchParams(window.location.search)
-    const setHidden = (n, v) => {
-      const el = form.querySelector(`[name="${n}"]`)
-      if (el) el.value = v ?? ''
-    }
-    setHidden('page_url', window.location.href)
-    setHidden('utm_source', qp.get('utm_source') || '')
-    setHidden('utm_medium', qp.get('utm_medium') || '')
-    setHidden('utm_campaign', qp.get('utm_campaign') || '')
-
-    const payload = Object.fromEntries(new FormData(form).entries())
-    payload.submitted_at = new Date().toISOString()
-    payload.form_type = 'field_report'
-    payload.request_type = 'field_report'
-    // Billing preference from the pricing toggle — 'annual' / 'monthly' if the
-    // visitor used the toggle, 'not_selected' if they never touched it.
-    payload.billing_preference = billingRef.current.touched ? billingRef.current.mode : 'not_selected'
-
-    setLeadSubmitting(true)
-
-    // Both channels fire in parallel. Netlify Forms is the one that has to work
-    // (it emails outreach@trysignalflair.com and outlives GHL); GHL is best-effort.
-    const withTimeout = async (ms, fn) => {
-      const ctrl = new AbortController()
-      const timer = setTimeout(() => ctrl.abort(), ms)
-      try { return await fn(ctrl.signal) } finally { clearTimeout(timer) }
-    }
-
-    const netlifyPost = withTimeout(10000, (signal) =>
-      fetch('/', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
-        body: new URLSearchParams({ 'form-name': NETLIFY_FORM_NAME, ...payload }).toString(),
-        signal,
-      }).then((res) => {
-        if (!res.ok) throw new Error('netlify status ' + res.status)
-        return true
-      }),
-    )
-
-    const ghlPost = FIELD_REPORT_WEBHOOK_URL
-      ? withTimeout(10000, (signal) =>
-          fetch(FIELD_REPORT_WEBHOOK_URL, {
-            method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify(payload),
-            signal,
-          }).then((res) => {
-            if (!res.ok) throw new Error('ghl status ' + res.status)
-            return true
-          }),
-        )
-      : Promise.reject(new Error('webhook_not_configured'))
-
-    const [netlifyResult, ghlResult] = await Promise.allSettled([netlifyPost, ghlPost])
-    console.info('[Field Report] netlify:', netlifyResult.status, '· ghl:', ghlResult.status)
-
-    if (netlifyResult.status === 'fulfilled' || ghlResult.status === 'fulfilled') {
-      track('form_submit', {
-        form_id: 'lead-form',
-        primary_service: payload.primary_service,
-        billing_preference: payload.billing_preference,
-        demo_mode: false,
-        channel: netlifyResult.status === 'fulfilled' ? 'netlify_forms' : 'ghl',
-      })
-      setLeadSuccess(true)
-      setLeadFormError('')
-      setLeadFieldErrors({})
-    } else {
-      console.error('[Field Report] submit failed', netlifyResult.reason, ghlResult.reason)
-      setLeadFormError(
-        process.env.NODE_ENV === 'development'
-          ? 'Lead intake unreachable in dev — Netlify Forms only accepts POSTs on a deployed Netlify site. Deploy, or set NEXT_PUBLIC_FIELD_REPORT_WEBHOOK_URL to test the GHL path locally.'
-          : `We couldn't submit your Signal Pulse™ request. Email ${FIELD_REPORT_FALLBACK_EMAIL} and we'll follow up manually.`,
-      )
-    }
-    setLeadSubmitting(false)
-  }, [validateLeadField])
 
   useEffect(() => {
     if (started.current) return // guard React strict-mode double-invoke
@@ -750,7 +602,7 @@ export default function SignalFlairLanding() {
             <a className="nl" href="#check">Signal Score</a>
             <a className="nl" href="#signal">Proof Layer</a>
             <a className="nl" href="#founding">Founding Five</a>
-            <a className="ncta" href="#cta">▸ Get Your Signal Score™</a>
+            <a className="ncta" href="/pulse">▸ GET YOUR PULSE</a>
           </div>
         </nav>
         {/* Cinematic instrument panel: DIAGNOSIS above → SCORE GAUGE centerpiece → RECOVERY below */}
@@ -790,6 +642,7 @@ export default function SignalFlairLanding() {
           <div className="h-side bottom">
             <div className="h-headline" aria-hidden="true">Scanned. Structured. Trusted. <span style={{ fontStyle: 'italic', background: 'linear-gradient(125deg,rgba(0,220,220,1) 0%,rgba(180,255,255,0.9) 30%,rgba(0,200,200,0.95) 60%,rgba(150,255,255,0.85) 100%)', backgroundSize: '250% 250%', WebkitBackgroundClip: 'text', backgroundClip: 'text', WebkitTextFillColor: 'transparent', animation: 'glass-shimmer 8s 2s ease-in-out infinite', filter: 'drop-shadow(0 0 14px rgba(0,166,166,0.4))' }}>Found.</span></div>
             <div className="h-sub">Be found. Be understood. Be <span className="hsub-trust">trusted</span> — by AI.</div>
+            <a className="ncta" id="hero-pulse" href="/pulse" style={{ marginTop: '16px', display: 'inline-block' }}>▸ GET YOUR PULSE</a>
           </div>
         </div>
         <div id="hfoot">
@@ -816,7 +669,7 @@ export default function SignalFlairLanding() {
           <a href="#check" style={snl}>Signal Score</a>
           <a href="#signal" style={snl}>Proof Layer</a>
           <a href="#founding" style={snl}>Founding Five</a>
-          <a className="ncta" href="#cta">▸ Get Your Signal Score™</a>
+          <a className="ncta" href="/pulse">▸ GET YOUR PULSE</a>
         </div>
       </nav>
 
@@ -864,7 +717,7 @@ export default function SignalFlairLanding() {
               <div className="pv-row"><span className="pv-name">Citations · 5 engines</span><span className="pv-stamp bad">0 Found</span></div>
               <div className="pv-foot">
                 <div className="pv-score count">18<small>/100</small></div>
-                <a className="pv-rec" href="#cta">▸ Run My Signal →</a>
+                <a className="pv-rec" href="/pulse">▸ Get Your Pulse →</a>
               </div>
             </div>
           </div>
@@ -915,7 +768,7 @@ export default function SignalFlairLanding() {
             </p>
           </details>
           <div className="om-ctarow">
-            <a className="om-cta" href="#cta">Run My Signal →</a>
+            <a className="om-cta" href="/pulse">Get Your Pulse →</a>
           </div>
         </div>
       </section>
@@ -933,7 +786,7 @@ export default function SignalFlairLanding() {
           <div className="sig-row reveal">
             <div className="sig-proto"><div className="sig-rn">01</div><div className="sig-plabel">Diagnostic · Signal Score™</div></div><div className="sig-rd" />
             <div className="sig-rtitle">Signal Score™<br />Audit</div>
-            <div className="sig-rbody"><em>This is the before picture — and AI does not get a filter.</em> Your full 6-layer Signal Score™ shows how ChatGPT, Perplexity, Claude, Gemini, and Google AI read your business right now, from 0 to 100. During the founding period, the full audit is free. If your score is ugly, good. Now we know exactly where to start.</div>
+            <div className="sig-rbody"><em>This is the before picture — and AI does not get a filter.</em> Your full 6-layer Signal Score™ shows how ChatGPT, Perplexity, Claude, Gemini, and Google AI read your business right now, from 0 to 100. The Breakdown — the $500 verified investigation, credited in full toward your build — confirms what&apos;s really going on before you spend thousands fixing it. If your score is ugly, good. Now we know exactly where to start.</div>
             <div><span className="sig-rtag">Scoring + Reporting</span></div>
           </div>
           <div className="sig-row reveal">
@@ -950,7 +803,7 @@ export default function SignalFlairLanding() {
           </div>
         </div>
         <div className="sig-cta-wrap reveal">
-          <a className="sig-cta" href="#cta">▸ Get Your Signal Score™ →</a>
+          <a className="sig-cta" href="/pulse">▸ Get Your Pulse →</a>
           <span className="sig-cta-note">free baseline · 24 hours · no call</span>
         </div>
       </section>
@@ -1147,7 +1000,7 @@ export default function SignalFlairLanding() {
             <li>Signal Flair builds the proof foundation AI systems need to understand and recommend a business confidently.</li>
           </ul>
           <div className="rw-ctarow">
-            <a className="rw-cta" href="#cta">▸ See What AI Understands About Your Business</a>
+            <a className="rw-cta" href="/pulse">▸ Get Your Pulse — See What AI Picks Up</a>
             <a className="rw-more" href="/case-studies/three-engines-three-stories/">Read the full Mill audit →</a>
           </div>
         </div>
@@ -1171,10 +1024,10 @@ export default function SignalFlairLanding() {
               <div className="founding-items">
                 <div className="fnd-i">35% off your build — Rebuild or Foundation Build</div>
                 <div className="fnd-i">First 3 months of Signal Proof at 50%</div>
-                <div className="fnd-i">Signal Score™ Audit — your full 6-layer baseline, free</div>
+                <div className="fnd-i">The Breakdown included — your $500 verified baseline, on the house</div>
                 <div className="fnd-i">The Proof Stack™ — Machine Trust Layer™, Entity Lock™, Answer Architecture™</div>
                 <div className="fnd-i">Signal Proof Page™ — your public proof asset</div>
-                <div className="fnd-i">Signal Telemetry — live drift detection from day one</div>
+                <div className="fnd-i">Signal Telemetry — drift re-checked on every scheduled re-scan from day one</div>
                 <div className="fnd-i">A named, published before-and-after case study as your score climbs</div>
               </div>
               <div className="founding-save">Five seats. Then founding pricing closes.</div>
@@ -1245,40 +1098,48 @@ export default function SignalFlairLanding() {
             Start free. Build once.<br />
             Stay <em className="pv-fit">found.</em>
           </h2>
-          <div className="pricing-sub">New to the block. Built to take over. Your free Signal Score™ Audit tells us what is broken. The Proof Stack™ fixes it once. Stay Found™ keeps the signal current. No mystery package. No guessing what you need.</div>
+          <div className="pricing-sub">New to the block. Built to take over. Your Pulse shows where the signal breaks. The Breakdown verifies it. The Proof Stack™ fixes it once. Stay Found™ keeps it current. No mystery package. No guessing what you need.</div>
         </div>
         <div className="price-how reveal">
-          <div className="ph-lead">You don&apos;t pick a package. Your free <em>Signal Score™ Audit</em> sets the scope.</div>
+          <div className="ph-lead">One journey. <em>Four steps.</em> Each step earns the next.</div>
           <div className="ph-map">
             <div className="ph-step">
-              <div className="ph-band">Step 1 · Free</div>
-              <div className="ph-offer">Signal Pulse™ — $0</div>
-              <div className="ph-what">A 3-of-6-layer instant preview, delivered in 24 hours. Then the full <strong>Signal Score™ Audit — free during the founding period</strong> ($500 after, credited in full toward any build): all 6 layers, a Proof OS™ action plan, and what ChatGPT, Perplexity &amp; Gemini actually say about you today.</div>
+              <div className="ph-band">Step 1 · No charge</div>
+              <div className="ph-offer">Get Your Pulse — $0</div>
+              <div className="ph-what">The quick read. See what AI is picking up about your business — four live signals, scored in seconds, right on the page.</div>
+              <a className="ph-cta" href="/pulse">▸ GET YOUR PULSE</a>
             </div>
             <div className="ph-step">
-              <div className="ph-band">Step 2 · The Build</div>
-              <div className="ph-offer">The Proof Stack™</div>
-              <div className="ph-what">One-time build of the full infrastructure layer AI reads before it recommends you — scope set by your audit, not a score band.</div>
+              <div className="ph-band">Step 2 · $500</div>
+              <div className="ph-offer">The Breakdown</div>
+              <div className="ph-what">The verified investigation. This isn&apos;t another website score — we check what AI can actually find about your business, verify what&apos;s real, show you the evidence, and tell you what deserves attention first. The full $500 credits toward your build.</div>
             </div>
             <div className="ph-step">
-              <div className="ph-band">Step 3 · Monthly</div>
+              <div className="ph-band">Step 3 · One-time build</div>
+              <div className="ph-offer">Fix It</div>
+              <div className="ph-what">The Breakdown sets the scope. Start the Rebuild at $1,500, or Build the Foundation at $3,500 — and you keep everything we build, even if you cancel.</div>
+            </div>
+            <div className="ph-step">
+              <div className="ph-band">Step 4 · Monthly</div>
               <div className="ph-offer">Stay Found™</div>
-              <div className="ph-what">The monthly plans that keep you cited as engines retrain, competitors catch up, and AI agents arrive.</div>
+              <div className="ph-what">Ongoing monitoring and managed maintenance from $249/mo — so the signal you built stays current as engines retrain and competitors catch up.</div>
             </div>
           </div>
-          <div className="ph-note">Builds are <strong>one-time</strong> — you keep everything, even if you cancel. <strong>Stay Found™</strong> plans are open to every client after a build. Most start with the free Signal Pulse™.</div>
+          <div className="ph-note"><strong>Pulse → The Breakdown → Fix It → Stay Found™.</strong> Builds are <strong>one-time</strong>. If Signal Flair does the work, the full $500 Breakdown fee goes toward your build.</div>
         </div>
 
         {/* The stack, decoded — every branded term defined before the cards use it */}
         <div className="decode reveal">
           <div className="decode-lead">The stack, <em>decoded.</em></div>
           <div className="decode-grid">
+            <div className="decode-item"><span className="decode-t">FLAIR</span><span className="decode-d">The operating system under Signal Flair — it runs the checks, keeps the evidence, and re-verifies the record.</span></div>
+            <div className="decode-item"><span className="decode-t">The Breakdown</span><span className="decode-d">The $500 verified investigation — your full Signal Score™, with the evidence. Credited toward your build.</span></div>
             <div className="decode-item"><span className="decode-t">The Proof Stack™</span><span className="decode-d">The full infrastructure layer AI reads before it recommends you.</span></div>
             <div className="decode-item"><span className="decode-t">Machine Trust Layer™</span><span className="decode-d">The structured data protocol AI engines require to verify who you are.</span></div>
             <div className="decode-item"><span className="decode-t">Entity Lock™</span><span className="decode-d">One verified identity for your business across every engine, map, and directory.</span></div>
             <div className="decode-item"><span className="decode-t">Answer Architecture™</span><span className="decode-d">Content engineered in the exact shape AI pulls answers from.</span></div>
             <div className="decode-item"><span className="decode-t">Citation Capture</span><span className="decode-d">The monthly work of winning and holding AI citations.</span></div>
-            <div className="decode-item"><span className="decode-t">Signal Telemetry</span><span className="decode-d">Live drift detection across ChatGPT, Gemini, Perplexity &amp; Claude.</span></div>
+            <div className="decode-item"><span className="decode-t">Signal Telemetry</span><span className="decode-d">Drift re-checked across engines on every scheduled re-scan.</span></div>
             <div className="decode-item"><span className="decode-t">Signal Satellites™</span><span className="decode-d">Per-location micro-sites, each built AI-readable from day one.</span></div>
             <div className="decode-item"><span className="decode-t">AI Visibility</span><span className="decode-d">Whether and how accurately your business appears across AI-driven discovery and answers.</span></div>
             <div className="decode-item"><span className="decode-t">Machine-Readable Proof</span><span className="decode-d">Evidence organized so machines can retrieve and interpret it.</span></div>
@@ -1315,7 +1176,7 @@ export default function SignalFlairLanding() {
               <div className="pf-item"><strong>Answer Architecture™</strong> — content engineered in the exact shape AI pulls answers from</div>
               <div className="pf-item"><strong>Smart Site™</strong> — your primary site rebuilt AI-first</div>
               <div className="pf-item"><strong>Full AI Visibility Audit</strong> — 5 engines (ChatGPT, Claude, Perplexity, Gemini, Google AI)</div>
-              <div className="pf-item"><strong>Signal Telemetry</strong> — live drift detection, included</div>
+              <div className="pf-item"><strong>Signal Telemetry</strong> — drift re-checked on every scheduled re-scan, included</div>
               <div className="pf-item"><strong>90-Day AI Action Plan</strong> · delivered in 7–14 days</div>
             </div>
           </div>
@@ -1336,7 +1197,7 @@ export default function SignalFlairLanding() {
               <div className="psci"><strong>Entity Lock™</strong> — one verified identity everywhere</div>
               <div className="psci"><strong>Signal Proof Page™</strong> deployed</div>
               <div className="psci"><strong>90-Day AI Action Plan</strong></div>
-              <div className="psci"><strong>Signal Telemetry</strong> included — live drift detection</div>
+              <div className="psci"><strong>Signal Telemetry</strong> included — drift re-checked on every re-scan</div>
             </div>
             <a className="psc-btn" href="#cta">▸ Start My Rebuild</a>
           </div>
@@ -1349,7 +1210,7 @@ export default function SignalFlairLanding() {
               <div className="psci psci-lock"><strong>Monthly re-verification</strong> — all six Signal Protocol™ layers, re-checked</div>
               <div className="psci"><strong>Drift alerts with evidence</strong> — what changed, quoted before and after</div>
               <div className="psci"><strong>Quarterly evidence report</strong> — yours to keep, fingerprints included</div>
-              <div className="psci"><strong>Signal Telemetry</strong> — live drift detection</div>
+              <div className="psci"><strong>Signal Telemetry</strong> — drift re-checked monthly</div>
               <div className="psci"><strong>We hand you the evidence</strong> — not a login</div>
             </div>
             <a className="psc-btn" href="#cta">▸ Watch My Signal</a>
@@ -1451,9 +1312,9 @@ export default function SignalFlairLanding() {
           <div className="ph-lead wg-big">AI agents are coming for the transaction. <em>We&apos;re already measuring the door.</em></div>
           <div className="ph-map" style={{ gridTemplateColumns: 'repeat(auto-fit,minmax(280px,1fr))' }}>
             <div className="ph-step">
-              <div className="ph-band">Layer 7 · already measured</div>
-              <div className="ph-offer">Agent &amp; Commerce Readiness</div>
-              <div className="ph-what">AI agents are starting to book, buy, and choose on a customer&apos;s behalf — within the permissions a business grants them. The 7th layer of the Signal Protocol™ already measures whether your current, permissioned business information and actions are ready for those agent-assisted experiences — direction, not a promise.</div>
+              <div className="ph-band">On our watch list</div>
+              <div className="ph-offer">Agent readiness</div>
+              <div className="ph-what">AI agents are starting to book, buy, and choose on a customer&apos;s behalf — within the permissions a business grants them. We track agent readiness as a watch item — reachability, machine-readable hours, and booking paths — and it becomes a scored layer only when the platforms actually consume it. Direction, not a promise.</div>
             </div>
             <div className="ph-step">
               <div className="ph-band">On the roadmap</div>
@@ -1528,11 +1389,11 @@ export default function SignalFlairLanding() {
           </details>
           <details className="faq-item">
             <summary className="faq-q">How much does Signal Flair cost?<span className="faq-ic" aria-hidden="true" /></summary>
-            <div className="faq-a">Signal Pulse™ is free. The full Signal Score™ Audit is free during the founding period ($500 after — credited in full toward any build). Builds are one-time: the Rebuild is $1,500 and the Foundation Build is $3,500. Stay Found™ monthly plans: Watch is $249/mo, Signal Proof is $1,500/mo, and Multi-Location starts at $3,500/mo. Add a location for $1,500, Satellite included. You keep everything built, even if you cancel.</div>
+            <div className="faq-a">Your Signal Pulse™ is $0 — no charge, takes seconds. The Breakdown is $500: the verified investigation that produces your full Signal Score™, with the evidence behind every finding — and the full $500 credits toward your build if Signal Flair does the work. Builds are one-time: the Rebuild is $1,500 and the Foundation Build is $3,500. Stay Found™ monthly plans: Watch is $249/mo, Signal Proof is $1,500/mo, and Multi-Location starts at $3,500/mo. Add a location for $1,500, Satellite included. You keep everything built, even if you cancel.</div>
           </details>
           <details className="faq-item">
             <summary className="faq-q">Why is there a monthly plan?<span className="faq-ic" aria-hidden="true" /></summary>
-            <div className="faq-a">Because AI search is a moving target. New engines ship, models retrain, competitors catch up, and AI agents are arriving. Stay Found™ plans — Watch, Signal Proof, and Multi-Location — run Citation Capture, expand your Answer Architecture™ monthly, compound proof with the Proof Density Engine, and watch drift with Signal Telemetry. And every month ships your Content Payload: premium, done-for-you content engineered for humans and machines — structured around verified facts with machine-readable metadata, including a 30-second commercial — so the foundation you built keeps earning citations.</div>
+            <div className="faq-a">Because AI search is a moving target. New engines ship, models retrain, competitors catch up, and AI agents are arriving. Stay Found™ plans — Watch, Signal Proof, and Multi-Location — run Citation Capture, expand your Answer Architecture™ monthly, compound proof with the Proof Density Engine, and re-check drift on every scheduled re-scan. And every month ships your Content Payload: premium, done-for-you content engineered for humans and machines — structured around verified facts with machine-readable metadata, including a 30-second commercial — so the foundation you built keeps earning citations.</div>
           </details>
           <details className="faq-item">
             <summary className="faq-q">What are Signal Satellites™?<span className="faq-ic" aria-hidden="true" /></summary>
@@ -1568,7 +1429,7 @@ export default function SignalFlairLanding() {
           </details>
           <details className="faq-item">
             <summary className="faq-q">Do I have to get on a sales call?<span className="faq-ic" aria-hidden="true" /></summary>
-            <div className="faq-a">No. Run the free Signal Pulse™ and we will send the preview within 24 hours. If you want the full Signal Score™ after that, say so. No forced call. <em>The ball stays in your court.</em></div>
+            <div className="faq-a">No. Run your Signal Pulse™ — the read appears on the page in seconds. If you want The Breakdown after that, say so. No forced call. <em>The ball stays in your court.</em></div>
           </details>
         </div>
       </section>
@@ -1580,7 +1441,7 @@ export default function SignalFlairLanding() {
           <div className="cta-left">
             <div className="cta-y-pre reveal">AI Proof Infrastructure™</div>
             <div className="cta-y-title reveal">AI is talking about your business.<br /><em>Go see what it said.</em></div>
-            <div className="cta-y-sub reveal">We scan three critical signals across the major engines and send the preview within 24 hours. You see where the signal breaks. What you do next is up to you.</div>
+            <div className="cta-y-sub reveal">Your Pulse reads the live signals in seconds — right here on the site, no waiting on an email. You see where the signal breaks. What you do next is up to you.</div>
             <div className="cta-y-btns reveal" style={{ marginTop: '26px' }}>
               <a className="cta-y-ghost" href="#founding">▸ Claim a Founding Five Seat →</a>
               <a className="cta-y-ghost" href="#check">▸ See all six layers →</a>
@@ -1588,78 +1449,11 @@ export default function SignalFlairLanding() {
           </div>
           <div className="cta-right reveal" id="field-report">
             <div className="lead-card">
-              {!leadSuccess && (
-              <div id="lead-form-wrap">
-                <div className="lead-h">Run Your Free <em>Signal Pulse™</em></div>
-                <div className="lead-subline">We run 3 of the 6 Signal Protocol™ layers on your business and deliver an instant-preview read within 24 hours — no call required. Most local businesses score under 40. You&apos;ll see exactly where your signal breaks. The full Signal Score™ Audit — free during the founding period ($500 after, credited toward any build) — comes next.</div>
-                <form id="lead-form" name={NETLIFY_FORM_NAME} data-netlify="true" data-netlify-honeypot="bot-field" ref={leadFormRef} noValidate onSubmit={handleLeadSubmit}>
-                  {/* Netlify Forms registration — parsed out of the static export at deploy
-                      time. The honeypot is never shown to humans; bots that fill it are dropped. */}
-                  <input type="hidden" name="form-name" value={NETLIFY_FORM_NAME} />
-                  <p className="lf-hp" aria-hidden="true"><label>Don&apos;t fill this out if you&apos;re human: <input name="bot-field" tabIndex={-1} autoComplete="off" /></label></p>
-                  <div className="lf-field">
-                    <label className="lf-label" htmlFor="lf-name">Full Name<span className="req">*</span></label>
-                    <input className={`lf-input${leadFieldErrors.full_name ? ' invalid' : ''}`} id="lf-name" name="full_name" type="text" autoComplete="name" placeholder="Jane Smith" />
-                    <span className="lf-err" aria-live="polite">{leadFieldErrors.full_name || ''}</span>
-                  </div>
-                  <div className="lf-field">
-                    <label className="lf-label" htmlFor="lf-biz">Business Name<span className="req">*</span></label>
-                    <input className={`lf-input${leadFieldErrors.business_name ? ' invalid' : ''}`} id="lf-biz" name="business_name" type="text" autoComplete="organization" placeholder="Smith &amp; Co." />
-                    <span className="lf-err" aria-live="polite">{leadFieldErrors.business_name || ''}</span>
-                  </div>
-                  <div className="lf-field full">
-                    <label className="lf-label" htmlFor="lf-url">Website URL<span className="req">*</span></label>
-                    <input className={`lf-input${leadFieldErrors.website_url ? ' invalid' : ''}`} id="lf-url" name="website_url" type="url" inputMode="url" autoComplete="url" placeholder="yourbusiness.com" />
-                    <span className="lf-err" aria-live="polite">{leadFieldErrors.website_url || ''}</span>
-                  </div>
-                  <div className="lf-field">
-                    <label className="lf-label" htmlFor="lf-email">Email<span className="req">*</span></label>
-                    <input className={`lf-input${leadFieldErrors.email ? ' invalid' : ''}`} id="lf-email" name="email" type="email" inputMode="email" autoComplete="email" placeholder="jane@yourbusiness.com" />
-                    <span className="lf-err" aria-live="polite">{leadFieldErrors.email || ''}</span>
-                  </div>
-                  <div className="lf-field">
-                    <label className="lf-label" htmlFor="lf-phone">Phone</label>
-                    <input className="lf-input" id="lf-phone" name="phone" type="tel" inputMode="tel" autoComplete="tel" placeholder="(optional)" />
-                    <span className="lf-err" aria-live="polite" />
-                  </div>
-                  <div className="lf-field">
-                    <label className="lf-label" htmlFor="lf-service">Primary Service<span className="req">*</span></label>
-                    <input className={`lf-input${leadFieldErrors.primary_service ? ' invalid' : ''}`} id="lf-service" name="primary_service" type="text" placeholder="e.g. HVAC, dental, law" />
-                    <span className="lf-err" aria-live="polite">{leadFieldErrors.primary_service || ''}</span>
-                  </div>
-                  <div className="lf-field">
-                    <label className="lf-label" htmlFor="lf-city">City / Service Area</label>
-                    <input className="lf-input" id="lf-city" name="city" type="text" autoComplete="address-level2" placeholder="(optional)" />
-                    <span className="lf-err" aria-live="polite" />
-                  </div>
-                  <input type="hidden" name="source" defaultValue="signalflair.ai" />
-                  <input type="hidden" name="page_url" defaultValue="" />
-                  <input type="hidden" name="utm_source" defaultValue="" />
-                  <input type="hidden" name="utm_medium" defaultValue="" />
-                  <input type="hidden" name="utm_campaign" defaultValue="" />
-                  <input type="hidden" name="lead_tag" defaultValue="Field Report Request" />
-                  {/* Declared so Netlify registers them as columns on the submission —
-                      the values are filled in by the submit handler, not the visitor. */}
-                  <input type="hidden" name="submitted_at" defaultValue="" />
-                  <input type="hidden" name="form_type" defaultValue="field_report" />
-                  <input type="hidden" name="request_type" defaultValue="field_report" />
-                  <input type="hidden" name="billing_preference" defaultValue="not_selected" />
-                  <div className="lead-formerr" id="lead-formerr" aria-live="assertive">{leadFormError}</div>
-                  <button type="submit" className="lead-submit" disabled={leadSubmitting}>
-                    {leadSubmitting ? 'Running…' : '▸ Run My Signal'}
-                  </button>
-                  <div className="lead-micro">No credit card. No spam. Your Signal Pulse™ lands in your inbox within 24 hours. This covers 3 of the 6 Signal Protocol™ layers — the full breakdown comes with the free Signal Score™ Audit.</div>
-                  <div className="lead-consent">By requesting a Signal Pulse™ you agree to our <a href="/privacy/">Privacy Policy</a>. We may use de-identified, aggregate assessment data to improve our methodology — we never sell your data.</div>
-                </form>
-              </div>
-              )}
-              {leadSuccess && (
-              <div className="lead-success" id="lead-success" role="status" aria-live="polite" style={{ display: 'block' }}>
-                <div className="ls-mark" aria-hidden="true">✓</div>
-                <div className="ls-h">Signal Pulse™ requested.</div>
-                <div className="ls-b">We&apos;re scanning 3 of your 6 signal layers across <strong>ChatGPT, Claude, Perplexity, Gemini &amp; Google AI</strong>. Your Signal Pulse™ lands in your inbox within 24 hours — the full 6-layer Signal Score™ Audit comes next.</div>
-              </div>
-              )}
+              <div className="lead-h">See what AI is picking up<br /><em>about your business.</em></div>
+              <div className="lead-subline">Your Signal Pulse™ reads the four live signals — Access, Structure, Trust, Answers — and scores them on the page, in seconds. When you want the verified picture, The Breakdown ($500, credited toward your build) is the next step.</div>
+              <a className="lead-submit" href="/pulse" style={{ display: 'block', textAlign: 'center', textDecoration: 'none' }}>▸ GET YOUR PULSE</a>
+              <div className="lead-micro">No charge. Takes seconds. No call required.</div>
+              <div className="lead-consent">Prefer a human first? <a href="mailto:hello@signalflair.ai">hello@signalflair.ai</a></div>
             </div>
           </div>
         </div>

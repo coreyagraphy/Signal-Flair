@@ -100,7 +100,7 @@ const jsonLd = {
         name: 'Signal Flair Offers',
         itemListElement: [
           { '@type': 'Offer', name: 'Signal Pulse™', description: 'Free instant four-signal read — Access, Structure, Trust, and Answers — delivered within 24 hours.', price: '0', priceCurrency: 'USD' },
-          { '@type': 'Offer', name: 'Signal Score™ Audit', description: 'Full 6-layer diagnostic + action plan + what ChatGPT, Perplexity, and Gemini say about the business today. Free during the founding period ($500 after, credited toward any build).', price: '0', priceCurrency: 'USD' },
+          { '@type': 'Offer', name: 'The Breakdown', description: 'The verified investigation: full 6-layer Signal Score™, human-verified with evidence, prioritized fix order, and a personal walkthrough. $500, credited in full toward implementation.', price: '500', priceCurrency: 'USD' },
           { '@type': 'Offer', name: 'Rebuild', description: 'Lighter-scope one-time build — Machine Trust Layer™ cleanup, Crawl Clearance Protocol, Entity Lock™, Signal Proof Page™, 90-day plan, Signal Telemetry.', price: '1500', priceCurrency: 'USD' },
           { '@type': 'Offer', name: 'Foundation Build', description: 'The full Proof Stack™ at scale + Smart Site™ rebuild + full web-wide Entity Lock™. One-time, one price.', price: '3500', priceCurrency: 'USD' },
           { '@type': 'Offer', name: 'Stay Found™ Watch', description: 'Stay Found™ entry plan — monthly six-layer re-verification, drift alerts with before/after evidence, and a quarterly evidence report you keep.', price: '249', priceCurrency: 'USD' },

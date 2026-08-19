@@ -4,7 +4,7 @@ import SignalFlairLogo from '@/components/SignalFlairLogo'
 export const metadata: Metadata = {
   title: 'How It Works — Scan, Score, Fix, Stay Found | Signal Flair',
   description:
-    'AI visibility across ChatGPT, Gemini & Perplexity: free Signal Score™ Audit, one-time builds from $1,500, Stay Found™ plans from $249/mo.',
+    'AI visibility across ChatGPT, Gemini & Perplexity: Get Your Pulse at no charge, The Breakdown at $500, one-time builds from $1,500, Stay Found™ plans from $249/mo.',
   alternates: { canonical: 'https://signalflair.ai/how-it-works/' },
   openGraph: {
     title: 'How Signal Flair works — scan, score, fix, stay found',
@@ -38,7 +38,7 @@ const STEPS: { k: string; t: string; d: string }[] = [
 ]
 
 const TIERS: { name: string; band: string; price: string; type: string; num: string }[] = [
-  { name: 'Signal Score™ Audit', band: 'Full 6-layer diagnostic + action plan', price: 'Free during the founding period ($500 after, credited toward any build)', type: 'free', num: '0' },
+  { name: 'The Breakdown', band: 'Verified investigation — full 6-layer Signal Score™ + evidence + fix order', price: '$500, credited in full toward your build', type: 'one-time', num: '500' },
   { name: 'Rebuild', band: 'Lighter-scope build — set by the audit', price: '$1,500', type: 'one-time', num: '1500' },
   { name: 'Foundation Build', band: 'Full Proof Stack™ + Smart Site™ rebuild', price: '$3,500', type: 'one-time', num: '3500' },
   { name: 'Stay Found™ Watch', band: 'Stay Found™ monthly · evidence & drift watch', price: '$249/mo', type: 'recurring', num: '249' },
@@ -67,7 +67,7 @@ const jsonLd = {
       serviceType: 'AI Visibility & Answer Engine Optimization',
       provider: { '@id': 'https://signalflair.ai/#org' },
       areaServed: { '@type': 'Country', name: 'United States' },
-      description: 'AI visibility scoring and proof-infrastructure buildout for local service businesses — scope set by a free Signal Score™ Audit.',
+      description: 'AI visibility scoring and proof-infrastructure buildout for local service businesses — scope set by The Breakdown ($500, credited toward the build).',
       offers: TIERS.map((t) => ({
         '@type': 'Offer',
         name: t.name,
@@ -111,11 +111,11 @@ export default function HowItWorksPage() {
         </section>
 
         <section className="rsc-section">
-          <h2 className="rsc-h2">Pricing set by the <em>audit</em></h2>
+          <h2 className="rsc-h2">Pricing set by <em>The Breakdown</em></h2>
           <p className="rsc-p">
-            The Signal Pulse™ and the full Signal Score™ Audit are free during the founding period. Past
-            that, the audit sets the scope — so you only pay for the gap you actually have, never a score
-            gate. Bundle a 12-month Signal Proof plan with your build and the Foundation Build drops from
+            The Signal Pulse™ costs nothing and takes seconds. The Breakdown is $500 — the verified
+            investigation that sets the scope, so you only pay for the gap you actually have, never a score
+            gate — and the full $500 credits toward your build. The Foundation Build is
             $3,500 — one price, no bundle math. Add a location for $1,500, Satellite included. Our guarantee is
             delivery-based only: we never promise rankings, leads, or revenue, and you keep everything we
             build even if you cancel.
@@ -146,10 +146,10 @@ export default function HowItWorksPage() {
         <section className="rsc-section">
           <h2 className="rsc-h2">Start with the <em>diagnosis</em></h2>
           <p className="rsc-p">
-            A Signal Pulse™ is a free instant four-signal read of your live site — Access, Structure, Trust
-            &amp; Answers. It is a diagnosis, never a prescription. The prescription
-            is the work. No sales call; we send your read within 24 hours, and the full 6-layer Signal
-            Score™ Audit is free during the founding period.
+            A Signal Pulse™ is the quick read — four live signals (Access, Structure, Trust &amp; Answers)
+            scored against your site in seconds, at no charge. It is a diagnosis, never a prescription. The
+            prescription is the work. When you want the verified picture, The Breakdown ($500, credited
+            toward your build) goes layer by layer with the evidence.
           </p>
           <p className="rsc-p sl-machine">
             More: <a href="/faq/">FAQ</a> · <a href="/about/">about</a> · <a href="/proof/">the live record</a> · <a href="/llms.txt">/llms.txt</a>

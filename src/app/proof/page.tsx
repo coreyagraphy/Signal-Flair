@@ -98,7 +98,7 @@ const FAQS: { q: string; a: string }[] = [
   },
   {
     q: 'How does the Signal Flair score work?',
-    a: 'Signal Flair rates a business 0–100 with the Signal Protocol™ across six layers: Access & Crawlability, Structured Intelligence, Entity Clarity, Answer Architecture, Trust & Proof Density, and Live AI Visibility. The resulting Signal Score™ Audit sets the scope — a build, a rebuild, or ongoing maintenance — so the work matches the actual gap, never a score gate.',
+    a: 'Signal Flair rates a business 0–100 with the Signal Protocol™ across six layers: Access & Crawlability, Structured Intelligence, Entity Clarity, Answer Architecture, Trust & Proof Density, and Live AI Visibility. The Breakdown — the $500 verified investigation — sets the scope: a build, a rebuild, or ongoing maintenance, so the work matches the actual gap, never a score gate.',
   },
   {
     q: 'Does Signal Flair guarantee placement in ChatGPT or Google AI Overviews?',
