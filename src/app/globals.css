@@ -869,7 +869,8 @@ footer{background:var(--ink2);border-top:1px solid var(--ink);padding:52px;posit
   /* hero nav → command CTA only */
   nav#hnav{padding:16px 18px}
   nav#hnav .nl{display:none}
-  .ncta{white-space:nowrap;padding:10px 14px;font-size:9px}
+  /* Primary conversion CTA — keep a >=44px tap target on mobile (was 33px). */
+  .ncta{white-space:nowrap;padding:13px 16px;font-size:10px;min-height:46px;display:inline-flex;align-items:center;justify-content:center}
   /* sticky nav → hide text links, keep logo + CTA */
   .snav-actions a:not(.ncta){display:none}
   #site-nav{padding:11px 18px}
@@ -1764,3 +1765,76 @@ footer{background:var(--ink2);border-top:1px solid var(--ink);padding:52px;posit
   .sl-scoreband--3{gap:10px}
   .sl-scoreband--3 .sl-scorearrow{font-size:22px}
 }
+
+
+/* ─── SIGNAL PULSE — contact opt-in gate (the qualification field) ───────────
+   Deliberately the loudest thing in the form: hot-yellow border while
+   unanswered, two large tap targets, sits directly above the submit button so
+   it is the last decision before acting. No default selection — the whole
+   point is a real signal, and a pre-checked box would manufacture a fake one. */
+.sp-optin-gate{
+  margin:22px 0 4px;padding:16px 16px 14px;border:2px solid var(--hot);
+  border-radius:12px;background:rgba(255,244,95,0.05);
+  box-shadow:0 0 0 4px rgba(255,244,95,0.07);animation:sp-gate-pulse 2.6s ease-in-out infinite;
+}
+.sp-optin-gate.answered{border-color:var(--teal);background:rgba(0,184,169,0.06);box-shadow:0 0 0 4px rgba(0,184,169,0.07);animation:none}
+.sp-optin-gate.invalid{border-color:#ff3d82;background:rgba(255,61,130,0.07);box-shadow:0 0 0 4px rgba(255,61,130,0.1);animation:none}
+@keyframes sp-gate-pulse{0%,100%{box-shadow:0 0 0 4px rgba(255,244,95,0.07)}50%{box-shadow:0 0 0 7px rgba(255,244,95,0.13)}}
+.sp-gate-legend{
+  display:flex;align-items:center;gap:7px;padding:0 8px;margin-left:-4px;
+  font-family:var(--signal),ui-monospace,monospace;font-size:10px;letter-spacing:0.22em;
+  text-transform:uppercase;color:var(--hot);font-weight:700;
+}
+.sp-optin-gate.answered .sp-gate-legend{color:var(--teal)}
+.sp-optin-gate.invalid .sp-gate-legend{color:#ff3d82}
+.sp-gate-dot{width:7px;height:7px;border-radius:50%;background:currentColor;box-shadow:0 0 9px currentColor;flex:none}
+.sp-gate-q{font-size:17px;font-weight:700;line-height:1.25;margin:2px 0 12px;color:#f0ebe0;letter-spacing:-0.01em}
+.sp-gate-opts{display:grid;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));gap:10px}
+.sp-gate-opt{
+  display:flex;align-items:flex-start;gap:10px;min-height:58px;padding:12px 13px;cursor:pointer;
+  border:1.5px solid rgba(240,235,224,0.22);border-radius:9px;background:rgba(10,10,10,0.35);
+  transition:border-color .16s ease,background .16s ease,transform .12s ease;
+}
+.sp-gate-opt:hover{border-color:rgba(240,235,224,0.45);background:rgba(10,10,10,0.55)}
+.sp-gate-opt:focus-within{outline:2px solid var(--teal);outline-offset:2px}
+.sp-gate-opt.sel{border-color:var(--teal);background:rgba(0,184,169,0.12)}
+.sp-gate-opt input{position:absolute;opacity:0;width:0;height:0}
+.sp-gate-mark{
+  flex:none;width:19px;height:19px;margin-top:1px;border-radius:50%;
+  border:2px solid rgba(240,235,224,0.45);position:relative;transition:border-color .16s ease;
+}
+.sp-gate-opt.sel .sp-gate-mark{border-color:var(--teal)}
+.sp-gate-opt.sel .sp-gate-mark::after{
+  content:"";position:absolute;inset:3px;border-radius:50%;background:var(--teal);box-shadow:0 0 10px var(--teal);
+}
+.sp-gate-txt{display:flex;flex-direction:column;gap:3px;min-width:0}
+.sp-gate-txt strong{font-size:14px;font-weight:700;color:#f0ebe0;line-height:1.25}
+.sp-gate-txt em{font-style:normal;font-size:11.5px;line-height:1.35;color:rgba(240,235,224,0.6)}
+.sp-gate-note{max-height:0;overflow:hidden;opacity:0;transition:max-height .28s ease,opacity .24s ease,margin .28s ease;margin-top:0}
+.sp-gate-note.open{max-height:260px;opacity:1;margin-top:12px}
+.sp-note-input{resize:vertical;min-height:74px;font-size:13.5px;line-height:1.45}
+.sp-opt-lbl{font-size:9.5px;letter-spacing:0.18em;text-transform:uppercase;color:rgba(240,235,224,0.4);margin-left:6px}
+@media (max-width:560px){
+  .sp-gate-opts{grid-template-columns:1fr}
+  .sp-gate-q{font-size:15.5px}
+  .sp-gate-opt{min-height:54px}
+}
+@media (prefers-reduced-motion:reduce){
+  .sp-optin-gate{animation:none}
+  .sp-gate-note{transition:none}
+}
+
+/* Result-state acknowledgement / undelivered warning */
+.sp-ack{
+  display:flex;align-items:flex-start;gap:9px;margin:16px auto 0;max-width:470px;padding:11px 14px;
+  border:1px solid rgba(0,184,169,0.45);border-radius:9px;background:rgba(0,184,169,0.08);
+  font-size:12.5px;line-height:1.5;color:rgba(240,235,224,0.88);text-align:left;
+}
+.sp-ack--warn{border-color:rgba(255,90,31,0.5);background:rgba(255,90,31,0.09)}
+.sp-ack-dot{flex:none;width:7px;height:7px;margin-top:6px;border-radius:50%;background:var(--teal);box-shadow:0 0 8px var(--teal)}
+.sp-ack--warn .sp-ack-dot{background:var(--orange);box-shadow:0 0 8px var(--orange)}
+.sp-ack a{color:inherit;text-decoration:underline}
+
+/* Breakdown request — undelivered fallback */
+.ssc-optin--failed{border-color:rgba(255,90,31,0.55)!important;background:rgba(255,90,31,0.07)!important}
+.ssc-optin--failed .ssc-optin-mark{color:var(--orange)}

@@ -20,3 +20,6 @@ tsconfig.tsbuildinfo
 
 # local media backups (never publish)
 .video-backups/
+
+# Netlify CLI (netlify dev) scratch
+deno.lock

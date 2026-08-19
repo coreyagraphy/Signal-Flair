@@ -27,6 +27,7 @@ const EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]+$/
 const sleep = (ms: number) => new Promise((r) => setTimeout(r, ms))
 
 type Phase = 'idle' | 'scanning' | 'result' | 'sent'
+type Delivery = 'unknown' | 'delivered' | 'failed'
 type Bucket = { key: string; label: string; score: number }
 type PulseData = { ok: boolean; pulse: number; buckets: Bucket[]; lowConfidence?: boolean; spaLike?: boolean; url?: string; signals?: Record<string, unknown> }
 
@@ -34,7 +35,14 @@ export default function SignalPulseForm() {
   const formRef = useRef<HTMLFormElement>(null)
   const [phase, setPhase] = useState<Phase>('idle')
   const [formError, setFormError] = useState('')
-  const [fieldErrors, setFieldErrors] = useState<{ website_url?: string; email?: string; full_name?: string }>({})
+  const [fieldErrors, setFieldErrors] = useState<{ website_url?: string; email?: string; full_name?: string; contact_opt_in?: string }>({})
+  // Contact opt-in — the qualification gate. Deliberately has NO default: a pre-checked
+  // "yes" would be a dark pattern AND would destroy the very signal this field exists to
+  // create (separating score-only visitors from real prospects).
+  const [contactOptIn, setContactOptIn] = useState<'' | 'yes' | 'no'>('')
+  const [contactNote, setContactNote] = useState('')
+  // Did the lead actually reach Netlify Forms? Never claim capture we didn't get.
+  const [delivery, setDelivery] = useState<Delivery>('unknown')
   const [result, setResult] = useState<PulseData | null>(null)
   const [email, setEmail] = useState('')
   const [websiteVal, setWebsiteVal] = useState('')
@@ -57,9 +65,14 @@ export default function SignalPulseForm() {
 
     // Lead delivery: Netlify Forms → email to outreach@trysignalflair.com. Covers BOTH
     // direct submits and homepage handoffs. (BOS integration will attach here later.)
-    try {
-      fetch('/', { method: 'POST', headers: { 'Content-Type': 'application/x-www-form-urlencoded' }, body: new URLSearchParams({ 'form-name': 'signal-pulse', ...payload }).toString() }).catch(() => {})
-    } catch { /* best effort */ }
+    // We RECORD the real outcome — the result screen must never imply we captured a lead
+    // we actually dropped, and an opted-in prospect that fails to deliver gets a visible
+    // fallback instead of silence.
+    const leadDelivery: Promise<Delivery> = fetch('/', {
+      method: 'POST', headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+      body: new URLSearchParams({ 'form-name': 'signal-pulse', ...payload }).toString(),
+    }).then((r) => (r.ok ? 'delivered' : 'failed') as Delivery).catch(() => 'failed' as Delivery)
+    leadDelivery.then(setDelivery)
 
     // Call the function; keep a minimum on-screen scan time so it feels like a real scan.
     const scan: Promise<PulseData | null> = fetch(FUNCTION_URL, {
@@ -129,7 +142,8 @@ export default function SignalPulseForm() {
     const website = String(new FormData(form).get('website_url') || '').trim()
     const emailVal = String(new FormData(form).get('email') || '').trim()
     const nameVal = String(new FormData(form).get('full_name') || '').trim()
-    const errs: { website_url?: string; email?: string; full_name?: string } = {}
+    const errs: { website_url?: string; email?: string; full_name?: string; contact_opt_in?: string } = {}
+    if (!contactOptIn) errs.contact_opt_in = 'Pick one to continue'
     if (!nameVal) errs.full_name = 'Required'
     if (!website) errs.website_url = 'Required'
     else if (!/\.\w{2,}/.test(website)) errs.website_url = 'Enter a valid website'
@@ -137,7 +151,9 @@ export default function SignalPulseForm() {
     else if (!EMAIL_RE.test(emailVal)) errs.email = 'Enter a valid email'
     setFieldErrors(errs)
     if (Object.keys(errs).length) {
-      setFormError('Your name, website, and a valid email — that’s all the Pulse needs.')
+      setFormError(errs.contact_opt_in && Object.keys(errs).length === 1
+        ? 'One last thing — tell us whether you want us to reach out.'
+        : 'Your name, website, a valid email, and one tap below — that’s all the Pulse needs.')
       ;(form.querySelector('.ssc-input.invalid') as HTMLInputElement | null)?.focus()
       return
     }
@@ -154,7 +170,9 @@ export default function SignalPulseForm() {
     payload.submitted_at = new Date().toISOString()
 
     await executeScan(payload, emailVal, website)
-  }, [executeScan])
+    // contactOptIn MUST be in the deps: without it this memoized handler closes over the
+    // initial '' forever and the opt-in check can never pass (form becomes unsubmittable).
+  }, [executeScan, contactOptIn])
 
   return (
     <div className="ssc-form" id="pulse">
@@ -196,6 +214,50 @@ export default function SignalPulseForm() {
           <input type="hidden" name="utm_source" defaultValue="" />
           <input type="hidden" name="utm_medium" defaultValue="" />
           <input type="hidden" name="utm_campaign" defaultValue="" />
+          {/* ── Contact opt-in — the qualification gate. Required, unmissable, no default. ── */}
+          <fieldset className={`sp-optin-gate${fieldErrors.contact_opt_in ? ' invalid' : ''}${contactOptIn ? ' answered' : ''}`}>
+            <legend className="sp-gate-legend">
+              <span className="sp-gate-dot" aria-hidden="true" />
+              One question before we scan
+            </legend>
+            <div className="sp-gate-q">Want us to reach out about your score?</div>
+            <div className="sp-gate-opts">
+              <label className={`sp-gate-opt${contactOptIn === 'yes' ? ' sel' : ''}`}>
+                <input
+                  type="radio" name="contact_opt_in" value="yes"
+                  checked={contactOptIn === 'yes'}
+                  onChange={() => { setContactOptIn('yes'); setFieldErrors((p) => ({ ...p, contact_opt_in: undefined })) }}
+                />
+                <span className="sp-gate-mark" aria-hidden="true" />
+                <span className="sp-gate-txt">
+                  <strong>Yes — walk me through it.</strong>
+                  <em>Corey follows up personally about what your Pulse turned up.</em>
+                </span>
+              </label>
+              <label className={`sp-gate-opt${contactOptIn === 'no' ? ' sel' : ''}`}>
+                <input
+                  type="radio" name="contact_opt_in" value="no"
+                  checked={contactOptIn === 'no'}
+                  onChange={() => { setContactOptIn('no'); setContactNote(''); setFieldErrors((p) => ({ ...p, contact_opt_in: undefined })) }}
+                />
+                <span className="sp-gate-mark" aria-hidden="true" />
+                <span className="sp-gate-txt">
+                  <strong>No — just the score.</strong>
+                  <em>We send your read and leave you alone. No follow-up.</em>
+                </span>
+              </label>
+            </div>
+            <span className="ssc-err" aria-live="polite">{fieldErrors.contact_opt_in || ''}</span>
+            {/* Kept in the DOM always so Netlify registers the column at deploy time. */}
+            <div className={`sp-gate-note${contactOptIn === 'yes' ? ' open' : ''}`}>
+              <label className="ssc-label" htmlFor="sp-note">Anything specific you want looked at? <span className="sp-opt-lbl">optional</span></label>
+              <textarea
+                className="ssc-input sp-note-input" id="sp-note" name="contact_note" rows={3}
+                placeholder="e.g. we get calls for the wrong service area, or a competitor keeps coming up instead of us"
+                value={contactNote} onChange={(e) => setContactNote(e.target.value)}
+              />
+            </div>
+          </fieldset>
           <div className="ssc-formerr" aria-live="assertive">{formError}</div>
           <button type="submit" className="ssc-submit">▸ Get My Signal Pulse™</button>
           <div className="ssc-micro">No charge. Takes seconds. No spam — and no call required. The Breakdown (the human-verified investigation across all six layers) is optional, after.</div>
@@ -219,7 +281,7 @@ export default function SignalPulseForm() {
 
       {phase === 'result' && result && (
         <>
-          <PulseResult data={result} email={email} website={websiteVal} fromHandoff={!!handoff} fullName={leadName} phoneHint={leadPhone} />
+          <PulseResult data={result} email={email} website={websiteVal} fromHandoff={!!handoff} fullName={leadName} phoneHint={leadPhone} optedIn={contactOptIn === 'yes'} delivery={delivery} contactNote={contactNote} />
           {handoff && (
             <button type="button" onClick={resetHandoff} style={{ display: 'block', margin: '14px auto 0', background: 'none', border: 'none', cursor: 'pointer', fontFamily: "'Geist Mono',monospace", fontSize: '10.5px', letterSpacing: '0.16em', textTransform: 'uppercase' as const, textDecoration: 'underline', opacity: 0.6, color: 'inherit' }}>
               Not your site? Run a different one →
@@ -241,10 +303,10 @@ export default function SignalPulseForm() {
   )
 }
 
-function PulseResult({ data, email, website, fromHandoff = false, fullName = '', phoneHint = '' }: { data: PulseData; email: string; website: string; fromHandoff?: boolean; fullName?: string; phoneHint?: string }) {
+function PulseResult({ data, email, website, fromHandoff = false, fullName = '', phoneHint = '', optedIn = false, delivery = 'unknown', contactNote = '' }: { data: PulseData; email: string; website: string; fromHandoff?: boolean; fullName?: string; phoneHint?: string; optedIn?: boolean; delivery?: Delivery; contactNote?: string }) {
   const [n, setN] = useState(0)
   const [armed, setArmed] = useState(false)
-  const [optState, setOptState] = useState<'idle' | 'sending' | 'done'>('idle')
+  const [optState, setOptState] = useState<'idle' | 'sending' | 'done' | 'failed'>('idle')
   const [optPhone, setOptPhone] = useState(phoneHint)
   const [optErr, setOptErr] = useState('')
   const pulse = data.pulse
@@ -264,6 +326,7 @@ function PulseResult({ data, email, website, fromHandoff = false, fullName = '',
       website_url: website, email, full_name: fullName, phone: phoneVal,
       source: 'breakdown-request', breakdown_requested: 'yes', call_requested: 'yes', preview_type: 'signal-pulse',
       lead_tag: 'Breakdown Request', signal_pulse_score: String(data.pulse),
+      contact_opt_in: 'yes', contact_note: contactNote,
       signal_pulse_buckets: (data.buckets || []).map((b) => `${b.label}:${b.score}`).join(', '),
       signal_pulse_access: String((data.buckets || []).find((b) => b.key === 'access')?.score ?? ''),
       signal_pulse_structure: String((data.buckets || []).find((b) => b.key === 'structure')?.score ?? ''),
@@ -272,17 +335,31 @@ function PulseResult({ data, email, website, fromHandoff = false, fullName = '',
       submitted_at: new Date().toISOString(),
     }
     // Netlify Forms → email notification to outreach@trysignalflair.com (primary channel).
+    // This is the $500 conversion. We AWAIT it and branch on the real result — telling a
+    // customer "locked in" when the request never arrived is the worst failure this site
+    // can have, and it silently costs a paying lead.
+    let ok = false
     try {
-      fetch('/', { method: 'POST', headers: { 'Content-Type': 'application/x-www-form-urlencoded' }, body: new URLSearchParams({ 'form-name': 'signal-pulse', ...pulseFields }).toString() }).catch(() => {})
-    } catch { /* best effort */ }
-    try { track('breakdown_request', { form_id: 'signal-pulse', pulse: data.pulse, call_requested: true }) } catch { /* no-op */ }
-    setOptState('done')
+      const res = await fetch('/', {
+        method: 'POST', headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+        body: new URLSearchParams({ 'form-name': 'signal-pulse', ...pulseFields }).toString(),
+      })
+      ok = res.ok
+    } catch { ok = false }
+    try { track('breakdown_request', { form_id: 'signal-pulse', pulse: data.pulse, call_requested: true, delivered: ok }) } catch { /* no-op */ }
+    setOptState(ok ? 'done' : 'failed')
   }
 
   useEffect(() => {
     setArmed(true)
+    // Reduced motion: show the real number immediately, no count-up.
+    if (typeof window !== 'undefined' && window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+      setN(pulse)
+      return
+    }
     let raf = 0
     let start = 0
+    let finished = false
     const dur = 1400
     const tick = (t: number) => {
       if (!start) start = t
@@ -290,9 +367,13 @@ function PulseResult({ data, email, website, fromHandoff = false, fullName = '',
       const eased = 1 - Math.pow(1 - p, 3)
       setN(Math.round(eased * pulse))
       if (p < 1) raf = requestAnimationFrame(tick)
+      else finished = true
     }
     raf = requestAnimationFrame(tick)
-    return () => cancelAnimationFrame(raf)
+    // Safety net: if frames never arrive (background/hidden tab, throttled renderer) the
+    // score must still read true — a "0" beside a filled ring is a lie about the number.
+    const safety = setTimeout(() => { if (!finished) setN(pulse) }, dur + 700)
+    return () => { cancelAnimationFrame(raf); clearTimeout(safety) }
   }, [pulse])
 
   const C = 2 * Math.PI * 52
@@ -342,7 +423,22 @@ function PulseResult({ data, email, website, fromHandoff = false, fullName = '',
             : 'We couldn’t fully reach your site, so this is a partial read — we’ll verify it by hand.'}
         </div>
       )}
-      {optState !== 'done' ? (
+      {optedIn && delivery !== 'failed' && optState === 'idle' && (
+        <div className="sp-ack">
+          <span className="sp-ack-dot" aria-hidden="true" />
+          You asked us to reach out — we&apos;ll be in touch about this score. Want the verified
+          picture first? That&apos;s The Breakdown, below.
+        </div>
+      )}
+      {delivery === 'failed' && (
+        <div className="sp-ack sp-ack--warn">
+          <span className="sp-ack-dot" aria-hidden="true" />
+          Heads up: your score is real, but we couldn&apos;t log your details on our end — so if you
+          wanted a follow-up, email <a href="mailto:hello@signalflair.ai">hello@signalflair.ai</a> and
+          we&apos;ll pick it up from there.
+        </div>
+      )}
+      {optState !== 'done' && optState !== 'failed' ? (
         <div className="ssc-optin">
           <div className="ssc-optin-tag">Pulse complete — that was the quick read</div>
           <div className="ssc-optin-h">Ready for <em>The Breakdown</em>? · $500</div>
@@ -363,6 +459,24 @@ function PulseResult({ data, email, website, fromHandoff = false, fullName = '',
             {optState === 'sending' ? 'On it…' : '▸ Get The Breakdown — $500'}
           </button>
           <div className="ssc-optin-fine">$500 · credited in full toward your build · a real conversation, not a sales maze</div>
+        </div>
+      ) : optState === 'failed' ? (
+        <div className="ssc-optin ssc-optin--failed">
+          <div className="ssc-optin-mark" aria-hidden="true">!</div>
+          <div className="ssc-optin-h">That didn&apos;t go through.</div>
+          <div className="ssc-optin-b">
+            Your request for <strong>The Breakdown</strong> didn&apos;t reach us — so we&apos;re telling you
+            instead of pretending it did. Send this one email and you&apos;re in; everything is already
+            filled in for you.
+          </div>
+          <a
+            className="ssc-optin-btn"
+            style={{ display: 'inline-block', textDecoration: 'none' }}
+            href={`mailto:hello@signalflair.ai?subject=${encodeURIComponent('The Breakdown request — ' + (website || 'my business'))}&body=${encodeURIComponent(
+              `I'd like The Breakdown ($500, credited toward the build).\n\nName: ${fullName || ''}\nWebsite: ${website || ''}\nEmail: ${email || ''}\nPhone: ${optPhone.trim()}\nSignal Pulse: ${data.pulse}/100 (Access ${(data.buckets || []).find((b) => b.key === 'access')?.score ?? '-'} · Structure ${(data.buckets || []).find((b) => b.key === 'structure')?.score ?? '-'} · Trust ${(data.buckets || []).find((b) => b.key === 'trust')?.score ?? '-'} · Answers ${(data.buckets || []).find((b) => b.key === 'answers')?.score ?? '-'})\n`,
+            )}`}
+          >▸ Send it from my email</a>
+          <div className="ssc-optin-fine">Or call/text — we answer at hello@signalflair.ai</div>
         </div>
       ) : (
         <div className="ssc-optin ssc-optin--done">

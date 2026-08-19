@@ -74,7 +74,12 @@ export default function ScorecardPage() {
   // Count-up the gauge number + ring on load.
   useEffect(() => {
     if (!ready) return
+    if (typeof window !== 'undefined' && window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+      setDisplay(target)
+      return
+    }
     let raf = 0
+    let finished = false
     const start = performance.now()
     const dur = 1200
     const tick = (now: number) => {
@@ -82,9 +87,12 @@ export default function ScorecardPage() {
       const eased = 1 - Math.pow(1 - t, 3)
       setDisplay(Math.round(target * eased))
       if (t < 1) raf = requestAnimationFrame(tick)
+      else finished = true
     }
     raf = requestAnimationFrame(tick)
-    return () => cancelAnimationFrame(raf)
+    // Never leave a real scorecard reading 0 if frames never arrive.
+    const safety = setTimeout(() => { if (!finished) setDisplay(target) }, dur + 700)
+    return () => { cancelAnimationFrame(raf); clearTimeout(safety) }
   }, [ready, target])
 
   const offset = CIRC * (1 - display / 100)
