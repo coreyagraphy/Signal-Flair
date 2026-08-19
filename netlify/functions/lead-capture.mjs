@@ -15,6 +15,12 @@
  *      fires per lead. That leg is best-effort and reported honestly as `notified` — a
  *      failed notification never fakes a failed capture, and never fakes a successful one.
  *
+ * RUNTIME: this is a Functions **v2** handler on purpose. The legacy Lambda-compat runtime
+ * (`export const handler`) never receives NETLIFY_BLOBS_CONTEXT, so getStore() throws
+ * "The environment has not been configured to use Netlify Blobs" — verified on this site
+ * 2026-08-19 (runtime env showed AWS_LAMBDA_* and no blobs context). Do not convert this
+ * back to the legacy signature.
+ *
  * The browser no longer posts to Netlify Forms directly; this function is the single
  * writer, which is what keeps the email count at exactly one per lead.
  *
@@ -28,21 +34,19 @@ const FORM_NAME = 'signal-pulse'
 
 const clean = (v, max = 400) => String(v == null ? '' : v).trim().slice(0, max)
 
-const json = (statusCode, body) => ({
-  statusCode,
-  headers: {
-    'Content-Type': 'application/json',
-    'Cache-Control': 'no-store',
-    'Access-Control-Allow-Origin': '*',
-    'Access-Control-Allow-Headers': 'Content-Type',
-    'Access-Control-Allow-Methods': 'POST, OPTIONS',
-  },
-  body: JSON.stringify(body),
-})
+const HEADERS = {
+  'Content-Type': 'application/json',
+  'Cache-Control': 'no-store',
+  'Access-Control-Allow-Origin': '*',
+  'Access-Control-Allow-Headers': 'Content-Type',
+  'Access-Control-Allow-Methods': 'POST, OPTIONS',
+}
+
+const json = (status, body) => new Response(JSON.stringify(body), { status, headers: HEADERS })
 
 /** Mirror into Netlify Forms purely to trigger the single notification email. */
-async function notify(record, host) {
-  if (!host) return { notified: false, reason: 'no_host' }
+async function notify(record, origin) {
+  if (!origin) return { notified: false, reason: 'no_origin' }
   const form = new URLSearchParams({
     'form-name': FORM_NAME,
     receipt_id: record.receipt_id,
@@ -64,7 +68,7 @@ async function notify(record, host) {
   const ctrl = new AbortController()
   const t = setTimeout(() => ctrl.abort(), 8000)
   try {
-    const res = await fetch(`https://${host}/`, {
+    const res = await fetch(`${origin}/`, {
       method: 'POST',
       headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
       body: form.toString(),
@@ -78,12 +82,12 @@ async function notify(record, host) {
   }
 }
 
-export const handler = async (event) => {
-  if (event.httpMethod === 'OPTIONS') return json(204, {})
-  if (event.httpMethod !== 'POST') return json(405, { ok: false, error: 'method_not_allowed' })
+export default async (req) => {
+  if (req.method === 'OPTIONS') return new Response(null, { status: 204, headers: HEADERS })
+  if (req.method !== 'POST') return json(405, { ok: false, error: 'method_not_allowed' })
 
   let body = {}
-  try { body = JSON.parse(event.body || '{}') } catch { return json(400, { ok: false, error: 'bad_json' }) }
+  try { body = await req.json() } catch { return json(400, { ok: false, error: 'bad_json' }) }
 
   // Honeypot — silently accept-and-drop bots without minting a receipt.
   if (clean(body['bot-field'])) return json(200, { ok: false, error: 'rejected' })
@@ -119,7 +123,7 @@ export const handler = async (event) => {
       medium: clean(body.utm_medium, 120),
       campaign: clean(body.utm_campaign, 120),
     },
-    user_agent: clean(event.headers?.['user-agent'], 300),
+    user_agent: clean(req.headers.get('user-agent'), 300),
   }
 
   // ── 1. Persist ──────────────────────────────────────────────────────────────
@@ -146,8 +150,9 @@ export const handler = async (event) => {
   }
 
   // ── 3. Single notification email (best effort, reported honestly) ──────────
-  const host = event.headers?.host || process.env.URL?.replace(/^https?:\/\//, '') || ''
-  const note = await notify(record, host)
+  let origin = ''
+  try { origin = new URL(req.url).origin } catch { origin = process.env.URL || '' }
+  const note = await notify(record, origin)
   if (!note.notified) console.warn('[lead-capture] notification leg failed', receipt_id, JSON.stringify(note))
 
   // ── 4. Receipt — only reachable once capture was written AND read back ─────

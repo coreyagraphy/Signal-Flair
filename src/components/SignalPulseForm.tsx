@@ -234,6 +234,15 @@ export default function SignalPulseForm() {
           <input type="hidden" name="utm_source" defaultValue="" />
           <input type="hidden" name="utm_medium" defaultValue="" />
           <input type="hidden" name="utm_campaign" defaultValue="" />
+          {/* Declared so Netlify registers these columns at deploy time — the lead-capture
+              function posts them, and Netlify silently DROPS any field the form never
+              declared (verified 2026-08-19: receipt_id and score arrived empty without these). */}
+          <input type="hidden" name="receipt_id" defaultValue="" />
+          <input type="hidden" name="captured_at" defaultValue="" />
+          <input type="hidden" name="lead_type" defaultValue="pulse" />
+          <input type="hidden" name="business_name" defaultValue="" />
+          <input type="hidden" name="signal_pulse_score" defaultValue="" />
+          <input type="hidden" name="signal_pulse_buckets" defaultValue="" />
           {/* ── Contact opt-in — the qualification gate. Required, unmissable, no default. ── */}
           <fieldset className={`sp-optin-gate${fieldErrors.contact_opt_in ? ' invalid' : ''}${contactOptIn ? ' answered' : ''}`}>
             <legend className="sp-gate-legend">
