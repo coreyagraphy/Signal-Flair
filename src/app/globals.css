@@ -1838,3 +1838,7 @@ footer{background:var(--ink2);border-top:1px solid var(--ink);padding:52px;posit
 /* Breakdown request — undelivered fallback */
 .ssc-optin--failed{border-color:rgba(255,90,31,0.55)!important;background:rgba(255,90,31,0.07)!important}
 .ssc-optin--failed .ssc-optin-mark{color:var(--orange)}
+
+/* Durable capture receipt — shown only when the server proved the write landed. */
+.sp-receipt{margin:12px auto 0;max-width:470px;font-family:var(--signal),ui-monospace,monospace;font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:rgba(240,235,224,0.6);text-align:center}
+.sp-receipt strong{color:var(--teal);letter-spacing:.06em}

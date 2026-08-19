@@ -4,30 +4,51 @@
  *
  * On submit it calls the Netlify function (/.netlify/functions/signal-pulse), which fetches
  * the prospect's site server-side and returns a deterministic 0–100 Signal Pulse™ + four
- * bucket scores in a few seconds. The page animates a live gauge. Lead delivery is Netlify
- * Forms → email (GHL retired 2026-08-18; BOS will connect to this flow later).
+ * bucket scores in a few seconds. The page animates a live gauge.
+ *
+ * LEAD CAPTURE: every lead goes through /.netlify/functions/lead-capture, which persists it
+ * to Netlify Blobs, reads it back to prove the write landed, and only then returns a receipt
+ * id. Success in this UI is shown ONLY when that receipt comes back — never on a bare HTTP
+ * 200, because Netlify Forms can answer 200 without recording anything. The function owns the
+ * single notification email, so exactly one fires per lead.
  *
  * Robust fallbacks:
- *  - function unavailable (e.g. local dev, or pre-deploy) → optional fallback webhook
- *    and the "request received, we'll email it" state (no fake score).
- *  - unreachable/invalid URL → clear message; the lead is still captured when possible.
+ *  - capture fails → honest state + a mailto pre-filled with the lead (conversion preserved).
+ *  - unreachable/invalid URL → clear message; capture still runs so the lead is not lost.
  */
 import { useCallback, useEffect, useRef, useState } from 'react'
 import { track } from '@/lib/analytics'
 import { tierFor } from '@/lib/signal-tiers'
 
 const FUNCTION_URL = '/.netlify/functions/signal-pulse'
-// Client-side fallback webhook (only used if the function itself can't be reached).
-const FALLBACK_WEBHOOK =
-  (process.env.NEXT_PUBLIC_SIGNAL_PULSE_WEBHOOK_URL ?? '').trim() ||
-  (process.env.NEXT_PUBLIC_FIELD_REPORT_WEBHOOK_URL ?? '').trim() ||
-  ''
+const CAPTURE_URL = '/.netlify/functions/lead-capture'
 const FALLBACK_EMAIL = 'hello@signalflair.ai'
 const EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]+$/
 const sleep = (ms: number) => new Promise((r) => setTimeout(r, ms))
 
 type Phase = 'idle' | 'scanning' | 'result' | 'sent'
 type Delivery = 'unknown' | 'delivered' | 'failed'
+type Capture = { ok: boolean; receipt_id?: string; notified?: boolean; error?: string }
+
+/**
+ * The ONLY way a lead is recorded. Returns ok:true solely when the server proved the
+ * record was written AND read back, and handed us a receipt id. Any other outcome —
+ * non-2xx, malformed body, missing receipt, network failure — is a capture failure.
+ */
+async function captureLead(fields: Record<string, string>): Promise<Capture> {
+  try {
+    const res = await fetch(CAPTURE_URL, {
+      method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(fields),
+    })
+    const data = await res.json().catch(() => null)
+    if (res.ok && data && data.ok === true && typeof data.receipt_id === 'string' && data.receipt_id) {
+      return { ok: true, receipt_id: data.receipt_id, notified: !!data.notified }
+    }
+    return { ok: false, error: (data && data.error) || `http_${res.status}` }
+  } catch {
+    return { ok: false, error: 'network' }
+  }
+}
 type Bucket = { key: string; label: string; score: number }
 type PulseData = { ok: boolean; pulse: number; buckets: Bucket[]; lowConfidence?: boolean; spaLike?: boolean; url?: string; signals?: Record<string, unknown> }
 
@@ -41,8 +62,9 @@ export default function SignalPulseForm() {
   // create (separating score-only visitors from real prospects).
   const [contactOptIn, setContactOptIn] = useState<'' | 'yes' | 'no'>('')
   const [contactNote, setContactNote] = useState('')
-  // Did the lead actually reach Netlify Forms? Never claim capture we didn't get.
+  // Did the lead actually land, proven by a server receipt? Never claim capture we didn't get.
   const [delivery, setDelivery] = useState<Delivery>('unknown')
+  const [receipt, setReceipt] = useState('')
   const [result, setResult] = useState<PulseData | null>(null)
   const [email, setEmail] = useState('')
   const [websiteVal, setWebsiteVal] = useState('')
@@ -63,22 +85,23 @@ export default function SignalPulseForm() {
     try { setScanDomain(new URL(/^https?:\/\//i.test(website) ? website : 'https://' + website).hostname) } catch { setScanDomain(website) }
     setPhase('scanning')
 
-    // Lead delivery: Netlify Forms → email to outreach@trysignalflair.com. Covers BOTH
-    // direct submits and homepage handoffs. (BOS integration will attach here later.)
-    // We RECORD the real outcome — the result screen must never imply we captured a lead
-    // we actually dropped, and an opted-in prospect that fails to deliver gets a visible
-    // fallback instead of silence.
-    const leadDelivery: Promise<Delivery> = fetch('/', {
-      method: 'POST', headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
-      body: new URLSearchParams({ 'form-name': 'signal-pulse', ...payload }).toString(),
-    }).then((r) => (r.ok ? 'delivered' : 'failed') as Delivery).catch(() => 'failed' as Delivery)
-    leadDelivery.then(setDelivery)
-
     // Call the function; keep a minimum on-screen scan time so it feels like a real scan.
     const scan: Promise<PulseData | null> = fetch(FUNCTION_URL, {
       method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(payload),
     }).then((r) => (r.ok ? r.json() : null)).catch(() => null)
     const [res] = await Promise.all([scan, sleep(2000)])
+
+    // Capture AFTER the scan so the lead carries the score it produced. Capture runs even
+    // when the scan failed — a lead is never dropped because the scan had a bad day.
+    const scored = res && res.ok
+    const cap = await captureLead({
+      ...payload,
+      lead_type: 'pulse',
+      signal_pulse_score: scored ? String(res.pulse) : '',
+      signal_pulse_buckets: scored ? (res.buckets || []).map((b) => `${b.label}:${b.score}`).join(', ') : '',
+    })
+    setDelivery(cap.ok ? 'delivered' : 'failed')
+    setReceipt(cap.receipt_id || '')
 
     if (res && res.ok) {
       setResult(res)
@@ -92,12 +115,9 @@ export default function SignalPulseForm() {
       return
     }
 
-    // Function unavailable or site unreachable → make sure the lead is captured, then confirm by email.
-    if (res == null && FALLBACK_WEBHOOK) {
-      try {
-        const ctrl = new AbortController(); const t = setTimeout(() => ctrl.abort(), 10000)
-        await fetch(FALLBACK_WEBHOOK, { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(payload), signal: ctrl.signal }).finally(() => clearTimeout(t))
-      } catch { /* best effort */ }
+    // Function unavailable or site unreachable → the lead was still captured above (or
+    // honestly reported as not captured); confirm by email.
+    {
     }
     track('form_submit', { form_id: 'signal-pulse', preview_type: 'signal-pulse' })
     setPhase('sent')
@@ -281,7 +301,7 @@ export default function SignalPulseForm() {
 
       {phase === 'result' && result && (
         <>
-          <PulseResult data={result} email={email} website={websiteVal} fromHandoff={!!handoff} fullName={leadName} phoneHint={leadPhone} optedIn={contactOptIn === 'yes'} delivery={delivery} contactNote={contactNote} />
+          <PulseResult data={result} email={email} website={websiteVal} fromHandoff={!!handoff} fullName={leadName} phoneHint={leadPhone} optedIn={contactOptIn === 'yes'} delivery={delivery} contactNote={contactNote} receipt={receipt} />
           {handoff && (
             <button type="button" onClick={resetHandoff} style={{ display: 'block', margin: '14px auto 0', background: 'none', border: 'none', cursor: 'pointer', fontFamily: "'Geist Mono',monospace", fontSize: '10.5px', letterSpacing: '0.16em', textTransform: 'uppercase' as const, textDecoration: 'underline', opacity: 0.6, color: 'inherit' }}>
               Not your site? Run a different one →
@@ -290,23 +310,45 @@ export default function SignalPulseForm() {
         </>
       )}
 
-      {phase === 'sent' && (
+      {phase === 'sent' && delivery !== 'failed' && (
         <div className="ssc-success" role="status" aria-live="polite">
           <div className="ssc-success-mark" aria-hidden="true">✓</div>
           <div className="ssc-success-h">Your Signal Pulse™ request is in.</div>
-          <div className="ssc-success-b">We’ve got your site and email. A reviewer will check your first AI-readiness signals and email your Signal Pulse™ — typically within 24 hours. Watch your inbox.</div>
+          <div className="ssc-success-b">We couldn’t finish the automated read of your site, so a reviewer will run it by hand and email your Signal Pulse™ — typically within 24 hours. Your details are saved.</div>
+          {receipt && <div className="sp-receipt">Saved — receipt <strong>{receipt}</strong></div>}
           <a className="ssc-success-link" href="/proof/">See Case Zero — our own 18 → 91 climb →</a>
           {!handoff && <a className="ssc-success-link" href="/#cta">Want a human on it now? Hand it to Corey →</a>}
+        </div>
+      )}
+      {phase === 'sent' && delivery === 'failed' && (
+        <div className="ssc-success" role="status" aria-live="polite">
+          <div className="ssc-success-mark" aria-hidden="true">!</div>
+          <div className="ssc-success-h">We couldn’t save that.</div>
+          <div className="ssc-success-b">
+            The read didn’t finish and your details didn’t save on our end — so we’re telling you
+            rather than pretending otherwise. Send this and we’ll pick it up by hand.
+          </div>
+          <a
+            className="ssc-success-link"
+            href={`mailto:${FALLBACK_EMAIL}?subject=${encodeURIComponent('Signal Pulse request — ' + (websiteVal || 'my business'))}&body=${encodeURIComponent(`I tried to run a Signal Pulse and it didn't save.
+
+Name: ${leadName}
+Website: ${websiteVal}
+Email: ${email}
+Phone: ${leadPhone}
+`)}`}
+          >▸ Send it from my email →</a>
         </div>
       )}
     </div>
   )
 }
 
-function PulseResult({ data, email, website, fromHandoff = false, fullName = '', phoneHint = '', optedIn = false, delivery = 'unknown', contactNote = '' }: { data: PulseData; email: string; website: string; fromHandoff?: boolean; fullName?: string; phoneHint?: string; optedIn?: boolean; delivery?: Delivery; contactNote?: string }) {
+function PulseResult({ data, email, website, fromHandoff = false, fullName = '', phoneHint = '', optedIn = false, delivery = 'unknown', contactNote = '', receipt = '' }: { data: PulseData; email: string; website: string; fromHandoff?: boolean; fullName?: string; phoneHint?: string; optedIn?: boolean; delivery?: Delivery; contactNote?: string; receipt?: string }) {
   const [n, setN] = useState(0)
   const [armed, setArmed] = useState(false)
   const [optState, setOptState] = useState<'idle' | 'sending' | 'done' | 'failed'>('idle')
+  const [optReceipt, setOptReceipt] = useState('')
   const [optPhone, setOptPhone] = useState(phoneHint)
   const [optErr, setOptErr] = useState('')
   const pulse = data.pulse
@@ -327,6 +369,7 @@ function PulseResult({ data, email, website, fromHandoff = false, fullName = '',
       source: 'breakdown-request', breakdown_requested: 'yes', call_requested: 'yes', preview_type: 'signal-pulse',
       lead_tag: 'Breakdown Request', signal_pulse_score: String(data.pulse),
       contact_opt_in: 'yes', contact_note: contactNote,
+      business_name: '', page_url: typeof window !== 'undefined' ? window.location.href : '',
       signal_pulse_buckets: (data.buckets || []).map((b) => `${b.label}:${b.score}`).join(', '),
       signal_pulse_access: String((data.buckets || []).find((b) => b.key === 'access')?.score ?? ''),
       signal_pulse_structure: String((data.buckets || []).find((b) => b.key === 'structure')?.score ?? ''),
@@ -334,20 +377,13 @@ function PulseResult({ data, email, website, fromHandoff = false, fullName = '',
       signal_pulse_answers: String((data.buckets || []).find((b) => b.key === 'answers')?.score ?? ''),
       submitted_at: new Date().toISOString(),
     }
-    // Netlify Forms → email notification to outreach@trysignalflair.com (primary channel).
-    // This is the $500 conversion. We AWAIT it and branch on the real result — telling a
-    // customer "locked in" when the request never arrived is the worst failure this site
-    // can have, and it silently costs a paying lead.
-    let ok = false
-    try {
-      const res = await fetch('/', {
-        method: 'POST', headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
-        body: new URLSearchParams({ 'form-name': 'signal-pulse', ...pulseFields }).toString(),
-      })
-      ok = res.ok
-    } catch { ok = false }
-    try { track('breakdown_request', { form_id: 'signal-pulse', pulse: data.pulse, call_requested: true, delivered: ok }) } catch { /* no-op */ }
-    setOptState(ok ? 'done' : 'failed')
+    // This is the $500 conversion. It goes through the same durable capture path, and the
+    // "Locked in" state is reachable ONLY with a receipt in hand — telling a customer they
+    // are booked when the request never landed is the worst failure this site can have.
+    const cap = await captureLead({ ...pulseFields, lead_type: 'breakdown' })
+    try { track('breakdown_request', { form_id: 'signal-pulse', pulse: data.pulse, call_requested: true, delivered: cap.ok }) } catch { /* no-op */ }
+    setOptReceipt(cap.receipt_id || '')
+    setOptState(cap.ok ? 'done' : 'failed')
   }
 
   useEffect(() => {
@@ -430,6 +466,9 @@ function PulseResult({ data, email, website, fromHandoff = false, fullName = '',
           picture first? That&apos;s The Breakdown, below.
         </div>
       )}
+      {delivery === 'delivered' && receipt && (
+        <div className="sp-receipt">Saved — receipt <strong>{receipt}</strong></div>
+      )}
       {delivery === 'failed' && (
         <div className="sp-ack sp-ack--warn">
           <span className="sp-ack-dot" aria-hidden="true" />
@@ -487,6 +526,7 @@ function PulseResult({ data, email, website, fromHandoff = false, fullName = '',
             <strong> Breakdown</strong> — the verified investigation: all six layers, the evidence, what&apos;s
             dragging you, and the fix order. The $500 credits in full toward your build. Keep the phone close.
           </div>
+          {optReceipt && <div className="sp-receipt">Receipt <strong>{optReceipt}</strong> — quote it in any reply and we can pull your record.</div>}
           <a className="ssc-success-link" href="/proof/">See Case Zero — our own 18 → 91 climb →</a>
         </div>
       )}
