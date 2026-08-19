@@ -256,8 +256,18 @@ layer detail is always attached to the reading it was computed from.
 
 The homepage no longer embeds an intake form — every CTA routes to `/pulse` (the single
 journey: **Get Your Pulse → The Breakdown → Fix It → Stay Found™**). The Pulse result renders
-on the page from the `signal-pulse` function's JSON; The Breakdown request posts through the
-same Netlify form with `lead_tag: Breakdown Request`.
+on the page from the `signal-pulse` function's JSON.
+
+**Lead capture goes through `lead-capture` (Functions v2), never a direct browser POST.** It
+persists the lead to the `leads` Blobs store, reads it back to prove the write landed, and
+returns a receipt id — the UI shows success ONLY on that receipt. A Netlify Forms HTTP 200 is
+NOT proof of capture (verified 2026-08-19), so never infer success from a status code. Any
+field the static form does not declare is silently dropped by Netlify Forms — if you add a
+payload field, add a matching hidden input.
+
+⚠️ Netlify Forms drops submissions posted <~20s apart from the same client (answers 200,
+records nothing). Durable capture is unaffected; the function reports `notified:false`. The
+Blobs store is the system of record — `netlify blobs:list leads`.
 
 Netlify Forms needs no env var — Netlify parses the form out of the static export at deploy
 time. The form carries a `bot-field` honeypot. **After the first deploy that registers a new
@@ -378,7 +388,7 @@ SignalFlare.ai = restaurant decision intelligence, Texas. Completely different.
 | `src/app/pulse/page.tsx` · `src/components/SignalPulseForm.tsx` | The **/pulse landing page** — see its own section above before doubting it exists |
 | `src/lib/signal-tiers.ts` | Single source of truth for tier names/colors/verdicts |
 | `netlify/functions/signal-pulse.mjs` | Deterministic AI-readiness scan. Also how Case Zero layers are re-measured |
-| `netlify/functions/lead-intake.mjs` | GHL Contacts API upsert (secondary channel; GHL being cancelled) |
+| `netlify/functions/lead-capture.mjs` | **Durable lead capture.** Functions **v2** (legacy runtime has no Blobs context). Writes to the `leads` Blobs store, reads it back, and only then returns a receipt id. Owns the single notification email. Inspect leads with `netlify blobs:list leads` / `netlify blobs:get leads <receipt>` |
 | `public/llms.txt` · `public/proof.json` | Machine-readable proof surface — keep in sync with the pages |
 | `public/.well-known/signalflair.json` | Discovery manifest (+ non-dotted mirror `signalflair-discovery.json`) |
 | `netlify.toml` | Build config, redirects, cache headers |
