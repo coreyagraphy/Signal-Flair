@@ -140,7 +140,7 @@ export default function PrivacyPage() {
 
         <section className="rsc-cta">
           <h2 className="rsc-cta-h">See where <em>your</em> business stands.</h2>
-          <p className="rsc-cta-b">A free Signal Pulse™ — 3 of your 7 signal layers, 24 hours, no call. No credit card, no spam.</p>
+          <p className="rsc-cta-b">A free Signal Pulse™ — a four-signal read of your live site, 24 hours, no call. No credit card, no spam.</p>
           <a className="rsc-cta-btn" href="/#cta">▸ Run My Signal</a>
         </section>
       </div>

@@ -43,8 +43,8 @@ Founder: Corey Ellis. Public-facing city = Indianapolis, Indiana (Corey-directed
 
 - Framework: Next.js (static export, `output: 'export'`, `trailingSlash: true`)
 - Hosting: Netlify (production), git-linked to `coreyagraphy/Signal-Flair` — every push to `main` auto-builds and deploys (no more manual drag-drop). Dev server runs at localhost:3210
-- Lead delivery: **Netlify Forms** (primary, no env var needed) → email to `outreach@trysignalflair.com`. GoHighLevel is a parallel secondary and **is being cancelled** — see "Intake form wiring" below
-- Serverless: Netlify Functions (`netlify/functions/`) — `signal-pulse` (deterministic scan) and `lead-intake` (GHL Contacts API)
+- Lead delivery: **Netlify Forms** (only channel, no env var needed) → email to `outreach@trysignalflair.com`. **GoHighLevel is RETIRED (2026-08-18) — never reintroduce it.** BOS will connect to the lead flow later; the signal-pulse function's JSON result is the contract a future intake consumes
+- Serverless: Netlify Functions (`netlify/functions/`) — `signal-pulse` (deterministic scan; returns the result JSON to the page). `lead-intake` (GHL) was deleted 2026-08-18
 - Analytics: Google Analytics 4 (GA4)
 - No database. No server-side rendering. Static only.
 
@@ -55,7 +55,7 @@ Founder: Corey Ellis. Public-facing city = Indianapolis, Indiana (Corey-directed
 - **Never move nameservers.** Only repoint the website A/CNAME record to Netlify.
   Moving nameservers wipes MX/SPF/DKIM/DMARC and kills the live email warmup.
 - **Deploy = merge to `main`.** Netlify is git-linked (site `cozy-pie-596a1f`); it runs `next build` and publishes `out/` automatically on every push to `main`. Build config lives in `netlify.toml`. No manual zip/drag-drop.
-- Env vars (GA4 ID, GHL webhook) are set in Netlify → Environment variables and inlined at build time — change them there, then trigger a rebuild (any push to `main`).
+- Env vars (GA4 ID) are set in Netlify → Environment variables and inlined at build time — change them there, then trigger a rebuild (any push to `main`). Unset any leftover GHL_* / *_GHL_* vars in Netlify.
 - Dev: `next dev --hostname 0.0.0.0 --port 3210`
 
 ---
@@ -92,22 +92,37 @@ That was a bad Grok recommendation. Reject it if it appears anywhere.
 
 ---
 
+## Naming lock (Corey, 2026-08-18)
+
+- **Signal Flair** = company/brand · **FLAIR** = the operating system/product · **Signal Score™** = the score (unchanged) · **Proof Engine / Proof OS** = internal terminology only, never client-facing · **Signal Pulse™** = the quick first-look · **The Breakdown** = the $500 paid professional assessment. Do NOT mass-replace Proof/Signal terminology.
+- **The funnel** (site is built around it): **Get Your Pulse → The Breakdown → Fix It → Stay Found™.** One recurring CTA — `GET YOUR PULSE` → `/pulse` — in nav, hero, sections, and mobile.
+- Avoid leading with "Free Audit / Diagnostic / Complimentary Assessment" — Pulse is the product name; price clarity is "No charge. Takes seconds."
+
 ## Pricing — do not change without Corey confirming
-### (Updated 2026-07-21, Corey-approved via the pricing/terminology prompt run. Supersedes the old score-gated table. NO score gates — scope is set by the free audit.)
+### (Updated 2026-08-18 on branch moat-alignment-2026-08-18 — STAGED, pending Corey's final confirm before deploy; see Desktop\SIGNALFLAIR_WEBSITE_CHANGE_ORDER_2026-08-18.md for the market evidence. Supersedes the 2026-07-21 table. NO score gates — scope is set by the free audit.)
 
 | Tier | What it is | Price | Type |
 |---|---|---|---|
-| Signal Pulse™ | Free preview, 3 of 7 layers, 24h (was "Field Report" — renamed in all customer-facing copy; env vars/lead tags keep old identifiers) | $0 | Free |
-| Signal Score™ Audit | Full 7-layer diagnostic + Proof OS™ action plan | Free during founding period ($500 after) | Free |
-| Rebuild | Lighter-scope build | $3,000 | One-time |
-| Foundation Build | Full Proof Stack™ + Smart Site™ rebuild | $5,500 ($3,500 bundled w/ 12-mo Signal Proof — save $2,000; bundle applies to Foundation only) | One-time |
-| Signal Proof ⭐ | Stay Found™ monthly — Citation Capture, monthly Answer Architecture™, Proof Density Engine, quarterly re-audit, Content Payload 2 wks (1 location) | $1,800/mo | Recurring |
-| Signal Dominate | Everything in Proof at full velocity + multi-location + Mental Vision content bundle + full-month Content Payload + Satellites managed | from $3,500/mo | Recurring |
+| Signal Pulse™ | Free instant four-signal read — Access / Structure / Trust / Answers (matches what the serverless function actually scores; was "Field Report" — env vars/lead tags keep old identifiers) | $0 | Free |
+| The Breakdown | Verified investigation — full 6-layer Signal Score™, human-verified, evidence attached, prioritized fix order, personal walkthrough | $500 — credited in full toward implementation | One-time |
+| Rebuild | Lighter-scope build | $1,500 | One-time |
+| Foundation Build | Full Proof Stack™ + Smart Site™ rebuild | $3,500 flat — ONE price, no bundle math | One-time |
+| Stay Found™ Watch | Entry plan — monthly 6-layer re-verification, drift alerts with before/after evidence, quarterly evidence report the client keeps | $249/mo | Recurring |
+| Signal Proof ⭐ | Stay Found™ monthly — Citation Capture, monthly Answer Architecture™, Proof Density Engine, quarterly re-audit, Content Payload 2 wks (1 location) | $1,500/mo | Recurring |
+| Stay Found™ Multi-Location | Everything in Proof at full velocity + multi-location + Mental Vision content bundle + full-month Content Payload + Satellites managed (RENAMED from "Signal Dominate" — dominance language collides with the delivery-based guarantee; never reintroduce) | from $3,500/mo | Recurring |
 | Founding Five | 35% off build + first 3 mo of Signal Proof at 50%, for a named case study. 5 seats. Replaces Founding Client/Founding Partner Pilot | — | Time-boxed |
 
-Per-location: add a location $1,500 one-time (Satellite included) · Satellite mgmt +$250/mo on Signal Proof (included in Dominate) · extra-location Content Payload +$450/mo. Annual billing = 2 months free (monthly plans). Enterprise/Civic: from $12K build + $3K/mo, or fixed-scope 90-day builds from $15K. No price ranges on plan cards. NO CRM in any client-facing feature list (privacy-policy data-processor disclosure is the only allowed mention).
+Per-location: add a location $1,500 one-time (Satellite included) · Satellite mgmt +$250/mo on Signal Proof (included in Multi-Location) · extra-location Content Payload +$450/mo. Annual billing = 2 months free (monthly plans). Enterprise/Civic: from $12K build + $3K/mo, or fixed-scope 90-day builds from $15K. No price ranges on plan cards. NO CRM in any client-facing feature list (privacy-policy data-processor disclosure is the only allowed mention).
 
-**Signal Score™ = 7 layers** (Access & Crawlability, Structured Intelligence, Entity Clarity, Answer Architecture, Trust & Proof Density, Live AI Visibility, Agent & Commerce Readiness) · 28-point diagnostic (7×4). Historical records are FROZEN at their audit-date models: Case Zero (18/100, six signals) and The Mill (35/100, seven Proof OS™ signals).
+**Signal Score™ = 6 layers** (Access & Crawlability, Structured Intelligence, Entity Clarity, Answer Architecture, Trust & Proof Density, Live AI Visibility) · 24-point diagnostic (6×4, points 22/18/16/18/16/10 = 100). Agent & Commerce Readiness is a WATCH item, not a scored layer — no platform consumes per-business agent endpoints yet (verified against Google/OpenAI/Anthropic primary docs 2026-08-18); re-add only if that changes. Historical records are FROZEN at their audit-date models: Case Zero (18/100, six signals) and The Mill (35/100, seven Proof OS™ signals).
+
+**Claim guardrails (2026-08-18 — every one evidence-backed; violating any of these on the site is a P0):**
+- NEVER sell llms.txt as a deliverable or score it (97% of published llms.txt files get zero requests — Ahrefs, 137k domains; Google docs: Search ignores AI text files). Serving our own /llms.txt is fine.
+- NEVER claim "nobody else checks AI-crawler access" — Semrush and Knowatoa both ship the check. Our edge is evidence + done-for-you, not the check.
+- NEVER present schema/structured data as a citation-lift lever (largest controlled test: no uplift). It is machine-readability hygiene.
+- NEVER publish a single-number AI-visibility percentage from one run — ranges with sample size only (run-to-run citation overlap is 0.29–0.50).
+- Results language: "after", never "because". Delivery-based guarantee only — unchanged.
+- The one causally supported fix is answer-crawler access (SIGIR 2026) — lead with it, cite it, do not oversell past it.
 
 Guarantee: delivery-based only. Never rankings, leads, or revenue.
 Clients keep everything built, even on cancel.
@@ -168,7 +183,7 @@ CTA, but must never displace the primary conversion path above. Never use
 
 | Route | Purpose | Indexed |
 |---|---|---|
-| `/` | Homepage — hero, diagnosis, one-minute explainer, 7-layer protocol, Mill audit, Case Zero proof, pricing w/ billing toggle, Founding Five, lead form | ✅ |
+| `/` | Homepage — hero, diagnosis, one-minute explainer, 6-layer protocol, Mill audit, Case Zero proof, pricing w/ billing toggle, Founding Five, lead form | ✅ |
 | `/pulse/` | Signal Pulse™ landing — instant deterministic score via Netlify Function | ✅ |
 | `/how-it-works/` · `/about/` · `/faq/` · `/privacy/` | Core sub-pages | ✅ |
 | `/proof/` | Signal Proof Page™ hub — Case Zero 18 → 73 → 91 | ✅ |
@@ -223,7 +238,7 @@ layer detail is always attached to the reading it was computed from.
 ## Pending tasks (priority order)
 
 1. **Verify the Crunchbase `sameAs`** — see task 5. Everything else on this list is done or blocked on Corey.
-2. **Wire intake webhook** — ✅ LIVE (2026-07-18). `NEXT_PUBLIC_GHL_WEBHOOK_URL` is set in Netlify (production, all contexts) to the GHL Signal Pulse inbound webhook (location `dmPSx68yJZdbLgQY5Osd`); the form POSTs real leads on the next build after it was set. Form still reads `NEXT_PUBLIC_FIELD_REPORT_WEBHOOK_URL` first if a router is ever added. Both unset = real error (no fake success). 10s fetch timeout guards a hung webhook. NOTE: it's a build-time (`NEXT_PUBLIC_`) var — changing it requires a rebuild (push to `main`).
+2. **Intake wiring** — GHL RETIRED 2026-08-18. Leads flow through Netlify Forms → email only (`signal-pulse` form on /pulse). In Netlify, unset `NEXT_PUBLIC_GHL_WEBHOOK_URL`, `NEXT_PUBLIC_FIELD_REPORT_WEBHOOK_URL`, `NEXT_PUBLIC_SIGNAL_PULSE_WEBHOOK_URL`, `GHL_API_KEY`, `GHL_LOCATION_ID`, then redeploy. BOS integration is the planned successor.
 3. **GA4 analytics** — ✅ LIVE (2026-07-18). `NEXT_PUBLIC_GA_ID` set in Netlify (`G-5VZR713RKS`, all contexts). gtag loader = `src/components/Analytics.tsx` (rendered in layout); helper = `src/lib/analytics.ts` (`track()`). Events wired: `form_submit` (lead form success), `cta_click` (every `#cta` CTA, with label+section), `founding_client_click` (founding apply button). Auto `page_view` covers every page. NOTE: build-time (`NEXT_PUBLIC_`) var — changing it requires a rebuild (push to `main`).
 4. **Integrate Case Zero section** — ✅ DONE (2026-08-03). The homepage proof section is the real self-audit (18 → 73 → 91); the illustrative card is gone. See "Case Zero — the published record" above.
 5. **LinkedIn sameAs** — ✅ DONE (2026-08-03). Page is live at `linkedin.com/company/signal-flair-ai` (Corey-confirmed). Present in the site-wide Organization `sameAs` (`layout.tsx`), the footer, `/proof/trust`, `llms.txt`, `proof.json`, and now the `record.profiles` block in both discovery manifests. **Crunchbase is also confirmed** (2026-08-03) — `crunchbase.com/organization/signal-flair` is a real, claimed, "verified with this company" profile. It stays in `sameAs`. Site schema `foundingDate` tightened from `'2026'` to `'2026-06-07'` to exactly match the profile's founded date, so the two sources corroborate rather than merely not-contradict. Every `sameAs` entry is now verified.
@@ -231,30 +246,35 @@ layer detail is always attached to the reading it was computed from.
 
 ---
 
-## Intake form wiring — Netlify Forms primary, GHL secondary (2026-08-03)
+## Intake wiring — Netlify Forms only (GHL retired 2026-08-18)
 
-**GHL is being cancelled. Netlify Forms is now the lead channel that must work.**
-
-Both forms fire **both** channels in parallel and report success if **either** one accepts:
+**GoHighLevel is retired. Do not reintroduce it in code, env vars, or copy.**
 
 | Channel | Where | Destination |
 |---|---|---|
-| **Primary — Netlify Forms** | `data-netlify` markup on `#lead-form` (name `field-report`) and the /pulse form (name `signal-pulse`) | Netlify → Forms → Notifications → email **`outreach@trysignalflair.com`** |
-| Secondary — GHL | `NEXT_PUBLIC_FIELD_REPORT_WEBHOOK_URL` → `NEXT_PUBLIC_GHL_WEBHOOK_URL` → `FIELD_REPORT_WEBHOOK_OVERRIDE` | GHL sub-account `dmPSx68yJZdbLgQY5Osd` |
+| **Netlify Forms** (only) | `data-netlify` markup on the /pulse form (name `signal-pulse`) | Netlify → Forms → Notifications → email **`outreach@trysignalflair.com`** |
+
+The homepage no longer embeds an intake form — every CTA routes to `/pulse` (the single
+journey: **Get Your Pulse → The Breakdown → Fix It → Stay Found™**). The Pulse result renders
+on the page from the `signal-pulse` function's JSON.
+
+**Lead capture goes through `lead-capture` (Functions v2), never a direct browser POST.** It
+persists the lead to the `leads` Blobs store, reads it back to prove the write landed, and
+returns a receipt id — the UI shows success ONLY on that receipt. A Netlify Forms HTTP 200 is
+NOT proof of capture (verified 2026-08-19), so never infer success from a status code. Any
+field the static form does not declare is silently dropped by Netlify Forms — if you add a
+payload field, add a matching hidden input.
+
+⚠️ Netlify Forms drops submissions posted <~20s apart from the same client (answers 200,
+records nothing). Durable capture is unaffected; the function reports `notified:false`. The
+Blobs store is the system of record — `netlify blobs:list leads`.
 
 Netlify Forms needs no env var — Netlify parses the form out of the static export at deploy
-time. Both forms carry a `bot-field` honeypot. **After the first deploy that registers a new
+time. The form carries a `bot-field` honeypot. **After the first deploy that registers a new
 form, the email notification must be (re)confirmed in Netlify → Forms → Notifications.**
 
-**When GHL is cancelled:** unset `NEXT_PUBLIC_FIELD_REPORT_WEBHOOK_URL`,
-`NEXT_PUBLIC_GHL_WEBHOOK_URL` and `GHL_API_KEY` in Netlify, then redeploy. Nothing else
-changes — the forms keep delivering to `outreach@trysignalflair.com`.
-
-**GHL secondary path (while still active):** point `NEXT_PUBLIC_FIELD_REPORT_WEBHOOK_URL` at
-`/.netlify/functions/lead-intake`, which upserts via the official **GHL Contacts API**
-(needs server-side `GHL_API_KEY`). Do **not** go back to the GHL *inbound webhook* — that
-webhook was found orphaned (its workflow had been deleted); it answered 200 forever and
-executed nothing, so leads sent to it vanished silently.
+**BOS (planned):** BOS will connect to this lead flow. Until then, email is the transport;
+the function's JSON result is the stable contract a future intake consumes.
 
 **Payload fields:** form fields + `submitted_at`, `form_type`/`request_type` (= `field_report`),
 UTM params, `lead_tag`, and **`billing_preference`** — `'annual'` / `'monthly'` if the visitor
@@ -279,7 +299,7 @@ this section and the branch-hygiene rule below.
 `force = true` redirect there once shadowed the real page.
 
 **What it does:** a visitor enters name / website / email and gets an instant, deterministic
-0–100 Signal Pulse™ in seconds — a live preview, not the full Signal Score™ Audit. It is the
+0–100 Signal Pulse™ in seconds — a live preview, not The Breakdown. It is the
 top-of-funnel free tool and the only page that scores a prospect on the spot.
 
 ### Files (all real — verified 2026-08-03)
@@ -360,7 +380,7 @@ SignalFlare.ai = restaurant decision intelligence, Texas. Completely different.
 | File | Purpose |
 |---|---|
 | `CLAUDE.md` (this file) | Project context for Claude Code |
-| `src/components/SignalFlairLanding.tsx` | The homepage — every section, the lead form, the 7-layer protocol data |
+| `src/components/SignalFlairLanding.tsx` | The homepage — every section, the lead form, the 6-layer protocol data |
 | `src/app/globals.css` | All styles. No CSS modules, no Tailwind |
 | `src/app/layout.tsx` | Site-wide JSON-LD (Organization, Person, WebSite, Service, OfferCatalog) |
 | `src/app/proof/page.tsx` | Signal Proof Page™ hub — the Case Zero trajectory lives here |
@@ -368,7 +388,7 @@ SignalFlare.ai = restaurant decision intelligence, Texas. Completely different.
 | `src/app/pulse/page.tsx` · `src/components/SignalPulseForm.tsx` | The **/pulse landing page** — see its own section above before doubting it exists |
 | `src/lib/signal-tiers.ts` | Single source of truth for tier names/colors/verdicts |
 | `netlify/functions/signal-pulse.mjs` | Deterministic AI-readiness scan. Also how Case Zero layers are re-measured |
-| `netlify/functions/lead-intake.mjs` | GHL Contacts API upsert (secondary channel; GHL being cancelled) |
+| `netlify/functions/lead-capture.mjs` | **Durable lead capture.** Functions **v2** (legacy runtime has no Blobs context). Writes to the `leads` Blobs store, reads it back, and only then returns a receipt id. Owns the single notification email. Inspect leads with `netlify blobs:list leads` / `netlify blobs:get leads <receipt>` |
 | `public/llms.txt` · `public/proof.json` | Machine-readable proof surface — keep in sync with the pages |
 | `public/.well-known/signalflair.json` | Discovery manifest (+ non-dotted mirror `signalflair-discovery.json`) |
 | `netlify.toml` | Build config, redirects, cache headers |

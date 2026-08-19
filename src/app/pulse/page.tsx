@@ -5,14 +5,14 @@ import SignalPulseHeroVideo from '@/components/SignalPulseHeroVideo'
 import BrandBgVideo from '@/components/BrandBgVideo'
 
 export const metadata: Metadata = {
-  title: 'Free Signal Pulse™ | Signal Flair',
+  title: 'Get Your Pulse | Signal Flair',
   description:
-    'Get a free Signal Pulse™ — see your website’s AI-readiness score in seconds. The full Signal Score™ is a human-verified review across all seven Signal Protocol™ layers.',
+    'See what AI is picking up about your business. Your Signal Pulse™ scores the live signals in seconds — no charge. The Breakdown ($500) is the verified investigation that follows.',
   alternates: { canonical: 'https://signalflair.ai/pulse/' },
   openGraph: {
-    title: 'Get a Free Signal Pulse™ | Signal Flair',
+    title: 'Get Your Pulse | Signal Flair',
     description:
-      'See whether AI systems can access, understand, and verify your business. Get your free Signal Pulse™ from Signal Flair.',
+      'See what AI is picking up about your business — in seconds, no charge. Get Your Pulse from Signal Flair.',
     images: ['/video/signal-pulse-poster.jpg'],
   },
 }
@@ -26,7 +26,7 @@ const CHECKS: { k: string; t: string; d: string; hex: string; rgb: string }[] = 
   { k: '4', t: 'Answers', d: 'Can AI answer with your business? FAQ content, service explanations, and answer-ready page structure.', hex: '#ff6a2b', rgb: '255,106,43' },
 ]
 
-// The seven verified Signal Protocol™ layers — the full Signal Score™, not the preview.
+// The six verified Signal Protocol™ layers — the full Signal Score™, not the preview.
 const LAYERS = [
   'Access & Crawlability',
   'Structured Intelligence',
@@ -34,7 +34,6 @@ const LAYERS = [
   'Answer Architecture',
   'Trust & Proof Density',
   'Live AI Visibility',
-  'Agent & Commerce Readiness',
 ]
 
 const jsonLd = {
@@ -43,10 +42,10 @@ const jsonLd = {
     {
       '@type': 'WebPage',
       '@id': 'https://signalflair.ai/pulse/#webpage',
-      name: 'Free Signal Pulse™ — quick AI-readiness preview',
+      name: 'Signal Pulse™ — the quick read on your AI signals',
       url: 'https://signalflair.ai/pulse/',
       description:
-        'Get a free Signal Pulse™ preview of your website’s AI readiness. The full Signal Score™ requires manual verification across the seven Signal Protocol™ layers.',
+        'Signal Pulse™ scores a website’s live AI-readiness signals in seconds, at no charge. The Breakdown is the human-verified investigation across all six Signal Protocol™ layers.',
       isPartOf: { '@id': 'https://signalflair.ai/#website' },
       about: { '@id': 'https://signalflair.ai/#org' },
       primaryImageOfPage: 'https://signalflair.ai/video/signal-pulse-poster.jpg',
@@ -63,10 +62,10 @@ const jsonLd = {
       serviceType: 'AI readiness preview',
       name: 'Signal Pulse™ — quick AI-readiness preview',
       description:
-        'A free Signal Pulse™: an instant, automated preview of a website’s AI-readiness signals — access, structure, trust, and answers — the entry point to the full human-verified Signal Score™.',
+        'Signal Pulse™: an instant, automated read of a website’s AI-readiness signals — access, structure, trust, and answers — at no charge. The entry point to The Breakdown, the human-verified investigation.',
       provider: { '@id': 'https://signalflair.ai/#org' },
       areaServed: { '@type': 'Country', name: 'United States' },
-      offers: { '@type': 'Offer', price: '0', priceCurrency: 'USD', name: 'Free Signal Pulse™' },
+      offers: { '@type': 'Offer', price: '0', priceCurrency: 'USD', name: 'Signal Pulse™ — no charge' },
     },
   ],
 }
@@ -81,7 +80,7 @@ export default function SignalPulsePage() {
         <a className="ssc-nav-logo" href="/" aria-label="Signal Flair home">
           <SignalFlairLogo onDark style={{ height: 68, width: 'auto', display: 'block' }} />
         </a>
-        <a className="ssc-nav-cta" href="#pulse">▸ Get My Signal Pulse™</a>
+        <a className="ssc-nav-cta" href="#pulse">▸ GET YOUR PULSE</a>
       </nav>
 
       {/* ── IMMERSIVE HERO — brand video background + focal form ── */}
@@ -89,18 +88,18 @@ export default function SignalPulsePage() {
         <SignalPulseHeroVideo />
         <div className="ssc-hero-scrim" aria-hidden="true" />
         <div className="ssc-hero-inner">
-          <div className="ssc-eyebrow"><span className="ssc-dot" aria-hidden="true" />Free Signal Pulse™</div>
+          <div className="ssc-eyebrow"><span className="ssc-dot" aria-hidden="true" />Signal Pulse™ · No charge. Takes seconds.</div>
           <h1 className="ssc-h1">Most businesses are <em>INVISIBLE</em> to AI.</h1>
           <p className="ssc-lead">
-            Signal Flair helps AI systems access, understand, verify, and recommend your business. Get your free
-            Signal Pulse™ — a fast read on whether ChatGPT, Claude, Gemini, Perplexity, and Google AI can find and
-            trust you.
+            See what AI is picking up about your business. Your Pulse reads the live signals — whether ChatGPT,
+            Claude, Gemini, Perplexity, and Google AI can find, read, and trust you — and scores them on this page,
+            in seconds.
           </p>
 
           <SignalPulseForm />
 
           <p className="ssc-boundary">
-            Signal Pulse™ is an instant preview. Your full <strong>Signal Score™</strong> is human-verified — on request.
+            Pulse gives you the quick read. <strong>The Breakdown</strong> — the $500 verified investigation — shows you what&apos;s really going on.
           </p>
           <div className="ssc-hero-links"><a href="/proof/">▸ See Case Zero!</a></div>
         </div>
@@ -131,20 +130,20 @@ export default function SignalPulsePage() {
       {/* ── PREVIEW VS FULL SCORE ── */}
       <section className="ssc-section">
         <div className="ssc-sec-head">
-          <span className="ssc-kicker">Preview vs. full score</span>
-          <h2 className="ssc-h2">One is a <em className="ssc-em-orange">preview.</em> One is <em className="ssc-em-pink">verified.</em></h2>
-          <p className="ssc-p">Signal Pulse™ is the quick preview. Signal Score™ is the full verified measurement.</p>
+          <span className="ssc-kicker">The quick read vs. the investigation</span>
+          <h2 className="ssc-h2">Pulse is the <em className="ssc-em-orange">quick read.</em> The Breakdown is <em className="ssc-em-pink">verified.</em></h2>
+          <p className="ssc-p">This isn&apos;t another website score. The Breakdown checks what AI can actually find and understand about your business, verifies what&apos;s real, shows you the evidence, and tells you what deserves attention first.</p>
         </div>
         <div className="ssc-vs">
           <div className="ssc-vs-card preview">
-            <div className="ssc-vs-tag">Quick preview</div>
-            <div className="ssc-vs-desc">A fast, automated read on your first AI-readiness signals — enough to show where you stand and what to fix first. Instant, in seconds.</div>
-            <a className="ssc-vs-cta" href="#pulse">▸ Get My Free Signal Pulse™</a>
+            <div className="ssc-vs-tag">Signal Pulse™ · $0</div>
+            <div className="ssc-vs-desc">The quick automated read — early signals, scored instantly on the page. Enough to show where you stand. No charge, no call.</div>
+            <a className="ssc-vs-cta" href="#pulse">▸ GET YOUR PULSE</a>
           </div>
           <div className="ssc-vs-card full">
-            <div className="ssc-vs-tag">Full verified score</div>
-            <div className="ssc-vs-name">Signal Score™</div>
-            <div className="ssc-vs-desc">The complete 0–100 measurement, verified across all seven Signal Protocol™ layers:</div>
+            <div className="ssc-vs-tag">The Breakdown · $500</div>
+            <div className="ssc-vs-name">The Breakdown</div>
+            <div className="ssc-vs-desc">The verified investigation before you spend thousands fixing anything: your full <strong>Signal Score™</strong> across all six layers, human-verified, with the evidence behind every finding — including what could <em>not</em> be verified. Live AI-visibility checks where supported, a prioritized fix order, and a personal walkthrough. <strong>The full $500 credits toward implementation.</strong> The six layers:</div>
             <ul className="ssc-layers">
               {LAYERS.map((l) => (<li key={l}>{l}</li>))}
             </ul>
@@ -156,15 +155,15 @@ export default function SignalPulsePage() {
       <section className="ssc-section">
         <div className="ssc-cz">
           <div className="ssc-cz-gauge">
-            <div className="ssc-cz-num"><span className="cz-b">18</span><span className="cz-arrow" aria-hidden="true">→</span><span className="cz-a">73<small>/100</small></span></div>
+            <div className="ssc-cz-num"><span className="cz-b">18</span><span className="cz-arrow" aria-hidden="true">→</span><span className="cz-a">91<small>/100</small></span></div>
             <div className="ssc-cz-lbl">Case Zero</div>
           </div>
           <div className="ssc-cz-body">
             <div className="ssc-cz-h">We audited ourselves first.</div>
             <div className="ssc-cz-p">
-              Signal Flair started at 18/100 and rebuilt in public to 91/100 (+73). No inflated case study. No fake
-              proof — we document the climb, and the layers still building, so you can see the system work on us
-              before you trust it with your business.
+              Our own protocol read: 18/100 on June 6, 2026 — re-read at 91/100 on August 3, same checkpoints, both
+              published with dates on the public change log. Not a marketing before-and-after: a documented record,
+              including the layers still open, so you can see the system work on us first.
             </div>
             <a className="ssc-cz-cta" href="/proof/">▸ See Case Zero! →</a>
           </div>
@@ -188,7 +187,7 @@ export default function SignalPulsePage() {
       <section className="ssc-section">
         <div className="ssc-sec-head">
           <span className="ssc-kicker">How it works</span>
-          <h2 className="ssc-h2">Instant <em>Pulse.</em> Verified <em className="ssc-em-pink">Score.</em></h2>
+          <h2 className="ssc-h2">Instant <em>Pulse.</em> Verified <em className="ssc-em-pink">Breakdown.</em></h2>
         </div>
         <div className="ssc-steps">
           <div className="ssc-step">
@@ -203,8 +202,8 @@ export default function SignalPulsePage() {
           </div>
           <div className="ssc-step">
             <div className="ssc-step-n" style={{ color: '#ff3d82' }}>03</div>
-            <span className="ssc-step-t">Opt in for your full Signal Score™</span>
-            <div className="ssc-step-d">Want the complete picture? The Signal Score™ is a human-verified measurement across all seven layers, plus live AI-visibility tests — and Corey walks you through it personally on a call. Not a PDF in your inbox. A working session, on request.</div>
+            <span className="ssc-step-t">Get The Breakdown — $500</span>
+            <div className="ssc-step-d">Pulse gives you the quick read. The Breakdown shows you what&apos;s really going on: your full Signal Score™ across all six layers, human-verified with the evidence — and Corey walks you through it personally. The full $500 credits toward your build.</div>
           </div>
         </div>
       </section>
@@ -212,9 +211,9 @@ export default function SignalPulsePage() {
       {/* ── FINE PRINT + DISCLAIMER ── */}
       <section className="ssc-section ssc-fine">
         <p className="ssc-p">
-          Start with a free, instant Signal Pulse™. A full Signal Score™ review and implementation options come
-          next — when you’re ready. The Foundation Build starts at $3,500 for businesses ready to turn findings
-          into working AI Proof Infrastructure™.
+          Start with your Pulse — no charge, takes seconds. The Breakdown ($500, credited in full toward your
+          build) verifies what&apos;s really going on before you spend thousands fixing it. Implementation runs
+          from a $1,500 Rebuild to the $3,500 Foundation Build, with Stay Found™ monitoring after.
         </p>
         <p className="ssc-disclaimer">
           Signal Flair does not guarantee rankings, leads, revenue, citations, recommendations, inclusion, or AI
@@ -227,15 +226,15 @@ export default function SignalPulsePage() {
       <section className="ssc-cta">
         <div className="ssc-radar" aria-hidden="true"><i /><i /><i /><i /></div>
         <h2 className="ssc-cta-h">Find out if AI can <em>trust</em> your business.</h2>
-        <a className="ssc-cta-btn" href="#pulse">▸ Get My Free Signal Pulse™</a>
-        <div className="ssc-cta-fine">Instant preview. Your full Signal Score™ is human-verified — on request.</div>
+        <a className="ssc-cta-btn" href="#pulse">▸ GET YOUR PULSE</a>
+        <div className="ssc-cta-fine">No charge. Takes seconds. The Breakdown — $500, credited toward your build — is there when you want the verified picture.</div>
       </section>
 
       {/* ── FULL EXPERIENCE — bridge to the main Signal Flair site ── */}
       <section className="ssc-full">
         <span className="ssc-kicker">The full experience</span>
         <h2 className="ssc-full-h">A pulse is just the <em>first signal.</em></h2>
-        <p className="ssc-full-p">You’ve felt the Pulse. Now see the whole system — the seven-layer Signal Protocol™, Case Zero, pricing, and exactly how Signal Flair makes your business findable, readable, and recommendable by AI.</p>
+        <p className="ssc-full-p">You’ve felt the Pulse. Now see the whole system — the six-layer Signal Protocol™, Case Zero, pricing, and exactly how Signal Flair makes your business findable, readable, and recommendable by AI.</p>
         <a className="ssc-full-btn" href="/">▸ Explore the full Signal Flair →</a>
       </section>
 

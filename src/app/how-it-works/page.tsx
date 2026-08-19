@@ -4,7 +4,7 @@ import SignalFlairLogo from '@/components/SignalFlairLogo'
 export const metadata: Metadata = {
   title: 'How It Works — Scan, Score, Fix, Stay Found | Signal Flair',
   description:
-    'AI visibility across ChatGPT, Gemini & Perplexity: free Signal Score™ Audit, one-time builds from $3,000, Stay Found™ plans from $1,800/mo.',
+    'AI visibility across ChatGPT, Gemini & Perplexity: Get Your Pulse at no charge, The Breakdown at $500, one-time builds from $1,500, Stay Found™ plans from $249/mo.',
   alternates: { canonical: 'https://signalflair.ai/how-it-works/' },
   openGraph: {
     title: 'How Signal Flair works — scan, score, fix, stay found',
@@ -18,17 +18,17 @@ const STEPS: { k: string; t: string; d: string }[] = [
   {
     k: '01',
     t: 'Scan',
-    d: 'We run your business through ChatGPT, Claude, Perplexity, Gemini, and Google AI Overviews and check the layer they actually read — llms.txt, schema markup, crawler access, entity clarity, reviews, and authority content.',
+    d: 'We run your business through ChatGPT, Claude, Perplexity, Gemini, and Google AI Overviews and check the layer they actually read — crawler access, schema markup, entity clarity, reviews, and authority content.',
   },
   {
     k: '02',
     t: 'Score',
-    d: 'You get a Signal Score™ from 0 to 100 across the seven layers of the Signal Protocol™, plus exactly what is pulling it down. Most local businesses score under 40 and never knew it. The audit sets the scope, so the work matches the real gap.',
+    d: 'You get a Signal Score™ from 0 to 100 across the six layers of the Signal Protocol™, plus exactly what is pulling it down. Most local businesses score under 40 and never knew it. The audit sets the scope, so the work matches the real gap.',
   },
   {
     k: '03',
     t: 'Fix',
-    d: 'We build The Proof Stack™ — the full infrastructure layer AI reads before it recommends you: Model Ingestion Manifest deployed, Machine Trust Layer™ installed, Crawl Clearance Protocol run, Entity Lock™ resolved, and a 90-day AI action plan handed over. Built in 7–14 days, not months. You keep everything, even if you cancel.',
+    d: 'We build The Proof Stack™ — the full infrastructure layer AI reads before it recommends you: Machine Trust Layer™ installed, Crawl Clearance Protocol run, Entity Lock™ resolved, your Signal Proof Page™ deployed, and a 90-day AI action plan handed over. Built in 7–14 days, not months. You keep everything, even if you cancel.',
   },
   {
     k: '04',
@@ -38,11 +38,12 @@ const STEPS: { k: string; t: string; d: string }[] = [
 ]
 
 const TIERS: { name: string; band: string; price: string; type: string; num: string }[] = [
-  { name: 'Signal Score™ Audit', band: 'Full 7-layer diagnostic + Proof OS™ action plan', price: 'Free during the founding period ($500 after)', type: 'free', num: '0' },
-  { name: 'Rebuild', band: 'Lighter-scope build — set by the audit', price: '$3,000', type: 'one-time', num: '3000' },
-  { name: 'Foundation Build', band: 'Full Proof Stack™ + Smart Site™ rebuild', price: '$5,500 ($3,500 with the 12-month bundle)', type: 'one-time', num: '5500' },
-  { name: 'Signal Proof', band: 'Stay Found™ monthly · most popular', price: '$1,800/mo', type: 'recurring', num: '1800' },
-  { name: 'Signal Dominate', band: 'Stay Found™ monthly · multi-location', price: 'from $3,500/mo', type: 'recurring', num: '3500' },
+  { name: 'The Breakdown', band: 'Verified investigation — full 6-layer Signal Score™ + evidence + fix order', price: '$500, credited in full toward your build', type: 'one-time', num: '500' },
+  { name: 'Rebuild', band: 'Lighter-scope build — set by the audit', price: '$1,500', type: 'one-time', num: '1500' },
+  { name: 'Foundation Build', band: 'Full Proof Stack™ + Smart Site™ rebuild', price: '$3,500', type: 'one-time', num: '3500' },
+  { name: 'Stay Found™ Watch', band: 'Stay Found™ monthly · evidence & drift watch', price: '$249/mo', type: 'recurring', num: '249' },
+  { name: 'Signal Proof', band: 'Stay Found™ monthly · most popular', price: '$1,500/mo', type: 'recurring', num: '1500' },
+  { name: 'Stay Found™ Multi-Location', band: 'Stay Found™ monthly · multi-location', price: 'from $3,500/mo', type: 'recurring', num: '3500' },
 ]
 
 const jsonLd = {
@@ -66,7 +67,7 @@ const jsonLd = {
       serviceType: 'AI Visibility & Answer Engine Optimization',
       provider: { '@id': 'https://signalflair.ai/#org' },
       areaServed: { '@type': 'Country', name: 'United States' },
-      description: 'AI visibility scoring and proof-infrastructure buildout for local service businesses — scope set by a free Signal Score™ Audit.',
+      description: 'AI visibility scoring and proof-infrastructure buildout for local service businesses — scope set by The Breakdown ($500, credited toward the build).',
       offers: TIERS.map((t) => ({
         '@type': 'Offer',
         name: t.name,
@@ -110,12 +111,12 @@ export default function HowItWorksPage() {
         </section>
 
         <section className="rsc-section">
-          <h2 className="rsc-h2">Pricing set by the <em>audit</em></h2>
+          <h2 className="rsc-h2">Pricing set by <em>The Breakdown</em></h2>
           <p className="rsc-p">
-            The Signal Pulse™ and the full Signal Score™ Audit are free during the founding period. Past
-            that, the audit sets the scope — so you only pay for the gap you actually have, never a score
-            gate. Bundle a 12-month Signal Proof plan with your build and the Foundation Build drops from
-            $5,500 to $3,500 (save $2,000). Add a location for $1,500, Satellite included. Our guarantee is
+            The Signal Pulse™ costs nothing and takes seconds. The Breakdown is $500 — the verified
+            investigation that sets the scope, so you only pay for the gap you actually have, never a score
+            gate — and the full $500 credits toward your build. The Foundation Build is
+            $3,500 — one price, no bundle math. Add a location for $1,500, Satellite included. Our guarantee is
             delivery-based only: we never promise rankings, leads, or revenue, and you keep everything we
             build even if you cancel.
           </p>
@@ -145,10 +146,10 @@ export default function HowItWorksPage() {
         <section className="rsc-section">
           <h2 className="rsc-h2">Start with the <em>diagnosis</em></h2>
           <p className="rsc-p">
-            A Signal Pulse™ is a free preview across 3 of your 7 signal layers — Entity Clarity, Trust &amp;
-            Proof Density, and Live AI Visibility. It is a diagnosis, never a prescription. The prescription
-            is the work. No sales call; we send your preview within 24 hours, and the full 7-layer Signal
-            Score™ Audit is free during the founding period.
+            A Signal Pulse™ is the quick read — four live signals (Access, Structure, Trust &amp; Answers)
+            scored against your site in seconds, at no charge. It is a diagnosis, never a prescription. The
+            prescription is the work. When you want the verified picture, The Breakdown ($500, credited
+            toward your build) goes layer by layer with the evidence.
           </p>
           <p className="rsc-p sl-machine">
             More: <a href="/faq/">FAQ</a> · <a href="/about/">about</a> · <a href="/proof/">the live record</a> · <a href="/llms.txt">/llms.txt</a>

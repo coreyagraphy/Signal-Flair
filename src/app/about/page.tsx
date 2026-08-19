@@ -79,12 +79,12 @@ export default function AboutPage() {
             Two machines read your business and disagree. Humans see a trusted local operator. AI
             engines see almost nothing — not because you&apos;re bad, but because you&apos;re
             unreadable to them. We close that gap: we score your AI visibility, then build the
-            machine-readable layer those engines need — llms.txt, schema markup, entity clarity, and
-            crawler access — so your business becomes the answer, not a missing one.
+            machine-readable layer those engines need — crawler access, schema markup, entity clarity, and
+            consistent verified facts — so your business becomes the answer, not a missing one.
           </p>
           <ul className="rsc-ul">
             <li><strong>AI Visibility Audit</strong> — your Signal Score across five engines, and exactly what&apos;s pulling it down.</li>
-            <li><strong>Foundation Build</strong> — llms.txt, schema, and crawler access installed in 7–14 days.</li>
+            <li><strong>Foundation Build</strong> — schema, crawler access, and your verified proof layer installed in 7–14 days.</li>
             <li><strong>Stay Found™</strong> — recurring checks and proof maintenance: monthly re-scans and citation growth as AI search keeps changing.</li>
           </ul>
         </section>
@@ -143,7 +143,7 @@ export default function AboutPage() {
 
         <section className="rsc-cta">
           <h2 className="rsc-cta-h">See where <em>your</em> business stands.</h2>
-          <p className="rsc-cta-b">A free Signal Pulse™ — 3 of your 7 signal layers, 24 hours, no call. Your Signal Score, and what&apos;s breaking it.</p>
+          <p className="rsc-cta-b">A free Signal Pulse™ — a four-signal read of your live site, 24 hours, no call. You&apos;ll see what&apos;s breaking your signal.</p>
           <a className="rsc-cta-btn" href="/#cta">▸ Run My Signal</a>
         </section>
       </div>

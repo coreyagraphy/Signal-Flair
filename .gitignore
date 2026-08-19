@@ -14,3 +14,12 @@ tsconfig.tsbuildinfo
 
 # scratch archives
 *.zip
+
+# Netlify CLI local state + build cache
+.netlify/
+
+# local media backups (never publish)
+.video-backups/
+
+# Netlify CLI (netlify dev) scratch
+deno.lock

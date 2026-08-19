@@ -70,7 +70,7 @@ export default function ProofServicesPage() {
 
         <section className="rsc-cta">
           <h2 className="rsc-cta-h">See where <em>your</em> signal breaks.</h2>
-          <p className="rsc-cta-b">A free Signal Pulse™ scans 3 of your 7 signal layers and lands in your inbox in 24 hours. No call.</p>
+          <p className="rsc-cta-b">A free Signal Pulse™ runs a four-signal read of your live site and lands in your inbox in 24 hours. No call.</p>
           <a className="rsc-cta-btn" href="/#cta">▸ Run My Signal</a>
         </section>
       </div>

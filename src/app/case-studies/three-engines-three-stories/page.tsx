@@ -282,7 +282,7 @@ export default function ThreeEnginesCaseStudy() {
         <section className="rsc-section">
           <h2 className="rsc-h2">What happens <em>next</em></h2>
           <p className="rsc-p">
-            The jump from 35 to the mid-50s happens the day the crawlers are unblocked and llms.txt ships — no new
+            The jump from 35 to the mid-50s happens the day the crawlers are unblocked — no new
             content required, just access restored. The climb into the 80s is the structured-data and authority work
             compounding over the quarter. The infrastructure is roughly 80% built; it&apos;s just pointed away from
             the future of search. The next step is the 14-day emergency sprint, then a re-score at Day 30.

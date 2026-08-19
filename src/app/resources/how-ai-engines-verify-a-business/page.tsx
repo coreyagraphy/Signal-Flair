@@ -4,11 +4,11 @@ import SignalFlairLogo from '@/components/SignalFlairLogo'
 export const metadata: Metadata = {
   title: 'How AI Answer Engines Decide Whether to Trust a Local Business | Signal Flair',
   description:
-    'When someone asks ChatGPT or Perplexity "who should I hire?", the engines only recommend businesses they can verify. Here are the seven layers they check — and the fixes any owner can make in 30 days.',
+    'When someone asks ChatGPT or Perplexity "who should I hire?", the engines only recommend businesses they can verify. Here are the six layers they check — and the fixes any owner can make in 30 days.',
   alternates: { canonical: 'https://signalflair.ai/resources/how-ai-engines-verify-a-business/' },
   openGraph: {
     title: 'How AI answer engines decide whether to trust a local business',
-    description: 'The seven layers AI engines check before they recommend anyone — in plain English, with the fixes any owner can make this month.',
+    description: 'The six layers AI engines check before they recommend anyone — in plain English, with the fixes any owner can make this month.',
   },
 }
 
@@ -21,7 +21,7 @@ const jsonLd = {
       '@id': 'https://signalflair.ai/resources/how-ai-engines-verify-a-business/#article',
       headline: 'How AI answer engines decide whether to trust a local business',
       description:
-        'What ChatGPT, Claude, Perplexity, Gemini, and Google AI cross-check before recommending a business — the seven layers of AI readiness, what "verifiable" looks like, and 30-day fixes any owner can make.',
+        'What ChatGPT, Claude, Perplexity, Gemini, and Google AI cross-check before recommending a business — the six layers of AI readiness, what "verifiable" looks like, and 30-day fixes any owner can make.',
       datePublished: '2026-07-11',
       dateModified: '2026-07-11',
       author: {
@@ -100,8 +100,8 @@ export default function HowAiVerifiesPage() {
         </section>
 
         <section className="rsc-section">
-          <h2 className="rsc-h2">The seven layers of AI readiness</h2>
-          <p className="rsc-p">We measure this as a 0–100 Signal Score™ across seven layers: <strong>Access &amp; Crawlability</strong> (can AI reach your site), <strong>Structured Intelligence</strong> (can it parse your facts), <strong>Entity Clarity</strong> (does it know which &ldquo;you&rdquo; you are — critical if your name resembles anyone else&apos;s), <strong>Answer Architecture</strong> (does your site answer the questions people actually ask), <strong>Trust &amp; Proof Density</strong> (can it verify you through third parties), <strong>Live AI Visibility</strong> (does it actually surface you today), and <strong>Agent &amp; Commerce Readiness</strong> (when an AI agent tries to book or buy on a customer’s behalf, can it). Most local businesses fail three of seven without knowing. The full method is on <a href="/how-it-works/">how it works</a>.</p>
+          <h2 className="rsc-h2">The six layers of AI readiness</h2>
+          <p className="rsc-p">We measure this as a 0–100 Signal Score™ across six layers: <strong>Access &amp; Crawlability</strong> (can AI reach your site), <strong>Structured Intelligence</strong> (can it parse your facts), <strong>Entity Clarity</strong> (does it know which &ldquo;you&rdquo; you are — critical if your name resembles anyone else&apos;s), <strong>Answer Architecture</strong> (does your site answer the questions people actually ask), <strong>Trust &amp; Proof Density</strong> (can it verify you through third parties), and <strong>Live AI Visibility</strong> (does it actually surface you today). Most local businesses fail three of six without knowing. The full method is on <a href="/how-it-works/">how it works</a>.</p>
         </section>
 
         <section className="rsc-section">
@@ -113,7 +113,7 @@ export default function HowAiVerifiesPage() {
           <h2 className="rsc-h2">Fixes any owner can make in 30 days</h2>
           <p className="rsc-p"><strong>1.</strong> Pick one exact business name and use it everywhere — no variants, no abbreviations.</p>
           <p className="rsc-p"><strong>2.</strong> Add Organization schema to your homepage: name, location, services, founder, contact.</p>
-          <p className="rsc-p"><strong>3.</strong> Publish an llms.txt at your domain root with your verified facts.</p>
+          <p className="rsc-p"><strong>3.</strong> Make your hours, phone, and services machine-readable — and identical everywhere AI looks.</p>
           <p className="rsc-p"><strong>4.</strong> Check robots.txt — make sure AI crawlers aren&apos;t blocked by accident.</p>
           <p className="rsc-p"><strong>5.</strong> Reconcile your Google Business Profile, chamber listing, and social bios to the exact same facts.</p>
           <p className="rsc-p"><strong>6.</strong> Answer real customer questions in visible text on your site — not just in images or sliders.</p>
@@ -122,7 +122,7 @@ export default function HowAiVerifiesPage() {
 
         <section className="rsc-section">
           <h2 className="rsc-h2">See where you stand</h2>
-          <p className="rsc-p">Signal Pulse™ gives you a free instant read of your AI readiness at <a href="/pulse/">signalflair.ai/pulse</a>, and the free Signal Score™ Audit goes deeper — <a href="/#cta">request one here</a>. More questions? The <a href="/faq/">FAQ</a> covers what a Signal Score™ measures and what we never promise: we build and hand over the infrastructure — we don&apos;t guarantee rankings, citations, or AI recommendations.</p>
+          <p className="rsc-p">Get Your Pulse at <a href="/pulse/">signalflair.ai/pulse</a> — the quick read, no charge, seconds. The Breakdown ($500, credited toward your build) goes deeper: human verification, evidence, and a prioritized fix order. More questions? The <a href="/faq/">FAQ</a> covers what a Signal Score™ measures and what we never promise: we build and hand over the infrastructure — we don&apos;t guarantee rankings, citations, or AI recommendations.</p>
         </section>
 
         <section className="rsc-section">
@@ -130,7 +130,7 @@ export default function HowAiVerifiesPage() {
           <div className="sl-hub">
             <a className="sl-hub-card" href="/resources/llms-txt/">
               <span className="sl-hub-k">01</span>
-              <span className="sl-hub-t">What is llms.txt?</span>
+              <span className="sl-hub-t">The truth about llms.txt</span>
               <span className="sl-hub-d">The plain-text file AI systems read first — what goes in it and why.</span>
             </a>
             <a className="sl-hub-card" href="/pulse/">
@@ -152,7 +152,7 @@ export default function HowAiVerifiesPage() {
 
       <section className="rsc-cta">
         <h2 className="rsc-cta-h">AI can find your business. But does it <em>understand</em> it?</h2>
-        <p className="rsc-cta-b">Run your free Signal Pulse™. We&apos;ll scan 3 of the 7 Signal Protocol™ layers across ChatGPT, Claude, Perplexity, Gemini, and Google AI — and show you exactly which of the checks above your business fails today.</p>
+        <p className="rsc-cta-b">Run your free Signal Pulse™. We&apos;ll run a four-signal read of your live site — and show you exactly which of the checks above your business fails today.</p>
         <a className="rsc-cta-btn" href="/#cta">▸ Run My Signal</a>
       </section>
 
