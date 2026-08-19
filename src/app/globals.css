@@ -488,8 +488,7 @@ nav#hnav{position:relative;z-index:10;display:flex;align-items:center;justify-co
 .pf-item.pf-lock::before{content:'◆';color:var(--teal);font-weight:400}
 .psci.psci-lock{font-weight:600}
 .psci.psci-lock::before{content:'◆';font-weight:400}
-.psc:nth-child(1) .psci-lock::before{color:var(--orange2)}
-.psc:nth-child(2) .psci-lock::before{color:var(--teal)}
+.psci-lock::before{color:var(--acc)}
 
 /* Proof → /proof/ live-record link */
 .proof-live-link{position:relative;z-index:2;display:block;width:max-content;margin:22px auto 0;font-family:var(--signal);font-size:11px;letter-spacing:0.16em;text-transform:uppercase;color:var(--orange2);text-decoration:none;border-bottom:1px solid rgba(232,71,10,0.4);padding-bottom:3px;transition:color .2s,border-color .2s}
@@ -524,27 +523,35 @@ nav#hnav{position:relative;z-index:10;display:flex;align-items:center;justify-co
 .pf-items{display:grid;grid-template-columns:1fr 1fr;gap:13px 44px}
 .pf-item{font-family:var(--signal);font-size:10.5px;color:rgba(248,241,231,0.74);line-height:1.55;display:flex;gap:10px;align-items:flex-start}
 .pf-item::before{content:'›';color:var(--hot);flex-shrink:0;font-weight:700}
-.price-small{max-width:1320px;margin:0 auto;display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:0;border:1px solid var(--ink);border-top:none}
-.psc{padding:42px 48px 44px;display:flex;flex-direction:column;transform-origin:top center}
-.psc:first-child{border-right:1px solid var(--ink)}
-.psc:nth-child(1){border-top:4px solid var(--orange2);background:linear-gradient(180deg,rgba(255,90,31,0.16),rgba(255,90,31,0.06))}
-.psc:nth-child(2){border-top:4px solid var(--teal);background:linear-gradient(180deg,rgba(0,184,169,0.16),rgba(0,184,169,0.06))}
-.psc:nth-child(1) .psc-name{color:var(--orange2)}
-.psc:nth-child(2) .psc-name{color:#0a7d72}
+.price-small{max-width:1180px;margin:0 auto;display:grid;grid-template-columns:repeat(2,1fr);gap:24px;border:none;padding:30px 0 40px;align-items:start}
+.psc{
+  position:relative;top:0;padding:34px 30px 32px;display:flex;flex-direction:column;
+  transform-origin:top center;border:2px solid var(--ink);background:var(--bone);
+  /* hard brutalist offset + a soft colored bloom = the card sits above the page */
+  box-shadow:8px 10px 0 var(--ink), 0 0 38px -10px var(--glow);
+  /* `top`, not transform: anime.js owns transform on these cards and would erase it */
+  transition:top .26s cubic-bezier(.2,.8,.3,1), box-shadow .26s ease;
+}
+.psc:hover{top:-10px;box-shadow:12px 16px 0 var(--ink), 0 0 66px -6px var(--glow)}
+
+/* 1 orange · 2 pastel yellow · 3 teal (raised, most popular) · 4 warm amber */
+.psc:nth-child(1){--acc:var(--orange2);--glow:rgba(232,71,10,.55);border-top:6px solid var(--orange2);background:linear-gradient(180deg,#fff1e6,#fffaf6)}
+.psc:nth-child(2){--acc:#8a6b06;--glow:rgba(255,244,95,.95);border-top:6px solid #e8d64a;background:linear-gradient(180deg,#fffce2,#fffef7)}
+.psc:nth-child(3){--acc:#0a7d72;--glow:rgba(0,184,169,.6);border-top:6px solid var(--teal);background:linear-gradient(180deg,#e6faf7,#f8fdfc);margin-top:-18px}
+.psc:nth-child(4){--acc:#a8480d;--glow:rgba(168,72,13,.45);border-top:6px solid #a8480d;background:linear-gradient(180deg,#fdf0e2,#fffbf7)}
+.psc-name{color:var(--acc)}
 /* initial hidden — the swing-in animation (anime.js, runs even under reduced-motion) reveals these */
 .price-feat,.price-small .psc{opacity:0}
 .psc-tag{font-family:var(--signal);font-size:9.5px;color:var(--ink);background:var(--paper2);padding:6px 11px;align-self:flex-start;letter-spacing:0.16em;text-transform:uppercase;margin-bottom:16px}
-.psc-name{font-family:var(--flair);font-variation-settings:'opsz' 100,'wght' 520,'WONK' 1;font-size:27px;color:var(--ink);margin-bottom:6px}
-.psc-ideal{font-family:var(--signal);font-size:11.5px;color:rgba(11,10,9,0.72);margin-bottom:22px;padding-bottom:18px;border-bottom:1px solid var(--line-dark);line-height:1.6}
-.psc-price{font-family:var(--flair);font-variation-settings:'opsz' 144,'wght' 480,'WONK' 1;font-size:60px;line-height:0.85;margin-bottom:8px}
-.psc:nth-child(1) .psc-price{color:var(--orange2)}
-.psc:nth-child(2) .psc-price{color:var(--teal)}
+.psc-name{font-family:var(--flair);font-variation-settings:'opsz' 100,'wght' 520,'WONK' 1;font-size:25px;line-height:1.12;margin-bottom:7px;text-wrap:balance}
+.psc-ideal{font-family:var(--signal);font-size:12.5px;color:rgba(11,10,9,0.78);margin-bottom:20px;padding-bottom:17px;border-bottom:1px solid var(--line-dark);line-height:1.65;text-wrap:pretty}
+.psc-price{font-family:var(--flair);font-variation-settings:'opsz' 144,'wght' 480,'WONK' 1;font-size:54px;line-height:0.88;margin-bottom:8px;color:var(--acc)}
+
 .psc-cad{font-family:var(--signal);font-size:9.5px;color:rgba(11,10,9,0.6);margin-bottom:26px;letter-spacing:0.04em}
-.psc-items{display:flex;flex-direction:column;gap:11px;margin-bottom:30px;flex:1}
-.psci{font-family:var(--signal);font-size:10.5px;color:rgba(11,10,9,0.74);line-height:1.5;display:flex;gap:9px;align-items:flex-start}
+.psc-items{display:flex;flex-direction:column;gap:13px;margin-bottom:28px;flex:1}
+.psci{font-family:var(--signal);font-size:12px;color:rgba(11,10,9,0.82);line-height:1.62;display:flex;gap:10px;align-items:flex-start;text-wrap:pretty;hyphens:none}
 .psci::before{content:'›';flex-shrink:0;font-weight:700}
-.psc:nth-child(1) .psci::before{color:var(--orange2)}
-.psc:nth-child(2) .psci::before{color:var(--teal)}
+.psci::before{color:var(--acc)}
 /* Stay Found commitment ladder — 3 / 6 / 12-month terms */
 .psc-terms{display:flex;flex-direction:column;gap:7px;margin-bottom:26px;padding-top:18px;border-top:1px solid var(--line-dark)}
 .psc-term{display:flex;align-items:baseline;justify-content:space-between;gap:10px;flex-wrap:wrap;padding:10px 13px;border:1px solid var(--line-dark);background:rgba(0,184,169,0.05);transition:transform .18s,box-shadow .18s}
@@ -555,10 +562,7 @@ nav#hnav{position:relative;z-index:10;display:flex;align-items:center;justify-co
 .pt-price em{font-family:var(--signal);font-size:9px;font-style:normal;color:rgba(11,10,9,0.5);margin-left:1px}
 .pt-note{flex-basis:100%;font-family:var(--signal);font-size:9.5px;color:rgba(11,10,9,0.55);letter-spacing:0.02em;line-height:1.4}
 .psc-btn{display:block;text-align:center;font-family:var(--signal);font-weight:600;font-size:11.5px;letter-spacing:0.14em;text-transform:uppercase;padding:15px;text-decoration:none;transition:all .18s;margin-top:auto}
-.psc:nth-child(1) .psc-btn{border:1.5px solid var(--orange2);color:var(--orange2);box-shadow:0 4px 16px rgba(232,71,10,0.18)}
-.psc:nth-child(1) .psc-btn:hover{background:var(--orange2);color:var(--bone);box-shadow:0 8px 26px rgba(232,71,10,0.45)}
-.psc:nth-child(2) .psc-btn{border:1.5px solid var(--teal);color:#0a7d72;box-shadow:0 4px 16px rgba(0,184,169,0.18)}
-.psc:nth-child(2) .psc-btn:hover{background:var(--teal);color:var(--ink);box-shadow:0 8px 26px rgba(0,184,169,0.45)}
+
 .price-guarantee{max-width:1320px;margin:0 auto;font-family:var(--signal);font-size:10px;color:rgba(11,10,9,0.58);letter-spacing:0.08em;text-transform:uppercase;text-align:center;padding:22px 56px;border:1px solid var(--ink);border-top:none}
 .price-guarantee em{color:var(--orange2);font-style:normal;font-weight:700}
 /* Pricing "how it works" — score → band → deliverable (kills the "which do I pick?" confusion) */
@@ -1312,13 +1316,12 @@ footer{background:var(--ink2);border-top:1px solid var(--ink);padding:52px;posit
 .ph-step:nth-child(2)::before{background:var(--orange)}
 .ph-step:nth-child(3)::before{background:var(--signal-magenta)}
 .ph-step:hover{transform:translateY(-5px);box-shadow:0 26px 56px rgba(11,10,9,0.24)}
-.price-small{gap:clamp(16px,1.6vw,24px);border:none}
-.price-small .psc{border-radius:14px;box-shadow:0 18px 44px rgba(11,10,9,0.18);transition:transform .25s ease,box-shadow .25s ease}
-.price-small .psc:hover{transform:translateY(-6px);box-shadow:0 30px 64px rgba(11,10,9,0.28)}
-.psc:nth-child(1){border:2px solid var(--orange2)}
-.psc:nth-child(2){border:2px solid var(--teal);box-shadow:0 18px 48px rgba(0,184,169,0.28)}
-.psc:nth-child(2):hover{box-shadow:0 30px 68px rgba(0,184,169,0.4)}
-.psc:nth-child(3){border:2px solid var(--ink)}
+.price-small{gap:clamp(18px,1.8vw,26px);border:none}
+/* Card frame + illumination. Border and bloom both read from --acc/--glow so the four
+   cards stay orange / pastel yellow / teal / amber. Lift uses `top` (see .psc) because
+   anime.js owns transform on these and would wipe a translate. */
+.price-small .psc{border-radius:14px;border:2px solid var(--acc);border-top-width:7px;box-shadow:8px 10px 0 var(--ink),0 0 42px -8px var(--glow)}
+.price-small .psc:hover{box-shadow:12px 16px 0 var(--ink),0 0 74px -4px var(--glow)}
 .price-feat{border-radius:16px;overflow:hidden;box-shadow:0 26px 64px rgba(11,10,9,0.32),0 0 0 2px var(--hot)}
 .sl-doctrine-wrap{border-radius:12px;border-width:2px;box-shadow:0 14px 36px rgba(11,10,9,0.14)}
 .rw-card{transition:transform .25s ease,box-shadow .25s ease}
@@ -1327,12 +1330,9 @@ footer{background:var(--ink2);border-top:1px solid var(--ink);padding:52px;posit
 .mm-tile:hover{transform:translateY(-4px)}
 
 /* ── Buttons: fix default-purple leak + bolder CTAs ── */
-.psc-btn{border:2px solid var(--ink);color:var(--ink);background:transparent;font-size:clamp(12.5px,0.35vw + 10.5px,14px);padding:16px 18px;border-radius:8px}
-.psc-btn:hover,.psc-btn:focus-visible{background:var(--ink);color:var(--hot);box-shadow:0 10px 30px rgba(11,10,9,0.35)}
-.psc:nth-child(1) .psc-btn{border:2px solid var(--orange2);color:var(--orange2)}
-.psc:nth-child(2) .psc-btn{border:2px solid var(--teal);color:#0a7d72}
-.psc:nth-child(3) .psc-btn{border:2px solid var(--ink);color:var(--ink)}
-.psc:nth-child(3) .psc-btn:hover{background:var(--ink);color:var(--hot)}
+/* One rule drives every plan button; --acc is set per card (orange / yellow / teal / amber). */
+.psc-btn{border:2px solid var(--acc,var(--ink));color:var(--acc,var(--ink));background:transparent;font-size:clamp(12.5px,0.35vw + 10.5px,14px);padding:15px 18px;border-radius:8px;box-shadow:4px 4px 0 var(--acc,var(--ink));transition:transform .16s ease,box-shadow .16s ease,background .16s ease,color .16s ease}
+.psc-btn:hover,.psc-btn:focus-visible{background:var(--acc,var(--ink));color:var(--bone);box-shadow:6px 6px 0 var(--ink);transform:translate(-2px,-2px)}
 .ph-step .psc-btn{display:inline-block}
 .pf-btn{font-size:clamp(12.5px,0.35vw + 10.5px,14px);border-radius:8px;border-width:2px}
 
@@ -1347,7 +1347,7 @@ footer{background:var(--ink2);border-top:1px solid var(--ink);padding:52px;posit
 @media(max-width:1000px){.decode-grid{grid-template-columns:1fr 1fr}}
 @media(max-width:600px){.decode-grid{grid-template-columns:1fr}.decode{border-radius:12px}}
 
-/* ── Content Payload — premium dark feature panel ── */
+/* ── Legacy dark feature panel styles (kept for .price-how.fuel consumers) ── */
 .price-how.fuel{background:var(--ink);border-radius:16px;padding:clamp(28px,2.8vw,48px);max-width:1320px;margin-left:auto;margin-right:auto;box-shadow:0 26px 64px rgba(11,10,9,0.34);border-top:5px solid var(--orange)}
 .fuel .ph-lead{color:var(--bone)}
 .fuel .ph-lead em{color:var(--orange)}
@@ -1410,9 +1410,7 @@ footer{background:var(--ink2);border-top:1px solid var(--ink);padding:52px;posit
 /* educational emphasis — branded term bold + accent, explanation follows in plain weight */
 .psci,.pf-item{font-size:clamp(15px,0.55vw + 12.5px,17px);line-height:1.8}
 .psci strong{font-weight:700}
-.psc:nth-child(1) .psci strong{color:var(--orange2)}
-.psc:nth-child(2) .psci strong{color:#0a7d72}
-.psc:nth-child(3) .psci strong{color:var(--orange2)}
+.psci strong{color:var(--acc)}
 .pf-item strong{color:var(--hot);font-weight:700}
 .ph-what strong{color:var(--orange2)}
 .fuel .ph-what strong{color:var(--hot)}
@@ -1842,3 +1840,44 @@ footer{background:var(--ink2);border-top:1px solid var(--ink);padding:52px;posit
 /* Durable capture receipt — shown only when the server proved the write landed. */
 .sp-receipt{margin:12px auto 0;max-width:470px;font-family:var(--signal),ui-monospace,monospace;font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:rgba(240,235,224,0.6);text-align:center}
 .sp-receipt strong{color:var(--teal);letter-spacing:.06em}
+
+/* ─── THE BROADCAST — two months of social, sponsored by Mental Vision ─────────
+   Sits inside the cream pricing section. Reads as a gifted production credit,
+   not another paid tier: dark film-strip panel, big numerals, one outbound link
+   to the Mental Vision portfolio. */
+.bcast{position:relative;background:linear-gradient(158deg,#141210 0%,#0b0a09 62%,#171310 100%);border:2px solid var(--ink);box-shadow:10px 12px 0 var(--ink),0 0 70px -18px rgba(255,90,31,.55);padding:34px clamp(22px,3vw,44px) 32px;overflow:hidden}
+.bcast::before{content:'';position:absolute;inset:0 0 auto 0;height:5px;background:linear-gradient(90deg,var(--orange) 0%,var(--hot) 46%,var(--teal) 100%)}
+.bcast .ph-lead{color:var(--bone)}
+.bcast .ph-lead em{color:var(--hot)}
+.bcast .ph-note{color:rgba(240,235,224,.8);max-width:74ch}
+.bcast .ph-note strong{color:var(--bone)}
+.bcast .ph-note em{color:var(--orange);font-style:normal}
+.bc-badge{display:inline-flex;align-items:center;gap:8px;font-family:var(--signal);font-size:10px;letter-spacing:.2em;text-transform:uppercase;color:var(--hot);border:1px solid rgba(255,244,95,.42);background:rgba(255,244,95,.08);padding:7px 13px;margin-bottom:16px}
+.bc-dot{width:6px;height:6px;border-radius:50%;background:var(--hot);box-shadow:0 0 9px var(--hot)}
+.bc-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));gap:16px;margin-top:24px}
+.bc-cell{border:1px solid rgba(240,235,224,.16);background:rgba(240,235,224,.045);padding:20px 19px 18px;display:flex;flex-direction:column;gap:7px}
+.bc-cell:nth-child(1){border-top:3px solid var(--orange)}
+.bc-cell:nth-child(2){border-top:3px solid var(--hot)}
+.bc-cell:nth-child(3){border-top:3px solid var(--teal)}
+.bc-n{font-family:var(--flair);font-variation-settings:'opsz' 144,'wght' 600,'WONK' 1;font-size:52px;line-height:.82;color:var(--bone)}
+.bc-cell:nth-child(1) .bc-n{color:var(--orange)}
+.bc-cell:nth-child(2) .bc-n{color:var(--hot)}
+.bc-cell:nth-child(3) .bc-n{color:var(--teal)}
+.bc-t{font-family:var(--signal);font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:var(--bone);font-weight:700}
+.bc-d{font-family:var(--signal);font-size:12px;line-height:1.62;color:rgba(240,235,224,.68);text-wrap:pretty}
+.bc-foot{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:14px;margin-top:24px;padding-top:18px;border-top:1px solid rgba(240,235,224,.16)}
+.bc-foot-t{font-family:var(--signal);font-size:11.5px;line-height:1.6;color:rgba(240,235,224,.62);max-width:62ch}
+.bc-link{font-family:var(--signal);font-size:11.5px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;text-decoration:none;color:var(--ink);background:var(--hot);border:2px solid var(--ink);padding:12px 16px;white-space:nowrap;box-shadow:4px 4px 0 rgba(240,235,224,.25);transition:transform .16s ease,box-shadow .16s ease}
+.bc-link:hover{transform:translate(-2px,-2px);box-shadow:6px 6px 0 rgba(240,235,224,.35)}
+@media(max-width:1000px){
+  /* Keep the panel inside the viewport and stop any nowrap child from widening it. */
+  .bcast{width:auto;max-width:100%;margin-left:14px;margin-right:14px;padding:26px 16px 24px;
+    box-shadow:6px 8px 0 var(--ink),0 0 50px -18px rgba(255,90,31,.5)}
+  .bc-grid{grid-template-columns:1fr}
+  .bc-n{font-size:44px}
+  .bc-foot{flex-direction:column;align-items:stretch}
+  .bc-badge{letter-spacing:.14em;font-size:9.5px;white-space:normal}
+  /* 33px was under the 44px tap minimum */
+  .bc-link{white-space:normal;text-align:center;min-height:48px;display:flex;align-items:center;justify-content:center}
+}
+@media(prefers-reduced-motion:reduce){.psc,.psc-btn,.bc-link{transition:none}}

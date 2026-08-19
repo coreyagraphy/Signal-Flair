@@ -1146,7 +1146,7 @@ export default function SignalFlairLanding() {
             <div className="decode-item"><span className="decode-t">Entity Clarity</span><span className="decode-d">A consistent understanding of who your business is and how its facts connect.</span></div>
             <div className="decode-item"><span className="decode-t">Answer Engine Optimization (AEO)</span><span className="decode-d">Improves how answer engines discover, interpret, and support claims about your business.</span></div>
             <div className="decode-item"><span className="decode-t">AI Agent Readiness</span><span className="decode-d">Prepares current, permissioned business information and actions for agent-assisted experiences.</span></div>
-            <div className="decode-item"><span className="decode-t">Content Payload</span><span className="decode-d">A monthly drop of premium content structured around verified facts — for humans and machines.</span></div>
+            <div className="decode-item"><span className="decode-t">The Broadcast</span><span className="decode-d">Two months of done-for-you social, produced by Mental Vision — free with any Stay Found™ plan.</span></div>
           </div>
         </div>
         <div className="price-anchor reveal">
@@ -1225,7 +1225,7 @@ export default function SignalFlairLanding() {
               <div className="psci"><strong>Answer Architecture™</strong> expansion every month</div>
               <div className="psci"><strong>Proof Density Engine</strong> — compounding reviews, mentions &amp; authority at citation weight</div>
               <div className="psci"><strong>Quarterly re-audit + Signal Telemetry</strong> — drift reported as ranges with dates, never fake-precise scores</div>
-              <div className="psci psci-lock"><strong>Content Payload</strong> — 2 weeks of premium content structured around verified facts every month, incl. <strong>one :30 commercial</strong> (one location; +$450/mo per extra location)</div>
+              <div className="psci psci-lock"><strong>The Broadcast — free for 2 months</strong> · 40 posts, two :15 branded commercials and a posting-time playbook, produced by Mental Vision</div>
               <div className="psci"><strong>Signal Satellites™</strong> available at +$250/mo per Satellite</div>
             </div>
             <a className="psc-btn" href="#cta">▸ Keep Me Found</a>
@@ -1240,33 +1240,47 @@ export default function SignalFlairLanding() {
               <div className="psci"><strong>Proof Density Engine</strong> at full velocity — active review program</div>
               <div className="psci"><strong>Priority turnaround</strong> + dedicated strategy</div>
               <div className="psci"><strong>Mental Vision cinematic content bundle</strong></div>
-              <div className="psci psci-lock"><strong>Content Payload</strong> — a full month of premium content structured around verified facts, incl. <strong>one :30 commercial</strong> (one location; +$450/mo per extra location)</div>
+              <div className="psci psci-lock"><strong>The Broadcast — free for 2 months</strong> · 40 posts, two :15 branded commercials and a posting-time playbook, per location, produced by Mental Vision</div>
               <div className="psci"><strong>Signal Satellites™</strong> management included</div>
             </div>
             <a className="psc-btn" href="#cta">▸ Scale Every Location</a>
           </div>
         </div>
 
-        {/* Content Payload — content is the fuel, elevated to premium */}
-        <div className="price-how reveal fuel" id="content-payload">
-          <div className="ph-lead">Content is the <em>payload.</em></div>
-          <div className="ph-note" style={{ marginTop: 0 }}>Every Stay Found™ plan includes a monthly <strong>Content Payload</strong>: premium, done-for-you content built for humans and marked up for machines. This is not filler launched into the void. Each piece is structured around verified facts and ships with <strong>machine-readable metadata</strong> so it can be indexed, attributed, and cited. Every payload also includes <strong>one 30-second commercial</strong>. Real creative. Every month.</div>
-          <div className="ph-map" style={{ marginTop: '20px' }}>
-            <div className="ph-step">
-              <div className="ph-band">Engineered, not posted</div>
-              <div className="ph-offer">Evidence-backed, with metadata</div>
-              <div className="ph-what">Every piece carries the structured metadata answer engines index — built to be found, read, and cited, not just scrolled past.</div>
+        {/* The Broadcast — two months of social, sponsored by Mental Vision */}
+        <div className="price-how reveal bcast" id="broadcast">
+          <div className="bc-badge"><span className="bc-dot" aria-hidden="true" />Sponsored by Mental Vision · included free</div>
+          <div className="ph-lead">Your first two months of social, <em>produced for you.</em></div>
+          <div className="ph-note" style={{ marginTop: 0 }}>
+            Being findable is step one — being <em>talked about</em> is what gives an engine something to verify.
+            Start any <strong>Stay Found™</strong> plan and <strong>The Broadcast</strong> runs free for your first
+            two months: a real posting cadence built from the verified facts in your Proof Stack™, produced by the
+            Mental Vision film team.
+          </div>
+          <div className="bc-grid">
+            <div className="bc-cell">
+              <div className="bc-n">40</div>
+              <div className="bc-t">posts, written and designed</div>
+              <div className="bc-d">Five a week for eight weeks — one every weekday. That is the cadence a business
+                needs to stop reading as dormant and start compounding engagement, and it is the number we build to.</div>
             </div>
-            <div className="ph-step">
-              <div className="ph-band">Every month</div>
-              <div className="ph-offer">One :30 commercial included</div>
-              <div className="ph-what">A 30-second commercial for your business in every monthly payload — premium, cinematic, and yours to run anywhere.</div>
+            <div className="bc-cell">
+              <div className="bc-n">2</div>
+              <div className="bc-t">branded :15 commercials</div>
+              <div className="bc-d">Two fifteen-second spots cut for social and yours to run anywhere — the same film
+                craft Mental Vision makes for its brand clients.</div>
             </div>
-            <div className="ph-step">
-              <div className="ph-band">Scaled to your plan</div>
-              <div className="ph-offer">2 weeks or a full month</div>
-              <div className="ph-what">Signal Proof ships 2 weeks of content monthly; Multi-Location ships a full month at full velocity, backed by the Mental Vision cinematic engine.</div>
+            <div className="bc-cell">
+              <div className="bc-n">1</div>
+              <div className="bc-t">posting-time playbook</div>
+              <div className="bc-d">A clean packet: when your audience is actually awake, what belongs on which day, and a
+                fill-in schedule whoever runs your accounts can follow without guessing.</div>
             </div>
+          </div>
+          <div className="bc-foot">
+            <span className="bc-foot-t">Free for two months with any Stay Found™ plan. Keeping the feed running after
+              that is a separate conversation with Mental Vision — no auto-charge, nothing to cancel.</span>
+            <a className="bc-link" href="https://mentalvision.ai/work" target="_blank" rel="noopener noreferrer">▸ See the work at mentalvision.ai</a>
           </div>
         </div>
 
@@ -1281,7 +1295,7 @@ export default function SignalFlairLanding() {
                 <tr><td>Add a location (Satellite build included)</td><td>$1,500 one-time</td><td>any build</td></tr>
                 <tr><td>Satellite management</td><td>included</td><td>Stay Found™ Multi-Location</td></tr>
                 <tr><td>Satellite management</td><td>+$250/mo per Satellite</td><td>Signal Proof</td></tr>
-                <tr><td>Extra-location Content Payload</td><td>+$450/mo per location</td><td>either monthly plan</td></tr>
+                <tr><td>Extra-location social content</td><td>+$450/mo per location</td><td>either monthly plan</td></tr>
               </tbody>
             </table>
           </div>
@@ -1393,7 +1407,7 @@ export default function SignalFlairLanding() {
           </details>
           <details className="faq-item">
             <summary className="faq-q">Why is there a monthly plan?<span className="faq-ic" aria-hidden="true" /></summary>
-            <div className="faq-a">Because AI search is a moving target. New engines ship, models retrain, competitors catch up, and AI agents are arriving. Stay Found™ plans — Watch, Signal Proof, and Multi-Location — run Citation Capture, expand your Answer Architecture™ monthly, compound proof with the Proof Density Engine, and re-check drift on every scheduled re-scan. And every month ships your Content Payload: premium, done-for-you content engineered for humans and machines — structured around verified facts with machine-readable metadata, including a 30-second commercial — so the foundation you built keeps earning citations.</div>
+            <div className="faq-a">Because AI search is a moving target. New engines ship, models retrain, competitors catch up, and AI agents are arriving. Stay Found™ plans — Watch, Signal Proof, and Multi-Location — run Citation Capture, expand your Answer Architecture™ monthly, compound proof with the Proof Density Engine, and re-check drift on every scheduled re-scan. And your first two months ship <strong>The Broadcast</strong> — 40 posts, two :15 branded commercials and a posting-time playbook, produced by Mental Vision — so the foundation you built has something current to point at.</div>
           </details>
           <details className="faq-item">
             <summary className="faq-q">What are Signal Satellites™?<span className="faq-ic" aria-hidden="true" /></summary>

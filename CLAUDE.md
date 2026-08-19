@@ -108,11 +108,11 @@ That was a bad Grok recommendation. Reject it if it appears anywhere.
 | Rebuild | Lighter-scope build | $1,500 | One-time |
 | Foundation Build | Full Proof Stack™ + Smart Site™ rebuild | $3,500 flat — ONE price, no bundle math | One-time |
 | Stay Found™ Watch | Entry plan — monthly 6-layer re-verification, drift alerts with before/after evidence, quarterly evidence report the client keeps | $249/mo | Recurring |
-| Signal Proof ⭐ | Stay Found™ monthly — Citation Capture, monthly Answer Architecture™, Proof Density Engine, quarterly re-audit, Content Payload 2 wks (1 location) | $1,500/mo | Recurring |
-| Stay Found™ Multi-Location | Everything in Proof at full velocity + multi-location + Mental Vision content bundle + full-month Content Payload + Satellites managed (RENAMED from "Signal Dominate" — dominance language collides with the delivery-based guarantee; never reintroduce) | from $3,500/mo | Recurring |
+| Signal Proof ⭐ | Stay Found™ monthly — Citation Capture, monthly Answer Architecture™, Proof Density Engine, quarterly re-audit, The Broadcast free for first 2 months | $1,500/mo | Recurring |
+| Stay Found™ Multi-Location | Everything in Proof at full velocity + multi-location + Mental Vision content bundle + The Broadcast free for first 2 months + Satellites managed (RENAMED from "Signal Dominate" — dominance language collides with the delivery-based guarantee; never reintroduce) | from $3,500/mo | Recurring |
 | Founding Five | 35% off build + first 3 mo of Signal Proof at 50%, for a named case study. 5 seats. Replaces Founding Client/Founding Partner Pilot | — | Time-boxed |
 
-Per-location: add a location $1,500 one-time (Satellite included) · Satellite mgmt +$250/mo on Signal Proof (included in Multi-Location) · extra-location Content Payload +$450/mo. Annual billing = 2 months free (monthly plans). Enterprise/Civic: from $12K build + $3K/mo, or fixed-scope 90-day builds from $15K. No price ranges on plan cards. NO CRM in any client-facing feature list (privacy-policy data-processor disclosure is the only allowed mention).
+Per-location: add a location $1,500 one-time (Satellite included) · Satellite mgmt +$250/mo on Signal Proof (included in Multi-Location) · extra-location social content +$450/mo. Annual billing = 2 months free (monthly plans). Enterprise/Civic: from $12K build + $3K/mo, or fixed-scope 90-day builds from $15K. No price ranges on plan cards. NO CRM in any client-facing feature list (privacy-policy data-processor disclosure is the only allowed mention).
 
 **Signal Score™ = 6 layers** (Access & Crawlability, Structured Intelligence, Entity Clarity, Answer Architecture, Trust & Proof Density, Live AI Visibility) · 24-point diagnostic (6×4, points 22/18/16/18/16/10 = 100). Agent & Commerce Readiness is a WATCH item, not a scored layer — no platform consumes per-business agent endpoints yet (verified against Google/OpenAI/Anthropic primary docs 2026-08-18); re-add only if that changes. Historical records are FROZEN at their audit-date models: Case Zero (18/100, six signals) and The Mill (35/100, seven Proof OS™ signals).
 
@@ -123,6 +123,8 @@ Per-location: add a location $1,500 one-time (Satellite included) · Satellite m
 - NEVER publish a single-number AI-visibility percentage from one run — ranges with sample size only (run-to-run citation overlap is 0.29–0.50).
 - Results language: "after", never "because". Delivery-based guarantee only — unchanged.
 - The one causally supported fix is answer-crawler access (SIGIR 2026) — lead with it, cite it, do not oversell past it.
+
+**The Broadcast** (replaces Content Payload, 2026-08-19): two months of social FREE with any Stay Found™ plan, sponsored by Mental Vision — 40 posts (5/week × 8 weeks), two :15 branded commercials, and a posting-time playbook. Continuing after two months is a separate Mental Vision conversation; portfolio link goes to https://mentalvision.ai/work. Add-ons stay a separate conversation — do not fold them into the base plan.
 
 Guarantee: delivery-based only. Never rankings, leads, or revenue.
 Clients keep everything built, even on cancel.
