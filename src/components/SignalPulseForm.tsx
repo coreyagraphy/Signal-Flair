@@ -375,7 +375,7 @@ function PulseResult({ data, email, website, fromHandoff = false, fullName = '',
           <div className="ssc-optin-h">Locked in.</div>
           <div className="ssc-optin-b">
             Corey will personally call you at <strong>{optPhone.trim()}</strong> to walk through your full
-            <strong> Signal Score™</strong> — all seven layers, what&apos;s dragging you, and the fix. No deck, no
+            <strong> Signal Score™</strong> — all six layers, what&apos;s dragging you, and the fix. No deck, no
             &ldquo;circling back.&rdquo; Keep the phone close.
           </div>
           <a className="ssc-success-link" href="/proof/">See Case Zero — our own 18 → 91 climb →</a>

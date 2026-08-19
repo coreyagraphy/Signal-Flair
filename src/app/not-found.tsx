@@ -47,7 +47,7 @@ export default function NotFound() {
 
       <section className="rsc-cta">
         <h2 className="rsc-cta-h">AI can find your business. But does it <em>understand</em> it?</h2>
-        <p className="rsc-cta-b">Run your free Signal Pulse™. We&apos;ll scan 3 of the 7 Signal Protocol™ layers across ChatGPT, Claude, Perplexity, Gemini, and Google AI.</p>
+        <p className="rsc-cta-b">Run your free Signal Pulse™. We&apos;ll run a four-signal read of your live site — Access, Structure, Trust, and Answers.</p>
         <a className="rsc-cta-btn" href="/#cta">▸ Run My Signal</a>
       </section>
 

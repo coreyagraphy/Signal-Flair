@@ -15,23 +15,23 @@ const HOMEPAGE_FAQ: { q: string; a: string }[] = [
   },
   {
     q: 'What is a Signal Score™?',
-    a: 'Your Signal Score™ is a 0–100 measure of how findable, readable, and recommendable your business is to AI engines — scored across the seven layers of the Signal Protocol™: Access & Crawlability, Structured Intelligence, Entity Clarity, Answer Architecture, Trust & Proof Density, Live AI Visibility, and Agent & Commerce Readiness. We run you through ChatGPT, Claude, Perplexity, Gemini, and Google AI, then show you the number and exactly what’s pulling it down.',
+    a: 'Your Signal Score™ is a 0–100 measure of how findable, readable, and recommendable your business is to AI engines — scored across the six layers of the Signal Protocol™: Access & Crawlability, Structured Intelligence, Entity Clarity, Answer Architecture, Trust & Proof Density, and Live AI Visibility. We run you through ChatGPT, Claude, Perplexity, Gemini, and Google AI, then show you the number and exactly what’s pulling it down.',
   },
   {
     q: 'How much does Signal Flair cost?',
-    a: 'Signal Pulse™ is free. The full Signal Score™ Audit is free during the founding period ($500 after). Builds are one-time: Rebuild is $3,000; the Foundation Build is $5,500 — or $3,500 when you bundle it with a 12-month Signal Proof plan (save $2,000). Stay Found™ monthly plans: Signal Proof is $1,800/mo and Signal Dominate starts at $3,500/mo. Add a location for $1,500, Satellite included. You keep everything built, even if you cancel.',
+    a: 'Signal Pulse™ is free. The full Signal Score™ Audit is free during the founding period ($500 after — credited in full toward any build). Builds are one-time: the Rebuild is $1,500 and the Foundation Build is $3,500. Stay Found™ monthly plans: Watch is $249/mo, Signal Proof is $1,500/mo, and Multi-Location starts at $3,500/mo. Add a location for $1,500, Satellite included. You keep everything built, even if you cancel.',
   },
   {
     q: 'Why is there a monthly plan?',
-    a: 'Because AI search is a moving target. New engines ship, models retrain, competitors catch up, and AI agents are arriving. Stay Found™ plans — Signal Proof and Signal Dominate — run Citation Capture, expand your Answer Architecture™ monthly, compound proof with the Proof Density Engine, and watch drift with Signal Telemetry. And every month ships your Content Payload: premium, done-for-you content engineered for humans and machines — structured around verified facts with machine-readable metadata, including a 30-second commercial — so the foundation you built keeps earning citations.',
+    a: 'Because AI search is a moving target. New engines ship, models retrain, competitors catch up, and AI agents are arriving. Stay Found™ plans — Watch, Signal Proof, and Multi-Location — run Citation Capture, expand your Answer Architecture™ monthly, compound proof with the Proof Density Engine, and watch drift with Signal Telemetry. And every month ships your Content Payload: premium, done-for-you content engineered for humans and machines — structured around verified facts with machine-readable metadata, including a 30-second commercial — so the foundation you built keeps earning citations.',
   },
   {
     q: 'What are Signal Satellites™?',
-    a: 'Signal Satellites™ are lean, per-location micro-sites — each with its own Machine Trust Layer™, Entity Lock™, and Answer Architecture™ — so every branch gets found and cited in its own market instead of hiding behind one homepage. $1,500 per Satellite build (included when you add a location to a build), managed under Signal Dominate, or +$250/mo per Satellite on Signal Proof.',
+    a: 'Signal Satellites™ are lean, per-location micro-sites — each with its own Machine Trust Layer™, Entity Lock™, and Answer Architecture™ — so every branch gets found and cited in its own market instead of hiding behind one homepage. $1,500 per Satellite build (included when you add a location to a build), managed under Stay Found™ Multi-Location, or +$250/mo per Satellite on Signal Proof.',
   },
   {
     q: 'Do you guarantee #1 in ChatGPT?',
-    a: 'No — and be wary of anyone who says yes. Nobody controls what an AI engine answers. Our guarantee is delivery-based only: we build and hand over The Proof Stack™ — the Model Ingestion Manifest, Machine Trust Layer™, crawl fixes, and your 90-day plan. You keep all of it, even if you cancel. We never promise rankings, leads, or citations we can’t control.',
+    a: 'No — and be wary of anyone who says yes. Nobody controls what an AI engine answers. Our guarantee is delivery-based only: we build and hand over The Proof Stack™ — the Machine Trust Layer™, crawl fixes, your Signal Proof Page™, and your 90-day plan. You keep all of it, even if you cancel. We never promise rankings, leads, or citations we can’t control.',
   },
   {
     q: 'How fast does it move?',

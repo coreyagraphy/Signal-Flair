@@ -2,13 +2,13 @@ import type { Metadata } from 'next'
 import SignalFlairLogo from '@/components/SignalFlairLogo'
 
 export const metadata: Metadata = {
-  title: 'What is llms.txt? Why AI Misreads Your Business Without It | Signal Flair',
+  title: 'The Truth About llms.txt: What the Data Actually Shows | Signal Flair',
   description:
-    'llms.txt is the file that tells AI engines — ChatGPT, Claude, Perplexity, Gemini, Google AI — who your business is. Fewer than 1% of local businesses have one. Here’s what it is, why it matters, and how to fix it.',
+    'llms.txt is the most over-sold file in AI visibility. A 137,000-domain study found 97% of published llms.txt files are never fetched, and Google says Search ignores them. Here’s what the data shows — and what actually moves AI visibility.',
   alternates: { canonical: 'https://signalflair.ai/resources/llms-txt/' },
   openGraph: {
-    title: 'What is llms.txt? Why AI Misreads Your Business Without It',
-    description: 'The simple file that tells AI engines who your business is — and why fewer than 1% of local businesses have one.',
+    title: 'The Truth About llms.txt: What the Data Actually Shows',
+    description: '97% of llms.txt files are never fetched. Google ignores them. Here’s what actually moves AI visibility — with sources.',
     images: ['/video/hero-poster.jpg'],
   },
 }
@@ -19,8 +19,8 @@ const jsonLd = {
   '@graph': [
     {
       '@type': 'Article',
-      headline: 'What is llms.txt and why AI misreads most businesses without it',
-      description: 'A plain-English guide to llms.txt: what it is, what it does, how to create one, and why it matters for AI visibility.',
+      headline: 'The truth about llms.txt: what the data actually shows',
+      description: 'A plain-English, evidence-first guide to llms.txt: what it is, what the adoption data shows, why Signal Flair publishes one but does not sell one, and what actually moves AI visibility.',
       author: { '@type': 'Organization', name: 'Signal Flair', url: 'https://signalflair.ai' },
       publisher: { '@id': 'https://signalflair.ai/#org' },
       mainEntityOfPage: 'https://signalflair.ai/resources/llms-txt/',
@@ -34,23 +34,23 @@ const jsonLd = {
           name: 'What is llms.txt?',
           acceptedAnswer: {
             '@type': 'Answer',
-            text: 'llms.txt is a plain-text file placed at the root of your website (yourdomain.com/llms.txt) that gives AI engines a clear, structured summary of your business — who you are, what you do, where you serve, and how you want to be described. Think of it as a business card written specifically for AI.',
+            text: 'llms.txt is a community-proposed plain-text file placed at the root of a website (yourdomain.com/llms.txt) that offers AI systems a structured summary of the site. It is not a standard: no standards body governs it, and no major AI platform documents reading it.',
           },
         },
         {
           '@type': 'Question',
-          name: 'Where does the llms.txt file go?',
+          name: 'Does llms.txt improve AI visibility or rankings?',
           acceptedAnswer: {
             '@type': 'Answer',
-            text: 'In the root of your website, served at yourdomain.com/llms.txt, the same way robots.txt is served. AI crawlers look for it there.',
+            text: 'There is no evidence that it does. A June 2026 study of 137,210 domains found 97% of published llms.txt files received zero requests, and Google’s own documentation states that Google Search ignores AI text files like llms.txt. The few real fetches observed come mostly from coding assistants reading developer documentation, not from answer engines choosing businesses.',
           },
         },
         {
           '@type': 'Question',
-          name: 'Is llms.txt the same as robots.txt or schema markup?',
+          name: 'What actually affects whether AI engines can find and recommend a business?',
           acceptedAnswer: {
             '@type': 'Answer',
-            text: 'No. robots.txt controls which crawlers are allowed in. Schema markup labels structured data for search engines. llms.txt is a human-readable summary written for AI/answer engines. They work together — Signal Flair deploys all three.',
+            text: 'The intervention with peer-reviewed causal support is crawler access: sites that block the crawlers feeding AI answers measurably lose AI visibility (SIGIR 2026, 11,500 real user queries). Beyond that, engines rely on ordinary crawlable pages, a consistent Google Business Profile, and consistent facts across the directories and reviews they cross-reference.',
           },
         },
       ],
@@ -68,70 +68,52 @@ export default function LlmsTxtResourcePage() {
 
       <div className="rsc-wrap">
         <header className="rsc-hero">
-          <div className="rsc-eyebrow">Resource · AI Visibility</div>
-          <h1 className="rsc-h1">What is <span className="rsc-code">llms.txt</span> — and why AI <em>misreads</em> most businesses without it</h1>
-          <p className="rsc-lead">Fewer than 1% of local businesses have this file. Here&apos;s what it is, why it matters, and how to fix it — in plain English.</p>
+          <div className="rsc-eyebrow">Resource · AI Visibility · Evidence-first</div>
+          <h1 className="rsc-h1">The truth about <span className="rsc-code">llms.txt</span> — what the data <em>actually</em> shows</h1>
+          <p className="rsc-lead">It&apos;s the most over-sold file in AI visibility. We publish one on our own site — and we will not sell you one. Here&apos;s why, with sources.</p>
         </header>
 
         <section className="rsc-section">
-          <h2 className="rsc-h2">The problem</h2>
-          <p className="rsc-p">AI engines — ChatGPT, Claude, Perplexity, Gemini, and Google AI — are now actively crawling websites to understand and recommend local businesses. The problem? Most sites give them almost nothing useful to work with.</p>
-          <p className="rsc-p"><span className="rsc-code">llms.txt</span> is a simple, standardized file that tells AI systems exactly who you are, what you do, where you serve, and how you want to be described. Without it, AI often draws a blank — or makes something up.</p>
+          <h2 className="rsc-h2">What it is</h2>
+          <p className="rsc-p"><span className="rsc-code">llms.txt</span> is a community-proposed plain-text file placed at the root of a website that offers AI systems a structured summary of the site. The idea sounds sensible — a business card written for machines.</p>
+          <p className="rsc-p">But an idea sounding sensible is not the same as machines actually reading it. So instead of repeating the pitch, here is what the measurement shows.</p>
         </section>
 
         <section className="rsc-section">
-          <h2 className="rsc-h2">What <span className="rsc-code">llms.txt</span> actually does</h2>
+          <h2 className="rsc-h2">What the data shows</h2>
           <ul className="rsc-ul">
-            <li>Gives AI a <strong>clear, structured summary</strong> of your business</li>
-            <li>Reduces hallucination and incorrect information</li>
-            <li>Improves how accurately AI describes your services and location</li>
-            <li>Becomes a strong signal for AI recommendations</li>
+            <li><strong>97% of published llms.txt files are never fetched.</strong> A June 2026 study analyzed 137,210 domains: of the sites that published the file, 97% saw zero requests to it.</li>
+            <li><strong>Google says Search ignores it.</strong> Google&apos;s own developer documentation states you don&apos;t need to create machine-readable AI files to appear in AI Overviews or AI Mode — &ldquo;Google Search ignores them.&rdquo;</li>
+            <li><strong>Neither OpenAI nor Anthropic documents reading it.</strong> Their published crawler documentation names robots.txt, feeds, and ordinary crawlable pages — never llms.txt.</li>
+            <li><strong>The few real fetches come from coding assistants</strong> reading developer documentation — not from answer engines deciding which plumber to recommend.</li>
           </ul>
-          <p className="rsc-p">Think of it as a business card written specifically for AI.</p>
+          <p className="rsc-p">Any vendor selling &ldquo;llms.txt deployment&rdquo; as an AI-visibility fix is selling you a file that, on the best available evidence, nothing you care about will ever read.</p>
         </section>
 
         <section className="rsc-section">
-          <h2 className="rsc-h2">Before vs. <em>after</em></h2>
-          <div className="rsc-ba">
-            <div className="rsc-bacard before">
-              <div className="rsc-balabel">Before · no llms.txt</div>
-              <div className="rsc-baquote">&ldquo;A local company in Indianapolis, Indiana that does something with… [vague description].&rdquo;</div>
-            </div>
-            <div className="rsc-bacard after">
-              <div className="rsc-balabel">After · proper llms.txt</div>
-              <div className="rsc-baquote">&ldquo;A family-owned HVAC company serving Indianapolis, Indiana and surrounding areas since 2012, specializing in repair and installation — consistently rated 4.9 stars.&rdquo;</div>
-            </div>
-          </div>
+          <h2 className="rsc-h2">Why we publish one <em>anyway</em></h2>
+          <p className="rsc-p">You&apos;ll find ours at <a href="/llms.txt">signalflair.ai/llms.txt</a>. It costs nothing to serve, it&apos;s honest, and if the standard ever earns real adoption, we&apos;re ready. That&apos;s the right size for this file: a free courtesy — not a line item on your invoice.</p>
+          <p className="rsc-p">If we sold it to you as a visibility fix, we&apos;d be selling the myth. Our whole product is that we don&apos;t do that — every finding we hand you is backed by evidence you can check.</p>
         </section>
 
         <section className="rsc-section">
-          <h2 className="rsc-h2">How to create one</h2>
-          <div className="rsc-step"><span className="rsc-num">1</span>Create a plain-text file named <strong><span className="rsc-code">llms.txt</span></strong>.</div>
-          <div className="rsc-step"><span className="rsc-num">2</span>Put it in the root of your site, served at <strong>yourdomain.com/llms.txt</strong>.</div>
-          <div className="rsc-step"><span className="rsc-num">3</span>Write a clear, accurate summary of your business — name, services, service area, and how you want to be described.</div>
-          <div className="rsc-step"><span className="rsc-num">4</span>Update it whenever your business changes.</div>
-          <p className="rsc-p" style={{ marginTop: '18px' }}>That&apos;s the basic idea. Doing it <em>well</em> — so AI engines actually trust and cite it — is where the precision matters. (Signal Flair builds and deploys this for clients.)</p>
+          <h2 className="rsc-h2">What actually moves AI visibility</h2>
+          <ul className="rsc-ul">
+            <li><strong>Answer-crawler access.</strong> The one fix with peer-reviewed causal support: sites blocking the crawlers that feed AI answers measurably lose AI visibility (SIGIR 2026, 11,500 real user queries). Blocks are usually a security plugin&apos;s default — nobody decided them.</li>
+            <li><strong>Ordinary crawlable pages.</strong> Google&apos;s stated requirement for AI features is simply being indexed and snippet-eligible. The engines read your actual site.</li>
+            <li><strong>A consistent Google Business Profile.</strong> Google documents that it can update your profile from what the rest of the web reports — and that you can&apos;t manage all Google updates. Inconsistent facts don&apos;t just confuse AI; they invite Google to rewrite you.</li>
+            <li><strong>Consistent facts everywhere AI cross-references</strong> — your site, directories, and reviews telling one story, machine-readably.</li>
+          </ul>
+          <p className="rsc-p">That&apos;s the work Signal Flair does — and every finding carries the fingerprint of the file it came from, so you can verify us the way AI verifies you.</p>
         </section>
 
         <section className="rsc-section">
           <h2 className="rsc-h2">How it compares to robots.txt &amp; schema</h2>
           <ul className="rsc-ul">
-            <li><strong>robots.txt</strong> — controls which crawlers are <em>allowed</em> in.</li>
-            <li><strong>Schema markup</strong> — labels structured data for search engines.</li>
-            <li><strong>llms.txt</strong> — a human-readable summary written for <em>AI / answer engines</em>.</li>
+            <li><strong>robots.txt</strong> — controls which crawlers are <em>allowed</em> in. This one is load-bearing: it decides whether answer engines can read you at all.</li>
+            <li><strong>Schema markup</strong> — machine-readability hygiene that makes your facts legible and earns rich results. Useful; not a citation vending machine.</li>
+            <li><strong>llms.txt</strong> — a proposal almost nothing reads today. Publish one if you like; pay for one never.</li>
           </ul>
-          <p className="rsc-p">They&apos;re not interchangeable — they work together. A complete AI-visibility foundation deploys all three.</p>
-        </section>
-
-        <section className="rsc-section">
-          <h2 className="rsc-h2">Why most businesses still don&apos;t have one</h2>
-          <ul className="rsc-ul">
-            <li>They don&apos;t know it exists</li>
-            <li>They assume traditional SEO is enough</li>
-            <li>They assume AI will &ldquo;just figure it out&rdquo;</li>
-            <li>Building it properly takes time and precision</li>
-          </ul>
-          <p className="rsc-p">Which is exactly why Signal Flair exists.</p>
         </section>
       </div>
 
@@ -142,7 +124,7 @@ export default function LlmsTxtResourcePage() {
             <a className="sl-hub-card" href="/resources/how-ai-engines-verify-a-business/">
               <span className="sl-hub-k">01</span>
               <span className="sl-hub-t">How AI engines decide to trust you</span>
-              <span className="sl-hub-d">The seven layers engines cross-check before they recommend anyone.</span>
+              <span className="sl-hub-d">The six layers engines cross-check before they recommend anyone.</span>
             </a>
             <a className="sl-hub-card" href="/pulse/">
               <span className="sl-hub-k">02</span>
@@ -161,8 +143,8 @@ export default function LlmsTxtResourcePage() {
         </section>
 
       <section className="rsc-cta">
-        <h2 className="rsc-cta-h">AI can find your business. But does it <em>understand</em> it?</h2>
-        <p className="rsc-cta-b">Run your free Signal Pulse™. We&apos;ll scan 3 critical signals across ChatGPT, Claude, Perplexity, Gemini, and Google AI — and show you exactly where your business breaks, including whether you have an llms.txt file working for you.</p>
+        <h2 className="rsc-cta-h">AI can find your business. But can it <em>read</em> you?</h2>
+        <p className="rsc-cta-b">Run your free Signal Pulse™ — a four-signal read of your live site. You&apos;ll see whether the crawlers that feed AI answers can actually reach you, and exactly where your signal breaks.</p>
         <a className="rsc-cta-btn" href="/#cta">▸ Run My Signal</a>
       </section>
 

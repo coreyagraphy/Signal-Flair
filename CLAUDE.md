@@ -93,21 +93,30 @@ That was a bad Grok recommendation. Reject it if it appears anywhere.
 ---
 
 ## Pricing — do not change without Corey confirming
-### (Updated 2026-07-21, Corey-approved via the pricing/terminology prompt run. Supersedes the old score-gated table. NO score gates — scope is set by the free audit.)
+### (Updated 2026-08-18 on branch moat-alignment-2026-08-18 — STAGED, pending Corey's final confirm before deploy; see Desktop\SIGNALFLAIR_WEBSITE_CHANGE_ORDER_2026-08-18.md for the market evidence. Supersedes the 2026-07-21 table. NO score gates — scope is set by the free audit.)
 
 | Tier | What it is | Price | Type |
 |---|---|---|---|
-| Signal Pulse™ | Free preview, 3 of 7 layers, 24h (was "Field Report" — renamed in all customer-facing copy; env vars/lead tags keep old identifiers) | $0 | Free |
-| Signal Score™ Audit | Full 7-layer diagnostic + Proof OS™ action plan | Free during founding period ($500 after) | Free |
-| Rebuild | Lighter-scope build | $3,000 | One-time |
-| Foundation Build | Full Proof Stack™ + Smart Site™ rebuild | $5,500 ($3,500 bundled w/ 12-mo Signal Proof — save $2,000; bundle applies to Foundation only) | One-time |
-| Signal Proof ⭐ | Stay Found™ monthly — Citation Capture, monthly Answer Architecture™, Proof Density Engine, quarterly re-audit, Content Payload 2 wks (1 location) | $1,800/mo | Recurring |
-| Signal Dominate | Everything in Proof at full velocity + multi-location + Mental Vision content bundle + full-month Content Payload + Satellites managed | from $3,500/mo | Recurring |
+| Signal Pulse™ | Free instant four-signal read — Access / Structure / Trust / Answers (matches what the serverless function actually scores; was "Field Report" — env vars/lead tags keep old identifiers) | $0 | Free |
+| Signal Score™ Audit | Full 6-layer diagnostic + action plan | Free during founding period ($500 after — credited in full toward any build) | Free |
+| Rebuild | Lighter-scope build | $1,500 | One-time |
+| Foundation Build | Full Proof Stack™ + Smart Site™ rebuild | $3,500 flat — ONE price, no bundle math | One-time |
+| Stay Found™ Watch | Entry plan — monthly 6-layer re-verification, drift alerts with before/after evidence, quarterly evidence report the client keeps | $249/mo | Recurring |
+| Signal Proof ⭐ | Stay Found™ monthly — Citation Capture, monthly Answer Architecture™, Proof Density Engine, quarterly re-audit, Content Payload 2 wks (1 location) | $1,500/mo | Recurring |
+| Stay Found™ Multi-Location | Everything in Proof at full velocity + multi-location + Mental Vision content bundle + full-month Content Payload + Satellites managed (RENAMED from "Signal Dominate" — dominance language collides with the delivery-based guarantee; never reintroduce) | from $3,500/mo | Recurring |
 | Founding Five | 35% off build + first 3 mo of Signal Proof at 50%, for a named case study. 5 seats. Replaces Founding Client/Founding Partner Pilot | — | Time-boxed |
 
-Per-location: add a location $1,500 one-time (Satellite included) · Satellite mgmt +$250/mo on Signal Proof (included in Dominate) · extra-location Content Payload +$450/mo. Annual billing = 2 months free (monthly plans). Enterprise/Civic: from $12K build + $3K/mo, or fixed-scope 90-day builds from $15K. No price ranges on plan cards. NO CRM in any client-facing feature list (privacy-policy data-processor disclosure is the only allowed mention).
+Per-location: add a location $1,500 one-time (Satellite included) · Satellite mgmt +$250/mo on Signal Proof (included in Multi-Location) · extra-location Content Payload +$450/mo. Annual billing = 2 months free (monthly plans). Enterprise/Civic: from $12K build + $3K/mo, or fixed-scope 90-day builds from $15K. No price ranges on plan cards. NO CRM in any client-facing feature list (privacy-policy data-processor disclosure is the only allowed mention).
 
-**Signal Score™ = 7 layers** (Access & Crawlability, Structured Intelligence, Entity Clarity, Answer Architecture, Trust & Proof Density, Live AI Visibility, Agent & Commerce Readiness) · 28-point diagnostic (7×4). Historical records are FROZEN at their audit-date models: Case Zero (18/100, six signals) and The Mill (35/100, seven Proof OS™ signals).
+**Signal Score™ = 6 layers** (Access & Crawlability, Structured Intelligence, Entity Clarity, Answer Architecture, Trust & Proof Density, Live AI Visibility) · 24-point diagnostic (6×4, points 22/18/16/18/16/10 = 100). Agent & Commerce Readiness is a WATCH item, not a scored layer — no platform consumes per-business agent endpoints yet (verified against Google/OpenAI/Anthropic primary docs 2026-08-18); re-add only if that changes. Historical records are FROZEN at their audit-date models: Case Zero (18/100, six signals) and The Mill (35/100, seven Proof OS™ signals).
+
+**Claim guardrails (2026-08-18 — every one evidence-backed; violating any of these on the site is a P0):**
+- NEVER sell llms.txt as a deliverable or score it (97% of published llms.txt files get zero requests — Ahrefs, 137k domains; Google docs: Search ignores AI text files). Serving our own /llms.txt is fine.
+- NEVER claim "nobody else checks AI-crawler access" — Semrush and Knowatoa both ship the check. Our edge is evidence + done-for-you, not the check.
+- NEVER present schema/structured data as a citation-lift lever (largest controlled test: no uplift). It is machine-readability hygiene.
+- NEVER publish a single-number AI-visibility percentage from one run — ranges with sample size only (run-to-run citation overlap is 0.29–0.50).
+- Results language: "after", never "because". Delivery-based guarantee only — unchanged.
+- The one causally supported fix is answer-crawler access (SIGIR 2026) — lead with it, cite it, do not oversell past it.
 
 Guarantee: delivery-based only. Never rankings, leads, or revenue.
 Clients keep everything built, even on cancel.
@@ -168,7 +177,7 @@ CTA, but must never displace the primary conversion path above. Never use
 
 | Route | Purpose | Indexed |
 |---|---|---|
-| `/` | Homepage — hero, diagnosis, one-minute explainer, 7-layer protocol, Mill audit, Case Zero proof, pricing w/ billing toggle, Founding Five, lead form | ✅ |
+| `/` | Homepage — hero, diagnosis, one-minute explainer, 6-layer protocol, Mill audit, Case Zero proof, pricing w/ billing toggle, Founding Five, lead form | ✅ |
 | `/pulse/` | Signal Pulse™ landing — instant deterministic score via Netlify Function | ✅ |
 | `/how-it-works/` · `/about/` · `/faq/` · `/privacy/` | Core sub-pages | ✅ |
 | `/proof/` | Signal Proof Page™ hub — Case Zero 18 → 73 → 91 | ✅ |
@@ -360,7 +369,7 @@ SignalFlare.ai = restaurant decision intelligence, Texas. Completely different.
 | File | Purpose |
 |---|---|
 | `CLAUDE.md` (this file) | Project context for Claude Code |
-| `src/components/SignalFlairLanding.tsx` | The homepage — every section, the lead form, the 7-layer protocol data |
+| `src/components/SignalFlairLanding.tsx` | The homepage — every section, the lead form, the 6-layer protocol data |
 | `src/app/globals.css` | All styles. No CSS modules, no Tailwind |
 | `src/app/layout.tsx` | Site-wide JSON-LD (Organization, Person, WebSite, Service, OfferCatalog) |
 | `src/app/proof/page.tsx` | Signal Proof Page™ hub — the Case Zero trajectory lives here |

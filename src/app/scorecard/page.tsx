@@ -111,7 +111,7 @@ export default function ScorecardPage() {
           <div className="sfsc-eyebrow"><span className="sfsc-tick" />{isPulse ? 'Signal Pulse™ · Level 1' : 'The Instrument'}</div>
           <h1 className="sfsc-h1">{headline}</h1>
           <p className="sfsc-sub">
-            A single, defensible number across <strong>seven layers</strong> of AI readiness.
+            A single, defensible number across <strong>six layers</strong> of AI readiness.
             It&apos;s the wedge: a business can&apos;t argue with its own score, and the gap to 100
             is the roadmap.
           </p>
@@ -145,12 +145,12 @@ export default function ScorecardPage() {
 
           {isPulse && (
             <div className="sfsc-level">
-              <strong>Level 1: cleared.</strong> You scanned four of seven signals on the spot. Three are still <strong className="sfsc-lock-word">🔒 locked</strong> — <strong>Level&nbsp;2</strong> is your full Signal Score™: the boss fight that cracks them open and hands you the walkthrough to 100.
+              <strong>Level 1: cleared.</strong> You scanned four of six signals on the spot. Two are still <strong className="sfsc-lock-word">🔒 locked</strong> — <strong>Level&nbsp;2</strong> is your full Signal Score™: the boss fight that cracks them open and hands you the walkthrough to 100.
             </div>
           )}
 
           <div className="sfsc-foot">
-            {asOf ? `As of ${asOf} · ` : ''}{isPulse ? 'Level 1 of 2 · ' : ''}The seven layers are public. The scoring method is not.
+            {asOf ? `As of ${asOf} · ` : ''}{isPulse ? 'Level 1 of 2 · ' : ''}The six layers are public. The scoring method is not.
           </div>
         </div>
 

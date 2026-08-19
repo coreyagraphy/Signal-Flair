@@ -53,7 +53,7 @@ export default function ProofTrustPage() {
 
         <section className="rsc-cta">
           <h2 className="rsc-cta-h">A record customers and AI can <em>trust.</em></h2>
-          <p className="rsc-cta-b">Start with a free Signal Pulse™ — 3 of your 7 signal layers, 24 hours, no call.</p>
+          <p className="rsc-cta-b">Start with a free Signal Pulse™ — a four-signal read of your live site, 24 hours, no call.</p>
           <a className="rsc-cta-btn" href="/#cta">▸ Run My Signal</a>
         </section>
       </div>

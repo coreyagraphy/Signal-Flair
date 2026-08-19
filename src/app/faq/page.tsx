@@ -19,7 +19,7 @@ export const metadata: Metadata = {
 const FAQS: { q: string; a: string }[] = [
   {
     q: 'What is a Signal Score™?',
-    a: 'A Signal Score™ is a number from 0 to 100, produced by the Signal Protocol™ across seven layers — Access & Crawlability, Structured Intelligence, Entity Clarity, Answer Architecture, Trust & Proof Density, Live AI Visibility, and Agent & Commerce Readiness — that measures how visible and trustworthy your business appears to AI search engines like ChatGPT, Perplexity, Google AI, and Gemini. Most local businesses score under 40 and don’t know it.',
+    a: 'A Signal Score™ is a number from 0 to 100, produced by the Signal Protocol™ across six layers — Access & Crawlability, Structured Intelligence, Entity Clarity, Answer Architecture, Trust & Proof Density, and Live AI Visibility — that measures how visible and trustworthy your business appears to AI search engines like ChatGPT, Perplexity, Google AI, and Gemini. Most local businesses score under 40 and don’t know it.',
   },
   {
     q: 'What is AI Proof Infrastructure™?',
@@ -63,7 +63,7 @@ const FAQS: { q: string; a: string }[] = [
   },
   {
     q: 'What is a Signal Pulse™?',
-    a: 'A Signal Pulse™ is a free instant-preview diagnostic across 3 of your 7 Signal Protocol™ layers — Entity Clarity, Trust & Proof Density, and Live AI Visibility. It is a diagnosis, never a prescription. The prescription is the work. No sales call required; we send your preview within 24 hours, and the full 7-layer Signal Score™ Audit is free during the founding period ($500 after).',
+    a: 'A Signal Pulse™ is a free instant four-signal read — Access, Structure, Trust, and Answers — run against your live site. It is a diagnosis, never a prescription. The prescription is the work. No sales call required; we send your read within 24 hours, and the full 6-layer Signal Score™ Audit is free during the founding period ($500 after, credited in full toward any build).',
   },
   {
     q: 'What is the Founding Five?',
@@ -71,7 +71,7 @@ const FAQS: { q: string; a: string }[] = [
   },
   {
     q: 'What are Signal Satellites™?',
-    a: 'Signal Satellites™ are lean, per-location micro-sites — each with its own Machine Trust Layer™, Entity Lock™, and Answer Architecture™ — so every branch gets found and cited in its own market instead of hiding behind one homepage. $1,500 per Satellite build (included when you add a location to a build), managed under Signal Dominate, or +$250/mo per Satellite on Signal Proof.',
+    a: 'Signal Satellites™ are lean, per-location micro-sites — each with its own Machine Trust Layer™, Entity Lock™, and Answer Architecture™ — so every branch gets found and cited in its own market instead of hiding behind one homepage. $1,500 per Satellite build (included when you add a location to a build), managed under Stay Found™ Multi-Location, or +$250/mo per Satellite on Signal Proof.',
   },
   {
     q: 'Do you offer a CRM?',
@@ -79,11 +79,11 @@ const FAQS: { q: string; a: string }[] = [
   },
   {
     q: 'What is a Signal Proof Page™?',
-    a: 'The Signal Proof Page™ is your canonical, crawlable proof hub — a client-owned record published as human-readable pages and linked machine-readable assets (proof.json, llms.txt) so AI engines and customers can inspect what you do, where you serve, and the proof behind it. Deployed with every build — Rebuild and Foundation Build.',
+    a: 'The Signal Proof Page™ is your canonical, crawlable proof hub — a client-owned record published as human-readable pages and linked machine-readable assets (including proof.json) so AI engines and customers can inspect what you do, where you serve, and the proof behind it. Deployed with every build — Rebuild and Foundation Build.',
   },
   {
     q: 'What is Stay Found™?',
-    a: 'Stay Found™ is ongoing proof maintenance that keeps your Signal Score™ from drifting — monthly re-scans, fresh citations, schema and llms.txt updates, and crawler monitoring as new AI engines ship and competitors catch up. Signal Flair does not guarantee rankings, citations, recommendations, inclusion, or AI visibility. The work is designed to improve clarity, structure, crawlability, and proof readiness.',
+    a: 'Stay Found™ is ongoing proof maintenance that keeps your Signal Score™ from drifting — monthly re-scans, fresh citations, schema and verified-fact updates, and crawler monitoring as new AI engines ship and competitors catch up. Signal Flair does not guarantee rankings, citations, recommendations, inclusion, or AI visibility. The work is designed to improve clarity, structure, crawlability, and proof readiness.',
   },
   {
     q: 'What happens to my assessment after it is completed?',
@@ -107,15 +107,15 @@ const FAQS: { q: string; a: string }[] = [
   },
   {
     q: 'What is the Trust & Proof Density layer, and how do you build it?',
-    a: 'Trust & Proof Density is the Signal Protocol™ layer that measures how much verifiable, consistent proof AI can find about your business — and it is often the difference between being found and being recommended. Signal Flair builds it four ways: structured data (schema / JSON-LD) that states your facts in machine-readable form; a Signal Proof Page™ and proof.json that publish your claims and credentials with their sources; an llms.txt that hands AI the verified version directly; and consistent entity details across the directories, reviews, and profiles AI cross-references. The denser and more aligned that proof, the easier you are for AI to trust. It does not guarantee a recommendation — it removes the reasons an engine would skip you.',
+    a: 'Trust & Proof Density is the Signal Protocol™ layer that measures how much verifiable, consistent proof AI can find about your business — and it is often the difference between being found and being recommended. Signal Flair builds it four ways: structured data (schema / JSON-LD) that states your facts in machine-readable form; a Signal Proof Page™ and proof.json that publish your claims and credentials with their sources; and consistent entity details across the directories, reviews, and profiles AI cross-references. The denser and more aligned that proof, the easier you are for AI to trust. It does not guarantee a recommendation — it removes the reasons an engine would skip you.',
   },
   {
     q: 'Do you guarantee rankings, leads, or revenue?',
-    a: 'No — and anyone who does is guessing. Our guarantee is delivery-based only: we build and hand over the infrastructure — llms.txt, schema, crawler fixes, your 90-day AI action plan. You keep all of it, even if you cancel. We never promise rankings, leads, or citations we cannot control.',
+    a: 'No — and anyone who does is guessing. Our guarantee is delivery-based only: we build and hand over the infrastructure — schema, crawler access, your Signal Proof Page™, your 90-day AI action plan. You keep all of it, even if you cancel. We never promise rankings, leads, or citations we cannot control.',
   },
   {
     q: 'How much does Signal Flair cost?',
-    a: 'The Signal Pulse™ is free, and the full Signal Score™ Audit is free during the founding period ($500 after). Builds are one-time, scoped by the audit: Rebuild is $3,000; the Foundation Build is $5,500 — or $3,500 bundled with a 12-month Signal Proof plan (save $2,000). Stay Found™ monthly plans: Signal Proof is $1,800/mo and Signal Dominate starts at $3,500/mo. Add a location for $1,500, Satellite included. You keep everything built, even if you cancel.',
+    a: 'The Signal Pulse™ is free, and the full Signal Score™ Audit is free during the founding period ($500 after — credited in full toward any build). Builds are one-time, scoped by the audit: the Rebuild is $1,500 and the Foundation Build is $3,500. Stay Found™ monthly plans: Watch is $249/mo, Signal Proof is $1,500/mo, and Multi-Location starts at $3,500/mo. Add a location for $1,500, Satellite included. You keep everything built, even if you cancel.',
   },
   {
     q: 'Is Signal Flair related to FLAIR MRI imaging or SignalFlare.ai?',
@@ -175,7 +175,7 @@ export default function FaqPage() {
             <a className="sl-hub-card" href="/resources/how-ai-engines-verify-a-business/">
               <span className="sl-hub-k">02</span>
               <span className="sl-hub-t">How AI engines decide to trust you</span>
-              <span className="sl-hub-d">The seven layers engines cross-check — and the 30-day fixes.</span>
+              <span className="sl-hub-d">The six layers engines cross-check — and the 30-day fixes.</span>
             </a>
             <a className="sl-hub-card" href="/proof/">
               <span className="sl-hub-k">03</span>
@@ -190,7 +190,7 @@ export default function FaqPage() {
 
         <section className="rsc-cta">
           <h2 className="rsc-cta-h">Find out where <em>your</em> signal breaks.</h2>
-          <p className="rsc-cta-b">A free Signal Pulse™ — 3 of your 7 signal layers, 24 hours, no call. You&apos;ll see your Signal Score before you decide anything.</p>
+          <p className="rsc-cta-b">A free Signal Pulse™ — a four-signal read of your live site, 24 hours, no call. You&apos;ll see where your signal breaks before you decide anything.</p>
           <a className="rsc-cta-btn" href="/#cta">▸ Run My Signal</a>
         </section>
       </div>

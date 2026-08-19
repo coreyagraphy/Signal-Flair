@@ -204,7 +204,7 @@ export default function SignalPulsePage() {
           <div className="ssc-step">
             <div className="ssc-step-n" style={{ color: '#ff3d82' }}>03</div>
             <span className="ssc-step-t">Opt in for your full Signal Score™</span>
-            <div className="ssc-step-d">Want the complete picture? The Signal Score™ is a human-verified measurement across all seven layers, plus live AI-visibility tests — and Corey walks you through it personally on a call. Not a PDF in your inbox. A working session, on request.</div>
+            <div className="ssc-step-d">Want the complete picture? The Signal Score™ is a human-verified measurement across all six layers, plus live AI-visibility tests — and Corey walks you through it personally on a call. Not a PDF in your inbox. A working session, on request.</div>
           </div>
         </div>
       </section>

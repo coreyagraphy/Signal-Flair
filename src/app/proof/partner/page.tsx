@@ -66,7 +66,7 @@ const PROOF_STACK = [
   {
     tag: 'Measure',
     name: 'Signal Baseline™',
-    body: 'Signal Protocol™ diagnostic. Signal Score™ across seven layers. Prioritized gap list — not a generic PDF.',
+    body: 'Signal Protocol™ diagnostic. Signal Score™ across six layers. Prioritized gap list — not a generic PDF.',
   },
   {
     tag: 'Build',
