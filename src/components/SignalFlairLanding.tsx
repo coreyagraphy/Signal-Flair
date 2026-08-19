@@ -596,9 +596,15 @@ export default function SignalFlairLanding() {
         {/* Center scrim — keeps the stacked centerpiece legible over the busy video */}
         <div id="hero-center-scrim" />
         <nav id="hnav">
-          <div>
+          <div className="nav-brand">
             <div className="nav-logo"><SignalFlairLogo onDark pulse style={{ height: 70, width: 'auto', display: 'block' }} /></div>
-            <div className="nav-logo-tag"><span className="ntag-cat cat-mark">AI Proof Infrastructure™</span> · Indianapolis, Indiana, serving nationwide</div>
+            {/* The category phrase appears ONCE on the hero — here, under the logo — and it
+                is the page h1. It was previously duplicated in a centred hero eyebrow; that
+                second instance was removed. Do not reintroduce it. */}
+            <h1 className="nav-brand-h1">
+              <span className="nav-logo-tag"><span className="ntag-cat cat-mark">AI Proof Infrastructure™</span> · Indianapolis, Indiana, serving nationwide</span>
+              <span className="nav-cat-line">Built for AI search, answer engines, and the agents coming next.</span>
+            </h1>
           </div>
           <div style={{ display: 'flex', alignItems: 'center', gap: '24px' }}>
             <a className="nl" href="#check">Signal Score</a>
@@ -611,13 +617,6 @@ export default function SignalFlairLanding() {
         <div id="hero-layout">
           <div className="hero-word" aria-hidden="true">FOUND.</div>
           <div className="h-side top">
-            {/* The category phrase IS the h1 — visible, not a screen-reader-only string.
-                The rotating headline below it is aria-hidden because its text swaps on a
-                timer, which is why the h1 lives here rather than there. */}
-            <h1 className="h-cat-h1">
-              <span className="h-eyebrow"><span className="h-ey-dot" /><span className="cat-mark">AI Proof Infrastructure™</span></span>
-              <span className="h-cat-line">Built for <strong>AI search</strong>, <strong>answer engines</strong>, and the <strong>agents</strong> coming next.</span>
-            </h1>
             <div className="h-headline" aria-hidden="true">Can <span id="engine-rot" className="eng-rot">Claude</span> <span id="verb-rot" className="verb-rot">find</span> your business <span className="glass-text-orange">right now?</span></div>
           </div>
 
