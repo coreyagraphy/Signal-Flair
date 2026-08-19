@@ -104,7 +104,7 @@ const jsonLd = {
           { '@type': 'Offer', name: 'Rebuild', description: 'Lighter-scope one-time build — Machine Trust Layer™ cleanup, Crawl Clearance Protocol, Entity Lock™, Signal Proof Page™, 90-day plan, Signal Telemetry.', price: '1500', priceCurrency: 'USD' },
           { '@type': 'Offer', name: 'Foundation Build', description: 'The full Proof Stack™ at scale + Smart Site™ rebuild + full web-wide Entity Lock™. One-time, one price.', price: '3500', priceCurrency: 'USD' },
           { '@type': 'Offer', name: 'Stay Found™ Watch', description: 'Stay Found™ entry plan — monthly six-layer re-verification, drift alerts with before/after evidence, and a quarterly evidence report you keep.', price: '249', priceCurrency: 'USD' },
-          { '@type': 'Offer', name: 'Signal Proof', description: 'Stay Found™ monthly plan — Citation Capture, monthly Answer Architecture™ expansion, Proof Density Engine, quarterly re-audit, Signal Telemetry, and a monthly Content Payload.', price: '1500', priceCurrency: 'USD' },
+          { '@type': 'Offer', name: 'Signal Proof', description: 'Stay Found™ monthly plan — Citation Capture, monthly Answer Architecture™ expansion, Proof Density Engine, quarterly re-audit, Signal Telemetry, and The Broadcast free for the first two months.', price: '1500', priceCurrency: 'USD' },
           { '@type': 'Offer', name: 'Stay Found™ Multi-Location', description: 'Everything in Signal Proof at full velocity — multi-location Citation Capture, Mental Vision cinematic content bundle, and Signal Satellites™ management. From $3,500/month.', price: '3500', priceCurrency: 'USD' },
         ],
       },

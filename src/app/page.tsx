@@ -23,7 +23,7 @@ const HOMEPAGE_FAQ: { q: string; a: string }[] = [
   },
   {
     q: 'Why is there a monthly plan?',
-    a: 'Because AI search is a moving target. New engines ship, models retrain, competitors catch up, and AI agents are arriving. Stay Found™ plans — Watch, Signal Proof, and Multi-Location — run Citation Capture, expand your Answer Architecture™ monthly, compound proof with the Proof Density Engine, and watch drift with Signal Telemetry. And every month ships your Content Payload: premium, done-for-you content engineered for humans and machines — structured around verified facts with machine-readable metadata, including a 30-second commercial — so the foundation you built keeps earning citations.',
+    a: 'Because AI search is a moving target. New engines ship, models retrain, competitors catch up, and AI agents are arriving. Stay Found™ plans — Watch, Signal Proof, and Multi-Location — run Citation Capture, expand your Answer Architecture™ monthly, compound proof with the Proof Density Engine, and re-check drift on every scheduled re-scan. And your first two months ship The Broadcast — 40 posts, two :15 branded commercials and a posting-time playbook, produced by Mental Vision — so the foundation you built has something current to point at.',
   },
   {
     q: 'What are Signal Satellites™?',
