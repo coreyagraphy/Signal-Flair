@@ -785,10 +785,10 @@ export default function SignalFlairLanding() {
         <div className="proof-bgword" aria-hidden="true">PROOF.</div>
         <div className="proof-head reveal">
           <div>
-            <div className="proof-eyebrow">Case Zero · 18 → 73 → 91</div>
+            <div className="proof-eyebrow">Case Zero · 18 → 73 → 91 → 98</div>
             <div className="proof-title">We ran it on<br /><em>ourselves first.</em></div>
           </div>
-          <div className="proof-meta">Case Zero is our own audit, published at the score we actually got. Signal Flair scored <strong>18/100</strong> on June 6, 2026, then built the same proof layer we sell and re-measured in public — <strong>73</strong> on July 5, <strong>91</strong> on August 3. Every reading dated. No fabricated testimonials, no finished-case theater.</div>
+          <div className="proof-meta">Case Zero is our own audit, published at the score we actually got. Signal Flair scored <strong>18/100</strong> on June 6, 2026, then built the same proof layer we sell and re-measured in public — <strong>73</strong> on July 5, <strong>91</strong> on August 3, and <strong>98</strong> on August 19: today&apos;s reading, taken by the same public scanner that runs every Signal Pulse™. Every reading dated. No fabricated testimonials, no finished-case theater.</div>
         </div>
         {/* The story, in order — the withdrawal is the credential, so it leads the strip.
             Readings, dates and layer tables below are locked; see CLAUDE.md. */}
@@ -812,19 +812,22 @@ export default function SignalFlairLanding() {
           </div>
           <div className="proof-arrow" aria-hidden="true">→</div>
           <div className="proof-card after">
-            <div className="pc-kicker">Re-audit · 08.03.2026</div>
-            <div className="pc-top"><span className="pc-label">After</span><span className="pc-tag">+73</span></div>
-            <span className="pc-score count">91<small>/100</small></span>
-            <div className="pc-scorelbl">Signal Score™</div>
-            <div className="pc-row"><span className="pc-name">Access &amp; Crawlability</span><span className="pc-stamp yes">100/100</span></div>
-            <div className="pc-row"><span className="pc-name">Structured Intelligence</span><span className="pc-stamp yes">100/100</span></div>
-            <div className="pc-row"><span className="pc-name">Answer Architecture</span><span className="pc-stamp yes">90/100</span></div>
+            <div className="pc-kicker">Current · 08.19.2026 · public scanner</div>
+            <div className="pc-top"><span className="pc-label">After</span><span className="pc-tag">+80</span></div>
+            <span className="pc-score count">98<small>/100</small></span>
+            <div className="pc-scorelbl">Signal Pulse™ · four signals, weighted</div>
+            <div className="pc-row"><span className="pc-name">Access</span><span className="pc-stamp yes">100/100</span></div>
+            <div className="pc-row"><span className="pc-name">Structure</span><span className="pc-stamp yes">100/100</span></div>
+            <div className="pc-row"><span className="pc-name">Trust</span><span className="pc-stamp yes">100/100</span></div>
+            <div className="pc-row"><span className="pc-name">Answers</span><span className="pc-stamp yes">90/100</span></div>
+            <div className="pc-row"><span className="pc-name">Aug 3 re-audit</span><span className="pc-stamp yes">91/100</span></div>
             <div className="pc-row"><span className="pc-name">Jul 5 re-audit</span><span className="pc-stamp yes">73/100</span></div>
-            <div className="pc-status">Re-measured in public. Every reading dated.</div>
+            <div className="pc-status">30+30+20+18 = 98. Run the same scanner on us at /pulse.</div>
           </div>
         </div>
-        <div className="proof-note reveal">The three layers above are re-measured by the same deterministic scanner that runs every Signal Pulse™, pointed at this site. <strong>A Signal Score™ measures the proof layer — it is not a guarantee of AI ranking, citation, recommendation, or inclusion.</strong></div>
+        <div className="proof-note reveal">The four signals above are today&apos;s read — August 19, 2026 — from the same deterministic scanner that runs every Signal Pulse™, pointed at this site. Three consecutive samples, identical. 100×.30 + 100×.30 + 100×.20 + 90×.20 = <strong>98</strong>: check it with a calculator, or run the scanner yourself. <strong>A Signal Score™ measures the proof layer — it is not a guarantee of AI ranking, citation, recommendation, or inclusion.</strong></div>
         <div className="proof-note reveal">Signal Flair&apos;s own audit — baseline <strong>June 6, 2026</strong>, re-audited <strong>July 5</strong> and <strong>August 3</strong>. This is Case Zero: we ran the system on ourselves first, and we published the weak scores on the way up, not just the good one.</div>
+        <div className="proof-note reveal">Provenance, on the record: the June baseline is the operator-recorded <strong>18</strong> — the founder&apos;s call, reaffirmed August 19, 2026. The worksheet rows shown beside it are from that assessment and do not average to 18; we tell you that instead of retrofitting them. July&apos;s 73 derives exactly (436 ÷ 6). August 3&apos;s 91 re-measured three layers. Today&apos;s 98 is fully derivable, and the instrument is public.</div>
         <a className="proof-live-link reveal" href="/proof/">See our live record →</a>
         <div className="sl-markwrap reveal" style={{ margin: '26px auto 0', maxWidth: 560 }}>
           <a className="sl-mark" href="/case-studies/restor-team/">
@@ -836,6 +839,26 @@ export default function SignalFlairLanding() {
             </span>
             <span className="sl-mark-arrow" aria-hidden="true">→</span>
           </a>
+        </div>
+        {/* Mental Vision — the parent studio, measured by the same instrument (2026-08-19).
+            The point: something we built shipped ready — no cleanup pass before the reading.
+            The Answers 60 stays on the card; showing the imperfect bucket IS the brand. */}
+        <div className="mvp reveal">
+          <div className="mvp-l">
+            <div className="mvp-ey">Built ready · the parent studio</div>
+            <div className="mvp-t">Same scanner, pointed at <em>our own builder.</em></div>
+            <div className="mvp-d">Mental Vision — the studio Signal Flair grew out of — read <strong>92/100</strong> on August 19, 2026 by the exact scanner behind every Signal Pulse™. No cleanup pass first, and the bucket that isn&apos;t perfect is printed anyway. That&apos;s the point: work that ships ready, measured by the same instrument we point at everyone else.</div>
+            <a className="mvp-link" href="https://www.mentalvision.ai" target="_blank" rel="noopener noreferrer">mentalvision.ai →</a>
+          </div>
+          <div className="mvp-card">
+            <div className="mvp-score">92<small>/100</small></div>
+            <div className="mvp-lbl">Signal Pulse™ · 08.19.2026</div>
+            <div className="mvp-row"><span>Access</span><span className="mvp-ok">100</span></div>
+            <div className="mvp-row"><span>Structure</span><span className="mvp-ok">100</span></div>
+            <div className="mvp-row"><span>Trust</span><span className="mvp-ok">100</span></div>
+            <div className="mvp-row"><span>Answers</span><span className="mvp-mid">60</span></div>
+            <div className="mvp-foot">Three samples, identical. 30+30+20+12 = 92.</div>
+          </div>
         </div>
         {/* ═══ REAL-WORLD AUDIT — The Mill / Amplify Bloomington, named with permission (recorded 2026-07-21; see ANONYMIZED_BASELINE_CASE_INTERNAL.md) ═══ */}
         <div className="rw reveal" id="real-world-audit">

@@ -2015,3 +2015,24 @@ footer{background:var(--ink2);border-top:1px solid var(--ink);padding:52px;posit
 .cmp-table td.cn{color:#c4331d;font-weight:700}
 .cmp-table td.cmp-concede{color:var(--ink);font-weight:700;background:rgba(255,244,95,.28)}
 .cmp-note{max-width:1080px;margin:22px auto 0;font-family:var(--signal);font-size:13px;line-height:1.8;color:rgba(11,10,9,.62)}
+
+/* ─── Mental Vision "built ready" card (#proof, 2026-08-19) — parent studio measured by the
+   same public scanner; the imperfect Answers bucket is printed on purpose. ─── */
+.mvp{position:relative;z-index:2;max-width:1060px;margin:44px auto 0;padding:0 clamp(18px,4.4vw,56px);
+  display:grid;grid-template-columns:1.3fr minmax(240px,1fr);gap:clamp(20px,3vw,44px);align-items:center}
+.mvp-ey{font-family:var(--signal);font-size:11px;font-weight:600;letter-spacing:.22em;text-transform:uppercase;color:var(--teal);margin-bottom:12px}
+.mvp-t{font-family:var(--flair);font-variation-settings:'opsz' 144,'wght' 540,'WONK' 1;font-size:clamp(24px,3.2vw,40px);line-height:1.05;letter-spacing:-.01em;margin-bottom:14px}
+.mvp-t em{font-family:var(--italic);font-style:italic;font-variation-settings:normal;color:var(--orange)}
+.mvp-d{font-size:15px;line-height:1.65;color:rgba(11,10,9,.75);max-width:52ch}
+.mvp-d strong{color:var(--ink)}
+.mvp-link{display:inline-block;margin-top:14px;font-family:var(--signal);font-size:12px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--orange2);text-decoration:none;border-bottom:2px solid var(--orange)}
+.mvp-link:hover{color:var(--ink)}
+.mvp-card{background:var(--ink);color:var(--bone);border:2px solid var(--ink);box-shadow:8px 9px 0 rgba(11,10,9,.22);padding:24px 24px 18px}
+.mvp-score{font-family:var(--flair);font-variation-settings:'opsz' 144,'wght' 560,'WONK' 1;font-size:clamp(52px,6vw,74px);line-height:.85;color:var(--hot);text-shadow:0 0 22px rgba(255,244,95,.35)}
+.mvp-score small{font-size:.3em;opacity:.55;font-weight:400}
+.mvp-lbl{font-family:var(--signal);font-size:10px;letter-spacing:.16em;text-transform:uppercase;color:rgba(248,241,231,.55);margin:10px 0 14px}
+.mvp-row{display:flex;justify-content:space-between;font-family:var(--signal);font-size:12.5px;padding:7px 0;border-top:1px solid rgba(248,241,231,.14);font-variant-numeric:tabular-nums}
+.mvp-ok{color:var(--teal);font-weight:700}
+.mvp-mid{color:var(--hot);font-weight:700}
+.mvp-foot{margin-top:12px;font-family:var(--signal);font-size:10.5px;line-height:1.7;color:rgba(248,241,231,.5)}
+@media(max-width:760px){.mvp{grid-template-columns:1fr}}

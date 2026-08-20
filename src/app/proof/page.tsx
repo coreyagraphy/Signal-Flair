@@ -5,19 +5,19 @@ import VerifiedMark from '@/components/VerifiedMark'
 export const metadata: Metadata = {
   title: 'Our Live Verified Record — Case Zero | Signal Flair',
   description:
-    'Signal Flair published its Signal Proof Page™ on itself first. This is our live record, re-verified on a set schedule — Case Zero, audited at 18/100 on June 6, 2026 and re-audited to 91/100 on August 3 — with every dated reading on a public change log. We don’t claim. We show.',
+    'Signal Flair published its Signal Proof Page™ on itself first. This is our live record, re-verified on a set schedule — Case Zero, audited at 18/100 on June 6, 2026, re-audited to 91/100 on August 3, and read at 98/100 on August 19 by the public scanner — with every dated reading on a public change log. We don’t claim. We show.',
   alternates: { canonical: 'https://signalflair.ai/proof/' },
   openGraph: {
     title: 'Case Zero — Signal Flair’s own live verified record',
     description:
-      'We audited ourselves first: 18/100 on June 6, 2026 — now 91/100. Every reading dated and source-linked, on a public change log.',
+      'We audited ourselves first: 18/100 on June 6, 2026 — now 98/100, read by the public scanner. Every reading dated and source-linked, on a public change log.',
     images: ['/video/hero-poster.jpg'],
   },
 }
 
 /*
   Case Zero — the real, dated trajectory of Signal Flair's audit of itself.
-  18 (baseline) → 73 (first re-audit) → 91 (current). Mirrors /proof.json exactly.
+  18 (baseline) → 73 → 91 (six-layer era) → 98 (current — four-signal public scanner, fully derivable). Mirrors /proof.json exactly.
 
   The composite is the plain average of the layer scores at each reading, which is why
   layer detail is attached to the reading it was actually computed from — the June 6
@@ -33,6 +33,10 @@ const CASE_ZERO = {
   midpointOn: '2026-07-05',
   current: 91,
   currentOn: '2026-08-03',
+  // 2026-08-19 — the Pulse-model reading: the public scanner's four signals,
+  // weighted .30/.30/.20/.20. Three consecutive samples, identical. 30+30+20+18 = 98.
+  pulse: 98,
+  pulseOn: '2026-08-19',
   // June 6 baseline — the original six-signal model, frozen at its audit-date form.
   signals: [
     { signal: 'AI Search Presence', score: 4, status: 'Critical' },
@@ -56,9 +60,10 @@ const CASE_ZERO = {
   // layers depend on live engine tests and third-party profiles and are re-verified on the
   // audit cycle, not from the page itself, so they are not restated here.
   verifiedLayers: [
-    { layer: 'Access & Crawlability', score: 100, note: 'Every AI agent explicitly allowed; sitemap, llms.txt and proof manifests all resolving.' },
-    { layer: 'Structured Intelligence', score: 100, note: '15 schema types on the homepage alone — Organization, FAQPage, VideoObject, Service, OfferCatalog.' },
-    { layer: 'Answer Architecture', score: 90, note: 'Up from 77. Depth, FAQ coverage and citable structure across the site.' },
+    { layer: 'Access', score: 100, note: 'Every AI agent explicitly allowed; sitemap and exports all resolving.' },
+    { layer: 'Structure', score: 100, note: '15 schema types on the homepage alone — Organization, FAQPage, VideoObject, Service, OfferCatalog.' },
+    { layer: 'Trust', score: 100, note: 'Proof density and consistent public facts across the record.' },
+    { layer: 'Answers', score: 90, note: 'Depth, FAQ coverage and citable structure across the site.' },
   ],
 }
 
@@ -168,7 +173,7 @@ export default function ProofHubPage() {
           </p>
           <div className="sl-markwrap">
             <VerifiedMark
-              lastVerified={CASE_ZERO.currentOn}
+              lastVerified={CASE_ZERO.pulseOn}
               confirmed={0}
               total={6}
               note="Case Zero — our own record at the start. The climb is public."
@@ -178,26 +183,31 @@ export default function ProofHubPage() {
 
         {/* Case Zero score */}
         <section className="rsc-section">
-          <h2 className="rsc-h2">Case Zero — <em>18 → 91</em></h2>
+          <h2 className="rsc-h2">Case Zero — <em>18 → 98</em></h2>
           <p className="rsc-p">
             We audited ourselves before we audited anyone else. Baseline{' '}
             <strong>18/100</strong> on June 6, 2026 — a premium-looking site with near-zero AI
-            visibility, the exact gap we fix. Re-audited to <strong>73</strong> on July 5, and to{' '}
-            <strong>91</strong> on August 3. Every reading dated, every reading published, including
-            the one that made us look bad.
+            visibility, the exact gap we fix. Re-audited to <strong>73</strong> on July 5, to{' '}
+            <strong>91</strong> on August 3 — and read at <strong>98</strong> on August 19 by the
+            deterministic public scanner behind every Signal Pulse™. Every reading dated, every
+            reading published, including the one that made us look bad.
           </p>
           <div className="sl-scoreband sl-scoreband--3">
             <div className="sl-scorebig">{CASE_ZERO.baseline}<small>/100</small><span className="sl-scoretarget-lbl">Baseline · Jun 6</span></div>
             <div className="sl-scorearrow" aria-hidden="true">→</div>
             <div className="sl-scoremid">{CASE_ZERO.midpoint}<small>/100</small><span className="sl-scoretarget-lbl">Re-audit · Jul 5</span></div>
             <div className="sl-scorearrow" aria-hidden="true">→</div>
-            <div className="sl-scoretarget">{CASE_ZERO.current}<small>/100</small><span className="sl-scoretarget-lbl">Current · Aug 3</span></div>
+            <div className="sl-scoremid">{CASE_ZERO.current}<small>/100</small><span className="sl-scoretarget-lbl">Re-audit · Aug 3</span></div>
+            <div className="sl-scorearrow" aria-hidden="true">→</div>
+            <div className="sl-scoretarget">{CASE_ZERO.pulse}<small>/100</small><span className="sl-scoretarget-lbl">Current · Aug 19</span></div>
           </div>
 
           <h3 className="sl-sig-h">Machine-verified today</h3>
           <p className="rsc-p sl-sig-lede">
-            These three layers are re-measured by the same deterministic scanner that runs every
-            Signal Pulse™ — pointed at this site. You can reproduce them.
+            These four signals are the August 19, 2026 reading from the same deterministic
+            scanner that runs every Signal Pulse™ — pointed at this site, three consecutive
+            samples, identical. Weighted .30/.30/.20/.20 they derive the 98 exactly:
+            30 + 30 + 20 + 18. You can reproduce this right now at /pulse.
           </p>
           <div className="sl-signals">
             {CASE_ZERO.verifiedLayers.map((s) => (

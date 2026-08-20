@@ -5,7 +5,7 @@ import VerifiedMark from '@/components/VerifiedMark'
 export const metadata: Metadata = {
   title: 'Proof & Cases — Verified Record | Signal Flair',
   description:
-    'Real, dated, permission-cleared records only. Case Zero is Signal Flair’s own audit (18/100 baseline, 91/100 current); The Mill is the first published client baseline (35/100). No fabricated before/afters. Part of the live Signal Proof Page™ record.',
+    'Real, dated, permission-cleared records only. Case Zero is Signal Flair’s own audit (18/100 baseline, 98/100 current); The Mill is the first published client baseline (35/100). No fabricated before/afters. Part of the live Signal Proof Page™ record.',
   alternates: { canonical: 'https://signalflair.ai/proof/proof/' },
 }
 

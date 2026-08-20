@@ -12,6 +12,11 @@ export const metadata: Metadata = {
 // REAL entries only. Each is a dated action actually taken. Newest first.
 const LOG = [
   {
+    date: '2026-08-19',
+    title: 'Case Zero current reading — 98/100, by the public scanner',
+    body: 'Read by the deterministic public scanner behind every Signal Pulse™: Access 100, Structure 100, Trust 100, Answers 90 — weighted 30/30/20/20 → 98/100. Three consecutive samples, identical; anyone can reproduce the reading at /pulse. Same day, baseline provenance was settled on the record: the operator-recorded 18 stands as the founder’s call, and the site now says plainly that the June worksheet rows do not average to it rather than retrofitting them.',
+  },
+  {
     date: '2026-08-03',
     title: 'Case Zero re-audit — 91/100',
     body: 'Second re-audit. The Signal Score™ read 91/100, up from 73 on July 5 and 18 at the June 6 baseline. Three layers were re-measured by the same deterministic scanner that runs every Signal Pulse™, pointed at this site: Access & Crawlability 100, Structured Intelligence 100, Answer Architecture 90 (up from 77). As with every reading, this is a Signal Score™ measurement of the proof layer — not a guarantee of AI ranking, citation, or recommendation.',
@@ -24,7 +29,7 @@ const LOG = [
   {
     date: '2026-06-06',
     title: 'Signal Proof Page™ layer published',
-    body: 'Live verified-record hub shipped: /proof/ pages, the /proof.json export, the signalflair.json JSON exporfest at /.well-known/signalflair.json, schema.org JSON-LD, and an enhanced llms.txt. The record is now crawlable and inspection-ready.',
+    body: 'Live verified-record hub shipped: /proof/ pages, the /proof.json export, the signalflair.json export at /.well-known/signalflair.json, schema.org JSON-LD, and an enhanced llms.txt. The record is now crawlable and inspection-ready.',
   },
   {
     date: '2026-06-06',

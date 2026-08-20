@@ -164,7 +164,7 @@ export default function SignalPulsePage() {
           <div className="ssc-cz-body">
             <div className="ssc-cz-h">We audited ourselves first.</div>
             <div className="ssc-cz-p">
-              Our own protocol read: 18/100 on June 6, 2026 — re-read at 91/100 on August 3, same checkpoints, both
+              Our own record: 18/100 on June 6, 2026 — 91/100 on August 3, and 98/100 on August 19, read by this exact scanner. All
               published with dates on the public change log. Not a marketing before-and-after: a documented record,
               including the layers still open, so you can see the system work on us first.
             </div>

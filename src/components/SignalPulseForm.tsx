@@ -325,7 +325,7 @@ export default function SignalPulseForm() {
           <div className="ssc-success-h">Your Signal Pulse™ request is in.</div>
           <div className="ssc-success-b">We couldn’t finish the automated read of your site, so a reviewer will run it by hand and email your Signal Pulse™ — typically within 24 hours. Your details are saved.</div>
           {receipt && <div className="sp-receipt">Saved — receipt <strong>{receipt}</strong></div>}
-          <a className="ssc-success-link" href="/proof/">See Case Zero — our own 18 → 91 climb →</a>
+          <a className="ssc-success-link" href="/proof/">See Case Zero — our own 18 → 98 climb →</a>
           {!handoff && <a className="ssc-success-link" href="/#cta">Want a human on it now? Hand it to Corey →</a>}
         </div>
       )}
@@ -536,7 +536,7 @@ function PulseResult({ data, email, website, fromHandoff = false, fullName = '',
             dragging you, and the fix order. The $500 credits in full toward your build. Keep the phone close.
           </div>
           {optReceipt && <div className="sp-receipt">Receipt <strong>{optReceipt}</strong> — quote it in any reply and we can pull your record.</div>}
-          <a className="ssc-success-link" href="/proof/">See Case Zero — our own 18 → 91 climb →</a>
+          <a className="ssc-success-link" href="/proof/">See Case Zero — our own 18 → 98 climb →</a>
         </div>
       )}
     </div>
