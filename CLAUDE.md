@@ -129,6 +129,15 @@ Per-location: add a location $1,500 one-time (Satellite included) · Satellite m
 - Results language: "after", never "because". Delivery-based guarantee only — unchanged.
 - The one causally supported fix is answer-crawler access (SIGIR 2026) — lead with it, cite it, do not oversell past it.
 
+**Honesty-forward structure (Corey-authorised, 2026-08-19):** the differentiator is subtractive — a limitation stated FIRST reads as a credential; stated last it reads as an apology. Homepage order is now hero → problem → `#wont` ("What we won't tell you" — the refusal as the offer) → one-minute → `#proof` (Case Zero, moved up, with the withdrawal story strip: "when our own system ruled our published readings could not be re-derived, we withdrew them") → services → … → `#compare` (honest comparison; the two concessions — SEO toolkits DO check crawler access, and we do NOT sell share-of-voice charts — are deliberate; do not "fix" them) → pricing. Do not move `#wont` or the withdrawal beat down the page.
+**Mechanism, never outcome:** every finding pairs with a "which means" that describes what a machine has to DO ("the system has to guess where you are") — never a business outcome ("you're losing customers"). The product enforces this in code; the site must match. When one crawler is blocked, name it — "AI can't read your site" over one blocked Amazonbot is an overstatement.
+**Stay Found™ cadence language:** scheduled + event-triggered with an operator-set rhythm — say "on a set schedule" / "on a rhythm you choose", never "continuous"/"continuously re-verified". `/.well-known/signalflair.json` is a JSON export of our public facts, never a "discovery manifest/mechanism" (RFC 9309 defines Allow/Disallow, not a summons). `proof.json` = "a JSON export of the page".
+
+**Three OPEN Case Zero questions (2026-08-19 provenance trace) — numbers stay EXACTLY as published until Corey answers; do not resolve by picking the flattering one:**
+1. June baseline doesn't reconcile: six signals average 12.67, composite says 18 (site method = plain average; July's 73 obeys it exactly). Which is right?
+2. The 91 has no published component set that reaches it (three re-measured layers average 97; with July's carried forward, 75; the three unpublished layers would need ≈85 avg, up from 63/43/53, recorded nowhere).
+3. Baseline date: Proof OS says 2026-06-02, site + proof.json say June 6 (June 6 has six contemporaneous commits; June 2 has zero and first appears in a July edit).
+
 **The Broadcast** (replaces Content Payload, 2026-08-19): two months of social FREE with any Stay Found™ plan, sponsored by Mental Vision — 40 posts (5/week × 8 weeks), two :15 branded commercials, and a posting-time playbook. Continuing after two months is a separate Mental Vision conversation; portfolio link goes to https://mentalvision.ai/work. Add-ons stay a separate conversation — do not fold them into the base plan.
 
 Guarantee: delivery-based only. Never rankings, leads, or revenue.

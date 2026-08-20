@@ -715,6 +715,23 @@ export default function SignalFlairLanding() {
         </div>
       </section>
 
+      {/* ═══ WHAT WE WON'T TELL YOU — the refusal is the offer. Placed early on purpose:
+           a limitation stated first reads as a credential; stated last it reads as an apology.
+           The legal disclaimers elsewhere stay — this section is different in kind. ═══ */}
+      <section id="wont" data-cursor="dark">
+        <div className="wont-inner reveal">
+          <div className="wont-eyebrow">Read this before any pitch — ours included</div>
+          <h2 className="wont-title">What we <em>won&apos;t</em> tell you.</h2>
+          <div className="wont-grid">
+            <div className="wont-item"><div className="wont-no">We won&apos;t tell you we can get you into ChatGPT.</div><div className="wont-why">Nobody controls that. Anyone who says otherwise is guessing with your money.</div></div>
+            <div className="wont-item"><div className="wont-no">We won&apos;t hand you a single AI-visibility percentage.</div><div className="wont-why">Ask the same AI the same question twice and you get different answers. One sample isn&apos;t a measurement.</div></div>
+            <div className="wont-item"><div className="wont-no">We won&apos;t claim structured data gets you cited.</div><div className="wont-why">The largest controlled test found no effect. It&apos;s machine-readability hygiene — worth doing for exactly that reason.</div></div>
+            <div className="wont-item"><div className="wont-no">We won&apos;t pretend we&apos;re the only ones checking crawler access.</div><div className="wont-why">Semrush and Knowatoa both ship that check. What we do that they don&apos;t: <strong>we keep the page we read.</strong></div></div>
+          </div>
+          <div className="wont-will reveal">What we <em>will</em> do is show you exactly what the machines see when they look at you — and hand you the evidence so you can check us. <strong>If we&apos;re wrong, you&apos;ll be able to prove it.</strong></div>
+        </div>
+      </section>
+
       {/* ═══ THE ONE-MINUTE VERSION — homepage explainer film (after The Diagnosis, before the build section).
            OM_VIDEO_READY flips to true when public/media/signalflair-one-minute-explainer.mp4 +
            poster + captions land — the plate below swaps for the real player. No fake controls until then. ═══ */}
@@ -764,150 +781,6 @@ export default function SignalFlairLanding() {
         </div>
       </section>
 
-      {/* ═══ SERVICES ═══ */}
-      <section id="signal">
-        <div className="sig-top reveal">
-          <div>
-            <div className="sig-eyebrow">What does Signal Flair build?</div>
-            <div className="sig-big">FIND THE BREAK.<br />FIX THE SIGNAL.<br /><em>KEEP IT ALIVE.</em></div>
-          </div>
-          <div className="sig-tagline">Signal Flair builds <strong className="cat-mark">AI Proof Infrastructure™</strong> — the proof layer that helps answer engines and AI agents understand who you are, what you do, where you operate, and why your claims deserve trust. Four outcomes, in plain English: <strong>findable, understandable, verifiable, actionable.</strong> First we measure the problem. Then we build what is missing. Then we keep it from going stale.</div>
-        </div>
-        <div className="sig-rows">
-          <div className="sig-row reveal">
-            <div className="sig-proto"><div className="sig-rn">01</div><div className="sig-plabel">Diagnostic · Signal Score™</div></div><div className="sig-rd" />
-            <div className="sig-rtitle">Signal Score™<br />Audit</div>
-            <div className="sig-rbody"><em>This is the before picture — and AI does not get a filter.</em> Your full 6-layer Signal Score™ shows how ChatGPT, Perplexity, Claude, Gemini, and Google AI read your business right now, from 0 to 100. The Breakdown — the $500 verified investigation, credited in full toward your build — confirms what&apos;s really going on before you spend thousands fixing it. If your score is ugly, good. Now we know exactly where to start.</div>
-            <div><span className="sig-rtag">Scoring + Reporting</span></div>
-          </div>
-          <div className="sig-row reveal">
-            <div className="sig-proto"><div className="sig-rn">02</div><div className="sig-plabel">Implementation · The Proof Stack™</div></div><div className="sig-rd" />
-            <div className="sig-rtitle">The Proof<br />Stack™</div>
-            <div className="sig-rbody"><em>This is the part AI actually reads.</em> We install the Machine Trust Layer™, run the Crawl Clearance Protocol, lock down your entity, and build the Answer Architecture™ — and every finding we hand you carries the fingerprint of the file it came from. In plain English: we give the machines a clean, verifiable version of your business. Built in 7–14 days. Not six months of meetings about meetings.</div>
-            <div><span className="sig-rtag">Manifest + Trust Layer</span></div>
-          </div>
-          <div className="sig-row reveal">
-            <div className="sig-proto"><div className="sig-rn">03</div><div className="sig-plabel">Maintenance · Stay Found™</div></div><div className="sig-rd" />
-            <div className="sig-rtitle">Stay<br />Found™</div>
-            <div className="sig-rbody"><em>Getting found once is cute. Staying found is the job.</em> AI changes. Competitors move. Proof gets stale. Stay Found™ runs Citation Capture, compounds third-party proof through the Proof Density Engine, and uses Signal Telemetry to catch drift across ChatGPT, Gemini, Perplexity, and Claude.</div>
-            <div><span className="sig-rtag">Telemetry + Citation Capture</span></div>
-          </div>
-        </div>
-        <div className="sig-cta-wrap reveal">
-          <a className="sig-cta" href="/pulse">▸ Get Your Pulse →</a>
-          <span className="sig-cta-note">free baseline · 24 hours · no call</span>
-        </div>
-      </section>
-
-      {/* ═══ CHECK — THE SIGNAL PROTOCOL™ (24-point diagnostic) ═══ */}
-      <section id="check" data-cursor="light">
-        <div className="proto-top reveal">
-          <div className="proto-eyebrow">THE SIGNAL PROTOCOL™</div>
-          <div className="proto-title"><span className="proto-24">24</span>-Point AI Visibility<br /><em>Diagnostic.</em></div>
-          <div className="proto-meta">Six signal layers, four checkpoints each — scoring whether AI can find, read, trust, and recommend you.</div>
-        </div>
-        <div className="proto-grid">
-          {SIGNAL_PROTOCOL.map((layer, li) => (
-            <details className="proto-layer reveal" key={li} style={{ '--ac': PROTO_COLORS[li].hex, '--acg': PROTO_COLORS[li].rgb }}>
-              <summary className="proto-layer-head">
-                <span className="proto-layer-n">{String(li + 1).padStart(2, '0')}</span>
-                <span className="proto-layer-name">{layer.name}</span>
-                <span className="proto-layer-caret" aria-hidden="true" />
-              </summary>
-              <div className="proto-drop">
-                <div className="proto-layer-q">{layer.q}</div>
-                <div className="proto-checks">
-                  {layer.checks.map((c) => (
-                    <div className="proto-check" key={c[0]}>
-                      <span className="proto-check-n">{c[0]}</span>
-                      <span className="proto-check-body"><span className="proto-check-t">{c[1]}</span>{c[2] ? <span className="proto-check-d">{c[2]}</span> : null}</span>
-                    </div>
-                  ))}
-                </div>
-              </div>
-            </details>
-          ))}
-        </div>
-      </section>
-
-      {/* ═══ TRUST — the pivot between "found" and "recommended" ═══ */}
-      <section id="trust" data-cursor="dark">
-        <div className="trust-inner reveal">
-          <div className="trust-eyebrow">Found isn&apos;t the finish line</div>
-          <h2 className="trust-vw">Before <span className="trust-ai">AI</span> recommends you,<br />it has to <em>TRUST</em> you.</h2>
-          <p className="trust-sub">Every engine decides who to surface by what it can verify. The Signal Protocol™ builds the <strong>trust</strong> signals — schema, entities, citations, and proof density — that make your business safe for AI to recommend.</p>
-        </div>
-      </section>
-
-      {/* ═══ STATS ═══ */}
-      <section id="stats">
-        <div className="stats-bg-word">PROOF.</div>
-        <div className="stats-float">
-          <div className="stat-item reveal"><span className="stat-n" id="sn2">51%</span><span className="stat-l">Of queries trigger AI answers</span><div className="stat-d">Measured across 11,500 real user queries (SIGIR 2026).</div></div>
-          <div className="stat-item reveal"><span className="stat-n" id="sn3">4M+</span><span className="stat-l">AI Searches Daily</span><div className="stat-d">Most businesses appear in zero of them — and that number climbs every day.</div></div>
-        </div>
-      </section>
-
-      {/* ═══ PROCESS ═══ */}
-      <section id="process" data-cursor="light">
-        <div className="proc-header reveal">
-          <h2 className="proc-vw">How is your<br /><em>Signal Score™</em> calculated?</h2>
-          <p className="proc-intro">
-            Signal Flair scores your Signal Score™ across six signal layers and 24 checkpoints — then builds the
-            missing infrastructure and keeps it current with Stay Found™. One system, without the lag.
-          </p>
-        </div>
-        <ul className="proc-list">
-          <li className="proc-item reveal"><div className="proc-num">01</div><div className="proc-right"><div className="proc-bar" /><div className="proc-title">SCAN</div><div className="proc-body">We run 24 checkpoints across six signal layers — Access · Structure · Entity · Architecture · Trust · Visibility. Every layer scored. Every gap documented. Every finding points to a real visibility issue.</div></div></li>
-          <li className="proc-item reveal"><div className="proc-num">02</div><div className="proc-right"><div className="proc-bar" /><div className="proc-title">SCORE</div><div className="proc-body">You receive your Signal Score™ — a number from 0 to 100. Not a guess. Not a vibe. Not a generic SEO grade. A layer-by-layer readout of whether AI can find, understand, trust, and recommend your business.</div></div></li>
-          <li className="proc-item reveal"><div className="proc-num">03</div><div className="proc-right"><div className="proc-bar" /><div className="proc-title">BUILD</div><div className="proc-body">For scores under 74, we build the missing infrastructure: schema, crawlability, entity signals, answer architecture, trust proof, and static AI-readable pages. Everything the machine needs to understand you — everything you own, even if you cancel.</div></div></li>
-          <li className="proc-item reveal"><div className="proc-num">04</div><div className="proc-right"><div className="proc-bar" /><div className="proc-title">STAY FOUND</div><div className="proc-body">Stay Found™ provides recurring checks and proof maintenance: monthly Signal Score™ verification, continuous monitoring, crawler-access checks, schema and entity drift detection, and live AI visibility spot tests. Visibility is not a destination — it is ongoing maintenance.</div></div></li>
-        </ul>
-      </section>
-
-      {/* ═══ UNFAIR ADVANTAGE — new self-contained component (replaces the old #moat) ═══ */}
-      <UnfairAdvantage />
-
-      {/* ═══ Stay Found™ maintenance reveal — flows straight out of "You can't copy the system." ═══ */}
-      <section id="signal-lock-reveal" data-cursor="dark">
-        <div className="slr-inner reveal">
-          <div className="mr-name">An audit tells you what was true that day. <span className="mr-tm-line">Then the day ends.</span></div>
-          <div className="mr-body">Your competitors keep moving. AI systems keep changing. Reviews, citations, pages, schema, and crawler access drift. Stay Found™ is the maintenance layer that keeps checking the work instead of framing an old report and calling it strategy.</div>
-          <div className="mr-body"><strong>Stay Found™ is the maintenance layer that helps reduce proof drift over time.</strong> Four maintenance layers:</div>
-          <div className="lock-layers">
-            <div className="lock-layer"><span className="lock-layer-n">01</span>Monthly Signal Score™ verification</div>
-            <div className="lock-layer"><span className="lock-layer-n">02</span>Crawlability and schema monitoring</div>
-            <div className="lock-layer"><span className="lock-layer-n">03</span>Entity and trust-signal drift checks</div>
-            <div className="lock-layer"><span className="lock-layer-n">04</span>Live AI visibility spot tests</div>
-          </div>
-          <div className="mr-body">The <strong>Verified by Signal Flair™</strong> mark is what you carry because the score is being maintained — not because it was checked once.</div>
-          <div className="mr-kicker">Anyone can score you today. Stay Found™ checks whether that score still deserves to be true tomorrow.</div>
-          <a className="mr-cta" href="#field-report">▸ Start with a free Signal Pulse™ →</a>
-        </div>
-      </section>
-
-      {/* ═══ THE ENTERPRISE SECRET — the offensive wedge (standout band, Signal Magenta) ═══ */}
-      <section id="enterprise" data-cursor="dark">
-        <div className="ent-bloom" aria-hidden="true" />
-        <div className="ent-head reveal">
-          <div className="ent-eyebrow">The enterprise secret</div>
-          <div className="ent-title">THE ENTERPRISE<br />SECRET</div>
-        </div>
-        <div className="ent-lede reveal">Enterprise visibility work can run <strong>$15,000–$50,000</strong> once the retainers, decks, and implementation plans pile up. For most local businesses, that means too much money, too much waiting, and too little they actually own.</div>
-        <div className="ent-photo reveal">And after all that? It is still a snapshot. The market moves. The snapshot doesn&apos;t.</div>
-        <div className="ent-build reveal">
-          <div className="ent-build-lead">Signal Flair built the maintained version that a local business can actually own.</div>
-          <div className="ent-terms">
-            <div className="ent-term"><span className="ent-term-t">The Signal Protocol™</span> gives the diagnostic structure.</div>
-            <div className="ent-term"><span className="ent-term-t">The Signal Score™</span> gives the number.</div>
-            <div className="ent-term"><span className="ent-term-t">Stay Found™</span> helps monitor proof assets and reduce drift over time.</div>
-          </div>
-        </div>
-        <div className="ent-turn reveal">Same seriousness. Cleaner ownership.<br /><em>Built to be found now — not after a six-month strategy engagement.</em></div>
-        <a className="ent-cta reveal" href="#field-report">▸ Start with a free Signal Pulse™ →</a>
-      </section>
-
-      {/* ═══ PROOF — honest before/after score card (illustrative) ═══ */}
       <section id="proof" data-cursor="light">
         <div className="proof-bgword" aria-hidden="true">PROOF.</div>
         <div className="proof-head reveal">
@@ -916,6 +789,14 @@ export default function SignalFlairLanding() {
             <div className="proof-title">We ran it on<br /><em>ourselves first.</em></div>
           </div>
           <div className="proof-meta">Case Zero is our own audit, published at the score we actually got. Signal Flair scored <strong>18/100</strong> on June 6, 2026, then built the same proof layer we sell and re-measured in public — <strong>73</strong> on July 5, <strong>91</strong> on August 3. Every reading dated. No fabricated testimonials, no finished-case theater.</div>
+        </div>
+        {/* The story, in order — the withdrawal is the credential, so it leads the strip.
+            Readings, dates and layer tables below are locked; see CLAUDE.md. */}
+        <div className="cz-story reveal">
+          <div className="cz-step"><span className="cz-n">1</span><span className="cz-t">We audited ourselves before we audited anyone else — and published the number we actually got.</span></div>
+          <div className="cz-step"><span className="cz-n">2</span><span className="cz-t">Then we built the same proof layer we sell, and re-measured in public.</span></div>
+          <div className="cz-step cz-key"><span className="cz-n">3</span><span className="cz-t">When our own system later ruled that some of our published readings could not be re-derived from preserved evidence, <strong>we withdrew them rather than grandfather ourselves in.</strong></span></div>
+          <div className="cz-step"><span className="cz-n">4</span><span className="cz-t">That is the standard we&apos;re offering to hold <em>your</em> record to.</span></div>
         </div>
         <div className="proof-grid reveal">
           <div className="proof-card before">
@@ -1027,6 +908,161 @@ export default function SignalFlairLanding() {
         </div>
       </section>
 
+
+      {/* ═══ SERVICES ═══ */}
+      <section id="signal">
+        <div className="sig-top reveal">
+          <div>
+            <div className="sig-eyebrow">What does Signal Flair build?</div>
+            <div className="sig-big">FIND THE BREAK.<br />FIX THE SIGNAL.<br /><em>KEEP IT ALIVE.</em></div>
+          </div>
+          <div className="sig-tagline">Signal Flair builds <strong className="cat-mark">AI Proof Infrastructure™</strong> — the proof layer that helps answer engines and AI agents understand who you are, what you do, where you operate, and why your claims deserve trust. Four outcomes, in plain English: <strong>findable, understandable, verifiable, actionable.</strong> First we measure the problem. Then we build what is missing. Then we keep it from going stale.</div>
+        </div>
+        <div className="sig-rows">
+          <div className="sig-row reveal">
+            <div className="sig-proto"><div className="sig-rn">01</div><div className="sig-plabel">Diagnostic · Signal Score™</div></div><div className="sig-rd" />
+            <div className="sig-rtitle">Signal Score™<br />Audit</div>
+            <div className="sig-rbody"><em>This is the before picture — and AI does not get a filter.</em> Your full 6-layer Signal Score™ shows how ChatGPT, Perplexity, Claude, Gemini, and Google AI read your business right now, from 0 to 100. The Breakdown — the $500 verified investigation, credited in full toward your build — confirms what&apos;s really going on before you spend thousands fixing it. If your score is ugly, good. Now we know exactly where to start.</div>
+            <div><span className="sig-rtag">Scoring + Reporting</span></div>
+          </div>
+          <div className="sig-row reveal">
+            <div className="sig-proto"><div className="sig-rn">02</div><div className="sig-plabel">Implementation · The Proof Stack™</div></div><div className="sig-rd" />
+            <div className="sig-rtitle">The Proof<br />Stack™</div>
+            <div className="sig-rbody"><em>This is the part AI actually reads.</em> We install the Machine Trust Layer™, run the Crawl Clearance Protocol, lock down your entity, and build the Answer Architecture™ — and every finding we hand you carries the fingerprint of the file it came from. In plain English: we give the machines a clean, verifiable version of your business. Built in 7–14 days. Not six months of meetings about meetings.</div>
+            <div><span className="sig-rtag">Manifest + Trust Layer</span></div>
+          </div>
+          <div className="sig-row reveal">
+            <div className="sig-proto"><div className="sig-rn">03</div><div className="sig-plabel">Maintenance · Stay Found™</div></div><div className="sig-rd" />
+            <div className="sig-rtitle">Stay<br />Found™</div>
+            <div className="sig-rbody"><em>Getting found once is cute. Staying found is the job.</em> AI changes. Competitors move. Proof gets stale. Stay Found™ runs Citation Capture, compounds third-party proof through the Proof Density Engine, and uses Signal Telemetry to catch drift across ChatGPT, Gemini, Perplexity, and Claude.</div>
+            <div><span className="sig-rtag">Telemetry + Citation Capture</span></div>
+          </div>
+        </div>
+        <div className="sig-cta-wrap reveal">
+          <a className="sig-cta" href="/pulse">▸ Get Your Pulse →</a>
+          <span className="sig-cta-note">free baseline · 24 hours · no call</span>
+        </div>
+      </section>
+
+      {/* ═══ CHECK — THE SIGNAL PROTOCOL™ (24-point diagnostic) ═══ */}
+      <section id="check" data-cursor="light">
+        <div className="proto-top reveal">
+          <div className="proto-eyebrow">THE SIGNAL PROTOCOL™</div>
+          <div className="proto-title"><span className="proto-24">24</span>-Point AI Visibility<br /><em>Diagnostic.</em></div>
+          <div className="proto-meta">Six signal layers, four checkpoints each — scoring whether AI can find, read, trust, and recommend you.</div>
+        </div>
+        <div className="proto-grid">
+          {SIGNAL_PROTOCOL.map((layer, li) => (
+            <details className="proto-layer reveal" key={li} style={{ '--ac': PROTO_COLORS[li].hex, '--acg': PROTO_COLORS[li].rgb }}>
+              <summary className="proto-layer-head">
+                <span className="proto-layer-n">{String(li + 1).padStart(2, '0')}</span>
+                <span className="proto-layer-name">{layer.name}</span>
+                <span className="proto-layer-caret" aria-hidden="true" />
+              </summary>
+              <div className="proto-drop">
+                <div className="proto-layer-q">{layer.q}</div>
+                <div className="proto-checks">
+                  {layer.checks.map((c) => (
+                    <div className="proto-check" key={c[0]}>
+                      <span className="proto-check-n">{c[0]}</span>
+                      <span className="proto-check-body"><span className="proto-check-t">{c[1]}</span>{c[2] ? <span className="proto-check-d">{c[2]}</span> : null}</span>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            </details>
+          ))}
+        </div>
+        {/* Mechanism, never outcome: each row states what a machine has to DO about the gap.
+            "The system has to guess where you are" is defensible; "you're losing customers" is
+            not measurable and never appears. Phrasing mirrors the product's own findings. */}
+        <div className="fm reveal">
+          <div className="fm-head">The four findings we see most — and what each one <em>means</em></div>
+          <div className="fm-row"><div className="fm-find">Address not in the machine-readable block</div><div className="fm-means">When a system is asked for a business &ldquo;near me&rdquo;, it has to work out where this one is from the wording of the page — or use one it is certain about instead.</div></div>
+          <div className="fm-row"><div className="fm-find">Business name missing from that block</div><div className="fm-means">A machine has to work out who the business is from the page&apos;s wording — and if a similarly-named business exists anywhere, it can credit that one instead.</div></div>
+          <div className="fm-row"><div className="fm-find">No clickable phone or email link</div><div className="fm-means">On a phone, a customer has to memorise the number and retype it instead of tapping it. Every extra step is people who meant to call and didn&apos;t.</div></div>
+          <div className="fm-row"><div className="fm-find">An AI reader turned away in robots.txt</div><div className="fm-means">That reader can&apos;t see the business at all — so it has nothing to draw on when someone asks it a question the business could answer. We name the specific crawler; one blocked reader is not &ldquo;AI can&apos;t read your site.&rdquo;</div></div>
+        </div>
+      </section>
+
+      {/* ═══ TRUST — the pivot between "found" and "recommended" ═══ */}
+      <section id="trust" data-cursor="dark">
+        <div className="trust-inner reveal">
+          <div className="trust-eyebrow">Found isn&apos;t the finish line</div>
+          <h2 className="trust-vw">Before <span className="trust-ai">AI</span> recommends you,<br />it has to <em>TRUST</em> you.</h2>
+          <p className="trust-sub">Every engine decides who to surface by what it can verify. The Signal Protocol™ builds the <strong>trust</strong> signals — schema, entities, citations, and proof density — that make your business safe for AI to recommend.</p>
+        </div>
+      </section>
+
+      {/* ═══ STATS ═══ */}
+      <section id="stats">
+        <div className="stats-bg-word">PROOF.</div>
+        <div className="stats-float">
+          <div className="stat-item reveal"><span className="stat-n" id="sn2">51%</span><span className="stat-l">Of queries trigger AI answers</span><div className="stat-d">Measured across 11,500 real user queries (SIGIR 2026).</div></div>
+          <div className="stat-item reveal"><span className="stat-n" id="sn3">4M+</span><span className="stat-l">AI Searches Daily</span><div className="stat-d">Most businesses appear in zero of them — and that number climbs every day.</div></div>
+        </div>
+      </section>
+
+      {/* ═══ PROCESS ═══ */}
+      <section id="process" data-cursor="light">
+        <div className="proc-header reveal">
+          <h2 className="proc-vw">How is your<br /><em>Signal Score™</em> calculated?</h2>
+          <p className="proc-intro">
+            Signal Flair scores your Signal Score™ across six signal layers and 24 checkpoints — then builds the
+            missing infrastructure and keeps it current with Stay Found™. One system, without the lag.
+          </p>
+        </div>
+        <ul className="proc-list">
+          <li className="proc-item reveal"><div className="proc-num">01</div><div className="proc-right"><div className="proc-bar" /><div className="proc-title">SCAN</div><div className="proc-body">We run 24 checkpoints across six signal layers — Access · Structure · Entity · Architecture · Trust · Visibility. Every layer scored. Every gap documented. Every finding points to a real visibility issue.</div></div></li>
+          <li className="proc-item reveal"><div className="proc-num">02</div><div className="proc-right"><div className="proc-bar" /><div className="proc-title">SCORE</div><div className="proc-body">You receive your Signal Score™ — a number from 0 to 100. Not a guess. Not a vibe. Not a generic SEO grade. A layer-by-layer readout of whether AI can find, understand, trust, and recommend your business.</div></div></li>
+          <li className="proc-item reveal"><div className="proc-num">03</div><div className="proc-right"><div className="proc-bar" /><div className="proc-title">BUILD</div><div className="proc-body">For scores under 74, we build the missing infrastructure: schema, crawlability, entity signals, answer architecture, trust proof, and static AI-readable pages. Everything the machine needs to understand you — everything you own, even if you cancel.</div></div></li>
+          <li className="proc-item reveal"><div className="proc-num">04</div><div className="proc-right"><div className="proc-bar" /><div className="proc-title">STAY FOUND</div><div className="proc-body">Stay Found™ provides recurring checks and proof maintenance: monthly Signal Score™ verification, continuous monitoring, crawler-access checks, schema and entity drift detection, and live AI visibility spot tests. Visibility is not a destination — it is ongoing maintenance.</div></div></li>
+        </ul>
+      </section>
+
+      {/* ═══ UNFAIR ADVANTAGE — new self-contained component (replaces the old #moat) ═══ */}
+      <UnfairAdvantage />
+
+      {/* ═══ Stay Found™ maintenance reveal — flows straight out of "You can't copy the system." ═══ */}
+      <section id="signal-lock-reveal" data-cursor="dark">
+        <div className="slr-inner reveal">
+          <div className="mr-name">An audit tells you what was true that day. <span className="mr-tm-line">Then the day ends.</span></div>
+          <div className="mr-body">Your competitors keep moving. AI systems keep changing. Reviews, citations, pages, schema, and crawler access drift. Stay Found™ is the maintenance layer that keeps checking the work instead of framing an old report and calling it strategy.</div>
+          <div className="mr-body"><strong>Stay Found™ is the maintenance layer that helps reduce proof drift over time.</strong> Four maintenance layers:</div>
+          <div className="lock-layers">
+            <div className="lock-layer"><span className="lock-layer-n">01</span>Monthly Signal Score™ verification</div>
+            <div className="lock-layer"><span className="lock-layer-n">02</span>Crawlability and schema monitoring</div>
+            <div className="lock-layer"><span className="lock-layer-n">03</span>Entity and trust-signal drift checks</div>
+            <div className="lock-layer"><span className="lock-layer-n">04</span>Live AI visibility spot tests</div>
+          </div>
+          <div className="mr-body">The <strong>Verified by Signal Flair™</strong> mark is what you carry because the score is being maintained — not because it was checked once.</div>
+          <div className="mr-kicker">Anyone can score you today. Stay Found™ checks whether that score still deserves to be true tomorrow.</div>
+          <a className="mr-cta" href="#field-report">▸ Start with a free Signal Pulse™ →</a>
+        </div>
+      </section>
+
+      {/* ═══ THE ENTERPRISE SECRET — the offensive wedge (standout band, Signal Magenta) ═══ */}
+      <section id="enterprise" data-cursor="dark">
+        <div className="ent-bloom" aria-hidden="true" />
+        <div className="ent-head reveal">
+          <div className="ent-eyebrow">The enterprise secret</div>
+          <div className="ent-title">THE ENTERPRISE<br />SECRET</div>
+        </div>
+        <div className="ent-lede reveal">Enterprise visibility work can run <strong>$15,000–$50,000</strong> once the retainers, decks, and implementation plans pile up. For most local businesses, that means too much money, too much waiting, and too little they actually own.</div>
+        <div className="ent-photo reveal">And after all that? It is still a snapshot. The market moves. The snapshot doesn&apos;t.</div>
+        <div className="ent-build reveal">
+          <div className="ent-build-lead">Signal Flair built the maintained version that a local business can actually own.</div>
+          <div className="ent-terms">
+            <div className="ent-term"><span className="ent-term-t">The Signal Protocol™</span> gives the diagnostic structure.</div>
+            <div className="ent-term"><span className="ent-term-t">The Signal Score™</span> gives the number.</div>
+            <div className="ent-term"><span className="ent-term-t">Stay Found™</span> helps monitor proof assets and reduce drift over time.</div>
+          </div>
+        </div>
+        <div className="ent-turn reveal">Same seriousness. Cleaner ownership.<br /><em>Built to be found now — not after a six-month strategy engagement.</em></div>
+        <a className="ent-cta reveal" href="#field-report">▸ Start with a free Signal Pulse™ →</a>
+      </section>
+
+      {/* ═══ PROOF — honest before/after score card (illustrative) ═══ */}
       {/* ═══ ASSESSMENT HISTORY — the evidence compounds (data moat) ═══ */}
       <section id="history" data-cursor="dark">
         <div className="ent-head reveal">
@@ -1083,6 +1119,29 @@ export default function SignalFlairLanding() {
       </section>
 
       {/* ═══ PRICING ═══ */}
+      {/* ═══ THE HONEST COMPARISON — conceding what competitors do well is what makes
+           the one real difference credible. Both concessions in the table are deliberate. ═══ */}
+      <section id="compare" data-cursor="light">
+        <div className="cmp-head reveal">
+          <div className="cmp-eyebrow">Against the alternatives — fairly</div>
+          <h2 className="cmp-title">Everyone in this market measures.<br /><em>We&apos;re the only ones who keep the receipts.</em></h2>
+        </div>
+        <div className="cmp-wrap reveal">
+          <table className="cmp-table">
+            <thead><tr><th></th><th className="cmp-us">Signal Flair</th><th>AI mention trackers</th><th>SEO toolkits</th><th>One-off audit</th></tr></thead>
+            <tbody>
+              <tr><td>Keeps the exact page it read</td><td className="cmp-us cy">Yes</td><td>No</td><td>No</td><td>No</td></tr>
+              <tr><td>Findings re-checkable later</td><td className="cmp-us cy">Yes</td><td>No</td><td>Re-run only</td><td>No</td></tr>
+              <tr><td>Checks AI crawler access</td><td className="cmp-us cy">Yes</td><td>Some</td><td className="cmp-concede">Yes</td><td>Varies</td></tr>
+              <tr><td>Separates &ldquo;couldn&apos;t look&rdquo; from &ldquo;broken&rdquo;</td><td className="cmp-us cy">Yes</td><td>Rarely</td><td>Varies</td><td>No</td></tr>
+              <tr><td>Before/after from saved copies</td><td className="cmp-us cy">Yes</td><td>No</td><td>No</td><td>No</td></tr>
+              <tr><td>Share-of-voice charts</td><td className="cmp-us cn">No</td><td>Yes</td><td>Some</td><td>No</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <div className="cmp-note reveal">Both concessions above are on purpose. SEO toolkits really do check crawler access — we differ by keeping the page we read. And we don&apos;t sell the share-of-voice chart everyone else leads with, because we can&apos;t stand behind one: the same question asked twice returns different answers.</div>
+      </section>
+
       <section id="pricing" data-cursor="light">
         <div className="pricing-header reveal">
           <h2 className="pricing-vw" aria-label="Start free. Build once. Stay found.">

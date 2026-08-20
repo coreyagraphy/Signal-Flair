@@ -1,5 +1,5 @@
 {
-  "$comment": "Beacon discovery manifest (internal artifact name). Canonical path is /.well-known/signalflair.json; this non-dotted copy exists so Netlify drag-and-drop deploys (which strip dot-folders) still serve it via the _redirects rewrite. Points agents and crawlers to the Signal Proof Page™ hub and machine-readable proof.json.",
+  "$comment": "JSON export of Signal Flair's public facts (internal artifact name; not a crawler-discovery mechanism - RFC 9309 defines Allow/Disallow only). Canonical path is /.well-known/signalflair.json; this non-dotted copy exists so Netlify drag-and-drop deploys (which strip dot-folders) still serve it via the _redirects rewrite. Points agents and crawlers to the Signal Proof Page™ hub and machine-readable proof.json.",
   "@context": "https://signalflair.ai/beacon/v1",
   "type": "BeaconDiscovery",
   "version": "1.0",

@@ -1958,3 +1958,60 @@ footer{background:var(--ink2);border-top:1px solid var(--ink);padding:52px;posit
   .bc-link{white-space:normal;text-align:center;min-height:48px;display:flex;align-items:center;justify-content:center}
 }
 @media(prefers-reduced-motion:reduce){.psc,.psc-btn,.bc-link{transition:none}}
+
+/* ─── HONESTY-FORWARD (2026-08-19): #wont · Case Zero story strip · finding→meaning rows · #compare ─── */
+/* What we won't tell you — the refusal as the offer. Dark band, early on the page. */
+#wont{background:var(--ink);color:var(--bone);padding:clamp(70px,9vw,130px) clamp(28px,6vw,90px);position:relative;overflow:hidden}
+.wont-inner{max-width:1080px;margin:0 auto}
+.wont-eyebrow{font-family:var(--signal);font-size:11px;font-weight:600;letter-spacing:.24em;text-transform:uppercase;color:var(--hot);margin-bottom:18px}
+.wont-title{font-family:var(--flair);font-variation-settings:'opsz' 144,'wght' 540,'WONK' 1;font-size:clamp(34px,5.4vw,68px);line-height:1;letter-spacing:-.015em;margin-bottom:34px}
+.wont-title em{font-family:var(--italic);font-style:italic;font-variation-settings:normal;color:var(--orange)}
+.wont-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:2px;background:rgba(248,241,231,.14);border:1px solid rgba(248,241,231,.14)}
+.wont-item{background:#131110;padding:24px 24px 22px}
+.wont-no{font-family:var(--flair);font-variation-settings:'opsz' 60,'wght' 600;font-size:clamp(16.5px,1.7vw,20px);line-height:1.3;margin-bottom:10px}
+.wont-why{font-family:var(--signal);font-size:13px;line-height:1.7;color:rgba(248,241,231,.62)}
+.wont-why strong{color:var(--teal)}
+.wont-will{margin-top:30px;border-left:5px solid var(--hot);padding:18px 24px;background:rgba(255,244,95,.05);
+  font-family:var(--flair);font-variation-settings:'opsz' 60,'wght' 480;font-size:clamp(17px,2vw,22px);line-height:1.5;max-width:64ch}
+.wont-will em{font-family:var(--italic);font-style:italic;font-variation-settings:normal}
+.wont-will strong{color:var(--hot);font-variation-settings:'opsz' 60,'wght' 640}
+
+/* Case Zero story strip — beat 3 (the withdrawal) is the credential and carries the weight */
+/* #proof pads its children, not itself — match .proof-head's side padding */
+.cz-story{position:relative;z-index:2;max-width:1080px;margin:0 auto 40px;padding:0 clamp(18px,4.4vw,56px);display:grid;gap:10px}
+.cz-step{display:grid;grid-template-columns:auto 1fr;gap:16px;align-items:baseline;padding:14px 18px;background:rgba(11,10,9,.045);border-left:3px solid rgba(11,10,9,.25)}
+.cz-n{font-family:var(--signal);font-weight:700;font-size:15px;color:rgba(11,10,9,.45);font-variant-numeric:tabular-nums}
+.cz-t{font-size:clamp(14.5px,1.5vw,17px);line-height:1.55}
+.cz-key{background:var(--ink);color:var(--bone);border-left:5px solid var(--orange);box-shadow:7px 8px 0 rgba(11,10,9,.2);padding:20px 22px}
+.cz-key .cz-n{color:var(--orange)}
+.cz-key .cz-t{font-size:clamp(15.5px,1.7vw,19px)}
+.cz-key strong{color:var(--hot)}
+.cz-t em{font-family:var(--italic);font-style:italic}
+
+/* finding → which-means rows (mechanism, never outcome) */
+.fm{max-width:1080px;margin:44px auto 0;border:2px solid var(--ink);background:var(--bone)}
+.fm-head{font-family:var(--signal);font-size:11.5px;font-weight:700;letter-spacing:.18em;text-transform:uppercase;padding:16px 22px;background:var(--ink);color:var(--hot)}
+.fm-head em{font-style:normal;color:var(--bone)}
+.fm-row{display:grid;grid-template-columns:minmax(200px,0.8fr) 1.4fr;gap:18px;padding:18px 22px;border-top:1px solid rgba(11,10,9,.14)}
+.fm-row:first-of-type{border-top:0}
+.fm-find{font-family:var(--signal);font-size:13px;font-weight:600;line-height:1.55;color:var(--orange2, #e8470a)}
+.fm-means{font-size:14.5px;line-height:1.6;color:rgba(11,10,9,.8)}
+@media(max-width:640px){.fm-row{grid-template-columns:1fr;gap:6px}}
+
+/* the honest comparison */
+#compare{background:var(--paper);padding:clamp(70px,9vw,130px) clamp(28px,6vw,90px)}
+.cmp-head{max-width:1080px;margin:0 auto 30px}
+.cmp-eyebrow{font-family:var(--signal);font-size:11px;font-weight:600;letter-spacing:.24em;text-transform:uppercase;color:var(--teal);margin-bottom:16px}
+.cmp-title{font-family:var(--flair);font-variation-settings:'opsz' 144,'wght' 540,'WONK' 1;font-size:clamp(28px,4.4vw,54px);line-height:1.04;letter-spacing:-.015em}
+.cmp-title em{font-family:var(--italic);font-style:italic;font-variation-settings:normal;color:var(--orange)}
+.cmp-wrap{max-width:1080px;margin:0 auto;overflow-x:auto;border:2px solid var(--ink);box-shadow:8px 9px 0 var(--ink);background:var(--bone)}
+.cmp-table{width:100%;border-collapse:collapse;min-width:640px;font-size:14px}
+.cmp-table th{font-family:var(--signal);font-size:10.5px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;text-align:left;padding:13px 16px;background:var(--ink);color:var(--bone)}
+.cmp-table th.cmp-us{color:var(--hot)}
+.cmp-table td{padding:13px 16px;border-top:1px solid rgba(11,10,9,.14);font-family:var(--signal);font-size:12.5px;color:rgba(11,10,9,.72)}
+.cmp-table td:first-child{font-family:var(--flair);font-size:14.5px;font-variation-settings:'opsz' 40,'wght' 560;color:var(--ink)}
+.cmp-table td.cmp-us{background:rgba(0,184,169,.07);border-left:1px solid rgba(0,184,169,.3);border-right:1px solid rgba(0,184,169,.3);font-weight:700}
+.cmp-table td.cy{color:var(--teal);text-shadow:0 0 12px rgba(0,184,169,.35)}
+.cmp-table td.cn{color:#c4331d;font-weight:700}
+.cmp-table td.cmp-concede{color:var(--ink);font-weight:700;background:rgba(255,244,95,.28)}
+.cmp-note{max-width:1080px;margin:22px auto 0;font-family:var(--signal);font-size:13px;line-height:1.8;color:rgba(11,10,9,.62)}

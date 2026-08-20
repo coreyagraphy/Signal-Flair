@@ -24,7 +24,7 @@ const LOG = [
   {
     date: '2026-06-06',
     title: 'Signal Proof Page™ layer published',
-    body: 'Live verified-record hub shipped: /proof/ pages, machine-readable /proof.json, discovery manifest at /.well-known/signalflair.json, schema.org JSON-LD, and an enhanced llms.txt. The record is now crawlable and inspection-ready.',
+    body: 'Live verified-record hub shipped: /proof/ pages, the /proof.json export, the signalflair.json JSON exporfest at /.well-known/signalflair.json, schema.org JSON-LD, and an enhanced llms.txt. The record is now crawlable and inspection-ready.',
   },
   {
     date: '2026-06-06',

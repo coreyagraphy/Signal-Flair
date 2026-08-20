@@ -145,7 +145,7 @@ export default function HowAiVerifiesPage() {
             </a>
           </div>
           <p className="rsc-p sl-machine">
-            Machine-readable: <a href="/llms.txt">/llms.txt</a> · <a href="/proof.json">/proof.json</a> · <a href="/.well-known/signalflair.json">discovery manifest</a>
+            Machine-readable: <a href="/llms.txt">/llms.txt</a> · <a href="/proof.json">/proof.json</a> · <a href="/.well-known/signalflair.json">signalflair.json</a>
           </p>
         </section>
       </div>

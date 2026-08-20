@@ -5,7 +5,7 @@ import VerifiedMark from '@/components/VerifiedMark'
 export const metadata: Metadata = {
   title: 'Our Live Verified Record — Case Zero | Signal Flair',
   description:
-    'Signal Flair published its Signal Proof Page™ on itself first. This is our live, continuously re-verified record — Case Zero, audited at 18/100 on June 6, 2026 and re-audited to 91/100 on August 3 — with every dated reading on a public change log. We don’t claim. We show.',
+    'Signal Flair published its Signal Proof Page™ on itself first. This is our live record, re-verified on a set schedule — Case Zero, audited at 18/100 on June 6, 2026 and re-audited to 91/100 on August 3 — with every dated reading on a public change log. We don’t claim. We show.',
   alternates: { canonical: 'https://signalflair.ai/proof/' },
   openGraph: {
     title: 'Case Zero — Signal Flair’s own live verified record',
@@ -90,7 +90,7 @@ const FAQS: { q: string; a: string }[] = [
   },
   {
     q: 'What is a Signal Proof Page™?',
-    a: 'The Signal Proof Page™ is the maintained verification layer behind Signal Flair: a client-owned, continuously re-verified record of your business — published as crawlable pages and machine-readable data — so AI engines and customers can inspect what you do, where you serve, and the proof behind it. It is deployed once on Foundation Build or Start the Rebuild.',
+    a: 'The Signal Proof Page™ is the maintained verification layer behind Signal Flair: a client-owned record of your business, re-checked on a set schedule — published as crawlable pages and machine-readable data — so AI engines and customers can inspect what you do, where you serve, and the proof behind it. It is deployed once on Foundation Build or Start the Rebuild.',
   },
   {
     q: 'What is Stay Found™?',
@@ -118,7 +118,7 @@ const jsonLd = {
       url: 'https://signalflair.ai',
       parentOrganization: { '@type': 'Organization', name: 'Mental Vision' },
       description:
-        'Signal Flair builds AI Proof Infrastructure — the structured proof layer that helps AI answer engines access, understand, verify, and recommend a business. We publish and continuously re-verify a living record clients own that AI engines and customers can inspect.',
+        'Signal Flair builds AI Proof Infrastructure — the structured proof layer that helps AI answer engines access, understand, verify, and recommend a business. We publish a living record clients own — re-verified on a set schedule — that AI engines and customers can inspect.',
       areaServed: { '@type': 'Country', name: 'United States' },
       knowsAbout: [
         'AI Proof Infrastructure',
@@ -249,7 +249,7 @@ export default function ProofHubPage() {
         <section className="rsc-section">
           <h2 className="rsc-h2">What this record is</h2>
           <p className="rsc-p">
-            A client-owned, continuously re-verified record of your business — published as crawlable
+            A client-owned record of your business, re-checked on a set schedule — published as crawlable
             pages and machine-readable data — so AI engines and customers can inspect what you do,
             where you serve, and the proof behind it. Installed once on the Foundation Build, then
             re-verified, dated, and updated every month under Stay Found™.
@@ -322,7 +322,7 @@ export default function ProofHubPage() {
             </a>
           </div>
           <p className="rsc-p sl-machine">
-            Machine-readable: <a href="/proof.json">/proof.json</a> · <a href="/.well-known/signalflair.json">discovery manifest</a> · <a href="/llms.txt">llms.txt</a>
+            Machine-readable: <a href="/proof.json">/proof.json</a> · <a href="/.well-known/signalflair.json">signalflair.json (a JSON export of our public facts)</a> · <a href="/llms.txt">llms.txt</a>
           </p>
         </section>
 

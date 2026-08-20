@@ -85,7 +85,7 @@ export default function AboutPage() {
           <ul className="rsc-ul">
             <li><strong>AI Visibility Audit</strong> — your Signal Score across five engines, and exactly what&apos;s pulling it down.</li>
             <li><strong>Foundation Build</strong> — schema, crawler access, and your verified proof layer installed in 7–14 days.</li>
-            <li><strong>Stay Found™</strong> — recurring checks and proof maintenance: monthly re-scans and citation growth as AI search keeps changing.</li>
+            <li><strong>Stay Found™</strong> — recurring checks and proof maintenance: re-scans on a set schedule and citation growth as AI search keeps changing.</li>
           </ul>
         </section>
 
