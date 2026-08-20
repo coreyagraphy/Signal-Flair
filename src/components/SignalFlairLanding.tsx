@@ -715,6 +715,23 @@ export default function SignalFlairLanding() {
         </div>
       </section>
 
+      {/* ═══ WHAT WE WON'T TELL YOU — the refusal is the offer. Placed early on purpose:
+           a limitation stated first reads as a credential; stated last it reads as an apology.
+           The legal disclaimers elsewhere stay — this section is different in kind. ═══ */}
+      <section id="wont" data-cursor="dark">
+        <div className="wont-inner reveal">
+          <div className="wont-eyebrow">Read this before any pitch — ours included</div>
+          <h2 className="wont-title">What we <em>won&apos;t</em> tell you.</h2>
+          <div className="wont-grid">
+            <div className="wont-item"><div className="wont-no">We won&apos;t tell you we can get you into ChatGPT.</div><div className="wont-why">Nobody controls that. Anyone who says otherwise is guessing with your money.</div></div>
+            <div className="wont-item"><div className="wont-no">We won&apos;t hand you a single AI-visibility percentage.</div><div className="wont-why">Ask the same AI the same question twice and you get different answers. One sample isn&apos;t a measurement.</div></div>
+            <div className="wont-item"><div className="wont-no">We won&apos;t claim structured data gets you cited.</div><div className="wont-why">The largest controlled test found no effect. It&apos;s machine-readability hygiene — worth doing for exactly that reason.</div></div>
+            <div className="wont-item"><div className="wont-no">We won&apos;t pretend we&apos;re the only ones checking crawler access.</div><div className="wont-why">Semrush and Knowatoa both ship that check. What we do that they don&apos;t: <strong>we keep the page we read.</strong></div></div>
+          </div>
+          <div className="wont-will reveal">What we <em>will</em> do is show you exactly what the machines see when they look at you — and hand you the evidence so you can check us. <strong>If we&apos;re wrong, you&apos;ll be able to prove it.</strong></div>
+        </div>
+      </section>
+
       {/* ═══ THE ONE-MINUTE VERSION — homepage explainer film (after The Diagnosis, before the build section).
            OM_VIDEO_READY flips to true when public/media/signalflair-one-minute-explainer.mp4 +
            poster + captions land — the plate below swaps for the real player. No fake controls until then. ═══ */}
@@ -763,6 +780,166 @@ export default function SignalFlairLanding() {
           </div>
         </div>
       </section>
+
+      <section id="proof" data-cursor="light">
+        <div className="proof-bgword" aria-hidden="true">PROOF.</div>
+        <div className="proof-head reveal">
+          <div>
+            <div className="proof-eyebrow">Case Zero · 18 → 73 → 91 → 98</div>
+            <div className="proof-title">We ran it on<br /><em>ourselves first.</em></div>
+          </div>
+          <div className="proof-meta">Case Zero is our own audit, published at the score we actually got. Signal Flair scored <strong>18/100</strong> on June 6, 2026, then built the same proof layer we sell and re-measured in public — <strong>73</strong> on July 5, <strong>91</strong> on August 3, and <strong>98</strong> on August 19: today&apos;s reading, taken by the same public scanner that runs every Signal Pulse™. Every reading dated. No fabricated testimonials, no finished-case theater.</div>
+        </div>
+        {/* The story, in order — the withdrawal is the credential, so it leads the strip.
+            Readings, dates and layer tables below are locked; see CLAUDE.md. */}
+        <div className="cz-story reveal">
+          <div className="cz-step"><span className="cz-n">1</span><span className="cz-t">We audited ourselves before we audited anyone else — and published the number we actually got.</span></div>
+          <div className="cz-step"><span className="cz-n">2</span><span className="cz-t">Then we built the same proof layer we sell, and re-measured in public.</span></div>
+          <div className="cz-step cz-key"><span className="cz-n">3</span><span className="cz-t">When our own system later ruled that some of our published readings could not be re-derived from preserved evidence, <strong>we withdrew them rather than grandfather ourselves in.</strong></span></div>
+          <div className="cz-step"><span className="cz-n">4</span><span className="cz-t">That is the standard we&apos;re offering to hold <em>your</em> record to.</span></div>
+        </div>
+        <div className="proof-grid reveal">
+          <div className="proof-card before">
+            <div className="pc-kicker">Case Zero · 06.06.2026</div>
+            <div className="pc-top"><span className="pc-label">Before</span><span className="pc-tag">Self-Audit</span></div>
+            <span className="pc-score">18<small>/100</small></span>
+            <div className="pc-scorelbl">Signal Score™</div>
+            <div className="pc-row"><span className="pc-name">AI Search Presence</span><span className="pc-stamp no">4/100</span></div>
+            <div className="pc-row"><span className="pc-name">Entity Clarity</span><span className="pc-stamp no">5/100</span></div>
+            <div className="pc-row"><span className="pc-name">Crawl Readiness</span><span className="pc-stamp no">35/100</span></div>
+            <div className="pc-row"><span className="pc-name">Review Signal</span><span className="pc-stamp no">0/100</span></div>
+            <div className="pc-status">We audited ourselves first.</div>
+          </div>
+          <div className="proof-arrow" aria-hidden="true">→</div>
+          <div className="proof-card after">
+            <div className="pc-kicker">Current · 08.19.2026 · public scanner</div>
+            <div className="pc-top"><span className="pc-label">After</span><span className="pc-tag">+80</span></div>
+            <span className="pc-score count">98<small>/100</small></span>
+            <div className="pc-scorelbl">Signal Pulse™ · four signals, weighted</div>
+            <div className="pc-row"><span className="pc-name">Access</span><span className="pc-stamp yes">100/100</span></div>
+            <div className="pc-row"><span className="pc-name">Structure</span><span className="pc-stamp yes">100/100</span></div>
+            <div className="pc-row"><span className="pc-name">Trust</span><span className="pc-stamp yes">100/100</span></div>
+            <div className="pc-row"><span className="pc-name">Answers</span><span className="pc-stamp yes">90/100</span></div>
+            <div className="pc-row"><span className="pc-name">Aug 3 re-audit</span><span className="pc-stamp yes">91/100</span></div>
+            <div className="pc-row"><span className="pc-name">Jul 5 re-audit</span><span className="pc-stamp yes">73/100</span></div>
+            <div className="pc-status">30+30+20+18 = 98. Run the same scanner on us at /pulse.</div>
+          </div>
+        </div>
+        <div className="proof-note reveal">The four signals above are today&apos;s read — August 19, 2026 — from the same deterministic scanner that runs every Signal Pulse™, pointed at this site. Three consecutive samples, identical. 100×.30 + 100×.30 + 100×.20 + 90×.20 = <strong>98</strong>: check it with a calculator, or run the scanner yourself. <strong>A Signal Score™ measures the proof layer — it is not a guarantee of AI ranking, citation, recommendation, or inclusion.</strong></div>
+        <div className="proof-note reveal">Signal Flair&apos;s own audit — baseline <strong>June 6, 2026</strong>, re-audited <strong>July 5</strong> and <strong>August 3</strong>. This is Case Zero: we ran the system on ourselves first, and we published the weak scores on the way up, not just the good one.</div>
+        <div className="proof-note reveal">Provenance, on the record: the June baseline is the operator-recorded <strong>18</strong> — the founder&apos;s call, reaffirmed August 19, 2026. The worksheet rows shown beside it are from that assessment and do not average to 18; we tell you that instead of retrofitting them. July&apos;s 73 derives exactly (436 ÷ 6). August 3&apos;s 91 re-measured three layers. Today&apos;s 98 is fully derivable, and the instrument is public.</div>
+        <a className="proof-live-link reveal" href="/proof/">See our live record →</a>
+        <div className="sl-markwrap reveal" style={{ margin: '26px auto 0', maxWidth: 560 }}>
+          <a className="sl-mark" href="/case-studies/restor-team/">
+            <span className="sl-mark-pulse" aria-hidden="true" />
+            <span className="sl-mark-body">
+              <span className="sl-mark-main">RESTOR Team — Founding Partner Snapshot</span>
+              <span className="sl-mark-meta">Signal Baseline™ · Founding Partner assessment</span>
+              <span className="sl-mark-note">How clearly AI systems could access, understand, and verify RESTOR Team&apos;s public evidence. View the baseline →</span>
+            </span>
+            <span className="sl-mark-arrow" aria-hidden="true">→</span>
+          </a>
+        </div>
+        {/* Mental Vision — the parent studio, measured by the same instrument (2026-08-19).
+            The point: something we built shipped ready — no cleanup pass before the reading.
+            The Answers 60 stays on the card; showing the imperfect bucket IS the brand. */}
+        <div className="mvp reveal">
+          <div className="mvp-l">
+            <div className="mvp-ey">Built ready · the parent studio</div>
+            {/* Mental Vision set in Mental Vision's OWN display voice — Unbounded 900,
+                uppercase, -0.03em, with their cycling-accent treatment (teal ↔ amber, the
+                brand's teal+gold pair) — measured from the live mentalvision.ai hero,
+                2026-08-19. This is a quotation of their type system, not our logo redraw
+                and not Signal Flair's own face. */}
+            <div className="mvp-wordmark" aria-label="Mental Vision">
+              <span className="mvw mvw-a">Mental</span>
+              <span className="mvw mvw-b">Vision</span>
+            </div>
+            <div className="mvp-t">Same scanner, pointed at <em>our own builder.</em></div>
+            <div className="mvp-d">Mental Vision — the studio Signal Flair grew out of — read <strong>92/100</strong> on August 19, 2026 by the exact scanner behind every Signal Pulse™. No cleanup pass first, and the bucket that isn&apos;t perfect is printed anyway. That&apos;s the point: work that ships ready, measured by the same instrument we point at everyone else.</div>
+            <a className="mvp-link" href="https://www.mentalvision.ai" target="_blank" rel="noopener noreferrer">mentalvision.ai →</a>
+          </div>
+          <div className="mvp-card">
+            <div className="mvp-score">92<small>/100</small></div>
+            <div className="mvp-lbl">Signal Pulse™ · 08.19.2026</div>
+            <div className="mvp-row"><span>Access</span><span className="mvp-ok">100</span></div>
+            <div className="mvp-row"><span>Structure</span><span className="mvp-ok">100</span></div>
+            <div className="mvp-row"><span>Trust</span><span className="mvp-ok">100</span></div>
+            <div className="mvp-row"><span>Answers</span><span className="mvp-mid">60</span></div>
+            <div className="mvp-foot">Three samples, identical. 30+30+20+12 = 92.</div>
+          </div>
+        </div>
+        {/* ═══ REAL-WORLD AUDIT — The Mill / Amplify Bloomington, named with permission (recorded 2026-07-21; see ANONYMIZED_BASELINE_CASE_INTERNAL.md) ═══ */}
+        <div className="rw reveal" id="real-world-audit">
+          <div className="rw-head rw-marquee">
+            <div className="rw-case-tag"><span className="rw-case-dot" aria-hidden="true" />Case File · Real-World AI Visibility Audit<span className="rw-case-score">35/100</span></div>
+            <h3 className="rw-title rw-title-xl">One business. Three AI engines.<br /><em>Three different stories.</em></h3>
+            <div className="rw-client-line"><span className="rw-client-logo" aria-hidden="true">▚</span><span className="rw-client-name">The Mill</span><span className="rw-client-meta">· Amplify Bloomington · audited July 2026</span></div>
+            <p className="rw-body">
+              We audited The Mill — the coworking and event space at the center of Amplify Bloomington. ChatGPT,
+              Gemini, and Perplexity all found it. Great. They also told three different, incomplete stories. One
+              gave us the thin version. One sent people to the wrong domain. One reduced the place to amenities.
+              Signal Score™: 35/100. Found? Technically. Understood? Not even close.
+            </p>
+          </div>
+          <div className="rw-grid">
+            <div className="rw-card">
+              <div className="rw-card-h"><span className="rw-engine">ChatGPT</span><span className="rw-stamp">Thin Guess</span></div>
+              <div className="rw-card-d">Found it through live search only — the training crawler is blocked, so the model never learned the business. Thin, hedged, listed beside competitors.</div>
+            </div>
+            <div className="rw-card">
+              <div className="rw-card-h"><span className="rw-engine">Perplexity</span><span className="rw-stamp">Wrong Domain</span></div>
+              <div className="rw-card-d">Cited the legacy domain being retired, not the current site. Every AI mention leaked to the wrong address.</div>
+            </div>
+            <div className="rw-card">
+              <div className="rw-card-h"><span className="rw-engine">Gemini</span><span className="rw-stamp">Amenities Only</span></div>
+              <div className="rw-card-d">Leaned on the Google Business Profile — &ldquo;wifi &amp; coffee&rdquo; — with none of the membership, events, or Amplify story.</div>
+            </div>
+          </div>
+          <div className="rw-conclusion">Being mentioned is not the win. <em>Being understood correctly is.</em></div>
+          <ul className="rw-points">
+            <li>Found does not mean accurately represented.</li>
+            <li>Mentions do not guarantee entity clarity.</li>
+            <li>Different answers reveal an uncontrolled AI identity.</li>
+            <li>Signal Flair builds the proof foundation AI systems need to understand and recommend a business confidently.</li>
+          </ul>
+          <div className="rw-ctarow">
+            <a className="rw-cta" href="/pulse">▸ Get Your Pulse — See What AI Picks Up</a>
+            <a className="rw-more" href="/case-studies/three-engines-three-stories/">Read the full Mill audit →</a>
+          </div>
+        </div>
+
+        <div className="founding reveal" id="founding">
+          <div className="founding-inner">
+            <div className="founding-l">
+              <div className="founding-eyebrow">The Founding Five</div>
+              <div className="founding-title">Five seats. <em>Then the door closes.</em></div>
+              <div className="fnd-deal" aria-label="Founding Five offer">
+                <div className="fnd-chip fnd-chip-hot"><span className="fnd-chip-big">35% OFF</span><span className="fnd-chip-sub">the build — Rebuild or Foundation</span></div>
+                <div className="fnd-chip fnd-chip-orange"><span className="fnd-chip-big">3 MONTHS AT 50%</span><span className="fnd-chip-sub">Signal Proof, your first quarter</span></div>
+              </div>
+              <div className="founding-body">Signal Flair is opening exactly five founding seats. In return, we need permission to publish the named before-and-after as a documented case study. No manufactured victory lap. We measure the before, build The Proof Stack™, and publish what actually changed.</div>
+              <div className="founding-ask">For: local service businesses, nonprofits, civic &amp; community partners, and trust-based providers — med spas, clinics, law firms, HVAC, electrical, and more.</div>
+              <a className="founding-cta" href="#cta">▸ Claim My Seat</a>
+              <div className="founding-micro">5 of 5 seats remaining — updated July 21, 2026 · documented proof, not testimonials</div>
+            </div>
+            <div className="founding-r">
+              <div className="founding-price-tag">What Founding Five members receive</div>
+              <div className="founding-items">
+                <div className="fnd-i">35% off your build — Rebuild or Foundation Build</div>
+                <div className="fnd-i">First 3 months of Signal Proof at 50%</div>
+                <div className="fnd-i">The Breakdown included — your $500 verified baseline, on the house</div>
+                <div className="fnd-i">The Proof Stack™ — Machine Trust Layer™, Entity Lock™, Answer Architecture™</div>
+                <div className="fnd-i">Signal Proof Page™ — your public proof asset</div>
+                <div className="fnd-i">Signal Telemetry — drift re-checked on every scheduled re-scan from day one</div>
+                <div className="fnd-i">A named, published before-and-after case study as your score climbs</div>
+              </div>
+              <div className="founding-save">Five seats. Then founding pricing closes.</div>
+            </div>
+          </div>
+        </div>
+      </section>
+
 
       {/* ═══ SERVICES ═══ */}
       <section id="signal">
@@ -827,6 +1004,16 @@ export default function SignalFlairLanding() {
               </div>
             </details>
           ))}
+        </div>
+        {/* Mechanism, never outcome: each row states what a machine has to DO about the gap.
+            "The system has to guess where you are" is defensible; "you're losing customers" is
+            not measurable and never appears. Phrasing mirrors the product's own findings. */}
+        <div className="fm reveal">
+          <div className="fm-head">The four findings we see most — and what each one <em>means</em></div>
+          <div className="fm-row"><div className="fm-find">Address not in the machine-readable block</div><div className="fm-means">When a system is asked for a business &ldquo;near me&rdquo;, it has to work out where this one is from the wording of the page — or use one it is certain about instead.</div></div>
+          <div className="fm-row"><div className="fm-find">Business name missing from that block</div><div className="fm-means">A machine has to work out who the business is from the page&apos;s wording — and if a similarly-named business exists anywhere, it can credit that one instead.</div></div>
+          <div className="fm-row"><div className="fm-find">No clickable phone or email link</div><div className="fm-means">On a phone, a customer has to memorise the number and retype it instead of tapping it. Every extra step is people who meant to call and didn&apos;t.</div></div>
+          <div className="fm-row"><div className="fm-find">An AI reader turned away in robots.txt</div><div className="fm-means">That reader can&apos;t see the business at all — so it has nothing to draw on when someone asks it a question the business could answer. We name the specific crawler; one blocked reader is not &ldquo;AI can&apos;t read your site.&rdquo;</div></div>
         </div>
       </section>
 
@@ -908,125 +1095,6 @@ export default function SignalFlairLanding() {
       </section>
 
       {/* ═══ PROOF — honest before/after score card (illustrative) ═══ */}
-      <section id="proof" data-cursor="light">
-        <div className="proof-bgword" aria-hidden="true">PROOF.</div>
-        <div className="proof-head reveal">
-          <div>
-            <div className="proof-eyebrow">Case Zero · 18 → 73 → 91</div>
-            <div className="proof-title">We ran it on<br /><em>ourselves first.</em></div>
-          </div>
-          <div className="proof-meta">Case Zero is our own audit, published at the score we actually got. Signal Flair scored <strong>18/100</strong> on June 6, 2026, then built the same proof layer we sell and re-measured in public — <strong>73</strong> on July 5, <strong>91</strong> on August 3. Every reading dated. No fabricated testimonials, no finished-case theater.</div>
-        </div>
-        <div className="proof-grid reveal">
-          <div className="proof-card before">
-            <div className="pc-kicker">Case Zero · 06.06.2026</div>
-            <div className="pc-top"><span className="pc-label">Before</span><span className="pc-tag">Self-Audit</span></div>
-            <span className="pc-score">18<small>/100</small></span>
-            <div className="pc-scorelbl">Signal Score™</div>
-            <div className="pc-row"><span className="pc-name">AI Search Presence</span><span className="pc-stamp no">4/100</span></div>
-            <div className="pc-row"><span className="pc-name">Entity Clarity</span><span className="pc-stamp no">5/100</span></div>
-            <div className="pc-row"><span className="pc-name">Crawl Readiness</span><span className="pc-stamp no">35/100</span></div>
-            <div className="pc-row"><span className="pc-name">Review Signal</span><span className="pc-stamp no">0/100</span></div>
-            <div className="pc-status">We audited ourselves first.</div>
-          </div>
-          <div className="proof-arrow" aria-hidden="true">→</div>
-          <div className="proof-card after">
-            <div className="pc-kicker">Re-audit · 08.03.2026</div>
-            <div className="pc-top"><span className="pc-label">After</span><span className="pc-tag">+73</span></div>
-            <span className="pc-score count">91<small>/100</small></span>
-            <div className="pc-scorelbl">Signal Score™</div>
-            <div className="pc-row"><span className="pc-name">Access &amp; Crawlability</span><span className="pc-stamp yes">100/100</span></div>
-            <div className="pc-row"><span className="pc-name">Structured Intelligence</span><span className="pc-stamp yes">100/100</span></div>
-            <div className="pc-row"><span className="pc-name">Answer Architecture</span><span className="pc-stamp yes">90/100</span></div>
-            <div className="pc-row"><span className="pc-name">Jul 5 re-audit</span><span className="pc-stamp yes">73/100</span></div>
-            <div className="pc-status">Re-measured in public. Every reading dated.</div>
-          </div>
-        </div>
-        <div className="proof-note reveal">The three layers above are re-measured by the same deterministic scanner that runs every Signal Pulse™, pointed at this site. <strong>A Signal Score™ measures the proof layer — it is not a guarantee of AI ranking, citation, recommendation, or inclusion.</strong></div>
-        <div className="proof-note reveal">Signal Flair&apos;s own audit — baseline <strong>June 6, 2026</strong>, re-audited <strong>July 5</strong> and <strong>August 3</strong>. This is Case Zero: we ran the system on ourselves first, and we published the weak scores on the way up, not just the good one.</div>
-        <a className="proof-live-link reveal" href="/proof/">See our live record →</a>
-        <div className="sl-markwrap reveal" style={{ margin: '26px auto 0', maxWidth: 560 }}>
-          <a className="sl-mark" href="/case-studies/restor-team/">
-            <span className="sl-mark-pulse" aria-hidden="true" />
-            <span className="sl-mark-body">
-              <span className="sl-mark-main">RESTOR Team — Founding Partner Snapshot</span>
-              <span className="sl-mark-meta">Signal Baseline™ · Founding Partner assessment</span>
-              <span className="sl-mark-note">How clearly AI systems could access, understand, and verify RESTOR Team&apos;s public evidence. View the baseline →</span>
-            </span>
-            <span className="sl-mark-arrow" aria-hidden="true">→</span>
-          </a>
-        </div>
-        {/* ═══ REAL-WORLD AUDIT — The Mill / Amplify Bloomington, named with permission (recorded 2026-07-21; see ANONYMIZED_BASELINE_CASE_INTERNAL.md) ═══ */}
-        <div className="rw reveal" id="real-world-audit">
-          <div className="rw-head rw-marquee">
-            <div className="rw-case-tag"><span className="rw-case-dot" aria-hidden="true" />Case File · Real-World AI Visibility Audit<span className="rw-case-score">35/100</span></div>
-            <h3 className="rw-title rw-title-xl">One business. Three AI engines.<br /><em>Three different stories.</em></h3>
-            <div className="rw-client-line"><span className="rw-client-logo" aria-hidden="true">▚</span><span className="rw-client-name">The Mill</span><span className="rw-client-meta">· Amplify Bloomington · audited July 2026</span></div>
-            <p className="rw-body">
-              We audited The Mill — the coworking and event space at the center of Amplify Bloomington. ChatGPT,
-              Gemini, and Perplexity all found it. Great. They also told three different, incomplete stories. One
-              gave us the thin version. One sent people to the wrong domain. One reduced the place to amenities.
-              Signal Score™: 35/100. Found? Technically. Understood? Not even close.
-            </p>
-          </div>
-          <div className="rw-grid">
-            <div className="rw-card">
-              <div className="rw-card-h"><span className="rw-engine">ChatGPT</span><span className="rw-stamp">Thin Guess</span></div>
-              <div className="rw-card-d">Found it through live search only — the training crawler is blocked, so the model never learned the business. Thin, hedged, listed beside competitors.</div>
-            </div>
-            <div className="rw-card">
-              <div className="rw-card-h"><span className="rw-engine">Perplexity</span><span className="rw-stamp">Wrong Domain</span></div>
-              <div className="rw-card-d">Cited the legacy domain being retired, not the current site. Every AI mention leaked to the wrong address.</div>
-            </div>
-            <div className="rw-card">
-              <div className="rw-card-h"><span className="rw-engine">Gemini</span><span className="rw-stamp">Amenities Only</span></div>
-              <div className="rw-card-d">Leaned on the Google Business Profile — &ldquo;wifi &amp; coffee&rdquo; — with none of the membership, events, or Amplify story.</div>
-            </div>
-          </div>
-          <div className="rw-conclusion">Being mentioned is not the win. <em>Being understood correctly is.</em></div>
-          <ul className="rw-points">
-            <li>Found does not mean accurately represented.</li>
-            <li>Mentions do not guarantee entity clarity.</li>
-            <li>Different answers reveal an uncontrolled AI identity.</li>
-            <li>Signal Flair builds the proof foundation AI systems need to understand and recommend a business confidently.</li>
-          </ul>
-          <div className="rw-ctarow">
-            <a className="rw-cta" href="/pulse">▸ Get Your Pulse — See What AI Picks Up</a>
-            <a className="rw-more" href="/case-studies/three-engines-three-stories/">Read the full Mill audit →</a>
-          </div>
-        </div>
-
-        <div className="founding reveal" id="founding">
-          <div className="founding-inner">
-            <div className="founding-l">
-              <div className="founding-eyebrow">The Founding Five</div>
-              <div className="founding-title">Five seats. <em>Then the door closes.</em></div>
-              <div className="fnd-deal" aria-label="Founding Five offer">
-                <div className="fnd-chip fnd-chip-hot"><span className="fnd-chip-big">35% OFF</span><span className="fnd-chip-sub">the build — Rebuild or Foundation</span></div>
-                <div className="fnd-chip fnd-chip-orange"><span className="fnd-chip-big">3 MONTHS AT 50%</span><span className="fnd-chip-sub">Signal Proof, your first quarter</span></div>
-              </div>
-              <div className="founding-body">Signal Flair is opening exactly five founding seats. In return, we need permission to publish the named before-and-after as a documented case study. No manufactured victory lap. We measure the before, build The Proof Stack™, and publish what actually changed.</div>
-              <div className="founding-ask">For: local service businesses, nonprofits, civic &amp; community partners, and trust-based providers — med spas, clinics, law firms, HVAC, electrical, and more.</div>
-              <a className="founding-cta" href="#cta">▸ Claim My Seat</a>
-              <div className="founding-micro">5 of 5 seats remaining — updated July 21, 2026 · documented proof, not testimonials</div>
-            </div>
-            <div className="founding-r">
-              <div className="founding-price-tag">What Founding Five members receive</div>
-              <div className="founding-items">
-                <div className="fnd-i">35% off your build — Rebuild or Foundation Build</div>
-                <div className="fnd-i">First 3 months of Signal Proof at 50%</div>
-                <div className="fnd-i">The Breakdown included — your $500 verified baseline, on the house</div>
-                <div className="fnd-i">The Proof Stack™ — Machine Trust Layer™, Entity Lock™, Answer Architecture™</div>
-                <div className="fnd-i">Signal Proof Page™ — your public proof asset</div>
-                <div className="fnd-i">Signal Telemetry — drift re-checked on every scheduled re-scan from day one</div>
-                <div className="fnd-i">A named, published before-and-after case study as your score climbs</div>
-              </div>
-              <div className="founding-save">Five seats. Then founding pricing closes.</div>
-            </div>
-          </div>
-        </div>
-      </section>
-
       {/* ═══ ASSESSMENT HISTORY — the evidence compounds (data moat) ═══ */}
       <section id="history" data-cursor="dark">
         <div className="ent-head reveal">
@@ -1083,6 +1151,29 @@ export default function SignalFlairLanding() {
       </section>
 
       {/* ═══ PRICING ═══ */}
+      {/* ═══ THE HONEST COMPARISON — conceding what competitors do well is what makes
+           the one real difference credible. Both concessions in the table are deliberate. ═══ */}
+      <section id="compare" data-cursor="light">
+        <div className="cmp-head reveal">
+          <div className="cmp-eyebrow">Against the alternatives — fairly</div>
+          <h2 className="cmp-title">Everyone in this market measures.<br /><em>We&apos;re the only ones who keep the receipts.</em></h2>
+        </div>
+        <div className="cmp-wrap reveal">
+          <table className="cmp-table">
+            <thead><tr><th></th><th className="cmp-us">Signal Flair</th><th>AI mention trackers</th><th>SEO toolkits</th><th>One-off audit</th></tr></thead>
+            <tbody>
+              <tr><td>Keeps the exact page it read</td><td className="cmp-us cy">Yes</td><td>No</td><td>No</td><td>No</td></tr>
+              <tr><td>Findings re-checkable later</td><td className="cmp-us cy">Yes</td><td>No</td><td>Re-run only</td><td>No</td></tr>
+              <tr><td>Checks AI crawler access</td><td className="cmp-us cy">Yes</td><td>Some</td><td className="cmp-concede">Yes</td><td>Varies</td></tr>
+              <tr><td>Separates &ldquo;couldn&apos;t look&rdquo; from &ldquo;broken&rdquo;</td><td className="cmp-us cy">Yes</td><td>Rarely</td><td>Varies</td><td>No</td></tr>
+              <tr><td>Before/after from saved copies</td><td className="cmp-us cy">Yes</td><td>No</td><td>No</td><td>No</td></tr>
+              <tr><td>Share-of-voice charts</td><td className="cmp-us cn">No</td><td>Yes</td><td>Some</td><td>No</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <div className="cmp-note reveal">Both concessions above are on purpose. SEO toolkits really do check crawler access — we differ by keeping the page we read. And we don&apos;t sell the share-of-voice chart everyone else leads with, because we can&apos;t stand behind one: the same question asked twice returns different answers.</div>
+      </section>
+
       <section id="pricing" data-cursor="light">
         <div className="pricing-header reveal">
           <h2 className="pricing-vw" aria-label="Start free. Build once. Stay found.">

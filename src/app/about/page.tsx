@@ -9,7 +9,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: 'About Signal Flair — found by AI, by design',
     description:
-      'An Indianapolis, Indiana AI Proof Infrastructure company that audited itself first: Case Zero, 18/100, rebuilt in public to 91/100. A Mental Vision product.',
+      'An Indianapolis, Indiana AI Proof Infrastructure company that audited itself first: Case Zero, 18/100, rebuilt in public to 98/100. A Mental Vision product.',
     images: ['/video/hero-poster.jpg'],
   },
 }
@@ -85,7 +85,7 @@ export default function AboutPage() {
           <ul className="rsc-ul">
             <li><strong>AI Visibility Audit</strong> — your Signal Score across five engines, and exactly what&apos;s pulling it down.</li>
             <li><strong>Foundation Build</strong> — schema, crawler access, and your verified proof layer installed in 7–14 days.</li>
-            <li><strong>Stay Found™</strong> — recurring checks and proof maintenance: monthly re-scans and citation growth as AI search keeps changing.</li>
+            <li><strong>Stay Found™</strong> — recurring checks and proof maintenance: re-scans on a set schedule and citation growth as AI search keeps changing.</li>
           </ul>
         </section>
 
@@ -95,7 +95,8 @@ export default function AboutPage() {
             Case Zero is our own AI visibility audit. Signal Flair scored
             <strong> 18 out of 100</strong> on June 6, 2026 — Signal Invisible. We published it, rebuilt
             in public, and re-measured: <strong>73/100</strong> on July 5, <strong>91/100</strong> on
-            August 3. Every reading is dated, including the weak ones. We never fabricate scores,
+            August 3, and <strong>98/100</strong> on August 19 — read by the public scanner behind
+            every Signal Pulse™. Every reading is dated, including the weak ones. We never fabricate scores,
             testimonials, or results. See the full live record on the <a href="/proof/">proof page</a>.
           </p>
         </section>

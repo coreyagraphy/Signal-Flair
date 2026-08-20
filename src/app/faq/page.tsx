@@ -4,7 +4,7 @@ import SignalFlairLogo from '@/components/SignalFlairLogo'
 export const metadata: Metadata = {
   title: 'FAQ — Signal Score, Case Zero, Signal Pulse & Signal Proof Page | Signal Flair',
   description:
-    'Answers to the core Signal Flair questions: what a Signal Score™ is, what Case Zero (18/100 on June 6 2026, now 91/100) is, what a free Signal Pulse™ includes, and the Founding Five. AI Proof Infrastructure for businesses and organizations nationwide.',
+    'Answers to the core Signal Flair questions: what a Signal Score™ is, what Case Zero (18/100 on June 6 2026, now 98/100) is, what a free Signal Pulse™ includes, and the Founding Five. AI Proof Infrastructure for businesses and organizations nationwide.',
   alternates: { canonical: 'https://signalflair.ai/faq/' },
   openGraph: {
     title: 'Signal Flair — Frequently Asked Questions',
@@ -59,7 +59,7 @@ const FAQS: { q: string; a: string }[] = [
   },
   {
     q: 'What is Case Zero?',
-    a: 'Case Zero is Signal Flair’s own AI visibility audit. Signal Flair scored 18 out of 100 on June 6, 2026 — Signal Invisible. We published it, rebuilt in public, and re-measured: 73/100 on July 5, 2026 and 91/100 on August 3, 2026. Every reading is dated on the public change log, including the layers that scored badly. We never fabricate scores, wins, or testimonials. A Signal Score™ measures the proof layer — it is not a guarantee of AI ranking, citation, or recommendation.',
+    a: 'Case Zero is Signal Flair’s own AI visibility audit. Signal Flair scored 18 out of 100 on June 6, 2026 — Signal Invisible. We published it, rebuilt in public, and re-measured: 73/100 on July 5, 91/100 on August 3, and 98/100 on August 19, 2026 — the current reading, taken by the deterministic public scanner behind every Signal Pulse™. Every reading is dated on the public change log, including the layers that scored badly. We never fabricate scores, wins, or testimonials. A Signal Score™ measures the proof layer — it is not a guarantee of AI ranking, citation, or recommendation.',
   },
   {
     q: 'What is a Signal Pulse™?',
@@ -83,7 +83,7 @@ const FAQS: { q: string; a: string }[] = [
   },
   {
     q: 'What is Stay Found™?',
-    a: 'Stay Found™ is ongoing proof maintenance that keeps your Signal Score™ from drifting — monthly re-scans, fresh citations, schema and verified-fact updates, and crawler monitoring as new AI engines ship and competitors catch up. Signal Flair does not guarantee rankings, citations, recommendations, inclusion, or AI visibility. The work is designed to improve clarity, structure, crawlability, and proof readiness.',
+    a: 'Stay Found™ is ongoing proof maintenance that keeps your Signal Score™ from drifting — re-scans on a rhythm you choose, fresh citations, schema and verified-fact updates, and crawler monitoring as new AI engines ship and competitors catch up. Signal Flair does not guarantee rankings, citations, recommendations, inclusion, or AI visibility. The work is designed to improve clarity, structure, crawlability, and proof readiness.',
   },
   {
     q: 'What happens to my assessment after it is completed?',
@@ -180,11 +180,11 @@ export default function FaqPage() {
             <a className="sl-hub-card" href="/proof/">
               <span className="sl-hub-k">03</span>
               <span className="sl-hub-t">The live record</span>
-              <span className="sl-hub-d">Case Zero — our own audit, 18/100, rebuilt in public to 91/100.</span>
+              <span className="sl-hub-d">Case Zero — our own audit, 18/100, rebuilt in public to 98/100.</span>
             </a>
           </div>
           <p className="rsc-p sl-machine">
-            Machine-readable: <a href="/llms.txt">/llms.txt</a> · <a href="/proof.json">/proof.json</a> · <a href="/.well-known/signalflair.json">discovery manifest</a>
+            Machine-readable: <a href="/llms.txt">/llms.txt</a> · <a href="/proof.json">/proof.json</a> · <a href="/.well-known/signalflair.json">signalflair.json (a JSON export of our public facts)</a>
           </p>
         </section>
 

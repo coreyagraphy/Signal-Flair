@@ -134,11 +134,11 @@ export default function LlmsTxtResourcePage() {
             <a className="sl-hub-card" href="/proof/">
               <span className="sl-hub-k">03</span>
               <span className="sl-hub-t">Case Zero</span>
-              <span className="sl-hub-d">Our own audit — 18/100 to 91/100, every reading dated.</span>
+              <span className="sl-hub-d">Our own audit — 18/100 to 98/100, every reading dated.</span>
             </a>
           </div>
           <p className="rsc-p sl-machine">
-            Machine-readable: <a href="/llms.txt">/llms.txt</a> · <a href="/proof.json">/proof.json</a> · <a href="/.well-known/signalflair.json">discovery manifest</a>
+            Machine-readable: <a href="/llms.txt">/llms.txt</a> · <a href="/proof.json">/proof.json</a> · <a href="/.well-known/signalflair.json">signalflair.json</a>
           </p>
         </section>
 

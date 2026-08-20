@@ -33,9 +33,9 @@
   },
   "case_zero": {
     "is_case_zero": true,
-    "statement": "Signal Flair audited itself first. Scored 18/100 on June 6, 2026, then built the same proof layer it sells and re-measured in public: 73/100 on July 5, 2026 and 91/100 on August 3, 2026. Every reading is dated and published, including the layers that scored badly. A Signal Score measures the proof layer; it is not a guarantee of AI ranking, citation, or recommendation.",
-    "overall_score": 91,
-    "scored_on": "2026-08-03",
+    "statement": "Signal Flair audited itself first. Scored 18/100 on June 6, 2026, then built the same proof layer it sells and re-measured in public: 73/100 on July 5, 2026 and 91/100 on August 3, 2026. Every reading is dated and published, including the layers that scored badly. A Signal Score measures the proof layer; it is not a guarantee of AI ranking, citation, or recommendation. Read at 98/100 on August 19, 2026 by the deterministic public scanner behind every Signal Pulse — Access 100, Structure 100, Trust 100, Answers 90; three consecutive samples, identical.",
+    "overall_score": 98,
+    "scored_on": "2026-08-19",
     "signals": [
       {
         "signal": "AI Search Presence",
@@ -86,11 +86,17 @@
       {
         "score": 91,
         "scored_on": "2026-08-03",
-        "label": "Current",
+        "label": "Re-audit",
         "model": "six-layer"
+      },
+      {
+        "score": 98,
+        "scored_on": "2026-08-19",
+        "label": "Current",
+        "model": "four-signal Signal Pulse (deterministic public scanner; Access/Structure/Trust/Answers weighted 0.30/0.30/0.20/0.20 — reproduce it at signalflair.ai/pulse)"
       }
     ],
-    "method": "The composite is the plain average of the layer scores at each reading. Layer detail is published against the reading it was computed from; no layer is estimated to fill a gap.",
+    "method": "The composite is the plain average of the layer scores at each reading. Layer detail is published against the reading it was computed from; no layer is estimated to fill a gap. Readings labelled with the Pulse model use the public scanner's four signals weighted 0.30/0.30/0.20/0.20; the derivation is published beside the reading and anyone can reproduce it at signalflair.ai/pulse.",
     "layers_2026_07_05": [
       {
         "layer": "Access & Crawlability",
@@ -133,7 +139,32 @@
         "score": 90,
         "method": "deterministic scan"
       }
-    ]
+    ],
+    "pulse_signals_2026_08_19": {
+      "note": "Deterministic public scanner, three consecutive samples, identical results. 100*0.30 + 100*0.30 + 100*0.20 + 90*0.20 = 98.",
+      "signals": [
+        {
+          "signal": "Access",
+          "score": 100,
+          "method": "deterministic public scanner"
+        },
+        {
+          "signal": "Structure",
+          "score": 100,
+          "method": "deterministic public scanner"
+        },
+        {
+          "signal": "Trust",
+          "score": 100,
+          "method": "deterministic public scanner"
+        },
+        {
+          "signal": "Answers",
+          "score": 90,
+          "method": "deterministic public scanner"
+        }
+      ]
+    }
   },
   "services": [
     {
