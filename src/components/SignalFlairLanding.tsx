@@ -847,9 +847,10 @@ export default function SignalFlairLanding() {
           <div className="mvp-l">
             <div className="mvp-ey">Built ready · the parent studio</div>
             {/* Mental Vision set in Mental Vision's OWN display voice — Unbounded 900,
-                uppercase, -0.03em, with their cycling-accent treatment (teal ↔ amber, the
-                brand's teal+gold pair) — measured from the live mentalvision.ai hero,
-                2026-08-19. This is a quotation of their type system, not our logo redraw
+                uppercase, -0.03em, cycling their FULL hero accent rotation (teal → violet →
+                pink → amber) as measured from the live mentalvision.ai hero 2026-08-19.
+                Violet/pink are Corey-authorised here as the one exception to the no-violet
+                rule: this is a verbatim quotation of MV's type system, not our logo redraw
                 and not Signal Flair's own face. */}
             <div className="mvp-wordmark" aria-label="Mental Vision">
               <span className="mvw mvw-a">Mental</span>
