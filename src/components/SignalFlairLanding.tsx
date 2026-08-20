@@ -846,6 +846,15 @@ export default function SignalFlairLanding() {
         <div className="mvp reveal">
           <div className="mvp-l">
             <div className="mvp-ey">Built ready · the parent studio</div>
+            {/* Mental Vision set in Mental Vision's OWN display voice — Unbounded 900,
+                uppercase, -0.03em, with their cycling-accent treatment (teal ↔ amber, the
+                brand's teal+gold pair) — measured from the live mentalvision.ai hero,
+                2026-08-19. This is a quotation of their type system, not our logo redraw
+                and not Signal Flair's own face. */}
+            <div className="mvp-wordmark" aria-label="Mental Vision">
+              <span className="mvw mvw-a">Mental</span>
+              <span className="mvw mvw-b">Vision</span>
+            </div>
             <div className="mvp-t">Same scanner, pointed at <em>our own builder.</em></div>
             <div className="mvp-d">Mental Vision — the studio Signal Flair grew out of — read <strong>92/100</strong> on August 19, 2026 by the exact scanner behind every Signal Pulse™. No cleanup pass first, and the bucket that isn&apos;t perfect is printed anyway. That&apos;s the point: work that ships ready, measured by the same instrument we point at everyone else.</div>
             <a className="mvp-link" href="https://www.mentalvision.ai" target="_blank" rel="noopener noreferrer">mentalvision.ai →</a>

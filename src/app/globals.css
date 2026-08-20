@@ -6,6 +6,11 @@
    Accent  = Instrument Serif italic (the brand "flair" intervention)
    ════════════════════════════════════════════════════════════════════════ */
 @import url('https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght,SOFT,WONK@0,9..144,300..900,0..100,0..1;1,9..144,300..900,0..100,0..1&family=Geist+Mono:wght@300;400;500;600;700&family=Instrument+Serif:ital@0;1&display=swap');
+/* Unbounded 900 loads ONLY for the Mental Vision card in #proof — it is Mental Vision's
+   display face (measured from mentalvision.ai 2026-08-19: Unbounded 900, uppercase,
+   -0.03em, cycling accents). It is quoted there as THEIR voice; never use it for
+   Signal Flair's own type. */
+@import url('https://fonts.googleapis.com/css2?family=Unbounded:wght@900&display=swap');
 
 :root{
   /* Brief palette — constrained, high-tension */
@@ -2021,6 +2026,20 @@ footer{background:var(--ink2);border-top:1px solid var(--ink);padding:52px;posit
 .mvp{position:relative;z-index:2;max-width:1060px;margin:44px auto 0;padding:0 clamp(18px,4.4vw,56px);
   display:grid;grid-template-columns:1.3fr minmax(240px,1fr);gap:clamp(20px,3vw,44px);align-items:center}
 .mvp-ey{font-family:var(--signal);font-size:11px;font-weight:600;letter-spacing:.22em;text-transform:uppercase;color:var(--teal);margin-bottom:12px}
+/* Mental Vision wordmark-in-type — THEIR display voice, quoted exactly: Unbounded 900,
+   uppercase, -0.03em (measured from mentalvision.ai). The two words breathe between the
+   brand's teal and amber the way the live hero cycles its display words. Colors are MV's
+   own (#2dd4bf / #fbbf24) — deliberately not Signal Flair tokens. */
+.mvp-wordmark{display:flex;flex-wrap:wrap;column-gap:.35em;margin-bottom:14px;
+  font-family:'Unbounded',Verdana,sans-serif;font-weight:900;text-transform:uppercase;
+  font-size:clamp(26px,3.6vw,44px);line-height:1.04;letter-spacing:-.03em}
+.mvw-a{color:#2dd4bf;text-shadow:0 0 22px rgba(45,212,191,.35)}
+.mvw-b{color:#fbbf24;text-shadow:0 0 22px rgba(251,191,36,.35)}
+@media(prefers-reduced-motion:no-preference){
+  .mvw-a{animation:mvw-cycle-a 9s ease-in-out infinite}
+  .mvw-b{animation:mvw-cycle-b 9s ease-in-out infinite}}
+@keyframes mvw-cycle-a{0%,100%{color:#2dd4bf;text-shadow:0 0 22px rgba(45,212,191,.35)}50%{color:#fbbf24;text-shadow:0 0 22px rgba(251,191,36,.35)}}
+@keyframes mvw-cycle-b{0%,100%{color:#fbbf24;text-shadow:0 0 22px rgba(251,191,36,.35)}50%{color:#2dd4bf;text-shadow:0 0 22px rgba(45,212,191,.35)}}
 .mvp-t{font-family:var(--flair);font-variation-settings:'opsz' 144,'wght' 540,'WONK' 1;font-size:clamp(24px,3.2vw,40px);line-height:1.05;letter-spacing:-.01em;margin-bottom:14px}
 .mvp-t em{font-family:var(--italic);font-style:italic;font-variation-settings:normal;color:var(--orange)}
 .mvp-d{font-size:15px;line-height:1.65;color:rgba(11,10,9,.75);max-width:52ch}
