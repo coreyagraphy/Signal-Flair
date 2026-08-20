@@ -118,6 +118,71 @@ nav#hnav{position:relative;z-index:10;display:flex;align-items:center;justify-co
   box-shadow:0 4px 20px rgba(255,244,95,0.4),0 0 0 1px rgba(255,244,95,0.15)}
 .ncta:hover{background:transparent;color:var(--hot);box-shadow:0 6px 28px rgba(255,244,95,0.6),inset 0 0 14px rgba(255,244,95,0.18)}
 
+/* ─── Category mark — AI PROOF INFRASTRUCTURE™ ───────────────────────────────
+   ONE illuminated treatment for the category phrase everywhere it appears, so it
+   reads as a mark rather than as body text. Dark-surface default (hot yellow with
+   a warm bloom); add .on-paper on light surfaces. Keeping this in a single class
+   is what makes the phrase recognisable across nav, hero, CTA and footer.
+   The phrase itself is naming-locked — see CLAUDE.md. Do not rename it here. */
+.cat-mark{font-family:var(--signal);font-weight:700;text-transform:uppercase;letter-spacing:0.14em;
+  color:var(--hot);
+  text-shadow:0 0 1px rgba(255,244,95,0.85),0 0 13px rgba(255,244,95,0.42),0 0 34px rgba(255,122,61,0.26)}
+.cat-mark.on-paper{color:var(--ink);
+  text-shadow:0 0 16px rgba(255,90,31,0.32),0 1px 0 rgba(255,255,255,0.5)}
+/* slow breathe — enhancement only; the mark stays fully legible with it disabled */
+@keyframes cat-bloom{
+  0%,100%{text-shadow:0 0 1px rgba(255,244,95,0.85),0 0 13px rgba(255,244,95,0.42),0 0 34px rgba(255,122,61,0.26)}
+  50%{text-shadow:0 0 1px rgba(255,244,95,0.98),0 0 19px rgba(255,244,95,0.60),0 0 48px rgba(255,122,61,0.38)}}
+@media(prefers-reduced-motion:no-preference){
+  .cat-mark:not(.on-paper){animation:cat-bloom 6.5s ease-in-out infinite}}
+
+/* Brand block under the logo — the category mark plus the plain-English line.
+   .nav-brand-h1 is the page's real, visible <h1>; it inherits type so its two
+   children keep their own sizes rather than the browser's default 2em heading. */
+.nav-brand-h1{display:flex;flex-direction:column;align-items:flex-start;margin:0;
+  font-size:inherit;font-weight:inherit;line-height:inherit}
+/* Teal so it reads as its own statement against the yellow mark above it, and
+   illuminated enough to hold up over the hero video. */
+.nav-cat-line{font-family:var(--signal);font-weight:600;text-transform:uppercase;
+  font-size:clamp(10.5px,0.28vw + 9px,13px);letter-spacing:0.11em;line-height:1.5;
+  margin-top:7px;max-width:44ch;color:#00d2bf;
+  text-shadow:0 0 10px rgba(0,210,191,0.55),0 0 26px rgba(0,210,191,0.30)}
+/* Wide screens have room for the line to read as one clean statement. Gated at 1250px:
+   measured at 1100px the nowrap line ends exactly where the nav links begin (0px gap),
+   so anything lower than this collides. Re-measure if the nav links or this copy change. */
+@media(min-width:1250px){
+  .nav-cat-line{max-width:none;white-space:nowrap}}
+/* Narrow screens: the brand sits beside the CTA, which squeezes it to ~170px and wraps
+   this line to six lines — that grew the hero past 100vh and pushed the hero CTA below
+   the fold. Give the brand its own full-width row so the line wraps to two. */
+@media(max-width:700px){
+  nav#hnav{flex-wrap:wrap;row-gap:10px}
+  .nav-brand{flex:1 1 100%}
+  .nav-cat-line{max-width:none}}
+/* "Google AI Overviews" is by far the longest name in the hero rotator, and the rotator
+   also swaps typeface each turn — the tallest combination (that name in Geist Mono) wraps
+   to 4.42em on a 375px viewport versus 3.2em for the shortest. Reserve the tallest case so
+   the hero does not jump 44px every time the rotation lands on it. Measured, not guessed:
+   re-measure if the engine list or ROT_FONTS in SignalFlairLanding.tsx changes. */
+@media(max-width:600px){
+  .h-side.top .h-headline{min-height:4.5em}}
+
+/* nav slots — these must out-specify the existing #hnav / #site-nav colour rules */
+#hnav .nav-logo-tag .cat-mark{color:var(--hot);font-size:clamp(15px,0.5vw + 12px,19px);letter-spacing:0.1em}
+#site-nav .nav-logo-tag .cat-mark{font-size:clamp(13.5px,0.4vw + 11px,16px);letter-spacing:0.1em}
+
+/* supporting surfaces */
+.sig-tagline .cat-mark{font-size:1.03em;letter-spacing:0.07em}
+.cta-y-pre .cat-mark{font-size:clamp(13px,0.5vw + 11px,17px);letter-spacing:0.2em}
+.f-tag .cat-mark{display:block;font-size:clamp(13px,0.45vw + 11px,16px);letter-spacing:0.12em;margin-bottom:8px}
+/* /pulse — the funnel page carried no category phrase at all before this */
+.ssc-nav-tag{margin-top:5px}
+.ssc-nav-tag .cat-mark{font-size:clamp(12px,0.38vw + 10px,15px);letter-spacing:0.11em}
+/* .ssc-nav is sticky — if the mark wraps to two lines it permanently eats mobile
+   viewport on the conversion page, so hold it to one line on narrow screens. */
+@media(max-width:600px){
+  .ssc-nav-tag .cat-mark{font-size:10px;letter-spacing:0.04em;white-space:nowrap}}
+
 #hero-layout{position:relative;z-index:5;flex:1 0 auto;display:flex;flex-direction:column;align-items:center;justify-content:center;
   text-align:center;padding:72px 40px;gap:16px;max-width:1200px;margin:0 auto;width:100%}
 /* oversized cropped flair word bleeding behind the stack */
@@ -125,10 +190,6 @@ nav#hnav{position:relative;z-index:10;display:flex;align-items:center;justify-co
   font-family:var(--flair);font-variation-settings:'opsz' 144,'wght' 360,'SOFT' 0,'WONK' 1;
   font-size:34vw;line-height:0.7;color:transparent;-webkit-text-stroke:1px rgba(248,241,231,0.07);white-space:nowrap}
 .h-side{opacity:0;display:flex;flex-direction:column;align-items:center;gap:13px;max-width:860px;position:relative;z-index:6}
-.h-eyebrow{font-family:var(--signal);font-size:16px;font-weight:600;color:rgba(248,241,231,0.85);letter-spacing:0.2em;text-transform:uppercase;display:flex;align-items:center;justify-content:center;gap:11px}
-.h-ey-dot{width:6px;height:6px;background:var(--orange);box-shadow:0 0 8px var(--orange);animation:dot-p 1.6s infinite}
-.h-side.bottom .h-ey-dot{background:var(--teal);box-shadow:0 0 8px var(--teal)}
-@keyframes dot-p{0%,100%{opacity:1}50%{opacity:0.15}}
 .h-headline{font-family:var(--flair);font-variation-settings:'opsz' 144,'wght' 450,'SOFT' 0,'WONK' 1;
   font-size:clamp(42px,6.4vw,98px);line-height:0.92;letter-spacing:-0.015em;color:var(--bone);text-transform:none}
 .h-side.bottom .h-headline{font-size:clamp(22px,3vw,42px)}
@@ -767,7 +828,7 @@ footer{background:var(--ink2);border-top:1px solid var(--ink);padding:52px;posit
 .fi{max-width:1320px;margin:0 auto;display:grid;grid-template-columns:1.5fr 1fr 1fr 1fr;gap:56px;align-items:start;margin-bottom:40px}
 .f-logo{font-family:var(--flair);font-variation-settings:'opsz' 144,'wght' 540,'WONK' 1;font-size:24px;color:var(--bone);letter-spacing:0;text-decoration:none;display:block;margin-bottom:10px}
 .f-logo em{color:var(--orange);font-family:var(--italic);font-style:italic;display:inline-block;border:1.5px solid currentColor;border-radius:3px;padding:0 8px 1px;margin-left:7px;line-height:1;box-shadow:0 0 14px rgba(255,90,31,0.2)}
-.f-tag{font-family:var(--signal);font-size:9.5px;color:rgba(248,241,231,0.38);letter-spacing:0.14em;line-height:1.9;text-transform:uppercase;margin-bottom:16px}
+.f-tag{font-family:var(--signal);font-size:10.5px;color:rgba(248,241,231,0.56);letter-spacing:0.13em;line-height:1.85;text-transform:uppercase;margin-bottom:16px}
 .f-email{font-family:var(--signal);font-size:11px;color:var(--orange);text-decoration:none;letter-spacing:0.06em;transition:color .2s}
 .f-email:hover{color:var(--hot)}
 .f-head{font-family:var(--signal);font-size:8.5px;color:rgba(248,241,231,0.34);letter-spacing:0.26em;text-transform:uppercase;margin-bottom:14px;padding-bottom:10px;border-bottom:1px solid rgba(248,241,231,0.12)}
@@ -775,7 +836,7 @@ footer{background:var(--ink2);border-top:1px solid var(--ink);padding:52px;posit
 .f-link:hover{color:var(--hot)}
 .fb{max-width:1320px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;padding-top:20px;border-top:1px solid rgba(248,241,231,0.12)}
 .fb-l{font-family:var(--signal);font-size:9.5px;color:rgba(248,241,231,0.38);letter-spacing:0.08em}
-.fb-r{font-family:var(--signal);font-size:9.5px;color:rgba(248,241,231,0.28);letter-spacing:0.06em}
+.fb-r{font-family:var(--signal);font-size:10px;color:rgba(248,241,231,0.46);letter-spacing:0.06em}
 
 /* ── REVEAL UTILITY ──────────────────────────────────────── */
 .reveal{opacity:0;transform:perspective(1000px) rotateX(-12deg) translateY(36px)}
@@ -871,14 +932,17 @@ footer{background:var(--ink2);border-top:1px solid var(--ink);padding:52px;posit
 }
 @media(max-width:560px){
   /* hero nav → command CTA only */
-  nav#hnav{padding:16px 18px}
+  nav#hnav{padding:10px 18px}
   nav#hnav .nl{display:none}
   /* Primary conversion CTA — keep a >=44px tap target on mobile (was 33px). */
   .ncta{white-space:nowrap;padding:13px 16px;font-size:10px;min-height:46px;display:inline-flex;align-items:center;justify-content:center}
   /* sticky nav → hide text links, keep logo + CTA */
   .snav-actions a:not(.ncta){display:none}
   #site-nav{padding:11px 18px}
-  #hero-layout{padding:34px 18px}
+  /* Tight on purpose: the hero must keep the GET YOUR PULSE button above the fold on a
+     375x812 screen once the nav carries the brand block. Re-check that if these grow. */
+  #hero-layout{padding:24px 18px}
+  .h-side{gap:10px}
   #hero-layout::before{inset:10px}
   .h-headline{font-size:36px}
   #hfoot{padding:14px 18px}
@@ -900,7 +964,7 @@ footer{background:var(--ink2);border-top:1px solid var(--ink);padding:52px;posit
    Keep the big bold hero on tall screens, but compress headline +
    gauge on short laptops so the gauge and primary CTA stay above the
    fold. (flex:1 0 auto already lets the hero grow rather than clip.) */
-@media (max-height:800px) and (min-width:561px){
+@media (max-height:920px) and (min-width:561px){
   #hero-layout{padding:44px 40px;gap:12px}
   .h-headline{font-size:clamp(38px,5vw,74px)}
   .h-side.bottom .h-headline{font-size:clamp(34px,4.2vw,58px)}
@@ -915,14 +979,27 @@ footer{background:var(--ink2);border-top:1px solid var(--ink);padding:52px;posit
   .score-gauge{width:min(178px,28vw)}
   .gauge-score{font-size:clamp(48px,6vw,72px)}
   .h-sub{font-size:9px}
-  .h-eyebrow{font-size:11px}
   .eng-cell{padding:7px 15px}
+}
+/* Both blocks above are gated `min-width:561px`, so PHONES with short viewports were
+   getting no short-screen treatment at all — on a 375x667 handset the primary CTA sat
+   below the fold even before the brand block moved into the nav. This is the missing
+   narrow-screen equivalent. */
+@media (max-height:760px) and (max-width:560px){
+  nav#hnav{padding:8px 18px;row-gap:7px}
+  .nav-cat-line{font-size:9.5px;margin-top:5px}
+  #hero-layout{padding:12px 18px}
+  .h-side{gap:7px}
+  .h-headline{font-size:28px}
+  .h-side.bottom .h-headline{font-size:21px}
+  .score-gauge{width:min(146px,34vw)}
+  .gauge-score{font-size:clamp(38px,10vw,54px)}
+  .h-sub{font-size:9px}
 }
 
 /* ── REDUCED MOTION ──────────────────────────────────────── */
 @media (prefers-reduced-motion:reduce){
   .t-row-1,.t-row-2,.hf-track{animation:none}
-  .h-ey-dot,.sd-dot{animation:none}
   #hero::after{display:none}
 }
 
