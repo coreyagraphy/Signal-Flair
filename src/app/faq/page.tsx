@@ -4,7 +4,7 @@ import SignalFlairLogo from '@/components/SignalFlairLogo'
 export const metadata: Metadata = {
   title: 'FAQ — Signal Score, Case Zero, Signal Pulse & Signal Proof Page | Signal Flair',
   description:
-    'Answers to the core Signal Flair questions: what a Signal Score™ is, what Case Zero (18/100 on June 6 2026, now 98/100) is, what a free Signal Pulse™ includes, and the Founding Five. AI Proof Infrastructure for businesses and organizations nationwide.',
+    'Answers to the core Signal Flair questions: what a Signal Score™ is, what Case Zero (18/100 on June 6 2026, now 98/100) is, what a free Signal Pulse™ includes, and current pricing. AI Proof Infrastructure for businesses and organizations nationwide.',
   alternates: { canonical: 'https://signalflair.ai/faq/' },
   openGraph: {
     title: 'Signal Flair — Frequently Asked Questions',
@@ -66,8 +66,8 @@ const FAQS: { q: string; a: string }[] = [
     a: 'A Signal Pulse™ is the quick read — four live signals (Access, Structure, Trust, Answers) scored against your site in seconds, on the page, at no charge. It is a diagnosis, never a prescription. When you want the verified picture, The Breakdown ($500) produces your full Signal Score™ across all six layers, human-verified with the evidence — and the full $500 credits toward your build.',
   },
   {
-    q: 'What is the Founding Five?',
-    a: 'The Founding Five is Signal Flair’s founding cohort — exactly five seats. Members get 35% off their build and their first 3 months of Signal Proof at 50%, in exchange for permission to publish a named before-and-after case study. Documented proof, not hype.',
+    q: 'Is there a founding offer?',
+    a: 'No. Founding is closed as of August 27, 2026. There are no remaining founding seats and no founding discount. Start with a free Signal Pulse™ on the page. The Breakdown is $500, credited toward a build. Rebuild is $1,500. Foundation is $3,500. Stay Found starts at $249/mo.',
   },
   {
     q: 'What are Signal Satellites™?',

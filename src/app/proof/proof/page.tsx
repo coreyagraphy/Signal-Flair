@@ -73,7 +73,7 @@ export default function ProofCasesPage() {
         <section className="rsc-section">
           <h2 className="rsc-h2">Documented before/afters</h2>
           <p className="rsc-p">
-            The Founding Five become the first documented installs — each a real
+            Named case studies become the first documented installs — each a real
             before/after, published here only with permission and only once results exist. The Mill is the
             first published baseline; its after joins the record when the remediation and controlled retest
             are complete. Until a case has real results, it stays a labeled baseline, never invented proof.

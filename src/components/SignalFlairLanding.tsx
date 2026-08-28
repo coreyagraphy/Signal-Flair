@@ -609,7 +609,7 @@ export default function SignalFlairLanding() {
           <div style={{ display: 'flex', alignItems: 'center', gap: '24px' }}>
             <a className="nl" href="#check">Signal Score</a>
             <a className="nl" href="#signal">Proof Layer</a>
-            <a className="nl" href="#founding">Founding Five</a>
+            <a className="nl" href="/pulse">Pulse</a>
             <a className="ncta" href="/pulse">▸ GET YOUR PULSE</a>
           </div>
         </nav>
@@ -659,7 +659,7 @@ export default function SignalFlairLanding() {
         <div className="snav-actions" style={{ display: 'flex', alignItems: 'center', gap: '24px' }}>
           <a href="#check" style={snl}>Signal Score</a>
           <a href="#signal" style={snl}>Proof Layer</a>
-          <a href="#founding" style={snl}>Founding Five</a>
+          <a href="/pulse" style={snl}>Pulse</a>
           <a className="ncta" href="/pulse">▸ GET YOUR PULSE</a>
         </div>
       </nav>
@@ -913,29 +913,24 @@ export default function SignalFlairLanding() {
         <div className="founding reveal" id="founding">
           <div className="founding-inner">
             <div className="founding-l">
-              <div className="founding-eyebrow">The Founding Five</div>
-              <div className="founding-title">Five seats. <em>Then the door closes.</em></div>
-              <div className="fnd-deal" aria-label="Founding Five offer">
-                <div className="fnd-chip fnd-chip-hot"><span className="fnd-chip-big">35% OFF</span><span className="fnd-chip-sub">the build — Rebuild or Foundation</span></div>
-                <div className="fnd-chip fnd-chip-orange"><span className="fnd-chip-big">3 MONTHS AT 50%</span><span className="fnd-chip-sub">Signal Proof, your first quarter</span></div>
-              </div>
-              <div className="founding-body">Signal Flair is opening exactly five founding seats. In return, we need permission to publish the named before-and-after as a documented case study. No manufactured victory lap. We measure the before, build The Proof Stack™, and publish what actually changed.</div>
-              <div className="founding-ask">For: local service businesses, nonprofits, civic &amp; community partners, and trust-based providers — med spas, clinics, law firms, HVAC, electrical, and more.</div>
-              <a className="founding-cta" href="#cta">▸ Claim My Seat</a>
-              <div className="founding-micro">5 of 5 seats remaining — updated July 21, 2026 · documented proof, not testimonials</div>
+              <div className="founding-eyebrow">Founding is closed</div>
+              <div className="founding-title">Pulse is open.<em> $0. No call.</em></div>
+              <div className="founding-body">The founding cohort is closed. No seats. No 35% founding discount. No scarcity counter. The work is the ladder: Pulse, Breakdown, build, Stay Found.</div>
+              <div className="founding-ask">Pulse is free and on the page. The Breakdown is $500, credited to a build if we do the work. Rebuild is $1,500. Foundation is $3,500. Stay Found starts at $249/mo.</div>
+              <a className="founding-cta" href="/pulse">▸ GET YOUR PULSE</a>
+              <div className="founding-micro">Founding closed August 27, 2026 · default CTA is Pulse</div>
             </div>
             <div className="founding-r">
-              <div className="founding-price-tag">What Founding Five members receive</div>
+              <div className="founding-price-tag">What you can still buy</div>
               <div className="founding-items">
-                <div className="fnd-i">35% off your build — Rebuild or Foundation Build</div>
-                <div className="fnd-i">First 3 months of Signal Proof at 50%</div>
-                <div className="fnd-i">The Breakdown included — your $500 verified baseline, on the house</div>
-                <div className="fnd-i">The Proof Stack™ — Machine Trust Layer™, Entity Lock™, Answer Architecture™</div>
-                <div className="fnd-i">Signal Proof Page™ — your public proof asset</div>
-                <div className="fnd-i">Signal Telemetry — drift re-checked on every scheduled re-scan from day one</div>
-                <div className="fnd-i">A named, published before-and-after case study as your score climbs</div>
+                <div className="fnd-i">Pulse — $0 · on the page · no call</div>
+                <div className="fnd-i">The Breakdown — $500, credited toward your build</div>
+                <div className="fnd-i">Rebuild — $1,500 one-time</div>
+                <div className="fnd-i">Foundation — $3,500 one-time</div>
+                <div className="fnd-i">Stay Found Watch — $249/mo</div>
+                <div className="fnd-i">Signal Proof — $1,500/mo · Multi-Location from $3,500/mo</div>
               </div>
-              <div className="founding-save">Five seats. Then founding pricing closes.</div>
+              <div className="founding-save">Delivery guarantee only. Never rankings, citations, leads, or revenue.</div>
             </div>
           </div>
         </div>
@@ -1540,7 +1535,7 @@ export default function SignalFlairLanding() {
             <div className="cta-y-title reveal">AI is talking about your business.<br /><em>Go see what it said.</em></div>
             <div className="cta-y-sub reveal">Your Pulse reads the live signals in seconds — right here on the site, no waiting on an email. You see where the signal breaks. What you do next is up to you.</div>
             <div className="cta-y-btns reveal" style={{ marginTop: '26px' }}>
-              <a className="cta-y-ghost" href="#founding">▸ Claim a Founding Five Seat →</a>
+              <a className="cta-y-ghost" href="/pulse">▸ Get Your Pulse →</a>
               <a className="cta-y-ghost" href="#check">▸ See all six layers →</a>
             </div>
           </div>

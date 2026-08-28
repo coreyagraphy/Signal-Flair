@@ -66,7 +66,7 @@ export default function RestorTeamCaseStudy() {
           </p>
           <div className="rsc-ctarow" style={{ display: 'flex', gap: '12px', flexWrap: 'wrap', marginTop: '24px' }}>
             <a className="rsc-navcta" href="/#cta">▸ Get Your Signal Score™</a>
-            <a className="sl-back" href="/#founding" style={{ alignSelf: 'center' }}>Explore the Founding Five →</a>
+            <a className="sl-back" href="/pulse" style={{ alignSelf: 'center' }}>Get Your Pulse →</a>
           </div>
         </header>
 
