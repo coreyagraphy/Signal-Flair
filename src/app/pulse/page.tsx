@@ -243,7 +243,7 @@ export default function SignalPulsePage() {
 
       <footer className="ssc-foot">
         Signal Flair · a Mental Vision product · Indianapolis, Indiana · serving nationwide<br />
-        <a href="/">signalflair.ai</a> · <a href="/how-it-works/">how it works</a> · <a href="/proof/">the record</a> · <a href="mailto:hello@signalflair.ai">hello@signalflair.ai</a>
+        <a href="/">signalflair.ai</a> · <a href="/how-it-works/">how it works</a> · <a href="/proof/">the record</a> · <a href="mailto:outreach@signalflair.com">outreach@signalflair.com</a>
       </footer>
 
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />

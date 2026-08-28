@@ -13,7 +13,7 @@
 - Service Area: United States (remote-capable, nationwide)
 - Industry: AI Proof Infrastructure / answer engine readiness
 - Founder: Corey Ellis
-- Contact: hello@signalflair.ai
+- Contact: outreach@signalflair.com
 - Signal Score™ (Case Zero baseline): 18/100 (scored June 6, 2026)
 - Signal Score™ (Case Zero current): 91/100 (re-audited August 3, 2026; 73/100 on July 5, 2026)
 - Last Updated: 2026-08-03
@@ -120,7 +120,7 @@ Assessment history stays attached to the organization it belongs to. Signal Flai
 - Full privacy & data-use policy: https://signalflair.ai/privacy/
 
 ## Contact
-- Email: hello@signalflair.ai
+- Email: outreach@signalflair.com
 - Website: https://signalflair.ai
 - LinkedIn: https://www.linkedin.com/company/signal-flair-ai
 - Parent organization: Mental Vision — https://mentalvision.ai

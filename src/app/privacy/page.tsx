@@ -60,7 +60,7 @@ export default function PrivacyPage() {
             <li>We preserve your assessment history so <strong>your</strong> future reviews can measure change.</li>
             <li>As verified history accumulates, <strong>de-identified, aggregate</strong> patterns improve our methodology — never to identify, profile, or resell you.</li>
             <li>Signal Flair is <strong>not a data center</strong>. We do not sell your data, publish private records, or train foundation models on private client data.</li>
-            <li>You can ask us to access or delete your data any time: <a href="mailto:hello@signalflair.ai">hello@signalflair.ai</a>.</li>
+            <li>You can ask us to access or delete your data any time: <a href="mailto:outreach@signalflair.com">outreach@signalflair.com</a>.</li>
           </ul>
         </section>
 
@@ -114,7 +114,7 @@ export default function PrivacyPage() {
           <h2 className="rsc-h2">Your choices &amp; <em>rights</em></h2>
           <p className="rsc-p">
             You can ask us to access, correct, or delete your personal information, or to stop contacting you, at any
-            time — email <a href="mailto:hello@signalflair.ai">hello@signalflair.ai</a> and we will honor it. If you
+            time — email <a href="mailto:outreach@signalflair.com">outreach@signalflair.com</a> and we will honor it. If you
             are in a region with privacy laws such as the GDPR or CCPA/CPRA, those rights apply to you. You can opt
             out of analytics using your browser settings or Google&apos;s opt-out tools.
           </p>
@@ -134,7 +134,7 @@ export default function PrivacyPage() {
           <h2 className="rsc-h2">Changes &amp; <em>contact</em></h2>
           <p className="rsc-p">
             We may update this page as the service evolves; the effective date above will change when we do. Questions
-            about privacy or your data? Email <a href="mailto:hello@signalflair.ai">hello@signalflair.ai</a>.
+            about privacy or your data? Email <a href="mailto:outreach@signalflair.com">outreach@signalflair.com</a>.
           </p>
         </section>
 

@@ -32,7 +32,7 @@ const jsonLd = {
       name: 'Signal Flair',
       url: 'https://signalflair.ai',
       logo: 'https://signalflair.ai/signal-flair-logo.svg',
-      email: 'hello@signalflair.ai',
+      email: 'outreach@signalflair.com',
       description:
         'Signal Flair builds AI Proof Infrastructure — the structured proof layer that helps AI answer engines access, understand, verify, and recommend a business. Based in Indianapolis, Indiana and serving organizations nationwide, it is a product of Mental Vision. It is unrelated to SignalFlare.ai and to the medical MRI term FLAIR (Fluid-Attenuated Inversion Recovery).',
       foundingDate: '2026',

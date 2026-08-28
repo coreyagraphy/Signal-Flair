@@ -22,7 +22,7 @@ import { tierFor } from '@/lib/signal-tiers'
 
 const FUNCTION_URL = '/.netlify/functions/signal-pulse'
 const CAPTURE_URL = '/.netlify/functions/lead-capture'
-const FALLBACK_EMAIL = 'hello@signalflair.ai'
+const FALLBACK_EMAIL = 'outreach@signalflair.com'
 const EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]+$/
 const sleep = (ms: number) => new Promise((r) => setTimeout(r, ms))
 
@@ -482,7 +482,7 @@ function PulseResult({ data, email, website, fromHandoff = false, fullName = '',
         <div className="sp-ack sp-ack--warn">
           <span className="sp-ack-dot" aria-hidden="true" />
           Heads up: your score is real, but we couldn&apos;t log your details on our end — so if you
-          wanted a follow-up, email <a href="mailto:hello@signalflair.ai">hello@signalflair.ai</a> and
+          wanted a follow-up, email <a href="mailto:outreach@signalflair.com">outreach@signalflair.com</a> and
           we&apos;ll pick it up from there.
         </div>
       )}
@@ -520,11 +520,11 @@ function PulseResult({ data, email, website, fromHandoff = false, fullName = '',
           <a
             className="ssc-optin-btn"
             style={{ display: 'inline-block', textDecoration: 'none' }}
-            href={`mailto:hello@signalflair.ai?subject=${encodeURIComponent('The Breakdown request — ' + (website || 'my business'))}&body=${encodeURIComponent(
+            href={`mailto:outreach@signalflair.com?subject=${encodeURIComponent('The Breakdown request — ' + (website || 'my business'))}&body=${encodeURIComponent(
               `I'd like The Breakdown ($500, credited toward the build).\n\nName: ${fullName || ''}\nWebsite: ${website || ''}\nEmail: ${email || ''}\nPhone: ${optPhone.trim()}\nSignal Pulse: ${data.pulse}/100 (Access ${(data.buckets || []).find((b) => b.key === 'access')?.score ?? '-'} · Structure ${(data.buckets || []).find((b) => b.key === 'structure')?.score ?? '-'} · Trust ${(data.buckets || []).find((b) => b.key === 'trust')?.score ?? '-'} · Answers ${(data.buckets || []).find((b) => b.key === 'answers')?.score ?? '-'})\n`,
             )}`}
           >▸ Send it from my email</a>
-          <div className="ssc-optin-fine">Or call/text — we answer at hello@signalflair.ai</div>
+          <div className="ssc-optin-fine">Or call/text — we answer at outreach@signalflair.com</div>
         </div>
       ) : (
         <div className="ssc-optin ssc-optin--done">

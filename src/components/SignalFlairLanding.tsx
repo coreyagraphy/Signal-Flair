@@ -1545,7 +1545,7 @@ export default function SignalFlairLanding() {
               <div className="lead-subline">Your Signal Pulse™ reads the four live signals — Access, Structure, Trust, Answers — and scores them on the page, in seconds. When you want the verified picture, The Breakdown ($500, credited toward your build) is the next step.</div>
               <a className="lead-submit" href="/pulse" style={{ display: 'block', textAlign: 'center', textDecoration: 'none' }}>▸ GET YOUR PULSE</a>
               <div className="lead-micro">No charge. Takes seconds. No call required.</div>
-              <div className="lead-consent">Prefer a human first? <a href="mailto:hello@signalflair.ai">hello@signalflair.ai</a></div>
+              <div className="lead-consent">Prefer a human first? <a href="mailto:outreach@signalflair.com">outreach@signalflair.com</a></div>
             </div>
           </div>
         </div>
@@ -1568,11 +1568,11 @@ export default function SignalFlairLanding() {
           <div>
             <a className="f-logo" href="#hero"><SignalFlairLogo onDark style={{ height: 70, width: 'auto', display: 'block' }} /></a>
             <div className="f-tag"><span className="cat-mark">AI Proof Infrastructure™</span>Built for AI search, answer engines, and the agents coming next.<br />Indianapolis, Indiana · Serving businesses nationwide · Est. 2026<br />Your business, found by AI.</div>
-            <a className="f-email" href="mailto:hello@signalflair.ai">hello@signalflair.ai</a>
+            <a className="f-email" href="mailto:outreach@signalflair.com">outreach@signalflair.com</a>
           </div>
           <div><div className="f-head">Services</div><a className="f-link" href="#signal">AI Visibility Audit</a><a className="f-link" href="#signal">Foundation Build</a><a className="f-link" href="#signal">Stay Found™</a><a className="f-link" href="#check">What We Check</a><a className="f-link" href="#pricing">Pricing</a></div>
-          <div><div className="f-head">Company</div><a className="f-link" href="#process">How It Works</a><a className="f-link" href="#pricing">Pricing</a><a className="f-link" href="/resources/llms-txt/">The truth about llms.txt</a><a className="f-link" href="/privacy/">Privacy</a><a className="f-link" href="https://mentalvision.ai" target="_blank" rel="noopener noreferrer">Mental Vision</a><a className="f-link" href="mailto:hello@signalflair.ai">Contact</a></div>
-          <div><div className="f-head">Connect</div><a className="f-link" href="https://www.linkedin.com/company/signal-flair-ai" target="_blank" rel="noopener noreferrer">LinkedIn</a><a className="f-link" href="mailto:hello@signalflair.ai">hello@signalflair.ai</a></div>
+          <div><div className="f-head">Company</div><a className="f-link" href="#process">How It Works</a><a className="f-link" href="#pricing">Pricing</a><a className="f-link" href="/resources/llms-txt/">The truth about llms.txt</a><a className="f-link" href="/privacy/">Privacy</a><a className="f-link" href="https://mentalvision.ai" target="_blank" rel="noopener noreferrer">Mental Vision</a><a className="f-link" href="mailto:outreach@signalflair.com">Contact</a></div>
+          <div><div className="f-head">Connect</div><a className="f-link" href="https://www.linkedin.com/company/signal-flair-ai" target="_blank" rel="noopener noreferrer">LinkedIn</a><a className="f-link" href="mailto:outreach@signalflair.com">outreach@signalflair.com</a></div>
         </div>
         <div className="f-chant-band">
           <div className="f-chant">What&apos;s your Signal Score?</div>

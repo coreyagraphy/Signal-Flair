@@ -40,7 +40,7 @@ const jsonLd = {
       name: 'Signal Flair',
       alternateName: 'Signal Flair AI Visibility',
       url: 'https://signalflair.ai',
-      email: 'hello@signalflair.ai',
+      email: 'outreach@signalflair.com',
       slogan: 'Your business, found by AI.',
       description:
         'Signal Flair builds AI Proof Infrastructure and Signal Score™ systems that help businesses and organizations become easier for AI answer engines to access, understand, verify, and surface. Based in Indianapolis, Indiana and serving organizations nationwide, Signal Flair measures how clearly a business can be understood across ChatGPT, Claude, Perplexity, Gemini, and Google AI, then builds the structured proof layer — schema markup, entity clarity, answer architecture, and trust proof — those engines need to recommend it. Signal Flair looks beyond the webpage — evaluating multimodal discoverability so images, video, channels, and profiles can be found and correctly attributed to the right entity — and preserves versioned assessment history, so the methodology improves over time as verified, de-identified evidence accumulates. Signal Flair is not a data center and does not sell client data or train foundation models on it. Signal Flair is a Mental Vision product. It is a distinct company from SignalFlare.ai (restaurant analytics) and is unrelated to the medical imaging term FLAIR (Fluid-Attenuated Inversion Recovery), an MRI sequence used in radiology and neuroimaging.',
@@ -58,7 +58,7 @@ const jsonLd = {
       founder: { '@id': 'https://signalflair.ai/#founder' },
       parentOrganization: { '@type': 'Organization', name: 'Mental Vision', url: 'https://mentalvision.ai' },
       sameAs: ['https://signalflair.ai/proof/', 'https://www.linkedin.com/company/signal-flair-ai', 'https://www.crunchbase.com/organization/signal-flair', 'https://mentalvision.ai'],
-      contactPoint: { '@type': 'ContactPoint', email: 'hello@signalflair.ai', contactType: 'sales', areaServed: 'US' },
+      contactPoint: { '@type': 'ContactPoint', email: 'outreach@signalflair.com', contactType: 'sales', areaServed: 'US' },
     },
     {
       '@type': 'Person',
